@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wild Care &mdash; Verein f&uuml;r soziale Praxis | Graz</title>
-    <meta name="description" content="Wild Care ist ein Verein f&uuml;r soziale Praxis in Graz. Entdecke Contact Improvisation und Bewegung in unserem offenen Labor jeden Montag.">
+    <title>Wild Care &mdash; Association for Social Practice | Graz</title>
+    <meta name="description" content="Wild Care is an association for social practice in Graz. Discover Contact Improvisation and movement in our open lab every Monday.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 
     <style>
         /* ================================
@@ -494,6 +494,26 @@
 
         .footer-bottom a { color: var(--bark); }
 
+        /* Language Toggle */
+        .lang-toggle {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--bark);
+            opacity: 0.4;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(44, 36, 24, 0.15);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+        .lang-toggle:hover {
+            opacity: 1;
+            border-color: rgba(44, 36, 24, 0.3);
+            color: var(--moss);
+        }
+
         /* ================================
            RESPONSIVE OVERRIDES
            ================================ */
@@ -524,15 +544,15 @@
                 <span class="breadcrumb">Graz</span>
             </a>
             <div class="nav-links">
-                <a href="index.html" class="active">Startseite</a>
+                <a href="index.html" class="active">Home</a>
                 <a href="brand.html">Brand</a>
-                <a href="team.html">&Uuml;ber uns</a>
-                <a href="programm.html">Programm</a>
-                <a href="mitmachen.html">Mitmachen</a>
-                <a href="kontakt.html" class="nav-cta">Komm vorbei</a>
+                <a href="team.html">About Us</a>
+                <a href="programm.html">Programme</a>
+                <a href="mitmachen.html">Get Involved</a>
+                <a href="kontakt.html" class="nav-cta">Join Us</a>
             </div>
-            <a href="en/index.html" class="lang-toggle">EN</a>
-            <button class="nav-toggle" aria-label="Men&uuml;">
+            <a href="../index.html" class="lang-toggle">DE</a>
+            <button class="nav-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -545,18 +565,18 @@
          ================================ -->
 
     <header class="hero-video">
-        <video autoplay muted loop playsinline poster="assets/images/hero-poster.jpg">
-            <source src="assets/video-hero.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline poster="../assets/images/hero-poster.jpg">
+            <source src="../assets/video-hero.mp4" type="video/mp4">
         </video>
         <div class="hero-video-overlay"></div>
 
         <div class="hero-video-content">
             <div class="container">
-                <h1 class="fade-up">Wir &uuml;ben das<br>Zusammenleben.</h1>
-                <p class="fade-up delay-1">Kunst als lebendige, soziale Praxis. Jeden Montag in Graz &mdash; offen f&uuml;r alle, auf Spendenbasis.</p>
+                <h1 class="fade-up">We practice<br>living together.</h1>
+                <p class="fade-up delay-1">Art as a living, social practice. Every Monday in Graz &mdash; open to everyone, donation-based.</p>
                 <div class="button-row fade-up delay-2">
-                    <a href="programm.html" class="btn btn-primary">Komm vorbei</a>
-                    <a href="#werte" class="btn btn-secondary">Mehr erfahren</a>
+                    <a href="programm.html" class="btn btn-primary">Join us</a>
+                    <a href="#values" class="btn btn-secondary">Learn more</a>
                 </div>
             </div>
         </div>
@@ -573,10 +593,10 @@
     <div class="event-banner">
         <div class="container event-banner-inner">
             <div class="event-banner-info">
-                <span class="event-banner-tag">N&auml;chster Termin</span>
+                <span class="event-banner-tag">Next Session</span>
                 <div class="event-banner-detail">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                    Jeden Montag
+                    Every Monday
                 </div>
                 <div class="event-banner-detail">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -588,7 +608,7 @@
                 </div>
                 <div class="event-banner-detail">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>
-                    Spendenbasis
+                    Donation-based
                 </div>
             </div>
         </div>
@@ -598,11 +618,11 @@
          CORE VALUES
          ================================ -->
 
-    <section id="werte">
+    <section id="values">
         <div class="container">
             <div class="section-header fade-up" style="text-align: center; margin-bottom: 64px;">
-                <p class="label">Was uns leitet</p>
-                <h2>Vier Haltungen</h2>
+                <p class="label">What guides us</p>
+                <h2>Four Principles</h2>
             </div>
 
             <div class="values-grid">
@@ -610,32 +630,32 @@
                     <div class="value-icon">
                         <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
                     </div>
-                    <h3>Beziehung &gt; Perfektion</h3>
-                    <p>Nicht das fertige Werk z&auml;hlt, sondern das, was zwischen uns passiert. Wie nehmen wir Raum? Wie geben wir Raum?</p>
+                    <h3>Relationship &gt; Perfection</h3>
+                    <p>It's not the finished work that counts, but what happens between us. How do we take up space? How do we make space?</p>
                 </div>
 
                 <div class="value-card fade-up delay-2">
                     <div class="value-icon">
                         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                     </div>
-                    <h3>Mikro-Utopien</h3>
-                    <p>Wir kreieren tempor&auml;re, sichere R&auml;ume. Hier setzen wir die Regeln der Welt kurz auf Pause und &uuml;ben ein anderes Miteinander.</p>
+                    <h3>Micro-Utopias</h3>
+                    <p>We create temporary, safe spaces. Here we pause the rules of the world for a moment and practice a different way of being together.</p>
                 </div>
 
                 <div class="value-card fade-up delay-3">
                     <div class="value-icon">
                         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
                     </div>
-                    <h3>Forschendes Lernen</h3>
-                    <p>Keine festen Formen zum Nachahmen. Wir geben Werkzeuge an die Hand, um den eigenen Ausdruck zu erforschen.</p>
+                    <h3>Inquiry-Based Learning</h3>
+                    <p>No fixed forms to imitate. We offer tools to explore your own expression and discover what moves you.</p>
                 </div>
 
                 <div class="value-card fade-up delay-4">
                     <div class="value-icon">
                         <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
                     </div>
-                    <h3>Radikale F&uuml;rsorge</h3>
-                    <p>Nicht nur Sanftmut, sondern auch Klarheit. Eigene Grenzen wahren und anderen den Raum geben, gesehen zu werden.</p>
+                    <h3>Radical Care</h3>
+                    <p>Not just gentleness, but also clarity. Holding your own boundaries while giving others the space to be seen.</p>
                 </div>
             </div>
         </div>
@@ -649,17 +669,17 @@
         <div class="container">
             <div class="invitation-grid">
                 <div class="invitation-text fade-up">
-                    <p class="label" style="margin-bottom: 12px;">Labor f&uuml;r Zusammenleben</p>
-                    <h2>Was passiert bei uns?</h2>
-                    <p>Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Ber&uuml;hrung. Es gibt keine festen Schritte, keinen Leistungsdruck und keine Rollen.</p>
-                    <p>Du lernst, durch achtsamen K&ouml;rperkontakt deinen K&ouml;rper bewusster zu erleben, dein Nervensystem zu regulieren und Grenzen zu kommunizieren &mdash; im Tanz wie im Alltag.</p>
+                    <p class="label" style="margin-bottom: 12px;">A Lab for Living Together</p>
+                    <h2>What happens here?</h2>
+                    <p>Contact Improvisation is the playful exploration of gravity, balance, and touch. There are no fixed steps, no pressure to perform, and no assigned roles.</p>
+                    <p>Through mindful physical contact, you learn to experience your body more consciously, regulate your nervous system, and communicate boundaries &mdash; in dance and in everyday life.</p>
                     <div class="button-row" style="margin-top: 8px;">
-                        <a href="programm.html" class="btn btn-ghost">Zum Programm</a>
+                        <a href="programm.html" class="btn btn-ghost">See the Programme</a>
                     </div>
                 </div>
                 <div class="invitation-image fade-up delay-2">
                     <div class="invitation-image-frame">
-                        <p class="placeholder-text">Hier kommt ein Foto<br>aus euren Sessions</p>
+                        <p class="placeholder-text">Photo from your<br>sessions goes here</p>
                     </div>
                     <div class="invitation-image-accent"></div>
                 </div>
@@ -674,7 +694,7 @@
     <section style="background: var(--sand-light);">
         <div class="container fade-up" style="text-align: center; max-width: 800px;">
             <div class="divider" style="margin: 0 auto var(--space-xl);"></div>
-            <p class="quote">Bei uns steht nicht das fertige Kunstwerk an der Wand oder die perfekte Pose auf der B&uuml;hne im Mittelpunkt, sondern das, was zwischen uns passiert.</p>
+            <p class="quote">For us, it's not about the finished artwork on the wall or the perfect pose on stage &mdash; it's about what happens between us.</p>
             <div class="divider" style="margin: var(--space-xl) auto 0;"></div>
         </div>
     </section>
@@ -688,42 +708,42 @@
             <div class="section-header fade-up" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px;">
                 <div>
                     <p class="label">Journal</p>
-                    <h2>Aus dem Labor</h2>
+                    <h2>From the Lab</h2>
                 </div>
-                <a href="journal.html" class="btn btn-ghost">Alle Beitr&auml;ge</a>
+                <a href="journal.html" class="btn btn-ghost">All Posts</a>
             </div>
 
             <div class="journal-grid">
                 <a href="#" class="journal-card fade-up delay-1" style="text-decoration: none; color: inherit;">
                     <div class="journal-card-image">
-                        <span class="placeholder-text">Foto</span>
+                        <span class="placeholder-text">Photo</span>
                     </div>
                     <div class="journal-card-body">
                         <p class="journal-card-date">April 2026</p>
-                        <h3>Bewegungsrevolution: Wir starten</h3>
-                        <p>Unser geförderter 10-Wochen-Block für Einsteiger:innen beginnt. Was wir vorhaben.</p>
+                        <h3>Movement Revolution: We're Starting</h3>
+                        <p>Our funded 10-week block for beginners kicks off. Here's what we have planned.</p>
                     </div>
                 </a>
 
                 <a href="#" class="journal-card fade-up delay-2" style="text-decoration: none; color: inherit;">
                     <div class="journal-card-image" style="background: var(--sand-light);">
-                        <span class="placeholder-text">Foto</span>
+                        <span class="placeholder-text">Photo</span>
                     </div>
                     <div class="journal-card-body">
-                        <p class="journal-card-date">M&auml;rz 2026</p>
-                        <h3>Was ist Kunst?</h3>
-                        <p>Kunst ist eine Sprache f&uuml;r die unpraktischen Dinge. Am Rande des Sagbaren kratzen, schaben, dr&auml;ngen.</p>
+                        <p class="journal-card-date">March 2026</p>
+                        <h3>What Is Art?</h3>
+                        <p>Art is a language for the impractical things. Scratching, scraping, pressing at the edges of what can be said.</p>
                     </div>
                 </a>
 
                 <a href="#" class="journal-card fade-up delay-3" style="text-decoration: none; color: inherit;">
                     <div class="journal-card-image" style="background: var(--cream);">
-                        <span class="placeholder-text">Foto</span>
+                        <span class="placeholder-text">Photo</span>
                     </div>
                     <div class="journal-card-body">
-                        <p class="journal-card-date">M&auml;rz 2026</p>
-                        <h3>Warum Contact Improvisation?</h3>
-                        <p>&Uuml;ber das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen.</p>
+                        <p class="journal-card-date">March 2026</p>
+                        <h3>Why Contact Improvisation?</h3>
+                        <p>On the playful exploration of gravity, balance, and trust.</p>
                     </div>
                 </a>
             </div>
@@ -736,10 +756,10 @@
 
     <section class="cta-section">
         <div class="container fade-up">
-            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;">Einladung</p>
-            <h2>Komm vorbei.</h2>
-            <p>Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz.</p>
-            <a href="kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
+            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;">Invitation</p>
+            <h2>Come by.</h2>
+            <p>No experience needed &mdash; just comfortable clothes and curiosity. Every Monday, 17:45, Orpheumgasse 11, Graz.</p>
+            <a href="kontakt.html" class="btn btn-primary">Get in Touch</a>
         </div>
     </section>
 
@@ -752,28 +772,28 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h4>Wild Care</h4>
-                    <p>Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir &uuml;ben das Zusammenleben &mdash; jeden Montag in Graz.</p>
+                    <p>Association for Contact Improvisation and social practice. We practice living together &mdash; every Monday in Graz.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Seiten</h4>
-                    <a href="index.html">Startseite</a>
-                    <a href="team.html">&Uuml;ber uns</a>
-                    <a href="programm.html">Programm</a>
-                    <a href="mitmachen.html">Mitmachen</a>
+                    <h4>Pages</h4>
+                    <a href="index.html">Home</a>
+                    <a href="team.html">About Us</a>
+                    <a href="programm.html">Programme</a>
+                    <a href="mitmachen.html">Get Involved</a>
                     <a href="journal.html">Journal</a>
-                    <a href="kontakt.html">Kontakt</a>
+                    <a href="kontakt.html">Contact</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Verbinden</h4>
+                    <h4>Connect</h4>
                     <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
                     <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
-                    <a href="impressum.html">Impressum</a>
-                    <a href="datenschutz.html">Datenschutz</a>
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
                 </div>
             </div>
             <div class="footer-bottom">
                 <span>&copy; 2026 Wild Care &mdash; Graz</span>
-                <span>Mit F&uuml;rsorge gebaut</span>
+                <span>Built with care</span>
             </div>
         </div>
     </footer>

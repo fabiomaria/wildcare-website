@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt &mdash; Wild Care | Verein f&uuml;r soziale Praxis, Graz</title>
-    <meta name="description" content="Nimm Kontakt mit Wild Care auf. Contact Improvisation und soziale Praxis &mdash; jeden Montag in Graz. Komm einfach vorbei.">
+    <title>Contact &mdash; Wild Care | Association for Social Practice, Graz</title>
+    <meta name="description" content="Get in touch with Wild Care. Contact Improvisation and social practice &mdash; every Monday in Graz. Just come by.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 
     <style>
         /* ================================
@@ -301,6 +301,26 @@
 
         .footer-bottom a { color: var(--bark); }
 
+        /* Language Toggle */
+        .lang-toggle {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--bark);
+            opacity: 0.4;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(44, 36, 24, 0.15);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+        .lang-toggle:hover {
+            opacity: 1;
+            border-color: rgba(44, 36, 24, 0.3);
+            color: var(--moss);
+        }
+
         /* ================================
            RESPONSIVE OVERRIDES
            ================================ */
@@ -341,15 +361,15 @@
                 <span class="breadcrumb">Graz</span>
             </a>
             <div class="nav-links">
-                <a href="index.html">Startseite</a>
+                <a href="index.html">Home</a>
                 <a href="brand.html">Brand</a>
-                <a href="team.html">&Uuml;ber uns</a>
-                <a href="programm.html">Programm</a>
-                <a href="mitmachen.html">Mitmachen</a>
-                <a href="kontakt.html" class="nav-cta active">Komm vorbei</a>
+                <a href="team.html">About Us</a>
+                <a href="programm.html">Programme</a>
+                <a href="mitmachen.html">Join</a>
+                <a href="kontakt.html" class="nav-cta active">Come By</a>
             </div>
-            <a href="en/kontakt.html" class="lang-toggle">EN</a>
-            <button class="nav-toggle" aria-label="Men&uuml;">
+            <a href="../kontakt.html" class="lang-toggle">DE</a>
+            <button class="nav-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -363,9 +383,9 @@
 
     <header class="kontakt-hero">
         <div class="container">
-            <p class="label fade-up">Kontakt</p>
-            <h1 class="fade-up delay-1">Wir freuen uns<br>auf dich.</h1>
-            <p class="fade-up delay-2">Du hast eine Frage, m&ouml;chtest mitmachen oder einfach Hallo sagen? Schreib uns &mdash; oder komm einfach am Montag vorbei.</p>
+            <p class="label fade-up">Contact</p>
+            <h1 class="fade-up delay-1">We look forward to<br>meeting you.</h1>
+            <p class="fade-up delay-2">Have a question, want to join in, or just say hello? Write to us &mdash; or simply come by on Monday.</p>
         </div>
     </header>
 
@@ -379,23 +399,23 @@
 
                 <!-- LEFT: Form -->
                 <div class="kontakt-form-wrapper fade-up">
-                    <h3>Schreib uns</h3>
+                    <h3>Write to Us</h3>
                     <form action="https://formspree.io/f/placeholder" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Dein Name" required>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">E-Mail</label>
-                            <input type="email" id="email" name="email" placeholder="deine@email.at" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Nachricht</label>
-                            <textarea id="message" name="message" placeholder="Was m&ouml;chtest du uns sagen?" required></textarea>
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="What would you like to tell us?" required></textarea>
                         </div>
                         <div class="form-submit-row">
-                            <button type="submit" class="btn btn-primary">Nachricht senden</button>
-                            <p class="form-note">Oder schreib uns direkt an <a href="mailto:hello@wildcare.space">hello@wildcare.space</a></p>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                            <p class="form-note">Or write to us directly at <a href="mailto:hello@wildcare.space">hello@wildcare.space</a></p>
                         </div>
                     </form>
                 </div>
@@ -407,7 +427,7 @@
                             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
                         </div>
                         <div class="kontakt-info-text">
-                            <p class="label">E-Mail</p>
+                            <p class="label">Email</p>
                             <p><a href="mailto:hello@wildcare.space">hello@wildcare.space</a></p>
                         </div>
                     </div>
@@ -427,7 +447,7 @@
                             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
                         <div class="kontakt-info-text">
-                            <p class="label">Adresse</p>
+                            <p class="label">Address</p>
                             <p>Orpheumgasse 11<br>8020 Graz</p>
                         </div>
                     </div>
@@ -437,13 +457,13 @@
                             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                         </div>
                         <div class="kontakt-info-text">
-                            <p class="label">Wann</p>
-                            <p>Jeden Montag ab 17:45 Uhr</p>
+                            <p class="label">When</p>
+                            <p>Every Monday from 17:45</p>
                         </div>
                     </div>
 
                     <div class="kontakt-highlight">
-                        <p>Komm einfach vorbei &mdash; du brauchst keine Anmeldung, keine Erfahrung, nur bequeme Kleidung und Neugier.</p>
+                        <p>Just come by &mdash; no registration needed, no experience required, just comfortable clothes and curiosity.</p>
                     </div>
                 </div>
 
@@ -458,7 +478,7 @@
     <section class="map-section">
         <div class="container">
             <div class="section-header fade-up" style="text-align: center; margin-bottom: 48px;">
-                <p class="label">So findest du uns</p>
+                <p class="label">How to Find Us</p>
                 <h2>Orpheumgasse 11, Graz</h2>
             </div>
             <div class="map-wrapper fade-up delay-1">
@@ -467,10 +487,10 @@
                     allowfullscreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
-                    title="Wild Care Standort: Orpheumgasse 11, 8020 Graz">
+                    title="Wild Care Location: Orpheumgasse 11, 8020 Graz">
                 </iframe>
             </div>
-            <p class="map-caption fade-up delay-2">Orpheumgasse 11, 8020 Graz &mdash; N&auml;he Orpheum Theater</p>
+            <p class="map-caption fade-up delay-2">Orpheumgasse 11, 8020 Graz &mdash; near Orpheum Theatre</p>
         </div>
     </section>
 
@@ -483,27 +503,27 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h4>Wild Care</h4>
-                    <p>Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir &uuml;ben das Zusammenleben &mdash; jeden Montag in Graz.</p>
+                    <p>Association for Contact Improvisation and social practice. We practice living together &mdash; every Monday in Graz.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Seiten</h4>
-                    <a href="index.html">Startseite</a>
-                    <a href="team.html">&Uuml;ber uns</a>
-                    <a href="programm.html">Programm</a>
-                    <a href="mitmachen.html">Mitmachen</a>
+                    <h4>Pages</h4>
+                    <a href="index.html">Home</a>
+                    <a href="team.html">About Us</a>
+                    <a href="programm.html">Programme</a>
+                    <a href="mitmachen.html">Join</a>
                     <a href="journal.html">Journal</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Verbinden</h4>
+                    <h4>Connect</h4>
                     <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
                     <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
-                    <a href="impressum.html">Impressum</a>
-                    <a href="datenschutz.html">Datenschutz</a>
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
                 </div>
             </div>
             <div class="footer-bottom">
                 <span>&copy; 2026 Wild Care &mdash; Graz</span>
-                <span>Mit F&uuml;rsorge gebaut</span>
+                <span>Built with care</span>
             </div>
         </div>
     </footer>
