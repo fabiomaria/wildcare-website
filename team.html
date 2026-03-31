@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild Care &mdash; &Uuml;ber uns | Team &amp; Haltung</title>
+    <meta name="description" content="Lerne das Team hinter Wild Care kennen. Verena Eidenberger und Fabio Maria Gerhold &uuml;ber Begegnung, Bewegung und soziale Praxis in Graz.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* ================================
+           TEAM PAGE STYLES
+           ================================ */
+
+        /* Hero */
+        .team-hero {
+            padding-top: calc(72px + var(--space-3xl));
+            padding-bottom: var(--space-2xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(196, 119, 90, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .team-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -15%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(92, 107, 79, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .team-hero .label {
+            margin-bottom: var(--space-md);
+        }
+
+        .team-hero h1 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .team-hero p {
+            font-size: 1.125rem;
+            opacity: 0.75;
+            line-height: 1.7;
+        }
+
+        /* Manifest Excerpt */
+        .manifest-excerpt {
+            padding-top: 0;
+        }
+
+        .manifest-box {
+            text-align: center;
+            padding: 64px 48px;
+        }
+
+        .manifest-box .quote {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+        }
+
+        .team-member {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-portrait {
+            aspect-ratio: 3 / 4;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--sand);
+            border: var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-lg);
+            position: relative;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .team-portrait:hover {
+            box-shadow: 0 16px 48px rgba(44, 36, 24, 0.08);
+        }
+
+        .team-portrait .placeholder-text {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--bark);
+            opacity: 0.2;
+            text-align: center;
+            padding: var(--space-xl);
+            font-variation-settings: 'SOFT' 100, 'WONK' 1;
+        }
+
+        .team-portrait::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            right: -12px;
+            width: 100px;
+            height: 100px;
+            background: var(--terracotta);
+            opacity: 0.08;
+            border-radius: var(--radius-organic);
+            z-index: -1;
+        }
+
+        .team-member h3 {
+            font-size: clamp(1.3rem, 2vw, 1.75rem);
+            margin-bottom: var(--space-sm);
+        }
+
+        .team-role {
+            font-size: 0.875rem;
+            color: var(--moss);
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+
+        .team-member p {
+            font-size: 0.9375rem;
+            opacity: 0.7;
+            line-height: 1.7;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: var(--sand-light);
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+            align-items: start;
+        }
+
+        .philosophy-text h2 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .philosophy-text p {
+            font-size: 1.0625rem;
+            opacity: 0.75;
+            margin-bottom: var(--space-lg);
+            line-height: 1.75;
+        }
+
+        .philosophy-pillars {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .pillar-card {
+            padding: var(--space-lg) var(--space-xl);
+            border-left: 3px solid var(--terracotta);
+            background: linear-gradient(135deg, rgba(250, 247, 242, 0.8) 0%, transparent 100%);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .pillar-card:hover {
+            background: linear-gradient(135deg, rgba(250, 247, 242, 1) 0%, rgba(250, 247, 242, 0.4) 100%);
+            transform: translateX(4px);
+        }
+
+        .pillar-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: var(--space-sm);
+            font-variation-settings: 'SOFT' 100, 'WONK' 1;
+        }
+
+        .pillar-card p {
+            font-size: 0.9375rem;
+            opacity: 0.65;
+            line-height: 1.65;
+        }
+
+        /* Quote Band */
+        .quote-band {
+            background: var(--sand-light);
+            padding: var(--space-3xl) 0;
+        }
+
+        .quote-band .container {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--moss);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-section .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            color: var(--warmwhite);
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-section p {
+            color: var(--warmwhite);
+            opacity: 0.7;
+            font-size: 1.0625rem;
+            max-width: 500px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .cta-section .btn-primary {
+            background: var(--warmwhite);
+            color: var(--moss);
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--sand);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Page Footer */
+        .page-footer {
+            padding: var(--space-2xl) 0 var(--space-xl);
+            border-top: var(--border-subtle);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .footer-brand h4 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: var(--space-md);
+            font-variation-settings: 'SOFT' 100, 'WONK' 1;
+        }
+
+        .footer-brand p {
+            font-size: 0.875rem;
+            opacity: 0.5;
+            max-width: 320px;
+        }
+
+        .footer-links h4 {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--moss);
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-links a {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--bark);
+            opacity: 0.6;
+            padding: 4px 0;
+            transition: opacity var(--duration-fast);
+        }
+
+        .footer-links a:hover { opacity: 1; }
+
+        .footer-bottom {
+            padding-top: var(--space-lg);
+            border-top: var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            opacity: 0.4;
+        }
+
+        .footer-bottom a { color: var(--bark); }
+
+        /* ================================
+           RESPONSIVE OVERRIDES
+           ================================ */
+
+        @media (max-width: 968px) {
+            .team-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+            .philosophy-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+        }
+
+        @media (max-width: 600px) {
+            .manifest-box { padding: 40px 24px; }
+            .footer-bottom { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">
+                Wild Care
+                <span class="breadcrumb">&Uuml;ber uns</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Startseite</a>
+                <a href="brand.html">Brand</a>
+                <a href="team.html" class="active">&Uuml;ber uns</a>
+                <a href="programm.html">Programm</a>
+                <a href="mitmachen.html">Mitmachen</a>
+                <a href="kontakt.html" class="nav-cta">Komm vorbei</a>
+            </div>
+            <button class="nav-toggle" aria-label="Men&uuml;">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ================================
+         HERO
+         ================================ -->
+
+    <header class="team-hero">
+        <div class="container">
+            <p class="label fade-up">&Uuml;ber uns</p>
+            <h1 class="fade-up delay-1">Begegnung<br>als Praxis.</h1>
+            <p class="fade-up delay-2" style="max-width: 580px;">Wild Care ist ein Ort, an dem Kunst nicht an der Wand h&auml;ngt, sondern zwischen Menschen passiert. Wir schaffen R&auml;ume f&uuml;r Bewegung, Ber&uuml;hrung und ein anderes Miteinander &mdash; mitten in Graz.</p>
+        </div>
+    </header>
+
+    <!-- ================================
+         MANIFEST EXCERPT
+         ================================ -->
+
+    <section class="manifest-excerpt">
+        <div class="container">
+            <div class="component-preview manifest-box fade-up">
+                <p class="label" style="margin-bottom: 24px;">Aus unserem Manifest</p>
+                <p class="quote">Wir kreieren tempor&auml;re, sichere R&auml;ume &mdash; Mikro-Utopien &mdash; in denen wir ein anderes Miteinander &uuml;ben k&ouml;nnen. Nicht das fertige Kunstwerk z&auml;hlt, sondern das, was zwischen uns passiert.</p>
+                <div class="divider" style="margin: 32px auto;"></div>
+                <p style="font-size: 0.875rem; opacity: 0.5; max-width: 100%;">Wild Care &mdash; Verein f&uuml;r Kunst als lebendige, soziale Praxis</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         TEAM
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 64px;">
+                <p class="label">Die Menschen dahinter</p>
+                <h2>Unser Team</h2>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member fade-up delay-1">
+                    <div class="team-portrait">
+                        <p class="placeholder-text">Portrait<br>Verena</p>
+                    </div>
+                    <h3>Verena Eidenberger</h3>
+                    <p class="team-role">T&auml;nzerin &middot; Musik- und Tanzp&auml;dagogin</p>
+                    <p>Verena bringt jahrelange Erfahrung in Tanz und P&auml;dagogik mit. Ihr Zugang ist spielerisch und einladend &mdash; sie schafft R&auml;ume, in denen Menschen sich trauen, sich zu bewegen und zu begegnen. Ihre Rolle bei Wild Care entwickelt sich stetig weiter, so wie der Verein selbst.</p>
+                </div>
+
+                <div class="team-member fade-up delay-2">
+                    <div class="team-portrait">
+                        <p class="placeholder-text">Portrait<br>Fabio</p>
+                    </div>
+                    <h3>Fabio Maria Gerhold</h3>
+                    <p class="team-role">T&auml;nzer &middot; Yogalehrer &middot; Gr&uuml;nder</p>
+                    <p>Fabio verbindet Contact Improvisation, Yoga und Philosophie. Inspiriert von Martin Bubers Dialogphilosophie &mdash; der Idee, dass wir erst im echten Gegen&uuml;ber zu uns selbst finden &mdash; erforscht er, wie K&ouml;rperpraxis zu einer Haltung der F&uuml;rsorge und Aufmerksamkeit werden kann.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         QUOTE BAND
+         ================================ -->
+
+    <section style="background: var(--sand-light);">
+        <div class="container fade-up" style="text-align: center; max-width: 800px;">
+            <div class="divider" style="margin: 0 auto var(--space-xl);"></div>
+            <p class="quote">&bdquo;Alles wirkliche Leben ist Begegnung.&ldquo;</p>
+            <p style="font-size: 0.875rem; opacity: 0.45; margin-top: var(--space-md); max-width: 100%;">Martin Buber</p>
+            <div class="divider" style="margin: var(--space-xl) auto 0;"></div>
+        </div>
+    </section>
+
+    <!-- ================================
+         PHILOSOPHY
+         ================================ -->
+
+    <section class="philosophy">
+        <div class="container">
+            <div class="philosophy-grid">
+                <div class="philosophy-text fade-up">
+                    <p class="label" style="margin-bottom: 12px;">Unsere Haltung</p>
+                    <h2>Worin wir wurzeln</h2>
+                    <p>Wild Care ist kein klassisches Tanzstudio und kein Therapieraum. Wir bewegen uns dort, wo Kunst, K&ouml;rperarbeit und soziales Miteinander sich &uuml;berschneiden.</p>
+                    <p>Unser Zugang ist einfach: Wenn wir lernen, unseren eigenen K&ouml;rper achtsam wahrzunehmen und anderen mit Offenheit zu begegnen, ver&auml;ndert das nicht nur den Tanz &mdash; sondern auch, wie wir durch die Welt gehen.</p>
+                </div>
+
+                <div class="philosophy-pillars fade-up delay-2">
+                    <div class="pillar-card">
+                        <h4>Kunst als Beziehung</h4>
+                        <p>Kunst entsteht nicht im stillen K&auml;mmerlein, sondern zwischen Menschen. Was z&auml;hlt, ist der Moment der Begegnung &mdash; nicht das Ergebnis.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <h4>Wissen durch den K&ouml;rper</h4>
+                        <p>Manche Dinge versteht man erst, wenn man sie sp&uuml;rt. Wir lernen durch Bewegung, Ber&uuml;hrung und gemeinsames Tun &mdash; nicht nur durch Worte.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <h4>F&uuml;rsorge als Praxis</h4>
+                        <p>F&uuml;rsorge ist mehr als ein Gef&uuml;hl. Sie zeigt sich in konkretem Handeln: Grenzen wahren, Raum geben, aufeinander achten &mdash; im Tanz und im Alltag.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         CTA
+         ================================ -->
+
+    <section class="cta-section">
+        <div class="container fade-up">
+            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;">Einladung</p>
+            <h2>Lerne uns kennen.</h2>
+            <p>Komm einfach vorbei &mdash; du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag in Graz.</p>
+            <a href="kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>Wild Care</h4>
+                    <p>Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir &uuml;ben das Zusammenleben &mdash; jeden Montag in Graz.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Seiten</h4>
+                    <a href="index.html">Startseite</a>
+                    <a href="team.html">&Uuml;ber uns</a>
+                    <a href="programm.html">Programm</a>
+                    <a href="mitmachen.html">Mitmachen</a>
+                    <a href="journal.html">Journal</a>
+                    <a href="kontakt.html">Kontakt</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Verbinden</h4>
+                    <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
+                    <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Wild Care &mdash; Graz</span>
+                <span>Mit F&uuml;rsorge gebaut</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+
+</body>
+</html>

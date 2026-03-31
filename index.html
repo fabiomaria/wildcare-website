@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild Care &mdash; Verein f&uuml;r soziale Praxis | Graz</title>
+    <meta name="description" content="Wild Care ist ein Verein f&uuml;r soziale Praxis in Graz. Entdecke Contact Improvisation und Bewegung in unserem offenen Labor jeden Montag.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* ================================
+           INDEX-SPECIFIC STYLES
+           ================================ */
+
+        /* Video Hero */
+        .hero-video {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            max-height: 900px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-video video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(44, 36, 24, 0.15) 0%,
+                rgba(44, 36, 24, 0.3) 40%,
+                rgba(44, 36, 24, 0.75) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-video-content {
+            position: relative;
+            z-index: 2;
+            padding-bottom: var(--space-3xl);
+            width: 100%;
+        }
+
+        .hero-video-content h1 {
+            color: var(--warmwhite);
+            font-size: clamp(2.5rem, 5.5vw, 5rem);
+            max-width: 700px;
+            margin-bottom: var(--space-lg);
+            text-shadow: 0 2px 40px rgba(44, 36, 24, 0.3);
+        }
+
+        .hero-video-content p {
+            color: var(--warmwhite);
+            font-size: 1.15rem;
+            max-width: 500px;
+            opacity: 0.85;
+            line-height: 1.7;
+            margin-bottom: var(--space-xl);
+        }
+
+        .hero-video-content .btn-primary {
+            background: var(--warmwhite);
+            color: var(--bark);
+        }
+
+        .hero-video-content .btn-primary:hover {
+            background: var(--sand);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-video-content .btn-secondary {
+            border-color: rgba(250, 247, 242, 0.4);
+            color: var(--warmwhite);
+        }
+
+        .hero-video-content .btn-secondary:hover {
+            background: rgba(250, 247, 242, 0.1);
+            border-color: rgba(250, 247, 242, 0.6);
+        }
+
+        .hero-scroll-hint {
+            position: absolute;
+            bottom: var(--space-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--warmwhite);
+            opacity: 0.5;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--warmwhite);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(6px); }
+        }
+
+        /* Next Event Banner */
+        .event-banner {
+            background: var(--terracotta);
+            color: var(--warmwhite);
+            padding: var(--space-lg) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+        }
+
+        .event-banner-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .event-banner-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .event-banner-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+
+        .event-banner-detail svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            opacity: 0.7;
+            flex-shrink: 0;
+        }
+
+        .event-banner-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+        }
+
+        /* Core Values */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .value-card {
+            background: var(--warmwhite);
+            border: var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl) var(--space-lg);
+            transition: all var(--duration-normal) var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--terracotta);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--duration-normal) var(--ease-out);
+        }
+
+        .value-card:hover::before { transform: scaleX(1); }
+
+        .value-card:hover {
+            border-color: rgba(44, 36, 24, 0.12);
+            box-shadow: 0 16px 48px rgba(44, 36, 24, 0.08);
+            transform: translateY(-6px);
+        }
+
+        .value-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--sand-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-lg);
+            transition: background var(--duration-normal) var(--ease-out);
+        }
+
+        .value-card:hover .value-icon {
+            background: var(--sand);
+        }
+
+        .value-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--moss);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .value-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .value-card p {
+            font-size: 0.9375rem;
+            opacity: 0.65;
+            line-height: 1.65;
+        }
+
+        /* Invitation Section */
+        .invitation {
+            background: var(--sand-light);
+        }
+
+        .invitation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+            align-items: center;
+        }
+
+        .invitation-text h2 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .invitation-text p {
+            font-size: 1.0625rem;
+            opacity: 0.75;
+            margin-bottom: var(--space-lg);
+            line-height: 1.75;
+        }
+
+        .invitation-image {
+            position: relative;
+        }
+
+        .invitation-image-frame {
+            aspect-ratio: 4 / 5;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--sand);
+            border: var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .invitation-image-frame .placeholder-text {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--bark);
+            opacity: 0.25;
+            text-align: center;
+            padding: var(--space-xl);
+            font-variation-settings: 'SOFT' 100, 'WONK' 1;
+        }
+
+        .invitation-image-accent {
+            position: absolute;
+            bottom: -16px;
+            right: -16px;
+            width: 120px;
+            height: 120px;
+            background: var(--terracotta);
+            opacity: 0.1;
+            border-radius: var(--radius-organic);
+            z-index: -1;
+        }
+
+        /* Journal Teaser */
+        .journal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .journal-card {
+            border: var(--border-subtle);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out);
+            background: var(--warmwhite);
+        }
+
+        .journal-card:hover {
+            box-shadow: 0 12px 40px rgba(44, 36, 24, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .journal-card-image {
+            height: 180px;
+            background: var(--sand);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .journal-card-image .placeholder-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--bark);
+            opacity: 0.2;
+            font-variation-settings: 'SOFT' 100, 'WONK' 1;
+        }
+
+        .journal-card-body {
+            padding: var(--space-lg);
+        }
+
+        .journal-card-date {
+            font-size: 0.75rem;
+            color: var(--moss);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .journal-card-body h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .journal-card-body p {
+            font-size: 0.875rem;
+            opacity: 0.6;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--moss);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-section .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            color: var(--warmwhite);
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-section p {
+            color: var(--warmwhite);
+            opacity: 0.7;
+            font-size: 1.0625rem;
+            max-width: 500px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .cta-section .btn-primary {
+            background: var(--warmwhite);
+            color: var(--moss);
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--sand);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Page Footer */
+        .page-footer {
+            padding: var(--space-2xl) 0 var(--space-xl);
+            border-top: var(--border-subtle);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .footer-brand h4 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: var(--space-md);
+            font-variation-settings: 'SOFT' 100, 'WONK' 1;
+        }
+
+        .footer-brand p {
+            font-size: 0.875rem;
+            opacity: 0.5;
+            max-width: 320px;
+        }
+
+        .footer-links h4 {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--moss);
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-links a {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--bark);
+            opacity: 0.6;
+            padding: 4px 0;
+            transition: opacity var(--duration-fast);
+        }
+
+        .footer-links a:hover { opacity: 1; }
+
+        .footer-bottom {
+            padding-top: var(--space-lg);
+            border-top: var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            opacity: 0.4;
+        }
+
+        .footer-bottom a { color: var(--bark); }
+
+        /* ================================
+           RESPONSIVE OVERRIDES
+           ================================ */
+
+        @media (max-width: 968px) {
+            .values-grid { grid-template-columns: repeat(2, 1fr); }
+            .invitation-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+            .journal-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+            .event-banner-inner { justify-content: center; text-align: center; }
+            .event-banner-info { justify-content: center; }
+        }
+
+        @media (max-width: 600px) {
+            .values-grid { grid-template-columns: 1fr; }
+            .hero-video { min-height: 500px; }
+            .hero-video-content { padding-bottom: var(--space-2xl); }
+            .footer-bottom { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">
+                Wild Care
+                <span class="breadcrumb">Graz</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Startseite</a>
+                <a href="brand.html">Brand</a>
+                <a href="team.html">&Uuml;ber uns</a>
+                <a href="programm.html">Programm</a>
+                <a href="mitmachen.html">Mitmachen</a>
+                <a href="kontakt.html" class="nav-cta">Komm vorbei</a>
+            </div>
+            <button class="nav-toggle" aria-label="Men&uuml;">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ================================
+         VIDEO HERO
+         ================================ -->
+
+    <header class="hero-video">
+        <video autoplay muted loop playsinline poster="assets/images/hero-poster.jpg">
+            <source src="assets/video-hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+
+        <div class="hero-video-content">
+            <div class="container">
+                <h1 class="fade-up">Wir &uuml;ben das<br>Zusammenleben.</h1>
+                <p class="fade-up delay-1">Kunst als lebendige, soziale Praxis. Jeden Montag in Graz &mdash; offen f&uuml;r alle, auf Spendenbasis.</p>
+                <div class="button-row fade-up delay-2">
+                    <a href="programm.html" class="btn btn-primary">Komm vorbei</a>
+                    <a href="#werte" class="btn btn-secondary">Mehr erfahren</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+    </header>
+
+    <!-- ================================
+         NEXT EVENT BANNER
+         ================================ -->
+
+    <div class="event-banner">
+        <div class="container event-banner-inner">
+            <div class="event-banner-info">
+                <span class="event-banner-tag">N&auml;chster Termin</span>
+                <div class="event-banner-detail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    Jeden Montag
+                </div>
+                <div class="event-banner-detail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    17:45 &ndash; 19:15
+                </div>
+                <div class="event-banner-detail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Orpheumgasse 11, Graz
+                </div>
+                <div class="event-banner-detail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>
+                    Spendenbasis
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================
+         CORE VALUES
+         ================================ -->
+
+    <section id="werte">
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 64px;">
+                <p class="label">Was uns leitet</p>
+                <h2>Vier Haltungen</h2>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card fade-up delay-1">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <h3>Beziehung &gt; Perfektion</h3>
+                    <p>Nicht das fertige Werk z&auml;hlt, sondern das, was zwischen uns passiert. Wie nehmen wir Raum? Wie geben wir Raum?</p>
+                </div>
+
+                <div class="value-card fade-up delay-2">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    </div>
+                    <h3>Mikro-Utopien</h3>
+                    <p>Wir kreieren tempor&auml;re, sichere R&auml;ume. Hier setzen wir die Regeln der Welt kurz auf Pause und &uuml;ben ein anderes Miteinander.</p>
+                </div>
+
+                <div class="value-card fade-up delay-3">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                    </div>
+                    <h3>Forschendes Lernen</h3>
+                    <p>Keine festen Formen zum Nachahmen. Wir geben Werkzeuge an die Hand, um den eigenen Ausdruck zu erforschen.</p>
+                </div>
+
+                <div class="value-card fade-up delay-4">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <h3>Radikale F&uuml;rsorge</h3>
+                    <p>Nicht nur Sanftmut, sondern auch Klarheit. Eigene Grenzen wahren und anderen den Raum geben, gesehen zu werden.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         INVITATION
+         ================================ -->
+
+    <section class="invitation">
+        <div class="container">
+            <div class="invitation-grid">
+                <div class="invitation-text fade-up">
+                    <p class="label" style="margin-bottom: 12px;">Labor f&uuml;r Zusammenleben</p>
+                    <h2>Was passiert bei uns?</h2>
+                    <p>Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Ber&uuml;hrung. Es gibt keine festen Schritte, keinen Leistungsdruck und keine Rollen.</p>
+                    <p>Du lernst, durch achtsamen K&ouml;rperkontakt deinen K&ouml;rper bewusster zu erleben, dein Nervensystem zu regulieren und Grenzen zu kommunizieren &mdash; im Tanz wie im Alltag.</p>
+                    <div class="button-row" style="margin-top: 8px;">
+                        <a href="programm.html" class="btn btn-ghost">Zum Programm</a>
+                    </div>
+                </div>
+                <div class="invitation-image fade-up delay-2">
+                    <div class="invitation-image-frame">
+                        <p class="placeholder-text">Hier kommt ein Foto<br>aus euren Sessions</p>
+                    </div>
+                    <div class="invitation-image-accent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         MANIFEST QUOTE
+         ================================ -->
+
+    <section style="background: var(--sand-light);">
+        <div class="container fade-up" style="text-align: center; max-width: 800px;">
+            <div class="divider" style="margin: 0 auto var(--space-xl);"></div>
+            <p class="quote">Bei uns steht nicht das fertige Kunstwerk an der Wand oder die perfekte Pose auf der B&uuml;hne im Mittelpunkt, sondern das, was zwischen uns passiert.</p>
+            <div class="divider" style="margin: var(--space-xl) auto 0;"></div>
+        </div>
+    </section>
+
+    <!-- ================================
+         JOURNAL TEASER
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px;">
+                <div>
+                    <p class="label">Journal</p>
+                    <h2>Aus dem Labor</h2>
+                </div>
+                <a href="journal.html" class="btn btn-ghost">Alle Beitr&auml;ge</a>
+            </div>
+
+            <div class="journal-grid">
+                <a href="#" class="journal-card fade-up delay-1" style="text-decoration: none; color: inherit;">
+                    <div class="journal-card-image">
+                        <span class="placeholder-text">Foto</span>
+                    </div>
+                    <div class="journal-card-body">
+                        <p class="journal-card-date">April 2026</p>
+                        <h3>Bewegungsrevolution: Wir starten</h3>
+                        <p>Unser geförderter 10-Wochen-Block für Einsteiger:innen beginnt. Was wir vorhaben.</p>
+                    </div>
+                </a>
+
+                <a href="#" class="journal-card fade-up delay-2" style="text-decoration: none; color: inherit;">
+                    <div class="journal-card-image" style="background: var(--sand-light);">
+                        <span class="placeholder-text">Foto</span>
+                    </div>
+                    <div class="journal-card-body">
+                        <p class="journal-card-date">M&auml;rz 2026</p>
+                        <h3>Was ist Kunst?</h3>
+                        <p>Kunst ist eine Sprache f&uuml;r die unpraktischen Dinge. Am Rande des Sagbaren kratzen, schaben, dr&auml;ngen.</p>
+                    </div>
+                </a>
+
+                <a href="#" class="journal-card fade-up delay-3" style="text-decoration: none; color: inherit;">
+                    <div class="journal-card-image" style="background: var(--cream);">
+                        <span class="placeholder-text">Foto</span>
+                    </div>
+                    <div class="journal-card-body">
+                        <p class="journal-card-date">M&auml;rz 2026</p>
+                        <h3>Warum Contact Improvisation?</h3>
+                        <p>&Uuml;ber das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         CTA
+         ================================ -->
+
+    <section class="cta-section">
+        <div class="container fade-up">
+            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;">Einladung</p>
+            <h2>Komm vorbei.</h2>
+            <p>Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz.</p>
+            <a href="kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>Wild Care</h4>
+                    <p>Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir &uuml;ben das Zusammenleben &mdash; jeden Montag in Graz.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Seiten</h4>
+                    <a href="index.html">Startseite</a>
+                    <a href="team.html">&Uuml;ber uns</a>
+                    <a href="programm.html">Programm</a>
+                    <a href="mitmachen.html">Mitmachen</a>
+                    <a href="journal.html">Journal</a>
+                    <a href="kontakt.html">Kontakt</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Verbinden</h4>
+                    <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
+                    <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Wild Care &mdash; Graz</span>
+                <span>Mit F&uuml;rsorge gebaut</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+
+        // Transparent nav on hero, solid on scroll
+        const nav = document.querySelector('nav');
+        const hero = document.querySelector('.hero-video');
+
+        if (hero) {
+            const updateNav = () => {
+                if (window.scrollY > 80) {
+                    nav.style.background = 'rgba(250, 247, 242, 0.92)';
+                    nav.querySelector('.nav-logo').style.color = 'var(--bark)';
+                    nav.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(a => a.style.color = '');
+                } else {
+                    nav.style.background = 'transparent';
+                    nav.style.borderBottom = 'none';
+                    nav.querySelector('.nav-logo').style.color = 'var(--warmwhite)';
+                    nav.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(a => a.style.color = 'var(--warmwhite)');
+                }
+            };
+
+            window.addEventListener('scroll', updateNav);
+            updateNav();
+        }
+    </script>
+
+</body>
+</html>
