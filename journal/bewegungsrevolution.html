@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bewegungsrevolution: Wir starten &mdash; Wild Care Journal</title>
+    <meta name="description" content="Wild Care startet einen gef&ouml;rderten 10-Wochen-Block Contact Improvisation in Graz. Kostenlos, offen f&uuml;r alle, jeden Montag ab April 2026.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        /* ================================
+           ARTICLE PAGE STYLES
+           ================================ */
+
+        /* Hero Banner */
+        .article-hero {
+            margin-top: 72px;
+            height: 360px;
+            position: relative;
+            overflow: hidden;
+            background: var(--sand);
+        }
+
+        .article-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(44, 36, 24, 0.05) 0%, rgba(44, 36, 24, 0.25) 100%);
+        }
+
+        /* Back Link */
+        .article-back {
+            padding: var(--space-lg) 0;
+        }
+
+        .article-back a {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--moss);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap var(--duration-fast) var(--ease-out);
+        }
+
+        .article-back a:hover {
+            color: var(--moss-dark);
+            gap: 10px;
+        }
+
+        /* Article Container */
+        .article-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        /* Article Header */
+        .article-header {
+            margin-bottom: var(--space-xl);
+        }
+
+        .article-date {
+            font-size: 0.75rem;
+            color: var(--moss);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-md);
+        }
+
+        .article-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.15;
+            margin-bottom: var(--space-lg);
+        }
+
+        .article-header .divider {
+            margin: 0;
+        }
+
+        /* Article Body */
+        .article-body p {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: var(--space-lg);
+            max-width: 100%;
+        }
+
+        .article-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-body blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: clamp(1.15rem, 2vw, 1.5rem);
+            line-height: 1.55;
+            color: var(--bark-light);
+            border-left: 3px solid var(--terracotta);
+            padding: var(--space-lg) var(--space-xl);
+            margin: var(--space-xl) 0;
+            background: var(--sand-light);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-variation-settings: 'SOFT' 100, 'WONK' 1;
+        }
+
+        .article-body a {
+            color: var(--terracotta);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: rgba(196, 119, 90, 0.3);
+            transition: text-decoration-color var(--duration-fast);
+        }
+
+        .article-body a:hover {
+            text-decoration-color: var(--terracotta);
+        }
+
+        /* Article CTA */
+        .article-cta {
+            margin-top: var(--space-2xl);
+            padding: var(--space-xl);
+            background: var(--sand-light);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .article-cta p {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin: 0 auto var(--space-lg);
+            max-width: 100%;
+        }
+
+        .article-cta h3 {
+            margin-bottom: var(--space-md);
+        }
+
+        /* Related Articles */
+        .related-section {
+            padding: var(--space-2xl) 0;
+        }
+
+        .related-section .section-header {
+            margin-bottom: var(--space-lg);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .related-card {
+            border: var(--border-subtle);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out);
+            background: var(--warmwhite);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .related-card:hover {
+            box-shadow: 0 12px 40px rgba(44, 36, 24, 0.06);
+            transform: translateY(-4px);
+            color: inherit;
+        }
+
+        .related-card-image {
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .related-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--duration-normal) var(--ease-out);
+        }
+
+        .related-card:hover .related-card-image img {
+            transform: scale(1.03);
+        }
+
+        .related-card-body {
+            padding: var(--space-lg);
+        }
+
+        .related-card-date {
+            font-size: 0.75rem;
+            color: var(--moss);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .related-card-body h4 {
+            font-size: 1.05rem;
+            line-height: 1.3;
+        }
+
+        /* Footer */
+        .page-footer {
+            padding: var(--space-2xl) 0 var(--space-xl);
+            border-top: var(--border-subtle);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .footer-brand h4 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: var(--space-md);
+            font-variation-settings: 'SOFT' 100, 'WONK' 1;
+        }
+
+        .footer-brand p {
+            font-size: 0.875rem;
+            opacity: 0.5;
+            max-width: 320px;
+        }
+
+        .footer-links h4 {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--moss);
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-links a {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--bark);
+            opacity: 0.6;
+            padding: 4px 0;
+            transition: opacity var(--duration-fast);
+        }
+
+        .footer-links a:hover { opacity: 1; }
+
+        .footer-bottom {
+            padding-top: var(--space-lg);
+            border-top: var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            opacity: 0.4;
+        }
+
+        .footer-bottom a { color: var(--bark); }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--moss);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-section .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            color: var(--warmwhite);
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-section p {
+            color: var(--warmwhite);
+            opacity: 0.7;
+            font-size: 1.0625rem;
+            max-width: 500px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .cta-section .btn-primary {
+            background: var(--warmwhite);
+            color: var(--moss);
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--sand);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ================================
+           RESPONSIVE OVERRIDES
+           ================================ */
+
+        @media (max-width: 968px) {
+            .related-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+        }
+
+        @media (max-width: 600px) {
+            .article-hero { height: 240px; }
+            .footer-bottom { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                Wild Care
+                <span class="breadcrumb">Journal</span>
+            </a>
+            <div class="nav-links">
+                <a href="../index.html">Startseite</a>
+                <a href="../team.html">&Uuml;ber uns</a>
+                <a href="../programm.html">Programm</a>
+                <a href="../journal.html" class="active">Journal</a>
+                <a href="../mitmachen.html">Mitmachen</a>
+                <a href="../kontakt.html" class="nav-cta">Komm vorbei</a>
+            </div>
+            <a href="../en/index.html" class="lang-toggle">EN</a>
+            <button class="nav-toggle" aria-label="Men&uuml;">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ================================
+         HERO BANNER
+         ================================ -->
+
+    <header class="article-hero">
+        <img src="../assets/images/bewegungsrevolution.png" alt="Bewegungsrevolution &mdash; Typografie in Pink">
+        <div class="article-hero-overlay"></div>
+    </header>
+
+    <!-- ================================
+         ARTICLE
+         ================================ -->
+
+    <div class="article-container">
+
+        <div class="article-back">
+            <a href="../journal.html">&larr; Zur&uuml;ck zum Journal</a>
+        </div>
+
+        <article>
+            <header class="article-header fade-up">
+                <p class="article-date">April 2026</p>
+                <h1>Bewegungsrevolution:<br>Wir starten</h1>
+                <div class="divider"></div>
+            </header>
+
+            <section class="article-body fade-up delay-1">
+                <p>Es ist soweit: Wild Care hat eine F&ouml;rderung von &euro;490 &uuml;ber den ASV&Ouml; und das Programm &bdquo;Bewegungsrevolution&ldquo; erhalten. Damit starten wir ab April 2026 einen kostenlosen 10-Wochen-Block Contact Improvisation &mdash; offen f&uuml;r alle, die Lust haben, sich zu bewegen. Keine Vorkenntnisse n&ouml;tig, kein Mitgliedsbeitrag, keine H&uuml;rden.</p>
+
+                <p>Der Kurs findet jeden Montag von 17:45 bis 19:15 Uhr in der Orpheumgasse 11, Graz statt und l&auml;uft von April bis Juni 2026. Zehn Wochen lang bieten wir einen gesch&uuml;tzten Rahmen, um Contact Improvisation von Grund auf kennenzulernen: das Sp&uuml;ren von Gewicht und Schwerkraft, das Finden von Balance zu zweit, die Kommunikation &uuml;ber den K&ouml;rper statt &uuml;ber Worte.</p>
+
+                <blockquote>Bewegung ist kein Luxusgut. Sie geh&ouml;rt allen. Wenn wir lernen, unseren K&ouml;rper bewusst zu bewohnen, ver&auml;ndert das nicht nur den Tanz &mdash; sondern auch, wie wir einander begegnen.</blockquote>
+
+                <p>Hinter dem Projekt steht die &Uuml;berzeugung, dass Zugang zu Bewegung und K&ouml;rperarbeit keine Frage des Geldes sein sollte. Mit der F&ouml;rderung der Bewegungsrevolution k&ouml;nnen wir genau das umsetzen: einen Raum schaffen, der wirklich f&uuml;r alle offen ist. Radikale F&uuml;rsorge &mdash; nicht als sch&ouml;nes Wort, sondern als konkrete Praxis.</p>
+
+                <p>Du bist neugierig? Du hast noch nie getanzt? Perfekt. Genau daf&uuml;r ist dieser Kurs da. Komm einfach vorbei &mdash; in bequemer Kleidung, mit offenen F&uuml;&szlig;en und einem Gesp&uuml;r daf&uuml;r, dass es okay ist, Neuland zu betreten. Wir freuen uns auf dich.</p>
+
+                <div class="article-cta">
+                    <h3>Komm vorbei</h3>
+                    <p>Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz. Kostenlos und ohne Anmeldung.</p>
+                    <a href="../kontakt.html" class="btn btn-primary">Kontakt &amp; Anfahrt</a>
+                </div>
+            </section>
+        </article>
+    </div>
+
+    <!-- ================================
+         RELATED ARTICLES
+         ================================ -->
+
+    <section class="related-section" style="background: var(--sand-light);">
+        <div class="article-container">
+            <div class="section-header fade-up">
+                <p class="label">Weiterlesen</p>
+                <h3>Verwandte Beitr&auml;ge</h3>
+            </div>
+
+            <div class="related-grid fade-up delay-1">
+                <a href="warum-ci.html" class="related-card">
+                    <div class="related-card-image">
+                        <img src="../assets/images/warum-ci.jpg" alt="Contact Improvisation" loading="lazy">
+                    </div>
+                    <div class="related-card-body">
+                        <p class="related-card-date">M&auml;rz 2026</p>
+                        <h4>Warum Contact Improvisation?</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>Wild Care</h4>
+                    <p>Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir &uuml;ben das Zusammenleben &mdash; jeden Montag in Graz.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Seiten</h4>
+                    <a href="../index.html">Startseite</a>
+                    <a href="../team.html">&Uuml;ber uns</a>
+                    <a href="../programm.html">Programm</a>
+                    <a href="../mitmachen.html">Mitmachen</a>
+                    <a href="../journal.html">Journal</a>
+                    <a href="../kontakt.html">Kontakt</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Verbinden</h4>
+                    <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
+                    <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
+                    <a href="../impressum.html">Impressum</a>
+                    <a href="../datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Wild Care &mdash; Graz</span>
+                <span>Mit F&uuml;rsorge gebaut</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+
+</body>
+</html>

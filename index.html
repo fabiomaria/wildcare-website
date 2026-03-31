@@ -513,6 +513,43 @@
             .hero-video-content { padding-bottom: var(--space-2xl); }
             .footer-bottom { flex-direction: column; gap: 8px; }
         }
+
+        /* Nav on hero (transparent) */
+        nav:not(.nav-scrolled) {
+            background: transparent !important;
+            border-bottom: none;
+        }
+        nav:not(.nav-scrolled) .nav-logo {
+            color: var(--warmwhite);
+        }
+        nav:not(.nav-scrolled) .nav-links a:not(.nav-cta) {
+            color: var(--warmwhite);
+        }
+        nav:not(.nav-scrolled) .lang-toggle {
+            color: var(--warmwhite) !important;
+            border-color: rgba(250, 247, 242, 0.3);
+        }
+        nav:not(.nav-scrolled) .nav-toggle span {
+            background: var(--warmwhite);
+        }
+
+        /* Mobile menu always readable */
+        nav:not(.nav-scrolled) .nav-links.open {
+            background: rgba(44, 36, 24, 0.95);
+            backdrop-filter: blur(20px);
+        }
+        nav:not(.nav-scrolled) .nav-links.open a:not(.nav-cta) {
+            color: var(--warmwhite);
+        }
+
+        /* Scrolled state */
+        nav.nav-scrolled {
+            background: rgba(250, 247, 242, 0.92);
+            border-bottom: 1px solid rgba(44, 36, 24, 0.08);
+        }
+        nav.nav-scrolled .nav-logo {
+            color: var(--bark);
+        }
     </style>
 </head>
 <body>
@@ -525,9 +562,9 @@
             </a>
             <div class="nav-links">
                 <a href="index.html" class="active">Startseite</a>
-                <a href="brand.html">Brand</a>
                 <a href="team.html">&Uuml;ber uns</a>
                 <a href="programm.html">Programm</a>
+                <a href="journal.html">Journal</a>
                 <a href="mitmachen.html">Mitmachen</a>
                 <a href="kontakt.html" class="nav-cta">Komm vorbei</a>
             </div>
@@ -659,7 +696,7 @@
                 </div>
                 <div class="invitation-image fade-up delay-2">
                     <div class="invitation-image-frame">
-                        <p class="placeholder-text">Hier kommt ein Foto<br>aus euren Sessions</p>
+                        <img src="assets/images/invitation.jpg" alt="Contact Improvisation Session" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="invitation-image-accent"></div>
                 </div>
@@ -694,36 +731,36 @@
             </div>
 
             <div class="journal-grid">
-                <a href="#" class="journal-card fade-up delay-1" style="text-decoration: none; color: inherit;">
+                <a href="journal/bewegungsrevolution.html" class="journal-card fade-up delay-1" style="text-decoration: none; color: inherit;">
                     <div class="journal-card-image">
-                        <span class="placeholder-text">Foto</span>
+                        <img src="assets/images/bewegungsrevolution.png" alt="die Bewegungsrevolution" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="journal-card-body">
                         <p class="journal-card-date">April 2026</p>
                         <h3>Bewegungsrevolution: Wir starten</h3>
-                        <p>Unser geförderter 10-Wochen-Block für Einsteiger:innen beginnt. Was wir vorhaben.</p>
+                        <p>Unser gef&ouml;rderter 10-Wochen-Block f&uuml;r Einsteiger:innen beginnt. Was wir vorhaben.</p>
                     </div>
                 </a>
 
-                <a href="#" class="journal-card fade-up delay-2" style="text-decoration: none; color: inherit;">
-                    <div class="journal-card-image" style="background: var(--sand-light);">
-                        <span class="placeholder-text">Foto</span>
-                    </div>
-                    <div class="journal-card-body">
-                        <p class="journal-card-date">M&auml;rz 2026</p>
-                        <h3>Was ist Kunst?</h3>
-                        <p>Kunst ist eine Sprache f&uuml;r die unpraktischen Dinge. Am Rande des Sagbaren kratzen, schaben, dr&auml;ngen.</p>
-                    </div>
-                </a>
-
-                <a href="#" class="journal-card fade-up delay-3" style="text-decoration: none; color: inherit;">
-                    <div class="journal-card-image" style="background: var(--cream);">
-                        <span class="placeholder-text">Foto</span>
+                <a href="journal/warum-ci.html" class="journal-card fade-up delay-2" style="text-decoration: none; color: inherit;">
+                    <div class="journal-card-image">
+                        <img src="assets/images/warum-ci.jpg" alt="Contact Improvisation" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="journal-card-body">
                         <p class="journal-card-date">M&auml;rz 2026</p>
                         <h3>Warum Contact Improvisation?</h3>
                         <p>&Uuml;ber das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen.</p>
+                    </div>
+                </a>
+
+                <a href="#" class="journal-card fade-up delay-3" style="text-decoration: none; color: inherit; opacity: 0.6; pointer-events: none;">
+                    <div class="journal-card-image">
+                        <img src="assets/images/was-ist-kunst.jpg" alt="Sensing Listening" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="journal-card-body">
+                        <p class="journal-card-date">M&auml;rz 2026</p>
+                        <h3>Was ist Kunst?</h3>
+                        <p>Kunst ist eine Sprache f&uuml;r die unpraktischen Dinge. Am Rande des Sagbaren kratzen, schaben, dr&auml;ngen.</p>
                     </div>
                 </a>
             </div>
@@ -813,17 +850,11 @@
         if (hero) {
             const updateNav = () => {
                 if (window.scrollY > 80) {
-                    nav.style.background = 'rgba(250, 247, 242, 0.92)';
-                    nav.querySelector('.nav-logo').style.color = 'var(--bark)';
-                    nav.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(a => a.style.color = '');
+                    nav.classList.add('nav-scrolled');
                 } else {
-                    nav.style.background = 'transparent';
-                    nav.style.borderBottom = 'none';
-                    nav.querySelector('.nav-logo').style.color = 'var(--warmwhite)';
-                    nav.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(a => a.style.color = 'var(--warmwhite)');
+                    nav.classList.remove('nav-scrolled');
                 }
             };
-
             window.addEventListener('scroll', updateNav);
             updateNav();
         }
