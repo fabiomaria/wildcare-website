@@ -24,53 +24,12 @@
            IMPRESSUM-SPECIFIC STYLES
            ================================ */
 
-        /* Hero */
-        .legal-hero {
-            padding-top: calc(72px + var(--space-3xl));
-            padding-bottom: var(--space-2xl);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .legal-hero::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(196, 119, 90, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .legal-hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -15%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(92, 107, 79, 0.06) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .legal-hero .label {
-            margin-bottom: var(--space-md);
-        }
-
-        .legal-hero h1 {
-            margin-bottom: var(--space-lg);
-        }
-
         /* Prose Content */
         .legal-content {
             padding-bottom: var(--space-3xl);
         }
 
         .legal-prose {
-            max-width: 680px;
             font-family: var(--font-body);
             font-size: 1rem;
             line-height: 1.8;
@@ -92,85 +51,8 @@
             font-variation-settings: 'SOFT' 100, 'WONK' 1;
         }
 
-        .legal-prose a {
-            color: var(--terracotta);
-            font-weight: 500;
-            word-break: break-word;
-        }
-
         .legal-prose a:hover {
             opacity: 0.7;
-        }
-
-        /* Page Footer */
-        .page-footer {
-            padding: var(--space-2xl) 0 var(--space-xl);
-            border-top: var(--border-subtle);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-
-        .footer-brand h4 {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: var(--space-md);
-            font-variation-settings: 'SOFT' 100, 'WONK' 1;
-        }
-
-        .footer-brand p {
-            font-size: 0.875rem;
-            opacity: 0.5;
-            max-width: 320px;
-        }
-
-        .footer-links h4 {
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--moss);
-            margin-bottom: var(--space-md);
-        }
-
-        .footer-links a {
-            display: block;
-            font-size: 0.875rem;
-            color: var(--bark);
-            opacity: 0.6;
-            padding: 4px 0;
-            transition: opacity var(--duration-fast);
-        }
-
-        .footer-links a:hover { opacity: 1; }
-
-        .footer-bottom {
-            padding-top: var(--space-lg);
-            border-top: var(--border-subtle);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            opacity: 0.4;
-        }
-
-        .footer-bottom a { color: var(--bark); }
-
-        /* ================================
-           RESPONSIVE OVERRIDES
-           ================================ */
-
-        @media (max-width: 968px) {
-            .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
-        }
-
-        @media (max-width: 600px) {
-            .footer-bottom { flex-direction: column; gap: 8px; }
         }
     </style>
 </head>
@@ -202,7 +84,7 @@
          HERO
          ================================ -->
 
-    <header class="legal-hero">
+    <header class="page-hero">
         <div class="container">
             <p class="label fade-up">Rechtliches</p>
             <h1 class="fade-up delay-1">Impressum</h1>

@@ -866,6 +866,7 @@ footer {
 
 @media (max-width: 600px) {
     .color-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-bottom { flex-direction: column; gap: 8px; }
 }
 
 /* Reduced motion */

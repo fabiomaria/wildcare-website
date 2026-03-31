@@ -25,50 +25,8 @@
            KONTAKT-SPECIFIC STYLES
            ================================ */
 
-        /* Hero */
-        .kontakt-hero {
-            padding-top: calc(72px + var(--space-3xl));
-            padding-bottom: var(--space-2xl);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .kontakt-hero::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(196, 119, 90, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .kontakt-hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -15%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(92, 107, 79, 0.06) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .kontakt-hero .label {
-            margin-bottom: var(--space-md);
-        }
-
-        .kontakt-hero h1 {
-            margin-bottom: var(--space-lg);
-        }
-
-        .kontakt-hero p {
-            font-size: 1.125rem;
-            opacity: 0.75;
-            line-height: 1.7;
+        /* Hero override: narrower max-width */
+        .page-hero p {
             max-width: 560px;
         }
 
@@ -250,85 +208,6 @@
             opacity: 0.5;
         }
 
-        /* Page Footer */
-        .page-footer {
-            padding: var(--space-2xl) 0 var(--space-xl);
-            border-top: var(--border-subtle);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-
-        .footer-brand h4 {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: var(--space-md);
-            font-variation-settings: 'SOFT' 100, 'WONK' 1;
-        }
-
-        .footer-brand p {
-            font-size: 0.875rem;
-            opacity: 0.5;
-            max-width: 320px;
-        }
-
-        .footer-links h4 {
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--moss);
-            margin-bottom: var(--space-md);
-        }
-
-        .footer-links a {
-            display: block;
-            font-size: 0.875rem;
-            color: var(--bark);
-            opacity: 0.6;
-            padding: 4px 0;
-            transition: opacity var(--duration-fast);
-        }
-
-        .footer-links a:hover { opacity: 1; }
-
-        .footer-bottom {
-            padding-top: var(--space-lg);
-            border-top: var(--border-subtle);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            opacity: 0.4;
-        }
-
-        .footer-bottom a { color: var(--bark); }
-
-        /* Language Toggle */
-        .lang-toggle {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            color: var(--bark);
-            opacity: 0.4;
-            text-decoration: none;
-            padding: 6px 10px;
-            border: 1px solid rgba(44, 36, 24, 0.15);
-            border-radius: var(--radius-sm);
-            transition: all 0.2s ease;
-        }
-        .lang-toggle:hover {
-            opacity: 1;
-            border-color: rgba(44, 36, 24, 0.3);
-            color: var(--moss);
-        }
-
         /* ================================
            RESPONSIVE OVERRIDES
            ================================ */
@@ -343,7 +222,6 @@
                 aspect-ratio: 16 / 10;
             }
 
-            .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
         }
 
         @media (max-width: 600px) {
@@ -355,8 +233,6 @@
             .map-wrapper {
                 aspect-ratio: 4 / 3;
             }
-
-            .footer-bottom { flex-direction: column; gap: 8px; }
         }
     </style>
 </head>
@@ -389,7 +265,7 @@
          HERO
          ================================ -->
 
-    <header class="kontakt-hero">
+    <header class="page-hero">
         <div class="container">
             <p class="label fade-up">Contact</p>
             <h1 class="fade-up delay-1">We look forward to<br>meeting you.</h1>
