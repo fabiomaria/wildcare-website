@@ -149,7 +149,7 @@
                 <a href="mitmachen.html">Mitmachen</a>
                 <a href="kontakt.html" class="nav-cta">Komm vorbei</a>
             </div>
-            <a href="en/index.html" class="lang-toggle">EN</a>
+            <a href="en/journal.html" class="lang-toggle">EN</a>
             <button class="nav-toggle" aria-label="Men&uuml;">
                 <span></span>
                 <span></span>
@@ -277,6 +277,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
