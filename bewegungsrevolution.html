@@ -120,13 +120,12 @@
             border: var(--border-subtle);
         }
 
-        .br-video-wrapper iframe {
+        .br-video-wrapper video {
             width: 100%;
             aspect-ratio: 9 / 16;
             max-height: 520px;
-            border: 0;
+            object-fit: cover;
             display: block;
-            margin: 0 auto;
         }
 
         /* About section */
@@ -331,7 +330,7 @@
         @media (max-width: 968px) {
             .br-hero-grid { grid-template-columns: 1fr; }
             .br-video-wrapper { order: -1; }
-            .br-video-wrapper iframe { max-height: 400px; }
+            .br-video-wrapper video { max-height: 400px; }
             .br-about-grid { grid-template-columns: 1fr; }
             .br-week-grid { grid-template-columns: 1fr; }
             .br-testimonial-grid { grid-template-columns: 1fr; }
@@ -441,12 +440,9 @@
                 </div>
 
                 <div class="br-video-wrapper fade-up delay-2">
-                    <iframe
-                        src="https://www.instagram.com/reel/DM3CV8kJjkK/embed"
-                        allowfullscreen
-                        loading="lazy"
-                        title="Contact Improvisation in Graz">
-                    </iframe>
+                    <video autoplay muted loop playsinline preload="metadata" poster="assets/images/bewegungsrevolution.png">
+                        <source src="assets/what is ci.mp4" type="video/mp4">
+                    </video>
                 </div>
 
             </div>
@@ -727,6 +723,27 @@
                         data-en="An informal lecture-performance in the &ldquo;We Just Met&rdquo; format. A narrator makes visible what is happening on a physical and social level during the dance. No stage, no pressure &mdash; a glimpse for friends and curious minds.">Eine informelle Lecture-Performance im Format &bdquo;We Just Met&ldquo;. Ein:e Erz&auml;hler:in macht w&auml;hrend des Tanzens sichtbar, was auf k&ouml;rperlicher und sozialer Ebene passiert. Keine B&uuml;hne, kein Druck &mdash; ein Einblick f&uuml;r Freund:innen und Neugierige.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         MONTAGSKURS CROSS-LINK
+         ================================ -->
+
+    <section>
+        <div class="container fade-up" style="text-align: center; max-width: 700px;">
+            <p class="label"
+                data-de="Unser w&ouml;chentliches Angebot"
+                data-en="Our Weekly Offering">Unser w&ouml;chentliches Angebot</p>
+            <h2
+                data-de="Der Montagskurs"
+                data-en="The Monday Class">Der Montagskurs</h2>
+            <p style="font-size: 1.0625rem; opacity: 0.7; line-height: 1.75; margin: 0 auto var(--space-xl);"
+                data-de="Unabh&auml;ngig von der Bewegungsrevolution: Jeden Montag &ouml;ffnen wir den Raum f&uuml;r alle. Auf Spendenbasis, Einstieg jederzeit, keine Vorkenntnisse n&ouml;tig."
+                data-en="Independent of Bewegungsrevolution: Every Monday we open the space for everyone. Donation-based, join anytime, no prior experience needed.">Unabh&auml;ngig von der Bewegungsrevolution: Jeden Montag &ouml;ffnen wir den Raum f&uuml;r alle. Auf Spendenbasis, Einstieg jederzeit, keine Vorkenntnisse n&ouml;tig.</p>
+            <a href="montagskurs.html" class="btn btn-secondary"
+                data-de="Zum Montagskurs"
+                data-en="To the Monday Class">Zum Montagskurs</a>
         </div>
     </section>
 

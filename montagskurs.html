@@ -104,13 +104,12 @@
             border: var(--border-subtle);
         }
 
-        .mk-video-wrapper iframe {
+        .mk-video-wrapper video {
             width: 100%;
             aspect-ratio: 9 / 16;
             max-height: 520px;
-            border: 0;
+            object-fit: cover;
             display: block;
-            margin: 0 auto;
         }
 
         /* Section: What is CI */
@@ -350,7 +349,7 @@
         @media (max-width: 968px) {
             .mk-hero-grid { grid-template-columns: 1fr; }
             .mk-video-wrapper { order: -1; }
-            .mk-video-wrapper iframe { max-height: 400px; }
+            .mk-video-wrapper video { max-height: 400px; }
             .mk-about-grid { grid-template-columns: 1fr; }
             .mk-learn-grid { grid-template-columns: 1fr; }
             .mk-testimonial-grid { grid-template-columns: 1fr; }
@@ -454,12 +453,9 @@
                 </div>
 
                 <div class="mk-video-wrapper fade-up delay-2">
-                    <iframe
-                        src="https://www.instagram.com/reel/DM3CV8kJjkK/embed"
-                        allowfullscreen
-                        loading="lazy"
-                        title="Contact Improvisation in Graz">
-                    </iframe>
+                    <video autoplay muted loop playsinline preload="metadata" poster="assets/images/warum-ci.jpg">
+                        <source src="assets/what is ci.mp4" type="video/mp4">
+                    </video>
                 </div>
 
             </div>
@@ -712,6 +708,27 @@
                         data-en="The class is donation-based. You give what you can. As a guideline, 10&ndash;20&nbsp;&euro; per session helps us.">Der Kurs ist auf Spendenbasis. Du gibst, was f&uuml;r dich m&ouml;glich ist. Als Richtwert helfen uns 10&ndash;20&nbsp;&euro; pro Termin.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         BEWEGUNGSREVOLUTION CROSS-LINK
+         ================================ -->
+
+    <section style="background: var(--sand-light);">
+        <div class="container fade-up" style="text-align: center; max-width: 700px;">
+            <p class="label"
+                data-de="Aktuelles Projekt"
+                data-en="Current Project">Aktuelles Projekt</p>
+            <h2
+                data-de="Bewegungsrevolution"
+                data-en="Bewegungsrevolution">Bewegungsrevolution</h2>
+            <p style="font-size: 1.0625rem; opacity: 0.7; line-height: 1.75; margin: 0 auto var(--space-xl);"
+                data-de="6 Wochen kostenlose Contact Improvisation f&uuml;r Einsteiger:innen. Gef&ouml;rdert durch den ASV&Ouml;. 11. Mai &ndash; 15. Juni 2026."
+                data-en="6 weeks of free Contact Improvisation for beginners. Funded by ASV&Ouml;. 11 May &ndash; 15 June 2026.">6 Wochen kostenlose Contact Improvisation f&uuml;r Einsteiger:innen. Gef&ouml;rdert durch den ASV&Ouml;. 11. Mai &ndash; 15. Juni 2026.</p>
+            <a href="bewegungsrevolution.html" class="btn btn-primary"
+                data-de="Mehr erfahren"
+                data-en="Learn more">Mehr erfahren</a>
         </div>
     </section>
 
