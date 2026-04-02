@@ -2,11 +2,12 @@
    Wild Care — Language Toggle (i18n)
    Reads data-de / data-en attributes and swaps
    text content based on the active language.
+   Runs immediately (script is loaded at end of body).
    ============================================ */
 
 (function () {
     var STORAGE_KEY = 'wc-lang';
-    var DEFAULT_LANG = document.documentElement.lang || 'de';
+    var DEFAULT_LANG = 'de';
 
     // Decode HTML entities via textarea (safe, no script execution)
     var decoder = document.createElement('textarea');
@@ -19,7 +20,6 @@
     function setContent(el, raw) {
         var decoded = decode(raw);
         if (decoded.indexOf('<br>') !== -1) {
-            // Split on <br>, create text nodes + br elements
             var parts = decoded.split('<br>');
             el.textContent = '';
             for (var i = 0; i < parts.length; i++) {
@@ -56,15 +56,14 @@
         });
     }
 
-    // Bind toggle buttons
-    document.addEventListener('DOMContentLoaded', function () {
-        var lang = getLang();
-        apply(lang);
+    // Apply immediately — script is at end of body so DOM is ready
+    var lang = getLang();
+    apply(lang);
 
-        document.querySelectorAll('.lang-toggle-btn').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                setLang(btn.getAttribute('data-lang'));
-            });
+    // Bind toggle buttons
+    document.querySelectorAll('.lang-toggle-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            setLang(btn.getAttribute('data-lang'));
         });
     });
 })();
