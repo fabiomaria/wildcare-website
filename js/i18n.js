@@ -8,11 +8,27 @@
     var STORAGE_KEY = 'wc-lang';
     var DEFAULT_LANG = document.documentElement.lang || 'de';
 
-    // Safe HTML entity decoder using a textarea (no script execution)
+    // Decode HTML entities via textarea (safe, no script execution)
     var decoder = document.createElement('textarea');
     function decode(html) {
         decoder.innerHTML = html;
         return decoder.value;
+    }
+
+    // Safely set element content, allowing only <br> tags
+    function setContent(el, raw) {
+        var decoded = decode(raw);
+        if (decoded.indexOf('<br>') !== -1) {
+            // Split on <br>, create text nodes + br elements
+            var parts = decoded.split('<br>');
+            el.textContent = '';
+            for (var i = 0; i < parts.length; i++) {
+                if (i > 0) el.appendChild(document.createElement('br'));
+                el.appendChild(document.createTextNode(parts[i]));
+            }
+        } else {
+            el.textContent = decoded;
+        }
     }
 
     function getLang() {
@@ -30,7 +46,7 @@
         document.querySelectorAll('[data-de][data-en]').forEach(function (el) {
             var text = el.getAttribute('data-' + lang);
             if (text !== null) {
-                el.textContent = decode(text);
+                setContent(el, text);
             }
         });
 
