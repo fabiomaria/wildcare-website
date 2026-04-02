@@ -203,23 +203,35 @@ nav {
 
 /* Language Toggle */
 .lang-toggle {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--bark) !important;
-    opacity: 0.4;
-    text-decoration: none;
-    padding: 6px 10px;
+    display: flex;
+    gap: 0;
     border: 1px solid rgba(44, 36, 24, 0.15);
     border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.lang-toggle-btn {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--bark);
+    opacity: 0.4;
+    background: none;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
     transition: all var(--duration-fast) var(--ease-out);
 }
 
-.lang-toggle:hover {
+.lang-toggle-btn:hover {
+    opacity: 0.8;
+}
+
+.lang-toggle-btn.active {
     opacity: 1;
-    border-color: rgba(44, 36, 24, 0.3);
-    color: var(--moss) !important;
+    color: var(--moss);
+    background: rgba(92, 107, 79, 0.08);
 }
 
 /* Mobile Nav */

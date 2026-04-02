@@ -11,6 +11,7 @@
     <meta property="og:description" content="Contact Improvisation jeden Montag in Graz. Offener Workshop auf Spendenbasis — für alle, mit und ohne Vorkenntnisse.">
     <meta property="og:image" content="https://wildcare.space/assets/images/og-default.jpg">
     <meta property="og:locale" content="de_AT">
+    <meta property="og:locale:alternate" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -347,14 +348,27 @@
                 <span class="breadcrumb">Graz</span>
             </a>
             <div class="nav-links">
-                <a href="index.html">Startseite</a>
-                <a href="team.html">&Uuml;ber uns</a>
-                <a href="programm.html" class="active">Programm</a>
+                <a href="index.html"
+                    data-de="Startseite"
+                    data-en="Home">Startseite</a>
+                <a href="team.html"
+                    data-de="&Uuml;ber uns"
+                    data-en="About Us">&Uuml;ber uns</a>
+                <a href="programm.html" class="active"
+                    data-de="Programm"
+                    data-en="Programme">Programm</a>
                 <a href="journal.html">Journal</a>
-                <a href="mitmachen.html">Mitmachen</a>
-                <a href="kontakt.html" class="nav-cta">Komm vorbei</a>
+                <a href="mitmachen.html"
+                    data-de="Mitmachen"
+                    data-en="Get Involved">Mitmachen</a>
+                <a href="kontakt.html" class="nav-cta"
+                    data-de="Komm vorbei"
+                    data-en="Come by">Komm vorbei</a>
             </div>
-            <a href="en/programm.html" class="lang-toggle">EN</a>
+            <div class="lang-toggle">
+                <button class="lang-toggle-btn active" data-lang="de">DE</button>
+                <button class="lang-toggle-btn" data-lang="en">EN</button>
+            </div>
             <button class="nav-toggle" aria-label="Men&uuml;">
                 <span></span>
                 <span></span>
@@ -369,9 +383,15 @@
 
     <header class="page-hero">
         <div class="container">
-            <p class="label fade-up">Programm</p>
-            <h1 class="fade-up delay-1">Bewegung als<br>Begegnung.</h1>
-            <p class="fade-up delay-2">Unser Angebot verbindet K&ouml;rperarbeit, soziale Praxis und k&uuml;nstlerische Forschung &mdash; offen f&uuml;r alle, die neugierig sind.</p>
+            <p class="label fade-up"
+                data-de="Programm"
+                data-en="Programme">Programm</p>
+            <h1 class="fade-up delay-1"
+                data-de="Bewegung als Begegnung."
+                data-en="Movement as Encounter.">Bewegung als Begegnung.</h1>
+            <p class="fade-up delay-2"
+                data-de="Unser Angebot verbindet K&ouml;rperarbeit, soziale Praxis und k&uuml;nstlerische Forschung &mdash; offen f&uuml;r alle, die neugierig sind."
+                data-en="Our offerings combine bodywork, social practice and artistic exploration &mdash; open to anyone who is curious.">Unser Angebot verbindet K&ouml;rperarbeit, soziale Praxis und k&uuml;nstlerische Forschung &mdash; offen f&uuml;r alle, die neugierig sind.</p>
         </div>
     </header>
 
@@ -382,21 +402,31 @@
     <section class="montagskurs">
         <div class="container">
             <div class="section-header fade-up" style="margin-bottom: 56px;">
-                <p class="label">Offenes Labor f&uuml;r zeitgen&ouml;ssischen Tanz</p>
-                <h2>Montagskurs</h2>
+                <p class="label"
+                    data-de="Offenes Labor f&uuml;r zeitgen&ouml;ssischen Tanz"
+                    data-en="Our Core Format">Offenes Labor f&uuml;r zeitgen&ouml;ssischen Tanz</p>
+                <h2
+                    data-de="Montagskurs"
+                    data-en="Monday Class">Montagskurs</h2>
             </div>
 
             <div class="montagskurs-layout">
                 <div class="info-card fade-up delay-1">
-                    <div class="info-card-title">Auf einen Blick</div>
+                    <div class="info-card-title"
+                        data-de="Auf einen Blick"
+                        data-en="At a Glance">Auf einen Blick</div>
 
                     <div class="info-row">
                         <div class="info-row-icon">
                             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                         </div>
                         <div class="info-row-content">
-                            <div class="info-row-label">Was</div>
-                            <div class="info-row-value">Contact Improvisation &mdash; k&uuml;nstlerische Forschung &amp; offene Praxis</div>
+                            <div class="info-row-label"
+                                data-de="Was"
+                                data-en="What">Was</div>
+                            <div class="info-row-value"
+                                data-de="Contact Improvisation &mdash; k&uuml;nstlerische Forschung &amp; offene Praxis"
+                                data-en="Contact Improvisation &mdash; open workshop">Contact Improvisation &mdash; k&uuml;nstlerische Forschung &amp; offene Praxis</div>
                         </div>
                     </div>
 
@@ -405,8 +435,12 @@
                             <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
                         </div>
                         <div class="info-row-content">
-                            <div class="info-row-label">Wann</div>
-                            <div class="info-row-value">Jeden Montag, 17:45 &ndash; 19:15</div>
+                            <div class="info-row-label"
+                                data-de="Wann"
+                                data-en="When">Wann</div>
+                            <div class="info-row-value"
+                                data-de="Jeden Montag, 17:45 &ndash; 19:15"
+                                data-en="Every Monday, 17:45 &ndash; 19:15">Jeden Montag, 17:45 &ndash; 19:15</div>
                         </div>
                     </div>
 
@@ -415,7 +449,9 @@
                             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
                         <div class="info-row-content">
-                            <div class="info-row-label">Wo</div>
+                            <div class="info-row-label"
+                                data-de="Wo"
+                                data-en="Where">Wo</div>
                             <div class="info-row-value">Orpheumgasse 11, 8020 Graz</div>
                         </div>
                     </div>
@@ -425,8 +461,12 @@
                             <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>
                         </div>
                         <div class="info-row-content">
-                            <div class="info-row-label">Kosten</div>
-                            <div class="info-row-value">Spendenbasis</div>
+                            <div class="info-row-label"
+                                data-de="Kosten"
+                                data-en="Cost">Kosten</div>
+                            <div class="info-row-value"
+                                data-de="Spendenbasis"
+                                data-en="Donation-based">Spendenbasis</div>
                         </div>
                     </div>
 
@@ -435,22 +475,38 @@
                             <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
                         </div>
                         <div class="info-row-content">
-                            <div class="info-row-label">F&uuml;r</div>
-                            <div class="info-row-value">Alle &mdash; mit und ohne Vorkenntnisse</div>
+                            <div class="info-row-label"
+                                data-de="F&uuml;r"
+                                data-en="For">F&uuml;r</div>
+                            <div class="info-row-value"
+                                data-de="Alle &mdash; mit und ohne Vorkenntnisse"
+                                data-en="Everyone &mdash; with or without prior experience">Alle &mdash; mit und ohne Vorkenntnisse</div>
                         </div>
                     </div>
 
                     <div class="info-card-cta">
-                        <button class="btn btn-primary" style="width: 100%; justify-content: center;" data-tally-open="nplWX8" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Komm vorbei</button>
+                        <button class="btn btn-primary" style="width: 100%; justify-content: center;" data-tally-open="nplWX8" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
+                            data-de="Jetzt anmelden"
+                            data-en="Sign up now">Jetzt anmelden</button>
                     </div>
                 </div>
 
                 <div class="montagskurs-description fade-up delay-2">
-                    <h2>Was dich erwartet</h2>
-                    <p>Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Ber&uuml;hrung. Es gibt keine festen Schritte, keine Choreografie und keinen Leistungsdruck &mdash; nur dich, den Raum und die Menschen darin.</p>
-                    <p>Du lernst, Gewicht zu teilen und abzugeben, durch Ber&uuml;hrung zuzuh&ouml;ren und deinen K&ouml;rper bewusster wahrzunehmen. Dabei regulierst du ganz nebenbei dein Nervensystem, &uuml;bst Grenzen zu kommunizieren und entwickelst ein feines Gesp&uuml;r f&uuml;r dich und dein Gegen&uuml;ber.</p>
-                    <p>Jede Session beginnt mit einer gef&uuml;hrten Aufw&auml;rm-Phase und m&uuml;ndet in eine offene Jam &mdash; eine freie Tanzzeit, in der alles passieren darf: Stille, Bewegung, Begegnung.</p>
-                    <p class="quote">&bdquo;Du brauchst keine Tanzerfahrung. Nur bequeme Kleidung, Neugier und die Bereitschaft, dich auf etwas Neues einzulassen.&ldquo;</p>
+                    <h2
+                        data-de="Was dich erwartet"
+                        data-en="What to Expect">Was dich erwartet</h2>
+                    <p
+                        data-de="Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Ber&uuml;hrung. Es gibt keine festen Schritte, keine Choreografie und keinen Leistungsdruck &mdash; nur dich, den Raum und die Menschen darin."
+                        data-en="Contact Improvisation is the playful exploration of gravity, balance and touch. There are no fixed steps, no choreography and no pressure to perform &mdash; just you, the space and the people in it.">Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Ber&uuml;hrung. Es gibt keine festen Schritte, keine Choreografie und keinen Leistungsdruck &mdash; nur dich, den Raum und die Menschen darin.</p>
+                    <p
+                        data-de="Du lernst, Gewicht zu teilen und abzugeben, durch Ber&uuml;hrung zuzuh&ouml;ren und deinen K&ouml;rper bewusster wahrzunehmen. Dabei regulierst du ganz nebenbei dein Nervensystem, &uuml;bst Grenzen zu kommunizieren und entwickelst ein feines Gesp&uuml;r f&uuml;r dich und dein Gegen&uuml;ber."
+                        data-en="You learn to share and release weight, to listen through touch and to become more aware of your body. Along the way, you naturally regulate your nervous system, practise communicating boundaries and develop a fine sense for yourself and those around you.">Du lernst, Gewicht zu teilen und abzugeben, durch Ber&uuml;hrung zuzuh&ouml;ren und deinen K&ouml;rper bewusster wahrzunehmen. Dabei regulierst du ganz nebenbei dein Nervensystem, &uuml;bst Grenzen zu kommunizieren und entwickelst ein feines Gesp&uuml;r f&uuml;r dich und dein Gegen&uuml;ber.</p>
+                    <p
+                        data-de="Jede Session beginnt mit einer gef&uuml;hrten Aufw&auml;rm-Phase und m&uuml;ndet in eine offene Jam &mdash; eine freie Tanzzeit, in der alles passieren darf: Stille, Bewegung, Begegnung."
+                        data-en="Each session begins with a guided warm-up and flows into an open jam &mdash; a free dance time where anything can happen: stillness, movement, encounter.">Jede Session beginnt mit einer gef&uuml;hrten Aufw&auml;rm-Phase und m&uuml;ndet in eine offene Jam &mdash; eine freie Tanzzeit, in der alles passieren darf: Stille, Bewegung, Begegnung.</p>
+                    <p class="quote"
+                        data-de="&bdquo;Du brauchst keine Tanzerfahrung. Nur bequeme Kleidung, Neugier und die Bereitschaft, dich auf etwas Neues einzulassen.&ldquo;"
+                        data-en="&ldquo;You don&rsquo;t need any dance experience. Just comfortable clothing, curiosity and the willingness to try something new.&rdquo;">&bdquo;Du brauchst keine Tanzerfahrung. Nur bequeme Kleidung, Neugier und die Bereitschaft, dich auf etwas Neues einzulassen.&ldquo;</p>
                 </div>
             </div>
         </div>
@@ -463,26 +519,42 @@
     <section>
         <div class="container">
             <div class="section-header fade-up" style="margin-bottom: 48px;">
-                <p class="label">Aktuelle Projekte</p>
-                <h2>Was gerade l&auml;uft</h2>
+                <p class="label"
+                    data-de="Aktuelle Projekte"
+                    data-en="Current Projects">Aktuelle Projekte</p>
+                <h2
+                    data-de="Was gerade l&auml;uft"
+                    data-en="What&rsquo;s Happening Now">Was gerade l&auml;uft</h2>
             </div>
 
             <div class="projekt-card fade-up delay-1">
                 <div class="projekt-card-accent"></div>
                 <div class="projekt-card-body">
                     <div class="projekt-card-meta">
-                        <span class="projekt-tag">Gef&ouml;rdert</span>
-                        <span class="projekt-tag projekt-tag-moss">Einsteiger:innen</span>
+                        <span class="projekt-tag"
+                            data-de="Gef&ouml;rdert"
+                            data-en="Funded">Gef&ouml;rdert</span>
+                        <span class="projekt-tag projekt-tag-moss"
+                            data-de="Einsteiger:innen"
+                            data-en="Beginners">Einsteiger:innen</span>
                     </div>
                     <h3>Bewegungsrevolution</h3>
-                    <div class="projekt-card-subtitle">Kontaktimprovisation f&uuml;r alle</div>
-                    <p>Ein kostenloser 6-Wochen-Block f&uuml;r Menschen ohne jegliche Bewegungserfahrung. Gef&ouml;rdert durch die Initiative Bewegungsrevolution und den ASV&Ouml; &mdash; damit der Zugang zu k&uuml;nstlerischer K&ouml;rperpraxis keine Frage des Geldes oder der Vorerfahrung ist.</p>
-                    <p>In sechs aufeinander aufbauenden Einheiten erforschst du die Grundlagen der Contact Improvisation: K&ouml;rperwahrnehmung, Gewicht teilen, Fallen und Auffangen, Ber&uuml;hrung als Kommunikation. Der Block m&uuml;ndet in eine &ouml;ffentliche Showing &mdash; eine Lecture-Performance im Format <em>We Just Met</em>, die den Forschungsprozess f&uuml;r ein Publikum sichtbar macht.</p>
+                    <div class="projekt-card-subtitle"
+                        data-de="Kontaktimprovisation f&uuml;r alle"
+                        data-en="Contact Improvisation for everyone">Kontaktimprovisation f&uuml;r alle</div>
+                    <p
+                        data-de="Ein kostenloser 6-Wochen-Block f&uuml;r Menschen ohne jegliche Bewegungserfahrung. Gef&ouml;rdert durch die Initiative Bewegungsrevolution und den ASV&Ouml; &mdash; damit der Zugang zu k&uuml;nstlerischer K&ouml;rperpraxis keine Frage des Geldes oder der Vorerfahrung ist."
+                        data-en="A free 6-week programme for people with no movement experience at all. Funded by the Bewegungsrevolution initiative and ASV&Ouml; &mdash; because access to artistic body practice shouldn&rsquo;t be a question of money or prior experience.">Ein kostenloser 6-Wochen-Block f&uuml;r Menschen ohne jegliche Bewegungserfahrung. Gef&ouml;rdert durch die Initiative Bewegungsrevolution und den ASV&Ouml; &mdash; damit der Zugang zu k&uuml;nstlerischer K&ouml;rperpraxis keine Frage des Geldes oder der Vorerfahrung ist.</p>
+                    <p
+                        data-de="In sechs aufeinander aufbauenden Einheiten erforschst du die Grundlagen der Contact Improvisation: K&ouml;rperwahrnehmung, Gewicht teilen, Fallen und Auffangen, Ber&uuml;hrung als Kommunikation. Der Block m&uuml;ndet in eine &ouml;ffentliche Showing &mdash; eine Lecture-Performance im Format We Just Met, die den Forschungsprozess f&uuml;r ein Publikum sichtbar macht."
+                        data-en="Over six progressive sessions, you explore the foundations of Contact Improvisation: body awareness, sharing weight, falling and catching, touch as communication. The block culminates in a public showing &mdash; a lecture-performance in the We Just Met format, making the artistic research process visible for an audience.">In sechs aufeinander aufbauenden Einheiten erforschst du die Grundlagen der Contact Improvisation: K&ouml;rperwahrnehmung, Gewicht teilen, Fallen und Auffangen, Ber&uuml;hrung als Kommunikation. Der Block m&uuml;ndet in eine &ouml;ffentliche Showing &mdash; eine Lecture-Performance im Format <em>We Just Met</em>, die den Forschungsprozess f&uuml;r ein Publikum sichtbar macht.</p>
 
                     <div class="projekt-details">
                         <div class="projekt-detail">
                             <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                            11. Mai &ndash; 15. Juni 2026
+                            <span
+                                data-de="11. Mai &ndash; 15. Juni 2026"
+                                data-en="11 May &ndash; 15 June 2026">11. Mai &ndash; 15. Juni 2026</span>
                         </div>
                         <div class="projekt-detail">
                             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -490,11 +562,15 @@
                         </div>
                         <div class="projekt-detail">
                             <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>
-                            Kostenlos
+                            <span
+                                data-de="Kostenlos"
+                                data-en="Free of charge">Kostenlos</span>
                         </div>
                         <div class="projekt-detail">
                             <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-                            6 Wochen, 6 Einheiten
+                            <span
+                                data-de="6 Wochen, 6 Einheiten"
+                                data-en="6 weeks, 6 sessions">6 Wochen, 6 Einheiten</span>
                         </div>
                     </div>
                 </div>
@@ -509,25 +585,47 @@
     <section style="background: var(--sand-light);">
         <div class="container">
             <div class="section-header fade-up" style="margin-bottom: 48px;">
-                <p class="label">Ausblick</p>
-                <h2>Was noch kommt</h2>
-                <p>Projekte, die wir gerade entwickeln oder planen. Hier entsteht etwas.</p>
+                <p class="label"
+                    data-de="Ausblick"
+                    data-en="Outlook">Ausblick</p>
+                <h2
+                    data-de="Was noch kommt"
+                    data-en="What&rsquo;s Coming Next">Was noch kommt</h2>
+                <p
+                    data-de="Projekte, die wir gerade entwickeln oder planen. Hier entsteht etwas."
+                    data-en="Projects we&rsquo;re currently developing or planning. Something is taking shape here.">Projekte, die wir gerade entwickeln oder planen. Hier entsteht etwas.</p>
             </div>
 
             <div class="ausblick-grid">
                 <div class="preview-card fade-up delay-1">
                     <div class="preview-card-label">Performance / Lecture</div>
-                    <h3>We Just Met / Erste Begegnung</h3>
-                    <div class="preview-card-subtitle">Die soziale Physik des Tanzes sichtbar machen</div>
-                    <p>Ein Format, in dem ein:e Erz&auml;hler:in w&auml;hrend einer Contact-Improvisation-Session die T&auml;nzer:innen einfriert &mdash; und dem Publikum erkl&auml;rt, was gerade auf k&ouml;rperlicher und sozialer Ebene passiert. Schwerkraft, Vertrauen, Grenzen: Die unsichtbare Physik der Begegnung wird lesbar.</p>
-                    <p>Unser Versuch, Contact Improvisation f&uuml;r ein Publikum zug&auml;nglich zu machen, das noch nie davon geh&ouml;rt hat.</p>
+                    <h3
+                        data-de="We Just Met / Erste Begegnung"
+                        data-en="We Just Met / First Encounter">We Just Met / Erste Begegnung</h3>
+                    <div class="preview-card-subtitle"
+                        data-de="Die soziale Physik des Tanzes sichtbar machen"
+                        data-en="Making the social physics of dance visible">Die soziale Physik des Tanzes sichtbar machen</div>
+                    <p
+                        data-de="Ein Format, in dem ein:e Erz&auml;hler:in w&auml;hrend einer Contact-Improvisation-Session die T&auml;nzer:innen einfriert &mdash; und dem Publikum erkl&auml;rt, was gerade auf k&ouml;rperlicher und sozialer Ebene passiert. Schwerkraft, Vertrauen, Grenzen: Die unsichtbare Physik der Begegnung wird lesbar."
+                        data-en="A format where a narrator freezes the dancers during a Contact Improvisation session &mdash; and explains to the audience what is happening on a physical and social level. Gravity, trust, boundaries: the invisible physics of encounter becomes readable.">Ein Format, in dem ein:e Erz&auml;hler:in w&auml;hrend einer Contact-Improvisation-Session die T&auml;nzer:innen einfriert &mdash; und dem Publikum erkl&auml;rt, was gerade auf k&ouml;rperlicher und sozialer Ebene passiert. Schwerkraft, Vertrauen, Grenzen: Die unsichtbare Physik der Begegnung wird lesbar.</p>
+                    <p
+                        data-de="Unser Versuch, Contact Improvisation f&uuml;r ein Publikum zug&auml;nglich zu machen, das noch nie davon geh&ouml;rt hat."
+                        data-en="Our attempt to make Contact Improvisation accessible to an audience that has never heard of it.">Unser Versuch, Contact Improvisation f&uuml;r ein Publikum zug&auml;nglich zu machen, das noch nie davon geh&ouml;rt hat.</p>
                 </div>
 
                 <div class="preview-card fade-up delay-2">
-                    <div class="preview-card-label">Outdoor / Sommer</div>
-                    <h3>Bewegt im Park</h3>
-                    <div class="preview-card-subtitle">Kostenlose Contact Improvisation in Grazer Parks</div>
-                    <p>Tanz unter freiem Himmel &mdash; niederschwellig, kostenlos und f&uuml;r alle sichtbar. Contact Improvisation raus aus dem Studio und rein in den &ouml;ffentlichen Raum. Weil Bewegung kein Luxusgut sein sollte.</p>
+                    <div class="preview-card-label"
+                        data-de="Outdoor / Sommer"
+                        data-en="Outdoor / Summer">Outdoor / Sommer</div>
+                    <h3
+                        data-de="Bewegt im Park"
+                        data-en="Moving in the Park">Bewegt im Park</h3>
+                    <div class="preview-card-subtitle"
+                        data-de="Kostenlose Contact Improvisation in Grazer Parks"
+                        data-en="Free Contact Improvisation in Graz parks">Kostenlose Contact Improvisation in Grazer Parks</div>
+                    <p
+                        data-de="Tanz unter freiem Himmel &mdash; niederschwellig, kostenlos und f&uuml;r alle sichtbar. Contact Improvisation raus aus dem Studio und rein in den &ouml;ffentlichen Raum. Weil Bewegung kein Luxusgut sein sollte."
+                        data-en="Dance under the open sky &mdash; low-threshold, free and visible to all. Contact Improvisation out of the studio and into public space. Because movement shouldn&rsquo;t be a luxury.">Tanz unter freiem Himmel &mdash; niederschwellig, kostenlos und f&uuml;r alle sichtbar. Contact Improvisation raus aus dem Studio und rein in den &ouml;ffentlichen Raum. Weil Bewegung kein Luxusgut sein sollte.</p>
                     <a href="https://bewegt-im-park.at" target="_blank" rel="noopener" class="btn btn-ghost">bewegt-im-park.at</a>
                 </div>
             </div>
@@ -540,10 +638,18 @@
 
     <section class="cta-section">
         <div class="container fade-up">
-            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;">Einladung</p>
-            <h2>Komm vorbei.</h2>
-            <p>Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz.</p>
-            <a href="kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
+            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;"
+                data-de="Einladung"
+                data-en="Invitation">Einladung</p>
+            <h2
+                data-de="Komm vorbei."
+                data-en="Come by.">Komm vorbei.</h2>
+            <p
+                data-de="Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz."
+                data-en="You don&rsquo;t need any experience, just comfortable clothing and curiosity. Every Monday, 17:45, Orpheumgasse 11, Graz.">Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz.</p>
+            <a href="kontakt.html" class="btn btn-primary"
+                data-de="Kontakt aufnehmen"
+                data-en="Get in touch">Kontakt aufnehmen</a>
         </div>
     </section>
 
@@ -556,19 +662,35 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h4>Wild Care</h4>
-                    <p>Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir &uuml;ben das Zusammenleben &mdash; jeden Montag in Graz.</p>
+                    <p
+                        data-de="Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir &uuml;ben das Zusammenleben &mdash; jeden Montag in Graz."
+                        data-en="Association for Contact Improvisation and social practice. We practise togetherness &mdash; every Monday in Graz.">Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir &uuml;ben das Zusammenleben &mdash; jeden Montag in Graz.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Seiten</h4>
-                    <a href="index.html">Startseite</a>
-                    <a href="team.html">&Uuml;ber uns</a>
-                    <a href="programm.html">Programm</a>
-                    <a href="mitmachen.html">Mitmachen</a>
+                    <h4
+                        data-de="Seiten"
+                        data-en="Pages">Seiten</h4>
+                    <a href="index.html"
+                        data-de="Startseite"
+                        data-en="Home">Startseite</a>
+                    <a href="team.html"
+                        data-de="&Uuml;ber uns"
+                        data-en="About Us">&Uuml;ber uns</a>
+                    <a href="programm.html"
+                        data-de="Programm"
+                        data-en="Programme">Programm</a>
+                    <a href="mitmachen.html"
+                        data-de="Mitmachen"
+                        data-en="Get Involved">Mitmachen</a>
                     <a href="journal.html">Journal</a>
-                    <a href="kontakt.html">Kontakt</a>
+                    <a href="kontakt.html"
+                        data-de="Kontakt"
+                        data-en="Contact">Kontakt</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Verbinden</h4>
+                    <h4
+                        data-de="Verbinden"
+                        data-en="Connect">Verbinden</h4>
                     <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
                     <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
                     <a href="impressum.html">Impressum</a>
@@ -577,7 +699,9 @@
             </div>
             <div class="footer-bottom">
                 <span>&copy; 2026 Wild Care &mdash; Graz</span>
-                <span>Mit F&uuml;rsorge gebaut</span>
+                <span
+                    data-de="Mit F&uuml;rsorge gebaut"
+                    data-en="Built with care">Mit F&uuml;rsorge gebaut</span>
             </div>
         </div>
     </footer>
@@ -611,6 +735,7 @@
             });
         }
     </script>
+    <script src="js/i18n.js"></script>
 
 </body>
 </html>
