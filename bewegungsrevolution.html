@@ -21,376 +21,6 @@
     <link rel="stylesheet" href="css/styles.css">
     <script async src="https://tally.so/widgets/embed.js"></script>
 
-    <style>
-        /* ================================
-           BEWEGUNGSREVOLUTION LANDING PAGE
-           (mirrors montagskurs.html layout)
-           ================================ */
-
-        /* Hero */
-
-        /* Section: Team */
-        .mk-team-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-2xl);
-        }
-
-        .mk-team-member {
-            display: flex;
-            gap: var(--space-lg);
-            align-items: flex-start;
-        }
-
-        .mk-team-portrait {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            overflow: hidden;
-            flex-shrink: 0;
-            border: var(--border-subtle);
-        }
-
-        .mk-team-portrait img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .mk-team-info h3 {
-            font-size: 1.15rem;
-            margin-bottom: 4px;
-        }
-
-        .mk-team-role {
-            font-size: 0.8rem;
-            color: var(--moss);
-            font-weight: 500;
-            margin-bottom: var(--space-sm);
-        }
-
-        .mk-team-info p {
-            font-size: 0.9375rem;
-            opacity: 0.7;
-            line-height: 1.65;
-        }
-
-        .br-hero {
-            padding-top: calc(72px + var(--space-2xl));
-            padding-bottom: var(--space-2xl);
-        }
-
-        .br-hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-2xl);
-            align-items: center;
-        }
-
-        .br-hero-content h1 {
-            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-            margin-bottom: var(--space-lg);
-            line-height: 1.1;
-        }
-
-        .br-hero-content h1 span {
-            color: var(--terracotta);
-        }
-
-        .br-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            background: rgba(196, 119, 90, 0.1);
-            color: var(--terracotta);
-            margin-bottom: var(--space-lg);
-        }
-
-        .br-hero-subtitle {
-            font-size: 1.125rem;
-            opacity: 0.75;
-            line-height: 1.7;
-            margin-bottom: var(--space-xl);
-            max-width: 480px;
-        }
-
-        .br-hero-details {
-            display: flex;
-            gap: var(--space-xl);
-            flex-wrap: wrap;
-            margin-bottom: var(--space-xl);
-        }
-
-        .br-hero-detail {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .br-hero-detail svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--moss);
-            fill: none;
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            flex-shrink: 0;
-        }
-
-        .br-hero-cta {
-            display: flex;
-            gap: var(--space-md);
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .br-hero-note {
-            font-size: 0.8rem;
-            opacity: 0.45;
-            line-height: 1.5;
-        }
-
-        /* Video embed */
-        .br-video-wrapper {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            background: var(--sand);
-            border: var(--border-subtle);
-        }
-
-        .br-video-wrapper video {
-            width: 100%;
-            aspect-ratio: 9 / 16;
-            max-height: 520px;
-            object-fit: contain;
-            display: block;
-        }
-
-        /* About section */
-        .br-about {
-            background: var(--sand-light);
-        }
-
-        .br-about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-2xl);
-            align-items: start;
-        }
-
-        .br-about-text h2 {
-            margin-bottom: var(--space-lg);
-        }
-
-        .br-about-text p {
-            font-size: 1.0625rem;
-            opacity: 0.75;
-            line-height: 1.75;
-            margin-bottom: var(--space-lg);
-        }
-
-        .br-about-image {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            background: var(--sand-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: var(--space-2xl);
-        }
-
-        .br-about-image img {
-            max-width: 85%;
-            max-height: 320px;
-            object-fit: contain;
-        }
-
-        /* Fahrplan / 6-week schedule */
-        .br-week-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-lg);
-        }
-
-        .br-week-card {
-            padding: var(--space-xl) var(--space-lg);
-            border: var(--border-subtle);
-            border-radius: var(--radius-md);
-            background: var(--warmwhite);
-            transition: all var(--duration-normal) var(--ease-out);
-            position: relative;
-        }
-
-        .br-week-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(44, 36, 24, 0.06);
-        }
-
-        .br-week-number {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--terracotta);
-            margin-bottom: var(--space-sm);
-        }
-
-        .br-week-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: var(--space-sm);
-        }
-
-        .br-week-card p {
-            font-size: 0.9375rem;
-            opacity: 0.65;
-            line-height: 1.65;
-        }
-
-        .br-week-card.br-week-showing {
-            border-color: var(--terracotta);
-            background: rgba(196, 119, 90, 0.03);
-        }
-
-        /* Quote */
-        .br-quote-section {
-            background: var(--sand-light);
-        }
-
-        /* Testimonials */
-        .br-testimonial-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
-        }
-
-        .br-testimonial {
-            padding: var(--space-xl);
-            background: var(--warmwhite);
-            border-radius: var(--radius-md);
-            border: var(--border-subtle);
-        }
-
-        .br-testimonial blockquote {
-            font-family: var(--font-display);
-            font-style: italic;
-            font-size: 1.05rem;
-            line-height: 1.65;
-            color: var(--bark);
-            margin-bottom: var(--space-lg);
-            font-variation-settings: 'SOFT' 100, 'WONK' 1;
-        }
-
-        .br-testimonial-author {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--moss);
-        }
-
-        /* Team */
-        .br-team-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-2xl);
-        }
-
-        .br-team-member {
-            display: flex;
-            gap: var(--space-lg);
-            align-items: flex-start;
-        }
-
-        .br-team-portrait {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            overflow: hidden;
-            flex-shrink: 0;
-            border: var(--border-subtle);
-        }
-
-        .br-team-portrait img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .br-team-info h3 {
-            font-size: 1.15rem;
-            margin-bottom: 4px;
-        }
-
-        .br-team-role {
-            font-size: 0.8rem;
-            color: var(--moss);
-            font-weight: 500;
-            margin-bottom: var(--space-sm);
-        }
-
-        .br-team-info p {
-            font-size: 0.9375rem;
-            opacity: 0.7;
-            line-height: 1.65;
-        }
-
-        /* FAQ */
-        .br-faq-list {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .br-faq-item {
-            border-bottom: var(--border-subtle);
-            padding: var(--space-lg) 0;
-        }
-
-        .br-faq-item:last-child {
-            border-bottom: none;
-        }
-
-        .br-faq-q {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 400;
-            margin-bottom: var(--space-sm);
-            font-variation-settings: 'SOFT' 100, 'WONK' 1;
-        }
-
-        .br-faq-a {
-            font-size: 0.9375rem;
-            opacity: 0.7;
-            line-height: 1.7;
-        }
-
-        /* ================================
-           RESPONSIVE
-           ================================ */
-
-        @media (max-width: 968px) {
-            .br-hero-grid { grid-template-columns: 1fr; }
-            .br-video-wrapper { order: -1; }
-            .br-video-wrapper video { max-height: 400px; }
-            .br-about-grid { grid-template-columns: 1fr; }
-            .br-week-grid { grid-template-columns: 1fr; }
-            .br-testimonial-grid { grid-template-columns: 1fr; }
-            .br-team-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 600px) {
-            .br-hero-details { flex-direction: column; gap: var(--space-md); }
-            .br-hero-cta { flex-direction: column; align-items: flex-start; }
-            .br-hero-cta .btn-primary { width: 100%; justify-content: center; }
-            .br-team-member { flex-direction: column; align-items: center; text-align: center; }
-        }
-    </style>
 </head>
 <body>
 
@@ -434,12 +64,12 @@
          HERO + VIDEO
          ================================ -->
 
-    <header class="br-hero">
+    <header class="detail-hero">
         <div class="container">
-            <div class="br-hero-grid">
+            <div class="detail-hero-grid">
 
-                <div class="br-hero-content fade-up">
-                    <div class="br-badge"
+                <div class="detail-hero-content accent-terracotta fade-up">
+                    <div class="detail-badge"
                         data-de="Gef&ouml;rdert &middot; Kostenlos &middot; F&uuml;r alle"
                         data-en="Funded &middot; Free &middot; For everyone">Gef&ouml;rdert &middot; Kostenlos &middot; F&uuml;r alle</div>
 
@@ -447,28 +77,28 @@
                         data-de="Contact Improvisation. Kostenlos. 6 Wochen."
                         data-en="Contact Improvisation. Free. 6 Weeks.">Contact Improvisation.<br><span>Kostenlos. 6&nbsp;Wochen.</span></h1>
 
-                    <p class="br-hero-subtitle"
+                    <p class="detail-hero-subtitle"
                         data-de="Spielerisch den eigenen K&ouml;rper erforschen &mdash; mit Schwerkraft, Gleichgewicht und Ber&uuml;hrung. Keine Vorkenntnisse n&ouml;tig. Wirklich keine."
                         data-en="Playfully explore your own body &mdash; with gravity, balance and touch. No prior experience needed. Really none.">Spielerisch den eigenen K&ouml;rper erforschen &mdash; mit Schwerkraft, Gleichgewicht und Ber&uuml;hrung. Keine Vorkenntnisse n&ouml;tig. Wirklich keine.</p>
 
-                    <div class="br-hero-details">
-                        <div class="br-hero-detail">
+                    <div class="detail-hero-details">
+                        <div class="detail-hero-detail">
                             <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
                             <span
                                 data-de="11. Mai &ndash; 15. Juni 2026"
                                 data-en="11 May &ndash; 15 June 2026">11. Mai &ndash; 15. Juni 2026</span>
                         </div>
-                        <div class="br-hero-detail">
+                        <div class="detail-hero-detail">
                             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                             <span
                                 data-de="Montags, 17:45&ndash;19:15"
                                 data-en="Mondays, 17:45&ndash;19:15">Montags, 17:45&ndash;19:15</span>
                         </div>
-                        <div class="br-hero-detail">
+                        <div class="detail-hero-detail">
                             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                             Orpheumgasse 11, Graz
                         </div>
-                        <div class="br-hero-detail">
+                        <div class="detail-hero-detail">
                             <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>
                             <span
                                 data-de="100% kostenlos"
@@ -476,17 +106,17 @@
                         </div>
                     </div>
 
-                    <div class="br-hero-cta">
+                    <div class="detail-hero-cta">
                         <button class="btn btn-primary" data-tally-open="eq227x" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
                             data-de="Jetzt anmelden"
                             data-en="Sign up now">Jetzt anmelden</button>
-                        <p class="br-hero-note"
+                        <p class="detail-hero-note"
                             data-de="Bequeme Kleidung reicht. Keine Vorkenntnisse."
                             data-en="Comfortable clothing is enough. No prior experience.">Bequeme Kleidung reicht. Keine Vorkenntnisse.</p>
                     </div>
                 </div>
 
-                <div class="br-video-wrapper fade-up delay-2">
+                <div class="detail-video-wrapper fade-up delay-2">
                     <video autoplay muted loop playsinline preload="metadata" poster="assets/images/bewegungsrevolution.png">
                         <source src="assets/what is ci.mp4" type="video/mp4">
                     </video>
@@ -511,9 +141,9 @@
                     data-en="6 Weeks, 6 Topics">6 Wochen, 6 Themen</h2>
             </div>
 
-            <div class="br-week-grid">
-                <div class="br-week-card fade-up delay-1">
-                    <p class="br-week-number"
+            <div class="detail-card-grid">
+                <div class="detail-card fade-up delay-1">
+                    <p class="detail-card-number"
                         data-de="Woche 1 &middot; 11. Mai"
                         data-en="Week 1 &middot; 11 May">Woche 1 &middot; 11. Mai</p>
                     <h3
@@ -524,8 +154,8 @@
                         data-en="Feeling gravity and noticing that we are constantly in motion on our own &mdash; in a dance with gravity. The floor is your first dance partner.">Die Schwerkraft sp&uuml;ren und bemerken, dass wir st&auml;ndig von selbst in Bewegung sind &mdash; in einem Tanz mit der Schwerkraft. Der Boden ist dein erster Tanzpartner.</p>
                 </div>
 
-                <div class="br-week-card fade-up delay-2">
-                    <p class="br-week-number"
+                <div class="detail-card fade-up delay-2">
+                    <p class="detail-card-number"
                         data-de="Woche 2 &middot; 18. Mai"
                         data-en="Week 2 &middot; 18 May">Woche 2 &middot; 18. Mai</p>
                     <h3
@@ -536,8 +166,8 @@
                         data-en="Yielding: the art of giving in. Learning to soften the body &mdash; alone and together. The body that can soften can do anything.">Yielding: die Kunst des Sich-Einlassens. Lernen, den K&ouml;rper weich zu machen &mdash; alleine und zusammen. Der K&ouml;rper, der weich werden kann, kann alles.</p>
                 </div>
 
-                <div class="br-week-card fade-up delay-3">
-                    <p class="br-week-number"
+                <div class="detail-card fade-up delay-3">
+                    <p class="detail-card-number"
                         data-de="Woche 3 &middot; 25. Mai"
                         data-en="Week 3 &middot; 25 May">Woche 3 &middot; 25. Mai</p>
                     <h3
@@ -548,8 +178,8 @@
                         data-en="How the body says yes and no before the mouth does. Practising sensing proximity, communicating boundaries and listening through touch. Consent is the conversation you&rsquo;re having the whole time.">Wie der K&ouml;rper Ja und Nein sagt, bevor der Mund es tut. &Uuml;ben, N&auml;he zu sp&uuml;ren, Grenzen zu kommunizieren und durch Ber&uuml;hrung zuzuh&ouml;ren. Konsens ist das Gespr&auml;ch, das du die ganze Zeit f&uuml;hrst.</p>
                 </div>
 
-                <div class="br-week-card fade-up delay-1">
-                    <p class="br-week-number"
+                <div class="detail-card fade-up delay-1">
+                    <p class="detail-card-number"
                         data-de="Woche 4 &middot; 1. Juni"
                         data-en="Week 4 &middot; 1 June">Woche 4 &middot; 1. Juni</p>
                     <h3
@@ -560,8 +190,8 @@
                         data-en="Pouring weight is not dumping weight. From the wall to partner leaning to falling together &mdash; finding the point where no one can tell who is carrying whom.">Gewicht gie&szlig;en ist nicht Gewicht abladen. Von der Wand &uuml;ber Partner:in-Lehnen bis zum gemeinsamen Fallen &mdash; den Punkt finden, an dem keine:r sagen kann, wer wen tr&auml;gt.</p>
                 </div>
 
-                <div class="br-week-card fade-up delay-2">
-                    <p class="br-week-number"
+                <div class="detail-card fade-up delay-2">
+                    <p class="detail-card-number"
                         data-de="Woche 5 &middot; 8. Juni"
                         data-en="Week 5 &middot; 8 June">Woche 5 &middot; 8. Juni</p>
                     <h3
@@ -572,8 +202,8 @@
                         data-en="The core of CI: the point where two bodies meet, and we let it travel. Not directing, but following. The rolling point is the conversation itself.">Das Kernst&uuml;ck von CI: der Punkt, an dem zwei K&ouml;rper sich treffen, und wir lassen ihn wandern. Nicht lenken, sondern folgen. Der rollende Punkt ist das Gespr&auml;ch selbst.</p>
                 </div>
 
-                <div class="br-week-card br-week-showing fade-up delay-3">
-                    <p class="br-week-number"
+                <div class="detail-card highlighted fade-up delay-3">
+                    <p class="detail-card-number"
                         data-de="Woche 6 &middot; 15. Juni"
                         data-en="Week 6 &middot; 15 June">Woche 6 &middot; 15. Juni</p>
                     <h3
@@ -591,7 +221,7 @@
          ZITAT
          ================================ -->
 
-    <section class="br-quote-section">
+    <section class="detail-quote-section">
         <div class="container fade-up" style="text-align: center; max-width: 800px;">
             <div class="divider" style="margin: 0 auto var(--space-xl);"></div>
             <p class="quote"
@@ -614,19 +244,19 @@
                     data-en="What participants say">Was Teilnehmer:innen sagen</h2>
             </div>
 
-            <div class="br-testimonial-grid">
-                <div class="br-testimonial fade-up delay-1">
+            <div class="detail-testimonial-grid">
+                <div class="detail-testimonial fade-up delay-1">
                     <blockquote
                         data-de="&bdquo;Ich habe durch den Kurs ein besseres Verst&auml;ndnis bekommen, was Contact Improvisation ist, auch mein K&ouml;rper versteht mehr und ich kann meinen K&ouml;rper in der t&auml;nzerischen Begegnung bewusster einsetzen. Und es macht einfach Freude!&ldquo;"
                         data-en="&ldquo;Through the class I gained a better understanding of what Contact Improvisation is. My body understands more too, and I can use my body more consciously in the dance encounter. And it&rsquo;s simply joyful!&rdquo;">&bdquo;Ich habe durch den Kurs ein besseres Verst&auml;ndnis bekommen, was Contact Improvisation ist, auch mein K&ouml;rper versteht mehr und ich kann meinen K&ouml;rper in der t&auml;nzerischen Begegnung bewusster einsetzen. Und es macht einfach Freude!&ldquo;</blockquote>
-                    <p class="br-testimonial-author">&mdash; Anna</p>
+                    <p class="detail-testimonial-author">&mdash; Anna</p>
                 </div>
 
-                <div class="br-testimonial fade-up delay-2">
+                <div class="detail-testimonial fade-up delay-2">
                     <blockquote
                         data-de="&bdquo;Ich tanze schon l&auml;nger, schau aber wenn ich Zeit habe sehr gerne im Kurs vorbei, da die positive, kreative Energie sich super anf&uuml;hlt und ich jedesmal neue Anregungen bekomme, weiter zu probieren, Neues zu integrieren &mdash; macht einfach richtig lebendig und gl&uuml;cklich.&ldquo;"
                         data-en="&ldquo;I&rsquo;ve been dancing for a while, but I love dropping by the class whenever I have time. The positive, creative energy feels amazing and I always get new inspiration to keep exploring, to integrate new things &mdash; it simply makes you feel alive and happy.&rdquo;">&bdquo;Ich tanze schon l&auml;nger, schau aber wenn ich Zeit habe sehr gerne im Kurs vorbei, da die positive, kreative Energie sich super anf&uuml;hlt und ich jedesmal neue Anregungen bekomme, weiter zu probieren, Neues zu integrieren &mdash; macht einfach richtig lebendig und gl&uuml;cklich.&ldquo;</blockquote>
-                    <p class="br-testimonial-author">&mdash; Iris</p>
+                    <p class="detail-testimonial-author">&mdash; Iris</p>
                 </div>
             </div>
         </div>
@@ -647,14 +277,14 @@
                     data-en="Your Guides">Deine Begleiter:innen</h2>
             </div>
 
-            <div class="mk-team-grid">
-                <div class="mk-team-member fade-up delay-1">
-                    <div class="mk-team-portrait">
+            <div class="detail-team-grid">
+                <div class="detail-team-member fade-up delay-1">
+                    <div class="detail-team-portrait">
                         <img src="assets/images/verena.jpg" alt="Verena Eidenberger" loading="lazy">
                     </div>
-                    <div class="mk-team-info">
+                    <div class="detail-team-info">
                         <h3>Verena Eidenberger</h3>
-                        <p class="mk-team-role"
+                        <p class="detail-team-role"
                             data-de="T&auml;nzerin &middot; Musik- und Tanzp&auml;dagogin"
                             data-en="Dancer &middot; Music &amp; Dance Educator">T&auml;nzerin &middot; Musik- und Tanzp&auml;dagogin</p>
                         <p
@@ -663,13 +293,13 @@
                     </div>
                 </div>
 
-                <div class="mk-team-member fade-up delay-2">
-                    <div class="mk-team-portrait">
+                <div class="detail-team-member fade-up delay-2">
+                    <div class="detail-team-portrait">
                         <img src="assets/images/fabio.jpg" alt="Fabio Maria Gerhold" loading="lazy">
                     </div>
-                    <div class="mk-team-info">
+                    <div class="detail-team-info">
                         <h3>Fabio Maria Gerhold</h3>
-                        <p class="mk-team-role"
+                        <p class="detail-team-role"
                             data-de="T&auml;nzer &middot; Yogalehrer"
                             data-en="Dancer &middot; Yoga Teacher">T&auml;nzer &middot; Yogalehrer</p>
                         <p
@@ -696,48 +326,48 @@
                     data-en="Good to Know">Gut zu wissen</h2>
             </div>
 
-            <div class="br-faq-list">
-                <div class="br-faq-item fade-up">
-                    <p class="br-faq-q"
+            <div class="detail-faq-list">
+                <div class="detail-faq-item fade-up">
+                    <p class="detail-faq-q"
                         data-de="Brauche ich Vorkenntnisse?"
                         data-en="Do I need prior experience?">Brauche ich Vorkenntnisse?</p>
-                    <p class="br-faq-a"
+                    <p class="detail-faq-a"
                         data-de="Nein, gar keine. Dieser Block ist speziell f&uuml;r Menschen ohne jegliche Bewegungserfahrung konzipiert. Wir starten bei Null."
                         data-en="None at all. This block is specifically designed for people with no movement experience whatsoever. We start from zero.">Nein, gar keine. Dieser Block ist speziell f&uuml;r Menschen ohne jegliche Bewegungserfahrung konzipiert. Wir starten bei Null.</p>
                 </div>
 
-                <div class="br-faq-item fade-up">
-                    <p class="br-faq-q"
+                <div class="detail-faq-item fade-up">
+                    <p class="detail-faq-q"
                         data-de="Ist das wirklich kostenlos?"
                         data-en="Is it really free?">Ist das wirklich kostenlos?</p>
-                    <p class="br-faq-a"
+                    <p class="detail-faq-a"
                         data-de="Ja, komplett. Der 6-Wochen-Block wird durch den ASV&Ouml; und die Initiative Bewegungsrevolution gef&ouml;rdert. Du zahlst nichts."
                         data-en="Yes, completely. The 6-week block is funded by ASV&Ouml; and the Bewegungsrevolution initiative. You pay nothing.">Ja, komplett. Der 6-Wochen-Block wird durch den ASV&Ouml; und die Initiative Bewegungsrevolution gef&ouml;rdert. Du zahlst nichts.</p>
                 </div>
 
-                <div class="br-faq-item fade-up">
-                    <p class="br-faq-q"
+                <div class="detail-faq-item fade-up">
+                    <p class="detail-faq-q"
                         data-de="Was soll ich mitbringen?"
                         data-en="What should I bring?">Was soll ich mitbringen?</p>
-                    <p class="br-faq-a"
+                    <p class="detail-faq-a"
                         data-de="Bequeme Kleidung, in der du rollen kannst (ohne harte Rei&szlig;verschl&uuml;sse), rutschfeste Socken oder barfu&szlig;, eine Wasserflasche."
                         data-en="Comfortable clothing you can roll in (no hard zippers), non-slip socks or barefoot, a water bottle.">Bequeme Kleidung, in der du rollen kannst (ohne harte Rei&szlig;verschl&uuml;sse), rutschfeste Socken oder barfu&szlig;, eine Wasserflasche.</p>
                 </div>
 
-                <div class="br-faq-item fade-up">
-                    <p class="br-faq-q"
+                <div class="detail-faq-item fade-up">
+                    <p class="detail-faq-q"
                         data-de="Muss ich jede Woche kommen?"
                         data-en="Do I have to come every week?">Muss ich jede Woche kommen?</p>
-                    <p class="br-faq-a"
+                    <p class="detail-faq-a"
                         data-de="Ideal w&auml;re es &mdash; die sechs Einheiten bauen aufeinander auf. Aber wenn du mal nicht kannst, ist das kein Problem. Komm einfach, wann du kannst."
                         data-en="Ideally yes &mdash; the six sessions build on each other. But if you can&rsquo;t make it one week, that&rsquo;s no problem. Just come when you can.">Ideal w&auml;re es &mdash; die sechs Einheiten bauen aufeinander auf. Aber wenn du mal nicht kannst, ist das kein Problem. Komm einfach, wann du kannst.</p>
                 </div>
 
-                 <div class="br-faq-item fade-up">
-                    <p class="br-faq-q"
+                 <div class="detail-faq-item fade-up">
+                    <p class="detail-faq-q"
                         data-de="Wie kann ich euch erreichen?"
                         data-en="How can I contact you??">Muss ich jede Woche kommen?</p>
-                    <p class="br-faq-a"
+                    <p class="detail-faq-a"
                         data-de="Schreib uns unter hello ät wildcare.space"
                         data-en="You can email us using the address hello ät wildcare.space">ou can email us using the address hello ät wildcare.space</p>
                 </div>
