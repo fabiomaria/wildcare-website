@@ -28,6 +28,53 @@
            ================================ */
 
         /* Hero */
+
+        /* Section: Team */
+        .mk-team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+        }
+
+        .mk-team-member {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: flex-start;
+        }
+
+        .mk-team-portrait {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: var(--border-subtle);
+        }
+
+        .mk-team-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mk-team-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: 4px;
+        }
+
+        .mk-team-role {
+            font-size: 0.8rem;
+            color: var(--moss);
+            font-weight: 500;
+            margin-bottom: var(--space-sm);
+        }
+
+        .mk-team-info p {
+            font-size: 0.9375rem;
+            opacity: 0.7;
+            line-height: 1.65;
+        }
+
         .br-hero {
             padding-top: calc(72px + var(--space-2xl));
             padding-bottom: var(--space-2xl);
@@ -585,11 +632,11 @@
         </div>
     </section>
 
-    <!-- ================================
+   <!-- ================================
          TEAM
          ================================ -->
 
-    <section style="background: var(--sand-light);">
+    <section>
         <div class="container">
             <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
                 <p class="label"
@@ -600,34 +647,34 @@
                     data-en="Your Guides">Deine Begleiter:innen</h2>
             </div>
 
-            <div class="br-team-grid">
-                <div class="br-team-member fade-up delay-1">
-                    <div class="br-team-portrait">
+            <div class="mk-team-grid">
+                <div class="mk-team-member fade-up delay-1">
+                    <div class="mk-team-portrait">
                         <img src="assets/images/verena.jpg" alt="Verena Eidenberger" loading="lazy">
                     </div>
-                    <div class="br-team-info">
+                    <div class="mk-team-info">
                         <h3>Verena Eidenberger</h3>
-                        <p class="br-team-role"
+                        <p class="mk-team-role"
                             data-de="T&auml;nzerin &middot; Musik- und Tanzp&auml;dagogin"
                             data-en="Dancer &middot; Music &amp; Dance Educator">T&auml;nzerin &middot; Musik- und Tanzp&auml;dagogin</p>
                         <p
-                            data-de="Verena tanzt Contact Improvisation seit sie 18 ist und freut sich darauf ihr Wissen spielerisch zu teilen. Sie liebt es frei zu tanzen und mit K&ouml;rper, Stimme oder Instrumenten zu improvisieren."
-                            data-en="Verena has been dancing Contact Improvisation since she was 18 and loves sharing her knowledge playfully. She loves to dance freely and improvise with body, voice or instruments.">Verena tanzt Contact Improvisation seit sie 18 ist und freut sich darauf ihr Wissen spielerisch zu teilen. Sie liebt es frei zu tanzen und mit K&ouml;rper, Stimme oder Instrumenten zu improvisieren.</p>
+                            data-de="Verena tanzt Contact Improvisation seit sie 18 ist, ist Musik- und Tanzp&auml;dagogin und freut sich darauf ihr Wissen spielerisch zu teilen. Sie liebt es frei zu tanzen und mit K&ouml;rper, Stimme oder Instrumenten zu improvisieren."
+                            data-en="Verena has been dancing Contact Improvisation since she was 18. She is a music and dance educator and loves sharing her knowledge playfully. She loves to dance freely and improvise with body, voice or instruments.">Verena tanzt Contact Improvisation seit sie 18 ist, ist Musik- und Tanzp&auml;dagogin und freut sich darauf ihr Wissen spielerisch zu teilen. Sie liebt es frei zu tanzen und mit K&ouml;rper, Stimme oder Instrumenten zu improvisieren.</p>
                     </div>
                 </div>
 
-                <div class="br-team-member fade-up delay-2">
-                    <div class="br-team-portrait">
+                <div class="mk-team-member fade-up delay-2">
+                    <div class="mk-team-portrait">
                         <img src="assets/images/fabio.jpg" alt="Fabio Maria Gerhold" loading="lazy">
                     </div>
-                    <div class="br-team-info">
+                    <div class="mk-team-info">
                         <h3>Fabio Maria Gerhold</h3>
-                        <p class="br-team-role"
-                            data-de="T&auml;nzer &middot; Yogalehrer &middot; Gr&uuml;nder"
-                            data-en="Dancer &middot; Yoga Teacher &middot; Founder">T&auml;nzer &middot; Yogalehrer &middot; Gr&uuml;nder</p>
+                        <p class="mk-team-role"
+                            data-de="T&auml;nzer &middot; Yogalehrer"
+                            data-en="Dancer &middot; Yoga Teacher">T&auml;nzer &middot; Yogalehrer</p>
                         <p
-                            data-de="Fabio unterrichtet Yoga und Contact Improvisation in Graz. Seine Arbeit verbindet Achtsamkeit, Embodiment und kreative Forschung &mdash; inspiriert von Martin Bubers Frage, wie wir uns wirklich begegnen k&ouml;nnen."
-                            data-en="Fabio teaches Yoga and Contact Improvisation in Graz. His work combines mindfulness, embodiment and creative exploration &mdash; inspired by Martin Buber&rsquo;s question of how we can truly meet each other.">Fabio unterrichtet Yoga und Contact Improvisation in Graz. Seine Arbeit verbindet Achtsamkeit, Embodiment und kreative Forschung &mdash; inspiriert von Martin Bubers Frage, wie wir uns wirklich begegnen k&ouml;nnen.</p>
+                            data-de="Fabio unterrichtet Yoga und Contact Improvisation in Graz. Seine Arbeit verbindet Achtsamkeit, Embodiment und kreative Forschung. Er ist inspiriert von der Philosophie von Martin Buber und der Frage, wie wir uns wirklich begegnen k&ouml;nnen."
+                            data-en="Fabio teaches Yoga and Contact Improvisation in Graz. His work combines mindfulness, embodiment and creative exploration. He is inspired by Martin Buber&rsquo;s philosophy and the question of how we can truly meet each other.">Fabio unterrichtet Yoga und Contact Improvisation in Graz. Seine Arbeit verbindet Achtsamkeit, Embodiment und kreative Forschung. Er ist inspiriert von der Philosophie von Martin Buber und der Frage, wie wir uns wirklich begegnen k&ouml;nnen.</p>
                     </div>
                 </div>
             </div>
@@ -686,13 +733,13 @@
                         data-en="Ideally yes &mdash; the six sessions build on each other. But if you can&rsquo;t make it one week, that&rsquo;s no problem. Just come when you can.">Ideal w&auml;re es &mdash; die sechs Einheiten bauen aufeinander auf. Aber wenn du mal nicht kannst, ist das kein Problem. Komm einfach, wann du kannst.</p>
                 </div>
 
-                <div class="br-faq-item fade-up">
+                 <div class="br-faq-item fade-up">
                     <p class="br-faq-q"
-                        data-de="Was ist die Showing am Ende?"
-                        data-en="What is the showing at the end?">Was ist die Showing am Ende?</p>
+                        data-de="Wie kann ich euch erreichen?"
+                        data-en="How can I contact you??">Muss ich jede Woche kommen?</p>
                     <p class="br-faq-a"
-                        data-de="Eine informelle Lecture-Performance im Format &bdquo;We Just Met&ldquo;. Ein:e Erz&auml;hler:in macht w&auml;hrend des Tanzens sichtbar, was auf k&ouml;rperlicher und sozialer Ebene passiert. Keine B&uuml;hne, kein Druck &mdash; ein Einblick f&uuml;r Freund:innen und Neugierige."
-                        data-en="An informal lecture-performance in the &ldquo;We Just Met&rdquo; format. A narrator makes visible what is happening on a physical and social level during the dance. No stage, no pressure &mdash; a glimpse for friends and curious minds.">Eine informelle Lecture-Performance im Format &bdquo;We Just Met&ldquo;. Ein:e Erz&auml;hler:in macht w&auml;hrend des Tanzens sichtbar, was auf k&ouml;rperlicher und sozialer Ebene passiert. Keine B&uuml;hne, kein Druck &mdash; ein Einblick f&uuml;r Freund:innen und Neugierige.</p>
+                        data-de="Schreib uns unter hello ät wildcare.space"
+                        data-en="You can email us using the address hello ät wildcare.space">ou can email us using the address hello ät wildcare.space</p>
                 </div>
             </div>
         </div>
@@ -772,6 +819,8 @@
             </div>
         </div>
     </footer>
+
+
 
     <!-- ================================
          SCRIPTS
