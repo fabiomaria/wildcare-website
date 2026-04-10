@@ -293,3 +293,68 @@ journal:
     heading: "Come along."
     text: "No experience needed, just comfortable clothes and curiosity. Every Monday, 17:45, Orpheumgasse 11, Graz."
     button: "Get in Touch"
+
+home:
+  meta:
+    title: "Wild Care — Association for Social Practice | Graz"
+    description: "Wild Care is an association for social practice in Graz. Discover Contact Improvisation and movement in our open lab every Monday."
+  hero:
+    heading: "We practise<br>living together."
+    subtitle: "Art as a living, social practice. Every Monday in Graz — open to everyone, donation-based."
+    btn_primary: "Join us"
+    btn_secondary: "Learn more"
+  event_banner:
+    tag: "Next Session"
+    day: "Every Monday"
+    donation: "Donation-based"
+  values:
+    eyebrow: "What guides us"
+    heading: "Four Principles"
+    items:
+      - icon: '<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>'
+        heading: "Relationship > Perfection"
+        text: "It's not the finished work that counts, but what happens between us. How do we take up space? How do we make space?"
+      - icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>'
+        heading: "Micro-Utopias"
+        text: "We create temporary, safe spaces. Here we pause the rules of the world for a moment and practise a different way of being together."
+      - icon: '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>'
+        heading: "Inquiry-Based Learning"
+        text: "No fixed forms to imitate. We offer tools to explore your own expression and discover what moves you."
+      - icon: '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>'
+        heading: "Radical Care"
+        text: "Not just gentleness, but also clarity. Holding your own boundaries while giving others the space to be seen."
+  invitation:
+    eyebrow: "A Lab for Living Together"
+    heading: "What happens here?"
+    p1: "Contact Improvisation is the playful exploration of gravity, balance, and touch. There are no fixed steps, no pressure to perform, and no assigned roles."
+    p2: "Through mindful physical contact, you learn to experience your body more consciously, regulate your nervous system, and communicate boundaries — in dance and in everyday life."
+    btn: "To the Monday Class"
+  quote: "For us, it's not about the finished artwork on the wall or the perfect pose on stage — it's about what happens between us."
+  journal:
+    label: "Journal"
+    heading: "From the Lab"
+    all_posts: "All Posts"
+    cards:
+      - url: "/en/journal/bewegungsrevolution.html"
+        image: "/assets/images/bewegungsrevolution.png"
+        image_alt: "the Movement Revolution"
+        date: "May 2026"
+        heading: "Movement Revolution: We're Starting"
+        excerpt: "Our funded 6-week block for beginners kicks off. Here's what we have planned."
+      - url: "/en/journal/warum-ci.html"
+        image: "/assets/images/warum-ci.jpg"
+        image_alt: "Contact Improvisation"
+        date: "March 2026"
+        heading: "Why Contact Improvisation?"
+        excerpt: "On the playful exploration of gravity, balance, and trust."
+    coming_soon:
+      image: "/assets/images/was-ist-kunst.jpg"
+      image_alt: "Sensing Listening"
+      date: "March 2026"
+      heading: "What Is Art?"
+      excerpt: "Art is a language for the impractical things. Scratching, scraping, pressing at the edges of what can be said."
+  cta:
+    eyebrow: "Invitation"
+    heading: "Come by."
+    text: "No experience needed — just comfortable clothes and curiosity. Every Monday, 17:45, Orpheumgasse 11, Graz."
+    btn: "Get in Touch"

@@ -296,3 +296,68 @@ journal:
     heading: "Komm vorbei."
     text: "Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz."
     button: "Kontakt aufnehmen"
+
+home:
+  meta:
+    title: "Wild Care — Verein für soziale Praxis | Graz"
+    description: "Wild Care ist ein Verein für soziale Praxis in Graz. Entdecke Contact Improvisation und Bewegung in unserem offenen Labor jeden Montag."
+  hero:
+    heading: "Wir üben das<br>Zusammenleben."
+    subtitle: "Kunst als lebendige, soziale Praxis. Jeden Montag in Graz — offen für alle, auf Spendenbasis."
+    btn_primary: "Komm vorbei"
+    btn_secondary: "Mehr erfahren"
+  event_banner:
+    tag: "Nächster Termin"
+    day: "Jeden Montag"
+    donation: "Spendenbasis"
+  values:
+    eyebrow: "Was uns leitet"
+    heading: "Vier Haltungen"
+    items:
+      - icon: '<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>'
+        heading: "Beziehung > Perfektion"
+        text: "Nicht das fertige Werk zählt, sondern das, was zwischen uns passiert. Wie nehmen wir Raum? Wie geben wir Raum?"
+      - icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>'
+        heading: "Mikro-Utopien"
+        text: "Wir kreieren temporäre, sichere Räume. Hier setzen wir die Regeln der Welt kurz auf Pause und üben ein anderes Miteinander."
+      - icon: '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>'
+        heading: "Forschendes Lernen"
+        text: "Keine festen Formen zum Nachahmen. Wir geben Werkzeuge an die Hand, um den eigenen Ausdruck zu erforschen."
+      - icon: '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>'
+        heading: "Radikale Fürsorge"
+        text: "Nicht nur Sanftmut, sondern auch Klarheit. Eigene Grenzen wahren und anderen den Raum geben, gesehen zu werden."
+  invitation:
+    eyebrow: "Labor für Zusammenleben"
+    heading: "Was passiert bei uns?"
+    p1: "Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Berührung. Es gibt keine festen Schritte, keinen Leistungsdruck und keine Rollen."
+    p2: "Du lernst, durch achtsamen Körperkontakt deinen Körper bewusster zu erleben, dein Nervensystem zu regulieren und Grenzen zu kommunizieren — im Tanz wie im Alltag."
+    btn: "Zum Montagskurs"
+  quote: "Bei uns steht nicht das fertige Kunstwerk an der Wand oder die perfekte Pose auf der Bühne im Mittelpunkt, sondern das, was zwischen uns passiert."
+  journal:
+    label: "Journal"
+    heading: "Aus dem Labor"
+    all_posts: "Alle Beiträge"
+    cards:
+      - url: "/journal/bewegungsrevolution.html"
+        image: "/assets/images/bewegungsrevolution.png"
+        image_alt: "die Bewegungsrevolution"
+        date: "Mai 2026"
+        heading: "Bewegungsrevolution: Wir starten"
+        excerpt: "Unser geförderter 6-Wochen-Block für Einsteiger:innen beginnt. Was wir vorhaben."
+      - url: "/journal/warum-ci.html"
+        image: "/assets/images/warum-ci.jpg"
+        image_alt: "Contact Improvisation"
+        date: "März 2026"
+        heading: "Warum Contact Improvisation?"
+        excerpt: "Über das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen."
+    coming_soon:
+      image: "/assets/images/was-ist-kunst.jpg"
+      image_alt: "Sensing Listening"
+      date: "März 2026"
+      heading: "Was ist Kunst?"
+      excerpt: "Kunst ist eine Sprache für die unpraktischen Dinge. Am Rande des Sagbaren kratzen, schaben, drängen."
+  cta:
+    eyebrow: "Einladung"
+    heading: "Komm vorbei."
+    text: "Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz."
+    btn: "Kontakt aufnehmen"
