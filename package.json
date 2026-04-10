@@ -1,0 +1,17 @@
+{
+  "name": "wild-care-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Wild Care — Verein für soziale Praxis, Graz",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve --quiet",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.1"
+  }
+}

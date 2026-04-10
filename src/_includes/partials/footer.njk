@@ -1,0 +1,38 @@
+{%- macro localeUrl(slug, targetLocale) -%}
+{%- if targetLocale == 'de' -%}
+{%- if slug == 'index' -%}/{%- else -%}/{{ slug }}.html{%- endif -%}
+{%- else -%}
+{%- if slug == 'index' -%}/en/{%- else -%}/en/{{ slug }}.html{%- endif -%}
+{%- endif -%}
+{%- endmacro -%}
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4>Wild Care</h4>
+                <p>{{ i18n[locale].footer.tagline }}</p>
+            </div>
+            <div class="footer-links">
+                <h4>{{ i18n[locale].footer.pagesHeading }}</h4>
+                <a href="{{ localeUrl('index', locale) }}">{{ i18n[locale].nav.home }}</a>
+                <a href="{{ localeUrl('team', locale) }}">{{ i18n[locale].nav.about }}</a>
+                <a href="{{ localeUrl('programm', locale) }}">{{ i18n[locale].nav.programme }}</a>
+                <a href="{{ localeUrl('mitmachen', locale) }}">{{ i18n[locale].nav.join }}</a>
+                <a href="{{ localeUrl('journal', locale) }}">{{ i18n[locale].nav.journal }}</a>
+                <a href="{{ localeUrl('kontakt', locale) }}">{{ i18n[locale].footer.contactLabel }}</a>
+            </div>
+            <div class="footer-links">
+                <h4>{{ i18n[locale].footer.connectHeading }}</h4>
+                <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a>
+                <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+                <a href="/impressum.html">{{ i18n[locale].footer.legalImpressum }}</a>
+                <a href="/datenschutz.html">{{ i18n[locale].footer.legalDatenschutz }}</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>{{ i18n[locale].footer.copyright }}</span>
+            <span>{{ i18n[locale].footer.builtWith }}</span>
+        </div>
+    </div>
+</footer>

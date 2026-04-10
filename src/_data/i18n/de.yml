@@ -1,0 +1,17 @@
+nav:
+  home: "Startseite"
+  about: "Über uns"
+  programme: "Programm"
+  journal: "Journal"
+  join: "Mitmachen"
+  contact: "Komm vorbei"
+  toggleMenu: "Menü"
+footer:
+  pagesHeading: "Seiten"
+  connectHeading: "Verbinden"
+  tagline: "Verein für Kontaktimprovisation und soziale Praxis. Wir üben das Zusammenleben — jeden Montag in Graz."
+  contactLabel: "Kontakt"
+  legalImpressum: "Impressum"
+  legalDatenschutz: "Datenschutz"
+  builtWith: "Mit Fürsorge gebaut"
+  copyright: "© 2026 Wild Care — Graz"

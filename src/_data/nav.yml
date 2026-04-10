@@ -1,0 +1,17 @@
+# Nav items. Labels are resolved from i18n.<locale>.nav.<key>.
+# Each item has a `slug` used for permalink lookup.
+# `cta: true` marks the highlight button in the nav.
+items:
+  - key: home
+    slug: index
+  - key: about
+    slug: team
+  - key: programme
+    slug: programm
+  - key: journal
+    slug: journal
+  - key: join
+    slug: mitmachen
+  - key: contact
+    slug: kontakt
+    cta: true

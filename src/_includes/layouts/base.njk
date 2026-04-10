@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+<head>
+{% include "partials/head-meta.njk" %}
+{% if useTally %}<script async src="https://tally.so/widgets/embed.js"></script>{% endif %}
+</head>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+
+{% include "partials/nav.njk" %}
+
+{{ content | safe }}
+
+{% include "partials/footer.njk" %}
+
+<script src="/js/scroll-animations.js"></script>
+
+</body>
+</html>

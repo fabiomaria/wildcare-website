@@ -1,0 +1,17 @@
+nav:
+  home: "Home"
+  about: "About Us"
+  programme: "Programme"
+  journal: "Journal"
+  join: "Get Involved"
+  contact: "Come by"
+  toggleMenu: "Menu"
+footer:
+  pagesHeading: "Pages"
+  connectHeading: "Connect"
+  tagline: "Association for Contact Improvisation and social practice. We practise togetherness — every Monday in Graz."
+  contactLabel: "Contact"
+  legalImpressum: "Imprint"
+  legalDatenschutz: "Privacy"
+  builtWith: "Built with care"
+  copyright: "© 2026 Wild Care — Graz"
