@@ -2,8 +2,8 @@ backend:
   name: github
   repo: fabiomaria/wildcare-website
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth/provider/github
+  auth_type: pkce
+  app_id: Ov23liqzil30KQFjdfgT
   commit_messages:
     create: 'content: create {{collection}} "{{slug}}"'
     update: 'content: update {{collection}} "{{slug}}"'
