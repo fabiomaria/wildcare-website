@@ -157,3 +157,142 @@ kontakt:
     heading: "Orpheumgasse 11, Graz"
     caption: "Orpheumgasse 11, 8020 Graz — Nähe Orpheum Theater"
     iframe_title: "Wild Care Standort: Orpheumgasse 11, 8020 Graz"
+
+mitmachen:
+  meta:
+    title: "Mitmachen — Wild Care | Verein für soziale Praxis, Graz"
+    description: "Werde Teil von Wild Care. Erfahre, wie du dich einbringen kannst — ob im offenen Montagskurs oder als Vereinsmitglied."
+  hero:
+    eyebrow: "Mitmachen"
+    heading: "Mitgestalten,<br>nicht konsumieren."
+    intro: "Wild Care ist kein Dienstleister und kein Studio. Wir sind ein lebendiger Organismus — und du kannst Teil davon werden."
+  core_message:
+    text: "Wild Care lebt von Menschen, die mitgestalten. Es gibt keine starre Mitgliedschafts-Schablone — wie du dich einbringst, gestaltest du selbst."
+  circles:
+    label: "Zwei Kreise, ein Raum"
+    heading: "Wie Wild Care funktioniert"
+    outer_label: "Offener Kreis"
+    outer_title: "Der Montagskurs"
+    outer_desc: "Jede:r willkommen. Come as you are."
+    inner_label: "Innerer Kreis"
+    inner_title: "Vereinsmitglieder"
+    inner_desc: "Den Raum mittragen & vertiefen."
+    outer_card_heading: "Der Montagskurs"
+    outer_card_p1: "Jeden Montag öffnen wir den Raum für alle. Keine Anmeldung, keine Verpflichtung, keine Vorkenntnisse. Du kommst, wenn du kommst — und gehst, wenn du gehst."
+    outer_card_p2: "Auf Spendenbasis, weil Zugang wichtiger ist als Geld."
+    outer_tags:
+      - "Jede:r willkommen"
+      - "Spendenbasis"
+      - "Keine Anmeldung"
+    inner_card_heading: "Vereinsmitglieder"
+    inner_card_p1: "Menschen, die den Raum mittragen — mit Energie, Ideen, Präsenz oder finanziell. Als Mitglied hast du Zugang zu Vertiefungen und Mitsprache bei Entscheidungen."
+    inner_card_p2: "Du gestaltest mit, was Wild Care wird."
+    inner_tags:
+      - "Samstags-Labs"
+      - "Sharing Circles"
+      - "Gast-Workshops"
+      - "Mitsprache"
+  mitgliedschaft:
+    label: "Individuelle Mitgliedschaft"
+    heading: "So einzigartig wie du"
+    p1: "Deine Mitgliedschaft ist so individuell wie du. Du entscheidest, wie du dich einbringst — finanziell, zeitlich, kreativ."
+    p2: "Manche tragen mit einem monatlichen Beitrag bei, andere bringen Ideen, Räume oder Fähigkeiten ein. Beides ist gleich viel wert."
+    orientation_label: "Zur Orientierung, nicht als Schablone"
+    tiers:
+      - icon: "🌱"
+        name: "Saat"
+        amount: "€10 / Monat"
+        desc: '„Ich bin dabei."'
+      - icon: "🌳"
+        name: "Stamm"
+        amount: "€25 / Monat"
+        desc: '„Ich trage den Raum mit."'
+      - icon: "🪴"
+        name: "Wurzel"
+        amount: "€50+ / Monat"
+        desc: '„Ich investiere in die Vision."'
+    note: "Alle Stufen sind gleichwertig. Es geht nicht um den Betrag — es geht darum, dass du da bist."
+  cta:
+    label: "Der erste Schritt"
+    heading: "Schreib uns."
+    text: "Kein Formular, kein Funnel. Schreib uns einfach — erzähl, was dich bewegt, frag, was du wissen willst. Wir melden uns persönlich."
+    button: "hello@wildcare.space"
+    contact_link: "Oder schau auf unserer Kontaktseite vorbei →"
+
+programm:
+  meta:
+    title: "Programm — Wild Care | Graz"
+    description: "Contact Improvisation jeden Montag in Graz. Offener Workshop auf Spendenbasis — für alle, mit und ohne Vorkenntnisse."
+  hero:
+    eyebrow: "Programm"
+    heading: "Bewegung als Begegnung."
+    intro: "Unser Angebot verbindet Körperarbeit, soziale Praxis und künstlerische Forschung — offen für alle, die neugierig sind."
+  montagskurs:
+    section_label: "Offenes Labor für zeitgenössischen Tanz"
+    section_heading: "Montagskurs"
+    card_title: "Auf einen Blick"
+    row_was_label: "Was"
+    row_was_value: "Contact Improvisation — künstlerische Forschung & offene Praxis"
+    row_wann_label: "Wann"
+    row_wann_value: "Jeden Montag, 17:45 – 19:15"
+    row_wo_label: "Wo"
+    row_kosten_label: "Kosten"
+    row_kosten_value: "Spendenbasis"
+    row_fuer_label: "Für"
+    row_fuer_value: "Alle — mit und ohne Vorkenntnisse"
+    btn_anmelden: "Jetzt anmelden"
+    btn_mehr: "Mehr erfahren"
+    desc_heading: "Was dich erwartet"
+    desc_p1: "Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Berührung. Es gibt keine festen Schritte, keine Choreografie und keinen Leistungsdruck — nur dich, den Raum und die Menschen darin."
+    desc_p2: "Du lernst, Gewicht zu teilen und abzugeben, durch Berührung zuzuhören und deinen Körper bewusster wahrzunehmen. Dabei regulierst du ganz nebenbei dein Nervensystem, übst Grenzen zu kommunizieren und entwickelst ein feines Gespür für dich und dein Gegenüber."
+    desc_p3: "Jede Session beginnt mit einer geführten Aufwärm-Phase und mündet in eine offene Jam — eine freie Tanzzeit, in der alles passieren darf: Stille, Bewegung, Begegnung."
+    desc_quote: '„Du brauchst keine Tanzerfahrung. Nur bequeme Kleidung, Neugier und die Bereitschaft, dich auf etwas Neues einzulassen."'
+  projekte:
+    section_label: "Aktuelle Projekte"
+    section_heading: "Was gerade läuft"
+    br_tag1: "Gefördert"
+    br_tag2: "Einsteiger:innen"
+    br_heading: "Bewegungsrevolution"
+    br_subtitle: "Kontaktimprovisation für alle"
+    br_p1: "Ein kostenloser 6-Wochen-Block für Menschen ohne jegliche Bewegungserfahrung. Gefördert durch die Initiative Bewegungsrevolution und den ASVÖ — damit der Zugang zu künstlerischer Körperpraxis keine Frage des Geldes oder der Vorerfahrung ist."
+    br_p2: "In sechs aufeinander aufbauenden Einheiten erforschst du die Grundlagen der Contact Improvisation: Körperwahrnehmung, Gewicht teilen, Fallen und Auffangen, Berührung als Kommunikation. Der Block mündet in eine öffentliche Showing — eine Lecture-Performance im Format We Just Met, die den Forschungsprozess für ein Publikum sichtbar macht."
+    br_detail_date: "11. Mai – 15. Juni 2026"
+    br_detail_cost: "Kostenlos"
+    br_detail_weeks: "6 Wochen, 6 Einheiten"
+    br_btn_anmelden: "Jetzt anmelden"
+    br_btn_mehr: "Mehr erfahren"
+  ausblick:
+    section_label: "Ausblick"
+    section_heading: "Was noch kommt"
+    section_intro: "Projekte, die wir gerade entwickeln oder planen. Hier entsteht etwas."
+    wjm_label: "Performance / Lecture"
+    wjm_heading: "We Just Met / Erste Begegnung"
+    wjm_subtitle: "Die soziale Physik des Tanzes sichtbar machen"
+    wjm_p1: "Ein Format, in dem ein:e Erzähler:in während einer Contact-Improvisation-Session die Tänzer:innen einfriert — und dem Publikum erklärt, was gerade auf körperlicher und sozialer Ebene passiert. Schwerkraft, Vertrauen, Grenzen: Die unsichtbare Physik der Begegnung wird lesbar."
+    wjm_p2: "Unser Versuch, Contact Improvisation für ein Publikum zugänglich zu machen, das noch nie davon gehört hat."
+    bip_label: "Outdoor / Sommer"
+    bip_heading: "Bewegt im Park"
+    bip_subtitle: "Kostenlose Contact Improvisation in Grazer Parks"
+    bip_p1: "Tanz unter freiem Himmel — niederschwellig, kostenlos und für alle sichtbar. Contact Improvisation raus aus dem Studio und rein in den öffentlichen Raum. Weil Bewegung kein Luxusgut sein sollte."
+    bip_btn: "bewegt-im-park.at"
+  cta:
+    label: "Einladung"
+    heading: "Komm vorbei."
+    text: "Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz."
+    button: "Kontakt aufnehmen"
+
+journal:
+  meta:
+    title: "Journal — Wild Care | Aus dem Labor"
+    description: "Einblicke, Gedanken und Neuigkeiten aus dem Wild Care Labor. Über Contact Improvisation, Bewegung und soziale Praxis in Graz."
+  hero:
+    eyebrow: "Journal"
+    heading: "Aus dem Labor"
+    intro: "Gedanken, Einblicke und Neuigkeiten aus unserer Praxis. Über Bewegung, Begegnung und das, was dazwischen passiert."
+  readMore: "Weiterlesen →"
+  backToJournal: "Zurück zum Journal"
+  cta:
+    label: "Einladung"
+    heading: "Komm vorbei."
+    text: "Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz."
+    button: "Kontakt aufnehmen"

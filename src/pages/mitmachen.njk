@@ -1,0 +1,135 @@
+---
+pageSlug: "mitmachen"
+eleventyComputed:
+  title: "{{ i18n[locale].mitmachen.meta.title }}"
+  description: "{{ i18n[locale].mitmachen.meta.description }}"
+---
+
+<!-- ================================
+     HERO
+     ================================ -->
+
+<header class="page-hero">
+    <div class="container">
+        <p class="label fade-up">{{ i18n[locale].mitmachen.hero.eyebrow }}</p>
+        <h1 class="fade-up delay-1">{{ i18n[locale].mitmachen.hero.heading | safe }}</h1>
+        <p class="fade-up delay-2" style="max-width: 600px;">{{ i18n[locale].mitmachen.hero.intro }}</p>
+    </div>
+</header>
+
+<!-- ================================
+     CORE MESSAGE
+     ================================ -->
+
+<section class="core-message">
+    <div class="container">
+        <div class="core-message-inner fade-up">
+            <div class="divider" style="margin: 0 auto var(--space-xl);"></div>
+            <p>{{ i18n[locale].mitmachen.core_message.text }}</p>
+            <div class="divider" style="margin: var(--space-xl) auto 0;"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================
+     TWO CIRCLES
+     ================================ -->
+
+<section class="circles-section">
+    <div class="container">
+        <div class="section-header fade-up" style="text-align: center; margin-bottom: 48px;">
+            <p class="label">{{ i18n[locale].mitmachen.circles.label }}</p>
+            <h2>{{ i18n[locale].mitmachen.circles.heading }}</h2>
+        </div>
+
+        <!-- Visual: Overlapping circles -->
+        <div class="circles-visual fade-up delay-1">
+            <div class="circle-ring circle-outer">
+                <div>
+                    <p class="circle-label">{{ i18n[locale].mitmachen.circles.outer_label }}</p>
+                    <p class="circle-title">{{ i18n[locale].mitmachen.circles.outer_title }}</p>
+                    <p class="circle-desc">{{ i18n[locale].mitmachen.circles.outer_desc }}</p>
+                </div>
+            </div>
+            <div class="circle-ring circle-inner">
+                <div>
+                    <p class="circle-label">{{ i18n[locale].mitmachen.circles.inner_label }}</p>
+                    <p class="circle-title">{{ i18n[locale].mitmachen.circles.inner_title }}</p>
+                    <p class="circle-desc">{{ i18n[locale].mitmachen.circles.inner_desc }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detail cards -->
+        <div class="circles-detail">
+            <div class="circle-card circle-card-outer fade-up">
+                <p class="label">{{ i18n[locale].mitmachen.circles.outer_label }}</p>
+                <h3>{{ i18n[locale].mitmachen.circles.outer_card_heading }}</h3>
+                <p>{{ i18n[locale].mitmachen.circles.outer_card_p1 }}</p>
+                <p>{{ i18n[locale].mitmachen.circles.outer_card_p2 }}</p>
+                <div class="tag-row">
+                    {% for tag in i18n[locale].mitmachen.circles.outer_tags %}
+                    <span class="circle-tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="circle-card circle-card-inner fade-up delay-1">
+                <p class="label">{{ i18n[locale].mitmachen.circles.inner_label }}</p>
+                <h3>{{ i18n[locale].mitmachen.circles.inner_card_heading }}</h3>
+                <p>{{ i18n[locale].mitmachen.circles.inner_card_p1 }}</p>
+                <p>{{ i18n[locale].mitmachen.circles.inner_card_p2 }}</p>
+                <div class="tag-row">
+                    {% for tag in i18n[locale].mitmachen.circles.inner_tags %}
+                    <span class="circle-tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================
+     INDIVIDUELLE MITGLIEDSCHAFT
+     ================================ -->
+
+<section class="mitgliedschaft">
+    <div class="container">
+        <div class="mitgliedschaft-intro fade-up">
+            <p class="label" style="margin-bottom: var(--space-md);">{{ i18n[locale].mitmachen.mitgliedschaft.label }}</p>
+            <h2>{{ i18n[locale].mitmachen.mitgliedschaft.heading }}</h2>
+            <p>{{ i18n[locale].mitmachen.mitgliedschaft.p1 }}</p>
+            <p>{{ i18n[locale].mitmachen.mitgliedschaft.p2 }}</p>
+        </div>
+
+        <p class="label fade-up" style="text-align: center; margin-bottom: var(--space-xl); opacity: 0.5;">{{ i18n[locale].mitmachen.mitgliedschaft.orientation_label }}</p>
+
+        <div class="beitrag-grid">
+            {% for tier in i18n[locale].mitmachen.mitgliedschaft.tiers %}
+            <div class="beitrag-card fade-up {% if loop.index == 1 %}delay-1{% elif loop.index == 2 %}delay-2{% else %}delay-3{% endif %}">
+                <div class="beitrag-icon">{{ tier.icon }}</div>
+                <p class="beitrag-name">{{ tier.name }}</p>
+                <p class="beitrag-amount">{{ tier.amount }}</p>
+                <p class="beitrag-desc">{{ tier.desc }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <p class="beitrag-note fade-up">{{ i18n[locale].mitmachen.mitgliedschaft.note }}</p>
+    </div>
+</section>
+
+<!-- ================================
+     CTA
+     ================================ -->
+
+<section class="cta-section">
+    <div class="container fade-up">
+        <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;">{{ i18n[locale].mitmachen.cta.label }}</p>
+        <h2>{{ i18n[locale].mitmachen.cta.heading }}</h2>
+        <p>{{ i18n[locale].mitmachen.cta.text }}</p>
+        <a href="mailto:hello@wildcare.space" class="btn btn-primary">{{ i18n[locale].mitmachen.cta.button }}</a>
+        <br>
+        <a href="/{{ 'en/' if locale == 'en' }}kontakt.html" class="cta-email">{{ i18n[locale].mitmachen.cta.contact_link }}</a>
+    </div>
+</section>
