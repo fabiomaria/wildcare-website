@@ -11,6 +11,9 @@ node_modules/
 .vscode/
 .idea/
 
+# Local docs
+docs/
+
 # Logs
 *.log
 npm-debug.log*
