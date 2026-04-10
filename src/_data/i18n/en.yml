@@ -15,3 +15,65 @@ footer:
   legalDatenschutz: "Privacy"
   builtWith: "Built with care"
   copyright: "© 2026 Wild Care — Graz"
+
+impressum:
+  meta:
+    title: "Imprint — Wild Care | Association for Social Practice, Graz"
+    description: "Imprint of Wild Care — Association for Contact Improvisation and social practice in Graz. Legal information in accordance with Austrian law."
+  eyebrow: "Legal"
+  heading: "Imprint"
+  intro: "Disclosure obligation pursuant to §5 E-Commerce Act, §14 Corporate Code, §63 Trade Regulation Act and disclosure obligation pursuant to §25 Media Act."
+  org_heading: "Wild Care — Wilde Fürsorge"
+  org_type: "Association for Contact Improvisation and Social Practice"
+  address: |
+    Fabio Maria Gerhold<br>
+    Froschaugasse 7<br>
+    8010 Graz<br>
+    Austria
+  contact_heading: "Contact"
+  contact: |
+    E-Mail: <a href="mailto:hello@wildcare.space">hello@wildcare.space</a><br>
+    Website: <a href="https://wildcare.space">wildcare.space</a>
+  eu_heading: "EU Dispute Resolution"
+  eu_text: |
+    Consumers have the option of submitting complaints to the EU's online dispute resolution platform: <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=DE" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>. You may also direct any complaints to the contact details provided above.
+  liability_content_heading: "Liability for Content on this Website"
+  liability_content_text: "We continuously develop the content of this website and strive to provide correct and up-to-date information. Unfortunately, we cannot accept liability for the correctness of all content on this website, especially for content provided by third parties."
+  liability_links_heading: "Liability for Links on this Website"
+  liability_links_text: "Our website contains links to other websites for whose content we are not responsible. Liability for linked websites does not exist for us pursuant to § 17 ECG."
+
+datenschutz:
+  meta:
+    title: "Privacy Policy — Wild Care | Association for Social Practice, Graz"
+    description: "Privacy policy of Wild Care — Association for Contact Improvisation and social practice in Graz."
+  eyebrow: "Legal"
+  heading: "Privacy Policy"
+  s1_heading: "1. General Information"
+  s1_p1: "The protection of your personal data is of particular concern to us. We process your data exclusively on the basis of the statutory provisions (GDPR, TKG 2003). In this privacy policy we inform you about the most important aspects of data processing on our website."
+  s1_p2: |
+    Controller: Wild Care — Wilde Fürsorge, Fabio Maria Gerhold, Froschaugasse 7, 8010 Graz<br>E-Mail: <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
+  s2_heading: "2. Your Rights"
+  s2_p1: "You have the right to access, rectification, erasure, restriction, data portability, withdrawal and objection regarding your stored data. If you believe that the processing of your data violates data protection law, you may lodge a complaint with the supervisory authority. In Austria, this is the Austrian Data Protection Authority."
+  s3_heading: "3. Data Collection on our Website"
+  s3_sub1_heading: "Server Log Files"
+  s3_sub1_p1: "The hosting provider (GitHub Pages) automatically collects and stores information in so-called server log files, which your browser transmits automatically:"
+  s3_sub1_list:
+    - "Browser type and version"
+    - "Operating system used"
+    - "Referrer URL"
+    - "Hostname of the accessing computer"
+    - "Time of the server request"
+    - "IP address"
+  s3_sub1_p2: "This data is not merged with other data sources. The collection of this data is based on Art. 6 para. 1 lit. f GDPR."
+  s3_sub2_heading: "Contact"
+  s3_sub2_p1: |
+    If you contact us via the form on the website or by e-mail, the data you provide (name, e-mail, message content) will be stored by us for the purpose of processing the request. We use the service Formspree (Formspree, Inc., USA) for the contact form. Your data will be transmitted to Formspree and stored there. Further information: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>
+  s3_sub2_p2: "Processing is based on Art. 6 para. 1 lit. b GDPR (pre-contractual measures) or Art. 6 para. 1 lit. f GDPR (legitimate interest)."
+  s4_heading: "4. Embedded Services"
+  s4_sub1_heading: "Google Maps"
+  s4_sub1_p1: |
+    On our contact page we use Google Maps (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to display our location. When the map loads, data is transmitted to Google, including your IP address. This is based on Art. 6 para. 1 lit. f GDPR (legitimate interest in a user-friendly presentation of our location). Further information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>
+  s4_sub2_heading: "Google Fonts"
+  s4_sub2_p1: "This website uses Google Fonts for consistent font rendering. When a page is loaded, your browser downloads the required fonts and establishes a connection to Google's servers. Google thereby receives notice that our website was accessed via your IP address. This is based on Art. 6 para. 1 lit. f GDPR."
+  s5_heading: "5. SSL/TLS Encryption"
+  s5_p1: "This site uses SSL/TLS encryption for security reasons. You can recognise an encrypted connection by the fact that the address bar of your browser changes from \"http://\" to \"https://\" and by the padlock symbol in your browser bar."

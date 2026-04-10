@@ -1,0 +1,53 @@
+---
+pageSlug: "datenschutz"
+eleventyComputed:
+  title: "{{ i18n[locale].datenschutz.meta.title }}"
+  description: "{{ i18n[locale].datenschutz.meta.description }}"
+---
+<header class="page-hero">
+    <div class="container">
+        <p class="label fade-up">{{ i18n[locale].datenschutz.eyebrow }}</p>
+        <h1 class="fade-up delay-1">{{ i18n[locale].datenschutz.heading }}</h1>
+    </div>
+</header>
+
+<section>
+    <div class="container">
+        <div class="legal-prose fade-up delay-2">
+
+            <h2>{{ i18n[locale].datenschutz.s1_heading }}</h2>
+            <p>{{ i18n[locale].datenschutz.s1_p1 }}</p>
+            <p>{{ i18n[locale].datenschutz.s1_p2 | safe }}</p>
+
+            <h2>{{ i18n[locale].datenschutz.s2_heading }}</h2>
+            <p>{{ i18n[locale].datenschutz.s2_p1 }}</p>
+
+            <h2>{{ i18n[locale].datenschutz.s3_heading }}</h2>
+
+            <h3>{{ i18n[locale].datenschutz.s3_sub1_heading }}</h3>
+            <p>{{ i18n[locale].datenschutz.s3_sub1_p1 }}</p>
+            <ul>
+                {% for item in i18n[locale].datenschutz.s3_sub1_list %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <p>{{ i18n[locale].datenschutz.s3_sub1_p2 }}</p>
+
+            <h3>{{ i18n[locale].datenschutz.s3_sub2_heading }}</h3>
+            <p>{{ i18n[locale].datenschutz.s3_sub2_p1 | safe }}</p>
+            <p>{{ i18n[locale].datenschutz.s3_sub2_p2 }}</p>
+
+            <h2>{{ i18n[locale].datenschutz.s4_heading }}</h2>
+
+            <h3>{{ i18n[locale].datenschutz.s4_sub1_heading }}</h3>
+            <p>{{ i18n[locale].datenschutz.s4_sub1_p1 | safe }}</p>
+
+            <h3>{{ i18n[locale].datenschutz.s4_sub2_heading }}</h3>
+            <p>{{ i18n[locale].datenschutz.s4_sub2_p1 }}</p>
+
+            <h2>{{ i18n[locale].datenschutz.s5_heading }}</h2>
+            <p>{{ i18n[locale].datenschutz.s5_p1 }}</p>
+
+        </div>
+    </div>
+</section>
