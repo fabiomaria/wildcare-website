@@ -56,7 +56,7 @@ datenschutz:
   s2_p1: "You have the right to access, rectification, erasure, restriction, data portability, withdrawal and objection regarding your stored data. If you believe that the processing of your data violates data protection law, you may lodge a complaint with the supervisory authority. In Austria, this is the Austrian Data Protection Authority."
   s3_heading: "3. Data Collection on our Website"
   s3_sub1_heading: "Server Log Files"
-  s3_sub1_p1: "The hosting provider (GitHub Pages) automatically collects and stores information in so-called server log files, which your browser transmits automatically:"
+  s3_sub1_p1: "The hosting provider (Netlify) automatically collects and stores information in so-called server log files, which your browser transmits automatically:"
   s3_sub1_list:
     - "Browser type and version"
     - "Operating system used"

@@ -56,7 +56,7 @@ datenschutz:
   s2_p1: "Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch bezüglich deiner gespeicherten Daten. Wenn du der Meinung bist, dass die Verarbeitung deiner Daten gegen das Datenschutzrecht verstößt, kannst du dich bei der Aufsichtsbehörde beschweren. In Österreich ist das die Österreichische Datenschutzbehörde."
   s3_heading: "3. Datenerhebung auf unserer Website"
   s3_sub1_heading: "Server-Logfiles"
-  s3_sub1_p1: "Der Hosting-Anbieter (GitHub Pages) erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die dein Browser automatisch übermittelt:"
+  s3_sub1_p1: "Der Hosting-Anbieter (Netlify) erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die dein Browser automatisch übermittelt:"
   s3_sub1_list:
     - "Browsertyp und -version"
     - "Verwendetes Betriebssystem"

@@ -11,7 +11,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets");
     eleventyConfig.addPassthroughCopy("src/js");
     eleventyConfig.addPassthroughCopy("src/admin");
-    eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
+
     eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
     eleventyConfig.addPassthroughCopy("src/brand.html");
 
