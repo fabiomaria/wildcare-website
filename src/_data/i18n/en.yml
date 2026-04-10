@@ -358,3 +358,169 @@ home:
     heading: "Come by."
     text: "No experience needed — just comfortable clothes and curiosity. Every Monday, 17:45, Orpheumgasse 11, Graz."
     btn: "Get in Touch"
+
+montagskurs:
+  meta:
+    title: "Monday Class — Contact Improvisation in Graz | Wild Care"
+    description: "Open Contact Improvisation workshop in Graz. Every Monday 17:45, Orpheumgasse 11. Donation-based, no prior experience needed."
+  breadcrumb: "Monday Class"
+  hero:
+    eyebrow: "Open Workshop"
+    heading: "Contact Improvisation<br>in <span>Graz</span>."
+    subtitle: "Playfully explore your own body — with gravity, balance and touch. No prior experience needed. Really none."
+    detail_time: "Every Monday, 17:45–19:15"
+    detail_location: "Orpheumgasse 11, Graz"
+    detail_price: "Donation-based"
+    cta_btn: "Sign up now"
+    note: "No registration required. Comfortable clothing is enough."
+  about:
+    label: "The Practice"
+    heading: "What is Contact Improvisation?"
+    p1: "Contact Improvisation is a contemporary dance and movement form that originated in the USA in the 1970s. At its core is the play with gravity, touch and balance — a shared exploration through the body."
+    p2: "It touches not only the body but also the mind: in the encounter, a field of presence, trust and creative attention emerges. Contact Improvisation invites you to let go of habits, to embrace the unknown — and to experience movement as a form of dialogue, beyond words."
+  learn:
+    label: "What you explore"
+    heading: "In the Monday Class"
+    cards:
+      - title: "Body Awareness"
+        body: "Feel your body more consciously — weight, breath, grounding. The foundation for everything that follows."
+      - title: "Sharing Weight"
+        body: "Giving and receiving weight. Trust in the body of your partner — and in your own."
+      - title: "Falling & Catching"
+        body: "Getting to the ground safely, being caught. Losing the fear of falling — in dance and in life."
+      - title: "Touch as Language"
+        body: "Communicating through the body — listening, responding, sensing and setting boundaries."
+      - title: "Nervous System Regulation"
+        body: "Calm your nervous system through mindful movement and touch — naturally, along the way."
+      - title: "Free Dance"
+        body: "Each session flows into an open jam — a free dance time where anything can happen."
+    donation_note: "The class is donation-based. You give what you can. As a guideline, 10–20 € per session helps us, whatever feels right for you."
+  testimonials:
+    label: "Feedback"
+    heading: "What participants say"
+    items:
+      - quote: "\"Through the class I gained a better understanding of what Contact Improvisation is. My body understands more too, and I can use my body more consciously in the dance encounter. And it's simply joyful!\""
+        author: "— Anna"
+      - quote: "\"I've been dancing for a while, but I love dropping by the class whenever I have time. The positive, creative energy feels amazing and I always get new inspiration to keep exploring, to integrate new things — it simply makes you feel alive and happy.\""
+        author: "— Iris"
+  team:
+    label: "Who teaches"
+    heading: "Your Guides"
+    members:
+      - name: "Verena Eidenberger"
+        photo: "/assets/images/verena.jpg"
+        role: "Dancer · Music & Dance Educator"
+        bio: "Verena has been dancing Contact Improvisation since she was 18. She is a music and dance educator and loves sharing her knowledge playfully. She loves to dance freely and improvise with body, voice or instruments."
+      - name: "Fabio Maria Gerhold"
+        photo: "/assets/images/fabio.jpg"
+        role: "Dancer · Yoga Teacher"
+        bio: "Fabio teaches Yoga and Contact Improvisation in Graz. His work combines mindfulness, embodiment and creative exploration. He is inspired by Martin Buber's philosophy and the question of how we can truly meet each other."
+  faq:
+    label: "FAQ"
+    heading: "Good to Know"
+    items:
+      - q: "Do you always dance in pairs?"
+        a: "No. We dance in changing constellations — alone, in pairs, in groups. There are no fixed partners."
+      - q: "What should I bring?"
+        a: "Comfortable clothing you can roll in (no hard zippers), non-slip socks or barefoot, a water bottle."
+      - q: "Do I need dance experience?"
+        a: "None at all. We always start from zero and build up slowly. Everyone is welcome — just as you are."
+      - q: "Do I need to register?"
+        a: "No. You can just show up. If you like, you can register via the form — it helps us plan, but it's not required."
+      - q: "How much does it cost?"
+        a: "The class is donation-based. You give what you can. As a guideline, 10–20 € per session helps us."
+  crosslink:
+    label: "Current Project"
+    heading: "Bewegungsrevolution"
+    text: "6 weeks of free Contact Improvisation for beginners. Funded by ASVÖ. 11 May – 15 June 2026."
+    btn: "Learn more"
+  cta:
+    label: "Invitation"
+    heading: "Come dance with us."
+    text: "Every Monday, 17:45, Orpheumgasse 11, Graz. Donation-based, join anytime."
+    btn: "Sign up now"
+
+bewegungsrevolution:
+  meta:
+    title: "Bewegungsrevolution — Free Contact Improvisation in Graz | Wild Care"
+    description: "6 weeks of free Contact Improvisation in Graz. Every Monday 17:45, Orpheumgasse 11. No experience needed. 11 May – 15 June 2026."
+  breadcrumb: "Bewegungsrevolution"
+  hero:
+    badge: "Funded · Free · For everyone"
+    heading: "Contact Improvisation.<br><span>Free. 6 Weeks.</span>"
+    subtitle: "Playfully explore your own body — with gravity, balance and touch. No prior experience needed. Really none."
+    detail_dates: "11 May – 15 June 2026"
+    detail_time: "Mondays, 17:45–19:15"
+    detail_location: "Orpheumgasse 11, Graz"
+    detail_price: "100% free"
+    cta_btn: "Sign up now"
+    note: "Comfortable clothing is enough. No prior experience."
+  schedule:
+    label: "The Schedule"
+    heading: "6 Weeks, 6 Topics"
+    weeks:
+      - number: "Week 1 · 11 May"
+        title: "Small Dance"
+        body: "Feeling gravity and noticing that we are constantly in motion on our own — in a dance with gravity. The floor is your first dance partner."
+        highlighted: false
+      - number: "Week 2 · 18 May"
+        title: "Not falling, but flowing"
+        body: "Yielding: the art of giving in. Learning to soften the body — alone and together. The body that can soften can do anything."
+        highlighted: false
+      - number: "Week 3 · 25 May"
+        title: "Consent and Listening"
+        body: "How the body says yes and no before the mouth does. Practising sensing proximity, communicating boundaries and listening through touch. Consent is the conversation you're having the whole time."
+        highlighted: false
+      - number: "Week 4 · 1 June"
+        title: "Letting Weight Flow"
+        body: "Pouring weight is not dumping weight. From the wall to partner leaning to falling together — finding the point where no one can tell who is carrying whom."
+        highlighted: false
+      - number: "Week 5 · 8 June"
+        title: "The Rolling Point of Contact"
+        body: "The core of CI: the point where two bodies meet, and we let it travel. Not directing, but following. The rolling point is the conversation itself."
+        highlighted: false
+      - number: "Week 6 · 15 June"
+        title: "The Jam"
+        body: "No teacher calls out exercises. You choose: dance alone, dance with someone, watch, rest. The jam is where CI lives — just a space, a floor and other people ready to listen with their bodies."
+        highlighted: true
+  quote:
+    text: "Movement is not a luxury. It belongs to everyone. When we learn to consciously inhabit our bodies, it changes not only the dance — but also how we meet each other."
+  testimonials:
+    label: "Feedback"
+    heading: "What participants say"
+    items:
+      - quote: "\"Through the class I gained a better understanding of what Contact Improvisation is. My body understands more too, and I can use my body more consciously in the dance encounter. And it's simply joyful!\""
+        author: "— Anna"
+      - quote: "\"I've been dancing for a while, but I love dropping by the class whenever I have time. The positive, creative energy feels amazing and I always get new inspiration to keep exploring, to integrate new things — it simply makes you feel alive and happy.\""
+        author: "— Iris"
+  team:
+    label: "Who teaches"
+    heading: "Your Guides"
+    members:
+      - name: "Verena Eidenberger"
+        photo: "/assets/images/verena.jpg"
+        role: "Dancer · Music & Dance Educator"
+        bio: "Verena has been dancing Contact Improvisation since she was 18. She is a music and dance educator and loves sharing her knowledge playfully. She loves to dance freely and improvise with body, voice or instruments."
+      - name: "Fabio Maria Gerhold"
+        photo: "/assets/images/fabio.jpg"
+        role: "Dancer · Yoga Teacher"
+        bio: "Fabio teaches Yoga and Contact Improvisation in Graz. His work combines mindfulness, embodiment and creative exploration. He is inspired by Martin Buber's philosophy and the question of how we can truly meet each other."
+  faq:
+    label: "FAQ"
+    heading: "Good to Know"
+    items:
+      - q: "Do I need prior experience?"
+        a: "None at all. This block is specifically designed for people with no movement experience whatsoever. We start from zero."
+      - q: "Is it really free?"
+        a: "Yes, completely. The 6-week block is funded by ASVÖ and the Bewegungsrevolution initiative. You pay nothing."
+      - q: "What should I bring?"
+        a: "Comfortable clothing you can roll in (no hard zippers), non-slip socks or barefoot, a water bottle."
+      - q: "Do I have to come every week?"
+        a: "Ideally yes — the six sessions build on each other. But if you can't make it one week, that's no problem. Just come when you can."
+      - q: "How can I contact you?"
+        a: "You can email us at hello@wildcare.space"
+  cta:
+    label: "6 weeks, free, for everyone"
+    heading: "Join us."
+    text: "11 May – 15 June 2026. Every Monday, 17:45, Orpheumgasse 11, Graz."
+    btn: "Sign up now"
