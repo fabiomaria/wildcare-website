@@ -1,0 +1,111 @@
+---
+pageSlug: "team"
+eleventyComputed:
+  title: "{{ i18n[locale].team.meta.title }}"
+  description: "{{ i18n[locale].team.meta.description }}"
+---
+
+<!-- ================================
+     HERO
+     ================================ -->
+
+<header class="page-hero">
+    <div class="container">
+        <p class="label fade-up">{{ i18n[locale].team.hero.eyebrow }}</p>
+        <h1 class="fade-up delay-1">{{ i18n[locale].team.hero.heading | safe }}</h1>
+        <p class="fade-up delay-2" style="max-width: 580px;">{{ i18n[locale].team.hero.intro }}</p>
+    </div>
+</header>
+
+<!-- ================================
+     MANIFEST EXCERPT
+     ================================ -->
+
+<section class="manifest-excerpt">
+    <div class="container">
+        <div class="component-preview manifest-box fade-up">
+            <p class="label" style="margin-bottom: 24px;">{{ i18n[locale].team.manifest.label }}</p>
+            <p class="quote">{{ i18n[locale].team.manifest.quote }}</p>
+            <div class="divider" style="margin: 32px auto;"></div>
+            <p style="font-size: 0.875rem; opacity: 0.5; max-width: 100%;">{{ i18n[locale].team.manifest.attribution }}</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================================
+     TEAM
+     ================================ -->
+
+<section>
+    <div class="container">
+        <div class="section-header fade-up" style="text-align: center; margin-bottom: 64px;">
+            <p class="label">{{ i18n[locale].team.members_section.label }}</p>
+            <h2>{{ i18n[locale].team.members_section.heading }}</h2>
+        </div>
+
+        <div class="team-grid">
+            {% for member in i18n[locale].team.members %}
+            <div class="team-member fade-up delay-{{ loop.index }}">
+                <div class="team-portrait">
+                    <img src="{{ member.photo }}" alt="{{ member.name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>{{ member.name }}</h3>
+                <p class="team-role">{{ member.role }}</p>
+                <p>{{ member.bio }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ================================
+     QUOTE BAND
+     ================================ -->
+
+<section style="background: var(--sand-light);">
+    <div class="container fade-up" style="text-align: center; max-width: 800px;">
+        <div class="divider" style="margin: 0 auto var(--space-xl);"></div>
+        <p class="quote">{{ i18n[locale].team.quote_band.quote }}</p>
+        <p style="font-size: 0.875rem; opacity: 0.45; margin-top: var(--space-md); max-width: 100%;">{{ i18n[locale].team.quote_band.attribution }}</p>
+        <div class="divider" style="margin: var(--space-xl) auto 0;"></div>
+    </div>
+</section>
+
+<!-- ================================
+     PHILOSOPHY
+     ================================ -->
+
+<section class="philosophy">
+    <div class="container">
+        <div class="philosophy-grid">
+            <div class="philosophy-text fade-up">
+                <p class="label" style="margin-bottom: 12px;">{{ i18n[locale].team.philosophy.label }}</p>
+                <h2>{{ i18n[locale].team.philosophy.heading }}</h2>
+                <p>{{ i18n[locale].team.philosophy.p1 }}</p>
+                <p>{{ i18n[locale].team.philosophy.p2 }}</p>
+            </div>
+
+            <div class="philosophy-pillars fade-up delay-2">
+                {% for pillar in i18n[locale].team.pillars %}
+                <div class="pillar-card">
+                    <h4>{{ pillar.heading }}</h4>
+                    <p>{{ pillar.text }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================
+     CTA
+     ================================ -->
+
+<section class="cta-section">
+    <div class="container fade-up">
+        <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;">{{ i18n[locale].team.cta.label }}</p>
+        <h2>{{ i18n[locale].team.cta.heading }}</h2>
+        <p>{{ i18n[locale].team.cta.text }}</p>
+        <a href="{{ '/' if locale === 'en' else '' }}/{{ 'en/' if locale === 'en' else '' }}kontakt.html" class="btn btn-primary">{{ i18n[locale].team.cta.button }}</a>
+    </div>
+</section>

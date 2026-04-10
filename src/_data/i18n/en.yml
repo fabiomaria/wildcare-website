@@ -77,3 +77,80 @@ datenschutz:
   s4_sub2_p1: "This website uses Google Fonts for consistent font rendering. When a page is loaded, your browser downloads the required fonts and establishes a connection to Google's servers. Google thereby receives notice that our website was accessed via your IP address. This is based on Art. 6 para. 1 lit. f GDPR."
   s5_heading: "5. SSL/TLS Encryption"
   s5_p1: "This site uses SSL/TLS encryption for security reasons. You can recognise an encrypted connection by the fact that the address bar of your browser changes from \"http://\" to \"https://\" and by the padlock symbol in your browser bar."
+
+team:
+  meta:
+    title: "Wild Care — About Us | Team & Approach"
+    description: "Meet the team behind Wild Care. Verena Eidenberger and Fabio Maria Gerhold on encounter, movement and social practice in Graz."
+  hero:
+    eyebrow: "About Us"
+    heading: "Encounter<br>as Practice."
+    intro: "Wild Care is a place where art doesn't hang on walls — it happens between people. We create spaces for movement, touch and a different way of being together — right here in Graz."
+  manifest:
+    label: "From Our Manifesto"
+    quote: "We create temporary, safe spaces — micro-utopias — where we can practise a different way of being together. It's not the finished artwork that matters, but what happens between us."
+    attribution: "Wild Care — Association for Art as Living Social Practice"
+  members_section:
+    label: "The People Behind It"
+    heading: "Our Team"
+  members:
+    - name: "Verena Eidenberger"
+      photo: "/assets/images/verena.jpg"
+      role: "Dancer · Music & Dance Educator"
+      bio: "Verena brings years of experience in dance and education. Her approach is playful and welcoming — she creates spaces where people feel brave enough to move and connect. Her role at Wild Care keeps evolving, just like the association itself."
+    - name: "Fabio Maria Gerhold"
+      photo: "/assets/images/fabio.jpg"
+      role: "Dancer · Yoga Teacher · Founder"
+      bio: "Fabio weaves together Contact Improvisation, yoga and philosophy. Inspired by Martin Buber's philosophy of dialogue — the idea that we only truly find ourselves through genuine encounter with another — he explores how body practice can become an attitude of care and attention."
+  quote_band:
+    quote: "\"All real living is meeting.\""
+    attribution: "Martin Buber"
+  philosophy:
+    label: "Our Approach"
+    heading: "Where We Take Root"
+    p1: "Wild Care is neither a conventional dance studio nor a therapy space. We move at the intersection of art, body work and social togetherness."
+    p2: "Our approach is simple: when we learn to perceive our own bodies with awareness and meet others with openness, it changes more than just the dance — it changes how we move through the world."
+  pillars:
+    - heading: "Art as Relationship"
+      text: "Art doesn't emerge in isolation — it arises between people. What matters is the moment of encounter, not the outcome."
+    - heading: "Knowing Through the Body"
+      text: "Some things can only be understood by feeling them. We learn through movement, touch and doing things together — not just through words."
+    - heading: "Care as Practice"
+      text: "Care is more than a feeling. It shows up in concrete action: honouring boundaries, making space, looking out for one another — in the dance and in everyday life."
+  cta:
+    label: "Invitation"
+    heading: "Come meet us."
+    text: "Just show up — no experience needed, only comfortable clothes and curiosity. Every Monday in Graz."
+    button: "Get in Touch"
+
+kontakt:
+  meta:
+    title: "Contact — Wild Care | Association for Social Practice, Graz"
+    description: "Get in touch with Wild Care. Contact Improvisation and social practice — every Monday in Graz. Just come by."
+  hero:
+    eyebrow: "Contact"
+    heading: "We look forward<br>to seeing you."
+    intro: "Have a question, want to join in, or just say hello? Write to us — or simply come by on Monday."
+  form:
+    heading: "Write to Us"
+    label_name: "Name"
+    placeholder_name: "Your name"
+    label_email: "Email"
+    placeholder_email: "your@email.com"
+    label_message: "Message"
+    placeholder_message: "What would you like to tell us?"
+    submit: "Send Message"
+    note: "Or write to us directly at <a href='mailto:hello@wildcare.space'>hello@wildcare.space</a>"
+  info:
+    email_label: "Email"
+    instagram_label: "Instagram"
+    address_label: "Address"
+    address_value: "Orpheumgasse 11<br>8020 Graz"
+    when_label: "When"
+    when_value: "Every Monday from 17:45"
+    highlight: "Just come by — no registration needed, no experience required, just comfortable clothes and curiosity."
+  map:
+    label: "How to Find Us"
+    heading: "Orpheumgasse 11, Graz"
+    caption: "Orpheumgasse 11, 8020 Graz — near Orpheum Theatre"
+    iframe_title: "Wild Care location: Orpheumgasse 11, 8020 Graz"

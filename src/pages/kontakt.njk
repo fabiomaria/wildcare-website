@@ -1,0 +1,123 @@
+---
+pageSlug: "kontakt"
+eleventyComputed:
+  title: "{{ i18n[locale].kontakt.meta.title }}"
+  description: "{{ i18n[locale].kontakt.meta.description }}"
+---
+
+<!-- ================================
+     HERO
+     ================================ -->
+
+<header class="page-hero">
+    <div class="container">
+        <p class="label fade-up">{{ i18n[locale].kontakt.hero.eyebrow }}</p>
+        <h1 class="fade-up delay-1">{{ i18n[locale].kontakt.hero.heading | safe }}</h1>
+        <p class="fade-up delay-2" style="max-width: 560px;">{{ i18n[locale].kontakt.hero.intro }}</p>
+    </div>
+</header>
+
+<!-- ================================
+     CONTACT FORM + INFO
+     ================================ -->
+
+<section>
+    <div class="container">
+        <div class="kontakt-grid">
+
+            <!-- LEFT: Form -->
+            <div class="kontakt-form-wrapper fade-up">
+                <h3>{{ i18n[locale].kontakt.form.heading }}</h3>
+                <form action="https://formspree.io/f/xlgongny" method="POST">
+                    <div class="form-group">
+                        <label for="name">{{ i18n[locale].kontakt.form.label_name }}</label>
+                        <input type="text" id="name" name="name" placeholder="{{ i18n[locale].kontakt.form.placeholder_name }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">{{ i18n[locale].kontakt.form.label_email }}</label>
+                        <input type="email" id="email" name="email" placeholder="{{ i18n[locale].kontakt.form.placeholder_email }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">{{ i18n[locale].kontakt.form.label_message }}</label>
+                        <textarea id="message" name="message" placeholder="{{ i18n[locale].kontakt.form.placeholder_message }}" required></textarea>
+                    </div>
+                    <div class="form-submit-row">
+                        <button type="submit" class="btn btn-primary">{{ i18n[locale].kontakt.form.submit }}</button>
+                        <p class="form-note">{{ i18n[locale].kontakt.form.note | safe }}</p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- RIGHT: Info -->
+            <div class="kontakt-info fade-up delay-2">
+                <div class="kontakt-info-item">
+                    <div class="kontakt-info-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                    </div>
+                    <div class="kontakt-info-text">
+                        <p class="label">{{ i18n[locale].kontakt.info.email_label }}</p>
+                        <p><a href="mailto:hello@wildcare.space">hello@wildcare.space</a></p>
+                    </div>
+                </div>
+
+                <div class="kontakt-info-item">
+                    <div class="kontakt-info-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+                    </div>
+                    <div class="kontakt-info-text">
+                        <p class="label">{{ i18n[locale].kontakt.info.instagram_label }}</p>
+                        <p><a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">@wildcare.space</a></p>
+                    </div>
+                </div>
+
+                <div class="kontakt-info-item">
+                    <div class="kontakt-info-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="kontakt-info-text">
+                        <p class="label">{{ i18n[locale].kontakt.info.address_label }}</p>
+                        <p>{{ i18n[locale].kontakt.info.address_value | safe }}</p>
+                    </div>
+                </div>
+
+                <div class="kontakt-info-item">
+                    <div class="kontakt-info-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <div class="kontakt-info-text">
+                        <p class="label">{{ i18n[locale].kontakt.info.when_label }}</p>
+                        <p>{{ i18n[locale].kontakt.info.when_value }}</p>
+                    </div>
+                </div>
+
+                <div class="kontakt-highlight">
+                    <p>{{ i18n[locale].kontakt.info.highlight }}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================================
+     MAP
+     ================================ -->
+
+<section class="map-section">
+    <div class="container">
+        <div class="section-header fade-up" style="text-align: center; margin-bottom: 48px;">
+            <p class="label">{{ i18n[locale].kontakt.map.label }}</p>
+            <h2>{{ i18n[locale].kontakt.map.heading }}</h2>
+        </div>
+        <div class="map-wrapper fade-up delay-1">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2718.4!2d15.4477!3d47.0707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476e35b0a0a0a0a1%3A0x0!2sOrpheumgasse%2011%2C%208020%20Graz!5e0!3m2!1sde!2sat!4v1"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="{{ i18n[locale].kontakt.map.iframe_title }}">
+            </iframe>
+        </div>
+        <p class="map-caption fade-up delay-2">{{ i18n[locale].kontakt.map.caption }}</p>
+    </div>
+</section>
