@@ -1,8 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: fabiomaria/wildcare-website
   branch: main
-  identity_url: https://wildcare-cms.netlify.app/.netlify/identity
-  gateway_url: https://wildcare-cms.netlify.app/.netlify/git
+  base_url: https://api.netlify.com
+  auth_endpoint: auth/provider/github
   commit_messages:
     create: 'content: create {{collection}} "{{slug}}"'
     update: 'content: update {{collection}} "{{slug}}"'

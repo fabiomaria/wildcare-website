@@ -4,27 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Care — Content Admin</title>
-    <!-- Netlify Identity widget — points to the dummy Netlify project for auth -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-    <!-- Decap CMS from CDN -->
+    <!-- Decap CMS from CDN — auth via GitHub OAuth through Netlify proxy -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
-    <script>
-        // Point Identity widget to the Netlify project (not the GitHub Pages host)
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.init({
-                APIUrl: "https://wildcare-cms.netlify.app/.netlify/identity"
-            });
-            window.netlifyIdentity.on("init", function (user) {
-                if (!user) {
-                    window.netlifyIdentity.on("login", function () {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
-    </script>
 </body>
 </html>
