@@ -1,0 +1,18 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { loc } from '../../lib/i18n';
+import { urlFor } from '../../lib/image';
+interface Props { heading?: { de?: string; en?: string }; subtitle?: { de?: string; en?: string }; cta?: { de?: string; en?: string }; ctaLink?: string; videoUrl?: string; poster?: any; showScrollHint?: boolean; locale: Locale; }
+const { heading, subtitle, cta, ctaLink, videoUrl, poster, showScrollHint = true, locale } = Astro.props;
+const posterUrl = poster ? urlFor(poster).width(1920).auto('format').url() : undefined;
+---
+<header class="hero-video">
+  {videoUrl && <video autoplay muted loop playsinline preload="metadata" poster={posterUrl}><source src={videoUrl} type="video/mp4" /></video>}
+  <div class="hero-video-overlay"></div>
+  <div class="hero-video-content"><div class="container">
+    {heading && <h1 class="fade-up" set:html={loc(heading, locale)} />}
+    {subtitle && <p class="fade-up delay-1">{loc(subtitle, locale)}</p>}
+    {cta && ctaLink && <div class="button-row fade-up delay-2"><a href={ctaLink} class="btn btn-primary">{loc(cta, locale)}</a></div>}
+  </div></div>
+  {showScrollHint && <div class="hero-scroll-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>}
+</header>

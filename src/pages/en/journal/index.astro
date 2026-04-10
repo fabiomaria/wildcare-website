@@ -1,0 +1,23 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getPublishedArticles, getSharedData } from '../../../lib/sanity';
+import { loc } from '../../../lib/i18n';
+import { urlFor } from '../../../lib/image';
+const locale = 'en';
+const [articles, { navigation, siteSettings }] = await Promise.all([getPublishedArticles(locale), getSharedData()]);
+---
+<Base title="Journal — Wild Care" description="Articles and reflections on Contact Improvisation and social practice." locale={locale} pageKey="journal" hasTranslation={true} navigation={navigation} siteSettings={siteSettings}>
+  <header class="page-hero"><div class="container"><p class="label fade-up">Journal</p><h1 class="fade-up delay-1">Journal</h1></div></header>
+  <section><div class="container"><div class="journal-grid">
+    {articles?.map((article: any, i: number) => (
+      <a href={`/en/journal/${article.slug?.current}/`} class={`journal-card fade-up delay-${i + 1}`}>
+        {article.image && <div class="journal-card-image"><img src={urlFor(article.image).width(600).height(400).auto('format').url()} alt={article.image.alt || ''} loading="lazy" /></div>}
+        <div class="journal-card-body">
+          {article.publishedAt && <p class="journal-card-date">{new Date(article.publishedAt).toLocaleDateString('en-US')}</p>}
+          <h3>{loc(article.title, locale)}</h3>
+          {article.excerpt && <p>{loc(article.excerpt, locale)}</p>}
+        </div>
+      </a>
+    ))}
+  </div></div></section>
+</Base>

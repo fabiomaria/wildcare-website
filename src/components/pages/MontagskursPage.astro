@@ -1,0 +1,49 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { loc } from '../../lib/i18n';
+import { urlFor } from '../../lib/image';
+import PortableText from '../PortableText.astro';
+interface Props { page: any; locale: Locale; }
+const { page, locale } = Astro.props;
+const hero = page?.hero;
+const learnCards = page?.learnCards;
+const testimonials = page?.testimonials;
+const faqList = page?.faqList;
+---
+{hero && (
+  <header class="detail-hero"><div class="container"><div class="detail-hero-grid">
+    <div class="detail-hero-content fade-up">
+      {hero.eyebrow && <p class="label">{loc(hero.eyebrow, locale)}</p>}
+      {hero.heading && <h1 set:html={loc(hero.heading, locale)} />}
+      {hero.subtitle && <p class="detail-hero-subtitle">{loc(hero.subtitle, locale)}</p>}
+      {hero.details && <div class="detail-hero-details">{hero.details.map((d: any) => (<div class="detail-hero-detail">{d.icon && <span set:html={d.icon} />}<span>{loc(d.value || d.label, locale)}</span></div>))}</div>}
+      {hero.ctaLabel && <div class="detail-hero-cta"><a href={hero.ctaLink || '#'} class="btn btn-primary">{loc(hero.ctaLabel, locale)}</a>{hero.note && <p class="detail-hero-note">{loc(hero.note, locale)}</p>}</div>}
+    </div>
+    {hero.image && <div class="detail-photo fade-up delay-2"><img src={urlFor(hero.image).width(600).auto('format').url()} alt="Contact Improvisation" /></div>}
+  </div></div></header>
+)}
+{page?.description && <section class="detail-about"><div class="container"><PortableText value={page.description[locale] || page.description.de} /></div></section>}
+{learnCards?.cards && (
+  <section><div class="container">
+    <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+      {learnCards.eyebrow && <p class="label">{loc(learnCards.eyebrow, locale)}</p>}
+      {learnCards.heading && <h2>{loc(learnCards.heading, locale)}</h2>}
+    </div>
+    <div class="detail-card-grid">{learnCards.cards.map((card: any, i: number) => (<div class={`detail-card fade-up delay-${i + 1}`}><h3>{loc(card.title, locale)}</h3><p>{loc(card.body, locale)}</p></div>))}</div>
+    {learnCards.donationNote && <div class="detail-donation-note fade-up"><p>{loc(learnCards.donationNote, locale)}</p></div>}
+  </div></section>
+)}
+{testimonials?.items && (
+  <section class="detail-testimonials"><div class="container">
+    <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+      {testimonials.eyebrow && <p class="label">{loc(testimonials.eyebrow, locale)}</p>}
+      {testimonials.heading && <h2>{loc(testimonials.heading, locale)}</h2>}
+    </div>
+    <div class="detail-testimonial-grid">{testimonials.items.map((item: any, i: number) => (<div class={`detail-testimonial fade-up delay-${i + 1}`}><blockquote>{loc(item.quote, locale)}</blockquote>{item.author && <p class="detail-testimonial-author">{item.author}</p>}</div>))}</div>
+  </div></section>
+)}
+{faqList && faqList.length > 0 && (
+  <section style="background: var(--sand-light);"><div class="container"><div class="detail-faq-list">
+    {faqList.map((item: any) => (<div class="detail-faq-item fade-up"><p class="detail-faq-q">{loc(item.question, locale)}</p><p class="detail-faq-a">{loc(item.answer, locale)}</p></div>))}
+  </div></div></section>
+)}

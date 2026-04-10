@@ -1,0 +1,8 @@
+---
+import type { Locale } from '../../lib/i18n';
+import PortableText from '../PortableText.astro';
+interface Props { body?: { de?: any[]; en?: any[] }; locale: Locale; }
+const { body, locale } = Astro.props;
+const content = body?.[locale] || body?.de;
+---
+{content && <section><div class="container rich-text"><PortableText value={content} /></div></section>}

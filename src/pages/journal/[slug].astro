@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import PortableText from '../../components/PortableText.astro';
+import { getAllArticleSlugs, getArticleBySlug, getSharedData } from '../../lib/sanity';
+import { loc } from '../../lib/i18n';
+import { urlFor } from '../../lib/image';
+import { articleSchema } from '../../lib/schema';
+const locale = 'de';
+export async function getStaticPaths() {
+  const articles = await getAllArticleSlugs();
+  return articles.map((a: any) => ({ params: { slug: a.slug } }));
+}
+const { slug } = Astro.params;
+const [article, { navigation, siteSettings }] = await Promise.all([getArticleBySlug(slug!), getSharedData()]);
+if (!article) return Astro.redirect('/journal/');
+const title = article.seo?.metaTitle || loc(article.title, locale) || 'Article';
+const description = article.seo?.metaDescription || loc(article.excerpt, locale) || '';
+const imageUrl = article.image ? urlFor(article.image).width(1200).auto('format').url() : undefined;
+const jsonLd = articleSchema({ headline: loc(article.title, locale) || '', datePublished: article.publishedAt, imageUrl });
+const hasEnTranslation = !!article.title?.en;
+---
+<Base title={title} description={description} ogImage={article.seo?.ogImage || article.image} locale={locale} pageKey={`journal/${slug}`} hasTranslation={hasEnTranslation} type="article" jsonLd={jsonLd} navigation={navigation} siteSettings={siteSettings}>
+  <article>
+    <header class="article-hero"><div class="container">
+      {article.publishedAt && <p class="label fade-up">{new Date(article.publishedAt).toLocaleDateString('de-AT')}</p>}
+      <h1 class="fade-up delay-1">{loc(article.title, locale)}</h1>
+    </div>
+    {article.image && <div class="article-hero-image fade-up delay-2"><img src={imageUrl} alt={article.image.alt || ''} /></div>}
+    </header>
+    <section><div class="container article-body">{article.body && <PortableText value={article.body[locale] || article.body.de} />}</div></section>
+  </article>
+</Base>

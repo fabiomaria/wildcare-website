@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import SectionRenderer from '../../components/sections/SectionRenderer.astro';
+import MontagskursPage from '../../components/pages/MontagskursPage.astro';
+import BewegungsrevolutionPage from '../../components/pages/BewegungsrevolutionPage.astro';
+import MitmachenPage from '../../components/pages/MitmachenPage.astro';
+import TeamPageComponent from '../../components/pages/TeamPage.astro';
+import PortableText from '../../components/PortableText.astro';
+import { getMontagskurs, getBewegungsrevolution, getMitmachen, getTeamPage, getKontakt, getLegalPage, getTeamMembers, getSharedData } from '../../lib/sanity';
+import { loc } from '../../lib/i18n';
+import { localBusinessSchema } from '../../lib/schema';
+const locale = 'en';
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'monday-class' } }, { params: { slug: 'movement-revolution' } },
+    { params: { slug: 'join' } }, { params: { slug: 'team' } },
+    { params: { slug: 'contact' } }, { params: { slug: 'imprint' } }, { params: { slug: 'privacy' } },
+  ];
+}
+const { slug } = Astro.params;
+const { navigation, siteSettings } = await getSharedData();
+let page: any; let members: any[] = []; let title = 'Wild Care'; let description = ''; let pageKey = ''; let component = 'generic';
+switch (slug) {
+  case 'monday-class': page = await getMontagskurs(); title = page?.seo?.metaTitle || loc(page?.hero?.heading, locale) || 'Monday Class'; component = 'montagskurs'; pageKey = 'montagskurs'; break;
+  case 'movement-revolution': page = await getBewegungsrevolution(); title = page?.seo?.metaTitle || loc(page?.hero?.heading, locale) || 'Movement Revolution'; component = 'bewegungsrevolution'; pageKey = 'bewegungsrevolution'; break;
+  case 'join': page = await getMitmachen(); title = page?.seo?.metaTitle || loc(page?.hero?.heading, locale) || 'Get Involved'; component = 'mitmachen'; pageKey = 'mitmachen'; break;
+  case 'team': page = await getTeamPage(); members = await getTeamMembers(); title = page?.seo?.metaTitle || loc(page?.hero?.heading, locale) || 'Team'; component = 'team'; pageKey = 'team'; break;
+  case 'contact': page = await getKontakt(); title = page?.seo?.metaTitle || 'Contact'; component = 'kontakt'; pageKey = 'kontakt'; break;
+  case 'imprint': page = await getLegalPage('impressum'); title = page?.seo?.metaTitle || loc(page?.heading, locale) || 'Imprint'; component = 'legal'; pageKey = 'impressum'; break;
+  case 'privacy': page = await getLegalPage('datenschutz'); title = page?.seo?.metaTitle || loc(page?.heading, locale) || 'Privacy'; component = 'legal'; pageKey = 'datenschutz'; break;
+}
+description = page?.seo?.metaDescription || description;
+const jsonLd = localBusinessSchema({ name: siteSettings?.vereinName || 'Wild Care', address: siteSettings?.address || '', email: siteSettings?.email || '', url: 'https://wildcare.space', zvrZahl: siteSettings?.zvrZahl });
+---
+<Base title={title} description={description} ogImage={page?.seo?.ogImage} locale={locale} pageKey={pageKey} hasTranslation={true} jsonLd={jsonLd} navigation={navigation} siteSettings={siteSettings}>
+  {component === 'montagskurs' && <MontagskursPage page={page} locale={locale} />}
+  {component === 'bewegungsrevolution' && <BewegungsrevolutionPage page={page} locale={locale} />}
+  {component === 'mitmachen' && <MitmachenPage page={page} locale={locale} />}
+  {component === 'team' && <TeamPageComponent page={page} members={members} locale={locale} />}
+  {component === 'kontakt' && page?.sections && <SectionRenderer sections={page.sections} locale={locale} />}
+  {component === 'legal' && page?.legalBody && <section><div class="container">{page.heading && <h1>{loc(page.heading, locale)}</h1>}<PortableText value={page.legalBody[locale] || page.legalBody.de} /></div></section>}
+</Base>

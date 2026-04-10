@@ -1,0 +1,12 @@
+---
+import type { Locale } from '../lib/i18n';
+import { getAlternatePath } from '../lib/i18n';
+interface Props { locale: Locale; pageKey: string; hasTranslation?: boolean; }
+const { locale, pageKey, hasTranslation = false } = Astro.props;
+const alternatePath = getAlternatePath(pageKey, locale);
+---
+{hasTranslation ? (
+  <a href={alternatePath} class="lang-toggle">{locale === 'de' ? 'EN' : 'DE'}</a>
+) : (
+  <span class="lang-toggle lang-toggle--disabled" title={locale === 'de' ? 'No English translation available' : 'Keine deutsche Übersetzung'}>{locale === 'de' ? 'EN' : 'DE'}</span>
+)}

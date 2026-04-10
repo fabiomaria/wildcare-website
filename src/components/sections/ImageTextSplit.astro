@@ -1,0 +1,16 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { urlFor } from '../../lib/image';
+import PortableText from '../PortableText.astro';
+interface Props { image?: any; imageAlt?: string; text?: { de?: any[]; en?: any[] }; layout?: string; locale: Locale; }
+const { image, imageAlt, text, layout = 'image-left', locale } = Astro.props;
+const imgUrl = image ? urlFor(image).width(800).auto('format').url() : undefined;
+const content = text?.[locale] || text?.de;
+---
+<section class="invitation"><div class="container">
+  <div class={`invitation-grid ${layout === 'image-right' ? 'invitation-grid--reversed' : ''}`}>
+    {layout === 'image-left' && imgUrl && <div class="invitation-image fade-up"><div class="invitation-image-frame"><img src={imgUrl} alt={imageAlt || ''} loading="lazy" /></div></div>}
+    <div class="invitation-text fade-up delay-1">{content && <PortableText value={content} />}</div>
+    {layout === 'image-right' && imgUrl && <div class="invitation-image fade-up delay-2"><div class="invitation-image-frame"><img src={imgUrl} alt={imageAlt || ''} loading="lazy" /></div></div>}
+  </div>
+</div></section>

@@ -1,0 +1,12 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { loc } from '../../lib/i18n';
+interface Props { quote?: { de?: string; en?: string }; attribution?: { de?: string; en?: string }; locale: Locale; }
+const { quote, attribution, locale } = Astro.props;
+---
+<section style="background: var(--sand-light);"><div class="container fade-up" style="text-align: center; max-width: 800px;">
+  <div class="divider" style="margin: 0 auto var(--space-xl);"></div>
+  {quote && <p class="quote">{loc(quote, locale)}</p>}
+  {attribution && <p class="label" style="margin-top: var(--space-md);">{loc(attribution, locale)}</p>}
+  <div class="divider" style="margin: var(--space-xl) auto 0;"></div>
+</div></section>

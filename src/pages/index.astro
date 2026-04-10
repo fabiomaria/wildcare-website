@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionRenderer from '../components/sections/SectionRenderer.astro';
+import { getHomepage, getNextEvent, getSharedData } from '../lib/sanity';
+import { loc } from '../lib/i18n';
+import { localBusinessSchema } from '../lib/schema';
+const locale = 'de';
+const [page, nextEvent, { navigation, siteSettings }] = await Promise.all([getHomepage(), getNextEvent(), getSharedData()]);
+const title = page?.seo?.metaTitle || loc(page?.sections?.[0]?.heading, locale) || 'Wild Care';
+const description = page?.seo?.metaDescription || 'Verein für Kontaktimprovisation und soziale Praxis in Graz.';
+const jsonLd = localBusinessSchema({ name: siteSettings?.vereinName || 'Wild Care', address: siteSettings?.address || '', email: siteSettings?.email || '', url: 'https://wildcare.space', zvrZahl: siteSettings?.zvrZahl });
+---
+<Base title={title} description={description} ogImage={page?.seo?.ogImage} locale={locale} pageKey="index" hasTranslation={true} bodyClass="has-hero-video" jsonLd={jsonLd} navigation={navigation} siteSettings={siteSettings}>
+  {page?.sections && <SectionRenderer sections={page.sections} locale={locale} />}
+</Base>

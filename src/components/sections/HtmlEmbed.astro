@@ -1,0 +1,10 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { loc } from '../../lib/i18n';
+interface Props { code?: string; caption?: { de?: string; en?: string }; locale: Locale; }
+const { code, caption, locale } = Astro.props;
+---
+{code && <section><div class="container">
+  <div class="embed-wrapper fade-up" set:html={code} />
+  {caption && <p class="embed-caption fade-up delay-1">{loc(caption, locale)}</p>}
+</div></section>}

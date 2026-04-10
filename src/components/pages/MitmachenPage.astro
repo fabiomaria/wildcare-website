@@ -1,0 +1,14 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { loc } from '../../lib/i18n';
+import PortableText from '../PortableText.astro';
+interface Props { page: any; locale: Locale; }
+const { page, locale } = Astro.props;
+const hero = page?.hero;
+---
+{hero && <header class="page-hero"><div class="container">{hero.eyebrow && <p class="label fade-up">{loc(hero.eyebrow, locale)}</p>}{hero.heading && <h1 class="fade-up delay-1">{loc(hero.heading, locale)}</h1>}{hero.subtitle && <p class="fade-up delay-2">{loc(hero.subtitle, locale)}</p>}</div></header>}
+{page?.circlesVisual && <section><div class="container"><div class="circles-visual fade-up">{page.circlesVisual.outerCircle && <div class="circle-outer"><h3>{loc(page.circlesVisual.outerCircle.title, locale)}</h3><p>{loc(page.circlesVisual.outerCircle.description, locale)}</p></div>}{page.circlesVisual.innerCircle && <div class="circle-inner"><h3>{loc(page.circlesVisual.innerCircle.title, locale)}</h3><p>{loc(page.circlesVisual.innerCircle.description, locale)}</p></div>}</div></div></section>}
+{page?.circleCards && page.circleCards.length > 0 && <section><div class="container"><div class="detail-card-grid">{page.circleCards.map((card: any, i: number) => (<div class={`detail-card fade-up delay-${i + 1}`}>{card.icon && <div class="value-icon" set:html={card.icon} />}<h3>{loc(card.title, locale)}</h3><p>{loc(card.description, locale)}</p></div>))}</div></div></section>}
+{page?.coreMessage && <section style="background: var(--sand-light);"><div class="container fade-up" style="max-width: 800px;"><PortableText value={page.coreMessage[locale] || page.coreMessage.de} /></div></section>}
+{page?.membershipTiers && page.membershipTiers.length > 0 && <section><div class="container"><div class="membership-grid">{page.membershipTiers.map((tier: any, i: number) => (<div class={`membership-card fade-up delay-${i + 1}`}>{tier.icon && <div class="membership-icon" set:html={tier.icon} />}<h3>{loc(tier.name, locale)}</h3>{tier.amount && <p class="membership-amount">{tier.amount}</p>}<p>{loc(tier.description, locale)}</p>{tier.note && <p class="membership-note">{loc(tier.note, locale)}</p>}</div>))}</div></div></section>}
+{page?.membershipFormEmbed && <section><div class="container"><div class="embed-wrapper fade-up"><iframe src={page.membershipFormEmbed} width="100%" style="border: none; min-height: 500px;" loading="lazy"></iframe></div></div></section>}

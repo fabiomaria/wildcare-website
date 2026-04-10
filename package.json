@@ -2,16 +2,22 @@
   "name": "wild-care-website",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Wild Care — Verein für soziale Praxis, Graz",
   "scripts": {
-    "build": "eleventy",
-    "dev": "eleventy --serve --quiet",
-    "clean": "rm -rf _site"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "clean": "rm -rf dist .astro"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@astrojs/sitemap": "^3.0.0",
+    "astro": "^5.0.0"
   },
   "dependencies": {
-    "js-yaml": "^4.1.1"
+    "@portabletext/to-html": "^2.0.0",
+    "@sanity/client": "^6.0.0",
+    "@sanity/image-url": "^1.0.0"
   }
 }

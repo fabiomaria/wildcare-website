@@ -1,0 +1,35 @@
+---
+import type { Locale } from '../lib/i18n';
+import { getLocalizedPath } from '../lib/i18n';
+import { urlFor } from '../lib/image';
+
+interface Props {
+  title: string; description?: string; ogImage?: any; defaultOgImage?: any;
+  locale: Locale; pageKey?: string; hasTranslation?: boolean;
+  type?: 'website' | 'article'; jsonLd?: object;
+}
+
+const { title, description, ogImage, defaultOgImage, locale, pageKey, hasTranslation = false, type = 'website', jsonLd } = Astro.props;
+const metaTitle = title.includes('Wild Care') ? title : `${title} — Wild Care`;
+const metaDescription = description || '';
+const ogImageUrl = ogImage ? urlFor(ogImage).width(1200).height(630).auto('format').url() : defaultOgImage ? urlFor(defaultOgImage).width(1200).height(630).auto('format').url() : '/assets/images/og-default.jpg';
+const ogLocale = locale === 'de' ? 'de_AT' : 'en_US';
+const canonicalUrl = `https://wildcare.space${Astro.url.pathname}`;
+---
+<title>{metaTitle}</title>
+<meta name="description" content={metaDescription} />
+<link rel="canonical" href={canonicalUrl} />
+<meta property="og:title" content={metaTitle} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:type" content={type} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:url" content={canonicalUrl} />
+{pageKey && (
+  <>
+    <link rel="alternate" hreflang="de" href={`https://wildcare.space${getLocalizedPath(pageKey, 'de')}`} />
+    {hasTranslation && <link rel="alternate" hreflang="en" href={`https://wildcare.space${getLocalizedPath(pageKey, 'en')}`} />}
+    <link rel="alternate" hreflang="x-default" href={`https://wildcare.space${getLocalizedPath(pageKey, 'de')}`} />
+  </>
+)}
+{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

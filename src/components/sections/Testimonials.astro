@@ -1,0 +1,20 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { loc } from '../../lib/i18n';
+interface Props { heading?: { de?: string; en?: string }; eyebrow?: { de?: string; en?: string }; items?: any[]; locale: Locale; }
+const { heading, eyebrow, items, locale } = Astro.props;
+---
+<section class="detail-testimonials"><div class="container">
+  <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+    {eyebrow && <p class="label">{loc(eyebrow, locale)}</p>}
+    {heading && <h2>{loc(heading, locale)}</h2>}
+  </div>
+  <div class="detail-testimonial-grid">
+    {items?.map((item, i) => (
+      <div class={`detail-testimonial fade-up delay-${i + 1}`}>
+        <blockquote>{loc(item.quote, locale)}</blockquote>
+        {item.author && <p class="detail-testimonial-author">{item.author}</p>}
+      </div>
+    ))}
+  </div>
+</div></section>

@@ -1,0 +1,27 @@
+---
+import type { Locale } from '../lib/i18n';
+import { getLocalizedPath } from '../lib/i18n';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+interface Props { locale: Locale; navigation: any; pageKey?: string; hasTranslation?: boolean; }
+const { locale, navigation, pageKey, hasTranslation } = Astro.props;
+const menuItems = navigation?.mainMenu || [];
+const ctaButton = navigation?.ctaButton;
+const showLangSwitcher = navigation?.showLanguageSwitcher ?? true;
+---
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href={getLocalizedPath('index', locale)} class="nav-brand">Wild Care</a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nav-menu">
+      <ul class="nav-links">
+        {menuItems.map((item: any) => (
+          <li><a href={locale === 'en' ? (item.href_en || item.href) : item.href}>{locale === 'en' ? (item.label_en || item.label_de) : item.label_de}</a></li>
+        ))}
+      </ul>
+      <div class="nav-actions">
+        {showLangSwitcher && pageKey && <LanguageSwitcher locale={locale} pageKey={pageKey} hasTranslation={hasTranslation} />}
+        {ctaButton && <a href={locale === 'en' ? (ctaButton.href_en || ctaButton.href) : ctaButton.href} class="btn btn-primary nav-cta">{locale === 'en' ? (ctaButton.label_en || ctaButton.label_de) : ctaButton.label_de}</a>}
+      </div>
+    </div>
+  </div>
+</nav>

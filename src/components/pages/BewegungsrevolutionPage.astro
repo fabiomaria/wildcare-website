@@ -1,0 +1,42 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { loc } from '../../lib/i18n';
+import { urlFor } from '../../lib/image';
+import PortableText from '../PortableText.astro';
+interface Props { page: any; locale: Locale; }
+const { page, locale } = Astro.props;
+const hero = page?.hero;
+---
+{hero && (
+  <header class="detail-hero"><div class="container"><div class="detail-hero-grid">
+    <div class="detail-hero-content fade-up">
+      {hero.eyebrow && <span class="badge">{loc(hero.eyebrow, locale)}</span>}
+      {hero.heading && <h1 set:html={loc(hero.heading, locale)} />}
+      {hero.subtitle && <p class="detail-hero-subtitle">{loc(hero.subtitle, locale)}</p>}
+      {hero.details && <div class="detail-hero-details">{hero.details.map((d: any) => (<div class="detail-hero-detail">{d.icon && <span set:html={d.icon} />}<span>{loc(d.value || d.label, locale)}</span></div>))}</div>}
+    </div>
+    {hero.image && <div class="detail-photo fade-up delay-2"><img src={urlFor(hero.image).width(600).auto('format').url()} alt="" /></div>}
+  </div></div></header>
+)}
+{page?.about && (
+  <section class="detail-about"><div class="container">
+    {page.about.text && <PortableText value={page.about.text[locale] || page.about.text.de} />}
+    {page.about.cards && <div class="detail-card-grid" style="margin-top: var(--space-xl);">{page.about.cards.map((card: any, i: number) => (<div class={`detail-card fade-up delay-${i + 1}`}>{card.number && <p class="detail-card-number">{card.number}</p>}<h3>{loc(card.title, locale)}</h3><p>{loc(card.description, locale)}</p></div>))}</div>}
+  </div></section>
+)}
+{page?.projectCards && page.projectCards.length > 0 && (
+  <section><div class="container"><div class="detail-card-grid">
+    {page.projectCards.map((card: any, i: number) => (<div class={`detail-card fade-up delay-${i + 1}`}>{card.tag && <span class="badge">{loc(card.tag, locale)}</span>}<h3>{loc(card.title, locale)}</h3>{card.subtitle && <p class="detail-card-subtitle">{loc(card.subtitle, locale)}</p>}<p>{loc(card.description, locale)}</p>{card.details && <div class="detail-card-details">{card.details.map((d: any) => (<p><strong>{loc(d.label, locale)}:</strong> {loc(d.value, locale)}</p>))}</div>}</div>))}
+  </div></div></section>
+)}
+{page?.testimonials && page.testimonials.length > 0 && (
+  <section class="detail-testimonials"><div class="container"><div class="detail-testimonial-grid">
+    {page.testimonials.map((item: any, i: number) => (<div class={`detail-testimonial fade-up delay-${i + 1}`}><blockquote>{loc(item.quote, locale)}</blockquote>{item.author && <p class="detail-testimonial-author">{item.author}</p>}</div>))}
+  </div></div></section>
+)}
+{page?.faqList && page.faqList.length > 0 && (
+  <section style="background: var(--sand-light);"><div class="container"><div class="detail-faq-list">
+    {page.faqList.map((item: any) => (<div class="detail-faq-item fade-up"><p class="detail-faq-q">{loc(item.question, locale)}</p><p class="detail-faq-a">{loc(item.answer, locale)}</p></div>))}
+  </div></div></section>
+)}
+{page?.donationNote && <section><div class="container fade-up"><PortableText value={page.donationNote[locale] || page.donationNote.de} /></div></section>}

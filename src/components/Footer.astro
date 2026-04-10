@@ -1,0 +1,32 @@
+---
+import type { Locale } from '../lib/i18n';
+import { getLocalizedPath } from '../lib/i18n';
+interface Props { locale: Locale; navigation: any; siteSettings: any; }
+const { locale, navigation, siteSettings } = Astro.props;
+const footerMenu = navigation?.footerMenu || [];
+const socialLinks = siteSettings?.socialLinks || [];
+---
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <p class="footer-brand-name">Wild Care</p>
+      <p class="footer-tagline">{locale === 'de' ? 'Verein für Kontaktimprovisation und soziale Praxis. Wir üben das Zusammenleben — jeden Montag in Graz.' : 'Association for Contact Improvisation and social practice. Practicing togetherness — every Monday in Graz.'}</p>
+    </div>
+    <div class="footer-links">
+      <p class="footer-heading">{locale === 'de' ? 'Seiten' : 'Pages'}</p>
+      <ul>{footerMenu.map((item: any) => (<li><a href={locale === 'en' ? (item.href_en || item.href) : item.href}>{locale === 'en' ? (item.label_en || item.label_de) : item.label_de}</a></li>))}</ul>
+    </div>
+    <div class="footer-connect">
+      <p class="footer-heading">{locale === 'de' ? 'Verbinden' : 'Connect'}</p>
+      <ul>
+        {siteSettings?.email && <li><a href={`mailto:${siteSettings.email}`}>{siteSettings.email}</a></li>}
+        {socialLinks.map((link: any) => (<li><a href={link.url} target="_blank" rel="noopener">{link.platform}</a></li>))}
+      </ul>
+    </div>
+    <div class="footer-legal">
+      <a href={getLocalizedPath('impressum', locale)}>{locale === 'de' ? 'Impressum' : 'Imprint'}</a>
+      <a href={getLocalizedPath('datenschutz', locale)}>{locale === 'de' ? 'Datenschutz' : 'Privacy'}</a>
+    </div>
+    <div class="footer-copyright"><p>© {siteSettings?.copyrightYear || 2026} Wild Care — Graz</p></div>
+  </div>
+</footer>

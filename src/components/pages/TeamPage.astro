@@ -1,0 +1,13 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { loc } from '../../lib/i18n';
+import { urlFor } from '../../lib/image';
+import PortableText from '../PortableText.astro';
+interface Props { page: any; members: any[]; locale: Locale; }
+const { page, members, locale } = Astro.props;
+const hero = page?.hero;
+---
+{hero && <header class="page-hero" style={hero.image ? `background-image: url(${urlFor(hero.image).width(1920).auto('format').url()})` : undefined}><div class="container">{hero.eyebrow && <p class="label fade-up">{loc(hero.eyebrow, locale)}</p>}{hero.heading && <h1 class="fade-up delay-1">{loc(hero.heading, locale)}</h1>}{hero.subtitle && <p class="fade-up delay-2">{loc(hero.subtitle, locale)}</p>}</div></header>}
+{page?.manifestBox?.quote && <section style="background: var(--sand-light);"><div class="container fade-up" style="text-align: center; max-width: 800px;"><div class="divider" style="margin: 0 auto var(--space-xl);"></div><p class="quote">{loc(page.manifestBox.quote, locale)}</p><div class="divider" style="margin: var(--space-xl) auto 0;"></div></div></section>}
+{members && members.length > 0 && <section><div class="container"><div class="team-grid">{members.map((member, i) => (<div class={`team-member fade-up delay-${i + 1}`}>{member.portrait && <div class="team-portrait"><img src={urlFor(member.portrait).width(400).height(400).auto('format').url()} alt={member.name} loading="lazy" /></div>}<h3>{member.name}</h3>{member.role && <p class="team-role">{loc(member.role, locale)}</p>}{member.bio?.[locale] && <PortableText value={member.bio[locale]} />}</div>))}</div></div></section>}
+{page?.philosophy && <section><div class="container">{page.philosophy.intro && <div class="fade-up" style="max-width: 700px; margin: 0 auto var(--space-xl);"><PortableText value={page.philosophy.intro[locale] || page.philosophy.intro.de} /></div>}{page.philosophy.pillars && <div class="values-grid">{page.philosophy.pillars.map((pillar: any, i: number) => (<div class={`value-card fade-up delay-${i + 1}`}><h3>{loc(pillar.title, locale)}</h3><p>{loc(pillar.description, locale)}</p></div>))}</div>}</div></section>}

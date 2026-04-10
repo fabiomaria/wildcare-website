@@ -1,0 +1,15 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { loc } from '../../lib/i18n';
+interface Props { items?: any[]; locale: Locale; }
+const { items, locale } = Astro.props;
+---
+<section><div class="container"><div class="contact-info-grid fade-up">
+  {items?.map((item) => (
+    <div class="contact-info-item">
+      {item.icon && <div class="contact-info-icon" set:html={item.icon} />}
+      <p class="contact-info-label">{loc(item.label, locale)}</p>
+      {item.link ? <a href={item.link}>{loc(item.value, locale)}</a> : <p>{loc(item.value, locale)}</p>}
+    </div>
+  ))}
+</div></div></section>

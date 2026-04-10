@@ -1,0 +1,15 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { loc } from '../../lib/i18n';
+import { urlFor } from '../../lib/image';
+interface Props { heading?: { de?: string; en?: string }; subtitle?: { de?: string; en?: string }; cta?: { de?: string; en?: string }; ctaLink?: string; backgroundImage?: any; locale: Locale; }
+const { heading, subtitle, cta, ctaLink, backgroundImage, locale } = Astro.props;
+const bgUrl = backgroundImage ? urlFor(backgroundImage).width(1920).auto('format').url() : undefined;
+---
+<header class="page-hero" style={bgUrl ? `background-image: url(${bgUrl})` : undefined}>
+  <div class="container">
+    {heading && <h1 class="fade-up">{loc(heading, locale)}</h1>}
+    {subtitle && <p class="fade-up delay-1">{loc(subtitle, locale)}</p>}
+    {cta && ctaLink && <a href={ctaLink} class="btn btn-primary fade-up delay-2">{loc(cta, locale)}</a>}
+  </div>
+</header>

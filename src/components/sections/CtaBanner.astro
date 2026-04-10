@@ -1,0 +1,12 @@
+---
+import type { Locale } from '../../lib/i18n';
+import { loc } from '../../lib/i18n';
+interface Props { eyebrow?: { de?: string; en?: string }; heading?: { de?: string; en?: string }; description?: { de?: string; en?: string }; buttonLabel?: { de?: string; en?: string }; buttonLink?: string; locale: Locale; }
+const { eyebrow, heading, description, buttonLabel, buttonLink, locale } = Astro.props;
+---
+<section class="cta-section"><div class="container fade-up">
+  {eyebrow && <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;">{loc(eyebrow, locale)}</p>}
+  {heading && <h2>{loc(heading, locale)}</h2>}
+  {description && <p>{loc(description, locale)}</p>}
+  {buttonLabel && buttonLink && <a href={buttonLink} class="btn btn-primary">{loc(buttonLabel, locale)}</a>}
+</div></section>

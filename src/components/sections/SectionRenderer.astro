@@ -1,0 +1,28 @@
+---
+import type { Locale } from '../../lib/i18n';
+import HeroVideo from './HeroVideo.astro';
+import HeroImage from './HeroImage.astro';
+import RichText from './RichText.astro';
+import ImageTextSplit from './ImageTextSplit.astro';
+import ValueCards from './ValueCards.astro';
+import QuoteBand from './QuoteBand.astro';
+import CtaBanner from './CtaBanner.astro';
+import Testimonials from './Testimonials.astro';
+import EmbedForm from './EmbedForm.astro';
+import MapEmbed from './MapEmbed.astro';
+import HtmlEmbed from './HtmlEmbed.astro';
+import ContactInfo from './ContactInfo.astro';
+
+interface Props { sections: any[]; locale: Locale; }
+const { sections, locale } = Astro.props;
+const componentMap: Record<string, any> = {
+  heroVideo: HeroVideo, heroImage: HeroImage, richText: RichText,
+  imageTextSplit: ImageTextSplit, valueCards: ValueCards, quoteBand: QuoteBand,
+  ctaBanner: CtaBanner, testimonials: Testimonials, embedForm: EmbedForm,
+  mapEmbed: MapEmbed, htmlEmbed: HtmlEmbed, contactInfo: ContactInfo,
+};
+---
+{sections?.map((section) => {
+  const Component = componentMap[section._type];
+  return Component ? <Component {...section} locale={locale} /> : null;
+})}

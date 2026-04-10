@@ -1,0 +1,32 @@
+---
+import type { Locale } from '../lib/i18n';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SeoHead from '../components/SeoHead.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string; description?: string; ogImage?: any; locale: Locale;
+  pageKey?: string; hasTranslation?: boolean; bodyClass?: string;
+  type?: 'website' | 'article'; jsonLd?: object; navigation: any; siteSettings: any;
+}
+
+const { title, description, ogImage, locale, pageKey, hasTranslation = false, bodyClass = '', type = 'website', jsonLd, navigation, siteSettings } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang={locale}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet" />
+  <SeoHead title={title} description={description} ogImage={ogImage} defaultOgImage={siteSettings?.defaultOgImage} locale={locale} pageKey={pageKey} hasTranslation={hasTranslation} type={type} jsonLd={jsonLd} />
+</head>
+<body class={bodyClass}>
+  <Nav locale={locale} navigation={navigation} pageKey={pageKey} hasTranslation={hasTranslation} />
+  <main><slot /></main>
+  <Footer locale={locale} navigation={navigation} siteSettings={siteSettings} />
+  <script src="/js/scroll-animations.js" is:inline></script>
+</body>
+</html>

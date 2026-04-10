@@ -17,3 +17,8 @@ docs/
 # Logs
 *.log
 npm-debug.log*
+
+# Astro
+dist/
+.astro/
+.env
