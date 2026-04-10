@@ -1,0 +1,57 @@
+---
+pageSlug: "journal"
+eleventyComputed:
+  title: "{{ i18n[locale].journal.meta.title }}"
+  description: "{{ i18n[locale].journal.meta.description }}"
+---
+
+<!-- ================================
+     HERO
+     ================================ -->
+
+<header class="page-hero">
+    <div class="container">
+        <p class="label fade-up">{{ i18n[locale].journal.hero.eyebrow }}</p>
+        <h1 class="fade-up delay-1">{{ i18n[locale].journal.hero.heading }}</h1>
+        <p class="fade-up delay-2" style="max-width: 560px;">{{ i18n[locale].journal.hero.intro }}</p>
+    </div>
+</header>
+
+<!-- ================================
+     JOURNAL GRID
+     ================================ -->
+
+<section style="padding-top: 0;">
+    <div class="container">
+        <div class="journal-listing-grid">
+            {% for post in collections['journal_' + locale] %}
+            <a href="{{ post.url }}" class="journal-card fade-up">
+                {% if post.data.image %}
+                <div class="journal-card-image">
+                    <img src="{{ post.data.image }}" alt="{{ post.data.imageAlt or post.data.title }}" loading="lazy">
+                </div>
+                {% endif %}
+                <div class="journal-card-body">
+                    <p class="journal-card-date">{{ post.data.date | dateDisplay(locale) }}</p>
+                    <h3>{{ post.data.title }}</h3>
+                    <p>{{ post.data.excerpt }}</p>
+                    <span class="journal-card-link">{{ i18n[locale].journal.readMore }}</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ================================
+     CTA
+     ================================ -->
+
+<section class="cta-section">
+    <div class="container fade-up">
+        <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;">{{ i18n[locale].journal.cta.label }}</p>
+        <h2>{{ i18n[locale].journal.cta.heading }}</h2>
+        <p>{{ i18n[locale].journal.cta.text }}</p>
+        <a href="/{{ 'en/' if locale == 'en' }}kontakt.html" class="btn btn-primary">{{ i18n[locale].journal.cta.button }}</a>
+    </div>
+</section>

@@ -1,0 +1,19 @@
+# Eleventy build output
+_site/
+
+# Node
+node_modules/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Local docs
+docs/
+
+# Logs
+*.log
+npm-debug.log*

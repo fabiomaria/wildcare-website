@@ -1,0 +1,38 @@
+---
+pageSlug: "impressum"
+eleventyComputed:
+  title: "{{ i18n[locale].impressum.meta.title }}"
+  description: "{{ i18n[locale].impressum.meta.description }}"
+---
+<header class="page-hero">
+    <div class="container">
+        <p class="label fade-up">{{ i18n[locale].impressum.eyebrow }}</p>
+        <h1 class="fade-up delay-1">{{ i18n[locale].impressum.heading }}</h1>
+    </div>
+</header>
+
+<section>
+    <div class="container">
+        <div class="legal-prose fade-up delay-2">
+
+            <p>{{ i18n[locale].impressum.intro }}</p>
+
+            <h3>{{ i18n[locale].impressum.org_heading }}</h3>
+            <p>{{ i18n[locale].impressum.org_type }}</p>
+            <p>{{ i18n[locale].impressum.address | safe }}</p>
+
+            <h3>{{ i18n[locale].impressum.contact_heading }}</h3>
+            <p>{{ i18n[locale].impressum.contact | safe }}</p>
+
+            <h3>{{ i18n[locale].impressum.eu_heading }}</h3>
+            <p>{{ i18n[locale].impressum.eu_text | safe }}</p>
+
+            <h3>{{ i18n[locale].impressum.liability_content_heading }}</h3>
+            <p>{{ i18n[locale].impressum.liability_content_text }}</p>
+
+            <h3>{{ i18n[locale].impressum.liability_links_heading }}</h3>
+            <p>{{ i18n[locale].impressum.liability_links_text }}</p>
+
+        </div>
+    </div>
+</section>
