@@ -3,7 +3,7 @@ backend:
   repo: fabiomaria/wildcare-website
   branch: main
   base_url: https://api.netlify.com
-  auth_endpoint: auth/provider/github
+  auth_endpoint: auth
   site_domain: wildcare-cms.netlify.app
   commit_messages:
     create: 'content: create {{collection}} "{{slug}}"'
