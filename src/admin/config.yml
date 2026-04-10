@@ -1,7 +1,8 @@
 backend:
   name: git-gateway
   branch: main
-  site_url: https://wildcare-cms.netlify.app
+  identity_url: https://wildcare-cms.netlify.app/.netlify/identity
+  gateway_url: https://wildcare-cms.netlify.app/.netlify/git
   commit_messages:
     create: 'content: create {{collection}} "{{slug}}"'
     update: 'content: update {{collection}} "{{slug}}"'
