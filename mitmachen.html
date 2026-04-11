@@ -192,7 +192,8 @@
          INDIVIDUELLE MITGLIEDSCHAFT
          ================================ -->
 
-    <section class="mitgliedschaft">
+
+<section class="mitgliedschaft">
         <div class="container">
             <div class="mitgliedschaft-intro fade-up">
                 <p class="label" style="margin-bottom: var(--space-md);"
@@ -206,48 +207,66 @@
                    data-en="Some contribute with a monthly amount, others bring ideas, spaces or skills. Both are equally valuable.">Manche tragen mit einem monatlichen Beitrag bei, andere bringen Ideen, R&auml;ume oder F&auml;higkeiten ein. Beides ist gleich viel wert.</p>
             </div>
 
-            <p class="label fade-up" style="text-align: center; margin-bottom: var(--space-xl); opacity: 0.5;"
-                data-de="Zur Orientierung, nicht als Schablone"
-                data-en="For orientation, not as a template">Zur Orientierung, nicht als Schablone</p>
+            <p class="label fade-up" style="text-align: center; margin-bottom: var(--space-xl); color: var(--terracotta);"
+                data-de="Wähle deine Stufe, um den Antrag zu starten"
+                data-en="Choose your tier to start the application">W&auml;hle deine Stufe, um den Antrag zu starten</p>
 
             <div class="beitrag-grid">
-                <div class="beitrag-card fade-up delay-1">
+                <div class="beitrag-card fade-up delay-1" style="cursor: pointer; display: flex; flex-direction: column;" onclick="openMembershipForm('Seed (10€)')">
                     <div class="beitrag-icon">&#x1F331;</div>
                     <p class="beitrag-name"
                         data-de="Saat"
                         data-en="Seed">Saat</p>
                     <p class="beitrag-amount"
-                        data-de="&euro;10 / Monat"
-                        data-en="&euro;10 / month">&euro;10 / Monat</p>
-                    <p class="beitrag-desc"
+                        data-de="&euro;10 / Jahr"
+                        data-en="&euro;10 / year">&euro;10 / Jahr</p>
+                    <p class="beitrag-desc" style="flex-grow: 1;"
                         data-de="&bdquo;Ich bin dabei.&ldquo;"
                         data-en="&ldquo;I&rsquo;m in.&rdquo;">&bdquo;Ich bin dabei.&ldquo;</p>
+                    
+                    <div style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: var(--border-subtle);">
+                        <span class="btn-ghost" style="font-size: 0.85rem;" 
+                              data-de="Diese Stufe wählen" 
+                              data-en="Select this tier">Diese Stufe w&auml;hlen</span>
+                    </div>
                 </div>
 
-                <div class="beitrag-card fade-up delay-2">
+                <div class="beitrag-card fade-up delay-2" style="cursor: pointer; display: flex; flex-direction: column;" onclick="openMembershipForm('Trunk (35 €)')">
                     <div class="beitrag-icon">&#x1F333;</div>
                     <p class="beitrag-name"
                         data-de="Stamm"
                         data-en="Trunk">Stamm</p>
                     <p class="beitrag-amount"
-                        data-de="&euro;25 / Monat"
-                        data-en="&euro;25 / month">&euro;25 / Monat</p>
-                    <p class="beitrag-desc"
+                        data-de="&euro;35 / Jahr"
+                        data-en="&euro;35 / year">&euro;25 / Jahr</p>
+                    <p class="beitrag-desc" style="flex-grow: 1;"
                         data-de="&bdquo;Ich trage den Raum mit.&ldquo;"
                         data-en="&ldquo;I help sustain the space.&rdquo;">&bdquo;Ich trage den Raum mit.&ldquo;</p>
+                    
+                    <div style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: var(--border-subtle);">
+                        <span class="btn-ghost" style="font-size: 0.85rem;" 
+                              data-de="Diese Stufe wählen" 
+                              data-en="Select this tier">Diese Stufe w&auml;hlen</span>
+                    </div>
                 </div>
 
-                <div class="beitrag-card fade-up delay-3">
+                <div class="beitrag-card fade-up delay-3" style="cursor: pointer; display: flex; flex-direction: column;" onclick="openMembershipForm('Root (60+ €)')">
                     <div class="beitrag-icon">&#x1FAB4;</div>
                     <p class="beitrag-name"
                         data-de="Wurzel"
                         data-en="Root">Wurzel</p>
                     <p class="beitrag-amount"
-                        data-de="&euro;50+ / Monat"
-                        data-en="&euro;50+ / month">&euro;50+ / Monat</p>
-                    <p class="beitrag-desc"
+                        data-de="&euro;50+ / Jahr"
+                        data-en="&euro;50+ / year">&euro;50+ / Jahr</p>
+                    <p class="beitrag-desc" style="flex-grow: 1;"
                         data-de="&bdquo;Ich investiere in die Vision.&ldquo;"
                         data-en="&ldquo;I invest in the vision.&rdquo;">&bdquo;Ich investiere in die Vision.&ldquo;</p>
+                    
+                    <div style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: var(--border-subtle);">
+                        <span class="btn-ghost" style="font-size: 0.85rem;" 
+                              data-de="Diese Stufe wählen" 
+                              data-en="Select this tier">Diese Stufe w&auml;hlen</span>
+                    </div>
                 </div>
             </div>
 
@@ -256,31 +275,6 @@
                 data-en="All tiers are equal. It&rsquo;s not about the amount &mdash; it&rsquo;s about you being here.">Alle Stufen sind gleichwertig. Es geht nicht um den Betrag &mdash; es geht darum, dass du da bist.</p>
         </div>
     </section>
-
-    <!-- ================================
-         CTA
-         ================================ -->
-
-    <section class="cta-section">
-        <div class="container fade-up">
-            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;"
-                data-de="Der erste Schritt"
-                data-en="The First Step">Der erste Schritt</p>
-            <h2 data-de="Schreib uns."
-                data-en="Write to us.">Schreib uns.</h2>
-            <p data-de="Kein Formular, kein Funnel. Schreib uns einfach &mdash; erz&auml;hl, was dich bewegt, frag, was du wissen willst. Wir melden uns pers&ouml;nlich."
-               data-en="No form, no funnel. Just write to us &mdash; tell us what moves you, ask what you want to know. We&rsquo;ll get back to you personally.">Kein Formular, kein Funnel. Schreib uns einfach &mdash; erz&auml;hl, was dich bewegt, frag, was du wissen willst. Wir melden uns pers&ouml;nlich.</p>
-            <a href="mailto:hello@wildcare.space" class="btn btn-primary">hello@wildcare.space</a>
-            <br>
-            <a href="kontakt.html" class="cta-email"
-                data-de="Oder schau auf unserer Kontaktseite vorbei &rarr;"
-                data-en="Or visit our contact page &rarr;">Oder schau auf unserer Kontaktseite vorbei &rarr;</a>
-        </div>
-    </section>
-
-    <!-- ================================
-         FOOTER
-         ================================ -->
 
     <footer class="page-footer">
         <div class="container">
@@ -331,10 +325,6 @@
         </div>
     </footer>
 
-    <!-- ================================
-         SCRIPTS
-         ================================ -->
-
     <script>
         // Scroll animations
         const observer = new IntersectionObserver((entries) => {
@@ -362,6 +352,24 @@
     </script>
 
     <script src="js/i18n.js"></script>
+
+    <script src="https://tally.so/widgets/embed.js"></script>
+    <script>
+        function openMembershipForm(tier) {
+            if (typeof Tally !== 'undefined') {
+                Tally.openPopup('rjd2PR', {
+                    layout: 'modal',       
+                    width: 700,            
+                    hideTitle: true,       
+                    hiddenFields: {
+                        stufe: tier        
+                    }
+                });
+            } else {
+                console.error("Tally Script wurde noch nicht geladen.");
+            }
+        }
+    </script>
 
 </body>
 </html>
