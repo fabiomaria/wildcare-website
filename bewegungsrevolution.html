@@ -21,6 +21,29 @@
     <link rel="stylesheet" href="css/styles.css">
     <script async src="https://tally.so/widgets/embed.js"></script>
 
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '26398850263142398');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=26398850263142398&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Registration Conversion Tracking -->
+    <script>
+    if (window.location.search.includes('registered=true')) {
+      fbq('track', 'CompleteRegistration');
+    }
+    </script>
+
 </head>
 <body>
 
@@ -398,6 +421,38 @@
     </section>
 
     <!-- ================================
+         ANMELDUNG EMBED
+         ================================ -->
+
+    <section>
+        <div class="container fade-up" style="max-width: 720px; margin: 0 auto;">
+            <div class="section-header" style="text-align: center; margin-bottom: 32px;">
+                <p class="label"
+                    data-de="Anmeldung"
+                    data-en="Registration">Anmeldung</p>
+                <h2
+                    data-de="Direkt hier anmelden"
+                    data-en="Register right here">Direkt hier anmelden</h2>
+            </div>
+            <iframe data-tally-src="https://tally.so/embed/eq227x?alignLeft=1&hideTitle=1&transparentBackground=1" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Anmeldung"></iframe>
+            <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
+        </div>
+    </section>
+
+    <!-- ================================
+         FUNDED BY
+         ================================ -->
+
+    <section>
+        <div class="container fade-up" style="text-align: center; padding: 32px 0;">
+            <p class="label" style="margin-bottom: 16px;"
+                data-de="Gef&ouml;rdert durch"
+                data-en="Funded by">Gef&ouml;rdert durch</p>
+            <img src="assets/images/bewegungsrevolution logo.png" alt="Gef&ouml;rdert durch Bewegungsrevolution Steiermark" style="max-width: 260px; height: auto;" loading="lazy">
+        </div>
+    </section>
+
+    <!-- ================================
          FOOTER
          ================================ -->
 
@@ -407,8 +462,8 @@
                 <div class="footer-brand">
                     <h4>Wild Care</h4>
                     <p
-                        data-de="Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir &uuml;ben das Zusammenleben &mdash; jeden Montag in Graz."
-                        data-en="Association for Contact Improvisation and social practice. We practise togetherness &mdash; every Monday in Graz.">Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir &uuml;ben das Zusammenleben &mdash; jeden Montag in Graz.</p>
+                        data-de="Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir leben die Kunst der Begegnung &mdash; jeden Montag in Graz."
+                        data-en="Association for Contact Improvisation and social practice. We live the art of encounter &mdash; every Monday in Graz.">Verein f&uuml;r Kontaktimprovisation und soziale Praxis. Wir leben die Kunst der Begegnung &mdash; jeden Montag in Graz.</p>
                 </div>
                 <div class="footer-links">
                     <h4
