@@ -142,6 +142,10 @@
                     <video autoplay muted loop playsinline preload="metadata" poster="assets/images/warum-ci.jpg">
                         <source src="assets/what is ci.mp4" type="video/mp4">
                     </video>
+                    <button class="video-mute-btn" aria-label="Ton ein/aus" onclick="toggleMute(this)">
+                        <svg class="icon-muted" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                        <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -450,12 +454,12 @@
                         data-de="Verbinden"
                         data-en="Connect">Verbinden</h4>
                     <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://facebook.com/wildcare.space" target="_blank" rel="noopener">Facebook</a>
                     <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
-                    <a href="impressum.html">Impressum</a>
-                    <a href="datenschutz.html">Datenschutz</a>
                 </div>
             </div>
             <div class="footer-bottom">
+                <span class="footer-legal"><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></span>
                 <span>&copy; 2026 Wild Care &mdash; Graz</span>
                 <span
                     data-de="Mit F&uuml;rsorge gebaut"
@@ -494,6 +498,14 @@
         }
     </script>
     <script src="js/i18n.js"></script>
+    <script>
+        function toggleMute(btn) {
+            const video = btn.closest('.detail-video-wrapper').querySelector('video');
+            video.muted = !video.muted;
+            btn.querySelector('.icon-muted').style.display = video.muted ? '' : 'none';
+            btn.querySelector('.icon-unmuted').style.display = video.muted ? 'none' : '';
+        }
+    </script>
 
 </body>
 </html>
