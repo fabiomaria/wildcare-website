@@ -1,0 +1,9 @@
+.DS_Store
+.env
+
+node_modules/
+.astro/
+_site/
+dist/
+
+studio/
