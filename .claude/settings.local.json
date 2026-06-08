@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Sanity__create_documents_from_json",
+      "mcp__Sanity__publish_documents"
+    ]
+  }
+}

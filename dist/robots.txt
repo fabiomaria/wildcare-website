@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wildcare.space/sitemap-index.xml
