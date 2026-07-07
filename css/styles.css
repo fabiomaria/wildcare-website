@@ -1559,6 +1559,165 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
 }
 
 /* ============================================
+   PAGE: CELLULAR TOUCH
+   ============================================ */
+
+.workshop-hero {
+    background: linear-gradient(180deg, var(--warmwhite) 0%, rgba(240, 235, 226, 0.7) 100%);
+}
+
+.workshop-hero-visual {
+    position: relative;
+    min-height: 540px;
+}
+
+.workshop-photo-main,
+.workshop-photo-inset {
+    position: absolute;
+    overflow: hidden;
+    background: var(--sand);
+    border: var(--border-subtle);
+    box-shadow: 0 24px 80px rgba(44, 36, 24, 0.12);
+}
+
+.workshop-photo-main {
+    inset: 0 0 76px 52px;
+    border-radius: var(--radius-lg);
+}
+
+.workshop-photo-inset {
+    left: 0;
+    bottom: 0;
+    width: 56%;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-md);
+}
+
+.workshop-photo-main img,
+.workshop-photo-inset img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.workshop-photo-main img {
+    object-position: 52% center;
+}
+
+.workshop-visual-note {
+    position: absolute;
+    right: var(--space-lg);
+    bottom: var(--space-lg);
+    max-width: 280px;
+    padding: var(--space-md);
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: var(--border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: 0 16px 48px rgba(44, 36, 24, 0.1);
+}
+
+.workshop-visual-note span {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: var(--space-sm);
+}
+
+.workshop-visual-note p {
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    opacity: 0.68;
+}
+
+.workshop-image-band {
+    padding: 0;
+    background: var(--bark);
+    color: var(--warmwhite);
+}
+
+.workshop-image-band-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    min-height: 540px;
+}
+
+.workshop-image-copy {
+    align-self: center;
+    padding: var(--space-3xl) var(--space-2xl);
+}
+
+.workshop-image-copy .label {
+    color: var(--terracotta-light);
+    margin-bottom: var(--space-md);
+}
+
+.workshop-image-copy h2 {
+    color: var(--warmwhite);
+    margin-bottom: var(--space-lg);
+}
+
+.workshop-image-copy p:not(.label) {
+    color: var(--warmwhite);
+    opacity: 0.72;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+}
+
+.workshop-image-frame {
+    min-height: 540px;
+}
+
+.workshop-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.workshop-process-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: var(--space-2xl);
+    align-items: start;
+}
+
+.workshop-process-list {
+    display: grid;
+    gap: var(--space-md);
+}
+
+.workshop-process-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: var(--warmwhite);
+    border: var(--border-subtle);
+    border-radius: var(--radius-md);
+}
+
+.workshop-process-item span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--terracotta);
+}
+
+.workshop-process-item p {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    opacity: 0.72;
+}
+
+.workshop-team-portrait {
+    border-radius: var(--radius-md);
+}
+
+/* ============================================
    PAGE: PROGRAMM
    ============================================ */
 
@@ -2615,6 +2774,34 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
     .detail-card-grid { grid-template-columns: 1fr; }
     .detail-testimonial-grid { grid-template-columns: 1fr; }
     .detail-team-grid { grid-template-columns: 1fr; }
+    .workshop-hero-visual {
+        min-height: auto;
+        display: grid;
+        gap: var(--space-md);
+    }
+    .workshop-photo-main,
+    .workshop-photo-inset,
+    .workshop-visual-note {
+        position: relative;
+        inset: auto;
+        width: 100%;
+    }
+    .workshop-photo-main {
+        aspect-ratio: 4 / 3;
+    }
+    .workshop-photo-inset {
+        aspect-ratio: 3 / 2;
+    }
+    .workshop-image-band-grid,
+    .workshop-process-grid {
+        grid-template-columns: 1fr;
+    }
+    .workshop-image-copy {
+        padding: var(--space-2xl) var(--space-lg);
+    }
+    .workshop-image-frame {
+        min-height: 360px;
+    }
 
     section { padding: var(--space-2xl) 0; }
 }
@@ -2635,6 +2822,12 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
     .values-grid { grid-template-columns: 1fr; }
     .hero-video { min-height: 500px; }
     .hero-video-content { padding-bottom: var(--space-2xl); }
+    .workshop-process-item {
+        grid-template-columns: 1fr;
+    }
+    .workshop-visual-note {
+        max-width: 100%;
+    }
 }
 
 /* Reduced motion */
