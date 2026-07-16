@@ -49,14 +49,9 @@ Keep both existing buttons unchanged:
 - `Komm vorbei` (primary, `data-tally-open="nplWX8"`)
 - `Mehr erfahren` (secondary, → `programm.html`)
 
-Add a third element: `Mitglied werden` / `Become a member` → `mitmachen.html`, using the existing `.btn-ghost` class (already defined in `css/styles.css`, already used elsewhere for lighter-weight text-style CTAs with an arrow). No new class needed — `.btn-ghost` is visually lighter than both `.btn-primary` and `.btn-secondary`, so it naturally reads as the lowest-emphasis of the three. Add via the existing `data-de`/`data-en` toggle pattern.
+Add a third element: `Mitglied werden` / `Become a member` → `mitmachen.html`, using the existing `class="btn btn-ghost"` combination (already defined in `css/styles.css`, already used sitewide for lighter-weight text-style CTAs with an arrow — see `index.html:186`, `index.html:222`, `programm.html:312`). Every existing use of `.btn-ghost` pairs it with the base `.btn` class, so this follows established convention rather than introducing a new pattern. `.btn-ghost` is visually lighter than both `.btn-primary` and `.btn-secondary`, so it naturally reads as the lowest-emphasis of the three. Add via the existing `data-de`/`data-en` toggle pattern.
 
-### B2. Nav — promote Mitmachen
-File: shared nav markup across pages (`nav-links`, e.g. `index.html` ~line 43-48).
-
-`Komm vorbei` currently uses `.nav-cta` (filled button style); `Mitmachen` is a plain link (opacity-muted, per `.nav-links a`). Since `.nav-cta` should stay reserved for the single highest-priority action, and no new CSS/inline styles are allowed, apply the existing `.btn-ghost` class to the `Mitmachen` link instead of introducing a new nav-specific class. `.btn-ghost`'s terracotta color + trailing arrow will visually distinguish it from the plain, muted nav links, while remaining clearly lighter-weight than the filled `.nav-cta` — applied consistently across every page's nav.
-
-### B3. Tier benefit lines
+### B2. Tier benefit lines
 File: `mitmachen.html`, three tier cards.
 
 Add one concise benefit line under each tier's existing description, drawing from the benefits already listed higher on the page (lines ~168-184: Samstags-Labs, Sharing Circles, Gast-Workshops, Mitsprache). Suggested mapping (exact copy to be refined at implementation time, matching existing tone):
@@ -101,7 +96,8 @@ New, minimal, single-purpose Worker (new to this repo — no backend currently e
 Add a new section (matching the existing numbered-section style, e.g. after section 4 "Eingebundene Dienste") describing the new data collection: what's collected (email + consent), why (Monday class reminder), where it's stored (Notion, via a Cloudflare Worker relay), and how to opt out / request deletion. Mirror in the DE/EN toggle pattern used elsewhere on that page.
 
 ### Out of scope
-Tally form step-reordering (combining/reordering the membership application's early screens) is a Tally dashboard configuration change, not a file edit in this repo. Noted as a manual follow-up, not part of the implementation plan.
+- Tally form step-reordering (combining/reordering the membership application's early screens) is a Tally dashboard configuration change, not a file edit in this repo. Noted as a manual follow-up, not part of the implementation plan.
+- **Nav emphasis for "Mitmachen" (originally B2) is dropped.** No existing CSS class achieves "more prominent than a muted nav link, less prominent than the filled `.nav-cta`" without adding new CSS: `.nav-cta` would make it a visual twin of "Komm vorbei", `.active` is already reserved sitewide for marking the current page, and `.btn-ghost` is overridden by `.nav-links a`'s higher specificity so it wouldn't visually change anything. Decision: leave the nav as-is; B1's hero link and B2 (tier benefit lines) carry the funnel-clarity goal instead.
 
 ## D. Cleanup
 
@@ -114,7 +110,7 @@ The `/en/` directory (`brand.html`, `index.html`, `kontakt.html`, `mitmachen.htm
 Not a code change — a checklist to run through before shipping any of the above, across every changed page (`index.html`, `kontakt.html`, `mitmachen.html`, `programm.html`, `datenschutz.html`):
 
 - [ ] DE and EN toggle both render correctly, desktop and mobile widths
-- [ ] Keyboard-only pass: every new/changed CTA (mitmachen tier buttons, nav Mitmachen, hero Mitglied werden link, footer signup form) is reachable via Tab, has a visible focus state, and activates via Enter/Space
+- [ ] Keyboard-only pass: every new/changed CTA (mitmachen tier buttons, hero Mitglied werden link, footer signup form) is reachable via Tab, has a visible focus state, and activates via Enter/Space
 - [ ] Lighthouse accessibility check on changed pages
 - [ ] All form fields (contact form, footer signup) have properly associated `<label>`s
 - [ ] Live end-to-end test: submit the Formspree contact form and confirm receipt
@@ -124,7 +120,7 @@ Not a code change — a checklist to run through before shipping any of the abov
 
 ## Open items carried into implementation planning
 
-- Exact copy for the B3 tier benefit lines (DE + EN) — draft during implementation, matching existing tone.
+- Exact copy for the B2 tier benefit lines (DE + EN) — draft during implementation, matching existing tone.
 - Whether the C1 footer signup submit button uses `.btn-primary` or `.btn-secondary` — decide at implementation time by checking against the footer's background, no new styling either way.
 - Notion integration setup (token, database, sharing) is a manual prerequisite step the user must perform; the implementation plan will call it out as an explicit first task with instructions.
 - No CSS files are edited and no inline `style="..."` attributes are added anywhere in this spec's implementation — verify this holds as a final check before considering the implementation done.
