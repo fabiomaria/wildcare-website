@@ -50,6 +50,13 @@
             }
         });
 
+        document.querySelectorAll('[data-aria-de][data-aria-en]').forEach(function (el) {
+            var label = el.getAttribute('data-aria-' + lang);
+            if (label !== null) {
+                el.setAttribute('aria-label', label);
+            }
+        });
+
         // Update toggle buttons
         document.querySelectorAll('.lang-toggle-btn').forEach(function (btn) {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
