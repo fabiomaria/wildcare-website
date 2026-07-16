@@ -212,7 +212,7 @@
                 data-en="Choose your tier to start the application">W&auml;hle deine Stufe, um den Antrag zu starten</p>
 
             <div class="beitrag-grid">
-                <div class="beitrag-card fade-up delay-1" style="cursor: pointer; display: flex; flex-direction: column;" onclick="openMembershipForm('Seed (10€)')">
+                <div class="beitrag-card fade-up delay-1" style="display: flex; flex-direction: column;">
                     <div class="beitrag-icon">&#x1F331;</div>
                     <p class="beitrag-name"
                         data-de="Saat"
@@ -225,13 +225,16 @@
                         data-en="&ldquo;I&rsquo;m in.&rdquo;">&bdquo;Ich bin dabei.&ldquo;</p>
                     
                     <div style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: var(--border-subtle);">
-                        <span class="btn-ghost" style="font-size: 0.85rem;" 
-                              data-de="Diese Stufe wählen" 
-                              data-en="Select this tier">Diese Stufe w&auml;hlen</span>
+                        <button type="button" class="btn btn-ghost" style="font-size: 0.85rem;"
+                                data-de="Diese Stufe wählen"
+                                data-en="Select this tier"
+                                data-aria-de="Mitgliedschaft Saat, 10 Euro pro Jahr wählen"
+                                data-aria-en="Select Seed membership, 10 euros per year"
+                                onclick="openMembershipForm('Seed (10€)')">Diese Stufe w&auml;hlen</button>
                     </div>
                 </div>
 
-                <div class="beitrag-card fade-up delay-2" style="cursor: pointer; display: flex; flex-direction: column;" onclick="openMembershipForm('Trunk (35 €)')">
+                <div class="beitrag-card fade-up delay-2" style="display: flex; flex-direction: column;">
                     <div class="beitrag-icon">&#x1F333;</div>
                     <p class="beitrag-name"
                         data-de="Stamm"
@@ -244,13 +247,16 @@
                         data-en="&ldquo;I help sustain the space.&rdquo;">&bdquo;Ich trage den Raum mit.&ldquo;</p>
                     
                     <div style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: var(--border-subtle);">
-                        <span class="btn-ghost" style="font-size: 0.85rem;" 
-                              data-de="Diese Stufe wählen" 
-                              data-en="Select this tier">Diese Stufe w&auml;hlen</span>
+                        <button type="button" class="btn btn-ghost" style="font-size: 0.85rem;"
+                                data-de="Diese Stufe wählen"
+                                data-en="Select this tier"
+                                data-aria-de="Mitgliedschaft Stamm, 35 Euro pro Jahr wählen"
+                                data-aria-en="Select Trunk membership, 35 euros per year"
+                                onclick="openMembershipForm('Trunk (35 €)')">Diese Stufe w&auml;hlen</button>
                     </div>
                 </div>
 
-                <div class="beitrag-card fade-up delay-3" style="cursor: pointer; display: flex; flex-direction: column;" onclick="openMembershipForm('Root (60+ €)')">
+                <div class="beitrag-card fade-up delay-3" style="display: flex; flex-direction: column;">
                     <div class="beitrag-icon">&#x1FAB4;</div>
                     <p class="beitrag-name"
                         data-de="Wurzel"
@@ -263,9 +269,12 @@
                         data-en="&ldquo;I invest in the vision.&rdquo;">&bdquo;Ich investiere in die Vision.&ldquo;</p>
                     
                     <div style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: var(--border-subtle);">
-                        <span class="btn-ghost" style="font-size: 0.85rem;" 
-                              data-de="Diese Stufe wählen" 
-                              data-en="Select this tier">Diese Stufe w&auml;hlen</span>
+                        <button type="button" class="btn btn-ghost" style="font-size: 0.85rem;"
+                                data-de="Diese Stufe wählen"
+                                data-en="Select this tier"
+                                data-aria-de="Mitgliedschaft Wurzel, 50 Euro oder mehr pro Jahr wählen"
+                                data-aria-en="Select Root membership, 50 euros or more per year"
+                                onclick="openMembershipForm('Root (60+ €)')">Diese Stufe w&auml;hlen</button>
                     </div>
                 </div>
             </div>
