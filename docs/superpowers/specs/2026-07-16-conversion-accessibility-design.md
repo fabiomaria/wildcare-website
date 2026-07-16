@@ -11,6 +11,8 @@ This spec covers four areas of work identified from a site review: a rendering b
 
 **Known constraint driving several decisions below:** `js/i18n.js` sets `textContent` only (with one exception for `<br>`) when swapping languages, by design, to avoid `innerHTML` injection. Any translatable element containing rich markup (e.g. an `<a>` tag) will have that markup rendered as literal escaped text once the toggle runs. Fixes must work within this constraint, not around it.
 
+**Second constraint (user directive):** no edits to `css/styles.css` and no inline `style="..."` attributes for any of the work below. Every visual treatment must be achieved by applying **existing** classes already defined in `css/styles.css` (`.btn-primary`, `.btn-secondary`, `.btn-ghost`, `.form-group`, `.form-note`, `.nav-cta`, `.nav-links a`, etc.). Where a section below previously called for a new class or inline style, it has been revised to reuse an existing one instead. Where removing an inline style (not adding one) is needed to fix a bug, that remains in scope — the constraint is against *adding* CSS/inline styles, not removing them.
+
 ## A. Quick fixes
 
 ### A1. Kontakt mailto rendering bug
@@ -47,12 +49,12 @@ Keep both existing buttons unchanged:
 - `Komm vorbei` (primary, `data-tally-open="nplWX8"`)
 - `Mehr erfahren` (secondary, → `programm.html`)
 
-Add a third, visually lighter element: `Mitglied werden` / `Become a member` → `mitmachen.html`. It should read as a lower-emphasis option (e.g. a plain text link or minimal ghost-style treatment) so it doesn't compete with the primary CTA. Add via the existing `data-de`/`data-en` toggle pattern.
+Add a third element: `Mitglied werden` / `Become a member` → `mitmachen.html`, using the existing `.btn-ghost` class (already defined in `css/styles.css`, already used elsewhere for lighter-weight text-style CTAs with an arrow). No new class needed — `.btn-ghost` is visually lighter than both `.btn-primary` and `.btn-secondary`, so it naturally reads as the lowest-emphasis of the three. Add via the existing `data-de`/`data-en` toggle pattern.
 
 ### B2. Nav — promote Mitmachen
 File: shared nav markup across pages (`nav-links`, e.g. `index.html` ~line 43-48).
 
-`Komm vorbei` currently uses `.nav-cta` (filled button style); `Mitmachen` is a plain link. Since `.nav-cta` should stay reserved for the single highest-priority action, give `Mitmachen` a distinct, secondary-emphasis treatment (e.g. an outlined/bordered nav-item style) — visually promoted above the other plain nav links, but clearly one step below `Komm vorbei`. This requires a small CSS addition (new class, e.g. `.nav-secondary`) applied consistently across every page's nav.
+`Komm vorbei` currently uses `.nav-cta` (filled button style); `Mitmachen` is a plain link (opacity-muted, per `.nav-links a`). Since `.nav-cta` should stay reserved for the single highest-priority action, and no new CSS/inline styles are allowed, apply the existing `.btn-ghost` class to the `Mitmachen` link instead of introducing a new nav-specific class. `.btn-ghost`'s terracotta color + trailing arrow will visually distinguish it from the plain, muted nav links, while remaining clearly lighter-weight than the filled `.nav-cta` — applied consistently across every page's nav.
 
 ### B3. Tier benefit lines
 File: `mitmachen.html`, three tier cards.
@@ -69,12 +71,12 @@ Keep the existing "all tiers are equal" note unchanged as the section footer.
 ### C1. Frontend
 File: `index.html` footer, inside the existing "Verbunden bleiben" (Stay connected) column (~line 295-300) — no new footer column.
 
-Add:
-- A short one-line pitch (e.g. "Get a Monday reminder" / "Montags-Erinnerung erhalten"), translated via the existing toggle.
-- An email `<input type="email" required>` with a proper `<label>`.
-- A required GDPR consent checkbox with a label linking to `datenschutz.html` (e.g. "Ich stimme der Speicherung meiner E-Mail gemäß Datenschutzerklärung zu" / "I agree to my email being stored per the privacy policy").
-- A submit button.
-- A hidden honeypot field for basic spam filtering.
+Built entirely from existing classes already defined in `css/styles.css` — no new CSS, no inline styles:
+- A short one-line pitch (e.g. "Get a Monday reminder" / "Montags-Erinnerung erhalten"), translated via the existing toggle, styled like the other footer column headings/text.
+- An email `<input type="email" required>` wrapped in `.form-group` with a proper `<label>` (same structure as the Formspree contact form's fields).
+- A required GDPR consent checkbox with a label linking to `datenschutz.html` (e.g. "Ich stimme der Speicherung meiner E-Mail gemäß Datenschutzerklärung zu" / "I agree to my email being stored per the privacy policy"), also inside a `.form-group`. No existing checkbox-specific styling exists in `css/styles.css`, so it renders with the browser's default checkbox appearance — acceptable since adding new CSS is out of scope.
+- A submit button using `.btn-secondary` (footer background is light, so the bordered/transparent secondary style fits better than the filled primary) or `.btn-primary` — final call made at implementation time by checking which reads better against the footer's existing background, without adding any new style.
+- A hidden honeypot field for basic spam filtering (no visual styling needed — it stays hidden via an existing utility if one exists, otherwise via the `hidden` HTML attribute, which is not a `style=` attribute).
 
 The form posts to the Cloudflare Worker endpoint (below), not Formspree — Formspree has no Notion-writing capability. On success, replace the form with an inline thank-you message via a small script (same pattern already used for the Tally trigger buttons); on failure, show an inline error and leave the form intact so the visitor can retry.
 
@@ -123,5 +125,6 @@ Not a code change — a checklist to run through before shipping any of the abov
 ## Open items carried into implementation planning
 
 - Exact copy for the B3 tier benefit lines (DE + EN) — draft during implementation, matching existing tone.
-- Exact visual treatment for the B2 `.nav-secondary` nav style and the B1 tertiary hero link — small CSS decisions made during implementation against the existing design system in `css/`.
+- Whether the C1 footer signup submit button uses `.btn-primary` or `.btn-secondary` — decide at implementation time by checking against the footer's background, no new styling either way.
 - Notion integration setup (token, database, sharing) is a manual prerequisite step the user must perform; the implementation plan will call it out as an explicit first task with instructions.
+- No CSS files are edited and no inline `style="..."` attributes are added anywhere in this spec's implementation — verify this holds as a final check before considering the implementation done.
