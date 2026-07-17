@@ -12,12 +12,17 @@ This is a separate worker from `worker/` (homepage email signup → Notion) and
 `CLAUDE.md`. It talks to GitHub's OAuth API, not Notion, and has nothing else
 in common with them.
 
-## Status: scaffolded, not deployed, not wired up
+## Status
 
-This worker has **not** been deployed and `admin/config.yml`'s
-`backend.base_url` is still commented out. Nothing changes for the live site
-until the manual steps below are done by someone with GitHub org admin access
-and Cloudflare account access.
+Deployed at:
+
+```text
+https://wildcare-cms-auth.fabiogerhold.workers.dev
+```
+
+`GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` are set as Cloudflare Worker
+secrets. `admin/config.yml` must point `backend.base_url` at the deployed
+worker URL for live CMS login.
 
 ## Routes
 
@@ -26,8 +31,8 @@ and Cloudflare account access.
   `HttpOnly` state cookie (scoped to `/callback`) for CSRF protection, and
   redirects to `https://github.com/login/oauth/authorize` with `scope=repo`
   (Sveltia/Decap needs repo write access to commit content changes).
-- `GET /callback` — GitHub redirects here with `?code=&state=`. Validates the
-  origin again, validates `state` against the cookie set in `/auth`, exchanges
+- `GET /callback` — GitHub redirects here with `?code=&state=`. Validates
+  `state` against the cookie set in `/auth`, exchanges
   `code` for an access token via `POST
   https://github.com/login/oauth/access_token`, then returns a small HTML page
   that runs the standard Decap/Sveltia `postMessage` handshake:
@@ -52,29 +57,13 @@ and Cloudflare account access.
   committed anywhere in this repo) — credentials from the GitHub OAuth App
   created for this integration.
 
-## Manual setup still required before this is live
+## Manual setup
 
-This worker cannot be used for real login yet. The following steps need
-someone with the right GitHub and Cloudflare access and are **not** done by
-this scaffold:
+GitHub OAuth App settings:
 
-1. Create a GitHub OAuth App at <https://github.com/settings/developers>
-   (or under the org, if the repo is org-owned) with:
-   - Homepage URL: the deployed site, e.g. `https://wildcare.space`
-   - Authorization callback URL: `<deployed-worker-url>/callback`
-     (e.g. `https://wildcare-cms-auth.<subdomain>.workers.dev/callback`, or a
-     custom domain/route if one is set up for this worker)
-2. Run `wrangler secret put GITHUB_CLIENT_ID` and paste in the OAuth App's
-   client ID.
-3. Run `wrangler secret put GITHUB_CLIENT_SECRET` and paste in the OAuth
-   App's client secret.
-4. Run `wrangler deploy` to publish the worker and get its real URL.
-5. Update `ALLOWED_DOMAINS` in `wrangler.toml` if the deployed domain or local
-   dev ports differ from what's currently set, then redeploy.
-6. In `admin/config.yml`, uncomment and fill in `backend.base_url` with the
-   deployed worker's URL (the line is currently commented out at the top of
-   that file, right under `backend.branch`). Do this as an explicit follow-up
-   task — it's out of scope for this scaffold.
+- Homepage URL: `https://wildcare.space`
+- Authorization callback URL:
+  `https://wildcare-cms-auth.fabiogerhold.workers.dev/callback`
 
-None of the above has been done here: no `wrangler deploy`, no
-`wrangler secret put` with real values, and `admin/config.yml` is untouched.
+If the callback URL changes, update the OAuth App, update `admin/config.yml`,
+and redeploy if `ALLOWED_DOMAINS` changes.

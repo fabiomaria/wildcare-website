@@ -18,7 +18,9 @@ function getAllowedDomains(env) {
 // Only allow the flow to be kicked off from an origin we recognize
 // (the deployed site + local Eleventy dev preview). Checks Origin first,
 // falling back to Referer since browsers don't always send Origin on a
-// top-level navigation/redirect.
+// top-level navigation/redirect. The GitHub -> /callback request is
+// protected by the state cookie instead because GitHub may not send a
+// useful Referer/Origin back to us.
 function isRequestFromAllowedOrigin(request, env) {
     const allowedDomains = getAllowedDomains(env);
     if (allowedDomains.length === 0) {
@@ -168,10 +170,6 @@ function renderErrorHtml(message) {
 
 // GET /callback — GitHub redirects here with ?code=&state=.
 async function handleCallback(request, env) {
-    if (!isRequestFromAllowedOrigin(request, env)) {
-        return textResponse("Forbidden: origin not allowed", 403);
-    }
-
     const url = new URL(request.url);
     const code = url.searchParams.get("code");
     const state = url.searchParams.get("state");

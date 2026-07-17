@@ -157,19 +157,37 @@ Important debugging note:
 
 ## CMS Auth Worker Status
 
-`worker-auth/` is scaffolded but not deployed or wired into the CMS yet.
+`worker-auth/` is deployed and wired into the CMS.
 
-Read `worker-auth/README.md` before touching it.
+Deployed URL:
+
+- `https://wildcare-cms-auth.fabiogerhold.workers.dev`
+
+GitHub OAuth App settings:
+
+- Homepage URL: `https://wildcare.space`
+- Authorization callback URL: `https://wildcare-cms-auth.fabiogerhold.workers.dev/callback`
+
+Cloudflare Worker secrets are set:
+
+- `GITHUB_CLIENT_ID`
+- `GITHUB_CLIENT_SECRET`
+
+`admin/config.yml` now has:
+
+```yaml
+backend:
+  name: github
+  repo: fabiomaria/wildcare-website
+  branch: html-site
+  base_url: https://wildcare-cms-auth.fabiogerhold.workers.dev
+```
 
 Still required:
 
-1. Create a GitHub OAuth App.
-2. Set `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` as Cloudflare Worker secrets.
-3. Deploy `worker-auth/`.
-4. Confirm the deployed callback URL.
-5. Update `admin/config.yml` by uncommenting/filling `backend.base_url`.
-6. Test `https://wildcare.space/admin/` login with a real GitHub collaborator account.
-7. Test save -> commit -> GitHub Actions build -> Pages deploy.
+1. Push/deploy the `admin/config.yml` change.
+2. Test `https://wildcare.space/admin/` login with a real GitHub collaborator account.
+3. Test save -> commit -> GitHub Actions build -> Pages deploy.
 
 The auth worker is intentionally separate from both `worker/` and `worker-kontakt/`.
 
@@ -244,19 +262,13 @@ If the sandbox blocks the listener with `EPERM`, rerun the same command with too
 
 ## Remaining Work
 
-### 1. Deploy/Wire `worker-auth/`
-
-See "CMS Auth Worker Status" above. This needs real GitHub OAuth and Cloudflare access.
-
-After deployment, update `admin/config.yml` with `backend.base_url` and test the full CMS login/save/publish loop.
-
-### 2. GitHub Pages Settings
+### 1. GitHub Pages Settings
 
 The workflow is committed, but the repo settings must be changed manually to deploy from GitHub Actions. Verify with the user or in GitHub UI.
 
-### 3. CMS End-To-End Tests
+### 2. CMS End-To-End Tests
 
-After `worker-auth/` and Pages deployment are live:
+After this branch is pushed and Pages deployment is live:
 
 - Login at `/admin/`.
 - Make a tiny text edit.
@@ -267,7 +279,7 @@ After `worker-auth/` and Pages deployment are live:
 - Confirm the uploaded WebP lands in `assets/uploads/` and renders correctly.
 - Revert/restore the test edit through GitHub if needed.
 
-### 4. Final QA
+### 3. Final QA
 
 Before project completion:
 
@@ -298,4 +310,4 @@ Before project completion:
 
 ## Recommended Next Task
 
-Deploy/wire `worker-auth/`, then complete CMS end-to-end testing and final QA.
+Switch GitHub Pages to GitHub Actions if it has not been done yet, then complete CMS login/save end-to-end testing and final QA.

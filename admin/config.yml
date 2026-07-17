@@ -6,8 +6,7 @@ backend:
   name: github
   repo: fabiomaria/wildcare-website
   branch: html-site
-  # base_url: <worker-auth URL>  — added in Phase 3 when the OAuth worker is deployed.
-  # Until then, use the local-repository workflow (Chrome) or a PAT to sign in.
+  base_url: https://wildcare-cms-auth.fabiogerhold.workers.dev
 
 media_folder: assets/uploads
 public_folder: /assets/uploads
