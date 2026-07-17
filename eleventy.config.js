@@ -230,10 +230,16 @@ function loadLegalContent() {
     if (!filename.endsWith(".md")) continue;
     const slug = path.basename(filename, ".md");
     const parsed = matter(fs.readFileSync(path.join(dir, filename), "utf8"));
+    const body = parsed.content.trim();
     pages[slug] = {
       ...parsed.data,
-      body: parsed.content.trim(),
-      body_html: legalMarkdown.render(parsed.content.trim()),
+      body,
+      // Plain rendering (no per-element classes) for pages whose original
+      // markup wraps the whole prose block in one fade-up container.
+      body_html: markdown.render(body),
+      // Per-element fade-up rendering for pages whose original markup put
+      // class="fade-up" on every individual heading/paragraph/list.
+      body_html_fadeup: legalMarkdown.render(body),
     };
   }
 
