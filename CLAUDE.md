@@ -64,7 +64,8 @@ Always confirm `git branch --show-current` is `html-site` and that
 
 ## Email signup → Notion (the `worker/` backend)
 
-- The footer signup form POSTs to the Cloudflare Worker, which writes a row to
+- The homepage email-list signup form (in the `.cta-section` "Komm vorbei" band
+  on `index.html`) POSTs to the Cloudflare Worker, which writes a row to
   Notion. Notion has no public form endpoint and the static site can't hold a
   secret, hence the Worker relay.
 - **Reuses the existing Notion database `Wild Care Anmeldungen`**
@@ -77,7 +78,7 @@ Always confirm `git branch --show-current` is `html-site` and that
   `Wie hast du von uns erfahren` (select), `Tag` (multi_select).
 - **There is no consent/language/source column.** By owner decision, the Worker
   records those as a **text note in `Nachricht`**, e.g.
-  `"Montags-Erinnerung Footer-Anmeldung — Einwilligung erteilt — Sprache: de"`.
+  `"E-Mail-Verteiler (kommende Events) — Anmeldung über Startseite — Einwilligung erteilt — Sprache: de"`.
   Worker field mapping: `Name` ← email, `Email` ← email,
   `Anmeldung Datum` ← submission date, `Nachricht` ← the note. Consent is still
   **required to submit** (validated), just recorded as text.

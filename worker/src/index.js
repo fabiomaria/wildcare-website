@@ -29,7 +29,7 @@ function isValidEmail(email) {
 //   Nachricht (rich_text)  <- the note
 async function createNotionRow(env, email, language, submissionDate) {
     const note =
-        "Montags-Erinnerung Footer-Anmeldung — Einwilligung erteilt — Sprache: " + language;
+        "E-Mail-Verteiler (kommende Events) — Anmeldung über Startseite — Einwilligung erteilt — Sprache: " + language;
 
     return fetch("https://api.notion.com/v1/pages", {
         method: "POST",
