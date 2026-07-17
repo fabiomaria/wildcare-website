@@ -8,7 +8,6 @@ const nunjucks = require("nunjucks");
 // Pages not yet templatized are passthrough-copied verbatim (brief §7 Phase 1/2:
 // incremental migration — remove a page from this list when its template ships).
 const PASSTHROUGH_PAGES = [
-  "bewegungsrevolution.html",
   "brand.html",
 ];
 
@@ -88,7 +87,15 @@ function hasWorkshopContent(locale) {
   );
 }
 
-function hasWorkshopDetailContent(locale) {
+function hasWorkshopDetailContent(locale, layoutVariant = "standard") {
+  if (layoutVariant === "course_series") {
+    return Boolean(
+      locale?.meta?.title &&
+      locale?.hero?.heading &&
+      locale?.research?.heading
+    );
+  }
+
   return Boolean(
     locale?.meta?.title &&
     locale?.hero?.heading &&
@@ -256,6 +263,7 @@ function loadWorkshopContent() {
     .map((filename) => {
       const workshop = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"));
       const slug = normalizeSlug(workshop.slug || path.basename(filename, ".yaml"));
+      const layoutVariant = workshop.layout_variant || "standard";
       const languageMode = workshop.language_mode || "bilingual";
       const deRaw = isObject(workshop.de) ? workshop.de : {};
       const enRaw = isObject(workshop.en) ? workshop.en : {};
@@ -266,10 +274,11 @@ function loadWorkshopContent() {
       const en = deepMerge(fallback, enRaw);
       const primaryLocale = languageMode === "en_only" ? "en" : "de";
       const primaryData = primaryLocale === "en" ? en : de;
-      const hasDetailPage = workshop.detail_page !== false && workshop.status !== "draft" && hasWorkshopDetailContent(primaryData);
+      const hasDetailPage = workshop.detail_page !== false && workshop.status !== "draft" && hasWorkshopDetailContent(primaryData, layoutVariant);
       return {
         ...workshop,
         slug,
+        layout_variant: layoutVariant,
         language_mode: languageMode,
         has_de: languageMode !== "en_only",
         has_en: languageMode !== "de_only",

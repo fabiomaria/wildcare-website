@@ -1,0 +1,322 @@
+{%- set de = workshop.de -%}
+{%- set en = workshop.en -%}
+{%- set s = cms.site -%}
+    <nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">
+                Wild Care
+            </a>
+            <div class="nav-links">
+                <a href="index.html"
+                    data-de="{{ s.de.nav.home | attr }}"
+                    data-en="{{ s.en.nav.home | attr }}">{{ s.de.nav.home }}</a>
+                <a href="team.html"
+                    data-de="{{ s.de.nav.about | attr }}"
+                    data-en="{{ s.en.nav.about | attr }}">{{ s.de.nav.about }}</a>
+                <a href="programm.html"
+                    data-de="{{ s.de.nav.program | attr }}"
+                    data-en="{{ s.en.nav.program | attr }}">{{ s.de.nav.program }}</a>
+                <a href="journal.html">Journal</a>
+                <a href="mitmachen.html"
+                    data-de="{{ s.de.nav.join | attr }}"
+                    data-en="{{ s.en.nav.join | attr }}">{{ s.de.nav.join }}</a>
+                <a href="kontakt.html" class="nav-cta"
+                    data-de="{{ s.de.nav.cta | attr }}"
+                    data-en="{{ s.en.nav.cta | attr }}">{{ s.de.nav.cta }}</a>
+            </div>
+            <div class="lang-toggle">
+                <button class="lang-toggle-btn active" data-lang="de">DE</button>
+                <button class="lang-toggle-btn" data-lang="en">EN</button>
+            </div>
+            <button class="nav-toggle" aria-label="Men&uuml;">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ================================
+         HERO + VIDEO
+         ================================ -->
+
+    <header class="detail-hero">
+        <div class="container">
+            <div class="detail-hero-grid">
+
+                <div class="detail-hero-content accent-terracotta fade-up">
+                    <div class="detail-badge"
+                        data-de="{{ de.hero.badge | attr }}"
+                        data-en="{{ en.hero.badge | attr }}">{{ de.hero.badge }}</div>
+
+                    <h1
+                        data-de="{{ de.hero.heading_text | attr }}"
+                        data-en="{{ en.hero.heading_text | attr }}">{{ de.hero.heading | safe }}</h1>
+
+                    <p class="detail-hero-subtitle"
+                        data-de="{{ de.hero.subtitle | attr }}"
+                        data-en="{{ en.hero.subtitle | attr }}">{{ de.hero.subtitle }}</p>
+
+                    <div class="detail-hero-details">
+{%- for detail in de.hero.details %}
+{%- set enDetail = en.hero.details[loop.index0] %}
+                        <div class="detail-hero-detail">
+                            {% if detail.icon == "calendar" %}<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>{% endif %}
+                            {% if detail.icon == "clock" %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>{% endif %}
+                            {% if detail.icon == "location" %}<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{% endif %}
+                            {% if detail.icon == "cost" %}<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>{% endif %}
+                            {% if enDetail and enDetail.text != detail.text %}<span
+                                data-de="{{ detail.text | attr }}"
+                                data-en="{{ enDetail.text | attr }}">{{ detail.text }}</span>{% else %}{{ detail.text }}{% endif %}
+                        </div>
+{% endfor %}
+                    </div>
+
+                    <div class="detail-hero-cta">
+                        <a href="{{ de.hero.cta_href }}" class="btn btn-primary"
+                            data-de="{{ de.hero.cta_label | attr }}"
+                            data-en="{{ en.hero.cta_label | attr }}">{{ de.hero.cta_label }}</a>
+                        <p class="detail-hero-note"
+                            data-de="{{ de.hero.cta_note | attr }}"
+                            data-en="{{ en.hero.cta_note | attr }}">{{ de.hero.cta_note }}</p>
+                    </div>
+                </div>
+
+                <div class="detail-video-wrapper fade-up delay-2">
+                    <video autoplay muted loop playsinline preload="metadata" poster="{{ de.hero.video_poster }}">
+                        <source src="{{ de.hero.video }}" type="video/mp4">
+                    </video>
+                    <button class="video-mute-btn" aria-label="Ton ein/aus" onclick="toggleMute(this)">
+                        <svg class="icon-muted" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                        <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ================================
+         6-WOCHEN-FAHRPLAN
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+                <p class="label"
+                    data-de="{{ de.research.label | attr }}"
+                    data-en="{{ en.research.label | attr }}">{{ de.research.label }}</p>
+                <h2
+                    data-de="{{ de.research.heading | attr }}"
+                    data-en="{{ en.research.heading | attr }}">{{ de.research.heading }}</h2>
+            </div>
+
+            <div class="detail-card-grid">
+{%- for field in de.research.fields %}
+{%- set enField = en.research.fields[loop.index0] %}
+                <div class="detail-card{% if field.highlighted %} highlighted{% endif %} fade-up delay-{{ ((loop.index0 % 3) + 1) }}">
+                    <p class="detail-card-number"
+                        data-de="{{ field.number | attr }}"
+                        data-en="{{ enField.number | attr }}">{{ field.number }}</p>
+                    <h3
+                        data-de="{{ field.title | attr }}"
+                        data-en="{{ enField.title | attr }}">{{ field.title }}</h3>
+                    <p
+                        data-de="{{ field.text | attr }}"
+                        data-en="{{ enField.text | attr }}">{{ field.text }}</p>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         ZITAT
+         ================================ -->
+
+    <section class="detail-quote-section">
+        <div class="container fade-up" style="text-align: center; max-width: 800px;">
+            <div class="divider" style="margin: 0 auto var(--space-xl);"></div>
+            <p class="quote"
+                data-de="{{ de.quote | attr }}"
+                data-en="{{ en.quote | attr }}">{{ de.quote }}</p>
+            <div class="divider" style="margin: var(--space-xl) auto 0;"></div>
+        </div>
+    </section>
+
+    <!-- ================================
+         TESTIMONIALS
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+                <p class="label">{{ de.testimonials.label }}</p>
+                <h2
+                    data-de="{{ de.testimonials.heading | attr }}"
+                    data-en="{{ en.testimonials.heading | attr }}">{{ de.testimonials.heading }}</h2>
+            </div>
+
+            <div class="detail-testimonial-grid">
+{%- for item in de.testimonials.items %}
+{%- set enItem = en.testimonials.items[loop.index0] %}
+                <div class="detail-testimonial fade-up delay-{{ loop.index }}">
+                    <blockquote
+                        data-de="{{ item.quote | attr }}"
+                        data-en="{{ enItem.quote | attr }}">{{ item.quote }}</blockquote>
+                    <p class="detail-testimonial-author">&mdash; {{ item.author }}</p>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+
+   <!-- ================================
+         TEAM
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+                <p class="label"
+                    data-de="{{ de.team.label | attr }}"
+                    data-en="{{ en.team.label | attr }}">{{ de.team.label }}</p>
+                <h2
+                    data-de="{{ de.team.heading | attr }}"
+                    data-en="{{ en.team.heading | attr }}">{{ de.team.heading }}</h2>
+            </div>
+
+            <div class="detail-team-grid">
+{%- for member in de.team.members %}
+{%- set enMember = en.team.members[loop.index0] %}
+                <div class="detail-team-member fade-up delay-{{ loop.index }}">
+                    <div class="detail-team-portrait">
+                        <img src="{{ member.image }}" alt="{{ member.alt }}" loading="lazy">
+                    </div>
+                    <div class="detail-team-info">
+                        <h3>{{ member.name }}</h3>
+                        <p class="detail-team-role"
+                            data-de="{{ member.role | attr }}"
+                            data-en="{{ enMember.role | attr }}">{{ member.role }}</p>
+                        <p
+                            data-de="{{ member.bio | attr }}"
+                            data-en="{{ enMember.bio | attr }}">{{ member.bio }}</p>
+                    </div>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         FAQ
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 48px;">
+                <p class="label"
+                    data-de="{{ de.faq.label | attr }}"
+                    data-en="{{ en.faq.label | attr }}">{{ de.faq.label }}</p>
+                <h2
+                    data-de="{{ de.faq.heading | attr }}"
+                    data-en="{{ en.faq.heading | attr }}">{{ de.faq.heading }}</h2>
+            </div>
+
+            <div class="detail-faq-list">
+{%- for item in de.faq.items %}
+{%- set enItem = en.faq.items[loop.index0] %}
+                <div class="detail-faq-item fade-up">
+                    <p class="detail-faq-q"
+                        data-de="{{ item.q | attr }}"
+                        data-en="{{ enItem.q | attr }}">{{ item.q }}</p>
+                    <p class="detail-faq-a"
+                        data-de="{{ item.a | attr }}"
+                        data-en="{{ enItem.a | attr }}">{{ item.a }}</p>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         CTA
+         ================================ -->
+
+    <section class="cta-section">
+        <div class="container fade-up">
+            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;"
+                data-de="{{ de.archive_cta.label | attr }}"
+                data-en="{{ en.archive_cta.label | attr }}">{{ de.archive_cta.label }}</p>
+            <h2
+                data-de="{{ de.archive_cta.heading | attr }}"
+                data-en="{{ en.archive_cta.heading | attr }}">{{ de.archive_cta.heading }}</h2>
+            <p
+                data-de="{{ de.archive_cta.text | attr }}"
+                data-en="{{ en.archive_cta.text | attr }}">{{ de.archive_cta.text }}</p>
+            <a href="{{ de.archive_cta.href }}" class="btn btn-primary"
+                style="background: var(--warmwhite); color: var(--moss);"
+                data-de="{{ de.archive_cta.button | attr }}"
+                data-en="{{ en.archive_cta.button | attr }}">{{ de.archive_cta.button }}</a>
+        </div>
+    </section>
+
+    <!-- ================================
+         FUNDED BY
+         ================================ -->
+
+    <section>
+        <div class="container fade-up" style="text-align: center; padding: 32px 0;">
+            <p class="label" style="margin-bottom: 16px;"
+                data-de="{{ de.funded_by.label | attr }}"
+                data-en="{{ en.funded_by.label | attr }}">{{ de.funded_by.label }}</p>
+            <img src="{{ de.funded_by.image }}" alt="{{ de.funded_by.alt }}" style="max-width: 260px; height: auto;" loading="lazy">
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    {%- set footerConnectHeadingDe = de.footer.connect_heading -%}
+    {%- set footerConnectHeadingEn = en.footer.connect_heading -%}
+    {% include "partials/footer.njk" %}
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+    <script src="js/i18n.js"></script>
+    <script>
+        function toggleMute(btn) {
+            const video = btn.closest('.detail-video-wrapper').querySelector('video');
+            video.muted = !video.muted;
+            btn.querySelector('.icon-muted').style.display = video.muted ? '' : 'none';
+            btn.querySelector('.icon-unmuted').style.display = video.muted ? 'none' : '';
+        }
+    </script>

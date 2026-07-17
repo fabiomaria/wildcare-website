@@ -31,6 +31,12 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://wildcare.space/bewegungsrevolution.html</loc>
+        <lastmod>2026-07-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://wildcare.space/mitmachen.html</loc>
         <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>

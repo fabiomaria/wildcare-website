@@ -45,14 +45,6 @@ Auf unserer Kontaktseite verwenden wir Google Maps (Google Ireland Limited, Gord
 
 Diese Website verwendet Google Fonts zur einheitlichen Darstellung von Schriftarten. Beim Aufruf einer Seite lädt dein Browser die benötigten Schriftarten und stellt dabei eine Verbindung zu den Servern von Google her. Google erhält dadurch Kenntnis darüber, dass unsere Website über deine IP-Adresse aufgerufen wurde. Dies erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
 
-### Meta Pixel (Facebook Pixel)
-
-Auf unserer Seite <a href="bewegungsrevolution.html">wildcare.space/bewegungsrevolution</a> verwenden wir das Meta Pixel (Meta Platforms Ireland Limited, 4 Grand Canal Square, Dublin 2, Irland). Das Pixel erfasst, dass du die Seite besucht hast und ob du dich über unser Anmeldeformular registriert hast. Wir nutzen diese Daten ausschließlich, um die Wirksamkeit unserer Instagram-Werbeanzeigen zu messen und die Anzeigen an Personen auszuliefern, die sich wahrscheinlich für unser Angebot interessieren.
-
-Dabei werden folgende Daten an Meta übertragen: IP-Adresse, Browser- und Geräteinformationen, die aufgerufene Seite sowie der Zeitpunkt des Zugriffs. Meta kann diese Daten mit deinem Facebook- oder Instagram-Konto verknüpfen, sofern du dort angemeldet bist.
-
-Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Du kannst der Verwendung des Meta Pixels jederzeit widersprechen, indem du in deinen <a href="https://www.facebook.com/settings?tab=ads" target="_blank" rel="noopener">Facebook-Werbeeinstellungen</a> personalisierte Werbung deaktivierst oder einen Adblocker verwendest. Weitere Informationen: <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta Datenschutzrichtlinie</a>
-
 ### Tally (Anmeldeformular)
 
 Für die Anmeldung zu unseren Kursen verwenden wir den Formulardienst Tally (Tally BV, Belgien). Wenn du das Anmeldeformular ausfüllst, werden die von dir eingegebenen Daten (z. B. Name, E-Mail-Adresse) an Tally übermittelt und dort gespeichert. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung bzw. vorvertragliche Maßnahmen). Weitere Informationen: <a href="https://tally.so/help/privacy-policy" target="_blank" rel="noopener">Tally Datenschutzerklärung</a>
