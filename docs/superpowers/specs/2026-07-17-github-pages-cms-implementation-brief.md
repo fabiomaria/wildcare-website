@@ -154,3 +154,13 @@ No visual/design changes; no draft/preview workflow; no touching the `main`-bran
 - Editors upload images regularly (owner confirmed 2026-07-17) — §4.5 is mandatory scope, not optional.
 - Journal bodies are per-locale markdown, not per-paragraph field pairs.
 - Editor GitHub accounts are accepted onboarding friction.
+
+## 11. Amendment 2026-07-17-b: contact form → Notion (owner decision)
+
+The kontakt.html contact form currently POSTs to Formspree (`https://formspree.io/f/xlgongny`). Owner decision: **remake it without Formspree**, relaying through the existing Notion mechanism into the `Wild Care Anmeldungen` database.
+
+- **New separate Cloudflare Worker `worker-kontakt/`**, structured like the existing `worker/` (same Notion API version 2022-06-28, same secrets pattern via `wrangler secret put`). Constraint 3 stands: `worker/` itself remains frozen; this makes three deliberately separate workers (signup, CMS auth, kontakt).
+- Field mapping (per the established DB schema — do not invent columns): `Name` ← name field, `Email` ← email field, `Nachricht` ← message text prefixed with a source note in the established style (e.g. `"Kontaktformular wildcare.space — "`), `Anmeldung Datum` ← submission date.
+- Frontend follows the signup form's proven pattern (template-owned inline fetch, client-side validation, DE/EN status messages via the existing i18n mechanism).
+- **Sequencing:** implemented as a standalone change after Phase 0 and before Phase 2 templatizes kontakt, so the migration diff for kontakt carries the new form verbatim. Datenschutz implications (Formspree leaves the privacy policy, Notion processing already documented for signup) are reviewed as part of this change.
+- §4.6 note: this replaces the "Formspree form" as the fourth CTA mechanism; like the signup form, it is template-owned — only visible labels/placeholders are CMS fields.
