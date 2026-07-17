@@ -10,7 +10,6 @@ const nunjucks = require("nunjucks");
 const PASSTHROUGH_PAGES = [
   "bewegungsrevolution.html",
   "brand.html",
-  "impressum.html",
 ];
 
 const markdown = new MarkdownIt({
