@@ -1,0 +1,339 @@
+---
+permalink: montagskurs.html
+---
+{%- set de = cms.pages.montagskurs.de -%}
+{%- set en = cms.pages.montagskurs.en -%}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ de.meta.title }}</title>
+    <meta name="description" content="{{ de.meta.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wildcare.space/montagskurs.html">
+    <meta property="og:title" content="{{ de.meta.title }}">
+    <meta property="og:description" content="{{ de.meta.description }}">
+    <meta property="og:image" content="https://wildcare.space/assets/images/social%20preview.jpg">
+    <meta property="og:locale" content="de_AT">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script async src="https://tally.so/widgets/embed.js"></script>
+</head>
+<body>
+
+    {% set navBreadcrumbDe = de.breadcrumb %}{% set navBreadcrumbEn = en.breadcrumb or de.breadcrumb %}{% include "partials/nav.njk" %}
+
+    <!-- ================================
+         HERO + VIDEO
+         ================================ -->
+
+    <header class="detail-hero">
+        <div class="container">
+            <div class="detail-hero-grid">
+
+                <div class="detail-hero-content fade-up">
+                    <p class="label"
+                        data-de="{{ de.hero.label }}"
+                        data-en="{{ en.hero.label or de.hero.label }}">{{ de.hero.label }}</p>
+                    <h1
+                        data-de="{{ de.hero.heading }}"
+                        data-en="{{ en.hero.heading or de.hero.heading }}">{{ de.hero.heading_html | safe }}</h1>
+                    <p class="detail-hero-subtitle"
+                        data-de="{{ de.hero.subtitle }}"
+                        data-en="{{ en.hero.subtitle or de.hero.subtitle }}">{{ de.hero.subtitle }}</p>
+
+                    <div class="detail-hero-details">
+                        <div class="detail-hero-detail">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                            <span
+                                data-de="{{ de.hero.schedule }}"
+                                data-en="{{ en.hero.schedule or de.hero.schedule }}">{{ de.hero.schedule }}</span>
+                        </div>
+                        <div class="detail-hero-detail">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            {{ de.hero.address }}
+                        </div>
+                        <div class="detail-hero-detail">
+                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>
+                            <span
+                                data-de="{{ de.hero.basis }}"
+                                data-en="{{ en.hero.basis or de.hero.basis }}">{{ de.hero.basis }}</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-hero-cta">
+                        <button class="btn btn-primary" data-tally-open="nplWX8" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
+                            data-de="{{ de.hero.cta }}"
+                            data-en="{{ en.hero.cta or de.hero.cta }}">{{ de.hero.cta }}</button>
+                    </div>
+                </div>
+
+                <div class="detail-photo fade-up delay-2">
+                    <img src="{{ de.hero.image }}" alt="{{ de.hero.image_alt }}">
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ================================
+         WAS IST CONTACT IMPROVISATION
+         ================================ -->
+
+    <section class="detail-about">
+        <div class="container">
+            <div class="detail-about-grid">
+                <div class="detail-about-text fade-up">
+                    <p class="label"
+                        data-de="{{ de.practice.label }}"
+                        data-en="{{ en.practice.label or de.practice.label }}">{{ de.practice.label }}</p>
+                    <h2
+                        data-de="{{ de.practice.heading }}"
+                        data-en="{{ en.practice.heading or de.practice.heading }}">{{ de.practice.heading }}</h2>
+                    <p
+                        data-de="{{ de.practice.p1 }}"
+                        data-en="{{ en.practice.p1 or de.practice.p1 }}">{{ de.practice.p1 }}</p>
+                    <p
+                        data-de="{{ de.practice.p2 }}"
+                        data-en="{{ en.practice.p2 or de.practice.p2 }}">{{ de.practice.p2 }}</p>
+                </div>
+                <div class="detail-video-wrapper fade-up delay-2">
+                    <video autoplay muted loop playsinline preload="metadata" poster="{{ de.practice.poster }}">
+                        <source src="{{ de.practice.video }}" type="video/mp4">
+                    </video>
+                    <button class="video-mute-btn" aria-label="Ton ein/aus" onclick="toggleMute(this)">
+                        <svg class="icon-muted" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                        <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         WAS DU LERNST
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+                <p class="label"
+                    data-de="{{ de.learn.label }}"
+                    data-en="{{ en.learn.label or de.learn.label }}">{{ de.learn.label }}</p>
+                <h2
+                    data-de="{{ de.learn.heading }}"
+                    data-en="{{ en.learn.heading or de.learn.heading }}">{{ de.learn.heading }}</h2>
+            </div>
+
+            <div class="detail-card-grid">
+{%- for card in de.learn.cards %}
+{%- set enCard = en.learn.cards[loop.index0] if en.learn.cards else null %}
+                <div class="detail-card fade-up delay-{{ (loop.index0 % 3) + 1 }}">
+                    <h3
+                        data-de="{{ card.title }}"
+                        data-en="{{ enCard.title if enCard else card.title }}">{{ card.title }}</h3>
+                    <p
+                        data-de="{{ card.text }}"
+                        data-en="{{ enCard.text if enCard else card.text }}">{{ card.text }}</p>
+                </div>
+{% endfor %}
+            </div>
+
+            <div class="detail-donation-note fade-up">
+                <p
+                    data-de="{{ de.learn.donation_note }}"
+                    data-en="{{ en.learn.donation_note or de.learn.donation_note }}">{{ de.learn.donation_note }}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         TESTIMONIALS
+         ================================ -->
+
+    <section class="detail-testimonials">
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+                <p class="label" data-de="{{ de.testimonials.label }}" data-en="{{ en.testimonials.label or de.testimonials.label }}">{{ de.testimonials.label }}</p>
+                <h2
+                    data-de="{{ de.testimonials.heading }}"
+                    data-en="{{ en.testimonials.heading or de.testimonials.heading }}">{{ de.testimonials.heading }}</h2>
+            </div>
+
+            <div class="detail-testimonial-grid">
+{%- for item in de.testimonials.items %}
+{%- set enItem = en.testimonials.items[loop.index0] if en.testimonials.items else null %}
+                <div class="detail-testimonial fade-up delay-{{ loop.index }}">
+                    <blockquote
+                        data-de="{{ item.quote }}"
+                        data-en="{{ enItem.quote if enItem else item.quote }}">{{ item.quote }}</blockquote>
+                    <p class="detail-testimonial-author">&mdash; {{ item.author }}</p>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         TEAM
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+                <p class="label"
+                    data-de="{{ de.team.label }}"
+                    data-en="{{ en.team.label or de.team.label }}">{{ de.team.label }}</p>
+                <h2
+                    data-de="{{ de.team.heading }}"
+                    data-en="{{ en.team.heading or de.team.heading }}">{{ de.team.heading }}</h2>
+            </div>
+
+            <div class="detail-team-grid">
+{%- for member in de.team.members %}
+{%- set enMember = en.team.members[loop.index0] if en.team.members else null %}
+                <div class="detail-team-member fade-up delay-{{ loop.index }}">
+                    <div class="detail-team-portrait">
+                        <img src="{{ member.image }}" alt="{{ member.alt }}" loading="lazy">
+                    </div>
+                    <div class="detail-team-info">
+                        <h3>{{ member.name }}</h3>
+                        <p class="detail-team-role"
+                            data-de="{{ member.role }}"
+                            data-en="{{ enMember.role if enMember else member.role }}">{{ member.role }}</p>
+                        <p
+                            data-de="{{ member.bio }}"
+                            data-en="{{ enMember.bio if enMember else member.bio }}">{{ member.bio }}</p>
+                    </div>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         FAQ
+         ================================ -->
+
+    <section style="background: var(--sand-light);">
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 48px;">
+                <p class="label"
+                    data-de="{{ de.faq.label }}"
+                    data-en="{{ en.faq.label or de.faq.label }}">{{ de.faq.label }}</p>
+                <h2 data-de="{{ de.faq.heading }}" data-en="{{ en.faq.heading or de.faq.heading }}">{{ de.faq.heading }}</h2>
+            </div>
+
+            <div class="detail-faq-list">
+{%- for item in de.faq.items %}
+{%- set enItem = en.faq.items[loop.index0] if en.faq.items else null %}
+                <div class="detail-faq-item fade-up">
+                    <p class="detail-faq-q"
+                        data-de="{{ item.q }}"
+                        data-en="{{ enItem.q if enItem else item.q }}">{{ item.q }}</p>
+                    <p class="detail-faq-a"
+                        data-de="{{ item.a }}"
+                        data-en="{{ enItem.a if enItem else item.a }}">{{ item.a }}</p>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         BEWEGUNGSREVOLUTION CROSS-LINK
+         ================================ -->
+
+    <section style="background: var(--sand-light);">
+        <div class="container fade-up" style="text-align: center; max-width: 700px;">
+            <p class="label"
+                data-de="{{ de.crosslink.label }}"
+                data-en="{{ en.crosslink.label or de.crosslink.label }}">{{ de.crosslink.label }}</p>
+            <h2
+                data-de="{{ de.crosslink.heading }}"
+                data-en="{{ en.crosslink.heading or de.crosslink.heading }}">{{ de.crosslink.heading }}</h2>
+            <p style="font-size: 1.0625rem; opacity: 0.7; line-height: 1.75; margin: 0 auto var(--space-xl);"
+                data-de="{{ de.crosslink.text }}"
+                data-en="{{ en.crosslink.text or de.crosslink.text }}">{{ de.crosslink.text }}</p>
+            <a href="bewegungsrevolution.html" class="btn btn-primary"
+                data-de="{{ de.crosslink.button }}"
+                data-en="{{ en.crosslink.button or de.crosslink.button }}">{{ de.crosslink.button }}</a>
+        </div>
+    </section>
+
+    <!-- ================================
+         CTA
+         ================================ -->
+
+    <section class="cta-section">
+        <div class="container fade-up">
+            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;"
+                data-de="{{ de.cta.label }}"
+                data-en="{{ en.cta.label or de.cta.label }}">{{ de.cta.label }}</p>
+            <h2
+                data-de="{{ de.cta.heading }}"
+                data-en="{{ en.cta.heading or de.cta.heading }}">{{ de.cta.heading }}</h2>
+            <p
+                data-de="{{ de.cta.text }}"
+                data-en="{{ en.cta.text or de.cta.text }}">{{ de.cta.text }}</p>
+            <button class="btn btn-primary" data-tally-open="nplWX8" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
+                style="background: var(--warmwhite); color: var(--moss);"
+                data-de="{{ de.cta.button }}"
+                data-en="{{ en.cta.button or de.cta.button }}">{{ de.cta.button }}</button>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    {% set footerConnectHeadingDe = de.footer.connect_heading %}{% set footerConnectHeadingEn = en.footer.connect_heading or de.footer.connect_heading %}{% include "partials/footer.njk" %}
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+    <script src="js/i18n.js"></script>
+    <script>
+        function toggleMute(btn) {
+            const video = btn.closest('.detail-video-wrapper').querySelector('video');
+            video.muted = !video.muted;
+            btn.querySelector('.icon-muted').style.display = video.muted ? '' : 'none';
+            btn.querySelector('.icon-unmuted').style.display = video.muted ? 'none' : '';
+        }
+    </script>
+
+</body>
+</html>

@@ -315,6 +315,132 @@ collections:
               - { name: back, label: 'Link: Zurück zum Journal', widget: string, i18n: true }
               - { name: related_label, label: 'Label: Weiterlesen', widget: string, i18n: true }
               - { name: related_heading, label: 'Überschrift: Verwandte Beiträge', widget: string, i18n: true }
+      - name: montagskurs
+        label: Montagskurs
+        file: content/pages/montagskurs.yaml
+        i18n: true
+        fields:
+          - name: meta
+            label: 'SEO & Vorschau'
+            widget: object
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
+          - { name: breadcrumb, label: Breadcrumb, widget: string, i18n: true }
+          - name: hero
+            label: Hero
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift (Text für Sprachumschaltung)', widget: string, i18n: true }
+              - { name: heading_html, label: 'Überschrift (Anzeige)', widget: string, i18n: false, hint: 'Mit <br> und <span> für die Hervorhebung — muss inhaltlich zur Überschrift oben passen.' }
+              - { name: subtitle, label: Untertitel, widget: text, i18n: true }
+              - { name: schedule, label: Termin, widget: string, i18n: true }
+              - { name: address, label: Adresse, widget: string, i18n: false }
+              - { name: basis, label: Basis (Spende), widget: string, i18n: true }
+              - { name: cta, label: Anmelde-Button, widget: string, i18n: true }
+              - { name: image, label: Bild, widget: image, i18n: false }
+              - { name: image_alt, label: Alt-Text, widget: string, i18n: false }
+          - name: practice
+            label: Was ist Contact Improvisation
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: p1, label: Absatz 1, widget: text, i18n: true }
+              - { name: p2, label: Absatz 2, widget: text, i18n: true }
+              - { name: video, label: Video, widget: file, i18n: false }
+              - { name: poster, label: Video-Standbild, widget: image, i18n: false }
+          - name: learn
+            label: Was du erforschst
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - name: cards
+                label: Karten
+                widget: list
+                i18n: true
+                fields:
+                  - { name: title, label: Titel, widget: string, i18n: true }
+                  - { name: text, label: Text, widget: text, i18n: true }
+              - { name: donation_note, label: Spenden-Hinweis, widget: text, i18n: true }
+          - name: testimonials
+            label: Feedback
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - name: items
+                label: Zitate
+                widget: list
+                i18n: true
+                fields:
+                  - { name: quote, label: Zitat, widget: text, i18n: true }
+                  - { name: author, label: Name, widget: string, i18n: duplicate }
+          - name: team
+            label: Team
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - name: members
+                label: Personen
+                widget: list
+                i18n: true
+                min: 2
+                max: 2
+                fields:
+                  - { name: name, label: Name, widget: string, i18n: duplicate }
+                  - { name: image, label: Bild, widget: image, i18n: duplicate }
+                  - { name: alt, label: Alt-Text, widget: string, i18n: duplicate }
+                  - { name: role, label: Rolle, widget: string, i18n: true }
+                  - { name: bio, label: Bio, widget: text, i18n: true }
+          - name: faq
+            label: Häufige Fragen
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - name: items
+                label: Fragen
+                widget: list
+                i18n: true
+                fields:
+                  - { name: q, label: Frage, widget: string, i18n: true }
+                  - { name: a, label: Antwort, widget: text, i18n: true }
+          - name: crosslink
+            label: Projekt-Verweis (Bewegungsrevolution)
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: text, label: Text, widget: text, i18n: true }
+              - { name: button, label: Button, widget: string, i18n: true }
+          - name: cta
+            label: CTA
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: text, label: Text, widget: text, i18n: true }
+              - { name: button, label: Anmelde-Button, widget: string, i18n: true }
+          - name: footer
+            label: Footer-Sonderfall
+            widget: object
+            i18n: true
+            hint: 'Montagskurs hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
+            fields:
+              - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
 
   - name: website
     label: 'Website (Navigation & Footer)'

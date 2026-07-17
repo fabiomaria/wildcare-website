@@ -13,7 +13,6 @@ const PASSTHROUGH_PAGES = [
   "datenschutz.html",
   "impressum.html",
   "mitmachen.html",
-  "montagskurs.html",
 ];
 
 const markdown = new MarkdownIt({
