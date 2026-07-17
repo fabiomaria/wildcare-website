@@ -10,7 +10,6 @@ const nunjucks = require("nunjucks");
 const PASSTHROUGH_PAGES = [
   "bewegungsrevolution.html",
   "brand.html",
-  "datenschutz.html",
   "impressum.html",
 ];
 
@@ -204,6 +203,43 @@ function loadJournalContent() {
   };
 }
 
+const legalMarkdown = new MarkdownIt({
+  html: true,
+  linkify: false,
+  typographer: false,
+});
+// Legal prose is hand-authored HTML with per-element scroll-fade-in classes;
+// match that structure so migrated pages stay pixel-identical to the original.
+function addFadeUpClass(tokens, idx, options, env, self) {
+  tokens[idx].attrJoin("class", "fade-up");
+  return self.renderToken(tokens, idx, options);
+}
+legalMarkdown.renderer.rules.heading_open = addFadeUpClass;
+legalMarkdown.renderer.rules.paragraph_open = addFadeUpClass;
+legalMarkdown.renderer.rules.bullet_list_open = addFadeUpClass;
+
+function loadLegalContent() {
+  const dir = path.join(__dirname, "content", "legal");
+  const pages = {};
+
+  if (!fs.existsSync(dir)) {
+    return pages;
+  }
+
+  for (const filename of fs.readdirSync(dir)) {
+    if (!filename.endsWith(".md")) continue;
+    const slug = path.basename(filename, ".md");
+    const parsed = matter(fs.readFileSync(path.join(dir, filename), "utf8"));
+    pages[slug] = {
+      ...parsed.data,
+      body: parsed.content.trim(),
+      body_html: legalMarkdown.render(parsed.content.trim()),
+    };
+  }
+
+  return pages;
+}
+
 function loadWorkshopContent() {
   const dir = path.join(__dirname, "content", "workshops");
   if (!fs.existsSync(dir)) {
@@ -290,6 +326,7 @@ module.exports = function (eleventyConfig) {
     }
     data.journal = loadJournalContent();
     data.workshops = loadWorkshopContent();
+    data.legal = loadLegalContent();
     return data;
   });
   eleventyConfig.addGlobalData("journalArticlePages", () => loadJournalContent().articlePages);

@@ -627,6 +627,14 @@ collections:
         fields:
           - { name: title, label: Titel, widget: string }
           - { name: body, label: Text, widget: markdown }
+      - name: datenschutz
+        label: Datenschutzerklärung
+        file: content/legal/datenschutz.md
+        fields:
+          - { name: heading, label: Überschrift (H1), widget: string }
+          - { name: meta_title, label: Seitentitel (Browser-Tab), widget: string }
+          - { name: meta_description, label: SEO-Beschreibung, widget: text }
+          - { name: body, label: Text, widget: markdown }
 
   - name: workshops
     label: Workshops
