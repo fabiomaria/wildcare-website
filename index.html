@@ -300,6 +300,22 @@
                     <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
                     <a href="https://facebook.com/wildcare.space" target="_blank" rel="noopener">Facebook</a>
                     <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
+                    <p data-de="Montags-Erinnerung erhalten" data-en="Get a Monday reminder">Montags-Erinnerung erhalten</p>
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="signup-email" data-de="E-Mail" data-en="Email">E-Mail</label>
+                            <input type="email" id="signup-email" name="email" placeholder="deine@email.at" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-consent">
+                                <input type="checkbox" id="signup-consent" name="consent" required>
+                                <span data-de="Ich stimme der Speicherung meiner E-Mail gem&auml;&szlig; " data-en="I agree to my email being stored per the ">Ich stimme der Speicherung meiner E-Mail gem&auml;&szlig; </span><a href="datenschutz.html" data-de="Datenschutzerkl&auml;rung" data-en="privacy policy">Datenschutzerkl&auml;rung</a><span data-de=" zu." data-en=".">zu.</span>
+                            </label>
+                        </div>
+                        <input type="text" name="website" id="signup-website" tabindex="-1" autocomplete="off" hidden>
+                        <button type="submit" class="btn btn-secondary" data-de="Anmelden" data-en="Sign up">Anmelden</button>
+                        <p class="form-note" id="signup-message" hidden></p>
+                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -356,6 +372,44 @@
         }
     </script>
     <script src="js/i18n.js"></script>
+    <script>
+        (function () {
+            var form = document.getElementById('signup-form');
+            if (!form) return;
+
+            var WORKER_URL = 'https://wildcare-signup.fabiogerhold.workers.dev';
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var email = document.getElementById('signup-email').value;
+                var consent = document.getElementById('signup-consent').checked;
+                var website = document.getElementById('signup-website').value;
+                var lang = document.documentElement.lang || 'de';
+                var messageEl = document.getElementById('signup-message');
+
+                fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, consent: consent, website: website, language: lang })
+                })
+                    .then(function (response) { return response.json(); })
+                    .then(function (result) {
+                        if (result.ok) {
+                            form.hidden = true;
+                            messageEl.textContent = lang === 'en' ? 'Thanks! See you Monday.' : 'Danke! Bis Montag.';
+                        } else {
+                            messageEl.textContent = lang === 'en' ? 'Something went wrong. Please try again.' : 'Etwas ist schiefgelaufen. Bitte versuch es erneut.';
+                        }
+                        messageEl.hidden = false;
+                    })
+                    .catch(function () {
+                        messageEl.textContent = lang === 'en' ? 'Something went wrong. Please try again.' : 'Etwas ist schiefgelaufen. Bitte versuch es erneut.';
+                        messageEl.hidden = false;
+                    });
+            });
+        })();
+    </script>
 
 </body>
 </html>
