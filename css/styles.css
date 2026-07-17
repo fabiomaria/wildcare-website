@@ -646,13 +646,6 @@ nav {
     margin: 0 auto;
 }
 
-.cta-section .cta-signup-lead {
-    color: var(--warmwhite);
-    opacity: 0.9;
-    font-size: 0.9375rem;
-    margin: 0 0 var(--space-md);
-}
-
 .cta-section .cta-signup-row {
     display: flex;
     gap: var(--space-sm);
