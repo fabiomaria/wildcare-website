@@ -1,6 +1,8 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const yaml = require("js-yaml");
+const matter = require("gray-matter");
+const MarkdownIt = require("markdown-it");
 
 // Pages not yet templatized are passthrough-copied verbatim (brief §7 Phase 1/2:
 // incremental migration — remove a page from this list when its template ships).
@@ -10,20 +12,149 @@ const PASSTHROUGH_PAGES = [
   "cellular-touch.html",
   "datenschutz.html",
   "impressum.html",
-  "journal.html",
   "mitmachen.html",
   "montagskurs.html",
   "programm.html",
 ];
 
+const markdown = new MarkdownIt({
+  html: true,
+  linkify: false,
+  typographer: false,
+});
+
+function escapeHtmlAttr(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function formatMonth(dateInput, locale) {
+  if (!dateInput) return "";
+  const date = new Date(dateInput);
+  if (Number.isNaN(date.getTime())) return "";
+  return new Intl.DateTimeFormat(locale, {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(date);
+}
+
+function hasText(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function mergeLocale(defaults, localized) {
+  return {
+    ...defaults,
+    ...localized,
+    cta: {
+      ...(defaults.cta || {}),
+      ...(localized.cta || {}),
+    },
+  };
+}
+
+function loadJournalContent() {
+  const dir = path.join(__dirname, "content", "journal");
+  const entries = new Map();
+
+  if (!fs.existsSync(dir)) {
+    return { posts: [], listingPosts: [], articlePages: [], homepagePosts: [] };
+  }
+
+  for (const filename of fs.readdirSync(dir)) {
+    if (!filename.endsWith(".md")) continue;
+
+    const stem = path.basename(filename, ".md");
+    const locale = stem.endsWith(".en") ? "en" : "de";
+    const slug = locale === "en" ? stem.slice(0, -3) : stem;
+
+    // Phase 0 round-trip files are intentionally left in working trees but
+    // must never leak into the generated public journal.
+    if (slug.startsWith("phase0-")) continue;
+
+    const parsed = matter(fs.readFileSync(path.join(dir, filename), "utf8"));
+    if (!entries.has(slug)) {
+      entries.set(slug, { slug, locales: {} });
+    }
+    entries.get(slug).locales[locale] = {
+      ...parsed.data,
+      body: parsed.content.trim(),
+      body_html: markdown.render(parsed.content.trim()),
+    };
+  }
+
+  const posts = Array.from(entries.values()).map((entry) => {
+    const duplicateSource = entry.locales.de || entry.locales.en || {};
+    const deRaw = entry.locales.de || {};
+    const enRaw = entry.locales.en || {};
+    const deHasContent = hasText(deRaw.title) || hasText(deRaw.body);
+    const enHasContent = hasText(enRaw.title) || hasText(enRaw.body);
+    const fallbackLocale = deHasContent ? deRaw : enRaw;
+
+    const de = mergeLocale(fallbackLocale, deRaw);
+    const en = mergeLocale(fallbackLocale, enRaw);
+
+    const post = {
+      slug: entry.slug,
+      href: `journal/${entry.slug}.html`,
+      status: duplicateSource.status || "published",
+      language_mode: duplicateSource.language_mode || (deHasContent && enHasContent ? "bilingual" : deHasContent ? "de_only" : "en_only"),
+      date: duplicateSource.date || deRaw.date || enRaw.date || "",
+      sort_order: duplicateSource.sort_order || 999,
+      image: duplicateSource.image || deRaw.image || enRaw.image || "",
+      image_alt: duplicateSource.image_alt || deRaw.image_alt || enRaw.image_alt || "",
+      homepage_image_alt: duplicateSource.homepage_image_alt || deRaw.homepage_image_alt || enRaw.homepage_image_alt || duplicateSource.image_alt || "",
+      hero_image: duplicateSource.hero_image || duplicateSource.image || "",
+      hero_alt: duplicateSource.hero_alt || duplicateSource.image_alt || "",
+      hero_variant: duplicateSource.hero_variant || "cover",
+      tally: duplicateSource.tally || false,
+      has_de: deHasContent,
+      has_en: enHasContent,
+      de,
+      en,
+    };
+
+    post.de.date_label = formatMonth(post.date, "de-AT");
+    post.en.date_label = formatMonth(post.date, "en");
+    post.has_article_page = post.status === "published" && (hasText(de.body) || hasText(en.body));
+    post.available_locales = [
+      ...(deHasContent && hasText(de.body) ? ["de"] : []),
+      ...(enHasContent && hasText(en.body) ? ["en"] : []),
+    ];
+    return post;
+  });
+
+  posts.sort((a, b) => {
+    const byDate = new Date(b.date).getTime() - new Date(a.date).getTime();
+    if (byDate !== 0) return byDate;
+    return a.sort_order - b.sort_order;
+  });
+
+  const articlePages = posts.filter((post) => post.has_article_page);
+  for (const post of posts) {
+    post.related = articlePages.filter((related) => related.slug !== post.slug).slice(0, 2);
+  }
+
+  return {
+    posts,
+    listingPosts: posts.filter((post) => post.status === "published" || post.status === "coming_soon"),
+    articlePages,
+    homepagePosts: posts.filter((post) => post.status === "published" || post.status === "coming_soon").slice(0, 3),
+  };
+}
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
+  eleventyConfig.addFilter("attr", escapeHtmlAttr);
 
   // Static assets, untouched per the brief (§3).
   eleventyConfig.addPassthroughCopy({ "css": "css" });
   eleventyConfig.addPassthroughCopy({ "js": "js" });
   eleventyConfig.addPassthroughCopy({ "assets": "assets" });
-  eleventyConfig.addPassthroughCopy({ "journal": "journal" });
   eleventyConfig.addPassthroughCopy({ "admin": "admin" });
   eleventyConfig.addPassthroughCopy({ "CNAME": "CNAME" });
   eleventyConfig.addPassthroughCopy({ ".nojekyll": ".nojekyll" });
@@ -35,6 +166,7 @@ module.exports = function (eleventyConfig) {
 
   // CMS-managed content (content/**/*.yaml) → global data `cms`.
   // content/site.yaml → cms.site; content/pages/foo.yaml → cms.pages.foo
+  // content/journal/*.md → cms.journal (paired DE/EN Markdown files)
   eleventyConfig.addGlobalData("cms", () => {
     const root = path.join(__dirname, "content");
     const data = { pages: {} };
@@ -50,8 +182,10 @@ module.exports = function (eleventyConfig) {
         }
       }
     }
+    data.journal = loadJournalContent();
     return data;
   });
+  eleventyConfig.addGlobalData("journalArticlePages", () => loadJournalContent().articlePages);
   eleventyConfig.addWatchTarget("content/");
 
   return {

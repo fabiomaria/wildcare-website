@@ -12,7 +12,7 @@ tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
 normalize() { # $1 = source file, $2 = output name
-  python3 -c 'import sys,html; sys.stdout.write(html.unescape(sys.stdin.read()))' \
+  python3 -c 'import re,sys,html; s=sys.stdin.read(); sys.stdout.write(re.sub(r"&(?!(?:quot|apos|#34|#39|#x22|#x27);)(?:[A-Za-z][A-Za-z0-9]+|#[0-9]+|#x[0-9A-Fa-f]+);", lambda m: html.unescape(m.group(0)), s))' \
     < "$1" > "$tmp/$2.raw.html"
   npx prettier --parser html "$tmp/$2.raw.html" > "$tmp/$2.html"
 }

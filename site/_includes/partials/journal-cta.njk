@@ -1,0 +1,22 @@
+{%- if locale.cta and locale.cta.heading %}
+
+                <div class="article-cta">
+                    <h3>{{ locale.cta.heading }}</h3>
+                    <p>{{ locale.cta.text }}</p>
+                    {%- if locale.cta.buttons and locale.cta.buttons.length > 1 %}
+                    <div style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap;">
+                        {%- for button in locale.cta.buttons %}
+                        {%- if button.kind == "tally" %}
+                        <button class="btn btn-{{ button.style or 'primary' }}" data-tally-open="{{ button.tally_open }}" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave">{{ button.label }}</button>
+                        {%- else %}
+                        <a href="{{ button.href }}" class="btn btn-{{ button.style or 'primary' }}">{{ button.label }}</a>
+                        {%- endif %}
+                        {%- endfor %}
+                    </div>
+                    {%- else %}
+                    {%- for button in locale.cta.buttons %}
+                    <a href="{{ button.href }}" class="btn btn-{{ button.style or 'primary' }}">{{ button.label }}</a>
+                    {%- endfor %}
+                    {%- endif %}
+                </div>
+{%- endif %}

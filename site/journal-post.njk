@@ -1,0 +1,392 @@
+---
+pagination:
+  data: journalArticlePages
+  size: 1
+  alias: post
+permalink: "{{ post.href }}"
+---
+{%- set pageData = cms.pages.journal -%}
+{%- set de = post.de -%}
+{%- set en = post.en -%}
+{%- set titleDe = de.title or en.title -%}
+{%- set titleEn = en.title or de.title -%}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titleDe }} &mdash; Wild Care Journal</title>
+    <meta name="description" content="{{ de.meta_description or de.excerpt or en.excerpt }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://wildcare.space/{{ post.href }}">
+    <meta property="og:title" content="{{ titleDe }} — Wild Care Journal">
+    <meta property="og:description" content="{{ de.meta_description or de.excerpt or en.excerpt }}">
+    <meta property="og:image" content="https://wildcare.space/{{ post.image | replace(' ', '%20') }}">
+    <meta property="og:locale" content="de_AT">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/styles.css">
+    {%- if post.tally %}
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    {%- endif %}
+
+    <style>
+        /* ================================
+           ARTICLE PAGE STYLES
+           ================================ */
+
+        /* Hero Banner */
+        .article-hero {
+            margin-top: 72px;
+            height: {% if post.hero_variant == "contained" %}420px{% else %}360px{% endif %};
+            position: relative;
+            overflow: hidden;
+            background: {% if post.hero_variant == "contained" %}var(--sand-light){% else %}var(--sand){% endif %};
+            {%- if post.hero_variant == "contained" %}
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-3xl) var(--space-xl);
+            {%- endif %}
+        }
+
+        .article-hero img {
+            {%- if post.hero_variant == "contained" %}
+            max-width: 600px;
+            max-height: 280px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            {%- else %}
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            {%- endif %}
+        }
+
+        .article-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(44, 36, 24, 0.05) 0%, rgba(44, 36, 24, 0.25) 100%);
+        }
+
+        /* Back Link */
+        .article-back {
+            padding: var(--space-lg) 0;
+        }
+
+        .article-back a {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--moss);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap var(--duration-fast) var(--ease-out);
+        }
+
+        .article-back a:hover {
+            color: var(--moss-dark);
+            gap: 10px;
+        }
+
+        /* Article Container */
+        .article-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        /* Article Header */
+        .article-header {
+            margin-bottom: var(--space-xl);
+        }
+
+        .article-date {
+            font-size: 0.75rem;
+            color: var(--moss);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-md);
+        }
+
+        .article-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.15;
+            margin-bottom: var(--space-lg);
+        }
+
+        .article-header .divider {
+            margin: 0;
+        }
+
+        /* Article Body */
+        .article-body p {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: var(--space-lg);
+            max-width: 100%;
+        }
+
+        .article-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-body blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: clamp(1.15rem, 2vw, 1.5rem);
+            line-height: 1.55;
+            color: var(--bark-light);
+            border-left: 3px solid var(--terracotta);
+            padding: var(--space-lg) var(--space-xl);
+            margin: var(--space-xl) 0;
+            background: var(--sand-light);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-variation-settings: 'SOFT' 100, 'WONK' 1;
+        }
+
+        .article-body blockquote p {
+            font-size: inherit;
+            line-height: inherit;
+            opacity: 1;
+            margin-bottom: 0;
+        }
+
+        .article-body a {
+            color: var(--terracotta);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: rgba(196, 119, 90, 0.3);
+            transition: text-decoration-color var(--duration-fast);
+        }
+
+        .article-body a:hover {
+            text-decoration-color: var(--terracotta);
+        }
+
+        /* Article CTA */
+        .article-cta {
+            margin-top: var(--space-2xl);
+            padding: var(--space-xl);
+            background: var(--sand-light);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .article-cta p {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin: 0 auto var(--space-lg);
+            max-width: 100%;
+        }
+
+        .article-cta h3 {
+            margin-bottom: var(--space-md);
+        }
+
+        /* Related Articles */
+        .related-section {
+            padding: var(--space-2xl) 0;
+        }
+
+        .related-section .section-header {
+            margin-bottom: var(--space-lg);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .related-card {
+            border: var(--border-subtle);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out);
+            background: var(--warmwhite);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .related-card:hover {
+            box-shadow: 0 12px 40px rgba(44, 36, 24, 0.06);
+            transform: translateY(-4px);
+            color: inherit;
+        }
+
+        .related-card-image {
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .related-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--duration-normal) var(--ease-out);
+        }
+
+        .related-card:hover .related-card-image img {
+            transform: scale(1.03);
+        }
+
+        .related-card-body {
+            padding: var(--space-lg);
+        }
+
+        .related-card-date {
+            font-size: 0.75rem;
+            color: var(--moss);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .related-card-body h4 {
+            font-size: 1.05rem;
+            line-height: 1.3;
+        }
+
+        /* ================================
+           RESPONSIVE OVERRIDES
+           ================================ */
+
+        @media (max-width: 968px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .article-hero { height: 240px; }
+        }
+    </style>
+</head>
+<body>
+
+    {%- set navActive = "journal" -%}
+    {%- set navBreadcrumbDe = "Journal" -%}
+    {%- set pathPrefix = "../" -%}
+    {% include "partials/nav.njk" %}
+
+    <!-- ================================
+         HERO BANNER
+         ================================ -->
+
+    <header class="article-hero">
+        <img src="../{{ post.hero_image }}" alt="{{ post.hero_alt }}">
+        <div class="article-hero-overlay"></div>
+    </header>
+
+    <!-- ================================
+         ARTICLE
+         ================================ -->
+
+    <div class="article-container">
+
+        <div class="article-back">
+            <a href="../journal.html"
+                data-de="{{ pageData.de.article.back | attr }}"
+                data-en="{{ pageData.en.article.back | attr }}">{{ pageData.de.article.back }}</a>
+        </div>
+
+        <article>
+            <header class="article-header fade-up">
+                <p class="article-date"
+                    data-de="{{ de.date_label | attr }}"
+                    data-en="{{ en.date_label | attr }}">{{ de.date_label }}</p>
+                <h1 data-de="{{ (de.title_html or de.title) | attr }}"
+                    data-en="{{ (en.title_html or en.title) | attr }}">{{ de.title_html or de.title | safe }}</h1>
+                <div class="divider"></div>
+            </header>
+
+            {%- if post.has_de and de.body %}
+            <section class="article-body fade-up delay-1" data-journal-lang="de" data-journal-fallback="true">
+                {{ de.body_html | safe }}
+                {%- set locale = de -%}
+                {% include "partials/journal-cta.njk" %}
+            </section>
+            {%- endif %}
+
+            {%- if post.has_en and en.body %}
+            <section class="article-body fade-up delay-1" data-journal-lang="en"{% if post.has_de %} hidden{% else %} data-journal-fallback="true"{% endif %}>
+                {{ en.body_html | safe }}
+                {%- set locale = en -%}
+                {% include "partials/journal-cta.njk" %}
+            </section>
+            {%- endif %}
+        </article>
+    </div>
+
+    <!-- ================================
+         RELATED ARTICLES
+         ================================ -->
+
+    <section class="related-section" style="background: var(--sand-light);">
+        <div class="article-container">
+            <div class="section-header fade-up">
+                <p class="label" data-de="{{ pageData.de.article.related_label | attr }}" data-en="{{ pageData.en.article.related_label | attr }}">{{ pageData.de.article.related_label }}</p>
+                <h3 data-de="{{ pageData.de.article.related_heading | attr }}" data-en="{{ pageData.en.article.related_heading | attr }}">{{ pageData.de.article.related_heading }}</h3>
+            </div>
+
+            <div class="related-grid fade-up delay-1">
+                {%- for related in post.related %}
+                <a href="{{ related.slug }}.html" class="related-card">
+                    <div class="related-card-image">
+                        <img src="../{{ related.image }}" alt="{{ related.image_alt }}" loading="lazy">
+                    </div>
+                    <div class="related-card-body">
+                        <p class="related-card-date" data-de="{{ related.de.date_label | attr }}" data-en="{{ related.en.date_label | attr }}">{{ related.de.date_label }}</p>
+                        <h4 data-de="{{ related.de.homepage_title or related.de.title | attr }}" data-en="{{ related.en.homepage_title or related.en.title | attr }}">{{ related.de.homepage_title or related.de.title }}</h4>
+                    </div>
+                </a>
+                {%- endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    {% include "partials/footer.njk" %}
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+    <script src="../js/i18n.js"></script>
+
+</body>
+</html>

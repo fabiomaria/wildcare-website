@@ -1,27 +1,28 @@
 {%- set s = cms.site -%}
+{%- set base = pathPrefix or "" -%}
 <nav>
         <div class="container nav-inner">
-            <a href="index.html" class="nav-logo">
+            <a href="{{ base }}index.html" class="nav-logo">
                 Wild Care
                 <span class="breadcrumb"{% if navBreadcrumbDe and navBreadcrumbEn %}
                     data-de="{{ navBreadcrumbDe }}"
                     data-en="{{ navBreadcrumbEn }}"{% endif %}>{{ navBreadcrumbDe or "Graz" }}</span>
             </a>
             <div class="nav-links">
-                <a href="index.html"{% if navActive == 'index' %} class="active"{% endif %}
+                <a href="{{ base }}index.html"{% if navActive == 'index' %} class="active"{% endif %}
                     data-de="{{ s.de.nav.home }}"
                     data-en="{{ s.en.nav.home or s.de.nav.home }}">{{ s.de.nav.home }}</a>
-                <a href="team.html"{% if navActive == 'team' %} class="active"{% endif %}
+                <a href="{{ base }}team.html"{% if navActive == 'team' %} class="active"{% endif %}
                     data-de="{{ s.de.nav.about }}"
                     data-en="{{ s.en.nav.about or s.de.nav.about }}">{{ s.de.nav.about }}</a>
-                <a href="programm.html"{% if navActive == 'programm' %} class="active"{% endif %}
+                <a href="{{ base }}programm.html"{% if navActive == 'programm' %} class="active"{% endif %}
                     data-de="{{ s.de.nav.program }}"
                     data-en="{{ s.en.nav.program or s.de.nav.program }}">{{ s.de.nav.program }}</a>
-                <a href="journal.html"{% if navActive == 'journal' %} class="active"{% endif %}>Journal</a>
-                <a href="mitmachen.html"{% if navActive == 'mitmachen' %} class="active"{% endif %}
+                <a href="{{ base }}journal.html"{% if navActive == 'journal' %} class="active"{% endif %}>Journal</a>
+                <a href="{{ base }}mitmachen.html"{% if navActive == 'mitmachen' %} class="active"{% endif %}
                     data-de="{{ s.de.nav.join }}"
                     data-en="{{ s.en.nav.join or s.de.nav.join }}">{{ s.de.nav.join }}</a>
-                <a href="kontakt.html" class="nav-cta{% if navActive == 'kontakt' %} active{% endif %}"
+                <a href="{{ base }}kontakt.html" class="nav-cta{% if navActive == 'kontakt' %} active{% endif %}"
                     data-de="{{ s.de.nav.cta }}"
                     data-en="{{ s.en.nav.cta or s.de.nav.cta }}">{{ s.de.nav.cta }}</a>
             </div>

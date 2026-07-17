@@ -1,0 +1,146 @@
+---
+permalink: journal.html
+---
+{%- set de = cms.pages.journal.de -%}
+{%- set en = cms.pages.journal.en -%}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ de.meta.title }}</title>
+    <meta name="description" content="{{ de.meta.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wildcare.space/journal.html">
+    <meta property="og:title" content="{{ de.meta.title }}">
+    <meta property="og:description" content="{{ de.meta.description }}">
+    <meta property="og:image" content="https://wildcare.space/assets/images/social%20preview.jpg">
+    <meta property="og:locale" content="de_AT">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    {%- set navActive = "journal" -%}
+    {%- set navBreadcrumbDe = "Journal" -%}
+    {% include "partials/nav.njk" %}
+
+    <!-- ================================
+         HERO
+         ================================ -->
+
+    <header class="page-hero">
+        <div class="container">
+            <p class="label fade-up">{{ de.hero.label }}</p>
+            <h1 class="fade-up delay-1"
+                data-de="{{ de.hero.heading | attr }}"
+                data-en="{{ en.hero.heading | attr }}">{{ de.hero.heading }}</h1>
+            <p class="fade-up delay-2" style="max-width: 560px;"
+                data-de="{{ de.hero.intro | attr }}"
+                data-en="{{ en.hero.intro | attr }}">{{ de.hero.intro }}</p>
+        </div>
+    </header>
+
+    <!-- ================================
+         JOURNAL GRID
+         ================================ -->
+
+    <section style="padding-top: 0;">
+        <div class="container">
+            <div class="journal-listing-grid">
+
+                {% for post in cms.journal.listingPosts %}
+                <a href="{% if post.status == 'published' %}{{ post.href }}{% else %}#{% endif %}" class="journal-card fade-up delay-{{ loop.index }}{% if post.status == 'coming_soon' %} coming-soon{% endif %}">
+                    <div class="journal-card-image">
+                        <img src="{{ post.image }}" alt="{{ post.image_alt }}" loading="lazy">
+                        {%- if post.status == 'coming_soon' %}
+                        <span class="coming-soon-badge"
+                            data-de="{{ de.card.coming_soon | attr }}"
+                            data-en="{{ en.card.coming_soon | attr }}">{{ de.card.coming_soon }}</span>
+                        {%- endif %}
+                    </div>
+                    <div class="journal-card-body">
+                        <p class="journal-card-date"
+                            data-de="{{ post.de.date_label | attr }}"
+                            data-en="{{ post.en.date_label | attr }}">{{ post.de.date_label }}</p>
+                        <h3 data-de="{{ post.de.title | attr }}"
+                            data-en="{{ post.en.title | attr }}">{{ post.de.title }}</h3>
+                        <p data-de="{{ post.de.excerpt | attr }}"
+                            data-en="{{ post.en.excerpt | attr }}">{{ post.de.excerpt }}</p>
+                        <span class="journal-card-link"
+                            data-de="{% if post.status == 'coming_soon' %}{{ de.card.coming_soon | attr }}{% else %}{{ de.card.read_more | attr }}{% endif %}"
+                            data-en="{% if post.status == 'coming_soon' %}{{ en.card.coming_soon | attr }}{% else %}{{ en.card.read_more | attr }}{% endif %}">{% if post.status == 'coming_soon' %}{{ de.card.coming_soon }}{% else %}{{ de.card.read_more }}{% endif %}</span>
+                    </div>
+                </a>
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         CTA
+         ================================ -->
+
+    <section class="cta-section">
+        <div class="container fade-up">
+            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;"
+                data-de="{{ de.cta.label | attr }}"
+                data-en="{{ en.cta.label | attr }}">{{ de.cta.label }}</p>
+            <h2 data-de="{{ de.cta.heading | attr }}"
+                data-en="{{ en.cta.heading | attr }}">{{ de.cta.heading }}</h2>
+            <p data-de="{{ de.cta.text | attr }}"
+                data-en="{{ en.cta.text | attr }}">{{ de.cta.text }}</p>
+            <a href="kontakt.html" class="btn btn-primary"
+                data-de="{{ de.cta.button | attr }}"
+                data-en="{{ en.cta.button | attr }}">{{ de.cta.button }}</a>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    {% set footerConnectHeadingDe = "Verbinden" %}
+    {% set footerConnectHeadingEn = "Connect" %}
+    {% include "partials/footer.njk" %}
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+
+    <script src="js/i18n.js"></script>
+
+</body>
+</html>

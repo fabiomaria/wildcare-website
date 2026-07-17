@@ -57,6 +57,15 @@
             }
         });
 
+        // Journal articles render Markdown as per-locale HTML blocks. If the
+        // requested language is unavailable, keep the available fallback visible.
+        document.querySelectorAll('[data-journal-lang]').forEach(function (el) {
+            var requested = document.querySelector('[data-journal-lang="' + lang + '"]');
+            var blockLang = el.getAttribute('data-journal-lang');
+            var isFallback = el.getAttribute('data-journal-fallback') === 'true';
+            el.hidden = !(blockLang === lang || (!requested && isFallback));
+        });
+
         // Update toggle buttons
         document.querySelectorAll('.lang-toggle-btn').forEach(function (btn) {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);

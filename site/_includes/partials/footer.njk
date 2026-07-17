@@ -1,4 +1,5 @@
 {%- set s = cms.site -%}
+{%- set base = pathPrefix or "" -%}
 <footer class="page-footer">
         <div class="container">
             <div class="footer-grid">
@@ -8,12 +9,12 @@
                 </div>
                 <div class="footer-links">
                     <h4 data-de="{{ s.de.footer.pages_heading }}" data-en="{{ s.en.footer.pages_heading or s.de.footer.pages_heading }}">{{ s.de.footer.pages_heading }}</h4>
-                    <a href="index.html" data-de="{{ s.de.nav.home }}" data-en="{{ s.en.nav.home or s.de.nav.home }}">{{ s.de.nav.home }}</a>
-                    <a href="team.html" data-de="{{ s.de.nav.about }}" data-en="{{ s.en.nav.about or s.de.nav.about }}">{{ s.de.nav.about }}</a>
-                    <a href="programm.html" data-de="{{ s.de.nav.program }}" data-en="{{ s.en.nav.program or s.de.nav.program }}">{{ s.de.nav.program }}</a>
-                    <a href="mitmachen.html" data-de="{{ s.de.nav.join }}" data-en="{{ s.en.nav.join or s.de.nav.join }}">{{ s.de.nav.join }}</a>
-                    <a href="journal.html">Journal</a>
-                    <a href="kontakt.html" data-de="{{ s.de.footer.contact_label }}" data-en="{{ s.en.footer.contact_label or s.de.footer.contact_label }}">{{ s.de.footer.contact_label }}</a>
+                    <a href="{{ base }}index.html" data-de="{{ s.de.nav.home }}" data-en="{{ s.en.nav.home or s.de.nav.home }}">{{ s.de.nav.home }}</a>
+                    <a href="{{ base }}team.html" data-de="{{ s.de.nav.about }}" data-en="{{ s.en.nav.about or s.de.nav.about }}">{{ s.de.nav.about }}</a>
+                    <a href="{{ base }}programm.html" data-de="{{ s.de.nav.program }}" data-en="{{ s.en.nav.program or s.de.nav.program }}">{{ s.de.nav.program }}</a>
+                    <a href="{{ base }}mitmachen.html" data-de="{{ s.de.nav.join }}" data-en="{{ s.en.nav.join or s.de.nav.join }}">{{ s.de.nav.join }}</a>
+                    <a href="{{ base }}journal.html">Journal</a>
+                    <a href="{{ base }}kontakt.html" data-de="{{ s.de.footer.contact_label }}" data-en="{{ s.en.footer.contact_label or s.de.footer.contact_label }}">{{ s.de.footer.contact_label }}</a>
                 </div>
                 <div class="footer-links">
                     <h4 data-de="{{ footerConnectHeadingDe or s.de.footer.connect_heading }}" data-en="{{ footerConnectHeadingEn or s.en.footer.connect_heading or s.de.footer.connect_heading }}">{{ footerConnectHeadingDe or s.de.footer.connect_heading }}</h4>
@@ -23,7 +24,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span class="footer-legal"><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></span>
+                <span class="footer-legal"><a href="{{ base }}impressum.html">Impressum</a> &middot; <a href="{{ base }}datenschutz.html">Datenschutz</a></span>
                 <span>&copy; 2026 Wild Care &mdash; Graz</span>
                 <span data-de="{{ s.de.footer.tagline }}" data-en="{{ s.en.footer.tagline or s.de.footer.tagline }}">{{ s.de.footer.tagline }}</span>
             </div>

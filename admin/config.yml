@@ -271,6 +271,50 @@ collections:
             hint: 'Team hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
             fields:
               - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+      - name: journal_landing
+        label: Journal-Übersicht
+        file: content/pages/journal.yaml
+        i18n: true
+        fields:
+          - name: meta
+            label: 'SEO & Vorschau'
+            widget: object
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
+          - name: hero
+            label: Hero
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: false }
+              - { name: heading, label: Überschrift, widget: string, i18n: true }
+              - { name: intro, label: Einleitung, widget: text, i18n: true }
+          - name: card
+            label: Beitragskarten
+            widget: object
+            i18n: true
+            fields:
+              - { name: read_more, label: 'Link: Weiterlesen', widget: string, i18n: true }
+              - { name: coming_soon, label: 'Badge: Bald verfügbar', widget: string, i18n: true }
+          - name: cta
+            label: CTA
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: Überschrift, widget: string, i18n: true }
+              - { name: text, label: Text, widget: text, i18n: true }
+              - { name: button, label: Button, widget: string, i18n: true }
+          - name: article
+            label: Artikel-Seiten
+            widget: object
+            i18n: true
+            fields:
+              - { name: back, label: 'Link: Zurück zum Journal', widget: string, i18n: true }
+              - { name: related_label, label: 'Label: Weiterlesen', widget: string, i18n: true }
+              - { name: related_heading, label: 'Überschrift: Verwandte Beiträge', widget: string, i18n: true }
 
   - name: website
     label: 'Website (Navigation & Footer)'
@@ -320,10 +364,40 @@ collections:
         default: de_only
         i18n: duplicate
       - { name: title, label: Titel, widget: string, required: false, i18n: true }
+      - { name: title_html, label: 'Artikeltitel mit optionalem <br>', widget: string, required: false, i18n: true }
+      - { name: homepage_title, label: 'Titel auf der Startseite', widget: string, required: false, i18n: true }
       - { name: date, label: Datum, widget: datetime, i18n: duplicate }
+      - { name: sort_order, label: Sortierung bei gleichem Datum, widget: number, required: false, value_type: int, i18n: duplicate }
       - { name: status, label: Status, widget: select, options: [published, coming_soon], default: published, i18n: duplicate }
       - { name: excerpt, label: Teaser, widget: text, required: false, i18n: true }
+      - { name: homepage_excerpt, label: 'Kurz-Teaser auf der Startseite', widget: text, required: false, i18n: true }
+      - { name: meta_description, label: SEO-Beschreibung, widget: text, required: false, i18n: true }
       - { name: image, label: Bild, widget: image, required: false, i18n: duplicate }
+      - { name: image_alt, label: Alt-Text, widget: string, required: false, i18n: duplicate }
+      - { name: homepage_image_alt, label: 'Alt-Text auf der Startseite', widget: string, required: false, i18n: duplicate }
+      - { name: hero_image, label: Hero-Bild, widget: image, required: false, i18n: duplicate }
+      - { name: hero_alt, label: Hero-Alt-Text, widget: string, required: false, i18n: duplicate }
+      - { name: hero_variant, label: Hero-Darstellung, widget: select, options: [cover, contained], default: cover, i18n: duplicate }
+      - { name: tally, label: Tally-Script laden, widget: boolean, required: false, default: false, i18n: duplicate }
+      - name: cta
+        label: Artikel-CTA
+        widget: object
+        required: false
+        i18n: true
+        fields:
+          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
+          - { name: text, label: Text, widget: text, required: false, i18n: true }
+          - name: buttons
+            label: Buttons
+            widget: list
+            required: false
+            i18n: true
+            fields:
+              - { name: label, label: Button-Text, widget: string, i18n: true }
+              - { name: kind, label: Typ, widget: select, options: [link, tally], default: link, i18n: duplicate }
+              - { name: style, label: Stil, widget: select, options: [primary, secondary], default: primary, i18n: duplicate }
+              - { name: href, label: Link, widget: string, required: false, i18n: duplicate }
+              - { name: tally_open, label: Tally-ID, widget: string, required: false, i18n: duplicate }
       - { name: body, label: Artikeltext, widget: markdown, required: false, i18n: true }
 
   - name: rechtliches

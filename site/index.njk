@@ -181,41 +181,20 @@ permalink: index.html
                 <a href="journal.html" class="btn btn-ghost" data-de="{{ de.journal.all_posts }}" data-en="{{ en.journal.all_posts or de.journal.all_posts }}">{{ de.journal.all_posts }}</a>
             </div>
 
-            {# TODO (brief §4.4, second commit): populate these cards dynamically
-               from content/journal/ via Eleventy collections. Verbatim for now. #}
             <div class="journal-grid">
-                <a href="journal/bewegungsrevolution.html" class="journal-card compact fade-up delay-1">
+                {% for post in cms.journal.homepagePosts %}
+                <a href="{% if post.status == 'published' %}{{ post.href }}{% else %}#{% endif %}" class="journal-card compact{% if post.status == 'coming_soon' %} coming-soon{% endif %} fade-up delay-{{ loop.index }}">
                     <div class="journal-card-image">
-                        <img src="assets/images/bewegungsrevolution.png" alt="die Bewegungsrevolution" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="{{ post.image }}" alt="{{ post.homepage_image_alt or post.image_alt }}" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="journal-card-body">
-                        <p class="journal-card-date" data-de="Mai 2026" data-en="May 2026">Mai 2026</p>
-                        <h3 data-de="Bewegungsrevolution: Wir starten" data-en="Movement Revolution: We&rsquo;re Starting">Bewegungsrevolution: Wir starten</h3>
-                        <p data-de="Unser gef&ouml;rderter 6-Wochen-Block f&uuml;r Einsteiger:innen beginnt. Was wir vorhaben." data-en="Our funded 6-week block for beginners kicks off. Here&rsquo;s what we have planned.">Unser gef&ouml;rderter 6-Wochen-Block f&uuml;r Einsteiger:innen beginnt. Was wir vorhaben.</p>
+                        <p class="journal-card-date" data-de="{{ post.de.date_label | attr }}" data-en="{{ post.en.date_label | attr }}">{{ post.de.date_label }}</p>
+                        <h3 data-de="{{ post.de.homepage_title or post.de.title | attr }}" data-en="{{ post.en.homepage_title or post.en.title | attr }}">{{ post.de.homepage_title or post.de.title }}</h3>
+                        <p data-de="{{ post.de.homepage_excerpt or post.de.excerpt | attr }}" data-en="{{ post.en.homepage_excerpt or post.en.excerpt | attr }}">{{ post.de.homepage_excerpt or post.de.excerpt }}</p>
                     </div>
                 </a>
 
-                <a href="journal/warum-ci.html" class="journal-card compact fade-up delay-2">
-                    <div class="journal-card-image">
-                        <img src="assets/images/warum-ci.jpg" alt="Contact Improvisation" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="journal-card-body">
-                        <p class="journal-card-date" data-de="M&auml;rz 2026" data-en="March 2026">M&auml;rz 2026</p>
-                        <h3 data-de="Warum Contact Improvisation?" data-en="Why Contact Improvisation?">Warum Contact Improvisation?</h3>
-                        <p data-de="&Uuml;ber das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen." data-en="On the playful exploration of gravity, balance, and trust.">&Uuml;ber das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen.</p>
-                    </div>
-                </a>
-
-                <a href="#" class="journal-card compact coming-soon fade-up delay-3">
-                    <div class="journal-card-image">
-                        <img src="assets/images/was-ist-kunst.jpg" alt="Sensing Listening" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="journal-card-body">
-                        <p class="journal-card-date" data-de="M&auml;rz 2026" data-en="March 2026">M&auml;rz 2026</p>
-                        <h3 data-de="Was ist Kunst?" data-en="What Is Art?">Was ist Kunst?</h3>
-                        <p data-de="Kunst ist eine Sprache f&uuml;r die unpraktischen Dinge. Am Rande des Sagbaren kratzen, schaben, dr&auml;ngen." data-en="Art is a language for the impractical things. Scratching, scraping, pressing at the edges of what can be said.">Kunst ist eine Sprache f&uuml;r die unpraktischen Dinge. Am Rande des Sagbaren kratzen, schaben, dr&auml;ngen.</p>
-                    </div>
-                </a>
+                {% endfor %}
             </div>
         </div>
     </section>
