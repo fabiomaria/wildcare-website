@@ -1,0 +1,52 @@
+# PHASE 0 SAMPLE — schema contract draft. Not yet read by any template.
+# Canonical structure = whatever the Sveltia UI writes on save (round-trip test).
+# Content extracted 1:1 from the live kontakt.html.
+de:
+  meta:
+    title: Kontakt — Wild Care | Verein für soziale Praxis, Graz
+    description: Nimm Kontakt mit Wild Care auf. Contact Improvisation und soziale Praxis — jeden Montag in Graz. Komm einfach vorbei.
+  hero:
+    label: Kontakt
+    heading: Wir freuen uns<br>auf dich.
+    intro: Du hast eine Frage, möchtest mitmachen oder einfach Hallo sagen? Schreib uns — oder komm einfach am Montag vorbei.
+  form:
+    heading: Schreib uns
+    name_label: Name
+    name_placeholder: Dein Name
+    email_label: E-Mail
+    email_placeholder: deine@email.at
+    message_label: Nachricht
+    message_placeholder: Was möchtest du uns sagen?
+    submit_label: Nachricht senden
+    note: Oder schreib uns direkt an
+  info:
+    email_label: E-Mail
+    address_label: Adresse
+    when_label: Wann
+    when_value: Jeden Montag ab 17:45 Uhr
+    highlight: Komm einfach vorbei — du brauchst keine Anmeldung, keine Erfahrung, nur bequeme Kleidung und Neugier.
+  map:
+    label: So findest du uns
+    heading: Orpheumgasse 11, Graz
+    caption: Orpheumgasse 11, 8020 Graz — Nähe Orpheum Theater
+en:
+  hero:
+    label: Contact
+    heading: We look forward<br>to seeing you.
+    intro: Have a question, want to join in, or just say hello? Write to us — or simply come by on Monday.
+  form:
+    heading: Write to Us
+    name_label: Name
+    email_label: Email
+    message_label: Message
+    submit_label: Send Message
+    note: Or write to us directly at
+  info:
+    email_label: Email
+    address_label: Address
+    when_label: When
+    when_value: Every Monday from 17:45
+    highlight: Just come by — no registration needed, no experience required, just comfortable clothes and curiosity.
+  map:
+    label: How to Find Us
+    caption: Orpheumgasse 11, 8020 Graz — near Orpheum Theatre

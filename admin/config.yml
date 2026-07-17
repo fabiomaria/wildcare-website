@@ -1,0 +1,172 @@
+# Wild Care — Sveltia CMS configuration
+# Phase 0 draft: covers the schema-contract sample files only.
+# Phase 2 adds the remaining pages; Phase 3 adds base_url (auth worker).
+
+backend:
+  name: github
+  repo: fabiomaria/wildcare-website
+  branch: html-site
+  # base_url: <worker-auth URL>  — added in Phase 3 when the OAuth worker is deployed.
+  # Until then, use the local-repository workflow (Chrome) or a PAT to sign in.
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+media_libraries:
+  default:
+    config:
+      slugify_filename: true
+      max_file_size: 10485760 # 10 MB hard stop; GitHub backend has no LFS
+      transformations:
+        raster_image:
+          format: webp
+          quality: 85
+          width: 2048
+          height: 2048
+        svg:
+          optimize: true
+
+i18n:
+  # Applies to entry (folder) collections, i.e. the journal:
+  # warum-ci.md (DE) + warum-ci.en.md (EN, optional).
+  # File collections without a {{locale}} placeholder use single_file
+  # (top-level de:/en: keys) regardless of this structure setting.
+  structure: multiple_files
+  omit_default_locale_from_file_path: true
+  locales: [de, en]
+  default_locale: de
+  initial_locales: [de]
+
+collections:
+  - name: seiten
+    label: Seiten
+    i18n: true
+    files:
+      - name: kontakt
+        label: Kontakt
+        file: content/pages/kontakt.yaml
+        i18n: true
+        fields:
+          - name: meta
+            label: 'SEO & Vorschau'
+            widget: object
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
+          - name: hero
+            label: Hero
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true, hint: 'Zeilenumbruch mit <br> möglich' }
+              - { name: intro, label: Einleitung, widget: text, i18n: true }
+          - name: form
+            label: Kontaktformular
+            widget: object
+            i18n: true
+            fields:
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: name_label, label: 'Feld-Label: Name', widget: string, i18n: true }
+              - { name: name_placeholder, label: 'Platzhalter: Name', widget: string, i18n: false }
+              - { name: email_label, label: 'Feld-Label: E-Mail', widget: string, i18n: true }
+              - { name: email_placeholder, label: 'Platzhalter: E-Mail', widget: string, i18n: false }
+              - { name: message_label, label: 'Feld-Label: Nachricht', widget: string, i18n: true }
+              - { name: message_placeholder, label: 'Platzhalter: Nachricht', widget: string, i18n: false }
+              - { name: submit_label, label: Absende-Button, widget: string, i18n: true }
+              - { name: note, label: 'Hinweis unter dem Button', widget: string, i18n: true }
+          - name: info
+            label: Info-Spalte
+            widget: object
+            i18n: true
+            fields:
+              - { name: email_label, label: 'Label: E-Mail', widget: string, i18n: true }
+              - { name: address_label, label: 'Label: Adresse', widget: string, i18n: true }
+              - { name: when_label, label: 'Label: Wann', widget: string, i18n: true }
+              - { name: when_value, label: 'Wann (Text)', widget: string, i18n: true }
+              - { name: highlight, label: Hervorhebung, widget: text, i18n: true }
+          - name: map
+            label: Karte
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: false }
+              - { name: caption, label: Bildunterschrift, widget: string, i18n: true }
+
+  - name: website
+    label: 'Website (Navigation & Footer)'
+    i18n: true
+    files:
+      - name: global
+        label: 'Navigation & Footer'
+        file: content/site.yaml
+        i18n: true
+        fields:
+          - name: nav
+            label: Navigation
+            widget: object
+            i18n: true
+            fields:
+              - { name: home, label: Startseite, widget: string, i18n: true }
+              - { name: about, label: 'Über uns', widget: string, i18n: true }
+              - { name: program, label: Programm, widget: string, i18n: true }
+              - { name: join, label: Mitmachen, widget: string, i18n: true }
+              - { name: cta, label: 'CTA (Komm vorbei)', widget: string, i18n: true }
+          - name: footer
+            label: Footer
+            widget: object
+            i18n: true
+            fields:
+              - { name: brand_text, label: Vereinsbeschreibung, widget: text, i18n: true }
+              - { name: pages_heading, label: 'Überschrift: Seiten', widget: string, i18n: true }
+              - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+              - { name: contact_label, label: 'Link-Text: Kontakt', widget: string, i18n: true }
+              - { name: tagline, label: Schlusszeile, widget: string, i18n: true }
+
+  - name: journal
+    label: Journal
+    folder: content/journal
+    create: true
+    extension: md
+    format: frontmatter
+    i18n: true
+    fields:
+      - { name: title, label: Titel, widget: string, i18n: true }
+      - { name: date, label: Datum, widget: datetime, i18n: duplicate }
+      - { name: status, label: Status, widget: select, options: [published, coming_soon], default: published, i18n: duplicate }
+      - { name: excerpt, label: Teaser, widget: text, i18n: true }
+      - { name: image, label: Bild, widget: image, required: false, i18n: duplicate }
+      - { name: body, label: Artikeltext, widget: markdown, i18n: true }
+
+  - name: rechtliches
+    label: Rechtliches (nur Deutsch)
+    files:
+      - name: impressum
+        label: Impressum
+        file: content/legal/impressum.md
+        fields:
+          - { name: title, label: Titel, widget: string }
+          - { name: body, label: Text, widget: markdown }
+
+  - name: workshops
+    label: Workshops (English only)
+    files:
+      - name: cellular-touch
+        label: Cellular Touch
+        file: content/pages/cellular-touch.yaml
+        fields:
+          - { name: lang, label: Language, widget: hidden, default: en }
+          - name: meta
+            label: 'SEO & Preview'
+            widget: object
+            fields:
+              - { name: title, label: Page title, widget: string }
+              - { name: description, label: Description, widget: text }
+          - name: hero
+            label: Hero
+            widget: object
+            fields:
+              - { name: heading, label: Heading, widget: string }
+              - { name: intro, label: Intro, widget: text }

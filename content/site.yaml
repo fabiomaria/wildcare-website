@@ -1,0 +1,28 @@
+# PHASE 0 SAMPLE — schema contract draft. Not yet read by any template.
+# Nav + footer copy, shared across all bilingual pages (extracted from live HTML).
+de:
+  nav:
+    home: Startseite
+    about: Über uns
+    program: Programm
+    join: Mitmachen
+    cta: Komm vorbei
+  footer:
+    brand_text: Verein für Kontaktimprovisation und soziale Praxis. Wir leben die Kunst der Begegnung — jeden Montag in Graz.
+    pages_heading: Seiten
+    connect_heading: Verbinden
+    contact_label: Kontakt
+    tagline: Mit Fürsorge gebaut
+en:
+  nav:
+    home: Home
+    about: About Us
+    program: Programme
+    join: Get Involved
+    cta: Come by
+  footer:
+    brand_text: Association for Contact Improvisation and social practice. We live the art of encounter — every Monday in Graz.
+    pages_heading: Pages
+    connect_heading: Connect
+    contact_label: Contact
+    tagline: Built with care

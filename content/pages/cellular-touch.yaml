@@ -1,0 +1,9 @@
+# PHASE 0 SAMPLE — schema contract draft. Not yet read by any template.
+# English-only page shape (brief §4.1.3): plain fields, no locale nesting.
+lang: en
+meta:
+  title: Cellular Touch with Valentyn Korotkevych — Workshop | Wild Care
+  description: "Cellular Touch with Valentyn Korotkevych: a Contact Improvisation workshop on membranes, fascia, flow and momentum. 8-9 August 2026, Orpheumgasse, Graz."
+hero:
+  heading: PHASE-0 SAMPLE — full extraction happens in Phase 2
+  intro: This stub only proves the English-only page shape round-trips.
