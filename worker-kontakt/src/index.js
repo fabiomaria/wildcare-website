@@ -123,6 +123,7 @@ export default {
         const notionResponse = await createNotionRow(env, cleaned, submissionDate);
 
         if (!notionResponse.ok) {
+            console.error("Notion API error", notionResponse.status, await notionResponse.text());
             return jsonResponse(request, { ok: false, error: "notion_error" }, 502);
         }
 
