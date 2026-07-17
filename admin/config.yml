@@ -429,7 +429,7 @@ collections:
           - { label: Englisch, value: en_only }
         default: de_only
       - { name: status, label: Status, widget: select, options: [draft, upcoming, current, past], default: upcoming }
-      - { name: detail_page, label: Detailseite veröffentlichen, widget: boolean, default: true }
+      - { name: detail_page, label: Detailseite veröffentlichen, widget: boolean, default: true, hint: 'Die Seite wird erst gebaut, wenn SEO, Hero, Praxis-Intro und Info-Karte ausgefüllt sind; bis dahin erscheint nur die Programm-Karte.' }
       - { name: start_date, label: Startdatum, widget: datetime }
       - { name: sort_order, label: Sortierung bei gleichem Datum, widget: number, required: false, value_type: int }
       - { name: registration_url, label: Anmeldelink, widget: string }

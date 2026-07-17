@@ -173,9 +173,11 @@ permalink: programm.html
 
                     <div style="margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: var(--border-subtle); display: flex; gap: var(--space-sm); flex-wrap: wrap;">
                         <a href="{{ workshop.registration_url }}" class="btn btn-primary"{% if cardDe.register_label != cardEn.register_label %} data-de="{{ cardDe.register_label | attr }}" data-en="{{ cardEn.register_label | attr }}"{% endif %}>{{ cardDe.register_label }}</a>
+                        {% if workshop.has_detail_page %}
                         <a href="{{ workshop.permalink }}" class="btn btn-secondary"
                             data-de="{{ cardDe.detail_label | attr }}"
                             data-en="{{ cardEn.detail_label | attr }}">{{ cardDe.detail_label }}</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

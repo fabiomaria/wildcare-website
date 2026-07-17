@@ -45,6 +45,10 @@ function hasText(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
 
+function isObject(value) {
+  return value && typeof value === "object" && !Array.isArray(value);
+}
+
 function mergeLocale(defaults, localized) {
   return {
     ...defaults,
@@ -74,6 +78,43 @@ function deepMerge(defaults, localized) {
     }
   }
   return merged;
+}
+
+function hasWorkshopContent(locale) {
+  return Boolean(
+    locale &&
+    (
+      locale.card?.title ||
+      locale.meta?.title ||
+      locale.hero?.heading ||
+      locale.practice?.heading
+    )
+  );
+}
+
+function hasWorkshopDetailContent(locale) {
+  return Boolean(
+    locale?.meta?.title &&
+    locale?.hero?.heading &&
+    locale?.practice?.heading &&
+    locale?.info?.title
+  );
+}
+
+function normalizePermalink(value, slug) {
+  const raw = String(value || `${slug}.html`).trim();
+  if (raw.endsWith("/") || /\.[a-z0-9]+$/i.test(path.basename(raw))) {
+    return raw;
+  }
+  return `${raw}.html`;
+}
+
+function normalizeExternalUrl(value) {
+  const raw = String(value || "").trim();
+  if (!raw || /^(https?:|mailto:|#|\/)/i.test(raw)) {
+    return raw;
+  }
+  return raw.includes(".") && !raw.includes(" ") ? `https://${raw}` : raw;
 }
 
 function loadJournalContent() {
@@ -178,21 +219,28 @@ function loadWorkshopContent() {
       const workshop = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"));
       const slug = workshop.slug || path.basename(filename, ".yaml");
       const languageMode = workshop.language_mode || "bilingual";
-      const deRaw = workshop.de || {};
-      const enRaw = workshop.en || {};
-      const fallback = languageMode === "en_only" ? enRaw : deRaw;
+      const deRaw = isObject(workshop.de) ? workshop.de : {};
+      const enRaw = isObject(workshop.en) ? workshop.en : {};
+      const preferred = languageMode === "en_only" ? enRaw : deRaw;
+      const alternate = languageMode === "en_only" ? deRaw : enRaw;
+      const fallback = hasWorkshopContent(preferred) ? preferred : alternate;
       const de = deepMerge(fallback, deRaw);
       const en = deepMerge(fallback, enRaw);
+      const primaryLocale = languageMode === "en_only" ? "en" : "de";
+      const primaryData = primaryLocale === "en" ? en : de;
+      const hasDetailPage = workshop.detail_page !== false && workshop.status !== "draft" && hasWorkshopDetailContent(primaryData);
       return {
         ...workshop,
         slug,
         language_mode: languageMode,
         has_de: languageMode !== "en_only",
         has_en: languageMode !== "de_only",
-        primary_locale: languageMode === "en_only" ? "en" : "de",
+        has_detail_page: hasDetailPage,
+        primary_locale: primaryLocale,
+        registration_url: normalizeExternalUrl(workshop.registration_url),
         de,
         en,
-        permalink: workshop.permalink || `${slug}.html`,
+        permalink: normalizePermalink(workshop.permalink, slug),
       };
     })
     .sort((a, b) => {
@@ -203,8 +251,8 @@ function loadWorkshopContent() {
 
   return {
     all,
-    listed: all.filter((workshop) => workshop.status === "upcoming" || workshop.status === "current"),
-    pages: all.filter((workshop) => workshop.detail_page !== false && workshop.status !== "draft"),
+    listed: all.filter((workshop) => (workshop.status === "upcoming" || workshop.status === "current") && (workshop.de.card?.title || workshop.en.card?.title)),
+    pages: all.filter((workshop) => workshop.has_detail_page),
   };
 }
 
