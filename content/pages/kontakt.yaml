@@ -19,6 +19,8 @@ de:
     message_placeholder: Was möchtest du uns sagen?
     submit_label: Nachricht senden
     note: Oder schreib uns direkt an
+    success_message: Danke, deine Nachricht wurde gesendet.
+    error_message: Etwas ist schiefgelaufen. Bitte versuch es erneut oder schreib uns direkt.
   info:
     email_label: E-Mail
     address_label: Adresse
@@ -41,6 +43,8 @@ en:
     message_label: Message
     submit_label: Send Message
     note: Or write to us directly at
+    success_message: Thanks, your message has been sent.
+    error_message: Something went wrong. Please try again or email us directly.
   info:
     email_label: Email
     address_label: Address

@@ -41,9 +41,9 @@ de:
     text: Neuigkeiten zu kommenden Events direkt in dein Postfach.
     email_label: E-Mail-Adresse
     submit: Anmelden
-    consent_pre: 'Ich stimme der Speicherung meiner E-Mail gemäß '
+    consent_pre: Ich stimme der Speicherung meiner E-Mail gemäß
     consent_link: Datenschutzerklärung
-    consent_post: ' zu.'
+    consent_post: zu.
 en:
   hero:
     heading: We live the art<br>of encounter.
@@ -82,6 +82,6 @@ en:
     text: News about upcoming events, straight to your inbox.
     email_label: Email address
     submit: Sign up
-    consent_pre: 'I agree to my email being stored per the '
+    consent_pre: I agree to my email being stored per the
     consent_link: privacy policy
     consent_post: .

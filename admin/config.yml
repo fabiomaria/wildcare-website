@@ -155,6 +155,8 @@ collections:
               - { name: message_placeholder, label: 'Platzhalter: Nachricht', widget: string, i18n: false }
               - { name: submit_label, label: Absende-Button, widget: string, i18n: true }
               - { name: note, label: 'Hinweis unter dem Button', widget: string, i18n: true }
+              - { name: success_message, label: Erfolgsmeldung, widget: string, i18n: true }
+              - { name: error_message, label: Fehlermeldung, widget: string, i18n: true }
           - name: info
             label: Info-Spalte
             widget: object

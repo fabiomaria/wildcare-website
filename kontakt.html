@@ -86,10 +86,10 @@
                 <!-- LEFT: Form -->
                 <div class="kontakt-form-wrapper fade-up">
                     <h3 data-de="Schreib uns" data-en="Write to Us">Schreib uns</h3>
-                    <form action="https://formspree.io/f/xlgongny" method="POST">
+                    <form id="kontakt-form">
                         <div class="form-group">
                             <label for="name" data-de="Name" data-en="Name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Dein Name" required>
+                            <input type="text" id="name" name="name" placeholder="Dein Name" maxlength="120" required>
                         </div>
                         <div class="form-group">
                             <label for="email" data-de="E-Mail" data-en="Email">E-Mail</label>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message" data-de="Nachricht" data-en="Message">Nachricht</label>
-                            <textarea id="message" name="message" placeholder="Was m&ouml;chtest du uns sagen?" required></textarea>
+                            <textarea id="message" name="message" placeholder="Was m&ouml;chtest du uns sagen?" maxlength="1800" required></textarea>
                         </div>
                         <div class="form-submit-row">
                             <button type="submit" class="btn btn-primary" data-de="Nachricht senden" data-en="Send Message">Nachricht senden</button>
@@ -106,6 +106,8 @@
                                 <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
                             </p>
                         </div>
+                        <input type="text" name="website" id="kontakt-website" tabindex="-1" autocomplete="off" hidden>
+                        <p class="form-note" id="kontakt-message" role="status" aria-live="polite" hidden></p>
                     </form>
                 </div>
 
@@ -270,6 +272,55 @@
     </script>
 
     <script src="js/i18n.js"></script>
+    <script>
+        (function () {
+            var form = document.getElementById('kontakt-form');
+            if (!form) return;
+
+            var WORKER_URL = 'https://wildcare-kontakt.fabiogerhold.workers.dev';
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var name = document.getElementById('name').value;
+                var email = document.getElementById('email').value;
+                var message = document.getElementById('message').value;
+                var website = document.getElementById('kontakt-website').value;
+                var lang = document.documentElement.lang || 'de';
+                var messageEl = document.getElementById('kontakt-message');
+                var submitButton = form.querySelector('button[type="submit"]');
+
+                if (submitButton) {
+                    submitButton.disabled = true;
+                }
+
+                fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name, email: email, message: message, website: website, language: lang })
+                })
+                    .then(function (response) { return response.json(); })
+                    .then(function (result) {
+                        if (result.ok) {
+                            form.reset();
+                            messageEl.textContent = lang === 'en' ? 'Thanks, your message has been sent.' : 'Danke, deine Nachricht wurde gesendet.';
+                        } else {
+                            messageEl.textContent = lang === 'en' ? 'Something went wrong. Please try again or email us directly.' : 'Etwas ist schiefgelaufen. Bitte versuch es erneut oder schreib uns direkt.';
+                        }
+                        messageEl.hidden = false;
+                    })
+                    .catch(function () {
+                        messageEl.textContent = lang === 'en' ? 'Something went wrong. Please try again or email us directly.' : 'Etwas ist schiefgelaufen. Bitte versuch es erneut oder schreib uns direkt.';
+                        messageEl.hidden = false;
+                    })
+                    .finally(function () {
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                        }
+                    });
+            });
+        })();
+    </script>
 
 </body>
 </html>

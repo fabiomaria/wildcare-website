@@ -4,6 +4,11 @@
 
 The site uses a client-side, attribute-based translation system supporting **German (de)** and **English (en)**. German is the default language. Translations are toggled via DE/EN buttons in the navigation bar and persisted in `localStorage`.
 
+CMS migration note: for Eleventy-templatized pages, translated copy lives in
+`content/` (usually top-level `de:` / `en:` YAML keys). Templates render that
+copy back into the same `data-de` / `data-en` HTML attributes described here.
+Do not edit CMS-managed copy directly in `site/` templates.
+
 ## How It Works
 
 ### 1. Data Attributes

@@ -29,13 +29,22 @@ Always confirm `git branch --show-current` is `html-site` and that
 
 ## Site architecture
 
-- Static HTML/CSS/JS. **No build step, no bundler, no framework, no root
-  `package.json`, no test framework.** Verification is grep-based structural
-  checks + a local static server (`python3 -m http.server 8080`) + manual
-  browser checks. Don't add a test framework for small static edits.
-- The one backend piece is `worker/` — a self-contained Cloudflare Worker (its
-  own `package.json`) for the email signup. It does not affect the root site's
-  no-build nature.
+- The live site is being migrated from hand-coded HTML to **Eleventy + Sveltia
+  CMS** on the `html-site` branch. Root-level `*.html` files still exist as the
+  source of truth for pages that have not been templatized yet; templatized pages
+  live under `site/` and pull editable copy from `content/`.
+- Run `npm run build` to produce `_site/`; run `npm run dev` for the local
+  Eleventy preview. Verification is still lightweight: normalized HTML diffs,
+  grep-based structural checks, local browser passes.
+- Do not edit CMS-managed copy directly in templates. Put editable text in
+  `content/` and let templates own markup, classes, IDs, behavior, and inline
+  spacing around translated fields.
+- Backend pieces are intentionally separate Cloudflare Workers:
+  - `worker/` — homepage email signup to Notion. Frozen unless a task explicitly
+    targets it.
+  - `worker-kontakt/` — contact form to the same Notion database. Separate by
+    design; do not merge into `worker/`.
+  - Planned: `worker-auth/` — Sveltia CMS GitHub OAuth.
 
 ## Bilingual DE/EN (see also `TRANSLATION.md`)
 
@@ -86,6 +95,18 @@ Always confirm `git branch --show-current` is `html-site` and that
   secrets** (`wrangler secret put`), never committed.
 - Notion API version `2022-06-28`. To find the real database id, use
   `POST /v1/search` (a page URL's id can be a *page*, not the database).
+
+## Contact form → Notion (the `worker-kontakt/` backend)
+
+- `kontakt.html` no longer posts to Formspree. It uses an inline fetch to
+  `worker-kontakt/`, which writes into the same `Wild Care Anmeldungen` Notion
+  database.
+- Keep `worker-kontakt/` separate from `worker/`. Both use the same secret names
+  (`NOTION_TOKEN`, `NOTION_DATABASE_ID`) but are deployed independently.
+- Contact field mapping: `Name` ← submitted name, `Email` ← submitted email,
+  `Nachricht` ← source/language-prefixed message text, `Anmeldung Datum` ←
+  submission date, `Tag` (multi_select) ← `Kontaktformular`.
+- The source tag is set server-side. Do not trust or pass it from the browser.
 
 ## Git / commit hygiene
 

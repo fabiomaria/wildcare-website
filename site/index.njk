@@ -236,7 +236,7 @@ permalink: index.html
                 </div>
                 <label for="signup-consent" class="cta-signup-consent">
                     <input type="checkbox" id="signup-consent" name="consent" required>
-                    <span data-de="{{ de.cta.consent_pre }}" data-en="{{ en.cta.consent_pre or de.cta.consent_pre }}">{{ de.cta.consent_pre | trim }} </span><a href="datenschutz.html" data-de="{{ de.cta.consent_link }}" data-en="{{ en.cta.consent_link or de.cta.consent_link }}">{{ de.cta.consent_link }}</a><span data-de="{{ de.cta.consent_post }}" data-en="{{ en.cta.consent_post or de.cta.consent_post }}">{{ de.cta.consent_post | trim }}</span>
+                    <span data-de="{{ de.cta.consent_pre | trim }} " data-en="{{ (en.cta.consent_pre or de.cta.consent_pre) | trim }} ">{{ de.cta.consent_pre | trim }} </span><a href="datenschutz.html" data-de="{{ de.cta.consent_link }}" data-en="{{ en.cta.consent_link or de.cta.consent_link }}">{{ de.cta.consent_link }}</a><span data-de=" {{ de.cta.consent_post | trim }}" data-en="{{ (en.cta.consent_post or de.cta.consent_post) | trim }}">{{ de.cta.consent_post | trim }}</span>
                 </label>
                 <input type="text" name="website" id="signup-website" tabindex="-1" autocomplete="off" hidden>
                 <p class="form-note" id="signup-message" hidden></p>

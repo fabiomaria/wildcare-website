@@ -164,3 +164,23 @@ The kontakt.html contact form currently POSTs to Formspree (`https://formspree.i
 - Frontend follows the signup form's proven pattern (template-owned inline fetch, client-side validation, DE/EN status messages via the existing i18n mechanism).
 - **Sequencing:** implemented as a standalone change after Phase 0 and before Phase 2 templatizes kontakt, so the migration diff for kontakt carries the new form verbatim. Datenschutz implications (Formspree leaves the privacy policy, Notion processing already documented for signup) are reviewed as part of this change.
 - §4.6 note: this replaces the "Formspree form" as the fourth CTA mechanism; like the signup form, it is template-owned — only visible labels/placeholders are CMS fields.
+
+## 12. Phase 0 execution notes 2026-07-17
+
+Go/no-go: **green for Sveltia + Eleventy**.
+
+- Auth: official `sveltia-cms-auth` Cloudflare Worker is active and supports the planned GitHub Pages custom-domain OAuth flow.
+- i18n schema: Sveltia round-trip confirmed the planned shapes: page file collections use single-file YAML with top-level `de:` / `en:` keys; journal folder collection writes per-locale markdown files (`name.md`, `name.en.md`) with duplicated metadata where configured.
+- Media: Sveltia converted an uploaded test image to WebP before writing it to the repo (`assets/uploads/...webp`, 40 KB in the test), matching the image-history constraint.
+- Homepage vertical slice: `index.html` has been extracted to `content/pages/index.yaml` and `site/index.njk`; Eleventy rebuilds when CMS-managed content changes.
+- Schema rule from actual saves: Sveltia may normalize YAML quoting and strip leading/trailing spaces from scalar fields. Templates must own inline whitespace and punctuation around editable fields; content values should not rely on leading/trailing spaces.
+
+## 13. Contact form execution notes 2026-07-17
+
+Implemented locally after Phase 0:
+
+- Added separate `worker-kontakt/` Cloudflare Worker. `worker/` remains untouched.
+- `kontakt.html` now posts via inline fetch to `https://wildcare-kontakt.fabiogerhold.workers.dev`; Formspree is removed from the live contact form.
+- Worker field mapping matches §11, including server-side `Tag` multi-select value `Kontaktformular`.
+- `datenschutz.html` no longer references Formspree and now describes the Notion + Cloudflare Worker processing for contact messages.
+- Validation checked with `wrangler deploy --dry-run` and local `wrangler dev`: honeypot returns `ok`, invalid email/name/message fail with explicit errors, and the no-secrets valid path fails closed as `notion_error`.
