@@ -3,7 +3,9 @@
         <div class="container nav-inner">
             <a href="index.html" class="nav-logo">
                 Wild Care
-                <span class="breadcrumb">Graz</span>
+                <span class="breadcrumb"{% if navBreadcrumbDe and navBreadcrumbEn %}
+                    data-de="{{ navBreadcrumbDe }}"
+                    data-en="{{ navBreadcrumbEn }}"{% endif %}>{{ navBreadcrumbDe or "Graz" }}</span>
             </a>
             <div class="nav-links">
                 <a href="index.html"{% if navActive == 'index' %} class="active"{% endif %}

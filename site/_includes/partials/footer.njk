@@ -16,7 +16,7 @@
                     <a href="kontakt.html" data-de="{{ s.de.footer.contact_label }}" data-en="{{ s.en.footer.contact_label or s.de.footer.contact_label }}">{{ s.de.footer.contact_label }}</a>
                 </div>
                 <div class="footer-links">
-                    <h4 data-de="{{ s.de.footer.connect_heading }}" data-en="{{ s.en.footer.connect_heading or s.de.footer.connect_heading }}">{{ s.de.footer.connect_heading }}</h4>
+                    <h4 data-de="{{ footerConnectHeadingDe or s.de.footer.connect_heading }}" data-en="{{ footerConnectHeadingEn or s.en.footer.connect_heading or s.de.footer.connect_heading }}">{{ footerConnectHeadingDe or s.de.footer.connect_heading }}</h4>
                     <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
                     <a href="https://facebook.com/wildcare.space" target="_blank" rel="noopener">Facebook</a>
                     <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>

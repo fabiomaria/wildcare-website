@@ -182,6 +182,95 @@ collections:
             hint: 'Kontakt hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
             fields:
               - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+      - name: team
+        label: Über uns / Team
+        file: content/pages/team.yaml
+        i18n: true
+        fields:
+          - name: meta
+            label: 'SEO & Vorschau'
+            widget: object
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
+          - { name: breadcrumb, label: Breadcrumb, widget: string, i18n: true }
+          - name: hero
+            label: Hero
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: Überschrift, widget: string, i18n: true, hint: 'Zeilenumbruch mit <br> möglich' }
+              - { name: intro, label: Einleitung, widget: text, i18n: true }
+          - name: manifest
+            label: Manifest-Auszug
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: quote, label: Zitat, widget: text, i18n: true }
+              - { name: source, label: Quelle, widget: string, i18n: true }
+          - name: team
+            label: Team
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: Überschrift, widget: string, i18n: true }
+              - name: members
+                label: Personen
+                widget: list
+                i18n: true
+                min: 2
+                max: 2
+                fields:
+                  - { name: name, label: Name, widget: string, i18n: duplicate }
+                  - { name: image, label: Bild, widget: image, i18n: duplicate }
+                  - { name: alt, label: Alt-Text, widget: string, i18n: duplicate }
+                  - { name: role, label: Rolle, widget: string, i18n: true }
+                  - { name: bio, label: Bio, widget: text, i18n: true }
+          - name: quote_band
+            label: Buber-Zitat
+            widget: object
+            i18n: true
+            fields:
+              - { name: quote, label: Zitat, widget: string, i18n: true }
+              - { name: source, label: Quelle, widget: string, i18n: true }
+          - name: philosophy
+            label: Haltung
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: Überschrift, widget: string, i18n: true }
+              - { name: p1, label: Absatz 1, widget: text, i18n: true }
+              - { name: p2, label: Absatz 2, widget: text, i18n: true }
+              - name: pillars
+                label: Säulen
+                widget: list
+                i18n: true
+                min: 3
+                max: 3
+                fields:
+                  - { name: title, label: Titel, widget: string, i18n: true }
+                  - { name: text, label: Text, widget: text, i18n: true }
+          - name: cta
+            label: CTA
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: Überschrift, widget: string, i18n: true }
+              - { name: text, label: Text, widget: text, i18n: true }
+              - { name: button, label: Button, widget: string, i18n: true }
+          - name: footer
+            label: Footer-Sonderfall
+            widget: object
+            i18n: true
+            hint: 'Team hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
+            fields:
+              - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
 
   - name: website
     label: 'Website (Navigation & Footer)'

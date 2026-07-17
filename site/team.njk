@@ -1,0 +1,221 @@
+---
+permalink: team.html
+---
+{%- set de = cms.pages.team.de -%}
+{%- set en = cms.pages.team.en -%}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ de.meta.title }}</title>
+    <meta name="description" content="{{ de.meta.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wildcare.space/team.html">
+    <meta property="og:title" content="{{ de.meta.title }}">
+    <meta property="og:description" content="{{ de.meta.description }}">
+    <meta property="og:image" content="https://wildcare.space/assets/images/social%20preview.jpg">
+    <meta property="og:locale" content="de_AT">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    {% set navActive = 'team' %}{% set navBreadcrumbDe = de.breadcrumb %}{% set navBreadcrumbEn = en.breadcrumb or de.breadcrumb %}{% include "partials/nav.njk" %}
+
+    <!-- ================================
+         HERO
+         ================================ -->
+
+    <header class="page-hero">
+        <div class="container">
+            <p class="label fade-up"
+                data-de="{{ de.hero.label }}"
+                data-en="{{ en.hero.label or de.hero.label }}">{{ de.hero.label }}</p>
+            <h1 class="fade-up delay-1"
+                data-de="{{ de.hero.heading }}"
+                data-en="{{ en.hero.heading or de.hero.heading }}">{{ de.hero.heading | safe }}</h1>
+            <p class="fade-up delay-2" style="max-width: 580px;"
+                data-de="{{ de.hero.intro }}"
+                data-en="{{ en.hero.intro or de.hero.intro }}">{{ de.hero.intro }}</p>
+        </div>
+    </header>
+
+    <!-- ================================
+         MANIFEST EXCERPT
+         ================================ -->
+
+    <section class="manifest-excerpt">
+        <div class="container">
+            <div class="component-preview manifest-box fade-up">
+                <p class="label" style="margin-bottom: 24px;"
+                    data-de="{{ de.manifest.label }}"
+                    data-en="{{ en.manifest.label or de.manifest.label }}">{{ de.manifest.label }}</p>
+                <p class="quote"
+                    data-de="{{ de.manifest.quote }}"
+                    data-en="{{ en.manifest.quote or de.manifest.quote }}">{{ de.manifest.quote }}</p>
+                <div class="divider" style="margin: 32px auto;"></div>
+                <p style="font-size: 0.875rem; opacity: 0.5; max-width: 100%;"
+                    data-de="{{ de.manifest.source }}"
+                    data-en="{{ en.manifest.source or de.manifest.source }}">{{ de.manifest.source }}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         TEAM
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 64px;">
+                <p class="label"
+                    data-de="{{ de.team.label }}"
+                    data-en="{{ en.team.label or de.team.label }}">{{ de.team.label }}</p>
+                <h2
+                    data-de="{{ de.team.heading }}"
+                    data-en="{{ en.team.heading or de.team.heading }}">{{ de.team.heading }}</h2>
+            </div>
+
+            <div class="team-grid">
+{%- for member in de.team.members %}
+{%- set enMember = en.team.members[loop.index0] if en.team.members else null %}
+                <div class="team-member fade-up delay-{{ loop.index }}">
+                    <div class="team-portrait">
+                        <img src="{{ member.image }}" alt="{{ member.alt }}" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>{{ member.name }}</h3>
+                    <p class="team-role"
+                        data-de="{{ member.role }}"
+                        data-en="{{ enMember.role if enMember else member.role }}">{{ member.role }}</p>
+                    <p
+                        data-de="{{ member.bio }}"
+                        data-en="{{ enMember.bio if enMember else member.bio }}">{{ member.bio }}</p>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         QUOTE BAND
+         ================================ -->
+
+    <section style="background: var(--sand-light);">
+        <div class="container fade-up" style="text-align: center; max-width: 800px;">
+            <div class="divider" style="margin: 0 auto var(--space-xl);"></div>
+            <p class="quote"
+                data-de="{{ de.quote_band.quote }}"
+                data-en="{{ en.quote_band.quote or de.quote_band.quote }}">{{ de.quote_band.quote }}</p>
+            <p style="font-size: 0.875rem; opacity: 0.45; margin-top: var(--space-md); max-width: 100%;"
+                data-de="{{ de.quote_band.source }}"
+                data-en="{{ en.quote_band.source or de.quote_band.source }}">{{ de.quote_band.source }}</p>
+            <div class="divider" style="margin: var(--space-xl) auto 0;"></div>
+        </div>
+    </section>
+
+    <!-- ================================
+         PHILOSOPHY
+         ================================ -->
+
+    <section class="philosophy">
+        <div class="container">
+            <div class="philosophy-grid">
+                <div class="philosophy-text fade-up">
+                    <p class="label" style="margin-bottom: 12px;"
+                        data-de="{{ de.philosophy.label }}"
+                        data-en="{{ en.philosophy.label or de.philosophy.label }}">{{ de.philosophy.label }}</p>
+                    <h2
+                        data-de="{{ de.philosophy.heading }}"
+                        data-en="{{ en.philosophy.heading or de.philosophy.heading }}">{{ de.philosophy.heading }}</h2>
+                    <p
+                        data-de="{{ de.philosophy.p1 }}"
+                        data-en="{{ en.philosophy.p1 or de.philosophy.p1 }}">{{ de.philosophy.p1 }}</p>
+                    <p
+                        data-de="{{ de.philosophy.p2 }}"
+                        data-en="{{ en.philosophy.p2 or de.philosophy.p2 }}">{{ de.philosophy.p2 }}</p>
+                </div>
+
+                <div class="philosophy-pillars fade-up delay-2">
+{%- for pillar in de.philosophy.pillars %}
+{%- set enPillar = en.philosophy.pillars[loop.index0] if en.philosophy.pillars else null %}
+                    <div class="pillar-card">
+                        <h4
+                            data-de="{{ pillar.title }}"
+                            data-en="{{ enPillar.title if enPillar else pillar.title }}">{{ pillar.title }}</h4>
+                        <p
+                            data-de="{{ pillar.text }}"
+                            data-en="{{ enPillar.text if enPillar else pillar.text }}">{{ pillar.text }}</p>
+                    </div>
+{%- endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         CTA
+         ================================ -->
+
+    <section class="cta-section">
+        <div class="container fade-up">
+            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;"
+                data-de="{{ de.cta.label }}"
+                data-en="{{ en.cta.label or de.cta.label }}">{{ de.cta.label }}</p>
+            <h2
+                data-de="{{ de.cta.heading }}"
+                data-en="{{ en.cta.heading or de.cta.heading }}">{{ de.cta.heading }}</h2>
+            <p
+                data-de="{{ de.cta.text }}"
+                data-en="{{ en.cta.text or de.cta.text }}">{{ de.cta.text }}</p>
+            <a href="kontakt.html" class="btn btn-primary"
+                data-de="{{ de.cta.button }}"
+                data-en="{{ en.cta.button or de.cta.button }}">{{ de.cta.button }}</a>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    {% set footerConnectHeadingDe = de.footer.connect_heading %}{% set footerConnectHeadingEn = en.footer.connect_heading or de.footer.connect_heading %}{% include "partials/footer.njk" %}
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+
+    <script src="js/i18n.js"></script>
+
+</body>
+</html>

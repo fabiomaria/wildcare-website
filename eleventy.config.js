@@ -14,7 +14,6 @@ const PASSTHROUGH_PAGES = [
   "mitmachen.html",
   "montagskurs.html",
   "programm.html",
-  "team.html",
 ];
 
 module.exports = function (eleventyConfig) {
