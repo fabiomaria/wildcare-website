@@ -1,7 +1,7 @@
 # Wild Care: CMS on GitHub Pages — Design (Preliminary)
 
 **Date:** 2026-07-17
-**Status:** Preliminary draft — Sections 1–2 approved by owner; Sections 3–5 pending review
+**Status:** Superseded by `2026-07-17-github-pages-cms-implementation-brief.md` (owner-amended final brief). Where the two differ, the brief wins.
 **Base:** `html-site` branch (the live site). The `main`-branch Astro/Sanity rewrite is **not** the base (see §8).
 
 ---
