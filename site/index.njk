@@ -1,0 +1,339 @@
+---
+permalink: index.html
+---
+{%- set de = cms.pages.index.de -%}
+{%- set en = cms.pages.index.en -%}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ de.meta.title }}</title>
+    <meta name="description" content="{{ de.meta.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wildcare.space/">
+    <meta property="og:title" content="{{ de.meta.title }}">
+    <meta property="og:description" content="{{ de.meta.description }}">
+    <meta property="og:image" content="https://wildcare.space/assets/images/social%20preview.jpg">
+    <meta property="og:locale" content="de_AT">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script async src="https://tally.so/widgets/embed.js"></script>
+
+</head>
+<body class="has-hero-video">
+
+    {% set navActive = 'index' %}{% include "partials/nav.njk" %}
+
+    <!-- ================================
+         VIDEO HERO
+         ================================ -->
+
+    <header class="hero-video">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/images/hero-poster.jpg">
+            <source src="assets/video-hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+
+        <div class="hero-video-content">
+            <div class="container">
+                <h1 class="fade-up"
+                    data-de="{{ de.hero.heading }}"
+                    data-en="{{ en.hero.heading or de.hero.heading }}">{{ de.hero.heading | safe }}</h1>
+                <p class="fade-up delay-1"
+                    data-de="{{ de.hero.tagline }}"
+                    data-en="{{ en.hero.tagline or de.hero.tagline }}">{{ de.hero.tagline }}</p>
+                <div class="button-row fade-up delay-2">
+                    <button class="btn btn-primary" data-tally-open="nplWX8" data-tally-emoji-text="👋" data-tally-emoji-animation="wave"
+                        data-de="{{ de.hero.cta_primary }}"
+                        data-en="{{ en.hero.cta_primary or de.hero.cta_primary }}">{{ de.hero.cta_primary }}</button>
+                    <a href="programm.html" class="btn btn-secondary"
+                        data-de="{{ de.hero.cta_secondary }}"
+                        data-en="{{ en.hero.cta_secondary or de.hero.cta_secondary }}">{{ de.hero.cta_secondary }}</a>
+                    <a href="mitmachen.html" class="btn btn-ghost"
+                        data-de="{{ de.hero.cta_ghost }}"
+                        data-en="{{ en.hero.cta_ghost or de.hero.cta_ghost }}">{{ de.hero.cta_ghost }}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+    </header>
+
+    <!-- ================================
+         NEXT EVENT BANNER
+         ================================ -->
+
+    <div class="event-banner">
+        <div class="container event-banner-inner">
+            <div class="event-banner-info">
+                <span class="event-banner-tag"
+                    data-de="{{ de.event_banner.tag }}"
+                    data-en="{{ en.event_banner.tag or de.event_banner.tag }}">{{ de.event_banner.tag }}</span>
+                <div class="event-banner-detail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    <span data-de="{{ de.event_banner.day }}" data-en="{{ en.event_banner.day or de.event_banner.day }}">{{ de.event_banner.day }}</span>
+                </div>
+                <div class="event-banner-detail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    {{ de.event_banner.time }}
+                </div>
+                <div class="event-banner-detail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    {{ de.event_banner.address }}
+                </div>
+                <div class="event-banner-detail">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>
+                    <span data-de="{{ de.event_banner.basis }}" data-en="{{ en.event_banner.basis or de.event_banner.basis }}">{{ de.event_banner.basis }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================
+         CORE VALUES
+         ================================ -->
+
+    <section id="werte">
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 64px;">
+                <p class="label" data-de="{{ de.values.label }}" data-en="{{ en.values.label or de.values.label }}">{{ de.values.label }}</p>
+                <h2 data-de="{{ de.values.heading }}" data-en="{{ en.values.heading or de.values.heading }}">{{ de.values.heading }}</h2>
+            </div>
+
+            <div class="values-grid">
+{%- set valueIcons = [
+  '<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>',
+  '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>',
+  '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>',
+  '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>'
+] -%}
+{%- for card in de.values.cards %}
+{%- set enCard = en.values.cards[loop.index0] if en.values.cards else null %}
+                <div class="value-card fade-up delay-{{ loop.index }}">
+                    <div class="value-icon">
+                        {{ valueIcons[loop.index0] | safe }}
+                    </div>
+                    <h3 data-de="{{ card.title }}" data-en="{{ enCard.title if enCard else card.title }}">{{ card.title }}</h3>
+                    <p data-de="{{ card.text }}" data-en="{{ enCard.text if enCard else card.text }}">{{ card.text }}</p>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         INVITATION
+         ================================ -->
+
+    <section class="invitation">
+        <div class="container">
+            <div class="invitation-grid">
+                <div class="invitation-text fade-up">
+                    <p class="label" style="margin-bottom: 12px;" data-de="{{ de.invitation.label }}" data-en="{{ en.invitation.label or de.invitation.label }}">{{ de.invitation.label }}</p>
+                    <h2 data-de="{{ de.invitation.heading }}" data-en="{{ en.invitation.heading or de.invitation.heading }}">{{ de.invitation.heading }}</h2>
+                    <p data-de="{{ de.invitation.p1 }}" data-en="{{ en.invitation.p1 or de.invitation.p1 }}">{{ de.invitation.p1 }}</p>
+                    <p data-de="{{ de.invitation.p2 }}" data-en="{{ en.invitation.p2 or de.invitation.p2 }}">{{ de.invitation.p2 }}</p>
+                    <div class="button-row" style="margin-top: 8px;">
+                        <a href="montagskurs.html" class="btn btn-ghost" data-de="{{ de.invitation.cta }}" data-en="{{ en.invitation.cta or de.invitation.cta }}">{{ de.invitation.cta }}</a>
+                    </div>
+                </div>
+                <div class="invitation-image fade-up delay-2">
+                    <div class="invitation-image-frame">
+                        <img src="assets/images/invitation.jpg" alt="Contact Improvisation Session" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="invitation-image-accent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         MANIFEST QUOTE
+         ================================ -->
+
+    <section style="background: var(--sand-light);">
+        <div class="container fade-up" style="text-align: center; max-width: 800px;">
+            <div class="divider" style="margin: 0 auto var(--space-xl);"></div>
+            <p class="quote" data-de="{{ de.quote }}" data-en="{{ en.quote or de.quote }}">{{ de.quote }}</p>
+            <div class="divider" style="margin: var(--space-xl) auto 0;"></div>
+        </div>
+    </section>
+
+    <!-- ================================
+         JOURNAL TEASER
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px;">
+                <div>
+                    <p class="label">Journal</p>
+                    <h2 data-de="{{ de.journal.heading }}" data-en="{{ en.journal.heading or de.journal.heading }}">{{ de.journal.heading }}</h2>
+                </div>
+                <a href="journal.html" class="btn btn-ghost" data-de="{{ de.journal.all_posts }}" data-en="{{ en.journal.all_posts or de.journal.all_posts }}">{{ de.journal.all_posts }}</a>
+            </div>
+
+            {# TODO (brief §4.4, second commit): populate these cards dynamically
+               from content/journal/ via Eleventy collections. Verbatim for now. #}
+            <div class="journal-grid">
+                <a href="journal/bewegungsrevolution.html" class="journal-card compact fade-up delay-1">
+                    <div class="journal-card-image">
+                        <img src="assets/images/bewegungsrevolution.png" alt="die Bewegungsrevolution" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="journal-card-body">
+                        <p class="journal-card-date" data-de="Mai 2026" data-en="May 2026">Mai 2026</p>
+                        <h3 data-de="Bewegungsrevolution: Wir starten" data-en="Movement Revolution: We&rsquo;re Starting">Bewegungsrevolution: Wir starten</h3>
+                        <p data-de="Unser gef&ouml;rderter 6-Wochen-Block f&uuml;r Einsteiger:innen beginnt. Was wir vorhaben." data-en="Our funded 6-week block for beginners kicks off. Here&rsquo;s what we have planned.">Unser gef&ouml;rderter 6-Wochen-Block f&uuml;r Einsteiger:innen beginnt. Was wir vorhaben.</p>
+                    </div>
+                </a>
+
+                <a href="journal/warum-ci.html" class="journal-card compact fade-up delay-2">
+                    <div class="journal-card-image">
+                        <img src="assets/images/warum-ci.jpg" alt="Contact Improvisation" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="journal-card-body">
+                        <p class="journal-card-date" data-de="M&auml;rz 2026" data-en="March 2026">M&auml;rz 2026</p>
+                        <h3 data-de="Warum Contact Improvisation?" data-en="Why Contact Improvisation?">Warum Contact Improvisation?</h3>
+                        <p data-de="&Uuml;ber das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen." data-en="On the playful exploration of gravity, balance, and trust.">&Uuml;ber das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen.</p>
+                    </div>
+                </a>
+
+                <a href="#" class="journal-card compact coming-soon fade-up delay-3">
+                    <div class="journal-card-image">
+                        <img src="assets/images/was-ist-kunst.jpg" alt="Sensing Listening" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="journal-card-body">
+                        <p class="journal-card-date" data-de="M&auml;rz 2026" data-en="March 2026">M&auml;rz 2026</p>
+                        <h3 data-de="Was ist Kunst?" data-en="What Is Art?">Was ist Kunst?</h3>
+                        <p data-de="Kunst ist eine Sprache f&uuml;r die unpraktischen Dinge. Am Rande des Sagbaren kratzen, schaben, dr&auml;ngen." data-en="Art is a language for the impractical things. Scratching, scraping, pressing at the edges of what can be said.">Kunst ist eine Sprache f&uuml;r die unpraktischen Dinge. Am Rande des Sagbaren kratzen, schaben, dr&auml;ngen.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         CTA
+         ================================ -->
+
+    <section class="cta-section">
+        <div class="container fade-up">
+            <h2 data-de="{{ de.cta.heading }}" data-en="{{ en.cta.heading or de.cta.heading }}">{{ de.cta.heading }}</h2>
+            <p data-de="{{ de.cta.text }}" data-en="{{ en.cta.text or de.cta.text }}">{{ de.cta.text }}</p>
+            <form id="signup-form" class="cta-signup">
+                <div class="cta-signup-row">
+                    <label for="signup-email" class="sr-only" data-de="{{ de.cta.email_label }}" data-en="{{ en.cta.email_label or de.cta.email_label }}">{{ de.cta.email_label }}</label>
+                    <input type="email" id="signup-email" name="email" placeholder="deine@email.at" required>
+                    <button type="submit" class="btn btn-primary" data-de="{{ de.cta.submit }}" data-en="{{ en.cta.submit or de.cta.submit }}">{{ de.cta.submit }}</button>
+                </div>
+                <label for="signup-consent" class="cta-signup-consent">
+                    <input type="checkbox" id="signup-consent" name="consent" required>
+                    <span data-de="{{ de.cta.consent_pre }}" data-en="{{ en.cta.consent_pre or de.cta.consent_pre }}">{{ de.cta.consent_pre | trim }} </span><a href="datenschutz.html" data-de="{{ de.cta.consent_link }}" data-en="{{ en.cta.consent_link or de.cta.consent_link }}">{{ de.cta.consent_link }}</a><span data-de="{{ de.cta.consent_post }}" data-en="{{ en.cta.consent_post or de.cta.consent_post }}">{{ de.cta.consent_post | trim }}</span>
+                </label>
+                <input type="text" name="website" id="signup-website" tabindex="-1" autocomplete="off" hidden>
+                <p class="form-note" id="signup-message" hidden></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    {% include "partials/footer.njk" %}
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+
+        // Transparent nav on hero, solid on scroll
+        const nav = document.querySelector('nav');
+        const hero = document.querySelector('.hero-video');
+
+        if (hero) {
+            const updateNav = () => {
+                if (window.scrollY > 80) {
+                    nav.classList.add('nav-scrolled');
+                } else {
+                    nav.classList.remove('nav-scrolled');
+                }
+            };
+            window.addEventListener('scroll', updateNav);
+            updateNav();
+        }
+    </script>
+    <script src="js/i18n.js"></script>
+    <script>
+        (function () {
+            var form = document.getElementById('signup-form');
+            if (!form) return;
+
+            var WORKER_URL = 'https://wildcare-signup.fabiogerhold.workers.dev';
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var email = document.getElementById('signup-email').value;
+                var consent = document.getElementById('signup-consent').checked;
+                var website = document.getElementById('signup-website').value;
+                var lang = document.documentElement.lang || 'de';
+                var messageEl = document.getElementById('signup-message');
+
+                fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, consent: consent, website: website, language: lang })
+                })
+                    .then(function (response) { return response.json(); })
+                    .then(function (result) {
+                        if (result.ok) {
+                            form.hidden = true;
+                            messageEl.textContent = lang === 'en' ? "Thanks! You're on the list." : 'Danke! Du bist dabei.';
+                        } else {
+                            messageEl.textContent = lang === 'en' ? 'Something went wrong. Please try again.' : 'Etwas ist schiefgelaufen. Bitte versuch es erneut.';
+                        }
+                        messageEl.hidden = false;
+                    })
+                    .catch(function () {
+                        messageEl.textContent = lang === 'en' ? 'Something went wrong. Please try again.' : 'Etwas ist schiefgelaufen. Bitte versuch es erneut.';
+                        messageEl.hidden = false;
+                    });
+            });
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+de:
+  meta:
+    title: Wild Care — Verein für soziale Praxis | Graz
+    description: Wild Care — Wir leben die Kunst der Begegnung. Contact Improvisation und soziale Praxis, jeden Montag in Graz.
+  hero:
+    heading: Wir leben die Kunst<br>der Begegnung.
+    tagline: Kunst als lebendige, soziale Praxis. Jeden Montag in Graz — offen für alle, auf Spendenbasis.
+    cta_primary: Komm vorbei
+    cta_secondary: Mehr erfahren
+    cta_ghost: Mitglied werden
+  event_banner:
+    tag: Nächster Termin
+    day: Jeden Montag
+    time: 17:45 – 19:15
+    address: Orpheumgasse 11, Graz
+    basis: Spendenbasis
+  values:
+    label: Was uns leitet
+    heading: Vier Haltungen
+    cards:
+      - title: Beziehung > Perfektion
+        text: Nicht das fertige Werk zählt, sondern das, was zwischen uns passiert. Wie nehmen wir Raum? Wie geben wir Raum?
+      - title: Mikro-Utopien
+        text: Wir kreieren temporäre, sichere Räume. Hier setzen wir die Regeln der Welt kurz auf Pause und üben ein anderes Miteinander.
+      - title: Forschendes Lernen
+        text: Keine festen Formen zum Nachahmen. Wir geben Werkzeuge an die Hand, um den eigenen Ausdruck zu erforschen.
+      - title: Radikale Fürsorge
+        text: Nicht nur Sanftmut, sondern auch Klarheit. Eigene Grenzen wahren und anderen den Raum geben, gesehen zu werden.
+  invitation:
+    label: Labor für Zusammenleben
+    heading: Was passiert bei uns?
+    p1: Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Berührung. Es gibt keine festen Schritte, keinen Leistungsdruck und keine Rollen.
+    p2: Du lernst, durch achtsamen Körperkontakt deinen Körper bewusster zu erleben, dein Nervensystem zu regulieren und Grenzen zu kommunizieren — im Tanz wie im Alltag.
+    cta: Zum Montagskurs
+  quote: Bei uns steht nicht das fertige Kunstwerk an der Wand oder die perfekte Pose auf der Bühne im Mittelpunkt, sondern das, was zwischen uns passiert.
+  journal:
+    heading: Aus dem Labor
+    all_posts: Alle Beiträge
+  cta:
+    heading: Bleib auf dem Laufenden
+    text: Neuigkeiten zu kommenden Events direkt in dein Postfach.
+    email_label: E-Mail-Adresse
+    submit: Anmelden
+    consent_pre: 'Ich stimme der Speicherung meiner E-Mail gemäß '
+    consent_link: Datenschutzerklärung
+    consent_post: ' zu.'
+en:
+  hero:
+    heading: We live the art<br>of encounter.
+    tagline: Art as a living, social practice. Every Monday in Graz — open to everyone, donation-based.
+    cta_primary: Join us
+    cta_secondary: Learn more
+    cta_ghost: Become a member
+  event_banner:
+    tag: Next Session
+    day: Every Monday
+    basis: Donation-based
+  values:
+    label: What guides us
+    heading: Four Principles
+    cards:
+      - title: Relationship > Perfection
+        text: It’s not the finished work that counts, but what happens between us. How do we take up space? How do we make space?
+      - title: Micro-Utopias
+        text: We create temporary, safe spaces. Here we pause the rules of the world for a moment and practise a different way of being together.
+      - title: Inquiry-Based Learning
+        text: No fixed forms to imitate. We offer tools to explore your own expression and discover what moves you.
+      - title: Radical Care
+        text: Not just gentleness, but also clarity. Holding your own boundaries while giving others the space to be seen.
+  invitation:
+    label: A Lab for Living Together
+    heading: What happens here?
+    p1: Contact Improvisation is the playful exploration of gravity, balance, and touch. There are no fixed steps, no pressure to perform, and no assigned roles.
+    p2: Through mindful physical contact, you learn to experience your body more consciously, regulate your nervous system, and communicate boundaries — in dance and in everyday life.
+    cta: To the Monday Class
+  quote: For us, it’s not about the finished artwork on the wall or the perfect pose on stage — it’s about what happens between us.
+  journal:
+    heading: From the Lab
+    all_posts: All Posts
+  cta:
+    heading: Stay in the loop
+    text: News about upcoming events, straight to your inbox.
+    email_label: Email address
+    submit: Sign up
+    consent_pre: 'I agree to my email being stored per the '
+    consent_link: privacy policy
+    consent_post: .

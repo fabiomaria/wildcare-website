@@ -42,6 +42,85 @@ collections:
     label: Seiten
     i18n: true
     files:
+      - name: startseite
+        label: Startseite
+        file: content/pages/index.yaml
+        i18n: true
+        fields:
+          - name: meta
+            label: 'SEO & Vorschau'
+            widget: object
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
+          - name: hero
+            label: Hero (Video)
+            widget: object
+            i18n: true
+            fields:
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true, hint: 'Zeilenumbruch mit <br> möglich' }
+              - { name: tagline, label: Untertitel, widget: text, i18n: true }
+              - { name: cta_primary, label: 'Button: Komm vorbei', widget: string, i18n: true }
+              - { name: cta_secondary, label: 'Button: Mehr erfahren', widget: string, i18n: true }
+              - { name: cta_ghost, label: 'Button: Mitglied werden', widget: string, i18n: true }
+          - name: event_banner
+            label: Termin-Banner
+            widget: object
+            i18n: true
+            fields:
+              - { name: tag, label: Tag-Label, widget: string, i18n: true }
+              - { name: day, label: Wochentag, widget: string, i18n: true }
+              - { name: time, label: Uhrzeit, widget: string, i18n: false }
+              - { name: address, label: Adresse, widget: string, i18n: false }
+              - { name: basis, label: Basis (Spende), widget: string, i18n: true }
+          - name: values
+            label: Vier Haltungen
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - name: cards
+                label: Karten
+                widget: list
+                i18n: true
+                min: 4
+                max: 4
+                hint: 'Genau 4 Karten — die Icons sind fest den Positionen 1–4 zugeordnet.'
+                fields:
+                  - { name: title, label: Titel, widget: string, i18n: true }
+                  - { name: text, label: Text, widget: text, i18n: true }
+          - name: invitation
+            label: Was passiert bei uns
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: p1, label: Absatz 1, widget: text, i18n: true }
+              - { name: p2, label: Absatz 2, widget: text, i18n: true }
+              - { name: cta, label: Button, widget: string, i18n: true }
+          - { name: quote, label: Manifest-Zitat, widget: text, i18n: true }
+          - name: journal
+            label: Journal-Teaser
+            widget: object
+            i18n: true
+            fields:
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: all_posts, label: 'Button: Alle Beiträge', widget: string, i18n: true }
+          - name: cta
+            label: E-Mail-Anmeldung
+            widget: object
+            i18n: true
+            fields:
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: text, label: Text, widget: text, i18n: true }
+              - { name: email_label, label: 'Label: E-Mail (Screenreader)', widget: string, i18n: true }
+              - { name: submit, label: Absende-Button, widget: string, i18n: true }
+              - { name: consent_pre, label: 'Einwilligung: Text vor Link', widget: string, i18n: true }
+              - { name: consent_link, label: 'Einwilligung: Link-Text', widget: string, i18n: true }
+              - { name: consent_post, label: 'Einwilligung: Text nach Link', widget: string, i18n: true }
       - name: kontakt
         label: Kontakt
         file: content/pages/kontakt.yaml

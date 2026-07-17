@@ -1,0 +1,36 @@
+{%- set s = cms.site -%}
+<nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">
+                Wild Care
+                <span class="breadcrumb">Graz</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html"{% if navActive == 'index' %} class="active"{% endif %}
+                    data-de="{{ s.de.nav.home }}"
+                    data-en="{{ s.en.nav.home or s.de.nav.home }}">{{ s.de.nav.home }}</a>
+                <a href="team.html"{% if navActive == 'team' %} class="active"{% endif %}
+                    data-de="{{ s.de.nav.about }}"
+                    data-en="{{ s.en.nav.about or s.de.nav.about }}">{{ s.de.nav.about }}</a>
+                <a href="programm.html"{% if navActive == 'programm' %} class="active"{% endif %}
+                    data-de="{{ s.de.nav.program }}"
+                    data-en="{{ s.en.nav.program or s.de.nav.program }}">{{ s.de.nav.program }}</a>
+                <a href="journal.html"{% if navActive == 'journal' %} class="active"{% endif %}>Journal</a>
+                <a href="mitmachen.html"{% if navActive == 'mitmachen' %} class="active"{% endif %}
+                    data-de="{{ s.de.nav.join }}"
+                    data-en="{{ s.en.nav.join or s.de.nav.join }}">{{ s.de.nav.join }}</a>
+                <a href="kontakt.html" class="nav-cta{% if navActive == 'kontakt' %} active{% endif %}"
+                    data-de="{{ s.de.nav.cta }}"
+                    data-en="{{ s.en.nav.cta or s.de.nav.cta }}">{{ s.de.nav.cta }}</a>
+            </div>
+            <div class="lang-toggle">
+                <button class="lang-toggle-btn active" data-lang="de">DE</button>
+                <button class="lang-toggle-btn" data-lang="en">EN</button>
+            </div>
+            <button class="nav-toggle" aria-label="Men&uuml;">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>

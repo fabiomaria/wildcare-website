@@ -10,7 +10,9 @@ de:
   footer:
     brand_text: Verein für Kontaktimprovisation und soziale Praxis. Wir leben die Kunst der Begegnung — jeden Montag in Graz.
     pages_heading: Seiten
-    connect_heading: Verbinden
+    # NB: index sagt "Verbunden bleiben", kontakt sagt "Verbinden" (Alt-Inkonsistenz).
+    # Shared-Footer-Wert = Startseiten-Fassung; bei der Kontakt-Migration entscheiden.
+    connect_heading: Verbunden bleiben
     contact_label: Kontakt
     tagline: Mit Fürsorge gebaut
 en:
@@ -23,6 +25,6 @@ en:
   footer:
     brand_text: Association for Contact Improvisation and social practice. We live the art of encounter — every Monday in Graz.
     pages_heading: Pages
-    connect_heading: Connect
+    connect_heading: Stay connected
     contact_label: Contact
     tagline: Built with care
