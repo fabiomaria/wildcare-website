@@ -1,0 +1,118 @@
+de:
+  meta:
+    title: Programm — Wild Care | Graz
+    description: Contact Improvisation jeden Montag in Graz. Offener Workshop auf Spendenbasis — für alle, mit und ohne Vorkenntnisse.
+  hero:
+    label: Programm
+    heading: Bewegung als Begegnung.
+    intro: Unser Angebot verbindet Körperarbeit, soziale Praxis und künstlerische Forschung — offen für alle, die neugierig sind.
+  core:
+    label: Offenes Labor für zeitgenössischen Tanz
+    heading: Montagskurs
+    info_title: Auf einen Blick
+    rows:
+      - icon: clock
+        label: Was
+        value: Contact Improvisation — künstlerische Forschung & offene Praxis
+      - icon: calendar
+        label: Wann
+        value: Jeden Montag, 17:45 – 19:15
+      - icon: location
+        label: Wo
+        value: Orpheumgasse 11, 8020 Graz
+      - icon: cost
+        label: Kosten
+        value: Spendenbasis
+      - icon: people
+        label: Für
+        value: Alle — mit und ohne Vorkenntnisse
+    register_label: Jetzt anmelden
+    more_label: Mehr erfahren
+    description_heading: Was dich erwartet
+    paragraphs:
+      - Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Berührung. Es gibt keine festen Schritte, keine Choreografie und keinen Leistungsdruck — nur dich, den Raum und die Menschen darin.
+      - Du lernst, Gewicht zu teilen und abzugeben, durch Berührung zuzuhören und deinen Körper bewusster wahrzunehmen. Dabei regulierst du ganz nebenbei dein Nervensystem, übst Grenzen zu kommunizieren und entwickelst ein feines Gespür für dich und dein Gegenüber.
+      - "Jede Session beginnt mit einer geführten Aufwärm-Phase und mündet in eine offene Jam — eine freie Tanzzeit, in der alles passieren darf: Stille, Bewegung, Begegnung."
+    quote: „Du brauchst keine Tanzerfahrung. Nur bequeme Kleidung, Neugier und die Bereitschaft, dich auf etwas Neues einzulassen.“
+  projects:
+    label: Aktuelle Projekte
+    heading: Was gerade läuft
+  outlook:
+    label: Ausblick
+    heading: Was noch kommt
+    intro: Projekte, die wir gerade entwickeln oder planen. Hier entsteht etwas.
+    cards:
+      - label: Performance / Lecture
+        title: We Just Met / Erste Begegnung
+        subtitle: Die soziale Physik des Tanzes sichtbar machen
+        paragraphs:
+          - "Ein Format, in dem ein:e Erzähler:in während einer Contact-Improvisation-Session die Tänzer:innen einfriert — und dem Publikum erklärt, was gerade auf körperlicher und sozialer Ebene passiert. Schwerkraft, Vertrauen, Grenzen: Die unsichtbare Physik der Begegnung wird lesbar."
+          - Unser Versuch, Contact Improvisation für ein Publikum zugänglich zu machen, das noch nie davon gehört hat.
+      - label: Outdoor / Sommer
+        title: Bewegt im Park
+        subtitle: Kostenlose Contact Improvisation in Grazer Parks
+        paragraphs:
+          - Tanz unter freiem Himmel — niederschwellig, kostenlos und für alle sichtbar. Contact Improvisation raus aus dem Studio und rein in den öffentlichen Raum. Weil Bewegung kein Luxusgut sein sollte.
+        link:
+          href: https://bewegt-im-park.at
+          label: bewegt-im-park.at
+  cta:
+    label: Einladung
+    heading: Komm vorbei.
+    text: Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz.
+    button: Kontakt aufnehmen
+en:
+  hero:
+    label: Programme
+    heading: Movement as Encounter.
+    intro: Our offerings combine bodywork, social practice and artistic exploration — open to anyone who is curious.
+  core:
+    label: Our Core Format
+    heading: Monday Class
+    info_title: At a Glance
+    rows:
+      - label: What
+        value: Contact Improvisation — open workshop
+      - label: When
+        value: Every Monday, 17:45 – 19:15
+      - label: Where
+        value: Orpheumgasse 11, 8020 Graz
+      - label: Cost
+        value: Donation-based
+      - label: For
+        value: Everyone — with or without prior experience
+    register_label: Sign up now
+    more_label: Learn more
+    description_heading: What to Expect
+    paragraphs:
+      - Contact Improvisation is the playful exploration of gravity, balance and touch. There are no fixed steps, no choreography and no pressure to perform — just you, the space and the people in it.
+      - You learn to share and release weight, to listen through touch and to become more aware of your body. Along the way, you naturally regulate your nervous system, practise communicating boundaries and develop a fine sense for yourself and those around you.
+      - "Each session begins with a guided warm-up and flows into an open jam — a free dance time where anything can happen: stillness, movement, encounter."
+    quote: “You don’t need any dance experience. Just comfortable clothing, curiosity and the willingness to try something new.”
+  projects:
+    label: Current Projects
+    heading: What’s Happening Now
+  outlook:
+    label: Outlook
+    heading: What’s Coming Next
+    intro: Projects we’re currently developing or planning. Something is taking shape here.
+    cards:
+      - label: Performance / Lecture
+        title: We Just Met / First Encounter
+        subtitle: Making the social physics of dance visible
+        paragraphs:
+          - "A format where a narrator freezes the dancers during a Contact Improvisation session — and explains to the audience what is happening on a physical and social level. Gravity, trust, boundaries: the invisible physics of encounter becomes readable."
+          - Our attempt to make Contact Improvisation accessible to an audience that has never heard of it.
+      - label: Outdoor / Summer
+        title: Moving in the Park
+        subtitle: Free Contact Improvisation in Graz parks
+        paragraphs:
+          - Dance under the open sky — low-threshold, free and visible to all. Contact Improvisation out of the studio and into public space. Because movement shouldn’t be a luxury.
+        link:
+          href: https://bewegt-im-park.at
+          label: bewegt-im-park.at
+  cta:
+    label: Invitation
+    heading: Come by.
+    text: You don’t need any experience, just comfortable clothing and curiosity. Every Monday, 17:45, Orpheumgasse 11, Graz.
+    button: Get in touch

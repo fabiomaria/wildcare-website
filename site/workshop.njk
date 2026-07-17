@@ -1,0 +1,291 @@
+---
+pagination:
+  data: workshopPages
+  size: 1
+  alias: workshop
+permalink: "{{ workshop.permalink }}"
+---
+{% from "partials/icon.njk" import icon %}
+{%- set t = workshop[workshop.primary_locale] -%}
+<!DOCTYPE html>
+<html lang="{{ workshop.primary_locale }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ t.meta.title }}</title>
+    <meta name="description" content="{{ t.meta.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wildcare.space/{{ workshop.permalink }}">
+    <meta property="og:site_name" content="Wild Care">
+    <meta property="og:title" content="{{ t.meta.og_title }}">
+    <meta property="og:description" content="{{ t.meta.og_description }}">
+    <meta property="og:image" content="https://wildcare.space/{{ t.meta.og_image }}">
+    <meta property="og:image:width" content="{{ t.meta.og_image_width }}">
+    <meta property="og:image:height" content="{{ t.meta.og_image_height }}">
+    <meta property="og:locale" content="{% if workshop.primary_locale == 'de' %}de_AT{% else %}en_US{% endif %}">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    {% if workshop.language_mode == "en_only" %}
+    <nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">
+                Wild Care
+                <span class="breadcrumb">{{ t.nav.breadcrumb }}</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="team.html">About Us</a>
+                <a href="programm.html" class="active">Programme</a>
+                <a href="journal.html">Journal</a>
+                <a href="mitmachen.html">Get Involved</a>
+                <a href="kontakt.html" class="nav-cta">Come by</a>
+            </div>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    {% else %}
+    {%- set navActive = "programm" -%}
+    {%- set navBreadcrumbDe = workshop.de.nav.breadcrumb -%}
+    {%- set navBreadcrumbEn = workshop.en.nav.breadcrumb -%}
+    {% include "partials/nav.njk" %}
+    {% endif %}
+
+    <!-- ================================
+         HERO
+         ================================ -->
+
+    <header class="detail-hero workshop-hero">
+        <div class="container">
+            <div class="detail-hero-grid">
+
+                <div class="detail-hero-content accent-terracotta fade-up">
+                    <div class="detail-badge">{{ t.hero.badge }}</div>
+
+                    <h1>{{ t.hero.heading | safe }}</h1>
+
+                    <p class="detail-hero-subtitle">{{ t.hero.subtitle }}</p>
+
+
+                    <div class="detail-hero-cta">
+                        <a href="{{ workshop.registration_url }}" class="btn btn-primary">{{ t.hero.cta_label }}</a>
+                    
+                    </div>
+                </div>
+
+                <div class="workshop-hero-visual fade-up delay-2" aria-label="{{ t.hero.visual_aria }}">
+                    <figure class="workshop-photo-main">
+                        <img src="{{ t.hero.main_image }}" alt="{{ t.hero.main_alt }}">
+                    </figure>
+                    <figure class="workshop-photo-inset">
+                        <img src="{{ t.hero.inset_image }}" alt="{{ t.hero.inset_alt }}">
+                    </figure>
+                    <div class="workshop-visual-note">
+                        <span>{{ t.hero.note_title }}</span>
+                        <p>{{ t.hero.note_text }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ================================
+         INTRO + INFO
+         ================================ -->
+
+    <section class="detail-about">
+        <div class="container">
+            <div class="detail-about-grid">
+                <div class="detail-about-text fade-up">
+                    <p class="label">{{ t.practice.label }}</p>
+                    <h2>{{ t.practice.heading }}</h2>
+                    {% for paragraph in t.practice.paragraphs %}
+                    <p>{{ paragraph | safe }}</p>
+                    {% endfor %}
+                </div>
+
+                <div class="info-card fade-up delay-2">
+                    <div class="info-card-title">{{ t.info.title }}</div>
+
+                    {% for row in t.info.rows %}
+                    <div class="info-row">
+                        <div class="info-row-icon">
+                            {{ icon(row.icon) }}
+                        </div>
+                        <div class="info-row-content">
+                            <div class="info-row-label">{{ row.label }}</div>
+                            {% for value in row.values %}
+                            <div class="info-row-value">{{ value | safe }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                    <div class="info-card-cta">
+                        <a href="{{ workshop.registration_url }}" class="btn btn-primary" style="width: 100%; justify-content: center;">{{ t.info.cta_label }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         RESEARCH FIELDS
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+                <p class="label">{{ t.research.label }}</p>
+                <h2>{{ t.research.heading }}</h2>
+            </div>
+
+            <div class="detail-card-grid">
+                {% for field in t.research.fields %}
+                <div class="detail-card{% if field.highlighted %} highlighted{% endif %} fade-up delay-{{ ((loop.index0 % 3) + 1) }}">
+                    <p class="detail-card-number">{{ field.number }}</p>
+                    <h3>{{ field.title }}</h3>
+                    <p>{{ field.text }}</p>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         IMAGE BAND
+         ================================ -->
+
+    <section class="workshop-image-band">
+        <div class="workshop-image-band-grid">
+            <div class="workshop-image-copy fade-up">
+                <p class="label">{{ t.image_band.label }}</p>
+                <h2>{{ t.image_band.heading }}</h2>
+                <p>{{ t.image_band.text }}</p>
+            </div>
+            <div class="workshop-image-frame fade-up delay-2">
+                <img src="{{ t.image_band.image }}" alt="{{ t.image_band.alt }}">
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- ================================
+         FACILITATION
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="detail-team-grid">
+                <div class="detail-team-member fade-up delay-1">
+                    <div class="detail-team-portrait workshop-team-portrait">
+                        <img src="{{ t.facilitator.image }}" alt="{{ t.facilitator.image_alt }}" loading="lazy">
+                    </div>
+                    <div class="detail-team-info">
+                        <p class="label">{{ t.facilitator.label }}</p>
+                        <h3>{{ t.facilitator.name }}</h3>
+                        <p class="detail-team-role">{{ t.facilitator.role }}</p>
+                        <p>{{ t.facilitator.bio | safe }}</p>
+
+
+
+                    </div>
+                </div>
+
+                <div class="detail-testimonial fade-up delay-2">
+                    <blockquote>{{ t.testimonial.quote }}</blockquote>
+                    <p class="detail-testimonial-author">{{ t.testimonial.author }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    {% if workshop.language_mode == "en_only" %}
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>Wild Care</h4>
+                    <p>Association for Contact Improvisation and social practice. We live the art of encounter &mdash; every Monday in Graz.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Pages</h4>
+                    <a href="index.html">Home</a>
+                    <a href="team.html">About Us</a>
+                    <a href="programm.html">Programme</a>
+                    <a href="mitmachen.html">Get Involved</a>
+                    <a href="journal.html">Journal</a>
+                    <a href="kontakt.html">Contact</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://facebook.com/wildcare.space" target="_blank" rel="noopener">Facebook</a>
+                    <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-legal"><a href="impressum.html">Legal notice</a> &middot; <a href="datenschutz.html">Privacy</a></span>
+                <span>&copy; 2026 Wild Care &mdash; Graz</span>
+                <span>Built with care</span>
+            </div>
+        </div>
+    </footer>
+    {% else %}
+    {% include "partials/footer.njk" %}
+    {% endif %}
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+    {% if workshop.language_mode != "en_only" %}
+    <script src="js/i18n.js"></script>
+    {% endif %}
+
+</body>
+</html>

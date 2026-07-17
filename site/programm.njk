@@ -1,0 +1,291 @@
+---
+permalink: programm.html
+---
+{% from "partials/icon.njk" import icon %}
+{%- set de = cms.pages.programm.de -%}
+{%- set en = cms.pages.programm.en -%}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ de.meta.title }}</title>
+    <meta name="description" content="{{ de.meta.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wildcare.space/programm.html">
+    <meta property="og:title" content="{{ de.meta.title }}">
+    <meta property="og:description" content="{{ de.meta.description }}">
+    <meta property="og:image" content="https://wildcare.space/assets/images/social%20preview.jpg">
+    <meta property="og:locale" content="de_AT">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script async src="https://tally.so/widgets/embed.js"></script>
+</head>
+<body>
+
+    {%- set navActive = "programm" -%}
+    {% include "partials/nav.njk" %}
+
+    <!-- ================================
+         HERO
+         ================================ -->
+
+    <header class="page-hero">
+        <div class="container">
+            <p class="label fade-up"
+                data-de="{{ de.hero.label | attr }}"
+                data-en="{{ en.hero.label | attr }}">{{ de.hero.label }}</p>
+            <h1 class="fade-up delay-1"
+                data-de="{{ de.hero.heading | attr }}"
+                data-en="{{ en.hero.heading | attr }}">{{ de.hero.heading }}</h1>
+            <p class="fade-up delay-2"
+                data-de="{{ de.hero.intro | attr }}"
+                data-en="{{ en.hero.intro | attr }}">{{ de.hero.intro }}</p>
+        </div>
+    </header>
+
+    <!-- ================================
+         MONTAGSKURS
+         ================================ -->
+
+    <section class="montagskurs">
+        <div class="container">
+            <div class="section-header fade-up" style="margin-bottom: 56px;">
+                <p class="label"
+                    data-de="{{ de.core.label | attr }}"
+                    data-en="{{ en.core.label | attr }}">{{ de.core.label }}</p>
+                <h2
+                    data-de="{{ de.core.heading | attr }}"
+                    data-en="{{ en.core.heading | attr }}">{{ de.core.heading }}</h2>
+            </div>
+
+            <div class="montagskurs-layout">
+                <div class="info-card fade-up delay-1">
+                    <div class="info-card-title"
+                        data-de="{{ de.core.info_title | attr }}"
+                        data-en="{{ en.core.info_title | attr }}">{{ de.core.info_title }}</div>
+
+                    {% for row in de.core.rows %}
+                    {%- set enRow = en.core.rows[loop.index0] -%}
+                    <div class="info-row">
+                        <div class="info-row-icon">
+                            {{ icon(row.icon) }}
+                        </div>
+                        <div class="info-row-content">
+                            <div class="info-row-label"
+                                data-de="{{ row.label | attr }}"
+                                data-en="{{ enRow.label | attr }}">{{ row.label }}</div>
+                            <div class="info-row-value"{% if row.value != enRow.value %}
+                                data-de="{{ row.value | attr }}"
+                                data-en="{{ enRow.value | attr }}"{% endif %}>{{ row.value | safe }}</div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                    <div class="info-card-cta" style="display: flex; gap: var(--space-sm);">
+                        <button class="btn btn-primary" style="flex: 1; justify-content: center;" data-tally-open="nplWX8" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
+                            data-de="{{ de.core.register_label | attr }}"
+                            data-en="{{ en.core.register_label | attr }}">{{ de.core.register_label }}</button>
+                        <a href="montagskurs.html" class="btn btn-secondary" style="flex: 1; justify-content: center;"
+                            data-de="{{ de.core.more_label | attr }}"
+                            data-en="{{ en.core.more_label | attr }}">{{ de.core.more_label }}</a>
+                    </div>
+                </div>
+
+                <div class="montagskurs-description fade-up delay-2">
+                    <h2
+                        data-de="{{ de.core.description_heading | attr }}"
+                        data-en="{{ en.core.description_heading | attr }}">{{ de.core.description_heading }}</h2>
+                    {% for paragraph in de.core.paragraphs %}
+                    <p
+                        data-de="{{ paragraph | attr }}"
+                        data-en="{{ en.core.paragraphs[loop.index0] | attr }}">{{ paragraph }}</p>
+                    {% endfor %}
+                    <p class="quote"
+                        data-de="{{ de.core.quote | attr }}"
+                        data-en="{{ en.core.quote | attr }}">{{ de.core.quote }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         AKTUELLE PROJEKTE
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="margin-bottom: 48px;">
+                <p class="label"
+                    data-de="{{ de.projects.label | attr }}"
+                    data-en="{{ en.projects.label | attr }}">{{ de.projects.label }}</p>
+                <h2
+                    data-de="{{ de.projects.heading | attr }}"
+                    data-en="{{ en.projects.heading | attr }}">{{ de.projects.heading }}</h2>
+            </div>
+
+            {% for workshop in cms.workshops.listed %}
+            {%- set cardDe = workshop.de.card -%}
+            {%- set cardEn = workshop.en.card -%}
+            <div class="projekt-card fade-up delay-{{ loop.index }}">
+                <div class="projekt-card-accent"></div>
+                <div class="projekt-card-body">
+                    <div class="projekt-card-meta">
+                        {% for tag in cardDe.tags %}
+                        {%- set tagEn = cardEn.tags[loop.index0] -%}
+                        <span class="projekt-tag{% if tag.style == 'moss' %} projekt-tag-moss{% endif %}"
+                            data-de="{{ tag.label | attr }}"
+                            data-en="{{ tagEn.label | attr }}">{{ tag.label }}</span>
+                        {% endfor %}
+                    </div>
+                    <h3{% if cardDe.title != cardEn.title %} data-de="{{ cardDe.title | attr }}" data-en="{{ cardEn.title | attr }}"{% endif %}>{{ cardDe.title }}</h3>
+                    <div class="projekt-card-subtitle"{% if cardDe.subtitle != cardEn.subtitle %} data-de="{{ cardDe.subtitle | attr }}" data-en="{{ cardEn.subtitle | attr }}"{% endif %}>{{ cardDe.subtitle }}</div>
+                    <p{% if cardDe.summary != cardEn.summary %} data-de="{{ cardDe.summary | attr }}" data-en="{{ cardEn.summary | attr }}"{% endif %}>{{ cardDe.summary }}</p>
+                    
+                    <div class="projekt-details">
+                        <div class="projekt-detail">
+                            {{ icon("calendar") }}
+                            <span
+                                data-de="{{ cardDe.date | attr }}"
+                                data-en="{{ cardEn.date | attr }}">{{ cardDe.date }}</span>
+                        </div>
+                        <div class="projekt-detail">
+                            {{ icon("location") }}
+                            {{ cardDe.location }}
+                        </div>
+                        <div class="projekt-detail">
+                            {{ icon("cost") }}
+                            <span
+                                data-de="{{ cardDe.price | attr }}"
+                                data-en="{{ cardEn.price | attr }}">{{ cardDe.price | safe }}</span>
+                        </div>
+                        <div class="projekt-detail">
+                            {{ icon("people") }}
+                            <span>{{ cardDe.duration }}</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: var(--border-subtle); display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+                        <a href="{{ workshop.registration_url }}" class="btn btn-primary"{% if cardDe.register_label != cardEn.register_label %} data-de="{{ cardDe.register_label | attr }}" data-en="{{ cardEn.register_label | attr }}"{% endif %}>{{ cardDe.register_label }}</a>
+                        <a href="{{ workshop.permalink }}" class="btn btn-secondary"
+                            data-de="{{ cardDe.detail_label | attr }}"
+                            data-en="{{ cardEn.detail_label | attr }}">{{ cardDe.detail_label }}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- ================================
+         AUSBLICK
+         ================================ -->
+
+    <section style="background: var(--sand-light);">
+        <div class="container">
+            <div class="section-header fade-up" style="margin-bottom: 48px;">
+                <p class="label"
+                    data-de="{{ de.outlook.label | attr }}"
+                    data-en="{{ en.outlook.label | attr }}">{{ de.outlook.label }}</p>
+                <h2
+                    data-de="{{ de.outlook.heading | attr }}"
+                    data-en="{{ en.outlook.heading | attr }}">{{ de.outlook.heading }}</h2>
+                <p
+                    data-de="{{ de.outlook.intro | attr }}"
+                    data-en="{{ en.outlook.intro | attr }}">{{ de.outlook.intro }}</p>
+            </div>
+
+            <div class="ausblick-grid">
+                {% for card in de.outlook.cards %}
+                {%- set enCard = en.outlook.cards[loop.index0] -%}
+                <div class="preview-card fade-up delay-{{ loop.index }}">
+                    <div class="preview-card-label" data-de="{{ card.label | attr }}" data-en="{{ enCard.label | attr }}">{{ card.label }}</div>
+                    <h3
+                        data-de="{{ card.title | attr }}"
+                        data-en="{{ enCard.title | attr }}">{{ card.title }}</h3>
+                    <div class="preview-card-subtitle"
+                        data-de="{{ card.subtitle | attr }}"
+                        data-en="{{ enCard.subtitle | attr }}">{{ card.subtitle }}</div>
+                    {% for paragraph in card.paragraphs %}
+                    <p
+                        data-de="{{ paragraph | attr }}"
+                        data-en="{{ enCard.paragraphs[loop.index0] | attr }}">{{ paragraph }}</p>
+                    {% endfor %}
+                    {% if card.link %}
+                    <a href="{{ card.link.href }}" target="_blank" rel="noopener" class="btn btn-ghost">{{ card.link.label }}</a>
+                    {% endif %}
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         CTA
+         ================================ -->
+
+    <section class="cta-section">
+        <div class="container fade-up">
+            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;"
+                data-de="{{ de.cta.label | attr }}"
+                data-en="{{ en.cta.label | attr }}">{{ de.cta.label }}</p>
+            <h2
+                data-de="{{ de.cta.heading | attr }}"
+                data-en="{{ en.cta.heading | attr }}">{{ de.cta.heading }}</h2>
+            <p
+                data-de="{{ de.cta.text | attr }}"
+                data-en="{{ en.cta.text | attr }}">{{ de.cta.text }}</p>
+            <a href="kontakt.html" class="btn btn-primary"
+                data-de="{{ de.cta.button | attr }}"
+                data-en="{{ en.cta.button | attr }}">{{ de.cta.button }}</a>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    {%- set footerConnectHeadingDe = "Verbinden" -%}
+    {%- set footerConnectHeadingEn = "Connect" -%}
+    {% include "partials/footer.njk" %}
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+    <script src="js/i18n.js"></script>
+
+</body>
+</html>

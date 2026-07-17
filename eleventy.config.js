@@ -3,18 +3,17 @@ const path = require("node:path");
 const yaml = require("js-yaml");
 const matter = require("gray-matter");
 const MarkdownIt = require("markdown-it");
+const nunjucks = require("nunjucks");
 
 // Pages not yet templatized are passthrough-copied verbatim (brief §7 Phase 1/2:
 // incremental migration — remove a page from this list when its template ships).
 const PASSTHROUGH_PAGES = [
   "bewegungsrevolution.html",
   "brand.html",
-  "cellular-touch.html",
   "datenschutz.html",
   "impressum.html",
   "mitmachen.html",
   "montagskurs.html",
-  "programm.html",
 ];
 
 const markdown = new MarkdownIt({
@@ -55,6 +54,26 @@ function mergeLocale(defaults, localized) {
       ...(localized.cta || {}),
     },
   };
+}
+
+function deepMerge(defaults, localized) {
+  if (!defaults || typeof defaults !== "object" || Array.isArray(defaults)) {
+    return localized === undefined ? defaults : localized;
+  }
+  const merged = { ...defaults };
+  if (!localized || typeof localized !== "object" || Array.isArray(localized)) {
+    return merged;
+  }
+  for (const [key, value] of Object.entries(localized)) {
+    if (Array.isArray(value)) {
+      merged[key] = value;
+    } else if (value && typeof value === "object") {
+      merged[key] = deepMerge(merged[key] || {}, value);
+    } else if (value !== undefined && value !== null) {
+      merged[key] = value;
+    }
+  }
+  return merged;
 }
 
 function loadJournalContent() {
@@ -147,9 +166,51 @@ function loadJournalContent() {
   };
 }
 
+function loadWorkshopContent() {
+  const dir = path.join(__dirname, "content", "workshops");
+  if (!fs.existsSync(dir)) {
+    return { all: [], listed: [], pages: [] };
+  }
+
+  const all = fs.readdirSync(dir)
+    .filter((filename) => filename.endsWith(".yaml"))
+    .map((filename) => {
+      const workshop = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"));
+      const slug = workshop.slug || path.basename(filename, ".yaml");
+      const languageMode = workshop.language_mode || "bilingual";
+      const deRaw = workshop.de || {};
+      const enRaw = workshop.en || {};
+      const fallback = languageMode === "en_only" ? enRaw : deRaw;
+      const de = deepMerge(fallback, deRaw);
+      const en = deepMerge(fallback, enRaw);
+      return {
+        ...workshop,
+        slug,
+        language_mode: languageMode,
+        has_de: languageMode !== "en_only",
+        has_en: languageMode !== "de_only",
+        primary_locale: languageMode === "en_only" ? "en" : "de",
+        de,
+        en,
+        permalink: workshop.permalink || `${slug}.html`,
+      };
+    })
+    .sort((a, b) => {
+      const byDate = new Date(a.start_date || 0).getTime() - new Date(b.start_date || 0).getTime();
+      if (byDate !== 0) return byDate;
+      return (a.sort_order || 999) - (b.sort_order || 999);
+    });
+
+  return {
+    all,
+    listed: all.filter((workshop) => workshop.status === "upcoming" || workshop.status === "current"),
+    pages: all.filter((workshop) => workshop.detail_page !== false && workshop.status !== "draft"),
+  };
+}
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
-  eleventyConfig.addFilter("attr", escapeHtmlAttr);
+  eleventyConfig.addFilter("attr", (value) => new nunjucks.runtime.SafeString(escapeHtmlAttr(value)));
 
   // Static assets, untouched per the brief (§3).
   eleventyConfig.addPassthroughCopy({ "css": "css" });
@@ -183,9 +244,11 @@ module.exports = function (eleventyConfig) {
       }
     }
     data.journal = loadJournalContent();
+    data.workshops = loadWorkshopContent();
     return data;
   });
   eleventyConfig.addGlobalData("journalArticlePages", () => loadJournalContent().articlePages);
+  eleventyConfig.addGlobalData("workshopPages", () => loadWorkshopContent().pages);
   eleventyConfig.addWatchTarget("content/");
 
   return {

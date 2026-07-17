@@ -2,8 +2,8 @@
 # Phase 2 acceptance gate (implementation brief §7): normalized diff between the
 # live page (repo root) and the built page (_site/). Entities are decoded on
 # both sides (the live HTML uses &uuml;-style entities, templates emit UTF-8),
-# then both are formatted with prettier so only real DOM/content differences
-# remain. Empty output = page passes.
+# then both are formatted with prettier and blank-only lines are ignored so only
+# real DOM/content differences remain. Empty output = page passes.
 #
 # Usage: scripts/normdiff.sh index.html
 set -euo pipefail
@@ -12,9 +12,9 @@ tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
 normalize() { # $1 = source file, $2 = output name
-  python3 -c 'import re,sys,html; s=sys.stdin.read(); sys.stdout.write(re.sub(r"&(?!(?:quot|apos|#34|#39|#x22|#x27);)(?:[A-Za-z][A-Za-z0-9]+|#[0-9]+|#x[0-9A-Fa-f]+);", lambda m: html.unescape(m.group(0)), s))' \
+  python3 -c 'import re,sys,html; s=sys.stdin.read(); s=re.sub(r"href=(https?://[^\s>]+)", "href=\"\\1\"", s); sys.stdout.write(re.sub(r"&(?!(?:quot|apos|#34|#39|#x22|#x27);)(?:[A-Za-z][A-Za-z0-9]+|#[0-9]+|#x[0-9A-Fa-f]+);", lambda m: html.unescape(m.group(0)), s))' \
     < "$1" > "$tmp/$2.raw.html"
-  npx prettier --parser html "$tmp/$2.raw.html" > "$tmp/$2.html"
+  npx prettier --parser html "$tmp/$2.raw.html" | sed '/^[[:space:]]*$/d' > "$tmp/$2.html"
 }
 
 normalize "$page" live
