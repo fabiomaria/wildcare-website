@@ -1,0 +1,299 @@
+---
+permalink: kontakt.html
+---
+{%- set de = cms.pages.kontakt.de -%}
+{%- set en = cms.pages.kontakt.en -%}
+{%- set siteDe = cms.site.de -%}
+{%- set siteEn = cms.site.en -%}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ de.meta.title }}</title>
+    <meta name="description" content="{{ de.meta.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wildcare.space/kontakt.html">
+    <meta property="og:title" content="{{ de.meta.title }}">
+    <meta property="og:description" content="{{ de.meta.description }}">
+    <meta property="og:image" content="https://wildcare.space/assets/images/social%20preview.jpg">
+    <meta property="og:locale" content="de_AT">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    {% set navActive = 'kontakt' %}{% include "partials/nav.njk" %}
+
+    <!-- ================================
+         HERO
+         ================================ -->
+
+    <header class="page-hero">
+        <div class="container">
+            <p class="label fade-up"
+                data-de="{{ de.hero.label }}"
+                data-en="{{ en.hero.label or de.hero.label }}">{{ de.hero.label }}</p>
+            <h1 class="fade-up delay-1"
+                data-de="{{ de.hero.heading }}"
+                data-en="{{ en.hero.heading or de.hero.heading }}">{{ de.hero.heading | safe }}</h1>
+            <p class="fade-up delay-2" style="max-width: 560px;"
+                data-de="{{ de.hero.intro }}"
+                data-en="{{ en.hero.intro or de.hero.intro }}">{{ de.hero.intro }}</p>
+        </div>
+    </header>
+
+    <!-- ================================
+         CONTACT FORM + INFO
+         ================================ -->
+
+    <section>
+        <div class="container">
+            <div class="kontakt-grid">
+
+                <!-- LEFT: Form -->
+                <div class="kontakt-form-wrapper fade-up">
+                    <h3 data-de="{{ de.form.heading }}" data-en="{{ en.form.heading or de.form.heading }}">{{ de.form.heading }}</h3>
+                    <form id="kontakt-form">
+                        <div class="form-group">
+                            <label for="name" data-de="{{ de.form.name_label }}" data-en="{{ en.form.name_label or de.form.name_label }}">{{ de.form.name_label }}</label>
+                            <input type="text" id="name" name="name" placeholder="{{ de.form.name_placeholder }}" maxlength="120" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-de="{{ de.form.email_label }}" data-en="{{ en.form.email_label or de.form.email_label }}">{{ de.form.email_label }}</label>
+                            <input type="email" id="email" name="email" placeholder="{{ de.form.email_placeholder }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-de="{{ de.form.message_label }}" data-en="{{ en.form.message_label or de.form.message_label }}">{{ de.form.message_label }}</label>
+                            <textarea id="message" name="message" placeholder="{{ de.form.message_placeholder }}" maxlength="1800" required></textarea>
+                        </div>
+                        <div class="form-submit-row">
+                            <button type="submit" class="btn btn-primary" data-de="{{ de.form.submit_label }}" data-en="{{ en.form.submit_label or de.form.submit_label }}">{{ de.form.submit_label }}</button>
+                            <p class="form-note">
+                                <span data-de="{{ de.form.note }}" data-en="{{ en.form.note or de.form.note }}">{{ de.form.note }}</span>
+                                <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
+                            </p>
+                        </div>
+                        <input type="text" name="website" id="kontakt-website" tabindex="-1" autocomplete="off" hidden>
+                        <p class="form-note" id="kontakt-message" role="status" aria-live="polite" hidden></p>
+                    </form>
+                </div>
+
+                <!-- RIGHT: Info -->
+                <div class="kontakt-info fade-up delay-2">
+                    <div class="kontakt-info-item">
+                        <div class="kontakt-info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                        </div>
+                        <div class="kontakt-info-text">
+                            <p class="label" data-de="{{ de.info.email_label }}" data-en="{{ en.info.email_label or de.info.email_label }}">{{ de.info.email_label }}</p>
+                            <p><a href="mailto:hello@wildcare.space">hello@wildcare.space</a></p>
+                        </div>
+                    </div>
+
+                    <div class="kontakt-info-item">
+                        <div class="kontakt-info-icon">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+                        </div>
+                        <div class="kontakt-info-text">
+                            <p class="label">Instagram</p>
+                            <p><a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">@wildcare.space</a></p>
+                        </div>
+                    </div>
+
+                    <div class="kontakt-info-item">
+                        <div class="kontakt-info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="kontakt-info-text">
+                            <p class="label" data-de="{{ de.info.address_label }}" data-en="{{ en.info.address_label or de.info.address_label }}">{{ de.info.address_label }}</p>
+                            <p>Orpheumgasse 11<br>8020 Graz</p>
+                        </div>
+                    </div>
+
+                    <div class="kontakt-info-item">
+                        <div class="kontakt-info-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <div class="kontakt-info-text">
+                            <p class="label" data-de="{{ de.info.when_label }}" data-en="{{ en.info.when_label or de.info.when_label }}">{{ de.info.when_label }}</p>
+                            <p data-de="{{ de.info.when_value }}" data-en="{{ en.info.when_value or de.info.when_value }}">{{ de.info.when_value }}</p>
+                        </div>
+                    </div>
+
+                    <div class="kontakt-highlight">
+                        <p data-de="{{ de.info.highlight }}"
+                           data-en="{{ en.info.highlight or de.info.highlight }}">{{ de.info.highlight }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         MAP
+         ================================ -->
+
+    <section class="map-section">
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 48px;">
+                <p class="label" data-de="{{ de.map.label }}" data-en="{{ en.map.label or de.map.label }}">{{ de.map.label }}</p>
+                <h2>{{ de.map.heading }}</h2>
+            </div>
+            <div class="map-wrapper fade-up delay-1">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2718.4!2d15.4477!3d47.0707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476e35b0a0a0a0a1%3A0x0!2sOrpheumgasse%2011%2C%208020%20Graz!5e0!3m2!1sde!2sat!4v1"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Wild Care Standort: Orpheumgasse 11, 8020 Graz">
+                </iframe>
+            </div>
+            <p class="map-caption fade-up delay-2"
+                data-de="{{ de.map.caption }}"
+                data-en="{{ en.map.caption or de.map.caption }}">{{ de.map.caption }}</p>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>Wild Care</h4>
+                    <p
+                        data-de="{{ siteDe.footer.brand_text }}"
+                        data-en="{{ siteEn.footer.brand_text or siteDe.footer.brand_text }}">{{ siteDe.footer.brand_text }}</p>
+                </div>
+                <div class="footer-links">
+                    <h4
+                        data-de="{{ siteDe.footer.pages_heading }}"
+                        data-en="{{ siteEn.footer.pages_heading or siteDe.footer.pages_heading }}">{{ siteDe.footer.pages_heading }}</h4>
+                    <a href="index.html"
+                        data-de="{{ siteDe.nav.home }}"
+                        data-en="{{ siteEn.nav.home or siteDe.nav.home }}">{{ siteDe.nav.home }}</a>
+                    <a href="team.html"
+                        data-de="{{ siteDe.nav.about }}"
+                        data-en="{{ siteEn.nav.about or siteDe.nav.about }}">{{ siteDe.nav.about }}</a>
+                    <a href="programm.html"
+                        data-de="{{ siteDe.nav.program }}"
+                        data-en="{{ siteEn.nav.program or siteDe.nav.program }}">{{ siteDe.nav.program }}</a>
+                    <a href="mitmachen.html"
+                        data-de="{{ siteDe.nav.join }}"
+                        data-en="{{ siteEn.nav.join or siteDe.nav.join }}">{{ siteDe.nav.join }}</a>
+                    <a href="journal.html">Journal</a>
+                    <a href="kontakt.html"
+                        data-de="{{ siteDe.footer.contact_label }}"
+                        data-en="{{ siteEn.footer.contact_label or siteDe.footer.contact_label }}">{{ siteDe.footer.contact_label }}</a>
+                </div>
+                <div class="footer-links">
+                    <h4
+                        data-de="{{ de.footer.connect_heading }}"
+                        data-en="{{ en.footer.connect_heading or de.footer.connect_heading }}">{{ de.footer.connect_heading }}</h4>
+                    <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://facebook.com/wildcare.space" target="_blank" rel="noopener">Facebook</a>
+                    <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-legal"><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></span>
+                <span>&copy; 2026 Wild Care &mdash; Graz</span>
+                <span
+                    data-de="{{ siteDe.footer.tagline }}"
+                    data-en="{{ siteEn.footer.tagline or siteDe.footer.tagline }}">{{ siteDe.footer.tagline }}</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+
+    <script src="js/i18n.js"></script>
+    <script>
+        (function () {
+            var form = document.getElementById('kontakt-form');
+            if (!form) return;
+
+            var WORKER_URL = 'https://wildcare-kontakt.fabiogerhold.workers.dev';
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var name = document.getElementById('name').value;
+                var email = document.getElementById('email').value;
+                var message = document.getElementById('message').value;
+                var website = document.getElementById('kontakt-website').value;
+                var lang = document.documentElement.lang || 'de';
+                var messageEl = document.getElementById('kontakt-message');
+                var submitButton = form.querySelector('button[type="submit"]');
+
+                if (submitButton) {
+                    submitButton.disabled = true;
+                }
+
+                fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name, email: email, message: message, website: website, language: lang })
+                })
+                    .then(function (response) { return response.json(); })
+                    .then(function (result) {
+                        if (result.ok) {
+                            form.reset();
+                            messageEl.textContent = lang === 'en' ? {{ (en.form.success_message or de.form.success_message) | json | safe }} : {{ de.form.success_message | json | safe }};
+                        } else {
+                            messageEl.textContent = lang === 'en' ? {{ (en.form.error_message or de.form.error_message) | json | safe }} : {{ de.form.error_message | json | safe }};
+                        }
+                        messageEl.hidden = false;
+                    })
+                    .catch(function () {
+                        messageEl.textContent = lang === 'en' ? {{ (en.form.error_message or de.form.error_message) | json | safe }} : {{ de.form.error_message | json | safe }};
+                        messageEl.hidden = false;
+                    })
+                    .finally(function () {
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                        }
+                    });
+            });
+        })();
+    </script>
+
+</body>
+</html>

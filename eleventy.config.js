@@ -11,7 +11,6 @@ const PASSTHROUGH_PAGES = [
   "datenschutz.html",
   "impressum.html",
   "journal.html",
-  "kontakt.html",
   "mitmachen.html",
   "montagskurs.html",
   "programm.html",
@@ -19,6 +18,8 @@ const PASSTHROUGH_PAGES = [
 ];
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
+
   // Static assets, untouched per the brief (§3).
   eleventyConfig.addPassthroughCopy({ "css": "css" });
   eleventyConfig.addPassthroughCopy({ "js": "js" });

@@ -175,6 +175,13 @@ collections:
               - { name: label, label: Label, widget: string, i18n: true }
               - { name: heading, label: 'Überschrift', widget: string, i18n: false }
               - { name: caption, label: Bildunterschrift, widget: string, i18n: true }
+          - name: footer
+            label: Footer-Sonderfall
+            widget: object
+            i18n: true
+            hint: 'Kontakt hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
+            fields:
+              - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
 
   - name: website
     label: 'Website (Navigation & Footer)'

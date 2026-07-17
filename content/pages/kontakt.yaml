@@ -31,6 +31,8 @@ de:
     label: So findest du uns
     heading: Orpheumgasse 11, Graz
     caption: Orpheumgasse 11, 8020 Graz — Nähe Orpheum Theater
+  footer:
+    connect_heading: Verbinden
 en:
   hero:
     label: Contact
@@ -54,3 +56,5 @@ en:
   map:
     label: How to Find Us
     caption: Orpheumgasse 11, 8020 Graz — near Orpheum Theatre
+  footer:
+    connect_heading: Connect
