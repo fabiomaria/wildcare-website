@@ -63,7 +63,11 @@ All YAML text fields destined for `data-de`/`data-en` attributes must run throug
 
 ### 4.4 Journal articles
 
-Per-locale markdown bodies: editor writes the DE article and optionally the EN article as two normal markdown fields. Template renders both blocks into the page; `js/i18n.js` gets a small **additive** extension (target a wrapper like `<article data-i18n-block="de">`) to show/hide the right block on toggle, on article pages only. Visitor-visible text and toggle behavior are identical to today.
+Per-locale markdown bodies: editor writes article bodies as normal markdown fields per locale. Journal entries may be **German-only, English-only, or bilingual** (owner decision 2026-07-17). Sveltia's `multiple_files` i18n shape keeps `de` as the default locale, so an English-only article may still have a minimal default-locale `.md` file with empty localized fields while the actual content lives in `.en.md`; templates must treat locale availability as content-derived, not file-existence-derived.
+
+Template behavior: render the available locale blocks and add a small **additive** extension to `js/i18n.js` (target a wrapper like `<article data-i18n-block="de">`) to show the requested locale when available and gracefully fall back to the available locale when it is not. Listing cards use the current locale if available; otherwise they fall back to the article's available locale. Do not publish placeholder German copy just to satisfy the CMS.
+
+CMS schema: journal entries include `language_mode` (`de_only`, `en_only`, `bilingual`) as an editor-visible intent flag, and localized `title`, `excerpt`, and `body` fields are optional so English-only entries can be saved. Build-time validation must reject a `published` article only if it has no publishable locale content at all, or if `language_mode` and available locale content contradict each other.
 
 Journal frontmatter includes a `status` field (e.g. `published` / `coming_soon`). The homepage "Aus dem Labor" section is populated dynamically from the latest three entries in `content/journal/` via Eleventy collections; `coming_soon` renders the `.coming-soon` card state with the link stripped, automatically. (Migration note: do the index page in two commits — verbatim templatization first, dynamic journal section second — so the acceptance diff stays interpretable.)
 
@@ -153,6 +157,7 @@ No visual/design changes; no draft/preview workflow; no touching the `main`-bran
 - cellular-touch stays English-only permanently (owner confirmed 2026-07-17).
 - Editors upload images regularly (owner confirmed 2026-07-17) — §4.5 is mandatory scope, not optional.
 - Journal bodies are per-locale markdown, not per-paragraph field pairs.
+- Journal articles may be English-only; no placeholder German translation is required.
 - Editor GitHub accounts are accepted onboarding friction.
 
 ## 11. Amendment 2026-07-17-b: contact form → Notion (owner decision)
