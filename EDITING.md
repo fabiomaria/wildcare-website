@@ -207,7 +207,7 @@ machen. Realistisch braucht es dafür eine Person mit etwas technischer
 Erfahrung; hier der Ablauf, den ihr gemeinsam durchgehen könnt:
 
 1. Auf **github.com** das Repository der Website öffnen und in den
-   **Commit-Verlauf** ("Commits") des Branches `html-site` schauen. Dort
+   **Commit-Verlauf** ("Commits") des Branches `production` schauen. Dort
    erscheint jede gespeicherte Änderung mit Zeitstempel — meist erkennt
    man die fragliche Änderung am Zeitpunkt oder am Dateinamen.
 2. Den betreffenden Commit öffnen. Falls GitHub dort einen Button

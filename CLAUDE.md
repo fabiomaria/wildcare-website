@@ -5,12 +5,13 @@ have already bitten agents on this repo.
 
 ## ⚠️ Branch topology — the #1 trap
 
-This repo contains **two completely different sites** on two branches:
+This repo contains **three important branches**:
 
-- **`html-site`** — the **LIVE** site. Hand-coded static HTML/CSS/JS, no build
-  step, deployed to GitHub Pages at `wildcare.space` (via CNAME). Root-level
-  `index.html`, `mitmachen.html`, `kontakt.html`, `js/i18n.js`, `css/styles.css`,
-  etc. **All current work happens here.**
+- **`production`** — the **LIVE/CMS deploy branch**. This is the Eleventy +
+  Sveltia CMS version deployed to GitHub Pages at `wildcare.space`. CMS edits
+  commit here, GitHub Actions builds `_site/`, and Pages deploys the artifact.
+- **`legacy-html-backup`** — frozen snapshot of the last pre-CMS static HTML
+  site (`v1.0-legacy`). Use this only as a rollback reference/fallback.
 - **`main`** — a **separate, unrelated rewrite** (Astro + Sanity CMS; formerly
   Eleventy + Decap CMS; Netlify hosting). Totally different architecture
   (`src/pages/*`, template files, a real build). It does **not** contain the
@@ -21,18 +22,19 @@ at `main`, so `git worktree add` (and any agent "worktree isolation") checks out
 from **`main` — the wrong base**. Agents then can't find `mitmachen.html`,
 `js/i18n.js`, etc., and either stall or "helpfully" implement against the Astro
 architecture (unusable). If you dispatch parallel agents in worktrees, base them
-explicitly on `html-site`. When in doubt, work **directly on `html-site`**
+explicitly on `production`. When in doubt, work **directly on `production`**
 (sequentially) — that is what actually ships.
 
-Always confirm `git branch --show-current` is `html-site` and that
-`index.html`/`mitmachen.html` exist at the repo root before editing.
+Always confirm `git branch --show-current` is `production` and that
+`site/`, `content/`, `index.html`, and `mitmachen.html` exist at the repo root
+before editing.
 
 ## Site architecture
 
 - The live site is being migrated from hand-coded HTML to **Eleventy + Sveltia
-  CMS** on the `html-site` branch. Root-level `*.html` files still exist as the
-  source of truth for pages that have not been templatized yet; templatized pages
-  live under `site/` and pull editable copy from `content/`.
+  CMS** on the `production` branch. Templated pages live under `site/` and pull
+  editable copy from `content/`; root-level HTML is retained as compatibility
+  baseline/static passthrough where needed.
 - Run `npm run build` to produce `_site/`; run `npm run dev` for the local
   Eleventy preview. Verification is still lightweight: normalized HTML diffs,
   grep-based structural checks, local browser passes.
@@ -44,7 +46,7 @@ Always confirm `git branch --show-current` is `html-site` and that
     targets it.
   - `worker-kontakt/` — contact form to the same Notion database. Separate by
     design; do not merge into `worker/`.
-  - Planned: `worker-auth/` — Sveltia CMS GitHub OAuth.
+  - `worker-auth/` — Sveltia CMS GitHub OAuth.
 
 ## Bilingual DE/EN (see also `TRANSLATION.md`)
 

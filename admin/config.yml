@@ -5,7 +5,7 @@
 backend:
   name: github
   repo: fabiomaria/wildcare-website
-  branch: html-site
+  branch: production
   base_url: https://wildcare-cms-auth.fabiogerhold.workers.dev
 
 media_folder: assets/uploads

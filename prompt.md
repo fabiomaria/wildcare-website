@@ -1,7 +1,7 @@
 # Wild Care CMS Migration — Resume Prompt
 
 Date: 2026-07-17
-Branch/base: `html-site`
+Branch/base: `production`
 
 Goal: finish moving the live hand-coded Wild Care GitHub Pages site to Sveltia CMS + Eleventy, preserving visual design, URLs, and visitor-facing behavior.
 
@@ -179,7 +179,7 @@ Cloudflare Worker secrets are set:
 backend:
   name: github
   repo: fabiomaria/wildcare-website
-  branch: html-site
+  branch: production
   base_url: https://wildcare-cms-auth.fabiogerhold.workers.dev
 ```
 
@@ -272,7 +272,7 @@ After this branch is pushed and Pages deployment is live:
 
 - Login at `/admin/`.
 - Make a tiny text edit.
-- Confirm the CMS commit lands on `html-site`.
+- Confirm the CMS commit lands on `production`.
 - Confirm GitHub Actions builds successfully.
 - Confirm live site updates.
 - Upload an image through Sveltia CMS.

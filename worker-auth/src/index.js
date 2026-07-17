@@ -1,4 +1,4 @@
-// GitHub OAuth provider for Sveltia CMS (the html-site branch's admin/config.yml
+// GitHub OAuth provider for Sveltia CMS (the production branch's admin/config.yml
 // `backend.base_url`). Implements the standard Decap/Sveltia CMS GitHub OAuth
 // popup flow: /auth redirects to GitHub, /callback exchanges the code for a
 // token and hands it back to the CMS popup via postMessage.
