@@ -12,7 +12,6 @@ const PASSTHROUGH_PAGES = [
   "brand.html",
   "datenschutz.html",
   "impressum.html",
-  "mitmachen.html",
 ];
 
 const markdown = new MarkdownIt({

@@ -1,0 +1,261 @@
+---
+permalink: mitmachen.html
+---
+{%- set de = cms.pages.mitmachen.de -%}
+{%- set en = cms.pages.mitmachen.en -%}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ de.meta.title }}</title>
+    <meta name="description" content="{{ de.meta.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wildcare.space/mitmachen.html">
+    <meta property="og:title" content="{{ de.meta.title }}">
+    <meta property="og:description" content="{{ de.meta.description }}">
+    <meta property="og:image" content="https://wildcare.space/assets/images/social%20preview.jpg">
+    <meta property="og:locale" content="de_AT">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    {% set navActive = 'mitmachen' %}{% include "partials/nav.njk" %}
+
+    <!-- ================================
+         HERO
+         ================================ -->
+
+    <header class="page-hero">
+        <div class="container">
+            <p class="label fade-up"
+                data-de="{{ de.hero.label }}"
+                data-en="{{ en.hero.label or de.hero.label }}">{{ de.hero.label }}</p>
+            <h1 class="fade-up delay-1"
+                data-de="{{ de.hero.heading }}"
+                data-en="{{ en.hero.heading or de.hero.heading }}">{{ de.hero.heading | safe }}</h1>
+            <p class="fade-up delay-2" style="max-width: 600px;"
+                data-de="{{ de.hero.intro }}"
+                data-en="{{ en.hero.intro or de.hero.intro }}">{{ de.hero.intro }}</p>
+        </div>
+    </header>
+
+    <!-- ================================
+         CORE MESSAGE
+         ================================ -->
+
+    <section class="core-message">
+        <div class="container">
+            <div class="core-message-inner fade-up">
+                <div class="divider" style="margin: 0 auto var(--space-xl);"></div>
+                <p data-de="{{ de.core_message }}"
+                   data-en="{{ en.core_message or de.core_message }}">{{ de.core_message }}</p>
+                <div class="divider" style="margin: var(--space-xl) auto 0;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         TWO CIRCLES
+         ================================ -->
+
+    <section class="circles-section">
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 48px;">
+                <p class="label"
+                    data-de="{{ de.circles.label }}"
+                    data-en="{{ en.circles.label or de.circles.label }}">{{ de.circles.label }}</p>
+                <h2 data-de="{{ de.circles.heading }}"
+                    data-en="{{ en.circles.heading or de.circles.heading }}">{{ de.circles.heading }}</h2>
+            </div>
+
+            <!-- Visual: Overlapping circles -->
+            <div class="circles-visual fade-up delay-1">
+                <div class="circle-ring circle-outer">
+                    <div>
+                        <p class="circle-label"
+                            data-de="{{ de.circles.outer.label }}"
+                            data-en="{{ en.circles.outer.label or de.circles.outer.label }}">{{ de.circles.outer.label }}</p>
+                        <p class="circle-title"
+                            data-de="{{ de.circles.outer.title }}"
+                            data-en="{{ en.circles.outer.title or de.circles.outer.title }}">{{ de.circles.outer.title }}</p>
+                        <p class="circle-desc"
+                            data-de="{{ de.circles.outer.desc }}"
+                            data-en="{{ en.circles.outer.desc or de.circles.outer.desc }}">{{ de.circles.outer.desc }}</p>
+                    </div>
+                </div>
+                <div class="circle-ring circle-inner">
+                    <div>
+                        <p class="circle-label"
+                            data-de="{{ de.circles.inner.label }}"
+                            data-en="{{ en.circles.inner.label or de.circles.inner.label }}">{{ de.circles.inner.label }}</p>
+                        <p class="circle-title"
+                            data-de="{{ de.circles.inner.title }}"
+                            data-en="{{ en.circles.inner.title or de.circles.inner.title }}">{{ de.circles.inner.title }}</p>
+                        <p class="circle-desc"
+                            data-de="{{ de.circles.inner.desc }}"
+                            data-en="{{ en.circles.inner.desc or de.circles.inner.desc }}">{{ de.circles.inner.desc }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail cards -->
+            <div class="circles-detail">
+                <div class="circle-card circle-card-outer fade-up">
+                    <p class="label"
+                        data-de="{{ de.circles.outer.label }}"
+                        data-en="{{ en.circles.outer.label or de.circles.outer.label }}">{{ de.circles.outer.label }}</p>
+                    <h3 data-de="{{ de.circles.outer.title }}"
+                        data-en="{{ en.circles.outer.title or de.circles.outer.title }}">{{ de.circles.outer.title }}</h3>
+                    <p data-de="{{ de.circles.outer.p1 }}"
+                       data-en="{{ en.circles.outer.p1 or de.circles.outer.p1 }}">{{ de.circles.outer.p1 }}</p>
+                    <p data-de="{{ de.circles.outer.p2 }}"
+                       data-en="{{ en.circles.outer.p2 or de.circles.outer.p2 }}">{{ de.circles.outer.p2 }}</p>
+                    <div class="tag-row">
+{%- for tag in de.circles.outer.tags %}
+{%- set enTag = en.circles.outer.tags[loop.index0] if en.circles.outer.tags else null %}
+                        <span class="circle-tag"
+                            data-de="{{ tag }}"
+                            data-en="{{ enTag if enTag else tag }}">{{ tag }}</span>
+{% endfor %}
+                    </div>
+                </div>
+
+                <div class="circle-card circle-card-inner fade-up delay-1">
+                    <p class="label"
+                        data-de="{{ de.circles.inner.label }}"
+                        data-en="{{ en.circles.inner.label or de.circles.inner.label }}">{{ de.circles.inner.label }}</p>
+                    <h3 data-de="{{ de.circles.inner.title }}"
+                        data-en="{{ en.circles.inner.title or de.circles.inner.title }}">{{ de.circles.inner.title }}</h3>
+                    <p data-de="{{ de.circles.inner.p1 }}"
+                       data-en="{{ en.circles.inner.p1 or de.circles.inner.p1 }}">{{ de.circles.inner.p1 }}</p>
+                    <p data-de="{{ de.circles.inner.p2 }}"
+                       data-en="{{ en.circles.inner.p2 or de.circles.inner.p2 }}">{{ de.circles.inner.p2 }}</p>
+                    <div class="tag-row">
+{%- for tag in de.circles.inner.tags %}
+{%- set enTag = en.circles.inner.tags[loop.index0] if en.circles.inner.tags else null %}
+                        <span class="circle-tag"
+                            data-de="{{ tag }}"
+                            data-en="{{ enTag if enTag else tag }}">{{ tag }}</span>
+{% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         INDIVIDUELLE MITGLIEDSCHAFT
+         ================================ -->
+
+
+<section class="mitgliedschaft">
+        <div class="container">
+            <div class="mitgliedschaft-intro fade-up">
+                <p class="label" style="margin-bottom: var(--space-md);"
+                    data-de="{{ de.membership.label }}"
+                    data-en="{{ en.membership.label or de.membership.label }}">{{ de.membership.label }}</p>
+                <h2 data-de="{{ de.membership.heading }}"
+                    data-en="{{ en.membership.heading or de.membership.heading }}">{{ de.membership.heading }}</h2>
+                <p data-de="{{ de.membership.p1 }}"
+                   data-en="{{ en.membership.p1 or de.membership.p1 }}">{{ de.membership.p1 }}</p>
+                <p data-de="{{ de.membership.p2 }}"
+                   data-en="{{ en.membership.p2 or de.membership.p2 }}">{{ de.membership.p2 }}</p>
+            </div>
+
+            <p class="label fade-up" style="text-align: center; margin-bottom: var(--space-xl); color: var(--terracotta);"
+                data-de="{{ de.membership.choose_label }}"
+                data-en="{{ en.membership.choose_label or de.membership.choose_label }}">{{ de.membership.choose_label }}</p>
+
+            <div class="beitrag-grid">
+{%- for tier in de.membership.tiers %}
+{%- set enTier = en.membership.tiers[loop.index0] if en.membership.tiers else null %}
+                <div class="beitrag-card fade-up delay-{{ loop.index }}" style="display: flex; flex-direction: column;">
+                    <div class="beitrag-icon">{{ tier.icon }}</div>
+                    <p class="beitrag-name"
+                        data-de="{{ tier.name }}"
+                        data-en="{{ enTier.name if enTier else tier.name }}">{{ tier.name }}</p>
+                    <p class="beitrag-amount"
+                        data-de="{{ tier.amount }}"
+                        data-en="{{ enTier.amount if enTier else tier.amount }}">{{ tier.amount }}</p>
+                    <p class="beitrag-desc" style="flex-grow: 1;"
+                        data-de="{{ tier.quote }}"
+                        data-en="{{ enTier.quote if enTier else tier.quote }}">{{ tier.quote }}</p>
+                    <p class="beitrag-desc"
+                        data-de="{{ tier.desc }}"
+                        data-en="{{ (enTier.desc if enTier else tier.desc) | attr }}">{{ tier.desc }}</p>
+
+                    <div style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: var(--border-subtle);">
+                        <button type="button" class="btn btn-ghost" style="font-size: 0.85rem;"
+                                data-de="{{ tier.button }}"
+                                data-en="{{ enTier.button if enTier else tier.button }}"
+                                data-aria-de="{{ tier.aria }}"
+                                data-aria-en="{{ enTier.aria if enTier else tier.aria }}"
+                                onclick="openMembershipForm('{{ tier.tier_arg }}')">{{ tier.button }}</button>
+                    </div>
+                </div>
+{% endfor %}
+            </div>
+
+            <p class="beitrag-note fade-up"
+                data-de="{{ de.membership.note }}"
+                data-en="{{ en.membership.note or de.membership.note }}">{{ de.membership.note }}</p>
+        </div>
+    </section>
+
+    {% set footerConnectHeadingDe = de.footer.connect_heading %}{% set footerConnectHeadingEn = en.footer.connect_heading or de.footer.connect_heading %}{% include "partials/footer.njk" %}
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+
+    <script src="js/i18n.js"></script>
+
+    <script src="https://tally.so/widgets/embed.js"></script>
+    <script>
+        function openMembershipForm(tier) {
+            if (typeof Tally !== 'undefined') {
+                Tally.openPopup('rjd2PR', {
+                    layout: 'modal',
+                    width: 700,
+                    hideTitle: true,
+                    hiddenFields: {
+                        stufe: tier
+                    }
+                });
+            } else {
+                console.error("Tally Script wurde noch nicht geladen.");
+            }
+        }
+    </script>
+
+</body>
+</html>

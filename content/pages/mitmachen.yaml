@@ -1,0 +1,125 @@
+de:
+  meta:
+    title: Mitmachen — Wild Care | Verein für soziale Praxis, Graz
+    description: Werde Teil von Wild Care. Erfahre, wie du dich einbringen kannst — ob im offenen Montagskurs oder als Vereinsmitglied.
+  hero:
+    label: Mitmachen
+    heading: "Mitgestalten,<br>nicht konsumieren."
+    intro: Wild Care ist kein Dienstleister und kein Studio. Wir sind ein lebendiger Organismus — und du kannst Teil davon werden.
+  core_message: Wild Care lebt von Menschen, die mitgestalten. Es gibt keine starre Mitgliedschafts-Schablone — wie du dich einbringst, gestaltest du selbst.
+  circles:
+    label: Zwei Kreise, ein Raum
+    heading: Wie Wild Care funktioniert
+    outer:
+      label: Offener Kreis
+      title: Der Montagskurs
+      desc: Jede:r willkommen. Come as you are.
+      p1: Jeden Montag öffnen wir den Raum für alle. Keine Anmeldung, keine Verpflichtung, keine Vorkenntnisse. Du kommst, wenn du kommst — und gehst, wenn du gehst.
+      p2: Auf Spendenbasis, weil Zugang wichtiger ist als Geld.
+      tags:
+        - Jede:r willkommen
+        - Spendenbasis
+        - Keine Anmeldung
+    inner:
+      label: Innerer Kreis
+      title: Vereinsmitglieder
+      desc: Den Raum mittragen & vertiefen.
+      p1: Menschen, die den Raum mittragen — mit Energie, Ideen, Präsenz oder finanziell. Als Mitglied hast du Zugang zu Vertiefungen und Mitsprache bei Entscheidungen.
+      p2: Du gestaltest mit, was Wild Care wird.
+      tags:
+        - Samstags-Labs
+        - Sharing Circles
+        - Gast-Workshops
+        - Mitsprache
+  membership:
+    label: Individuelle Mitgliedschaft
+    heading: So einzigartig wie du
+    p1: Deine Mitgliedschaft ist so individuell wie du. Du entscheidest, wie du dich einbringst — finanziell, zeitlich, kreativ.
+    p2: Manche tragen mit einem monatlichen Beitrag bei, andere bringen Ideen, Räume oder Fähigkeiten ein. Beides ist gleich viel wert.
+    choose_label: Wähle deine Stufe, um den Antrag zu starten
+    tiers:
+      - icon: 🌱
+        name: Saat
+        amount: €10 / Jahr
+        quote: "„Ich bin dabei.“"
+        desc: Du bist Teil der Community und bekommst unsere Updates.
+        button: Diese Stufe wählen
+        aria: Mitgliedschaft Saat, 10 Euro pro Jahr wählen
+        tier_arg: Seed (10€)
+      - icon: 🌳
+        name: Stamm
+        amount: €35 / Jahr
+        quote: "„Ich trage den Raum mit.“"
+        desc: Zugang zu Samstags-Labs und Sharing Circles.
+        button: Diese Stufe wählen
+        aria: Mitgliedschaft Stamm, 35 Euro pro Jahr wählen
+        tier_arg: Trunk (35 €)
+      - icon: 🪴
+        name: Wurzel
+        amount: €50+ / Jahr
+        quote: "„Ich investiere in die Vision.“"
+        desc: Samstags-Labs, Sharing Circles, Gast-Workshops und Mitsprache bei Entscheidungen.
+        button: Diese Stufe wählen
+        aria: Mitgliedschaft Wurzel, 50 Euro oder mehr pro Jahr wählen
+        tier_arg: Root (60+ €)
+    note: Alle Stufen sind gleichwertig. Es geht nicht um den Betrag — es geht darum, dass du da bist.
+  footer:
+    connect_heading: Verbinden
+en:
+  hero:
+    label: Get Involved
+    heading: "Co-create,<br>don’t consume."
+    intro: Wild Care is not a service provider or a studio. We are a living organism — and you can become part of it.
+  core_message: Wild Care thrives on people who co-create. There is no rigid membership template — how you contribute is up to you.
+  circles:
+    label: Two Circles, One Space
+    heading: How Wild Care Works
+    outer:
+      label: Open Circle
+      title: The Monday Class
+      desc: Everyone welcome. Come as you are.
+      p1: Every Monday we open the space for everyone. No sign-up, no commitment, no prior experience needed. You come when you come — and leave when you leave.
+      p2: On a donation basis, because access matters more than money.
+      tags:
+        - Everyone welcome
+        - Donation-based
+        - No sign-up
+    inner:
+      label: Inner Circle
+      title: Association Members
+      desc: Sustain the space & go deeper.
+      p1: People who sustain the space — with energy, ideas, presence or financially. As a member, you have access to deeper sessions and a voice in decisions.
+      p2: You help shape what Wild Care becomes.
+      tags:
+        - Saturday Labs
+        - Sharing Circles
+        - Guest Workshops
+        - Voice in decisions
+  membership:
+    label: Individual Membership
+    heading: As Unique as You
+    p1: Your membership is as individual as you are. You decide how you contribute — financially, with your time, or creatively.
+    p2: Some contribute with a monthly amount, others bring ideas, spaces or skills. Both are equally valuable.
+    choose_label: Choose your tier to start the application
+    tiers:
+      - name: Seed
+        amount: €10 / year
+        quote: "“I’m in.”"
+        desc: You're part of the community and get our updates.
+        button: Select this tier
+        aria: Select Seed membership, 10 euros per year
+      - name: Trunk
+        amount: €35 / year
+        quote: "“I help sustain the space.”"
+        desc: Access to Saturday Labs and Sharing Circles.
+        button: Select this tier
+        aria: Select Trunk membership, 35 euros per year
+      - name: Root
+        amount: €50+ / year
+        quote: "“I invest in the vision.”"
+        desc: Saturday Labs, Sharing Circles, guest workshops, and a voice in decisions.
+        button: Select this tier
+        aria: Select Root membership, 50 euros or more per year
+    note: All tiers are equal. It’s not about the amount — it’s about you being here.
+  footer:
+    connect_heading: Connect

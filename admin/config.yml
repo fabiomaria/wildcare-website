@@ -441,6 +441,98 @@ collections:
             hint: 'Montagskurs hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
             fields:
               - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+      - name: mitmachen
+        label: Mitmachen
+        file: content/pages/mitmachen.yaml
+        i18n: true
+        fields:
+          - name: meta
+            label: 'SEO & Vorschau'
+            widget: object
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
+          - name: hero
+            label: Hero
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true, hint: 'Zeilenumbruch mit <br> möglich' }
+              - { name: intro, label: Einleitung, widget: text, i18n: true }
+          - { name: core_message, label: Kernaussage, widget: text, i18n: true }
+          - name: circles
+            label: Zwei Kreise
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - name: outer
+                label: 'Kreis: Offen (Montagskurs)'
+                widget: object
+                i18n: true
+                fields:
+                  - { name: label, label: Label, widget: string, i18n: true }
+                  - { name: title, label: Titel, widget: string, i18n: true }
+                  - { name: desc, label: Kurzbeschreibung, widget: string, i18n: true }
+                  - { name: p1, label: Absatz 1, widget: text, i18n: true }
+                  - { name: p2, label: Absatz 2, widget: text, i18n: true }
+                  - name: tags
+                    label: Tags
+                    widget: list
+                    i18n: true
+                    field: { name: tag, label: Tag, widget: string }
+              - name: inner
+                label: 'Kreis: Innen (Vereinsmitglieder)'
+                widget: object
+                i18n: true
+                fields:
+                  - { name: label, label: Label, widget: string, i18n: true }
+                  - { name: title, label: Titel, widget: string, i18n: true }
+                  - { name: desc, label: Kurzbeschreibung, widget: string, i18n: true }
+                  - { name: p1, label: Absatz 1, widget: text, i18n: true }
+                  - { name: p2, label: Absatz 2, widget: text, i18n: true }
+                  - name: tags
+                    label: Tags
+                    widget: list
+                    i18n: true
+                    field: { name: tag, label: Tag, widget: string }
+          - name: membership
+            label: Individuelle Mitgliedschaft
+            widget: object
+            i18n: true
+            fields:
+              - { name: label, label: Label, widget: string, i18n: true }
+              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: p1, label: Absatz 1, widget: text, i18n: true }
+              - { name: p2, label: Absatz 2, widget: text, i18n: true }
+              - { name: choose_label, label: 'Hinweis: Stufe wählen', widget: string, i18n: true }
+              - name: tiers
+                label: Mitgliedschaftsstufen
+                widget: list
+                i18n: true
+                min: 3
+                max: 3
+                hint: 'Genau 3 Stufen (Saat/Stamm/Wurzel). Icon und tier_arg sind technische Werte, nur in der deutschen Fassung gepflegt.'
+                fields:
+                  - { name: icon, label: 'Icon (Emoji, nur Deutsch)', widget: string, i18n: false, required: false }
+                  - { name: name, label: Name, widget: string, i18n: true }
+                  - { name: amount, label: Betrag, widget: string, i18n: true }
+                  - { name: quote, label: Zitat, widget: string, i18n: true }
+                  - { name: desc, label: Beschreibung, widget: text, i18n: true }
+                  - { name: button, label: Button, widget: string, i18n: true }
+                  - { name: aria, label: 'ARIA-Label', widget: string, i18n: true }
+                  - { name: tier_arg, label: 'Tally-Feldwert (nur Deutsch, technisch)', widget: string, i18n: false, required: false }
+              - { name: note, label: Hinweis unter den Stufen, widget: text, i18n: true }
+          - name: footer
+            label: Footer-Sonderfall
+            widget: object
+            i18n: true
+            hint: 'Mitmachen hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
+            fields:
+              - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
 
   - name: website
     label: 'Website (Navigation & Footer)'
