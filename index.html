@@ -271,7 +271,20 @@
             <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;" data-de="Einladung" data-en="Invitation">Einladung</p>
             <h2 data-de="Komm vorbei." data-en="Come by.">Komm vorbei.</h2>
             <p data-de="Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz." data-en="No experience needed &mdash; just comfortable clothes and curiosity. Every Monday, 17:45, Orpheumgasse 11, Graz.">Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz.</p>
-            <a href="kontakt.html" class="btn btn-primary" data-de="Kontakt aufnehmen" data-en="Get in Touch">Kontakt aufnehmen</a>
+            <form id="signup-form" class="cta-signup">
+                <p class="cta-signup-lead" data-de="Bleib auf dem Laufenden &mdash; Neuigkeiten zu kommenden Events direkt in dein Postfach." data-en="Stay in the loop &mdash; news about upcoming events, straight to your inbox.">Bleib auf dem Laufenden &mdash; Neuigkeiten zu kommenden Events direkt in dein Postfach.</p>
+                <div class="cta-signup-row">
+                    <label for="signup-email" class="sr-only" data-de="E-Mail-Adresse" data-en="Email address">E-Mail-Adresse</label>
+                    <input type="email" id="signup-email" name="email" placeholder="deine@email.at" required>
+                    <button type="submit" class="btn btn-primary" data-de="Anmelden" data-en="Sign up">Anmelden</button>
+                </div>
+                <label for="signup-consent" class="cta-signup-consent">
+                    <input type="checkbox" id="signup-consent" name="consent" required>
+                    <span data-de="Ich stimme der Speicherung meiner E-Mail gem&auml;&szlig; " data-en="I agree to my email being stored per the ">Ich stimme der Speicherung meiner E-Mail gem&auml;&szlig; </span><a href="datenschutz.html" data-de="Datenschutzerkl&auml;rung" data-en="privacy policy">Datenschutzerkl&auml;rung</a><span data-de=" zu." data-en=".">zu.</span>
+                </label>
+                <input type="text" name="website" id="signup-website" tabindex="-1" autocomplete="off" hidden>
+                <p class="form-note" id="signup-message" hidden></p>
+            </form>
         </div>
     </section>
 
@@ -300,22 +313,6 @@
                     <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
                     <a href="https://facebook.com/wildcare.space" target="_blank" rel="noopener">Facebook</a>
                     <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
-                    <p data-de="Montags-Erinnerung erhalten" data-en="Get a Monday reminder">Montags-Erinnerung erhalten</p>
-                    <form id="signup-form">
-                        <div class="form-group">
-                            <label for="signup-email" data-de="E-Mail" data-en="Email">E-Mail</label>
-                            <input type="email" id="signup-email" name="email" placeholder="deine@email.at" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signup-consent">
-                                <input type="checkbox" id="signup-consent" name="consent" required>
-                                <span data-de="Ich stimme der Speicherung meiner E-Mail gem&auml;&szlig; " data-en="I agree to my email being stored per the ">Ich stimme der Speicherung meiner E-Mail gem&auml;&szlig; </span><a href="datenschutz.html" data-de="Datenschutzerkl&auml;rung" data-en="privacy policy">Datenschutzerkl&auml;rung</a><span data-de=" zu." data-en=".">zu.</span>
-                            </label>
-                        </div>
-                        <input type="text" name="website" id="signup-website" tabindex="-1" autocomplete="off" hidden>
-                        <button type="submit" class="btn btn-secondary" data-de="Anmelden" data-en="Sign up">Anmelden</button>
-                        <p class="form-note" id="signup-message" hidden></p>
-                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -397,7 +394,7 @@
                     .then(function (result) {
                         if (result.ok) {
                             form.hidden = true;
-                            messageEl.textContent = lang === 'en' ? 'Thanks! See you Monday.' : 'Danke! Bis Montag.';
+                            messageEl.textContent = lang === 'en' ? "Thanks! You're on the list." : 'Danke! Du bist dabei.';
                         } else {
                             messageEl.textContent = lang === 'en' ? 'Something went wrong. Please try again.' : 'Etwas ist schiefgelaufen. Bitte versuch es erneut.';
                         }
