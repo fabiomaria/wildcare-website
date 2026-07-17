@@ -5,7 +5,6 @@ detail_page: true
 start_date: 2026-08-08
 sort_order: 1
 registration_url: https://tally.so/r/1ABgjL
-
 de:
   card:
     tags:
@@ -14,7 +13,7 @@ de:
       - label: Contact Improvisation
         style: moss
     title: Cellular Touch
-    subtitle: With Valentyn Korotkevych
+    subtitle: with Valentyn Korotkevych
     summary: Cellular Touch is a Contact Improvisation workshop on membranes, fascia, flow and momentum. Valentyn Korotkevych opens a somatic research space for touch, falling, geometry and shared support.
     date: 8.–9. August 2026
     location: Orpheumgasse, 8010 Graz
@@ -22,7 +21,7 @@ de:
     duration: 2 days
     register_label: Register now
     detail_label: Mehr erfahren
-
+  quote: ''
 en:
   card:
     tags:
@@ -39,19 +38,16 @@ en:
     duration: 2 days
     register_label: Register now
     detail_label: Learn more
-
   meta:
     title: Cellular Touch with Valentyn Korotkevych — Workshop | Wild Care
-    description: "Cellular Touch with Valentyn Korotkevych: a Contact Improvisation workshop on membranes, fascia, flow and momentum. 8-9 August 2026, Orpheumgasse, Graz."
+    description: 'Cellular Touch with Valentyn Korotkevych: a Contact Improvisation workshop on membranes, fascia, flow and momentum. 8-9 August 2026, Orpheumgasse, Graz.'
     og_title: Cellular Touch with Valentyn Korotkevych
     og_description: A Contact Improvisation workshop on membranes, fascia, flow and momentum. 8-9 August 2026, Orpheumgasse, Graz.
     og_image: assets/images/cellular-touch-valentyn.jpg
     og_image_width: 2000
     og_image_height: 1334
-
   nav:
     breadcrumb: Cellular Touch
-
   hero:
     badge: Guest Workshop · Contact Improvisation
     heading: Cellular Touch<br><span>with Valentyn Korotkevych</span>
@@ -63,8 +59,7 @@ en:
     inset_image: assets/images/cellular-touch-membrane.jpg
     inset_alt: Three people researching through a Contact Improvisation sequence
     note_title: Cellular Touch
-    note_text: "Flowing in, flowing out: the membrane becomes a dancing boundary between self, space and partner."
-
+    note_text: 'Flowing in, flowing out: the membrane becomes a dancing boundary between self, space and partner.'
   practice:
     label: The Practice
     heading: Touch as cellular space.
@@ -73,7 +68,6 @@ en:
       - Cellular touch is made possible when we perceive the movement of fluid in and out of a membrane.
       - <b>Flowing in</b> comes with a sense of self-fulfillment until the saturation of our internal structure, while preserving its flexibility and reliability.
       - <b>Flowing out</b> allows a sense of Release into Gravity & Space (while continuing sensing the anchor to the ground, through the Center connection and extended reach of the 'roots')
-
   info:
     title: At a Glance
     rows:
@@ -95,46 +89,42 @@ en:
         values:
           - 70&ndash;200 EUR sliding scale contribution
     cta_label: Register now
-
   research:
     label: Research Fields
     heading: What we explore
     fields:
-      - number: "01"
+      - number: '01'
         title: Membrane
-        text: "Flowing in: sensing fullness, stability and flexibility from within."
-      - number: "02"
+        text: 'Flowing in: sensing fullness, stability and flexibility from within.'
+      - number: '02'
         title: Fascia
         text: Reading superficial and deep fascia as a language of local and extended stretch.
-      - number: "03"
+      - number: '03'
         title: Unfixing
         text: Noticing familiar patterns and letting tiny gestures grow into new movement pathways.
-      - number: "04"
+      - number: '04'
         title: Falling
         text: Yielding into the support of the earth, partners and the shared body.
-      - number: "05"
+      - number: '05'
         title: Momentum
         text: Translating forward energy into rotation and using the geometry of shared movement.
-      - number: "06"
+      - number: '06'
         title: Flow
         text: Pendulum motion, trios and duets as invitations to expand trust and space.
         highlighted: true
-
   image_band:
     label: Flowing in / Flowing out
     heading: A dancing boundary
     text: Holding together is not holding on. We practice receiving, yielding, expanding, anchoring back into the earth.
     image: assets/images/cellular-touch-membrane.jpg
     alt: Cellular Touch group research through touch
-
   facilitator:
     label: Facilitator
     name: Valentyn Korotkevych
     image: assets/images/cellular-touch-valentyn.jpg
     image_alt: Valentyn Korotkevych
     role: Contact Improvisation · Somatic research
-    bio: "Valentyn is a Ukrainian-Canadian somatic therapy practitioner, spoken word and movement artist. His work integrates Polyvagal theory, Deep Tissue Massage, and poetry of being an active body-mind connected system. <br>His approach to Contact Improvisation lies in the root of introspection, contemplation & fundamental feeling of honesty, inclusivity & mutual care. "
-
+    bio: Valentyn is a Ukrainian-Canadian somatic therapy practitioner, spoken word and movement artist. His work integrates Polyvagal theory, Deep Tissue Massage, and poetry of being an active body-mind connected system. <br>His approach to Contact Improvisation lies in the root of introspection, contemplation & fundamental feeling of honesty, inclusivity & mutual care.
   testimonial:
     quote: “When we pay attention to tiny gestures, they can grow and become pathways we have not expanded into before.”
     author: Valentyn Korotkevych
