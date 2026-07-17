@@ -420,7 +420,6 @@ collections:
     slug: '{{slug}}'
     fields:
       - { name: slug, label: Slug/URL, widget: string, hint: 'Beispiel: cellular-touch ergibt cellular-touch.html' }
-      - { name: permalink, label: Ausgabe-URL, widget: string, hint: 'Beispiel: cellular-touch.html' }
       - name: language_mode
         label: Sprachversionen der Detailseite
         widget: select

@@ -101,12 +101,11 @@ function hasWorkshopDetailContent(locale) {
   );
 }
 
-function normalizePermalink(value, slug) {
-  const raw = String(value || `${slug}.html`).trim();
-  if (raw.endsWith("/") || /\.[a-z0-9]+$/i.test(path.basename(raw))) {
-    return raw;
-  }
-  return `${raw}.html`;
+function normalizeSlug(value) {
+  return String(value || "")
+    .trim()
+    .replace(/^\/+/, "")
+    .replace(/\.html$/i, "");
 }
 
 function normalizeExternalUrl(value) {
@@ -217,7 +216,7 @@ function loadWorkshopContent() {
     .filter((filename) => filename.endsWith(".yaml"))
     .map((filename) => {
       const workshop = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"));
-      const slug = workshop.slug || path.basename(filename, ".yaml");
+      const slug = normalizeSlug(workshop.slug || path.basename(filename, ".yaml"));
       const languageMode = workshop.language_mode || "bilingual";
       const deRaw = isObject(workshop.de) ? workshop.de : {};
       const enRaw = isObject(workshop.en) ? workshop.en : {};
@@ -240,7 +239,7 @@ function loadWorkshopContent() {
         registration_url: normalizeExternalUrl(workshop.registration_url),
         de,
         en,
-        permalink: normalizePermalink(workshop.permalink, slug),
+        href: `${slug}.html`,
       };
     })
     .sort((a, b) => {

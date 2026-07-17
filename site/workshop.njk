@@ -3,7 +3,7 @@ pagination:
   data: workshopPages
   size: 1
   alias: workshop
-permalink: "{{ workshop.permalink }}"
+permalink: "{{ workshop.href }}"
 ---
 {% from "partials/icon.njk" import icon %}
 {%- set t = workshop[workshop.primary_locale] -%}
@@ -15,7 +15,7 @@ permalink: "{{ workshop.permalink }}"
     <title>{{ t.meta.title }}</title>
     <meta name="description" content="{{ t.meta.description }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wildcare.space/{{ workshop.permalink }}">
+    <meta property="og:url" content="https://wildcare.space/{{ workshop.href }}">
     <meta property="og:site_name" content="Wild Care">
     <meta property="og:title" content="{{ t.meta.og_title }}">
     <meta property="og:description" content="{{ t.meta.og_description }}">
