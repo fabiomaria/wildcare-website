@@ -1,0 +1,11 @@
+{
+  "name": "wildcare-cms-auth-worker",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.111.0"
+  }
+}
