@@ -648,7 +648,7 @@ nav {
 
 .cta-section .cta-signup-row {
     display: grid;
-    grid-template-columns: minmax(120px, 0.75fr) minmax(200px, 1.25fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: var(--space-sm);
     align-items: stretch;
 }
@@ -677,7 +677,9 @@ nav {
 }
 
 .cta-section .cta-signup-row .btn {
-    flex-shrink: 0;
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: center;
 }
 
 .cta-section .cta-signup-consent {
@@ -717,9 +719,6 @@ nav {
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .cta-section .cta-signup-row .btn {
-        width: 100%;
-    }
 }
 
 /* ============================================
