@@ -1071,6 +1071,7 @@ Config-only tasks (2, 3) change nothing about the build; the `_site` diff gate g
 
 - Reduced and centered About Us portraits with responsive constraints.
 - Homepage signup now collects first name and posts it to `worker/`; the Worker maps it to Notion's `Name` property and falls back to email for legacy clients. Visible labels, placeholders, progress, success, and error text are CMS-managed and bilingual.
+- Generated pages version the shared stylesheet URL with a CSS content hash. This prevents the CDN's four-hour asset cache from serving the old email-only input styling beside newly deployed first-name markup.
 - Contact form now exposes clear sending, sent, success, and retry/error states. Success/error copy appears in a prominent live-region panel rather than low-opacity helper text.
 - `js/i18n.js` now switches localized input placeholders in addition to text and accessible labels.
 

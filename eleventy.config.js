@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const crypto = require("node:crypto");
 const yaml = require("js-yaml");
 const matter = require("gray-matter");
 const MarkdownIt = require("markdown-it");
@@ -447,7 +448,12 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addGlobalData("journalArticlePages", () => loadJournalContent().articlePages);
   eleventyConfig.addGlobalData("workshopPages", () => loadWorkshopContent().pages);
+  eleventyConfig.addGlobalData("assetVersion", () => {
+    const css = fs.readFileSync(path.join(__dirname, "css", "styles.css"));
+    return crypto.createHash("sha256").update(css).digest("hex").slice(0, 12);
+  });
   eleventyConfig.addWatchTarget("content/");
+  eleventyConfig.addWatchTarget("css/styles.css");
 
   return {
     dir: {
