@@ -2,9 +2,11 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Kill the CMS scroll fatigue — collapse every section, add drag-and-drop list summaries, de-duplicate the workshop DE/EN schema via Sveltia's native i18n, and split standard vs. archive workshop editing views — without changing a single rendered byte of the site.
+**Goal:** Kill the CMS scroll fatigue — collapse every section, add drag-and-drop list summaries, de-duplicate the workshop DE/EN schema via Sveltia's native i18n — and (added 2026-07-18, post-spike) unify the two workshop rendering templates into one, abolishing the separate "archive" layout.
 
-**Architecture:** All work happens in `admin/config.yml` (the Sveltia schema), plus one contained change to `eleventy.config.js` + a one-time content migration for the workshop i18n restructure. Templates (`site/**`) are not touched. Verification is: YAML parse check + Sveltia local-repository smoke test + `_site/` build diff against a baseline snapshot.
+> **Amendment (2026-07-18, after Task 4's GO decision):** Task 5's original scope was CMS-schema-only (dedupe the field tree, leave both `site/workshop.njk` and `site/_includes/partials/workshop-course-series.njk` rendering as before). The owner decided instead to **merge the two templates into one**, adopt the sitewide live DE/EN toggle (`data-de`/`data-en` + `js/i18n.js`) for all workshop content instead of the current single-locale-server-render, and selectively generalize a few of the archive layout's sections (hero detail chips, optional video hero, multi-item testimonials, multi-person facilitators, optional FAQ) into the standard template. Task 6 (splitting Workshops/Workshop-Archiv editing views) is **superseded and removed** — see "Deferred / rejected" for why. This is a bigger, riskier change than the rest of this plan: it touches templates (previously out of scope) and **rendered output will change** for Bewegungsrevolution specifically (see the updated Global Constraints below).
+
+**Architecture:** Most work happens in `admin/config.yml` (the Sveltia schema). Task 5 additionally touches `eleventy.config.js`, `site/workshop.njk`, and deletes `site/_includes/partials/workshop-course-series.njk` — a deliberate, scoped exception to "templates are not touched," approved 2026-07-18. Verification is: YAML parse check + Sveltia local-repository smoke test + `_site/` build diff against a baseline snapshot, **except for the workshop template changes in Task 5**, where a byte-diff isn't a meaningful check at all — switching from single-locale server-render to dual `data-de`/`data-en` markup changes the raw HTML for *every* workshop, including Cellular Touch, even though nothing a visitor sees should change for it. Task 5 is verified by manual visual review instead: Cellular Touch's rendered appearance (initial language, hero, all sections, layout) should look and behave like today's page; Bewegungsrevolution's is expected to visibly change (new template, some content intentionally dropped) and is reviewed for acceptability rather than equivalence.
 
 **Tech Stack:** Sveltia CMS 0.171.1 (self-hosted, pinned at `admin/sveltia-cms-0.171.1.js`), Eleventy 11ty (Nunjucks), js-yaml, GitHub Pages deploy from `production`.
 
@@ -12,11 +14,11 @@
 
 - Branch: **`production`** — verify `git branch --show-current` prints `production` before every task. Never base work on `main`.
 - Commit **with explicit pathspec only** (`git commit path -m "..."`), never bare `git commit`.
-- `css/styles.css` is never edited; no new CSS files; no inline `style="..."` attributes.
-- Rendered output must stay identical: after any task that touches `content/` or `eleventy.config.js`, `_site/` must diff clean against the baseline (excluding `_site/admin/`, which mirrors the config we're editing).
+- `css/styles.css` is never edited; no new CSS files; no inline `style="..."` attributes. (Task 5's video-hero addition reuses classes that already exist in `css/styles.css` from the current Bewegungsrevolution page — verified 2026-07-18 — so this holds without exception.)
+- Rendered output must stay identical for every task **except Task 5's workshop template unification**: after any other task that touches `content/` or `eleventy.config.js`, `_site/` must diff clean against the baseline (excluding `_site/admin/`, which mirrors the config we're editing). Task 5 cannot use a byte-diff at all (see Architecture above) — it's verified by manual visual review: Cellular Touch should look/behave like today's page, Bewegungsrevolution is expected to visibly change.
 - Schema before templates: templates conform to schema, never invent variables not in the schema.
-- Sveltia stays pinned at 0.171.1. All features used here were verified present in the pinned bundle (`minimize_collapsed`, `divider`, `thumbnail`, `relation`, variable `types`). Do **not** upgrade the bundle as part of this work.
-- `worker/`, `worker-kontakt/`, `worker-auth/` are out of scope. `js/i18n.js` is out of scope (client-side DE/EN toggle is unrelated to the CMS backend).
+- Sveltia stays pinned at 0.171.1. Do **not** upgrade the bundle as part of this work. Note: `divider` is **not** a real field-widget type in this pinned bundle (confirmed during Task 3 — it's a collection-list-level config key only); Task 3 omitted it rather than using it.
+- `worker/`, `worker-kontakt/`, `worker-auth/` are out of scope. `js/i18n.js` itself (the toggle mechanism/logic) is out of scope and not modified — but as of the 2026-07-18 amendment, workshop templates now **produce** `data-de`/`data-en` markup that `js/i18n.js` toggles, the same pattern already used by `index.html`, `team.html`, etc.
 - The Wurzel-tier `60+`/`50+` mismatch on mitmachen stays as-is.
 
 ---
@@ -27,7 +29,7 @@
 
 1. **Zero collapse/summary configuration.** Every `object` and `list` renders fully expanded → the "endless vertical column" the owner complained about.
 2. **The `workshops` collection duplicates its entire field tree** under `de:` (lines ~670–883) and `en:` (lines ~884–1097) instead of using Sveltia i18n. The content files (`content/workshops/*.yaml`) already store `de:`/`en:` top-level keys — exactly the shape Sveltia's `structure: single_file` i18n writes — so native i18n is within reach.
-3. **Archive-only sections pollute every workshop form.** The `course_series` layout uses `quote, testimonials, team, faq, archive_cta, funded_by, footer`; the `standard` layout uses `practice, info, image_band, facilitator, testimonial`. Verified against `site/workshop.njk` and `site/_includes/partials/workshop-course-series.njk`, and against the two content files (cellular-touch = standard sections only, bewegungsrevolution = archive sections only). Both variants share `card, meta, nav, hero, research`.
+3. ~~**Archive-only sections pollute every workshop form.**~~ **Superseded 2026-07-18:** the original plan was to keep both templates and split the *editing* views (Task 6). The owner instead chose to unify the two templates and generalize a curated subset of the archive layout's sections into the standard one — see the new decision row below. (Historical note, still accurate as of 2026-07-17: the `course_series` layout used `quote, testimonials, team, faq, archive_cta, funded_by, footer`; `standard` used `practice, info, image_band, facilitator, testimonial`; both shared `card, meta, nav, hero, research`.)
 4. **`meta` (SEO) is the first field on every page** — editors scroll past it every time.
 
 ## Decisions (including what we're NOT doing, and why)
@@ -35,10 +37,11 @@
 | Gemini recommendation | Decision | Reason |
 |---|---|---|
 | Collapsible repeaters + dynamic summaries | ✅ Do (Tasks 2, 3, 5) | Pure config win, zero migration risk. |
-| Tabs / sidebar layout | ✅ Emulate (Tasks 2, 3, 5) | Sveltia has no tabs. Collapsed section objects + `divider` widgets + moving SEO last gives the "TOC of sections" feel. |
-| De-duplicate DE/EN via native i18n | ✅ Do, gated on a verification spike (Tasks 4, 5) | Halves the workshop schema and gives editors Sveltia's locale switcher instead of two giant stacked objects. Gated because the exact YAML shape Sveltia writes for `single_file` + non-i18n fields must be frozen first (same "schema contract" discipline as the original migration brief). |
-| Split editing views (standard vs archive workshops) | ✅ Do (Task 6) | Removes ~7 irrelevant sections from each form via Decap-compatible `filter` on two collections over the same folder. |
-| Facilitators/People relation collection | ❌ Skip | Verified: the same two people have **intentionally different** roles/bios on team.yaml ("Gründer", association-level bio) vs montagskurs.yaml (course-level bio). This is contextual copy, not duplication — a single source of truth would destroy it. Only name/image/alt are shared (3 lines per person, 2 people, ~yearly churn). Not worth a collection + loader filter + template changes. Revisit if guest facilitators become frequent. |
+| Tabs / sidebar layout | ✅ Emulate (Tasks 2, 3, 5) | Sveltia has no tabs. Collapsed section objects + moving SEO last gives the "TOC of sections" feel. (Not `divider` widgets — confirmed during Task 3 that `widget: divider` isn't a real field type in the pinned bundle; omitted there.) |
+| De-duplicate DE/EN via native i18n | ✅ Do, gated on a verification spike (Tasks 4, 5) | Halves the workshop schema and gives editors Sveltia's locale switcher instead of two giant stacked objects. Gated because the exact YAML shape Sveltia writes for `single_file` + non-i18n fields must be frozen first (same "schema contract" discipline as the original migration brief). **Spike ran 2026-07-18, decision: GO** — see "Spike results (Task 4)" below. |
+| ~~Split editing views (standard vs archive workshops)~~ | ❌ **Superseded 2026-07-18, Task 6 removed** | Was: two `filter`-ed collections over one folder so standard/archive editors don't see each other's sections. No longer needed once the two *templates* are unified (see next row) — there's no more standard/archive distinction to filter on; every workshop just has some optional sections filled in or not. |
+| **(2026-07-18) Unify `workshop.njk` and `workshop-course-series.njk` into one template; adopt sitewide live DE/EN toggle for workshop content** | ✅ Do (Task 5) | Owner's call: the "archive" concept (a one-off template forked off when Bewegungsrevolution was migrated from a standalone static page) isn't worth permanently maintaining two rendering paths for one historical program. Discriminating pick of what generalizes: hero detail chips (`hero.details`), optional video hero, testimonials-as-list (1-to-many), facilitators-as-list (1-to-many), optional FAQ section all get promoted into the standard template — verified 2026-07-18 that the video-hero CSS already exists sitewide, so this is low-risk. The quote-divider section, "archive CTA," and funded-by logos are judged one-off flourishes for that specific program and are **not** generalized — their data is dropped from Bewegungsrevolution's content during migration. Bilingual mechanism also unifies: single-locale-server-render is replaced by the sitewide `data-de`/`data-en` live-toggle pattern for all workshops; mono-lingual (`de_only`/`en_only`) workshops get a template-computed "German only"/"English only" badge shown when the visitor's toggle state doesn't match the authored language, rather than silently showing untranslated text. |
+| Facilitators/People relation collection | ❌ Skip | Verified: the same two people have **intentionally different** roles/bios on team.yaml ("Gründer", association-level bio) vs montagskurs.yaml (course-level bio). This is contextual copy, not duplication — a single source of truth would destroy it. Only name/image/alt are shared (3 lines per person, 2 people, ~yearly churn). Not worth a collection + loader filter + template changes. Revisit if guest facilitators become frequent. (Still holds after the 2026-07-18 amendment — the new `facilitators` list field is per-workshop content, not a cross-page relation.) |
 | Category taxonomy for tags | ❌ Skip | Card tags are 1–2 short styled labels per workshop; a taxonomy collection adds indirection with no reuse payoff at this scale. |
 | Variable-type page builder (`types`) | ❌ Skip | The pages are fixed-design (hand-tuned section order, accent classes, animation delays baked into templates). Letting editors add/reorder/remove sections would break design integrity and require rewriting every template as a block loop plus migrating all content. Editors edit copy, not layout — by design. |
 
@@ -454,21 +457,23 @@ git commit docs/superpowers/plans/2026-07-18-sveltia-backend-rework.md -m "docs:
 
 ---
 
-### Task 5 (GO branch): Workshops collection rewrite — native i18n, one field tree
+### Task 5 (GO branch): Workshops collection rewrite + template unification — native i18n, one field tree, one template
 
-Replaces the duplicated `de:`/`en:` schema trees (~430 lines) with one i18n-annotated tree (~200 lines), applies collapse/summary patterns, moves SEO last, migrates the two content files, and teaches the Eleventy loader the new head-field location.
+Replaces the duplicated `de:`/`en:` schema trees (~430 lines) with one i18n-annotated tree, applies collapse/summary patterns, moves SEO last, migrates the two content files, teaches the Eleventy loader the new head-field location — **and** (2026-07-18 amendment) merges `site/workshop.njk` and `site/_includes/partials/workshop-course-series.njk` into one template, deletes the archive partial, adopts the sitewide live DE/EN toggle for all workshop content, and generalizes a curated subset of the archive layout's sections into the standard one.
 
-**If Task 4 recorded NO-GO, skip to Task 5-ALT instead.**
+**If Task 4 recorded NO-GO, skip to Task 5-ALT instead** (5-ALT predates this amendment and does not include the template unification — if NO-GO, re-scope the template work separately before proceeding with it).
 
 **Files:**
-- Modify: `admin/config.yml` (replace the whole `workshops` collection, lines ~640–1097)
+- Modify: `admin/config.yml` (replace the whole `workshops` collection)
 - Create: `scripts/migrate-workshops-i18n.js`
-- Modify: `eleventy.config.js` (`loadWorkshopContent`, lines ~255–304)
+- Modify: `eleventy.config.js` (`loadWorkshopContent`)
 - Modify: `content/workshops/cellular-touch.yaml`, `content/workshops/bewegungsrevolution.yaml` (via the script)
+- Modify: `site/workshop.njk` (major rewrite — see Step 6)
+- Delete: `site/_includes/partials/workshop-course-series.njk` (see Step 7)
 
 **Interfaces:**
-- Consumes: frozen sample from Task 4 — if canary (b) said non-i18n fields stay **top-level**, skip the file migration entirely (files already match) and only do Steps 1, 4, 5, 6.
-- Produces: workshop content files where head fields live under `de:`; `loadWorkshopContent` reading head fields from either location (`raw[key] ?? de[key]`). Task 6 builds on this collection definition.
+- Consumes: frozen sample from Task 4 (canary (b): non-i18n fields land under `de:` — the migration script always reshapes accordingly, no top-level branch needed).
+- Produces: workshop content files where head fields live under `de:`, content sections reshaped for the unified template (`facilitators`/`testimonials`/`faq` promoted to shared, singular `facilitator`/`testimonial` and `layout_variant`/`quote`/`archive_cta`/`funded_by`/`footer` retired); one `workshop.njk` rendering every workshop via the sitewide `data-de`/`data-en` toggle. Task 6 is removed (see Global Constraints amendment and "Deferred / rejected") — nothing downstream consumes this task's output.
 
 - [ ] **Step 1: Replace the `workshops` collection in `admin/config.yml`**
 
@@ -483,7 +488,7 @@ Replace everything from `- name: workshops` to the end of the file with:
     format: yaml
     identifier_field: slug
     slug: '{{slug}}'
-    summary: '{{fields.card.title}}'   # remove this line if spike canary (e) was "no"
+    summary: '{{fields.card.title}}'
     i18n:
       structure: single_file
       locales: [de, en]
@@ -501,14 +506,7 @@ Replace everything from `- name: workshops` to the end of the file with:
           - { label: Englisch, value: en_only }
           - { label: Deutsch & Englisch, value: bilingual }
         default: de_only
-      - name: layout_variant
-        label: Layout
-        widget: select
-        i18n: false
-        options:
-          - { label: Standard-Workshop, value: standard }
-          - { label: Archivierter Kursblock, value: course_series }
-        default: standard
+        hint: 'Bei "nur Deutsch"/"nur Englisch" zeigt die jeweils andere Sprachversion der Seite einen Hinweis statt einer Übersetzung.'
       - { name: status, label: Status, widget: select, options: [draft, upcoming, current, past], default: upcoming, i18n: false }
       - { name: detail_page, label: Detailseite veröffentlichen, widget: boolean, default: true, i18n: false, hint: 'Die Seite wird erst gebaut, wenn SEO, Hero, Praxis-Intro und Info-Karte ausgefüllt sind; bis dahin erscheint nur die Programm-Karte.' }
       - { name: start_date, label: Startdatum, widget: datetime, i18n: false }
@@ -562,7 +560,7 @@ Replace everything from `- name: workshops` to the end of the file with:
           - { name: cta_label, label: Button, widget: string, required: false, i18n: true }
           - { name: cta_href, label: Button-Link, widget: string, required: false, i18n: true }
           - { name: cta_note, label: Button-Hinweis, widget: text, required: false, i18n: true }
-          - { name: video, label: Video, widget: file, required: false, i18n: true }
+          - { name: video, label: 'Video (optional — falls leer, wird die Bildkombination unten verwendet)', widget: file, required: false, i18n: true }
           - { name: video_poster, label: Video-Standbild, widget: image, required: false, i18n: true }
           - name: details
             label: Eckdaten
@@ -658,52 +656,8 @@ Replace everything from `- name: workshops` to the end of the file with:
           - { name: text, label: Text, widget: text, required: false, i18n: true }
           - { name: image, label: Bild, widget: image, required: false, i18n: true }
           - { name: alt, label: Alt-Text, widget: string, required: false, i18n: true }
-      - name: facilitator
+      - name: facilitators
         label: Leitung
-        widget: object
-        collapsed: true
-        required: false
-        i18n: true
-        fields:
-          - { name: label, label: Label, widget: string, required: false, i18n: true }
-          - { name: name, label: Name, widget: string, required: false, i18n: true }
-          - { name: image, label: Bild, widget: image, required: false, i18n: true }
-          - { name: image_alt, label: Bild Alt-Text, widget: string, required: false, i18n: true }
-          - { name: role, label: Rolle, widget: string, required: false, i18n: true }
-          - { name: bio, label: Bio, widget: text, required: false, i18n: true }
-      - name: testimonial
-        label: Zitat
-        widget: object
-        collapsed: true
-        required: false
-        i18n: true
-        fields:
-          - { name: quote, label: Zitat, widget: text, required: false, i18n: true }
-          - { name: author, label: 'Autor:in', widget: string, required: false, i18n: true }
-      # ── Nur Archiv-Layout (Kursblock) ────────────────────────
-      - { name: quote, label: Archiv-Zitat, widget: text, required: false, i18n: true }
-      - name: testimonials
-        label: Feedback (Archiv)
-        widget: object
-        collapsed: true
-        required: false
-        i18n: true
-        fields:
-          - { name: label, label: Label, widget: string, required: false, i18n: true }
-          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
-          - name: items
-            label: Zitate
-            widget: list
-            collapsed: true
-            minimize_collapsed: true
-            summary: '{{fields.author}}'
-            required: false
-            i18n: true
-            fields:
-              - { name: quote, label: Zitat, widget: text, i18n: true }
-              - { name: author, label: Name, widget: string, i18n: true }
-      - name: team
-        label: Team (Archiv)
         widget: object
         collapsed: true
         required: false
@@ -725,8 +679,28 @@ Replace everything from `- name: workshops` to the end of the file with:
               - { name: alt, label: Alt-Text, widget: string, i18n: true }
               - { name: role, label: Rolle, widget: string, i18n: true }
               - { name: bio, label: Bio, widget: text, i18n: true }
+      - name: testimonials
+        label: Stimmen
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: label, label: Label, widget: string, required: false, i18n: true }
+          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
+          - name: items
+            label: Zitate
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.author}}'
+            required: false
+            i18n: true
+            fields:
+              - { name: quote, label: Zitat, widget: text, i18n: true }
+              - { name: author, label: 'Autor:in', widget: string, i18n: true }
       - name: faq
-        label: FAQ (Archiv)
+        label: 'FAQ (optional)'
         widget: object
         collapsed: true
         required: false
@@ -745,36 +719,6 @@ Replace everything from `- name: workshops` to the end of the file with:
             fields:
               - { name: q, label: Frage, widget: string, i18n: true }
               - { name: a, label: Antwort, widget: text, i18n: true }
-      - name: archive_cta
-        label: CTA (Archiv)
-        widget: object
-        collapsed: true
-        required: false
-        i18n: true
-        fields:
-          - { name: label, label: Label, widget: string, required: false, i18n: true }
-          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
-          - { name: text, label: Text, widget: text, required: false, i18n: true }
-          - { name: button, label: Button, widget: string, required: false, i18n: true }
-          - { name: href, label: Link, widget: string, required: false, i18n: true }
-      - name: funded_by
-        label: Förderung (Archiv)
-        widget: object
-        collapsed: true
-        required: false
-        i18n: true
-        fields:
-          - { name: label, label: Label, widget: string, required: false, i18n: true }
-          - { name: image, label: Logo, widget: image, required: false, i18n: true }
-          - { name: alt, label: Alt-Text, widget: string, required: false, i18n: true }
-      - name: footer
-        label: Footer-Sonderfall (Archiv)
-        widget: object
-        collapsed: true
-        required: false
-        i18n: true
-        fields:
-          - { name: connect_heading, label: Überschrift Verbinden, widget: string, required: false, i18n: true }
       # ── SEO zuletzt ──────────────────────────────────────────
       - name: meta
         label: 'SEO & Vorschau (zuletzt prüfen)'
@@ -792,24 +736,56 @@ Replace everything from `- name: workshops` to the end of the file with:
           - { name: og_image_height, label: Bildhöhe, widget: number, required: false, value_type: int, i18n: true }
 ```
 
+Compared to the pre-amendment draft: `layout_variant` is gone (no more second template to route to); the standalone `facilitator`/`testimonial` objects are gone, replaced by the promoted `facilitators`/`testimonials` (both now list-based, 1-to-many); `faq` is promoted from archive-only to shared-optional; `quote` (Archiv-Zitat), `archive_cta`, `funded_by`, and `footer` (connect_heading special case) are dropped entirely — judged one-off flourishes for the retired archive layout, not worth generalizing (their content is dropped from Bewegungsrevolution's file in Step 3).
+
 Parse check: `node -e "require('js-yaml').load(require('fs').readFileSync('admin/config.yml','utf8'));console.log('OK')"` → `OK`.
 
 - [ ] **Step 2: Write the content migration script**
 
-Only needed if spike canary (b) said non-i18n fields live **under `de:`**. Create `scripts/migrate-workshops-i18n.js`:
+Create `scripts/migrate-workshops-i18n.js`:
 
 ```js
 // One-time migration: move workshop head fields (slug, status, dates, …)
 // from the top level into the default locale block, matching the shape
-// Sveltia's single_file i18n writes (frozen in the 2026-07-18 spike).
+// Sveltia's single_file i18n writes (frozen in the 2026-07-18 spike). Also
+// reshapes content for the unified template (2026-07-18 amendment):
+// facilitator → facilitators (list), team → facilitators, testimonial →
+// testimonials (list); drops layout_variant/quote/archive_cta/funded_by/footer,
+// retired along with the archive layout.
 const fs = require("node:fs");
 const path = require("node:path");
 const yaml = require("js-yaml");
 
 const HEAD_KEYS = [
-  "slug", "language_mode", "layout_variant", "status", "detail_page",
+  "slug", "language_mode", "status", "detail_page",
   "start_date", "sort_order", "registration_url",
 ];
+const DROPPED_LOCALE_KEYS = ["quote", "archive_cta", "funded_by", "footer"];
+
+function reshapeLocale(locale) {
+  if (!locale) return locale;
+  const out = { ...locale };
+  for (const key of DROPPED_LOCALE_KEYS) delete out[key];
+  if (out.facilitator && !out.facilitators) {
+    const f = out.facilitator;
+    out.facilitators = {
+      label: f.label || "",
+      heading: "",
+      members: [{ name: f.name, image: f.image, alt: f.image_alt, role: f.role, bio: f.bio }],
+    };
+    delete out.facilitator;
+  }
+  if (out.team && !out.facilitators) {
+    out.facilitators = out.team;
+    delete out.team;
+  }
+  if (out.testimonial && !out.testimonials) {
+    const t = out.testimonial;
+    out.testimonials = { label: "", heading: "", items: [{ quote: t.quote, author: t.author }] };
+    delete out.testimonial;
+  }
+  return out;
+}
 
 const dir = path.join(__dirname, "..", "content", "workshops");
 for (const filename of fs.readdirSync(dir)) {
@@ -817,25 +793,17 @@ for (const filename of fs.readdirSync(dir)) {
   const file = path.join(dir, filename);
   // CORE_SCHEMA keeps dates like `2026-08-08` as plain strings.
   const data = yaml.load(fs.readFileSync(file, "utf8"), { schema: yaml.CORE_SCHEMA });
-  if (!HEAD_KEYS.some((key) => key in data)) {
-    console.log(`skip (already migrated): ${filename}`);
-    continue;
-  }
   const de = {};
   for (const key of HEAD_KEYS) {
     if (key in data) de[key] = data[key];
   }
-  // layout_variant must be explicit for Task 6's filtered views.
-  if (de.layout_variant === undefined) de.layout_variant = "standard";
-  Object.assign(de, data.de || {});
+  Object.assign(de, reshapeLocale(data.de) || {});
   const out = { de };
-  if (data.en) out.en = data.en;
+  if (data.en) out.en = reshapeLocale(data.en);
   fs.writeFileSync(file, yaml.dump(out, { lineWidth: -1, noRefs: true, schema: yaml.CORE_SCHEMA }));
   console.log(`migrated: ${filename}`);
 }
 ```
-
-If canary (b) said fields stay **top-level**, skip this script but still add `layout_variant: standard` to `content/workshops/cellular-touch.yaml` by hand (one line after `slug:`) — Task 6's filter needs it explicit.
 
 - [ ] **Step 3: Run the migration**
 
@@ -843,11 +811,11 @@ If canary (b) said fields stay **top-level**, skip this script but still add `la
 node scripts/migrate-workshops-i18n.js
 ```
 
-Expected: `migrated: bewegungsrevolution.yaml`, `migrated: cellular-touch.yaml`. Inspect `git diff content/workshops/cellular-touch.yaml` — head keys now sit under `de:`, the `en:` block is unchanged apart from formatting.
+Expected: `migrated: bewegungsrevolution.yaml`, `migrated: cellular-touch.yaml`. Inspect `git diff content/workshops/cellular-touch.yaml` and `content/workshops/bewegungsrevolution.yaml` — head keys now sit under `de:`; `facilitator`→`facilitators`, `team`→`facilitators`, `testimonial`→`testimonials` reshaped correctly; `quote`/`archive_cta`/`funded_by`/`footer` are gone from Bewegungsrevolution's file. This is a deliberate, one-way content change (not a formatting-only churn like earlier tasks) — review the diff carefully before committing.
 
 - [ ] **Step 4: Update `loadWorkshopContent` in `eleventy.config.js`**
 
-Replace the `.map((filename) => { ... })` body (currently lines ~262–292) with:
+Read the current function fully before editing (it's referenced here as it stood before this task; line numbers will have shifted). Update the `.map((filename) => { ... })` body:
 
 ```js
     .map((filename) => {
@@ -857,7 +825,7 @@ Replace the `.map((filename) => { ... })` body (currently lines ~262–292) with
       // Head fields live at the top level (legacy shape) or under the default
       // locale (Sveltia single_file i18n) — accept both.
       const HEAD_KEYS = [
-        "slug", "language_mode", "layout_variant", "status", "detail_page",
+        "slug", "language_mode", "status", "detail_page",
         "start_date", "sort_order", "registration_url",
       ];
       const head = {};
@@ -871,7 +839,6 @@ Replace the `.map((filename) => { ... })` body (currently lines ~262–292) with
         delete enRaw[key];
       }
       const slug = normalizeSlug(head.slug || path.basename(filename, ".yaml"));
-      const layoutVariant = head.layout_variant || "standard";
       const languageMode = head.language_mode || "bilingual";
       const preferred = languageMode === "en_only" ? enRaw : deRaw;
       const alternate = languageMode === "en_only" ? deRaw : enRaw;
@@ -880,11 +847,10 @@ Replace the `.map((filename) => { ... })` body (currently lines ~262–292) with
       const en = deepMerge(fallback, enRaw);
       const primaryLocale = languageMode === "en_only" ? "en" : "de";
       const primaryData = primaryLocale === "en" ? en : de;
-      const hasDetailPage = head.detail_page !== false && head.status !== "draft" && hasWorkshopDetailContent(primaryData, layoutVariant);
+      const hasDetailPage = head.detail_page !== false && head.status !== "draft" && hasWorkshopDetailContent(primaryData);
       return {
         ...head,
         slug,
-        layout_variant: layoutVariant,
         language_mode: languageMode,
         has_de: languageMode !== "en_only",
         has_en: languageMode !== "de_only",
@@ -898,35 +864,70 @@ Replace the `.map((filename) => { ... })` body (currently lines ~262–292) with
     })
 ```
 
+The only functional change from before this amendment: `layout_variant` is dropped everywhere (no longer read, no longer returned) since there's one template now. `de`/`en` are unchanged — both were already full merged-locale trees (not single-locale slices), which is exactly what the unified template needs for the `data-de`/`data-en` toggle (Step 6 reads `workshop.de.*`/`workshop.en.*` directly, the same way `workshop-course-series.njk` already did). **Check `hasWorkshopDetailContent`'s current signature** — it takes a `layoutVariant` argument today; since there's only one layout, drop that parameter and adjust whatever section-list check it does internally (read its current body first, this plan doesn't have it captured verbatim).
+
 (The trailing `.sort(...)` and the `return { all, listed, pages }` stay unchanged — they read `start_date`, `sort_order`, `status`, which `...head` provides.)
 
-- [ ] **Step 5: Verify the build is byte-identical**
+- [ ] **Step 5: Verify the loader change in isolation**
 
 ```bash
-npm run build && diff -r -x admin _site "$BASE" && echo BUILD-IDENTICAL
+npm run build && diff -r -x admin _site "$BASE"
 ```
 
-Expected: `BUILD-IDENTICAL`. If not, the diff pinpoints which field the loader lost — fix the loader, not the templates.
+At this point (schema + content migrated, loader updated, but `workshop.njk` not yet touched) expect this diff to be **non-empty** — `layout_variant` is gone from the data but the *template* still checks `workshop.layout_variant == "course_series"` to route to the archive partial, so Bewegungsrevolution will silently fall through to the standard branch with half-migrated data. This is expected and transient; do not try to make it clean here — Step 6 replaces the template next. (This differs from every other task in this plan, where a non-empty diff mid-task means something is broken — here it's expected because the template hasn't caught up yet.)
 
-- [ ] **Step 6: Verify in the local CMS, including a save round-trip**
+- [ ] **Step 6: Rewrite `site/workshop.njk` — one template, live DE/EN toggle**
 
-In `http://localhost:8081/admin/` → Workshops: entry list shows workshop titles (or slugs if nested summary was a no). Open Cellular Touch: one compact form — 8 head fields, then collapsed sections, SEO last; the DE/EN locale switcher appears at the top; EN pane shows the English card/meta/hero content. Press Save without changes, then:
+This is the highest-risk, most judgment-heavy step in the plan. Read both `site/workshop.njk` and `site/_includes/partials/workshop-course-series.njk` in full before starting (the latter is deleted in Step 7, but its markup is the source for everything reused here). Reuse its CSS classes and markup verbatim wherever possible — do not invent new classes (Global Constraint: `css/styles.css` is never edited; verified 2026-07-18 that all classes needed here already exist: `.detail-video-wrapper`, `.video-mute-btn`, `.icon-muted`/`.icon-unmuted`, `.workshop-hero-visual`, `.workshop-photo-main`/`.workshop-photo-inset`, `.workshop-visual-note`, `.detail-team-grid`, `.detail-testimonial-grid`, `.detail-faq-list`, all with responsive breakpoints already defined).
+
+Changes to make:
+1. **Remove the `{% if workshop.layout_variant == "course_series" %} {% include "partials/workshop-course-series.njk" %} {% else %} ... {% endif %}` branch entirely.** One body for every workshop.
+2. **Switch body content from single-locale to dual-locale rendering.** Keep `primaryLocale`/`primaryData` from the loader (already computed as `en` for `en_only`, `de` otherwise) — this decides which locale's text is the *initial* visible content. Set `{%- set de = workshop.de -%}{%- set en = workshop.en -%}{%- set primary = workshop.primary_locale == "en" and en or de -%}` and convert every body field reference from `t.section.field` to the `data-de`/`data-en` toggle pattern already used throughout `workshop-course-series.njk`, but with the **visible** text sourced from `primary.*` instead of always `de.*` (e.g. `<h1 data-de="{{ de.hero.heading_text | attr }}" data-en="{{ en.hero.heading_text | attr }}">{{ primary.hero.heading | safe }}</h1>`). **Decided 2026-07-18:** Cellular Touch (`en_only`) initializes to English, matching today's behavior; a `de_only` or `bilingual` workshop initializes to German, matching the sitewide default. The `data-de`/`data-en` attributes are unconditional either way — a visitor can still toggle.
+3. **Nav, footer, and `js/i18n.js`:** drop the `{% if workshop.language_mode == "en_only" %}` special-cased static-English nav/footer blocks and the `{% if workshop.language_mode != "en_only" %}` gate on loading `js/i18n.js`. Always use `{% include "partials/nav.njk" %}` and `{% include "partials/footer.njk" %}`, always load `js/i18n.js` — every workshop now behaves like the rest of the site (`index.html`, `team.html`, …), with the per-workshop initial-locale override from point 2 applied. **Verify before finalizing:** `js/i18n.js`'s stored language preference (`wc-lang` in `localStorage`) is sitewide, shared across every page — read `js/i18n.js` (out of scope to modify, but its behavior must be understood here) to confirm how it applies on page load. The per-workshop default in point 2 governs the server-rendered initial HTML (what a visitor with no stored preference yet sees, or what shows before JS runs) — confirm it doesn't fight a visitor's already-stored sitewide preference in some jarring way (e.g. page flashes German then swaps to English via JS) once `js/i18n.js` runs.
+4. **Hero visual — optional video:** `{% if de.hero.video or en.hero.video %}` render the video markup (copied from `workshop-course-series.njk`'s `.detail-video-wrapper` block, including the mute-toggle button and its `<script>`) `{% else %}` render the current image-duo markup (`.workshop-hero-visual` / `.workshop-photo-main` / `.workshop-photo-inset` / `.workshop-visual-note`, converted to `data-de`/`data-en` for alt text) `{% endif %}`. Fix the mute button's hardcoded `aria-label="Ton ein/aus"` to `data-aria-de="Ton ein/aus"` / `data-aria-en="Toggle sound"` (this repo's convention for translated accessible names, per `js/i18n.js`'s `data-aria-de`/`data-aria-en` handling).
+5. **Hero detail chips:** add the `hero.details` loop (copied from `workshop-course-series.njk`) unconditionally, iterating `primary.hero.details` (see point 2) with the alternate locale's item looked up by index for the `data-de`/`data-en` pair, same as `workshop-course-series.njk` already does for its own fields. Verify the loader/template don't error when a workshop (e.g. Cellular Touch) has no `hero.details` authored — confirm it resolves to an empty list, not `undefined`.
+6. **Facilitators:** replace the single-facilitator block with `{% for member in primary.facilitators.members %}...{% endfor %}` (index-matched alternate-locale lookup for the toggle attrs, reuse `workshop-course-series.njk`'s team-grid markup/classes). Confirm `.detail-team-grid` etc. look right with exactly one member (Cellular Touch's case after migration) as well as several (a future multi-facilitator workshop).
+7. **Testimonials:** replace the single-testimonial block with `{% for item in primary.testimonials.items %}...{% endfor %}` (same index-matched pattern, reuse the archive partial's testimonial-grid markup/classes).
+8. **FAQ:** new optional section, `{% if primary.faq.items and primary.faq.items.length %}...{% endif %}`, copied verbatim from the archive partial.
+9. **Language-availability badge:** for `workshop.language_mode != "bilingual"`, add a small `data-de`/`data-en` badge near the hero badge reading "Nur auf Deutsch" / "German only" (or the en_only equivalent) — shown so a visitor toggled to the language the workshop *wasn't* authored in sees an honest note instead of silently-untranslated (fallback) text. Exact copy and placement are a judgment call — verify visually once the hero markup is in place, and check whether the same badge should also appear on the workshop's card summary on the programme listing page (not just the detail page) for consistency.
+
+- [ ] **Step 7: Delete the archive partial**
 
 ```bash
-npm run build && diff -r -x admin _site "$BASE" && echo ROUNDTRIP-OK
+git rm site/_includes/partials/workshop-course-series.njk
 ```
 
-Expected: `ROUNDTRIP-OK` (formatting may churn in `content/`, rendered output must not).
+- [ ] **Step 8: Verify — manual visual review, not a build diff**
 
-- [ ] **Step 7: Commit**
+A byte-diff against the baseline is not meaningful for this task (see the amended Global Constraints — the bilingual mechanism itself changed for every workshop). Instead:
+
+```bash
+npm run build
+```
+
+Expected: exits 0, no template errors. Then manually review in a browser (or, if none is available in this environment, read the generated `_site/cellular-touch.html` and `_site/bewegungsrevolution.html` directly):
+- **Cellular Touch:** should look and behave like the current live page — same hero image-duo (no video authored), same practice/info/research/image_band sections, one facilitator shown, one testimonial shown, no FAQ section (none authored), no language-availability badge inappropriately shown (it's `en_only`, so the badge should appear only when toggled to DE).
+- **Bewegungsrevolution:** video hero plays, hero detail chips show, multiple testimonials and multiple team members render via the new facilitators/testimonials lists, FAQ section renders. The quote-divider section, "archive CTA," and funded-by logo are gone (dropped by design) — confirm nothing looks broken or leaves an obvious visual gap where they used to be.
+
+- [ ] **Step 9: Verify in the local CMS, including a save round-trip**
+
+In `http://localhost:8081/admin/` → Workshops: entry list shows workshop titles. Open Cellular Touch: one compact form — 6 head fields (no more `layout_variant`), then collapsed sections, SEO last; the DE/EN locale switcher appears at the top. Press Save without changes, then re-run the Step 8 visual check — nothing should look different after a no-op save (content formatting may churn, rendered output must not).
+
+- [ ] **Step 10: Commit**
+
+Consider splitting into two commits (schema+migration+loader, then template) if that makes review easier — the plan's "commit with explicit pathspec" constraint applies to both either way:
 
 ```bash
 git commit admin/config.yml scripts/migrate-workshops-i18n.js eleventy.config.js content/workshops -m "cms: single i18n workshop schema replacing duplicated de/en trees"
+git commit site/workshop.njk -m "workshop: unify standard and archive templates, adopt live DE/EN toggle"
+git rm site/_includes/partials/workshop-course-series.njk && git commit -m "workshop: remove retired archive template"
 ```
 
 ---
 
 ### Task 5-ALT (NO-GO branch): collapse the existing dual-tree workshop schema
+
+**Moot — Task 4 recorded GO (2026-07-18), so this branch does not run.** Left in place for the historical record only. Note it also predates the template-unification amendment: if a future NO-GO situation ever revives this branch (e.g. an i18n structure change on a Sveltia upgrade), it would need its own pass to decide whether the unified-template work still applies on top of the dual-tree shape.
 
 Only if Task 4 recorded NO-GO. Keeps the manual `de:`/`en:` objects and file shape exactly as they are; removes the config duplication with a YAML anchor and applies the collapse patterns.
 
@@ -979,124 +980,11 @@ git commit admin/config.yml -m "cms: collapse and de-duplicate workshop schema (
 
 ---
 
-### Task 6: Split workshop editing views — "Workshops" vs "Workshop-Archiv"
+### Task 6: ~~Split workshop editing views~~ — REMOVED (2026-07-18)
 
-Two collections over the same `content/workshops` folder, filtered by `layout_variant`, so a standard workshop form never shows the seven archive sections and vice versa. Skip only the section groups; head fields and shared sections appear in both.
+**Superseded, do not implement.** This task existed to give standard and archive workshops separate CMS editing views (filtered on `layout_variant`) so editors of one type wouldn't see the other's irrelevant sections. Once Task 5's amendment unifies the *rendering* template and promotes `facilitators`/`testimonials`/`faq` to shared-optional fields for every workshop, there is no more standard/archive distinction left to filter on — every workshop is just "a workshop" with some optional sections filled in or not. Splitting the editing view would now be arbitrary (which workshops go in which collection?), not principled by a real content-shape difference.
 
-**Files:**
-- Modify: `admin/config.yml` (workshops collection → two filtered collections)
-
-**Interfaces:**
-- Consumes: Task 5's collection definition (or 5-ALT's) and spike canary (d) (unknown-field preservation).
-
-- [ ] **Step 1: Spike the filter against the migrated file shape (5 minutes, not committed)**
-
-Temporarily add `filter: { field: layout_variant, value: standard }` to the workshops collection, reload the local CMS, and confirm the entry list shows **only** Cellular Touch (i.e., the filter resolves `layout_variant` in its post-Task-5 location). If the list shows nothing, the filter can't see the field where it now lives — **stop, keep one unfiltered collection, revert, and record that in this plan file**; the collapsed archive sections from Task 5 remain the mitigation.
-
-- [ ] **Step 2: Split the collection**
-
-Convert the single `workshops` collection into two. Use YAML anchors so shared field blocks are written once — anchor each shared field in the first collection and alias it in the second:
-
-```yaml
-  - name: workshops
-    label: Workshops
-    folder: content/workshops
-    create: true
-    extension: yaml
-    format: yaml
-    identifier_field: slug
-    slug: '{{slug}}'
-    summary: '{{fields.card.title}}'
-    filter: { field: layout_variant, value: standard }
-    i18n: &workshops_i18n
-      structure: single_file
-      locales: [de, en]
-      default_locale: de
-      initial_locales: [de]
-    fields:
-      - &ws_slug { name: slug, label: Slug/URL, widget: string, i18n: false, hint: 'Beispiel: cellular-touch ergibt cellular-touch.html' }
-      - &ws_language_mode
-        name: language_mode
-        # ... (field exactly as in Task 5, with the anchor added)
-      - &ws_layout_variant
-        name: layout_variant
-        # ... (as in Task 5; hint: 'Auf "Archivierter Kursblock" stellen verschiebt den Eintrag ins Workshop-Archiv.')
-      - &ws_status { name: status, label: Status, widget: select, options: [draft, upcoming, current, past], default: upcoming, i18n: false }
-      - &ws_detail_page { name: detail_page, ... }      # as in Task 5
-      - &ws_start_date { name: start_date, ... }        # as in Task 5
-      - &ws_sort_order { name: sort_order, ... }        # as in Task 5
-      - &ws_registration_url { name: registration_url, ... }  # as in Task 5
-      - &ws_card
-        name: card
-        # ... (entire card object as in Task 5)
-      - &ws_nav
-        name: nav
-        # ... (as in Task 5)
-      - &ws_hero
-        name: hero
-        # ... (as in Task 5)
-      - name: practice
-        # ... (standard-only sections stay unanchored: practice, info, image_band, facilitator, testimonial)
-      - &ws_research
-        name: research
-        # ... (as in Task 5)
-      - &ws_meta
-        name: meta
-        # ... (as in Task 5, stays last)
-
-  - name: workshops_archiv
-    label: Workshop-Archiv
-    folder: content/workshops
-    create: false
-    extension: yaml
-    format: yaml
-    identifier_field: slug
-    slug: '{{slug}}'
-    summary: '{{fields.card.title}}'
-    filter: { field: layout_variant, value: course_series }
-    i18n: *workshops_i18n
-    fields:
-      - *ws_slug
-      - *ws_language_mode
-      - *ws_layout_variant
-      - *ws_status
-      - *ws_detail_page
-      - *ws_start_date
-      - *ws_sort_order
-      - *ws_registration_url
-      - *ws_card
-      - *ws_nav
-      - *ws_hero
-      - *ws_research
-      - name: quote
-        label: Archiv-Zitat
-        widget: text
-        required: false
-        i18n: true
-      # ... then the archive-only sections exactly as written in Task 5:
-      # testimonials, team, faq, archive_cta, funded_by, footer
-      - *ws_meta
-```
-
-Concretely: the standard view = Task 5's field list **minus** `quote, testimonials, team, faq, archive_cta, funded_by, footer`; the archive view = Task 5's list **minus** `practice, info, image_band, facilitator, testimonial`. Every field definition is Task 5's text verbatim — the anchors just avoid writing shared ones twice. (On the 5-ALT branch, apply the same split with the head fields top-level and the locale-object anchor from 5-ALT.)
-
-- [ ] **Step 3: Data-safety check (uses spike canary d)**
-
-If canary (d) said Sveltia **preserves** unknown fields on save: nothing further. If it **drops** them: confirm the current files don't mix variants (verified 2026-07-18: cellular-touch has zero archive sections, bewegungsrevolution has zero standard-only sections), and add this hint to both `layout_variant` fields so the constraint is visible to future editors/agents: `hint: 'Nicht zwischen Layouts wechseln, wenn bereits Inhalte für das andere Layout bestehen — Felder des jeweils anderen Layouts werden beim Speichern entfernt.'`
-
-- [ ] **Step 4: Verify**
-
-```bash
-node -e "require('js-yaml').load(require('fs').readFileSync('admin/config.yml','utf8'));console.log('OK')"
-```
-
-Local CMS: sidebar shows **Workshops** (Cellular Touch only) and **Workshop-Archiv** (Bewegungsrevolution only). Open each — the standard form has no archive sections; the archive form has no practice/info/facilitator sections. Save Cellular Touch once, then `npm run build && diff -r -x admin _site "$BASE"` → identical.
-
-- [ ] **Step 5: Commit**
-
-```bash
-git commit admin/config.yml -m "cms: split workshop editing into standard and archive views"
-```
+If a future need reintroduces a real content-shape split (e.g. a genuinely different kind of workshop with its own required fields), revisit the filtered-collections technique this task explored — the underlying Sveltia mechanism (`filter: { field: ..., value: ... }` on two collections over one folder, with YAML anchors to avoid duplicating shared fields) is sound and was validated in principle; it just doesn't apply to the standard-vs-archive axis anymore.
 
 ---
 
@@ -1110,25 +998,30 @@ git commit admin/config.yml -m "cms: split workshop editing into standard and ar
 
 Read `EDITING.md` first and update every section that describes the old editing experience. New content to cover (in the file's existing tone/language):
 - Sections are now collapsed — click a section header (Hero, Programm-Karte, …) to open it; "SEO & Vorschau" is always the last section.
-- Lists (Karten, Personen, FAQ, Stufen) show one compact row per item; drag rows to reorder, click to expand.
+- Lists (Karten, Personen, FAQ, Stufen, Zitate) show one compact row per item; drag rows to reorder, click to expand.
 - Workshops: DE/EN are edited via the language switcher at the top of the entry (GO branch) — not two separate blocks; EN can be enabled/disabled per workshop there. (On NO-GO: DE/EN remain two collapsible blocks.)
-- Workshops vs Workshop-Archiv: current workshops live under "Workshops"; archived course blocks under "Workshop-Archiv". Setting Layout to "Archivierter Kursblock" moves an entry to the archive view. Include the layout-switch data caveat if Task 6 Step 3 recorded that Sveltia drops unknown fields.
+- Workshops: one collection now (no more "Workshops" vs "Workshop-Archiv" — that split was removed, see Task 6). Every workshop can optionally have a video hero, multiple facilitators, multiple testimonials, and an FAQ section — fill in what applies, leave the rest empty.
+- Mono-lingual workshops (`language_mode` = nur Deutsch/nur Englisch): explain the language-availability badge visitors see when toggled to the language the workshop wasn't written in.
 
 - [ ] **Step 2: Update CLAUDE.md's site-architecture notes**
 
-Append to the "Site architecture" section:
+Append to the "Site architecture" section (adjust to match whatever Step 6 of Task 5 actually landed on for the open judgment calls — initial-locale-per-workshop behavior, badge placement):
 
 ```markdown
 - Workshop schema (post 2026-07 rework): `admin/config.yml` defines the
   workshop fields once with Sveltia i18n (`structure: single_file`); head
   fields (slug, status, dates, …) are stored under the default locale `de:`
   in `content/workshops/*.yaml`, and `loadWorkshopContent` in
-  `eleventy.config.js` accepts both the legacy top-level and the nested
-  location. Two filtered collections ("Workshops", "Workshop-Archiv") edit
-  the same folder, split by `layout_variant`.
+  `eleventy.config.js` reads them from there. One `workshop.njk` template
+  renders every workshop via the sitewide `data-de`/`data-en` live-toggle
+  pattern (`js/i18n.js`) — the separate archive template and the "Workshops"
+  vs "Workshop-Archiv" collection split have been retired. Mono-lingual
+  workshops show a template-computed language-availability badge instead of
+  untranslated fallback text when toggled to the language they weren't
+  authored in.
 ```
 
-(Adjust to match reality if Task 5-ALT or the Task 6 filter fallback was taken.)
+(Adjust to match reality if Task 5-ALT was taken instead of Task 5.)
 
 - [ ] **Step 3: Commit**
 
@@ -1140,11 +1033,13 @@ git commit EDITING.md CLAUDE.md -m "docs: describe reworked CMS editing experien
 
 ## Deferred / rejected (do not implement without a new decision)
 
-- **People/Facilitators relation collection** — bios are intentionally page-specific (verified team.yaml vs montagskurs.yaml, 2026-07-18). Revisit only if guest facilitators appear on 3+ pages.
+- **People/Facilitators relation collection** — bios are intentionally page-specific (verified team.yaml vs montagskurs.yaml, 2026-07-18). Revisit only if guest facilitators appear on 3+ pages. (Still holds after the 2026-07-18 template-unification amendment — `facilitators` is per-workshop list content, not a cross-page relation.)
 - **Variable-type page builder** — conflicts with the fixed-design templates; would require template block-loops + full content migration.
 - **Tag/category taxonomy** — over-modeling at current scale.
 - **Sveltia upgrade** past 0.171.1 — separate task if ever needed (new dist download + filename bump per `admin/index.html` comment).
+- **Task 6 (split workshop editing views)** — superseded 2026-07-18 by the template-unification amendment; see Task 6's section for why.
+- **Quote-divider section, "archive CTA," funded-by logos** (from the retired archive template) — judged one-off flourishes for Bewegungsrevolution specifically, not generalized into the unified template; their content is dropped during Task 5's migration. Revisit only if a future workshop has a similar grant-funded/multi-week-program shape and the specific sections seem worth reintroducing.
 
 ## Rollout note
 
-Each task is deployable on its own: config-only tasks (2, 3, 6) change nothing about the build; tasks 5's commit is atomic (schema + migration + loader together) so the CMS and the files never disagree on the shape. Pushing to `production` triggers the Pages deploy; the `_site` diff gate guarantees visitors see no change.
+Config-only tasks (2, 3) change nothing about the build; the `_site` diff gate guarantees visitors see no change from them. **Task 5 is the exception** (2026-07-18 amendment): it deliberately changes what visitors see on Bewegungsrevolution's page (new unified template, some archive-only content dropped) even though Cellular Touch should look unchanged. Keep Task 5's commits atomic per sub-part (schema+migration+loader as one, the template rewrite as another) so the CMS schema and content shape never disagree — but treat pushing Task 5 to `production` as a real, visible content/design change to Bewegungsrevolution's page, not a transparent backend refactor like the rest of this plan. Consider previewing it (local build review) before pushing, rather than relying on the usual diff-gate confidence.
