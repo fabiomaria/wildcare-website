@@ -6,22 +6,30 @@ pagination:
 permalink: "{{ workshop.href }}"
 ---
 {% from "partials/icon.njk" import icon %}
-{%- set t = workshop[workshop.primary_locale] -%}
+{%- set de = workshop.de -%}
+{%- set en = workshop.en -%}
+{%- if workshop.primary_locale == "en" -%}
+{%- set primary = en -%}
+{%- set alternate = de -%}
+{%- else -%}
+{%- set primary = de -%}
+{%- set alternate = en -%}
+{%- endif -%}
 <!DOCTYPE html>
 <html lang="{{ workshop.primary_locale }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ t.meta.title }}</title>
-    <meta name="description" content="{{ t.meta.description }}">
+    <title>{{ primary.meta.title }}</title>
+    <meta name="description" content="{{ primary.meta.description }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ t.meta.og_url or ('https://wildcare.space/' ~ workshop.href) }}">
+    <meta property="og:url" content="{{ primary.meta.og_url or ('https://wildcare.space/' ~ workshop.href) }}">
     <meta property="og:site_name" content="Wild Care">
-    <meta property="og:title" content="{{ t.meta.og_title }}">
-    <meta property="og:description" content="{{ t.meta.og_description }}">
-    <meta property="og:image" content="https://wildcare.space/{{ t.meta.og_image }}">
-    <meta property="og:image:width" content="{{ t.meta.og_image_width }}">
-    <meta property="og:image:height" content="{{ t.meta.og_image_height }}">
+    <meta property="og:title" content="{{ primary.meta.og_title }}">
+    <meta property="og:description" content="{{ primary.meta.og_description }}">
+    <meta property="og:image" content="https://wildcare.space/{{ primary.meta.og_image }}">
+    <meta property="og:image:width" content="{{ primary.meta.og_image_width }}">
+    <meta property="og:image:height" content="{{ primary.meta.og_image_height }}">
     <meta property="og:locale" content="{% if workshop.primary_locale == 'de' %}de_AT{% else %}en_US{% endif %}">
     {% if workshop.language_mode == "bilingual" %}
     <meta property="og:locale:alternate" content="{% if workshop.primary_locale == 'de' %}en_US{% else %}de_AT{% endif %}">
@@ -36,37 +44,10 @@ permalink: "{{ workshop.href }}"
 </head>
 <body>
 
-    {% if workshop.layout_variant == "course_series" %}
-    {% include "partials/workshop-course-series.njk" %}
-    {% else %}
-    {% if workshop.language_mode == "en_only" %}
-    <nav>
-        <div class="container nav-inner">
-            <a href="index.html" class="nav-logo">
-                Wild Care
-                <span class="breadcrumb">{{ t.nav.breadcrumb }}</span>
-            </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="team.html">About Us</a>
-                <a href="programm.html" class="active">Programme</a>
-                <a href="journal.html">Journal</a>
-                <a href="mitmachen.html">Get Involved</a>
-                <a href="kontakt.html" class="nav-cta">Come by</a>
-            </div>
-            <button class="nav-toggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
-    {% else %}
     {%- set navActive = "programm" -%}
-    {%- set navBreadcrumbDe = workshop.de.nav.breadcrumb -%}
-    {%- set navBreadcrumbEn = workshop.en.nav.breadcrumb -%}
+    {%- set navBreadcrumbDe = de.nav.breadcrumb -%}
+    {%- set navBreadcrumbEn = en.nav.breadcrumb -%}
     {% include "partials/nav.njk" %}
-    {% endif %}
 
     <!-- ================================
          HERO
@@ -77,31 +58,92 @@ permalink: "{{ workshop.href }}"
             <div class="detail-hero-grid">
 
                 <div class="detail-hero-content accent-terracotta fade-up">
-                    <div class="detail-badge">{{ t.hero.badge }}</div>
+                    <div class="detail-badge"
+                        data-de="{{ de.hero.badge | attr }}"
+                        data-en="{{ en.hero.badge | attr }}">{{ primary.hero.badge }}</div>
+{% if workshop.language_mode != "bilingual" %}
+{% if workshop.language_mode == "de_only" %}
+{%- set langNoteDe = "Nur auf Deutsch" -%}
+{%- set langNoteEn = "German only" -%}
+{% else %}
+{%- set langNoteDe = "Nur auf Englisch" -%}
+{%- set langNoteEn = "English only" -%}
+{% endif %}
+                    <p class="label"
+                        data-de="{{ langNoteDe | attr }}"
+                        data-en="{{ langNoteEn | attr }}">{% if workshop.primary_locale == "en" %}{{ langNoteEn }}{% else %}{{ langNoteDe }}{% endif %}</p>
+{% endif %}
 
-                    <h1>{{ t.hero.heading | safe }}</h1>
+{%- set headingTextDe = de.hero.heading_text -%}
+{%- set headingTextEn = en.hero.heading_text -%}
+                    <h1{% if headingTextDe and headingTextEn %}
+                        data-de="{{ headingTextDe | attr }}"
+                        data-en="{{ headingTextEn | attr }}"{% endif %}>{{ primary.hero.heading | safe }}</h1>
 
-                    <p class="detail-hero-subtitle">{{ t.hero.subtitle }}</p>
+                    <p class="detail-hero-subtitle"
+                        data-de="{{ de.hero.subtitle | attr }}"
+                        data-en="{{ en.hero.subtitle | attr }}">{{ primary.hero.subtitle }}</p>
 
+{% if primary.hero.details and primary.hero.details.length %}
+                    <div class="detail-hero-details">
+{%- for detail in primary.hero.details %}
+{%- set altDetail = alternate.hero.details[loop.index0] %}
+                        <div class="detail-hero-detail">
+                            {% if detail.icon == "calendar" %}<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>{% endif %}
+                            {% if detail.icon == "clock" %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>{% endif %}
+                            {% if detail.icon == "location" %}<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{% endif %}
+                            {% if detail.icon == "cost" %}<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>{% endif %}
+                            {% if altDetail and altDetail.text != detail.text %}<span
+                                data-de="{{ detail.text | attr }}"
+                                data-en="{{ altDetail.text | attr }}">{{ detail.text }}</span>{% else %}{{ detail.text }}{% endif %}
+                        </div>
+{% endfor %}
+                    </div>
+{% endif %}
 
                     <div class="detail-hero-cta">
-                        <a href="{{ workshop.registration_url }}" class="btn btn-primary">{{ t.hero.cta_label }}</a>
-                    
+                        <a href="{{ primary.hero.cta_href or workshop.registration_url }}" class="btn btn-primary"
+                            data-de="{{ de.hero.cta_label | attr }}"
+                            data-en="{{ en.hero.cta_label | attr }}">{{ primary.hero.cta_label }}</a>
+{% if primary.hero.cta_note %}
+                        <p class="detail-hero-note"
+                            data-de="{{ de.hero.cta_note | attr }}"
+                            data-en="{{ en.hero.cta_note | attr }}">{{ primary.hero.cta_note }}</p>
+{% endif %}
                     </div>
                 </div>
 
-                <div class="workshop-hero-visual fade-up delay-2" aria-label="{{ t.hero.visual_aria }}">
+{% if de.hero.video or en.hero.video %}
+                <div class="detail-video-wrapper fade-up delay-2">
+                    <video autoplay muted loop playsinline preload="metadata" poster="{{ primary.hero.video_poster }}">
+                        <source src="{{ primary.hero.video }}" type="video/mp4">
+                    </video>
+                    <button class="video-mute-btn" data-aria-de="Ton ein/aus" data-aria-en="Toggle sound" aria-label="{% if workshop.primary_locale == 'en' %}Toggle sound{% else %}Ton ein/aus{% endif %}" onclick="toggleMute(this)">
+                        <svg class="icon-muted" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                        <svg class="icon-unmuted" viewBox="0 0 24 24" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                    </button>
+                </div>
+{% else %}
+                <div class="workshop-hero-visual fade-up delay-2"
+                    data-aria-de="{{ de.hero.visual_aria | attr }}"
+                    data-aria-en="{{ en.hero.visual_aria | attr }}"
+                    aria-label="{{ primary.hero.visual_aria }}">
                     <figure class="workshop-photo-main">
-                        <img src="{{ t.hero.main_image }}" alt="{{ t.hero.main_alt }}">
+                        <img src="{{ primary.hero.main_image }}" alt="{{ primary.hero.main_alt }}">
                     </figure>
                     <figure class="workshop-photo-inset">
-                        <img src="{{ t.hero.inset_image }}" alt="{{ t.hero.inset_alt }}">
+                        <img src="{{ primary.hero.inset_image }}" alt="{{ primary.hero.inset_alt }}">
                     </figure>
                     <div class="workshop-visual-note">
-                        <span>{{ t.hero.note_title }}</span>
-                        <p>{{ t.hero.note_text }}</p>
+                        <span
+                            data-de="{{ de.hero.note_title | attr }}"
+                            data-en="{{ en.hero.note_title | attr }}">{{ primary.hero.note_title }}</span>
+                        <p
+                            data-de="{{ de.hero.note_text | attr }}"
+                            data-en="{{ en.hero.note_text | attr }}">{{ primary.hero.note_text }}</p>
                     </div>
                 </div>
+{% endif %}
 
             </div>
         </div>
@@ -111,27 +153,39 @@ permalink: "{{ workshop.href }}"
          INTRO + INFO
          ================================ -->
 
+{% if primary.practice or primary.info %}
     <section class="detail-about">
         <div class="container">
             <div class="detail-about-grid">
+{% if primary.practice %}
                 <div class="detail-about-text fade-up">
-                    <p class="label">{{ t.practice.label }}</p>
-                    <h2>{{ t.practice.heading }}</h2>
-                    {% for paragraph in t.practice.paragraphs %}
+                    <p class="label"
+                        data-de="{{ de.practice.label | attr }}"
+                        data-en="{{ en.practice.label | attr }}">{{ primary.practice.label }}</p>
+                    <h2
+                        data-de="{{ de.practice.heading | attr }}"
+                        data-en="{{ en.practice.heading | attr }}">{{ primary.practice.heading }}</h2>
+                    {% for paragraph in primary.practice.paragraphs %}
                     <p>{{ paragraph | safe }}</p>
                     {% endfor %}
                 </div>
-
+{% endif %}
+{% if primary.info %}
                 <div class="info-card fade-up delay-2">
-                    <div class="info-card-title">{{ t.info.title }}</div>
+                    <div class="info-card-title"
+                        data-de="{{ de.info.title | attr }}"
+                        data-en="{{ en.info.title | attr }}">{{ primary.info.title }}</div>
 
-                    {% for row in t.info.rows %}
+                    {% for row in primary.info.rows %}
+{%- set altRow = alternate.info.rows[loop.index0] %}
                     <div class="info-row">
                         <div class="info-row-icon">
                             {{ icon(row.icon) }}
                         </div>
                         <div class="info-row-content">
-                            <div class="info-row-label">{{ row.label }}</div>
+                            <div class="info-row-label"
+                                data-de="{{ row.label | attr }}"
+                                data-en="{{ altRow.label | attr }}">{{ row.label }}</div>
                             {% for value in row.values %}
                             <div class="info-row-value">{{ value | safe }}</div>
                             {% endfor %}
@@ -140,125 +194,197 @@ permalink: "{{ workshop.href }}"
 
                     {% endfor %}
                     <div class="info-card-cta">
-                        <a href="{{ workshop.registration_url }}" class="btn btn-primary" style="width: 100%; justify-content: center;">{{ t.info.cta_label }}</a>
+                        <a href="{{ workshop.registration_url }}" class="btn btn-primary" style="width: 100%; justify-content: center;"
+                            data-de="{{ de.info.cta_label | attr }}"
+                            data-en="{{ en.info.cta_label | attr }}">{{ primary.info.cta_label }}</a>
                     </div>
                 </div>
+{% endif %}
             </div>
         </div>
     </section>
+{% endif %}
 
     <!-- ================================
          RESEARCH FIELDS
          ================================ -->
 
+{% if primary.research %}
     <section>
         <div class="container">
             <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
-                <p class="label">{{ t.research.label }}</p>
-                <h2>{{ t.research.heading }}</h2>
+                <p class="label"
+                    data-de="{{ de.research.label | attr }}"
+                    data-en="{{ en.research.label | attr }}">{{ primary.research.label }}</p>
+                <h2
+                    data-de="{{ de.research.heading | attr }}"
+                    data-en="{{ en.research.heading | attr }}">{{ primary.research.heading }}</h2>
             </div>
 
             <div class="detail-card-grid">
-                {% for field in t.research.fields %}
+{%- for field in primary.research.fields %}
+{%- set altField = alternate.research.fields[loop.index0] %}
                 <div class="detail-card{% if field.highlighted %} highlighted{% endif %} fade-up delay-{{ ((loop.index0 % 3) + 1) }}">
-                    <p class="detail-card-number">{{ field.number }}</p>
-                    <h3>{{ field.title }}</h3>
-                    <p>{{ field.text }}</p>
+                    <p class="detail-card-number"
+                        data-de="{{ field.number | attr }}"
+                        data-en="{{ altField.number | attr }}">{{ field.number }}</p>
+                    <h3
+                        data-de="{{ field.title | attr }}"
+                        data-en="{{ altField.title | attr }}">{{ field.title }}</h3>
+                    <p
+                        data-de="{{ field.text | attr }}"
+                        data-en="{{ altField.text | attr }}">{{ field.text }}</p>
                 </div>
-
-                {% endfor %}
+{% endfor %}
             </div>
         </div>
     </section>
+{% endif %}
 
     <!-- ================================
          IMAGE BAND
          ================================ -->
 
+{% if primary.image_band %}
     <section class="workshop-image-band">
         <div class="workshop-image-band-grid">
             <div class="workshop-image-copy fade-up">
-                <p class="label">{{ t.image_band.label }}</p>
-                <h2>{{ t.image_band.heading }}</h2>
-                <p>{{ t.image_band.text }}</p>
+                <p class="label"
+                    data-de="{{ de.image_band.label | attr }}"
+                    data-en="{{ en.image_band.label | attr }}">{{ primary.image_band.label }}</p>
+                <h2
+                    data-de="{{ de.image_band.heading | attr }}"
+                    data-en="{{ en.image_band.heading | attr }}">{{ primary.image_band.heading }}</h2>
+                <p
+                    data-de="{{ de.image_band.text | attr }}"
+                    data-en="{{ en.image_band.text | attr }}">{{ primary.image_band.text }}</p>
             </div>
             <div class="workshop-image-frame fade-up delay-2">
-                <img src="{{ t.image_band.image }}" alt="{{ t.image_band.alt }}">
+                <img src="{{ primary.image_band.image }}" alt="{{ primary.image_band.alt }}">
             </div>
         </div>
     </section>
+{% endif %}
 
-    
     <!-- ================================
          FACILITATION
          ================================ -->
 
+{% if primary.facilitators and primary.facilitators.members and primary.facilitators.members.length %}
     <section>
         <div class="container">
+{% if primary.facilitators.label or primary.facilitators.heading %}
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+{% if primary.facilitators.label %}
+                <p class="label"
+                    data-de="{{ de.facilitators.label | attr }}"
+                    data-en="{{ en.facilitators.label | attr }}">{{ primary.facilitators.label }}</p>
+{% endif %}
+{% if primary.facilitators.heading %}
+                <h2
+                    data-de="{{ de.facilitators.heading | attr }}"
+                    data-en="{{ en.facilitators.heading | attr }}">{{ primary.facilitators.heading }}</h2>
+{% endif %}
+            </div>
+{% endif %}
             <div class="detail-team-grid">
-                <div class="detail-team-member fade-up delay-1">
+{%- for member in primary.facilitators.members %}
+{%- set altMember = alternate.facilitators.members[loop.index0] %}
+                <div class="detail-team-member fade-up delay-{{ loop.index }}">
                     <div class="detail-team-portrait workshop-team-portrait">
-                        <img src="{{ t.facilitator.image }}" alt="{{ t.facilitator.image_alt }}" loading="lazy">
+                        <img src="{{ member.image }}" alt="{{ member.alt }}" loading="lazy">
                     </div>
                     <div class="detail-team-info">
-                        <p class="label">{{ t.facilitator.label }}</p>
-                        <h3>{{ t.facilitator.name }}</h3>
-                        <p class="detail-team-role">{{ t.facilitator.role }}</p>
-                        <p>{{ t.facilitator.bio | safe }}</p>
-
-
-
+                        <h3>{{ member.name }}</h3>
+                        <p class="detail-team-role"
+                            data-de="{{ member.role | attr }}"
+                            data-en="{{ altMember.role | attr }}">{{ member.role }}</p>
+                        <p
+                            data-de="{{ member.bio | attr }}"
+                            data-en="{{ altMember.bio | attr }}">{{ member.bio | safe }}</p>
                     </div>
                 </div>
-
-                <div class="detail-testimonial fade-up delay-2">
-                    <blockquote>{{ t.testimonial.quote }}</blockquote>
-                    <p class="detail-testimonial-author">{{ t.testimonial.author }}</p>
-                </div>
+{% endfor %}
             </div>
         </div>
     </section>
+{% endif %}
 
-    
+    <!-- ================================
+         TESTIMONIALS
+         ================================ -->
+
+{% if primary.testimonials and primary.testimonials.items and primary.testimonials.items.length %}
+    <section>
+        <div class="container">
+{% if primary.testimonials.label or primary.testimonials.heading %}
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
+{% if primary.testimonials.label %}
+                <p class="label"
+                    data-de="{{ de.testimonials.label | attr }}"
+                    data-en="{{ en.testimonials.label | attr }}">{{ primary.testimonials.label }}</p>
+{% endif %}
+{% if primary.testimonials.heading %}
+                <h2
+                    data-de="{{ de.testimonials.heading | attr }}"
+                    data-en="{{ en.testimonials.heading | attr }}">{{ primary.testimonials.heading }}</h2>
+{% endif %}
+            </div>
+{% endif %}
+
+            <div class="detail-testimonial-grid">
+{%- for item in primary.testimonials.items %}
+{%- set altItem = alternate.testimonials.items[loop.index0] %}
+                <div class="detail-testimonial fade-up delay-{{ loop.index }}">
+                    <blockquote
+                        data-de="{{ item.quote | attr }}"
+                        data-en="{{ altItem.quote | attr }}">{{ item.quote }}</blockquote>
+                    <p class="detail-testimonial-author">&mdash; {{ item.author }}</p>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+    <!-- ================================
+         FAQ
+         ================================ -->
+
+{% if primary.faq and primary.faq.items and primary.faq.items.length %}
+    <section>
+        <div class="container">
+            <div class="section-header fade-up" style="text-align: center; margin-bottom: 48px;">
+                <p class="label"
+                    data-de="{{ de.faq.label | attr }}"
+                    data-en="{{ en.faq.label | attr }}">{{ primary.faq.label }}</p>
+                <h2
+                    data-de="{{ de.faq.heading | attr }}"
+                    data-en="{{ en.faq.heading | attr }}">{{ primary.faq.heading }}</h2>
+            </div>
+
+            <div class="detail-faq-list">
+{%- for item in primary.faq.items %}
+{%- set altItem = alternate.faq.items[loop.index0] %}
+                <div class="detail-faq-item fade-up">
+                    <p class="detail-faq-q"
+                        data-de="{{ item.q | attr }}"
+                        data-en="{{ altItem.q | attr }}">{{ item.q }}</p>
+                    <p class="detail-faq-a"
+                        data-de="{{ item.a | attr }}"
+                        data-en="{{ altItem.a | attr }}">{{ item.a }}</p>
+                </div>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
 
     <!-- ================================
          FOOTER
          ================================ -->
 
-    {% if workshop.language_mode == "en_only" %}
-    <footer class="page-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h4>Wild Care</h4>
-                    <p>Association for Contact Improvisation and social practice. We live the art of encounter &mdash; every Monday in Graz.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Pages</h4>
-                    <a href="index.html">Home</a>
-                    <a href="team.html">About Us</a>
-                    <a href="programm.html">Programme</a>
-                    <a href="mitmachen.html">Get Involved</a>
-                    <a href="journal.html">Journal</a>
-                    <a href="kontakt.html">Contact</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Connect</h4>
-                    <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
-                    <a href="https://facebook.com/wildcare.space" target="_blank" rel="noopener">Facebook</a>
-                    <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span class="footer-legal"><a href="impressum.html">Legal notice</a> &middot; <a href="datenschutz.html">Privacy</a></span>
-                <span>&copy; 2026 Wild Care &mdash; Graz</span>
-                <span>Built with care</span>
-            </div>
-        </div>
-    </footer>
-    {% else %}
     {% include "partials/footer.njk" %}
-    {% endif %}
 
     <!-- ================================
          SCRIPTS
@@ -289,10 +415,15 @@ permalink: "{{ workshop.href }}"
             });
         }
     </script>
-    {% if workshop.language_mode != "en_only" %}
     <script src="js/i18n.js"></script>
-    {% endif %}
-    {% endif %}
+    <script>
+        function toggleMute(btn) {
+            const video = btn.closest('.detail-video-wrapper').querySelector('video');
+            video.muted = !video.muted;
+            btn.querySelector('.icon-muted').style.display = video.muted ? '' : 'none';
+            btn.querySelector('.icon-unmuted').style.display = video.muted ? 'none' : '';
+        }
+    </script>
 
 </body>
 </html>
