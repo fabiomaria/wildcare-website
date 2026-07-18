@@ -719,453 +719,249 @@ collections:
     format: yaml
     identifier_field: slug
     slug: '{{slug}}'
+    summary: '{{fields.card.title}}'
+    i18n:
+      structure: single_file
+      locales: [de, en]
+      default_locale: de
+      initial_locales: [de]
     fields:
-      - { name: slug, label: Slug/URL, widget: string, hint: 'Beispiel: cellular-touch ergibt cellular-touch.html' }
+      # ── Einstellungen & Logistik ─────────────────────────────
+      - { name: slug, label: Slug/URL, widget: string, i18n: false, hint: 'Beispiel: cellular-touch ergibt cellular-touch.html' }
       - name: language_mode
         label: Sprachversionen der Detailseite
         widget: select
+        i18n: false
         options:
           - { label: Deutsch, value: de_only }
           - { label: Englisch, value: en_only }
           - { label: Deutsch & Englisch, value: bilingual }
         default: de_only
-      - name: layout_variant
-        label: Layout
-        widget: select
-        options:
-          - { label: Standard-Workshop, value: standard }
-          - { label: Archivierter Kursblock, value: course_series }
-        default: standard
-      - { name: status, label: Status, widget: select, options: [draft, upcoming, current, past], default: upcoming }
-      - { name: detail_page, label: Detailseite veröffentlichen, widget: boolean, default: true, hint: 'Die Seite wird erst gebaut, wenn SEO, Hero, Praxis-Intro und Info-Karte ausgefüllt sind; bis dahin erscheint nur die Programm-Karte.' }
-      - { name: start_date, label: Startdatum, widget: datetime }
-      - { name: sort_order, label: Sortierung bei gleichem Datum, widget: number, required: false, value_type: int }
-      - { name: registration_url, label: Anmeldelink, widget: string }
-      - name: de
-        label: Deutsch
+        hint: 'Bei "nur Deutsch"/"nur Englisch" zeigt die jeweils andere Sprachversion der Seite einen Hinweis statt einer Übersetzung.'
+      - { name: status, label: Status, widget: select, options: [draft, upcoming, current, past], default: upcoming, i18n: false }
+      - { name: detail_page, label: Detailseite veröffentlichen, widget: boolean, default: true, i18n: false, hint: 'Die Seite wird erst gebaut, wenn SEO, Hero, Praxis-Intro und Info-Karte ausgefüllt sind; bis dahin erscheint nur die Programm-Karte.' }
+      - { name: start_date, label: Startdatum, widget: datetime, i18n: false }
+      - { name: sort_order, label: Sortierung bei gleichem Datum, widget: number, required: false, value_type: int, i18n: false }
+      - { name: registration_url, label: Anmeldelink, widget: string, i18n: false }
+      # ── Inhalt ───────────────────────────────────────────────
+      - name: card
+        label: Programm-Karte
         widget: object
-        required: false
+        collapsed: true
+        i18n: true
         fields:
-          - name: card
-            label: Programm-Karte
-            widget: object
+          - name: tags
+            label: Tags
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.label}}'
+            i18n: true
             fields:
-              - name: tags
-                label: Tags
-                widget: list
-                fields:
-                  - { name: label, label: Text, widget: string }
-                  - { name: style, label: Stil, widget: select, options: [default, moss], default: default }
-              - { name: title, label: Titel, widget: string, required: false }
-              - { name: subtitle, label: Untertitel, widget: string, required: false }
-              - { name: summary, label: Kurzbeschreibung, widget: text, required: false }
-              - { name: date, label: Datumstext, widget: string, required: false }
-              - { name: location, label: Ort, widget: string, required: false }
-              - { name: price, label: Preis, widget: string, required: false }
-              - { name: duration, label: Dauer, widget: string, required: false }
-              - { name: register_label, label: Anmeldebutton, widget: string, required: false }
-              - { name: detail_label, label: Detailbutton, widget: string, required: false }
-          - name: meta
-            label: SEO
-            widget: object
-            required: false
-            fields:
-              - { name: title, label: Seitentitel, widget: string, required: false }
-              - { name: description, label: Beschreibung, widget: text, required: false }
-              - { name: og_title, label: Social Title, widget: string, required: false }
-              - { name: og_description, label: Social Beschreibung, widget: text, required: false }
-              - { name: og_image, label: Social Bild, widget: image, required: false }
-              - { name: og_image_width, label: Bildbreite, widget: number, required: false, value_type: int }
-              - { name: og_image_height, label: Bildhöhe, widget: number, required: false, value_type: int }
-          - name: nav
-            label: Navigation
-            widget: object
-            required: false
-            fields:
-              - { name: breadcrumb, label: Breadcrumb, widget: string, required: false }
-          - name: hero
-            label: Hero
-            widget: object
-            required: false
-            fields:
-              - { name: badge, label: Badge, widget: string, required: false }
-              - { name: heading, label: Überschrift, widget: string, required: false, hint: 'HTML wie <br> und <span> ist erlaubt.' }
-              - { name: heading_text, label: 'Überschrift (Text für Sprachumschaltung)', widget: string, required: false }
-              - { name: subtitle, label: Untertitel, widget: text, required: false }
-              - { name: cta_label, label: Button, widget: string, required: false }
-              - { name: cta_href, label: Button-Link, widget: string, required: false }
-              - { name: cta_note, label: Button-Hinweis, widget: text, required: false }
-              - { name: video, label: Video, widget: file, required: false }
-              - { name: video_poster, label: Video-Standbild, widget: image, required: false }
-              - name: details
-                label: Eckdaten
-                widget: list
-                required: false
-                fields:
-                  - { name: icon, label: Icon, widget: select, options: [calendar, clock, location, cost], default: calendar }
-                  - { name: text, label: Text, widget: string }
-              - { name: visual_aria, label: Bildgruppe ARIA, widget: string, required: false }
-              - { name: main_image, label: Hauptbild, widget: image, required: false }
-              - { name: main_alt, label: Hauptbild Alt-Text, widget: string, required: false }
-              - { name: inset_image, label: Nebenbild, widget: image, required: false }
-              - { name: inset_alt, label: Nebenbild Alt-Text, widget: string, required: false }
-              - { name: note_title, label: Bildnotiz Titel, widget: string, required: false }
-              - { name: note_text, label: Bildnotiz Text, widget: text, required: false }
-          - name: practice
-            label: Praxis-Intro
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Überschrift, widget: string, required: false }
-              - name: paragraphs
-                label: Absätze
-                widget: list
-                required: false
-                field: { name: text, label: Absatz, widget: text }
-          - name: info
-            label: Info-Karte
-            widget: object
-            required: false
-            fields:
-              - { name: title, label: Titel, widget: string, required: false }
-              - name: rows
-                label: Zeilen
-                widget: list
-                required: false
-                fields:
-                  - { name: icon, label: Icon, widget: select, options: [plus, calendar, location, cost, clock, people], default: plus }
-                  - { name: label, label: Label, widget: string }
-                  - name: values
-                    label: Werte
-                    widget: list
-                    field: { name: value, label: Wert, widget: string }
-              - { name: cta_label, label: Button, widget: string, required: false }
-          - name: research
-            label: Forschungsfelder
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Überschrift, widget: string, required: false }
-              - name: fields
-                label: Karten
-                widget: list
-                required: false
-                fields:
-                  - { name: number, label: Nummer, widget: string }
-                  - { name: title, label: Titel, widget: string }
-                  - { name: text, label: Text, widget: text }
-                  - { name: highlighted, label: Hervorheben, widget: boolean, required: false, default: false }
-          - name: image_band
-            label: Bildband
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Überschrift, widget: string, required: false }
-              - { name: text, label: Text, widget: text, required: false }
-              - { name: image, label: Bild, widget: image, required: false }
-              - { name: alt, label: Alt-Text, widget: string, required: false }
-          - name: facilitator
-            label: Leitung
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: name, label: Name, widget: string, required: false }
-              - { name: image, label: Bild, widget: image, required: false }
-              - { name: image_alt, label: Bild Alt-Text, widget: string, required: false }
-              - { name: role, label: Rolle, widget: string, required: false }
-              - { name: bio, label: Bio, widget: text, required: false }
-          - name: testimonial
-            label: Zitat
-            widget: object
-            required: false
-            fields:
-              - { name: quote, label: Zitat, widget: text, required: false }
-              - { name: author, label: Autor:in, widget: string, required: false }
-          - { name: quote, label: Archiv-Zitat, widget: text, required: false }
-          - name: testimonials
-            label: Feedback (Archiv)
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Überschrift, widget: string, required: false }
-              - name: items
-                label: Zitate
-                widget: list
-                required: false
-                fields:
-                  - { name: quote, label: Zitat, widget: text }
-                  - { name: author, label: Name, widget: string }
-          - name: team
-            label: Team (Archiv)
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Überschrift, widget: string, required: false }
-              - name: members
-                label: Personen
-                widget: list
-                required: false
-                fields:
-                  - { name: name, label: Name, widget: string }
-                  - { name: image, label: Bild, widget: image }
-                  - { name: alt, label: Alt-Text, widget: string }
-                  - { name: role, label: Rolle, widget: string }
-                  - { name: bio, label: Bio, widget: text }
-          - name: faq
-            label: FAQ (Archiv)
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Überschrift, widget: string, required: false }
-              - name: items
-                label: Fragen
-                widget: list
-                required: false
-                fields:
-                  - { name: q, label: Frage, widget: string }
-                  - { name: a, label: Antwort, widget: text }
-          - name: archive_cta
-            label: CTA (Archiv)
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Überschrift, widget: string, required: false }
-              - { name: text, label: Text, widget: text, required: false }
-              - { name: button, label: Button, widget: string, required: false }
-              - { name: href, label: Link, widget: string, required: false }
-          - name: funded_by
-            label: Förderung (Archiv)
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: image, label: Logo, widget: image, required: false }
-              - { name: alt, label: Alt-Text, widget: string, required: false }
-          - name: footer
-            label: Footer-Sonderfall
-            widget: object
-            required: false
-            fields:
-              - { name: connect_heading, label: Überschrift Verbinden, widget: string, required: false }
-      - name: en
-        label: English
+              - { name: label, label: Text, widget: string, i18n: true }
+              - { name: style, label: Stil, widget: select, options: [default, moss], default: default, i18n: true }
+          - { name: title, label: Titel, widget: string, required: false, i18n: true }
+          - { name: subtitle, label: Untertitel, widget: string, required: false, i18n: true }
+          - { name: summary, label: Kurzbeschreibung, widget: text, required: false, i18n: true }
+          - { name: date, label: Datumstext, widget: string, required: false, i18n: true }
+          - { name: location, label: Ort, widget: string, required: false, i18n: true }
+          - { name: price, label: Preis, widget: string, required: false, i18n: true }
+          - { name: duration, label: Dauer, widget: string, required: false, i18n: true }
+          - { name: register_label, label: Anmeldebutton, widget: string, required: false, i18n: true }
+          - { name: detail_label, label: Detailbutton, widget: string, required: false, i18n: true }
+      - name: nav
+        label: Navigation
         widget: object
+        collapsed: true
         required: false
+        i18n: true
         fields:
-          - name: card
-            label: Programme card
-            widget: object
+          - { name: breadcrumb, label: Breadcrumb, widget: string, required: false, i18n: true }
+      - name: hero
+        label: Hero
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: badge, label: Badge, widget: string, required: false, i18n: true }
+          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true, hint: 'HTML wie <br> und <span> ist erlaubt.' }
+          - { name: heading_text, label: 'Überschrift (Text für Sprachumschaltung)', widget: string, required: false, i18n: true }
+          - { name: subtitle, label: Untertitel, widget: text, required: false, i18n: true }
+          - { name: cta_label, label: Button, widget: string, required: false, i18n: true }
+          - { name: cta_href, label: Button-Link, widget: string, required: false, i18n: true }
+          - { name: cta_note, label: Button-Hinweis, widget: text, required: false, i18n: true }
+          - { name: video, label: 'Video (optional — falls leer, wird die Bildkombination unten verwendet)', widget: file, required: false, i18n: true }
+          - { name: video_poster, label: Video-Standbild, widget: image, required: false, i18n: true }
+          - name: details
+            label: Eckdaten
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.text}}'
+            required: false
+            i18n: true
             fields:
-              - name: tags
-                label: Tags
+              - { name: icon, label: Icon, widget: select, options: [calendar, clock, location, cost], default: calendar, i18n: true }
+              - { name: text, label: Text, widget: string, i18n: true }
+          - { name: visual_aria, label: Bildgruppe ARIA, widget: string, required: false, i18n: true }
+          - { name: main_image, label: Hauptbild, widget: image, required: false, i18n: true }
+          - { name: main_alt, label: Hauptbild Alt-Text, widget: string, required: false, i18n: true }
+          - { name: inset_image, label: Nebenbild, widget: image, required: false, i18n: true }
+          - { name: inset_alt, label: Nebenbild Alt-Text, widget: string, required: false, i18n: true }
+          - { name: note_title, label: Bildnotiz Titel, widget: string, required: false, i18n: true }
+          - { name: note_text, label: Bildnotiz Text, widget: text, required: false, i18n: true }
+      - name: practice
+        label: Praxis-Intro
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: label, label: Label, widget: string, required: false, i18n: true }
+          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
+          - name: paragraphs
+            label: Absätze
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            required: false
+            i18n: true
+            field: { name: text, label: Absatz, widget: text }
+      - name: info
+        label: Info-Karte
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: title, label: Titel, widget: string, required: false, i18n: true }
+          - name: rows
+            label: Zeilen
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.label}}'
+            required: false
+            i18n: true
+            fields:
+              - { name: icon, label: Icon, widget: select, options: [plus, calendar, location, cost, clock, people], default: plus, i18n: true }
+              - { name: label, label: Label, widget: string, i18n: true }
+              - name: values
+                label: Werte
                 widget: list
-                fields:
-                  - { name: label, label: Text, widget: string }
-                  - { name: style, label: Style, widget: select, options: [default, moss], default: default }
-              - { name: title, label: Title, widget: string, required: false }
-              - { name: subtitle, label: Subtitle, widget: string, required: false }
-              - { name: summary, label: Summary, widget: text, required: false }
-              - { name: date, label: Date label, widget: string, required: false }
-              - { name: location, label: Location, widget: string, required: false }
-              - { name: price, label: Price, widget: string, required: false }
-              - { name: duration, label: Duration, widget: string, required: false }
-              - { name: register_label, label: Register button, widget: string, required: false }
-              - { name: detail_label, label: Detail button, widget: string, required: false }
-          - name: meta
-            label: SEO
-            widget: object
+                i18n: true
+                field: { name: value, label: Wert, widget: string }
+          - { name: cta_label, label: Button, widget: string, required: false, i18n: true }
+      - name: research
+        label: Forschungsfelder
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: label, label: Label, widget: string, required: false, i18n: true }
+          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
+          - name: fields
+            label: Karten
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.number}} — {{fields.title}}'
             required: false
+            i18n: true
             fields:
-              - { name: title, label: Page title, widget: string, required: false }
-              - { name: description, label: Description, widget: text, required: false }
-              - { name: og_title, label: Social title, widget: string, required: false }
-              - { name: og_description, label: Social description, widget: text, required: false }
-              - { name: og_image, label: Social image, widget: image, required: false }
-              - { name: og_image_width, label: Image width, widget: number, required: false, value_type: int }
-              - { name: og_image_height, label: Image height, widget: number, required: false, value_type: int }
-          - name: nav
-            label: Navigation
-            widget: object
+              - { name: number, label: Nummer, widget: string, i18n: true }
+              - { name: title, label: Titel, widget: string, i18n: true }
+              - { name: text, label: Text, widget: text, i18n: true }
+              - { name: highlighted, label: Hervorheben, widget: boolean, required: false, default: false, i18n: true }
+      - name: image_band
+        label: Bildband
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: label, label: Label, widget: string, required: false, i18n: true }
+          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
+          - { name: text, label: Text, widget: text, required: false, i18n: true }
+          - { name: image, label: Bild, widget: image, required: false, i18n: true }
+          - { name: alt, label: Alt-Text, widget: string, required: false, i18n: true }
+      - name: facilitators
+        label: Leitung
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: label, label: Label, widget: string, required: false, i18n: true }
+          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
+          - name: members
+            label: Personen
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.name}}'
             required: false
+            i18n: true
             fields:
-              - { name: breadcrumb, label: Breadcrumb, widget: string, required: false }
-          - name: hero
-            label: Hero
-            widget: object
+              - { name: name, label: Name, widget: string, i18n: true }
+              - { name: image, label: Bild, widget: image, i18n: true }
+              - { name: alt, label: Alt-Text, widget: string, i18n: true }
+              - { name: role, label: Rolle, widget: string, i18n: true }
+              - { name: bio, label: Bio, widget: text, i18n: true }
+      - name: testimonials
+        label: Stimmen
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: label, label: Label, widget: string, required: false, i18n: true }
+          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
+          - name: items
+            label: Zitate
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.author}}'
             required: false
+            i18n: true
             fields:
-              - { name: badge, label: Badge, widget: string, required: false }
-              - { name: heading, label: Heading, widget: string, required: false, hint: 'HTML like <br> and <span> is allowed.' }
-              - { name: heading_text, label: 'Heading text (language switch)', widget: string, required: false }
-              - { name: subtitle, label: Subtitle, widget: text, required: false }
-              - { name: cta_label, label: Button, widget: string, required: false }
-              - { name: cta_href, label: Button link, widget: string, required: false }
-              - { name: cta_note, label: Button note, widget: text, required: false }
-              - { name: video, label: Video, widget: file, required: false }
-              - { name: video_poster, label: Video poster, widget: image, required: false }
-              - name: details
-                label: Details
-                widget: list
-                required: false
-                fields:
-                  - { name: icon, label: Icon, widget: select, options: [calendar, clock, location, cost], default: calendar }
-                  - { name: text, label: Text, widget: string }
-              - { name: visual_aria, label: Image group ARIA, widget: string, required: false }
-              - { name: main_image, label: Main image, widget: image, required: false }
-              - { name: main_alt, label: Main image alt text, widget: string, required: false }
-              - { name: inset_image, label: Inset image, widget: image, required: false }
-              - { name: inset_alt, label: Inset image alt text, widget: string, required: false }
-              - { name: note_title, label: Image note title, widget: string, required: false }
-              - { name: note_text, label: Image note text, widget: text, required: false }
-          - name: practice
-            label: Practice intro
-            widget: object
+              - { name: quote, label: Zitat, widget: text, i18n: true }
+              - { name: author, label: 'Autor:in', widget: string, i18n: true }
+      - name: faq
+        label: 'FAQ (optional)'
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: label, label: Label, widget: string, required: false, i18n: true }
+          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
+          - name: items
+            label: Fragen
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.q}}'
             required: false
+            i18n: true
             fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Heading, widget: string, required: false }
-              - name: paragraphs
-                label: Paragraphs
-                widget: list
-                required: false
-                field: { name: text, label: Paragraph, widget: text }
-          - name: info
-            label: Info card
-            widget: object
-            required: false
-            fields:
-              - { name: title, label: Title, widget: string, required: false }
-              - name: rows
-                label: Rows
-                widget: list
-                required: false
-                fields:
-                  - { name: icon, label: Icon, widget: select, options: [plus, calendar, location, cost, clock, people], default: plus }
-                  - { name: label, label: Label, widget: string }
-                  - name: values
-                    label: Values
-                    widget: list
-                    field: { name: value, label: Value, widget: string }
-              - { name: cta_label, label: Button, widget: string, required: false }
-          - name: research
-            label: Research fields
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Heading, widget: string, required: false }
-              - name: fields
-                label: Cards
-                widget: list
-                required: false
-                fields:
-                  - { name: number, label: Number, widget: string }
-                  - { name: title, label: Title, widget: string }
-                  - { name: text, label: Text, widget: text }
-                  - { name: highlighted, label: Highlight, widget: boolean, required: false, default: false }
-          - name: image_band
-            label: Image band
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Heading, widget: string, required: false }
-              - { name: text, label: Text, widget: text, required: false }
-              - { name: image, label: Image, widget: image, required: false }
-              - { name: alt, label: Alt text, widget: string, required: false }
-          - name: facilitator
-            label: Facilitator
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: name, label: Name, widget: string, required: false }
-              - { name: image, label: Image, widget: image, required: false }
-              - { name: image_alt, label: Image alt text, widget: string, required: false }
-              - { name: role, label: Role, widget: string, required: false }
-              - { name: bio, label: Bio, widget: text, required: false }
-          - name: testimonial
-            label: Quote
-            widget: object
-            required: false
-            fields:
-              - { name: quote, label: Quote, widget: text, required: false }
-              - { name: author, label: Author, widget: string, required: false }
-          - { name: quote, label: Archive quote, widget: text, required: false }
-          - name: testimonials
-            label: Feedback (archive)
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Heading, widget: string, required: false }
-              - name: items
-                label: Quotes
-                widget: list
-                required: false
-                fields:
-                  - { name: quote, label: Quote, widget: text }
-                  - { name: author, label: Name, widget: string }
-          - name: team
-            label: Team (archive)
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Heading, widget: string, required: false }
-              - name: members
-                label: People
-                widget: list
-                required: false
-                fields:
-                  - { name: name, label: Name, widget: string }
-                  - { name: image, label: Image, widget: image }
-                  - { name: alt, label: Alt text, widget: string }
-                  - { name: role, label: Role, widget: string }
-                  - { name: bio, label: Bio, widget: text }
-          - name: faq
-            label: FAQ (archive)
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Heading, widget: string, required: false }
-              - name: items
-                label: Questions
-                widget: list
-                required: false
-                fields:
-                  - { name: q, label: Question, widget: string }
-                  - { name: a, label: Answer, widget: text }
-          - name: archive_cta
-            label: CTA (archive)
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: heading, label: Heading, widget: string, required: false }
-              - { name: text, label: Text, widget: text, required: false }
-              - { name: button, label: Button, widget: string, required: false }
-              - { name: href, label: Link, widget: string, required: false }
-          - name: funded_by
-            label: Funding (archive)
-            widget: object
-            required: false
-            fields:
-              - { name: label, label: Label, widget: string, required: false }
-              - { name: image, label: Logo, widget: image, required: false }
-              - { name: alt, label: Alt text, widget: string, required: false }
-          - name: footer
-            label: Footer special case
-            widget: object
-            required: false
-            fields:
-              - { name: connect_heading, label: Connect heading, widget: string, required: false }
+              - { name: q, label: Frage, widget: string, i18n: true }
+              - { name: a, label: Antwort, widget: text, i18n: true }
+      # ── SEO zuletzt ──────────────────────────────────────────
+      - name: meta
+        label: 'SEO & Vorschau (zuletzt prüfen)'
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: title, label: Seitentitel, widget: string, required: false, i18n: true }
+          - { name: description, label: Beschreibung, widget: text, required: false, i18n: true }
+          - { name: og_title, label: Social Title, widget: string, required: false, i18n: true }
+          - { name: og_description, label: Social Beschreibung, widget: text, required: false, i18n: true }
+          - { name: og_image, label: Social Bild, widget: image, required: false, i18n: true }
+          - { name: og_image_width, label: Bildbreite, widget: number, required: false, value_type: int, i18n: true }
+          - { name: og_image_height, label: Bildhöhe, widget: number, required: false, value_type: int, i18n: true }

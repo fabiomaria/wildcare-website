@@ -1,11 +1,11 @@
-slug: cellular-touch
-language_mode: en_only
-status: upcoming
-detail_page: true
-start_date: 2026-08-08
-sort_order: 1
-registration_url: https://tally.so/r/1ABgjL
 de:
+  slug: cellular-touch
+  language_mode: en_only
+  status: upcoming
+  detail_page: true
+  start_date: 2026-08-08
+  sort_order: 1
+  registration_url: https://tally.so/r/1ABgjL
   card:
     tags:
       - label: Gastworkshop
@@ -13,15 +13,14 @@ de:
       - label: Contact Improvisation
         style: moss
     title: Cellular Touch
-    subtitle: with Valentyn Korotkevych
+    subtitle: With Valentyn Korotkevych
     summary: Cellular Touch is a Contact Improvisation workshop on membranes, fascia, flow and momentum. Valentyn Korotkevych opens a somatic research space for touch, falling, geometry and shared support.
     date: 8.–9. August 2026
     location: Orpheumgasse, 8010 Graz
-    price: 70–200 EUR Sliding Scale
+    price: "70–200\_EUR Sliding Scale"
     duration: 2 days
     register_label: Register now
     detail_label: Mehr erfahren
-  quote: ''
 en:
   card:
     tags:
@@ -34,7 +33,7 @@ en:
     summary: Cellular Touch is a Contact Improvisation workshop on membranes, fascia, flow and momentum. Valentyn Korotkevych opens a somatic research space for touch, falling, geometry and shared support.
     date: 8–9 August 2026
     location: Orpheumgasse, 8010 Graz
-    price: 70–200 EUR sliding scale
+    price: "70–200\_EUR sliding scale"
     duration: 2 days
     register_label: Register now
     detail_label: Learn more
@@ -118,13 +117,18 @@ en:
     text: Holding together is not holding on. We practice receiving, yielding, expanding, anchoring back into the earth.
     image: assets/images/cellular-touch-membrane.jpg
     alt: Cellular Touch group research through touch
-  facilitator:
+  facilitators:
     label: Facilitator
-    name: Valentyn Korotkevych
-    image: assets/images/cellular-touch-valentyn.jpg
-    image_alt: Valentyn Korotkevych
-    role: Contact Improvisation · Somatic research
-    bio: Valentyn is a Ukrainian-Canadian somatic therapy practitioner, spoken word and movement artist. His work integrates Polyvagal theory, Deep Tissue Massage, and poetry of being an active body-mind connected system. <br>His approach to Contact Improvisation lies in the root of introspection, contemplation & fundamental feeling of honesty, inclusivity & mutual care.
-  testimonial:
-    quote: “When we pay attention to tiny gestures, they can grow and become pathways we have not expanded into before.”
-    author: Valentyn Korotkevych
+    heading: ''
+    members:
+      - name: Valentyn Korotkevych
+        image: assets/images/cellular-touch-valentyn.jpg
+        alt: Valentyn Korotkevych
+        role: Contact Improvisation · Somatic research
+        bio: 'Valentyn is a Ukrainian-Canadian somatic therapy practitioner, spoken word and movement artist. His work integrates Polyvagal theory, Deep Tissue Massage, and poetry of being an active body-mind connected system. <br>His approach to Contact Improvisation lies in the root of introspection, contemplation & fundamental feeling of honesty, inclusivity & mutual care. '
+  testimonials:
+    label: ''
+    heading: ''
+    items:
+      - quote: “When we pay attention to tiny gestures, they can grow and become pathways we have not expanded into before.”
+        author: Valentyn Korotkevych

@@ -1,13 +1,11 @@
-slug: bewegungsrevolution
-layout_variant: course_series
-language_mode: bilingual
-status: past
-detail_page: true
-start_date: 2026-05-11
-sort_order: 50
-registration_url: montagskurs.html
-
 de:
+  slug: bewegungsrevolution
+  language_mode: bilingual
+  status: past
+  detail_page: true
+  start_date: 2026-05-11
+  sort_order: 50
+  registration_url: montagskurs.html
   card:
     tags:
       - label: Rückblick
@@ -23,7 +21,6 @@ de:
     duration: 6 Wochen
     register_label: Zum Montagskurs
     detail_label: Rückblick lesen
-
   meta:
     title: Bewegungsrevolution — Kostenlose Contact Improvisation in Graz | Wild Care
     description: 6 Wochen kostenlose Contact Improvisation in Graz. Jeden Montag 17:45, Orpheumgasse 11. Keine Erfahrung nötig. 11. Mai – 15. Juni 2026.
@@ -33,10 +30,8 @@ de:
     og_image: assets/images/Bewegungsrevolution%20social%20preview.jpg
     og_image_width: 1200
     og_image_height: 630
-
   nav:
     breadcrumb: Bewegungsrevolution
-
   hero:
     badge: Gefördert · Kostenlos · Rückblick
     heading_text: Contact Improvisation. Kostenlos. 6 Wochen.
@@ -56,7 +51,6 @@ de:
     cta_note: Die Bewegungsrevolution 2026 ist abgeschlossen. Der offene Montagskurs läuft weiter.
     video: assets/what is ci.mp4
     video_poster: assets/images/bewegungsrevolution.png
-
   research:
     label: Der Fahrplan
     heading: 6 Wochen, 6 Themen
@@ -66,7 +60,7 @@ de:
         text: Die Schwerkraft spüren und bemerken, dass wir ständig von selbst in Bewegung sind — in einem Tanz mit der Schwerkraft. Der Boden ist dein erster Tanzpartner.
       - number: Woche 2 · 18. Mai
         title: Nicht fallen, sondern fließen
-        text: "Yielding: die Kunst des Sich-Einlassens. Lernen, den Körper weich zu machen — alleine und zusammen. Der Körper, der weich werden kann, kann alles."
+        text: 'Yielding: die Kunst des Sich-Einlassens. Lernen, den Körper weich zu machen — alleine und zusammen. Der Körper, der weich werden kann, kann alles.'
       - number: Woche 3 · 25. Mai
         title: Konsens und Lauschen
         text: Wie der Körper Ja und Nein sagt, bevor der Mund es tut. Üben, Nähe zu spüren, Grenzen zu kommunizieren und durch Berührung zuzuhören. Konsens ist das Gespräch, das du die ganze Zeit führst.
@@ -75,14 +69,11 @@ de:
         text: Gewicht gießen ist nicht Gewicht abladen. Von der Wand über Partner:in-Lehnen bis zum gemeinsamen Fallen — den Punkt finden, an dem keine:r sagen kann, wer wen trägt.
       - number: Woche 5 · 8. Juni
         title: Der rollende Kontaktpunkt
-        text: "Das Kernstück von CI: der Punkt, an dem zwei Körper sich treffen, und wir lassen ihn wandern. Nicht lenken, sondern folgen. Der rollende Punkt ist das Gespräch selbst."
+        text: 'Das Kernstück von CI: der Punkt, an dem zwei Körper sich treffen, und wir lassen ihn wandern. Nicht lenken, sondern folgen. Der rollende Punkt ist das Gespräch selbst.'
       - number: Woche 6 · 15. Juni
         title: Die Jam
-        text: "Kein:e Lehrer:in ruft Übungen aus. Du wählst: alleine tanzen, mit jemandem tanzen, zuschauen, ausruhen. Die Jam ist dort, wo CI lebt — nur ein Raum, ein Boden und andere Menschen, die bereit sind, mit ihren Körpern zuzuhören."
+        text: 'Kein:e Lehrer:in ruft Übungen aus. Du wählst: alleine tanzen, mit jemandem tanzen, zuschauen, ausruhen. Die Jam ist dort, wo CI lebt — nur ein Raum, ein Boden und andere Menschen, die bereit sind, mit ihren Körpern zuzuhören.'
         highlighted: true
-
-  quote: Bewegung ist kein Luxusgut. Sie gehört allen. Wenn wir lernen, unseren Körper bewusst zu bewohnen, verändert das nicht nur den Tanz — sondern auch, wie wir einander begegnen.
-
   testimonials:
     label: Feedback
     heading: Was Teilnehmer:innen sagen
@@ -91,22 +82,6 @@ de:
         author: Anna
       - quote: „Ich tanze schon länger, schau aber wenn ich Zeit habe sehr gerne im Kurs vorbei, da die positive, kreative Energie sich super anfühlt und ich jedesmal neue Anregungen bekomme, weiter zu probieren, Neues zu integrieren — macht einfach richtig lebendig und glücklich.“
         author: Iris
-
-  team:
-    label: Wer unterrichtet
-    heading: Deine Begleiter:innen
-    members:
-      - name: Verena Eidenberger
-        image: assets/images/verena.jpg
-        alt: Verena Eidenberger
-        role: Tänzerin · Musik- und Tanzpädagogin
-        bio: Verena tanzt Contact Improvisation seit sie 18 ist, ist Musik- und Tanzpädagogin und freut sich darauf ihr Wissen spielerisch zu teilen. Sie liebt es frei zu tanzen und mit Körper, Stimme oder Instrumenten zu improvisieren.
-      - name: Fabio Maria Gerhold
-        image: assets/images/fabio.jpg
-        alt: Fabio Maria Gerhold
-        role: Tänzer · Yogalehrer
-        bio: Fabio unterrichtet Yoga und Contact Improvisation in Graz. Seine Arbeit verbindet Achtsamkeit, Embodiment und kreative Forschung. Er ist inspiriert von der Philosophie von Martin Buber und der Frage, wie wir uns wirklich begegnen können.
-
   faq:
     label: Häufige Fragen
     heading: Gut zu wissen
@@ -121,22 +96,20 @@ de:
         a: Dieser Block ist abgeschlossen. Du kannst aber jederzeit zum offenen Montagskurs kommen.
       - q: Wie kann ich euch erreichen?
         a: Schreib uns unter hello ät wildcare.space.
-
-  archive_cta:
-    label: Rückblick · 6 Wochen · kostenlos
-    heading: Der offene Kurs läuft weiter.
-    text: Die Bewegungsrevolution 2026 ist abgeschlossen. Wenn du Contact Improvisation in Graz ausprobieren möchtest, komm zum offenen Montagskurs.
-    button: Zum Montagskurs
-    href: montagskurs.html
-
-  funded_by:
-    label: Gefördert durch
-    image: assets/images/bewegungsrevolution logo.png
-    alt: Gefördert durch Bewegungsrevolution Steiermark
-
-  footer:
-    connect_heading: Verbinden
-
+  facilitators:
+    label: Wer unterrichtet
+    heading: Deine Begleiter:innen
+    members:
+      - name: Verena Eidenberger
+        image: assets/images/verena.jpg
+        alt: Verena Eidenberger
+        role: Tänzerin · Musik- und Tanzpädagogin
+        bio: Verena tanzt Contact Improvisation seit sie 18 ist, ist Musik- und Tanzpädagogin und freut sich darauf ihr Wissen spielerisch zu teilen. Sie liebt es frei zu tanzen und mit Körper, Stimme oder Instrumenten zu improvisieren.
+      - name: Fabio Maria Gerhold
+        image: assets/images/fabio.jpg
+        alt: Fabio Maria Gerhold
+        role: Tänzer · Yogalehrer
+        bio: Fabio unterrichtet Yoga und Contact Improvisation in Graz. Seine Arbeit verbindet Achtsamkeit, Embodiment und kreative Forschung. Er ist inspiriert von der Philosophie von Martin Buber und der Frage, wie wir uns wirklich begegnen können.
 en:
   card:
     tags:
@@ -153,7 +126,6 @@ en:
     duration: 6 weeks
     register_label: Monday Class
     detail_label: Read the archive
-
   meta:
     title: Bewegungsrevolution — Free Contact Improvisation in Graz | Wild Care
     description: 6 weeks of free Contact Improvisation in Graz. Mondays at 17:45, Orpheumgasse 11. No experience needed. 11 May – 15 June 2026.
@@ -163,10 +135,8 @@ en:
     og_image: assets/images/Bewegungsrevolution%20social%20preview.jpg
     og_image_width: 1200
     og_image_height: 630
-
   nav:
     breadcrumb: Bewegungsrevolution
-
   hero:
     badge: Funded · Free · Archive
     heading_text: Contact Improvisation. Free. 6 Weeks.
@@ -186,7 +156,6 @@ en:
     cta_note: Bewegungsrevolution 2026 is complete. The open Monday class continues.
     video: assets/what is ci.mp4
     video_poster: assets/images/bewegungsrevolution.png
-
   research:
     label: The Schedule
     heading: 6 Weeks, 6 Topics
@@ -196,7 +165,7 @@ en:
         text: Feeling gravity and noticing that we are constantly in motion on our own — in a dance with gravity. The floor is your first dance partner.
       - number: Week 2 · 18 May
         title: Not falling, but flowing
-        text: "Yielding: the art of giving in. Learning to soften the body — alone and together. The body that can soften can do anything."
+        text: 'Yielding: the art of giving in. Learning to soften the body — alone and together. The body that can soften can do anything.'
       - number: Week 3 · 25 May
         title: Consent and Listening
         text: How the body says yes and no before the mouth does. Practising sensing proximity, communicating boundaries and listening through touch. Consent is the conversation you’re having the whole time.
@@ -205,14 +174,11 @@ en:
         text: Pouring weight is not dumping weight. From the wall to partner leaning to falling together — finding the point where no one can tell who is carrying whom.
       - number: Week 5 · 8 June
         title: The Rolling Point of Contact
-        text: "The core of CI: the point where two bodies meet, and we let it travel. Not directing, but following. The rolling point is the conversation itself."
+        text: 'The core of CI: the point where two bodies meet, and we let it travel. Not directing, but following. The rolling point is the conversation itself.'
       - number: Week 6 · 15 June
         title: The Jam
-        text: "No teacher calls out exercises. You choose: dance alone, dance with someone, watch, rest. The jam is where CI lives — just a space, a floor and other people ready to listen with their bodies."
+        text: 'No teacher calls out exercises. You choose: dance alone, dance with someone, watch, rest. The jam is where CI lives — just a space, a floor and other people ready to listen with their bodies.'
         highlighted: true
-
-  quote: Movement is not a luxury. It belongs to everyone. When we learn to consciously inhabit our bodies, it changes not only the dance — but also how we meet each other.
-
   testimonials:
     label: Feedback
     heading: What participants say
@@ -221,22 +187,6 @@ en:
         author: Anna
       - quote: “I’ve been dancing for a while, but I love dropping by the class whenever I have time. The positive, creative energy feels amazing and I always get new inspiration to keep exploring, to integrate new things — it simply makes you feel alive and happy.”
         author: Iris
-
-  team:
-    label: Who teaches
-    heading: Your Guides
-    members:
-      - name: Verena Eidenberger
-        image: assets/images/verena.jpg
-        alt: Verena Eidenberger
-        role: Dancer · Music & Dance Educator
-        bio: Verena has been dancing Contact Improvisation since she was 18. She is a music and dance educator and loves sharing her knowledge playfully. She loves to dance freely and improvise with body, voice or instruments.
-      - name: Fabio Maria Gerhold
-        image: assets/images/fabio.jpg
-        alt: Fabio Maria Gerhold
-        role: Dancer · Yoga Teacher
-        bio: Fabio teaches Yoga and Contact Improvisation in Graz. His work combines mindfulness, embodiment and creative exploration. He is inspired by Martin Buber’s philosophy and the question of how we can truly meet each other.
-
   faq:
     label: FAQ
     heading: Good to Know
@@ -251,18 +201,17 @@ en:
         a: This block is complete. You can join the open Monday class anytime.
       - q: How can I contact you?
         a: You can email us using the address hello ät wildcare.space.
-
-  archive_cta:
-    label: Archive · 6 weeks · free
-    heading: The open class continues.
-    text: Bewegungsrevolution 2026 is complete. If you want to try Contact Improvisation in Graz, come to the open Monday class.
-    button: Go to Monday Class
-    href: montagskurs.html
-
-  funded_by:
-    label: Funded by
-    image: assets/images/bewegungsrevolution logo.png
-    alt: Funded by Bewegungsrevolution Steiermark
-
-  footer:
-    connect_heading: Connect
+  facilitators:
+    label: Who teaches
+    heading: Your Guides
+    members:
+      - name: Verena Eidenberger
+        image: assets/images/verena.jpg
+        alt: Verena Eidenberger
+        role: Dancer · Music & Dance Educator
+        bio: Verena has been dancing Contact Improvisation since she was 18. She is a music and dance educator and loves sharing her knowledge playfully. She loves to dance freely and improvise with body, voice or instruments.
+      - name: Fabio Maria Gerhold
+        image: assets/images/fabio.jpg
+        alt: Fabio Maria Gerhold
+        role: Dancer · Yoga Teacher
+        bio: Fabio teaches Yoga and Contact Improvisation in Graz. His work combines mindfulness, embodiment and creative exploration. He is inspired by Martin Buber’s philosophy and the question of how we can truly meet each other.

@@ -87,20 +87,17 @@ function hasWorkshopContent(locale) {
   );
 }
 
-function hasWorkshopDetailContent(locale, layoutVariant = "standard") {
-  if (layoutVariant === "course_series") {
-    return Boolean(
-      locale?.meta?.title &&
-      locale?.hero?.heading &&
-      locale?.research?.heading
-    );
-  }
-
+function hasWorkshopDetailContent(locale) {
+  // Both retired layouts required meta+hero plus one substantial body
+  // section; with a single unified template (Task 5 amendment) neither
+  // practice/info nor research is universally authored (Bewegungsrevolution
+  // has no practice/info, Cellular Touch has no dedicated research-only
+  // requirement either) — accept any one of the optional body sections
+  // as evidence the detail page has real content beyond the programme card.
   return Boolean(
     locale?.meta?.title &&
     locale?.hero?.heading &&
-    locale?.practice?.heading &&
-    locale?.info?.title
+    (locale?.practice?.heading || locale?.info?.title || locale?.research?.heading)
   );
 }
 
@@ -261,12 +258,27 @@ function loadWorkshopContent() {
   const all = fs.readdirSync(dir)
     .filter((filename) => filename.endsWith(".yaml"))
     .map((filename) => {
-      const workshop = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"));
-      const slug = normalizeSlug(workshop.slug || path.basename(filename, ".yaml"));
-      const layoutVariant = workshop.layout_variant || "standard";
-      const languageMode = workshop.language_mode || "bilingual";
-      const deRaw = isObject(workshop.de) ? workshop.de : {};
-      const enRaw = isObject(workshop.en) ? workshop.en : {};
+      const raw = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"));
+      const deSource = isObject(raw.de) ? raw.de : {};
+      const enSource = isObject(raw.en) ? raw.en : {};
+      // Head fields live at the top level (legacy shape) or under the default
+      // locale (Sveltia single_file i18n) — accept both.
+      const HEAD_KEYS = [
+        "slug", "language_mode", "status", "detail_page",
+        "start_date", "sort_order", "registration_url",
+      ];
+      const head = {};
+      for (const key of HEAD_KEYS) {
+        head[key] = raw[key] !== undefined ? raw[key] : deSource[key];
+      }
+      const deRaw = { ...deSource };
+      const enRaw = { ...enSource };
+      for (const key of HEAD_KEYS) {
+        delete deRaw[key];
+        delete enRaw[key];
+      }
+      const slug = normalizeSlug(head.slug || path.basename(filename, ".yaml"));
+      const languageMode = head.language_mode || "bilingual";
       const preferred = languageMode === "en_only" ? enRaw : deRaw;
       const alternate = languageMode === "en_only" ? deRaw : enRaw;
       const fallback = hasWorkshopContent(preferred) ? preferred : alternate;
@@ -274,17 +286,16 @@ function loadWorkshopContent() {
       const en = deepMerge(fallback, enRaw);
       const primaryLocale = languageMode === "en_only" ? "en" : "de";
       const primaryData = primaryLocale === "en" ? en : de;
-      const hasDetailPage = workshop.detail_page !== false && workshop.status !== "draft" && hasWorkshopDetailContent(primaryData, layoutVariant);
+      const hasDetailPage = head.detail_page !== false && head.status !== "draft" && hasWorkshopDetailContent(primaryData);
       return {
-        ...workshop,
+        ...head,
         slug,
-        layout_variant: layoutVariant,
         language_mode: languageMode,
         has_de: languageMode !== "en_only",
         has_en: languageMode !== "de_only",
         has_detail_page: hasDetailPage,
         primary_locale: primaryLocale,
-        registration_url: normalizeExternalUrl(workshop.registration_url),
+        registration_url: normalizeExternalUrl(head.registration_url),
         de,
         en,
         href: `${slug}.html`,
