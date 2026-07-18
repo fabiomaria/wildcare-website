@@ -638,6 +638,7 @@ collections:
     create: true
     extension: md
     format: frontmatter
+    thumbnail: image
     i18n: true
     fields:
       - name: language_mode
@@ -651,23 +652,24 @@ collections:
         i18n: duplicate
       - { name: title, label: Titel, widget: string, required: false, i18n: true }
       - { name: title_html, label: 'Artikeltitel mit optionalem <br>', widget: string, required: false, i18n: true }
-      - { name: homepage_title, label: 'Titel auf der Startseite', widget: string, required: false, i18n: true }
       - { name: date, label: Datum, widget: datetime, i18n: duplicate }
       - { name: sort_order, label: Sortierung bei gleichem Datum, widget: number, required: false, value_type: int, i18n: duplicate }
       - { name: status, label: Status, widget: select, options: [published, coming_soon], default: published, i18n: duplicate }
       - { name: excerpt, label: Teaser, widget: text, required: false, i18n: true }
-      - { name: homepage_excerpt, label: 'Kurz-Teaser auf der Startseite', widget: text, required: false, i18n: true }
-      - { name: meta_description, label: SEO-Beschreibung, widget: text, required: false, i18n: true }
+      - { name: body, label: Artikeltext, widget: markdown, required: false, i18n: true }
       - { name: image, label: Bild, widget: image, required: false, i18n: duplicate }
       - { name: image_alt, label: Alt-Text, widget: string, required: false, i18n: duplicate }
-      - { name: homepage_image_alt, label: 'Alt-Text auf der Startseite', widget: string, required: false, i18n: duplicate }
       - { name: hero_image, label: Hero-Bild, widget: image, required: false, i18n: duplicate }
       - { name: hero_alt, label: Hero-Alt-Text, widget: string, required: false, i18n: duplicate }
       - { name: hero_variant, label: Hero-Darstellung, widget: select, options: [cover, contained], default: cover, i18n: duplicate }
+      - { name: homepage_title, label: 'Titel auf der Startseite', widget: string, required: false, i18n: true }
+      - { name: homepage_excerpt, label: 'Kurz-Teaser auf der Startseite', widget: text, required: false, i18n: true }
+      - { name: homepage_image_alt, label: 'Alt-Text auf der Startseite', widget: string, required: false, i18n: duplicate }
       - { name: tally, label: Tally-Script laden, widget: boolean, required: false, default: false, i18n: duplicate }
       - name: cta
         label: Artikel-CTA
         widget: object
+        collapsed: true
         required: false
         i18n: true
         fields:
@@ -676,6 +678,9 @@ collections:
           - name: buttons
             label: Buttons
             widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.label}}'
             required: false
             i18n: true
             fields:
@@ -684,7 +689,7 @@ collections:
               - { name: style, label: Stil, widget: select, options: [primary, secondary], default: primary, i18n: duplicate }
               - { name: href, label: Link, widget: string, required: false, i18n: duplicate }
               - { name: tally_open, label: Tally-ID, widget: string, required: false, i18n: duplicate }
-      - { name: body, label: Artikeltext, widget: markdown, required: false, i18n: true }
+      - { name: meta_description, label: SEO-Beschreibung, widget: text, required: false, i18n: true }
 
   - name: rechtliches
     label: Rechtliches (nur Deutsch)
