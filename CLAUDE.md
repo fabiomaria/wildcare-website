@@ -47,6 +47,25 @@ before editing.
   - `worker-kontakt/` — contact form to the same Notion database. Separate by
     design; do not merge into `worker/`.
   - `worker-auth/` — Sveltia CMS GitHub OAuth.
+- Workshop schema (post 2026-07 rework): `admin/config.yml` defines a single
+  **`Workshops`** collection (the earlier "Workshops" vs "Workshop-Archiv"
+  split is gone) with Sveltia i18n `structure: single_file` — the CMS UI
+  shows one entry with a DE/EN language switcher at the top, not two
+  side-by-side blocks. Locale-neutral head fields (`slug`, `language_mode`,
+  `status`, `detail_page`, `start_date`, `sort_order`, `registration_url`)
+  are stored once under the default locale (`de:`) in
+  `content/workshops/*.yaml`; `loadWorkshopContent` in `eleventy.config.js`
+  reads them from there and deep-merges each locale against a fallback so
+  partially-filled translations don't break rendering. One `workshop.njk`
+  template renders every workshop (upcoming, current, or past) via the
+  sitewide `data-de`/`data-en` live-toggle pattern (`js/i18n.js`) —
+  `facilitators`/`testimonials`/`faq`/`research`/`image_band` are all
+  optional per-workshop sections, and a video hero is an alternative to the
+  default image-pair hero. Mono-lingual workshops (`language_mode`
+  `de_only`/`en_only`) show a template-computed language-availability badge
+  ("Nur auf Deutsch"/"German only" or "Nur auf Englisch"/"English only")
+  instead of untranslated fallback text when a visitor toggles to the
+  language the workshop wasn't authored in.
 
 ## Bilingual DE/EN (see also `TRANSLATION.md`)
 

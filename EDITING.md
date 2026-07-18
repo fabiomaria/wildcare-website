@@ -66,6 +66,20 @@ heißen die Abschnitte entsprechend **„Hero"**, **„Kontaktformular"**,
 **„Info-Spalte"**, **„Karte"** usw. — jede Seite hat ihre eigene,
 passende Gliederung.
 
+**Abschnitte sind eingeklappt:** Beim Öffnen einer Seite siehst du
+zunächst nur die Abschnitts-Titel (Hero, Kontaktformular, …) — klicke auf
+einen Titel, um den Abschnitt aufzuklappen und die Felder darin zu
+bearbeiten. Der Abschnitt **„SEO & Vorschau"** steht dabei bei jeder Seite
+ganz am Ende der Liste; das ist Absicht, damit du ihn erst zum Schluss
+noch einmal kurz prüfst.
+
+**Listen (z. B. mehrere Karten, Buttons, Zitate):** Wo eine Seite eine
+Liste von gleichartigen Einträgen enthält, zeigt der Editor pro Eintrag
+zunächst nur eine schmale Zeile mit einer kurzen Vorschau (meist Titel
+oder Name). Klicke auf eine Zeile, um sie aufzuklappen und die Felder zu
+bearbeiten. Über den Ziehgriff links an der Zeile kannst du die
+Reihenfolge der Einträge per Drag-and-drop ändern.
+
 **Zweisprachigkeit:** Die meisten Textfelder gibt es doppelt — einmal
 Deutsch, einmal Englisch (im Editor stehen beide Versionen eines Feldes
 nebeneinander). Bitte trage beide Sprachen ein, sonst bleibt die englische
@@ -112,10 +126,24 @@ leer, wenn der Artikel keinen eigenen Button braucht.
 
 ## 4. Wie du einen Workshop hinzufügst
 
-Workshops liegen in der Rubrik **„Workshops"**. Auch hier legst du über
-den „+"-Button einen neuen Eintrag an.
+Workshops liegen in der Rubrik **„Workshops"** — es gibt nur noch **eine**
+Rubrik dafür. Die frühere Trennung in „Workshops" (kommend) und
+„Workshop-Archiv" (vorbei) ist wieder zusammengeführt: jeder Workshop, ob
+kommend, laufend oder vergangen, liegt im selben Ordner und benutzt genau
+dieselben Felder. Auch hier legst du über den „+"-Button einen neuen
+Eintrag an.
 
-Die wichtigsten Felder:
+**Zweisprachigkeit bei Workshops funktioniert anders als bei den übrigen
+Seiten:** Statt zwei Textfeldern nebeneinander gibt es oben im
+Workshop-Formular einen **Sprachumschalter** (DE/EN). Du wählst dort die
+Sprache aus, für die du gerade Inhalte einträgst, füllst die Abschnitte
+darunter für diese Sprache aus und schaltest dann um, um die andere
+Sprache zu ergänzen. Die technischen Basisangaben (Slug/URL, Status,
+Sprachversionen der Detailseite, Startdatum, Anmeldelink, …) sind
+sprachneutral und werden nur einmal gepflegt, unabhängig vom
+Sprachumschalter.
+
+Die wichtigsten Basisangaben:
 
 - **Slug/URL**: ein kurzes, URL-taugliches Kürzel für den Workshop, z. B.
   `cellular-touch`. Daraus entsteht automatisch die Adresse der
@@ -123,7 +151,22 @@ Die wichtigsten Felder:
   nur Kleinbuchstaben, Zahlen und Bindestriche, keine Leerzeichen oder
   Sonderzeichen.
 - **Status**: `draft` (Entwurf, wird nirgends angezeigt), `upcoming`
-  (kommend), `current` (läuft gerade) oder `past` (vorbei).
+  (kommend), `current` (läuft gerade) oder `past` (vorbei — z. B. für
+  einen abgeschlossenen Workshop, den ihr weiterhin als Rückblick auf der
+  Website stehen lassen wollt).
+- **Sprachversionen der Detailseite** (`language_mode`): legt fest, ob es
+  die Detailseite **nur auf Deutsch**, **nur auf Englisch** oder
+  **Deutsch & Englisch** gibt.
+  - Bei „nur Deutsch" bzw. „nur Englisch" bekommen Besucher:innen, die
+    trotzdem auf die jeweils andere Sprache umschalten, **keine**
+    automatische Übersetzung, sondern einen kleinen Hinweistext direkt
+    unter dem Badge im Hero-Bereich der Seite (z. B. „Nur auf Deutsch" /
+    „German only"). Das ist gewollt — bei einsprachigen Workshops musst
+    du die andere Sprache nicht ausfüllen, der Hinweis erscheint
+    automatisch.
+  - Bei „Deutsch & Englisch" solltest du beide Sprachfassungen
+    vollständig ausfüllen (über den Sprachumschalter oben), sonst fehlen
+    Besucher:innen in einer der beiden Sprachen Inhalte.
 
 **Wichtig zu verstehen — du kannst einen Workshop in zwei Schritten
 anlegen:**
@@ -134,24 +177,45 @@ anlegen:**
    Karte** auf der Programmseite — noch ohne eigene Detailseite zum
    Anklicken. Das ist völlig in Ordnung, wenn die Detailseite noch nicht
    fertig ist.
-2. **Später die restlichen Felder ausfüllen**, sobald die Detailseite fertig
-   werden soll: die Bereiche **„SEO"**, **„Hero"**, **„Praxis-Intro"** und
-   **„Info-Karte"** müssen komplett ausgefüllt sein (mindestens Seitentitel,
-   Hero-Überschrift, Überschrift bei „Praxis-Intro" und Titel bei
-   „Info-Karte"). Erst dann wird automatisch eine eigene, klickbare
+2. **Später die restlichen Abschnitte ausfüllen**, sobald die Detailseite
+   fertig werden soll: die Abschnitte **„Hero"**, **„Praxis-Intro"** und
+   **„Info-Karte"** müssen mindestens eine Überschrift bzw. einen Titel
+   enthalten. Erst dann wird automatisch eine eigene, klickbare
    Detailseite gebaut. Fehlt dort etwas, bleibt es bei der reinen
-   Programm-Karte ohne Link.
+   Programm-Karte ohne Link. Wie bei den übrigen Seiten sind alle
+   Abschnitte zunächst eingeklappt (siehe Abschnitt 2) und **„SEO &
+   Vorschau"** steht auch hier ganz am Ende.
 
 Kurz gesagt: **Du musst nicht alles auf einmal ausfüllen.** Lege den
 Workshop mit ein paar Basisangaben an (er erscheint dann nur als Karte),
-und ergänze die restlichen Felder, sobald die Detailseite inhaltlich
+und ergänze die restlichen Abschnitte, sobald die Detailseite inhaltlich
 fertig ist.
 
-Weitere nützliche Felder: **Sprachversionen der Detailseite** (Deutsch
-oder Englisch), **Startdatum** (für die Sortierung), **Anmeldelink** sowie
-das Häkchen **„Detailseite veröffentlichen"** — ist es abgehakt (Standard),
-gilt die Regel von oben; nimmst du das Häkchen weg, gibt es auch bei
-vollständigen Angaben keine Detailseite.
+**Abschnitte, die du je nach Workshop nutzt — nicht jeder Workshop
+braucht alle:**
+
+- **Hero**: normalerweise ein Bildpaar (Hauptbild + Nebenbild). Trägst du
+  stattdessen ein **Video** ein, wird automatisch das Video anstelle der
+  Bilder angezeigt — du musst dafür nichts umschalten, es reicht, die
+  Videodatei hochzuladen.
+- **Leitung**: eine Liste von Personen (Foto, Rolle, Bio). Du kannst eine
+  oder mehrere Personen eintragen (jede als eigene, aufklappbare Zeile,
+  siehe Abschnitt 2) oder den ganzen Abschnitt leer lassen, wenn er für
+  diesen Workshop nicht gebraucht wird.
+- **Stimmen**: eine Liste von Zitaten/Stimmen von Teilnehmenden — genauso
+  optional und beliebig oft wiederholbar.
+- **FAQ**: eine Liste von Frage-Antwort-Paaren, komplett optional. Früher
+  gab es das nur beim Archiv-Layout, jetzt kannst du es bei jedem
+  Workshop nutzen.
+- **Forschungsfelder** und **Bildband**: zwei weitere optionale
+  Abschnitte für zusätzliche Inhalte (z. B. thematische Karten oder ein
+  großformatiges Bild mit Begleittext) — nutze sie nur, wenn ein Workshop
+  das braucht.
+
+Weitere nützliche Basisangaben: **Startdatum** (für die Sortierung),
+**Anmeldelink** sowie das Häkchen **„Detailseite veröffentlichen"** — ist
+es abgehakt (Standard), gilt die Regel von oben; nimmst du das Häkchen
+weg, gibt es auch bei vollständigen Angaben keine Detailseite.
 
 ---
 
