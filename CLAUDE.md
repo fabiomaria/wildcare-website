@@ -123,3 +123,13 @@ before editing.
   argument says `60+` while the displayed price and aria-labels say `€50+ /
   50 Euro oder mehr`. Pre-existing mismatch; reconcile only if a task calls for
   it.
+
+## CMS schema verification (admin/config.yml)
+
+- Parse check: `node -e "require('js-yaml').load(require('fs').readFileSync('admin/config.yml','utf8'));console.log('OK')"`
+- UI check: `npm run dev`, open http://localhost:8081/admin/ in Chrome, use
+  **Work with Local Repository** (pick the repo root). This reads/writes the
+  working tree directly — no GitHub auth needed.
+- CMS saves rewrite YAML formatting (quoting, key order). Never judge a
+  schema change by `git diff content/` after a UI save; judge it by the
+  `_site/` build diff (`npm run build` + `diff -r -x admin _site <baseline>`).
