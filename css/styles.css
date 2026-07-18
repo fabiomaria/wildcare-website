@@ -642,17 +642,18 @@ nav {
 
 /* Email signup embedded in the CTA band (dark moss background) */
 .cta-section .cta-signup {
-    max-width: 440px;
+    max-width: 680px;
     margin: 0 auto;
 }
 
 .cta-section .cta-signup-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(120px, 0.75fr) minmax(200px, 1.25fr) auto;
     gap: var(--space-sm);
     align-items: stretch;
 }
 
-.cta-section .cta-signup-row input[type="email"] {
+.cta-section .cta-signup-row input {
     flex: 1;
     min-width: 0;
     padding: 14px 16px;
@@ -666,12 +667,12 @@ nav {
     transition: box-shadow var(--duration-fast) var(--ease-out);
 }
 
-.cta-section .cta-signup-row input[type="email"]::placeholder {
+.cta-section .cta-signup-row input::placeholder {
     color: var(--bark);
     opacity: 0.4;
 }
 
-.cta-section .cta-signup-row input[type="email"]:focus {
+.cta-section .cta-signup-row input:focus {
     box-shadow: 0 0 0 3px rgba(250, 247, 242, 0.3);
 }
 
@@ -713,7 +714,7 @@ nav {
 
 @media (max-width: 600px) {
     .cta-section .cta-signup-row {
-        flex-direction: column;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .cta-section .cta-signup-row .btn {
@@ -1313,7 +1314,7 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
 
 .detail-hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: var(--space-2xl);
     align-items: center;
 }
@@ -1334,6 +1335,14 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
 
 .detail-hero-content h1 span {
     color: var(--detail-accent);
+}
+
+.detail-hero-content h1 .detail-hero-heading-main {
+    color: inherit;
+}
+
+.detail-hero-content h1 span {
+    overflow-wrap: anywhere;
 }
 
 .detail-badge {
@@ -1464,7 +1473,7 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
 
 .detail-about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: var(--space-2xl);
     align-items: start;
 }
@@ -1562,6 +1571,32 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-2xl);
+}
+
+.workshop-people-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-2xl);
+    align-items: stretch;
+}
+
+.workshop-people-grid-single {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 900px;
+}
+
+.workshop-facilitator-list,
+.workshop-quote-list {
+    display: grid;
+    gap: var(--space-xl);
+    align-content: start;
+}
+
+.workshop-quote-list .detail-testimonial {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .detail-team-member {
@@ -1889,6 +1924,7 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
 
 .info-row-content {
     flex: 1;
+    min-width: 0;
 }
 
 .info-row-label {
@@ -1905,6 +1941,7 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
     font-weight: 500;
     line-height: 1.5;
     color: var(--bark);
+    overflow-wrap: anywhere;
 }
 
 .info-card-cta {
@@ -2449,6 +2486,10 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
     font-weight: 500;
 }
 
+#kontakt-status {
+    margin-top: var(--space-lg);
+}
+
 .kontakt-info {
     display: flex;
     flex-direction: column;
@@ -2558,8 +2599,9 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
 
 .team-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2xl);
+    grid-template-columns: repeat(2, minmax(0, 360px));
+    justify-content: center;
+    gap: clamp(40px, 6vw, 80px);
 }
 
 .team-member {
@@ -2569,7 +2611,7 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
 
 .team-portrait {
     position: relative;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 5;
     background: var(--sand);
     border: var(--border-subtle);
     border-radius: var(--radius-lg);
@@ -2579,6 +2621,14 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
     justify-content: center;
     margin-bottom: var(--space-lg);
     transition: all var(--duration-normal) var(--ease-out);
+}
+
+/* Eyebrows and badges are optional content, so blanks must not reserve space. */
+.label:empty,
+.detail-badge:empty,
+.event-banner-tag:empty,
+.preview-card-label:empty {
+    display: none;
 }
 
 .team-portrait:hover {
@@ -2844,7 +2894,7 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
     .voice-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
     .journal-listing-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+    .team-grid { grid-template-columns: minmax(0, 320px); gap: var(--space-xl); }
     .philosophy-grid { grid-template-columns: 1fr; }
     .kontakt-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
     .map-wrapper { aspect-ratio: 16 / 10; }
@@ -2860,14 +2910,15 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
     .journal-grid { grid-template-columns: 1fr; }
     .event-banner-inner { justify-content: center; text-align: center; }
     .event-banner-info { justify-content: center; }
-    .detail-hero-grid { grid-template-columns: 1fr; }
+    .detail-hero-grid { grid-template-columns: minmax(0, 1fr); }
     .detail-hero-grid .detail-video-wrapper,
     .detail-hero-grid .detail-photo { order: -1; }
     .detail-video-wrapper video { max-height: 400px; }
-    .detail-about-grid { grid-template-columns: 1fr; }
+    .detail-about-grid { grid-template-columns: minmax(0, 1fr); }
     .detail-card-grid { grid-template-columns: 1fr; }
     .detail-testimonial-grid { grid-template-columns: 1fr; }
     .detail-team-grid { grid-template-columns: 1fr; }
+    .workshop-people-grid { grid-template-columns: minmax(0, 1fr); }
     .workshop-hero-visual {
         min-height: auto;
         display: grid;

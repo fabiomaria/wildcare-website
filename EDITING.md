@@ -54,22 +54,21 @@ Hauptseite der Website als ein einziges, bearbeitbares Formular:
 - **Kontakt**
 - **Über uns / Team**
 - **Journal-Übersicht**
+- **Programm**
 - **Montagskurs**
 - **Mitmachen**
 
-Jede dieser Seiten ist in klar benannte Abschnitte unterteilt, zum
-Beispiel bei der Startseite: **„SEO & Vorschau"** (Titel und Beschreibung,
-die z. B. bei Google und beim Teilen in Chats angezeigt werden),
-**„Hero (Video)"**, **„Vier Haltungen"**, **„Was passiert bei uns"**,
-**„Journal-Teaser"** und **„E-Mail-Anmeldung"**. Bei der Kontakt-Seite
-heißen die Abschnitte entsprechend **„Hero"**, **„Kontaktformular"**,
-**„Info-Spalte"**, **„Karte"** usw. — jede Seite hat ihre eigene,
-passende Gliederung.
+Die Feldnamen im Editor sind auf **Englisch**, damit klar ist, was an
+welcher Stelle erscheint. Unter erklärungsbedürftigen Feldern steht ein
+konkretes Beispiel. `Page hero` bezeichnet zum Beispiel den Kopfbereich,
+`Section heading` eine Abschnittsüberschrift und `Browser and SEO title`
+den Titel für Browser, Suchmaschinen und Link-Vorschauen. Die Inhalte
+selbst trägst du weiterhin auf Deutsch und Englisch ein.
 
 **Abschnitte sind eingeklappt:** Beim Öffnen einer Seite siehst du
 zunächst nur die Abschnitts-Titel (Hero, Kontaktformular, …) — klicke auf
 einen Titel, um den Abschnitt aufzuklappen und die Felder darin zu
-bearbeiten. Der Abschnitt **„SEO & Vorschau"** steht dabei bei jeder Seite
+bearbeiten. Der Abschnitt **„SEO and social preview"** steht dabei bei jeder Seite
 ganz am Ende der Liste; das ist Absicht, damit du ihn erst zum Schluss
 noch einmal kurz prüfst.
 
@@ -88,6 +87,14 @@ wenige Felder sind bewusst **nicht** zweisprachig, weil sie technisch oder
 sprachneutral sind — zum Beispiel die Uhrzeit oder Adresse im
 Termin-Banner der Startseite, oder der Seitentitel/die Beschreibung unter
 „SEO & Vorschau". Das ist normal, kein Fehler.
+
+**Formulare:** Unter `Homepage → Email signup` pflegst du auch die Texte
+für Vorname, E-Mail, Senden, Warten, Erfolg und Fehler. Der Vorname wird
+bei einer Anmeldung zusammen mit der E-Mail gespeichert. Unter `Contact
+page → Contact form` gibt es entsprechend eigene Texte für `Sending`,
+`Sent`, Erfolg und Fehler. Die Website zeigt nach dem Absenden einen klar
+hervorgehobenen Status; diese Texte sollten deshalb kurz und eindeutig
+bleiben.
 
 ---
 
@@ -143,24 +150,25 @@ Sprachversionen der Detailseite, Startdatum, Anmeldelink, …) sind
 sprachneutral und werden nur einmal gepflegt, unabhängig vom
 Sprachumschalter.
 
-Die wichtigsten Basisangaben:
+Die wichtigsten Basisangaben (die Bezeichnungen im CMS stehen auf
+Englisch):
 
-- **Slug/URL**: ein kurzes, URL-taugliches Kürzel für den Workshop, z. B.
+- **Page URL slug**: ein kurzes, URL-taugliches Kürzel für den Workshop, z. B.
   `cellular-touch`. Daraus entsteht automatisch die Adresse der
   Detailseite — aus `cellular-touch` wird `cellular-touch.html`. Verwende
   nur Kleinbuchstaben, Zahlen und Bindestriche, keine Leerzeichen oder
   Sonderzeichen.
-- **Status**: `draft` (Entwurf, wird nirgends angezeigt), `upcoming`
+- **Workshop status**: `draft` (Entwurf, wird nirgends angezeigt), `upcoming`
   (kommend), `current` (läuft gerade) oder `past` (vorbei — z. B. für
   einen abgeschlossenen Workshop, den ihr weiterhin als Rückblick auf der
   Website stehen lassen wollt).
-- **Sprachversionen der Detailseite** (`language_mode`): legt fest, ob es
+- **Available languages** (`language_mode`): legt fest, ob es
   die Detailseite **nur auf Deutsch**, **nur auf Englisch** oder
   **Deutsch & Englisch** gibt.
   - Bei „nur Deutsch" bzw. „nur Englisch" bekommen Besucher:innen, die
     trotzdem auf die jeweils andere Sprache umschalten, **keine**
     automatische Übersetzung, sondern einen kleinen Hinweistext direkt
-    unter dem Badge im Hero-Bereich der Seite (z. B. „Nur auf Deutsch" /
+    im Hero-Bereich der Seite (z. B. „Nur auf Deutsch" /
     „German only"). Das ist gewollt — bei einsprachigen Workshops musst
     du die andere Sprache nicht ausfüllen, der Hinweis erscheint
     automatisch.
@@ -168,23 +176,26 @@ Die wichtigsten Basisangaben:
     vollständig ausfüllen (über den Sprachumschalter oben), sonst fehlen
     Besucher:innen in einer der beiden Sprachen Inhalte.
 
-**Wichtig zu verstehen — du kannst einen Workshop in zwei Schritten
-anlegen:**
+**Zentrale Angaben — bitte nicht doppelt pflegen:**
 
-1. **Nur die Basisangaben ausfüllen** (Titel, Untertitel, Kurzbeschreibung,
-   Datum, Ort, Preis usw. im Bereich **„Programm-Karte"**, plus Status auf
-   `upcoming` oder `current` setzen). Dann erscheint der Workshop **nur als
-   Karte** auf der Programmseite — noch ohne eigene Detailseite zum
-   Anklicken. Das ist völlig in Ordnung, wenn die Detailseite noch nicht
-   fertig ist.
-2. **Später die restlichen Abschnitte ausfüllen**, sobald die Detailseite
-   fertig werden soll: die Abschnitte **„Hero"**, **„Praxis-Intro"** und
-   **„Info-Karte"** müssen mindestens eine Überschrift bzw. einen Titel
-   enthalten. Erst dann wird automatisch eine eigene, klickbare
-   Detailseite gebaut. Fehlt dort etwas, bleibt es bei der reinen
-   Programm-Karte ohne Link. Wie bei den übrigen Seiten sind alle
-   Abschnitte zunächst eingeklappt (siehe Abschnitt 2) und **„SEO &
-   Vorschau"** steht auch hier ganz am Ende.
+- **Workshop title** ist der verbindliche Titel. Er erscheint auf der
+  Programm-Karte, im Breadcrumb und standardmäßig auch im Hero und in den
+  SEO-Daten. `Hero headline override` und der SEO-Titel sind nur optionale
+  Abweichungen.
+- **Registration link** ist der einzige Anmeldelink. Unter **Registration
+  action** stehen der übersetzte Buttontext und ein optionaler Hinweis.
+  Alle Anmeldebuttons dieses Workshops nutzen dieselbe URL.
+- **Core workshop facts** enthält Datum, Zeit, Ort, Preis, Dauer, Format
+  und den detaillierten Zeitplan. Kompakte Werte erscheinen auf der
+  Programm-Karte bzw. optional im Hero; detaillierte Listen erscheinen in
+  der Faktenkarte.
+
+**Wann erscheint eine Detailseite?** `Publish detail page` muss aktiviert
+sein. Zusätzlich braucht der Workshop einen `Workshop title`, nutzbaren
+Hero-Inhalt und mindestens einen inhaltlichen Abschnitt. Der SEO-Titel
+muss nicht separat ausgefüllt werden. Ohne fertige Detailseite kann ein
+Workshop mit Status `upcoming` oder `current` trotzdem als Programm-Karte
+erscheinen.
 
 Kurz gesagt: **Du musst nicht alles auf einmal ausfüllen.** Lege den
 Workshop mit ein paar Basisangaben an (er erscheint dann nur als Karte),
@@ -194,28 +205,33 @@ fertig ist.
 **Abschnitte, die du je nach Workshop nutzt — nicht jeder Workshop
 braucht alle:**
 
-- **Hero**: normalerweise ein Bildpaar (Hauptbild + Nebenbild). Trägst du
+- **Page hero**: normalerweise ein Bildpaar (Hauptbild + Nebenbild). Trägst du
   stattdessen ein **Video** ein, wird automatisch das Video anstelle der
   Bilder angezeigt — du musst dafür nichts umschalten, es reicht, die
   Videodatei hochzuladen.
-- **Leitung**: eine Liste von Personen (Foto, Rolle, Bio). Du kannst eine
-  oder mehrere Personen eintragen (jede als eigene, aufklappbare Zeile,
-  siehe Abschnitt 2) oder den ganzen Abschnitt leer lassen, wenn er für
-  diesen Workshop nicht gebraucht wird.
-- **Stimmen**: eine Liste von Zitaten/Stimmen von Teilnehmenden — genauso
-  optional und beliebig oft wiederholbar.
-- **FAQ**: eine Liste von Frage-Antwort-Paaren, komplett optional. Früher
+- **Workshop description**: die Kernbeschreibung steht links, die
+  zugehörige Faktenkarte optional rechts. Dieser Abschnitt verbindet die
+  frühere Praxisbeschreibung und Programm-Infokarte.
+- **Facilitators and quotes**: eine oder mehrere Personen (Foto, Rolle,
+  Bio) stehen neben optionalen Zitaten. Du kannst die Zitate vollständig
+  weglassen.
+- **Frequently asked questions**: eine Liste von Frage-Antwort-Paaren, komplett optional. Früher
   gab es das nur beim Archiv-Layout, jetzt kannst du es bei jedem
   Workshop nutzen.
-- **Forschungsfelder** und **Bildband**: zwei weitere optionale
+- **Research cards** und **Image and text band**: zwei weitere optionale
   Abschnitte für zusätzliche Inhalte (z. B. thematische Karten oder ein
   großformatiges Bild mit Begleittext) — nutze sie nur, wenn ein Workshop
   das braucht.
 
-Weitere nützliche Basisangaben: **Startdatum** (für die Sortierung),
-**Anmeldelink** sowie das Häkchen **„Detailseite veröffentlichen"** — ist
-es abgehakt (Standard), gilt die Regel von oben; nimmst du das Häkchen
-weg, gibt es auch bei vollständigen Angaben keine Detailseite.
+**Badges und kleine Labels sind optional:** Felder wie `Hero category
+badge`, `Optional eyebrow label`, Karten-Tags und ähnliche dekorative
+Texte können leer bleiben. Dann entsteht auf der Website keine leere
+Zeile oder Lücke.
+
+Bei Listen, die in beiden Sprachen vorkommen (z. B. Zeitplan, Karten,
+Personen oder FAQ), müssen Deutsch und Englisch gleich viele Einträge in
+derselben Reihenfolge haben. Die Sprachfassungen werden nach ihrer
+Position miteinander verbunden.
 
 ---
 

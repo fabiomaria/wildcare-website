@@ -75,11 +75,78 @@ function deepMerge(defaults, localized) {
   return merged;
 }
 
+function plainText(value) {
+  return String(value || "")
+    .replace(/<br\s*\/?>/gi, " ")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function normalizeWorkshopLocale(locale) {
+  const source = isObject(locale) ? locale : {};
+  const card = isObject(source.card) ? source.card : {};
+  const hero = isObject(source.hero) ? source.hero : {};
+  const practice = isObject(source.practice) ? source.practice : null;
+  const info = isObject(source.info) ? source.info : null;
+  const meta = isObject(source.meta) ? source.meta : {};
+  const title = source.title || card.title || source.nav?.breadcrumb || hero.heading_text || plainText(hero.heading);
+  const summary = card.summary || hero.subtitle || "";
+  const registration = {
+    ...(source.registration || {}),
+    label: source.registration?.label || hero.cta_label || info?.cta_label || card.register_label || "",
+    note: source.registration?.note || hero.cta_note || "",
+  };
+
+  return {
+    ...source,
+    title,
+    registration,
+    description: isObject(source.description) ? source.description : (practice || info ? {
+      label: practice?.label || "",
+      heading: practice?.heading || "",
+      paragraphs: practice?.paragraphs || [],
+      show_info: info?.enabled ?? Boolean(info),
+      info_title: info?.title || "",
+    } : null),
+    facts: isObject(source.facts) ? source.facts : {
+      date: card.date || hero.details?.find((detail) => detail.icon === "calendar")?.text || "",
+      time: hero.details?.find((detail) => detail.icon === "clock")?.text || "",
+      location: card.location || hero.details?.find((detail) => detail.icon === "location")?.text || "",
+      price: card.price || hero.details?.find((detail) => detail.icon === "cost")?.text || "",
+      duration: card.duration || "",
+      format: info?.rows?.find((row) => row.icon === "plus")?.values || [],
+      schedule: info?.rows?.find((row) => row.icon === "calendar")?.values || [],
+      price_details: info?.rows?.find((row) => row.icon === "cost")?.values || [],
+    },
+    card,
+    hero: {
+      ...hero,
+      headline: hero.headline || hero.heading || title,
+      show_details: hero.show_details ?? Boolean(hero.details?.length),
+    },
+    info: info ? {
+      ...info,
+      enabled: info.enabled ?? true,
+    } : null,
+    meta: {
+      ...meta,
+      title: meta.title || (title ? `${title} | Wild Care` : ""),
+      description: meta.description || summary,
+      og_title: meta.og_title || title,
+      og_description: meta.og_description || meta.description || summary,
+      og_image: meta.og_image || hero.main_image || "",
+    },
+  };
+}
+
 function hasWorkshopContent(locale) {
   return Boolean(
     locale &&
     (
       locale.card?.title ||
+      locale.title ||
       locale.meta?.title ||
       locale.hero?.heading ||
       locale.practice?.heading
@@ -95,9 +162,16 @@ function hasWorkshopDetailContent(locale) {
   // requirement either) — accept any one of the optional body sections
   // as evidence the detail page has real content beyond the programme card.
   return Boolean(
-    locale?.meta?.title &&
-    locale?.hero?.heading &&
-    (locale?.practice?.heading || locale?.info?.title || locale?.research?.heading)
+    locale?.title &&
+    locale?.hero?.headline &&
+    (
+      locale?.description?.heading ||
+      locale?.description?.show_info ||
+      locale?.research?.heading ||
+      locale?.facilitators?.members?.length ||
+      locale?.testimonials?.items?.length ||
+      locale?.faq?.items?.length
+    )
   );
 }
 
@@ -282,8 +356,25 @@ function loadWorkshopContent() {
       const preferred = languageMode === "en_only" ? enRaw : deRaw;
       const alternate = languageMode === "en_only" ? deRaw : enRaw;
       const fallback = hasWorkshopContent(preferred) ? preferred : alternate;
-      const de = deepMerge(fallback, deRaw);
-      const en = deepMerge(fallback, enRaw);
+      let de = deepMerge(fallback, deRaw);
+      let en = deepMerge(fallback, enRaw);
+
+      // language_mode describes the detail page. Sveltia still writes its
+      // default DE locale for en_only entries, so ignore partial alternate
+      // detail fields there while retaining translated programme-card copy.
+      if (languageMode === "en_only") {
+        de = {
+          ...en,
+          card: deepMerge(en.card || {}, deRaw.card || {}),
+        };
+      } else if (languageMode === "de_only") {
+        en = {
+          ...de,
+          card: deepMerge(de.card || {}, enRaw.card || {}),
+        };
+      }
+      de = normalizeWorkshopLocale(de);
+      en = normalizeWorkshopLocale(en);
       const primaryLocale = languageMode === "en_only" ? "en" : "de";
       const primaryData = primaryLocale === "en" ? en : de;
       const hasDetailPage = head.detail_page !== false && head.status !== "draft" && hasWorkshopDetailContent(primaryData);
@@ -309,7 +400,7 @@ function loadWorkshopContent() {
 
   return {
     all,
-    listed: all.filter((workshop) => (workshop.status === "upcoming" || workshop.status === "current") && (workshop.de.card?.title || workshop.en.card?.title)),
+    listed: all.filter((workshop) => (workshop.status === "upcoming" || workshop.status === "current") && (workshop.de.title || workshop.en.title)),
     pages: all.filter((workshop) => workshop.has_detail_page),
   };
 }

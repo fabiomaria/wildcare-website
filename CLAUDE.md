@@ -109,7 +109,7 @@ before editing.
 - **There is no consent/language/source column.** By owner decision, the Worker
   records those as a **text note in `Nachricht`**, e.g.
   `"E-Mail-Verteiler (kommende Events) — Anmeldung über Startseite — Einwilligung erteilt — Sprache: de"`.
-  Worker field mapping: `Name` ← email, `Email` ← email,
+  Worker field mapping: `Name` ← submitted first name (email for legacy clients), `Email` ← email,
   `Anmeldung Datum` ← submission date, `Nachricht` ← the note. Consent is still
   **required to submit** (validated), just recorded as text.
 - Secrets `NOTION_TOKEN` and `NOTION_DATABASE_ID` live as **Cloudflare Worker

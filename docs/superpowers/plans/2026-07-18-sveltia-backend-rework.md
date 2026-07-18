@@ -1043,3 +1043,41 @@ git commit EDITING.md CLAUDE.md -m "docs: describe reworked CMS editing experien
 ## Rollout note
 
 Config-only tasks (2, 3) change nothing about the build; the `_site` diff gate guarantees visitors see no change from them. **Task 5 is the exception** (2026-07-18 amendment): it deliberately changes what visitors see on Bewegungsrevolution's page (new unified template, some archive-only content dropped) even though Cellular Touch should look unchanged. Keep Task 5's commits atomic per sub-part (schema+migration+loader as one, the template rewrite as another) so the CMS schema and content shape never disagree — but treat pushing Task 5 to `production` as a real, visible content/design change to Bewegungsrevolution's page, not a transparent backend refactor like the rest of this plan. Consider previewing it (local build review) before pushing, rather than relying on the usual diff-gate confidence.
+
+---
+
+## Post-plan follow-up: canonical workshop editing and page polish
+
+**Status:** Implemented and verified locally on 2026-07-18. These changes were explicitly requested by the owner after the original plan completed and therefore supersede the earlier constraints that excluded CSS, `js/i18n.js`, and the signup Worker from this work stream.
+
+### Workshop content model
+
+- Added one localized canonical `title`. Programme cards, breadcrumbs, detail-page eligibility, hero fallback, and SEO fallback derive from it instead of requiring duplicated `card.title`, hero title, and `meta.title` values.
+- Centralized `registration_url`, localized registration button copy/note, and canonical workshop `facts` (date, time, location, price, duration, format, schedule, and detailed pricing).
+- Replaced the separate practice and information concepts with a core `description`: narrative text renders in the left column and an optional facts card renders in the right column.
+- Facilitators and their optional quotes render as adjacent columns. Research cards, image band, FAQ, hero media, card tags, hero category badge, and section eyebrow labels remain optional.
+- Detail pages require the canonical title, usable hero content, and at least one substantive content section. Programme cards use the canonical title directly.
+- The loader retains compatibility fallbacks for existing workshop YAML while migrated entries use the canonical fields.
+
+### CMS editor experience
+
+- All visible CMS collection and field labels are English. Ambiguous controls include examples and explain their frontend destination or fallback behavior.
+- Decorative badges, tags, and eyebrow labels are optional; empty values do not leave visual gaps.
+- Added the previously omitted Programme page to the Pages collection, including its core facts, outlook cards, call to action, and SEO fields.
+- Kept storage keys stable wherever possible so relabeling does not force unrelated content migration.
+- Index-matched bilingual lists must remain in the same order and at the same length; this is stated in relevant field hints.
+
+### Rendering and forms
+
+- Reduced and centered About Us portraits with responsive constraints.
+- Homepage signup now collects first name and posts it to `worker/`; the Worker maps it to Notion's `Name` property and falls back to email for legacy clients. Visible labels, placeholders, progress, success, and error text are CMS-managed and bilingual.
+- Contact form now exposes clear sending, sent, success, and retry/error states. Success/error copy appears in a prominent live-region panel rather than low-opacity helper text.
+- `js/i18n.js` now switches localized input placeholders in addition to text and accessible labels.
+
+### Verification
+
+- `admin/config.yml` parses through `js-yaml`.
+- `npm run build` completes successfully.
+- Generated inline scripts for the homepage and Contact pass JavaScript syntax checks.
+- The signup Worker passed a mocked Notion payload test confirming first-name mapping and was deployed to `wildcare-signup.fabiogerhold.workers.dev`.
+- Desktop render checks covered About Us portraits, the homepage signup layout, Contact, and workshop detail layouts. A real production form submission was intentionally not made to avoid creating test records in Notion.

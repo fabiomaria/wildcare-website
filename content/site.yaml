@@ -15,6 +15,16 @@ de:
     connect_heading: Verbunden bleiben
     contact_label: Kontakt
     tagline: Mit Fürsorge gebaut
+  workshop_ui:
+    info_title: Auf einen Blick
+    format_label: Was
+    schedule_label: Wann
+    location_label: Wo
+    price_label: Preis
+    facilitators_label: Leitung
+    testimonials_label: Stimmen
+    faq_label: Häufige Fragen
+    detail_label: Mehr erfahren
 en:
   nav:
     home: Home
@@ -28,3 +38,13 @@ en:
     connect_heading: Stay connected
     contact_label: Contact
     tagline: Built with care
+  workshop_ui:
+    info_title: At a Glance
+    format_label: What
+    schedule_label: When
+    location_label: Where
+    price_label: Price
+    facilitators_label: Facilitators
+    testimonials_label: Testimonials
+    faq_label: FAQ
+    detail_label: Learn more

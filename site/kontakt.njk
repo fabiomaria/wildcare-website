@@ -80,7 +80,9 @@ permalink: kontakt.html
                             </p>
                         </div>
                         <input type="text" name="website" id="kontakt-website" tabindex="-1" autocomplete="off" hidden>
-                        <p class="form-note" id="kontakt-message" role="status" aria-live="polite" hidden></p>
+                        <div class="kontakt-highlight" id="kontakt-status" role="status" aria-live="polite" hidden>
+                            <p id="kontakt-message"></p>
+                        </div>
                     </form>
                 </div>
 
@@ -261,11 +263,15 @@ permalink: kontakt.html
                 var website = document.getElementById('kontakt-website').value;
                 var lang = document.documentElement.lang || 'de';
                 var messageEl = document.getElementById('kontakt-message');
+                var statusEl = document.getElementById('kontakt-status');
                 var submitButton = form.querySelector('button[type="submit"]');
+                var succeeded = false;
 
                 if (submitButton) {
                     submitButton.disabled = true;
+                    submitButton.textContent = lang === 'en' ? {{ (en.form.submitting_label or de.form.submitting_label) | json | safe }} : {{ de.form.submitting_label | json | safe }};
                 }
+                statusEl.hidden = true;
 
                 fetch(WORKER_URL, {
                     method: 'POST',
@@ -275,20 +281,26 @@ permalink: kontakt.html
                     .then(function (response) { return response.json(); })
                     .then(function (result) {
                         if (result.ok) {
+                            succeeded = true;
                             form.reset();
                             messageEl.textContent = lang === 'en' ? {{ (en.form.success_message or de.form.success_message) | json | safe }} : {{ de.form.success_message | json | safe }};
+                            statusEl.setAttribute('role', 'status');
+                            submitButton.textContent = lang === 'en' ? {{ (en.form.submitted_label or de.form.submitted_label) | json | safe }} : {{ de.form.submitted_label | json | safe }};
                         } else {
                             messageEl.textContent = lang === 'en' ? {{ (en.form.error_message or de.form.error_message) | json | safe }} : {{ de.form.error_message | json | safe }};
+                            statusEl.setAttribute('role', 'alert');
                         }
-                        messageEl.hidden = false;
+                        statusEl.hidden = false;
                     })
                     .catch(function () {
                         messageEl.textContent = lang === 'en' ? {{ (en.form.error_message or de.form.error_message) | json | safe }} : {{ de.form.error_message | json | safe }};
-                        messageEl.hidden = false;
+                        statusEl.setAttribute('role', 'alert');
+                        statusEl.hidden = false;
                     })
                     .finally(function () {
-                        if (submitButton) {
+                        if (submitButton && !succeeded) {
                             submitButton.disabled = false;
+                            submitButton.textContent = lang === 'en' ? {{ (en.form.submit_label or de.form.submit_label) | json | safe }} : {{ de.form.submit_label | json | safe }};
                         }
                     });
             });

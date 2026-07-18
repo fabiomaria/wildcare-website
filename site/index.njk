@@ -209,8 +209,10 @@ permalink: index.html
             <p data-de="{{ de.cta.text }}" data-en="{{ en.cta.text or de.cta.text }}">{{ de.cta.text }}</p>
             <form id="signup-form" class="cta-signup">
                 <div class="cta-signup-row">
+                    <label for="signup-first-name" class="sr-only" data-de="{{ de.cta.first_name_label }}" data-en="{{ en.cta.first_name_label or de.cta.first_name_label }}">{{ de.cta.first_name_label }}</label>
+                    <input type="text" id="signup-first-name" name="firstName" autocomplete="given-name" placeholder="{{ de.cta.first_name_placeholder }}" data-placeholder-de="{{ de.cta.first_name_placeholder }}" data-placeholder-en="{{ en.cta.first_name_placeholder or de.cta.first_name_placeholder }}" maxlength="80" required>
                     <label for="signup-email" class="sr-only" data-de="{{ de.cta.email_label }}" data-en="{{ en.cta.email_label or de.cta.email_label }}">{{ de.cta.email_label }}</label>
-                    <input type="email" id="signup-email" name="email" placeholder="deine@email.at" required>
+                    <input type="email" id="signup-email" name="email" autocomplete="email" placeholder="{{ de.cta.email_placeholder }}" data-placeholder-de="{{ de.cta.email_placeholder }}" data-placeholder-en="{{ en.cta.email_placeholder or de.cta.email_placeholder }}" required>
                     <button type="submit" class="btn btn-primary" data-de="{{ de.cta.submit }}" data-en="{{ en.cta.submit or de.cta.submit }}">{{ de.cta.submit }}</button>
                 </div>
                 <label for="signup-consent" class="cta-signup-consent">
@@ -218,7 +220,7 @@ permalink: index.html
                     <span data-de="{{ de.cta.consent_pre | trim }} " data-en="{{ (en.cta.consent_pre or de.cta.consent_pre) | trim }} ">{{ de.cta.consent_pre | trim }} </span><a href="datenschutz.html" data-de="{{ de.cta.consent_link }}" data-en="{{ en.cta.consent_link or de.cta.consent_link }}">{{ de.cta.consent_link }}</a><span data-de=" {{ de.cta.consent_post | trim }}" data-en="{{ (en.cta.consent_post or de.cta.consent_post) | trim }}">{{ de.cta.consent_post | trim }}</span>
                 </label>
                 <input type="text" name="website" id="signup-website" tabindex="-1" autocomplete="off" hidden>
-                <p class="form-note" id="signup-message" hidden></p>
+                <p class="form-note" id="signup-message" role="status" aria-live="polite" hidden></p>
             </form>
         </div>
     </section>
@@ -285,30 +287,40 @@ permalink: index.html
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
 
+                var firstName = document.getElementById('signup-first-name').value;
                 var email = document.getElementById('signup-email').value;
                 var consent = document.getElementById('signup-consent').checked;
                 var website = document.getElementById('signup-website').value;
                 var lang = document.documentElement.lang || 'de';
                 var messageEl = document.getElementById('signup-message');
+                var submitButton = form.querySelector('button[type="submit"]');
+
+                submitButton.disabled = true;
+                submitButton.textContent = lang === 'en' ? {{ (en.cta.submitting or de.cta.submitting) | json | safe }} : {{ de.cta.submitting | json | safe }};
 
                 fetch(WORKER_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email, consent: consent, website: website, language: lang })
+                    body: JSON.stringify({ firstName: firstName, email: email, consent: consent, website: website, language: lang })
                 })
                     .then(function (response) { return response.json(); })
                     .then(function (result) {
                         if (result.ok) {
-                            form.hidden = true;
-                            messageEl.textContent = lang === 'en' ? "Thanks! You're on the list." : 'Danke! Du bist dabei.';
+                            form.reset();
+                            messageEl.textContent = lang === 'en' ? {{ (en.cta.success or de.cta.success) | json | safe }} : {{ de.cta.success | json | safe }};
+                            submitButton.textContent = lang === 'en' ? {{ (en.cta.submitted or de.cta.submitted) | json | safe }} : {{ de.cta.submitted | json | safe }};
                         } else {
-                            messageEl.textContent = lang === 'en' ? 'Something went wrong. Please try again.' : 'Etwas ist schiefgelaufen. Bitte versuch es erneut.';
+                            messageEl.textContent = lang === 'en' ? {{ (en.cta.error or de.cta.error) | json | safe }} : {{ de.cta.error | json | safe }};
+                            submitButton.disabled = false;
+                            submitButton.textContent = lang === 'en' ? {{ (en.cta.submit or de.cta.submit) | json | safe }} : {{ de.cta.submit | json | safe }};
                         }
                         messageEl.hidden = false;
                     })
                     .catch(function () {
-                        messageEl.textContent = lang === 'en' ? 'Something went wrong. Please try again.' : 'Etwas ist schiefgelaufen. Bitte versuch es erneut.';
+                        messageEl.textContent = lang === 'en' ? {{ (en.cta.error or de.cta.error) | json | safe }} : {{ de.cta.error | json | safe }};
                         messageEl.hidden = false;
+                        submitButton.disabled = false;
+                        submitButton.textContent = lang === 'en' ? {{ (en.cta.submit or de.cta.submit) | json | safe }} : {{ de.cta.submit | json | safe }};
                     });
             });
         })();

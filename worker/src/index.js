@@ -23,11 +23,11 @@ function isValidEmail(email) {
 // That database has no Consent/Language/Source columns (see CLAUDE.md), so
 // consent + language + source are recorded as a human-readable text note in
 // the existing `Nachricht` rich-text property. Field mapping:
-//   Name (title)         <- email
+//   Name (title)         <- first name (email for legacy clients)
 //   Email (email)        <- email
 //   Anmeldung Datum (date) <- submission date (YYYY-MM-DD)
 //   Nachricht (rich_text)  <- the note
-async function createNotionRow(env, email, language, submissionDate) {
+async function createNotionRow(env, firstName, email, language, submissionDate) {
     const note =
         "E-Mail-Verteiler (kommende Events) — Anmeldung über Startseite — Einwilligung erteilt — Sprache: " + language;
 
@@ -41,7 +41,7 @@ async function createNotionRow(env, email, language, submissionDate) {
         body: JSON.stringify({
             parent: { database_id: env.NOTION_DATABASE_ID },
             properties: {
-                "Name": { title: [{ text: { content: email } }] },
+                "Name": { title: [{ text: { content: firstName || email } }] },
                 "Email": { email: email },
                 "Anmeldung Datum": { date: { start: submissionDate } },
                 "Nachricht": { rich_text: [{ text: { content: note } }] },
@@ -83,7 +83,8 @@ export default {
         const language = data.language === "en" ? "en" : "de";
         const submissionDate = new Date().toISOString().slice(0, 10);
 
-        const notionResponse = await createNotionRow(env, data.email, language, submissionDate);
+        const firstName = typeof data.firstName === "string" ? data.firstName.trim().slice(0, 80) : "";
+        const notionResponse = await createNotionRow(env, firstName, data.email, language, submissionDate);
 
         if (!notionResponse.ok) {
             return jsonResponse({ ok: false, error: "notion_error" }, 502);

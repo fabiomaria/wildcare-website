@@ -6,6 +6,7 @@ pagination:
 permalink: "{{ workshop.href }}"
 ---
 {% from "partials/icon.njk" import icon %}
+{%- set s = cms.site -%}
 {%- set de = workshop.de -%}
 {%- set en = workshop.en -%}
 {%- if workshop.primary_locale == "en" -%}
@@ -45,8 +46,8 @@ permalink: "{{ workshop.href }}"
 <body>
 
     {%- set navActive = "programm" -%}
-    {%- set navBreadcrumbDe = de.nav.breadcrumb -%}
-    {%- set navBreadcrumbEn = en.nav.breadcrumb -%}
+    {%- set navBreadcrumbDe = de.title -%}
+    {%- set navBreadcrumbEn = en.title -%}
     {% include "partials/nav.njk" %}
 
     <!-- ================================
@@ -58,9 +59,11 @@ permalink: "{{ workshop.href }}"
             <div class="detail-hero-grid">
 
                 <div class="detail-hero-content accent-terracotta fade-up">
+{% if primary.hero.badge %}
                     <div class="detail-badge"
                         data-de="{{ de.hero.badge | attr }}"
                         data-en="{{ en.hero.badge | attr }}">{{ primary.hero.badge }}</div>
+{% endif %}
 {% if workshop.language_mode != "bilingual" %}
 {% if workshop.language_mode == "de_only" %}
 {%- set langNoteDe = "Nur auf Deutsch" -%}
@@ -74,41 +77,53 @@ permalink: "{{ workshop.href }}"
                         data-en="{{ langNoteEn | attr }}">{% if workshop.primary_locale == "en" %}{{ langNoteEn }}{% else %}{{ langNoteDe }}{% endif %}</p>
 {% endif %}
 
-{%- set headingTextDe = de.hero.heading_text -%}
-{%- set headingTextEn = en.hero.heading_text -%}
-                    <h1{% if headingTextDe and headingTextEn %}
-                        data-de="{{ headingTextDe | attr }}"
-                        data-en="{{ headingTextEn | attr }}"{% endif %}>{{ primary.hero.heading | safe }}</h1>
+                    <h1><span class="detail-hero-heading-main"
+                        data-de="{{ de.hero.headline | attr }}"
+                        data-en="{{ en.hero.headline | attr }}">{{ primary.hero.headline }}</span>{% if primary.hero.headline_accent %}<br><span
+                        data-de="{{ de.hero.headline_accent | attr }}"
+                        data-en="{{ en.hero.headline_accent | attr }}">{{ primary.hero.headline_accent }}</span>{% endif %}</h1>
 
                     <p class="detail-hero-subtitle"
                         data-de="{{ de.hero.subtitle | attr }}"
                         data-en="{{ en.hero.subtitle | attr }}">{{ primary.hero.subtitle }}</p>
 
-{% if primary.hero.details and primary.hero.details.length %}
+{% if primary.hero.show_details and primary.facts %}
                     <div class="detail-hero-details">
-{%- for detail in primary.hero.details %}
-{%- set altDetail = alternate.hero.details[loop.index0] %}
+{% if primary.facts.date %}
                         <div class="detail-hero-detail">
-                            {% if detail.icon == "calendar" %}<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>{% endif %}
-                            {% if detail.icon == "clock" %}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>{% endif %}
-                            {% if detail.icon == "location" %}<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{% endif %}
-                            {% if detail.icon == "cost" %}<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>{% endif %}
-                            {% if altDetail and altDetail.text != detail.text %}<span
-                                data-de="{{ detail.text | attr }}"
-                                data-en="{{ altDetail.text | attr }}">{{ detail.text }}</span>{% else %}{{ detail.text }}{% endif %}
+                            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                            <span data-de="{{ de.facts.date | attr }}" data-en="{{ en.facts.date | attr }}">{{ primary.facts.date }}</span>
                         </div>
-{% endfor %}
+{% endif %}
+{% if primary.facts.time %}
+                        <div class="detail-hero-detail">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <span data-de="{{ de.facts.time | attr }}" data-en="{{ en.facts.time | attr }}">{{ primary.facts.time }}</span>
+                        </div>
+{% endif %}
+{% if primary.facts.location %}
+                        <div class="detail-hero-detail">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span data-de="{{ de.facts.location | attr }}" data-en="{{ en.facts.location | attr }}">{{ primary.facts.location }}</span>
+                        </div>
+{% endif %}
+{% if primary.facts.price %}
+                        <div class="detail-hero-detail">
+                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>
+                            <span data-de="{{ de.facts.price | attr }}" data-en="{{ en.facts.price | attr }}">{{ primary.facts.price }}</span>
+                        </div>
+{% endif %}
                     </div>
 {% endif %}
 
                     <div class="detail-hero-cta">
-                        <a href="{{ primary.hero.cta_href or workshop.registration_url }}" class="btn btn-primary"
-                            data-de="{{ de.hero.cta_label | attr }}"
-                            data-en="{{ en.hero.cta_label | attr }}">{{ primary.hero.cta_label }}</a>
-{% if primary.hero.cta_note %}
+                        <a href="{{ workshop.registration_url }}" class="btn btn-primary"
+                            data-de="{{ de.registration.label | attr }}"
+                            data-en="{{ en.registration.label | attr }}">{{ primary.registration.label }}</a>
+{% if primary.registration.note %}
                         <p class="detail-hero-note"
-                            data-de="{{ de.hero.cta_note | attr }}"
-                            data-en="{{ en.hero.cta_note | attr }}">{{ primary.hero.cta_note }}</p>
+                            data-de="{{ de.registration.note | attr }}"
+                            data-en="{{ en.registration.note | attr }}">{{ primary.registration.note }}</p>
 {% endif %}
                     </div>
                 </div>
@@ -150,53 +165,78 @@ permalink: "{{ workshop.href }}"
     </header>
 
     <!-- ================================
-         INTRO + INFO
+         WORKSHOP DESCRIPTION
          ================================ -->
 
-{% if primary.practice or primary.info %}
+{% if primary.description %}
     <section class="detail-about">
         <div class="container">
             <div class="detail-about-grid">
-{% if primary.practice %}
+{% if primary.description.heading or (primary.description.paragraphs and primary.description.paragraphs.length) %}
                 <div class="detail-about-text fade-up">
                     <p class="label"
-                        data-de="{{ de.practice.label | attr }}"
-                        data-en="{{ en.practice.label | attr }}">{{ primary.practice.label }}</p>
+                        data-de="{{ de.description.label | attr }}"
+                        data-en="{{ en.description.label | attr }}">{{ primary.description.label }}</p>
                     <h2
-                        data-de="{{ de.practice.heading | attr }}"
-                        data-en="{{ en.practice.heading | attr }}">{{ primary.practice.heading }}</h2>
-                    {% for paragraph in primary.practice.paragraphs %}
+                        data-de="{{ de.description.heading | attr }}"
+                        data-en="{{ en.description.heading | attr }}">{{ primary.description.heading }}</h2>
+                    {% for paragraph in primary.description.paragraphs %}
                     <p>{{ paragraph | safe }}</p>
                     {% endfor %}
                 </div>
 {% endif %}
-{% if primary.info %}
+{% if primary.description.show_info %}
                 <div class="info-card fade-up delay-2">
                     <div class="info-card-title"
-                        data-de="{{ de.info.title | attr }}"
-                        data-en="{{ en.info.title | attr }}">{{ primary.info.title }}</div>
+                        data-de="{{ (de.description.info_title or s.de.workshop_ui.info_title) | attr }}"
+                        data-en="{{ (en.description.info_title or s.en.workshop_ui.info_title) | attr }}">{{ primary.description.info_title or s[workshop.primary_locale].workshop_ui.info_title }}</div>
 
-                    {% for row in primary.info.rows %}
-{%- set altRow = alternate.info.rows[loop.index0] %}
+{% if primary.facts.format and primary.facts.format.length %}
                     <div class="info-row">
                         <div class="info-row-icon">
-                            {{ icon(row.icon) }}
+                            {{ icon("plus") }}
                         </div>
                         <div class="info-row-content">
                             <div class="info-row-label"
-                                data-de="{{ row.label | attr }}"
-                                data-en="{{ altRow.label | attr }}">{{ row.label }}</div>
-                            {% for value in row.values %}
+                                data-de="{{ s.de.workshop_ui.format_label | attr }}"
+                                data-en="{{ s.en.workshop_ui.format_label | attr }}">{{ s[workshop.primary_locale].workshop_ui.format_label }}</div>
+                            {% for value in primary.facts.format %}
                             <div class="info-row-value">{{ value | safe }}</div>
                             {% endfor %}
                         </div>
                     </div>
-
-                    {% endfor %}
+{% endif %}
+{% if primary.facts.schedule and primary.facts.schedule.length %}
+                    <div class="info-row">
+                        <div class="info-row-icon">{{ icon("calendar") }}</div>
+                        <div class="info-row-content">
+                            <div class="info-row-label" data-de="{{ s.de.workshop_ui.schedule_label | attr }}" data-en="{{ s.en.workshop_ui.schedule_label | attr }}">{{ s[workshop.primary_locale].workshop_ui.schedule_label }}</div>
+                            {% for value in primary.facts.schedule %}<div class="info-row-value">{{ value | safe }}</div>{% endfor %}
+                        </div>
+                    </div>
+{% endif %}
+{% if primary.facts.location %}
+                    <div class="info-row">
+                        <div class="info-row-icon">{{ icon("location") }}</div>
+                        <div class="info-row-content">
+                            <div class="info-row-label" data-de="{{ s.de.workshop_ui.location_label | attr }}" data-en="{{ s.en.workshop_ui.location_label | attr }}">{{ s[workshop.primary_locale].workshop_ui.location_label }}</div>
+                            <div class="info-row-value">{{ primary.facts.location }}</div>
+                        </div>
+                    </div>
+{% endif %}
+{% if (primary.facts.price_details and primary.facts.price_details.length) or primary.facts.price %}
+                    <div class="info-row">
+                        <div class="info-row-icon">{{ icon("cost") }}</div>
+                        <div class="info-row-content">
+                            <div class="info-row-label" data-de="{{ s.de.workshop_ui.price_label | attr }}" data-en="{{ s.en.workshop_ui.price_label | attr }}">{{ s[workshop.primary_locale].workshop_ui.price_label }}</div>
+                            {% if primary.facts.price_details and primary.facts.price_details.length %}{% for value in primary.facts.price_details %}<div class="info-row-value">{{ value | safe }}</div>{% endfor %}{% else %}<div class="info-row-value">{{ primary.facts.price | safe }}</div>{% endif %}
+                        </div>
+                    </div>
+{% endif %}
                     <div class="info-card-cta">
                         <a href="{{ workshop.registration_url }}" class="btn btn-primary" style="width: 100%; justify-content: center;"
-                            data-de="{{ de.info.cta_label | attr }}"
-                            data-en="{{ en.info.cta_label | attr }}">{{ primary.info.cta_label }}</a>
+                            data-de="{{ de.registration.label | attr }}"
+                            data-en="{{ en.registration.label | attr }}">{{ primary.registration.label }}</a>
                     </div>
                 </div>
 {% endif %}
@@ -267,81 +307,55 @@ permalink: "{{ workshop.href }}"
 {% endif %}
 
     <!-- ================================
-         FACILITATION
+         FACILITATION + QUOTES
          ================================ -->
 
 {% if primary.facilitators and primary.facilitators.members and primary.facilitators.members.length %}
     <section>
         <div class="container">
-{% if primary.facilitators.label or primary.facilitators.heading %}
-            <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
-{% if primary.facilitators.label %}
-                <p class="label"
-                    data-de="{{ de.facilitators.label | attr }}"
-                    data-en="{{ en.facilitators.label | attr }}">{{ primary.facilitators.label }}</p>
-{% endif %}
+            <div class="workshop-people-grid{% if not primary.facilitators.quotes or not primary.facilitators.quotes.length %} workshop-people-grid-single{% endif %}">
+                <div class="workshop-facilitator-list">
 {% if primary.facilitators.heading %}
-                <h2
-                    data-de="{{ de.facilitators.heading | attr }}"
-                    data-en="{{ en.facilitators.heading | attr }}">{{ primary.facilitators.heading }}</h2>
+                    <h2 class="fade-up"
+                        data-de="{{ de.facilitators.heading | attr }}"
+                        data-en="{{ en.facilitators.heading | attr }}">{{ primary.facilitators.heading }}</h2>
 {% endif %}
-            </div>
-{% endif %}
-            <div class="detail-team-grid">
 {%- for member in primary.facilitators.members %}
 {%- set altMember = alternate.facilitators.members[loop.index0] %}
-                <div class="detail-team-member fade-up delay-{{ loop.index }}">
-                    <div class="detail-team-portrait workshop-team-portrait">
-                        <img src="{{ member.image }}" alt="{{ member.alt }}" loading="lazy">
+                    <div class="detail-team-member fade-up delay-{{ loop.index }}">
+                        <div class="detail-team-portrait workshop-team-portrait">
+                            <img src="{{ member.image }}" alt="{{ member.alt }}" loading="lazy">
+                        </div>
+                        <div class="detail-team-info">
+{% if loop.first %}
+                            <p class="label"
+                                data-de="{{ (de.facilitators.label or s.de.workshop_ui.facilitators_label) | attr }}"
+                                data-en="{{ (en.facilitators.label or s.en.workshop_ui.facilitators_label) | attr }}">{{ primary.facilitators.label or s[workshop.primary_locale].workshop_ui.facilitators_label }}</p>
+{% endif %}
+                            <h3>{{ member.name }}</h3>
+                            <p class="detail-team-role"
+                                data-de="{{ member.role | attr }}"
+                                data-en="{{ altMember.role | attr }}">{{ member.role }}</p>
+                            <p
+                                data-de="{{ member.bio | attr }}"
+                                data-en="{{ altMember.bio | attr }}">{{ member.bio | safe }}</p>
+                        </div>
                     </div>
-                    <div class="detail-team-info">
-                        <h3>{{ member.name }}</h3>
-                        <p class="detail-team-role"
-                            data-de="{{ member.role | attr }}"
-                            data-en="{{ altMember.role | attr }}">{{ member.role }}</p>
-                        <p
-                            data-de="{{ member.bio | attr }}"
-                            data-en="{{ altMember.bio | attr }}">{{ member.bio | safe }}</p>
+{% endfor %}
+                </div>
+{% if primary.facilitators.quotes and primary.facilitators.quotes.length %}
+                <div class="workshop-quote-list">
+{%- for item in primary.facilitators.quotes %}
+{%- set altItem = alternate.facilitators.quotes[loop.index0] %}
+                    <div class="detail-testimonial fade-up delay-{{ loop.index }}">
+                        <blockquote
+                            data-de="{{ item.quote | attr }}"
+                            data-en="{{ altItem.quote | attr }}">{{ item.quote }}</blockquote>
+                        <p class="detail-testimonial-author">{{ item.author }}</p>
                     </div>
-                </div>
 {% endfor %}
-            </div>
-        </div>
-    </section>
-{% endif %}
-
-    <!-- ================================
-         TESTIMONIALS
-         ================================ -->
-
-{% if primary.testimonials and primary.testimonials.items and primary.testimonials.items.length %}
-    <section>
-        <div class="container">
-{% if primary.testimonials.label or primary.testimonials.heading %}
-            <div class="section-header fade-up" style="text-align: center; margin-bottom: 56px;">
-{% if primary.testimonials.label %}
-                <p class="label"
-                    data-de="{{ de.testimonials.label | attr }}"
-                    data-en="{{ en.testimonials.label | attr }}">{{ primary.testimonials.label }}</p>
-{% endif %}
-{% if primary.testimonials.heading %}
-                <h2
-                    data-de="{{ de.testimonials.heading | attr }}"
-                    data-en="{{ en.testimonials.heading | attr }}">{{ primary.testimonials.heading }}</h2>
-{% endif %}
-            </div>
-{% endif %}
-
-            <div class="detail-testimonial-grid">
-{%- for item in primary.testimonials.items %}
-{%- set altItem = alternate.testimonials.items[loop.index0] %}
-                <div class="detail-testimonial fade-up delay-{{ loop.index }}">
-                    <blockquote
-                        data-de="{{ item.quote | attr }}"
-                        data-en="{{ altItem.quote | attr }}">{{ item.quote }}</blockquote>
-                    <p class="detail-testimonial-author">&mdash; {{ item.author }}</p>
                 </div>
-{% endfor %}
+{% endif %}
             </div>
         </div>
     </section>
@@ -356,8 +370,8 @@ permalink: "{{ workshop.href }}"
         <div class="container">
             <div class="section-header fade-up" style="text-align: center; margin-bottom: 48px;">
                 <p class="label"
-                    data-de="{{ de.faq.label | attr }}"
-                    data-en="{{ en.faq.label | attr }}">{{ primary.faq.label }}</p>
+                    data-de="{{ (de.faq.label or s.de.workshop_ui.faq_label) | attr }}"
+                    data-en="{{ (en.faq.label or s.en.workshop_ui.faq_label) | attr }}">{{ primary.faq.label or s[workshop.primary_locale].workshop_ui.faq_label }}</p>
                 <h2
                     data-de="{{ de.faq.heading | attr }}"
                     data-en="{{ en.faq.heading | attr }}">{{ primary.faq.heading }}</h2>

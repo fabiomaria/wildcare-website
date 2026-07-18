@@ -38,46 +38,46 @@ i18n:
 
 collections:
   - name: seiten
-    label: Seiten
+    label: 'Pages'
     i18n: true
     files:
       - name: startseite
-        label: Startseite
+        label: 'Homepage'
         file: content/pages/index.yaml
         i18n: true
         fields:
           - name: hero
-            label: Hero (Video)
+            label: 'Video hero'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true, hint: 'Zeilenumbruch mit <br> möglich' }
-              - { name: tagline, label: Untertitel, widget: text, i18n: true }
-              - { name: cta_primary, label: 'Button: Komm vorbei', widget: string, i18n: true }
-              - { name: cta_secondary, label: 'Button: Mehr erfahren', widget: string, i18n: true }
-              - { name: cta_ghost, label: 'Button: Mitglied werden', widget: string, i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true, hint: 'Example: Movement as encounter. Use <br> for an intentional line break.' }
+              - { name: tagline, label: 'Subtitle', widget: text, i18n: true }
+              - { name: cta_primary, label: 'Visit button text', widget: string, i18n: true }
+              - { name: cta_secondary, label: 'Learn more button text', widget: string, i18n: true }
+              - { name: cta_ghost, label: 'Membership button text', widget: string, i18n: true }
           - name: event_banner
-            label: Termin-Banner
+            label: 'Event banner'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: tag, label: Tag-Label, widget: string, i18n: true }
-              - { name: day, label: Wochentag, widget: string, i18n: true }
-              - { name: time, label: Uhrzeit, widget: string, i18n: false }
-              - { name: address, label: Adresse, widget: string, i18n: false }
-              - { name: basis, label: Basis (Spende), widget: string, i18n: true }
+              - { name: tag, label: 'Optional event badge', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: day, label: 'Day label', widget: string, i18n: true }
+              - { name: time, label: 'Time', widget: string, i18n: false }
+              - { name: address, label: 'Address', widget: string, i18n: false }
+              - { name: basis, label: 'Pricing / donation basis', widget: string, i18n: true }
           - name: values
-            label: Vier Haltungen
+            label: 'Four values'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - name: cards
-                label: Karten
+                label: 'Cards'
                 widget: list
                 collapsed: true
                 minimize_collapsed: true
@@ -85,53 +85,60 @@ collections:
                 i18n: true
                 min: 4
                 max: 4
-                hint: 'Genau 4 Karten — die Icons sind fest den Positionen 1–4 zugeordnet.'
+                hint: 'Exactly four cards. Their icons are assigned to positions 1-4.'
                 fields:
-                  - { name: title, label: Titel, widget: string, i18n: true }
+                  - { name: title, label: 'Title', widget: string, i18n: true }
                   - { name: text, label: Text, widget: text, i18n: true }
           - name: invitation
-            label: Was passiert bei uns
+            label: 'Invitation section'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
-              - { name: p1, label: Absatz 1, widget: text, i18n: true }
-              - { name: p2, label: Absatz 2, widget: text, i18n: true }
-              - { name: cta, label: Button, widget: string, i18n: true }
-          - { name: quote, label: Manifest-Zitat, widget: text, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
+              - { name: p1, label: 'First paragraph', widget: text, i18n: true }
+              - { name: p2, label: 'Second paragraph', widget: text, i18n: true }
+              - { name: cta, label: 'Button text', widget: string, i18n: true }
+          - { name: quote, label: 'Manifest quote', widget: text, i18n: true }
           - name: journal
-            label: Journal-Teaser
+            label: 'Journal preview'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
-              - { name: all_posts, label: 'Button: Alle Beiträge', widget: string, i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
+              - { name: all_posts, label: 'All articles button text', widget: string, i18n: true }
           - name: cta
-            label: E-Mail-Anmeldung
+            label: 'Email signup'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - { name: text, label: Text, widget: text, i18n: true }
-              - { name: email_label, label: 'Label: E-Mail (Screenreader)', widget: string, i18n: true }
-              - { name: submit, label: Absende-Button, widget: string, i18n: true }
-              - { name: consent_pre, label: 'Einwilligung: Text vor Link', widget: string, i18n: true }
-              - { name: consent_link, label: 'Einwilligung: Link-Text', widget: string, i18n: true }
-              - { name: consent_post, label: 'Einwilligung: Text nach Link', widget: string, i18n: true }
+              - { name: first_name_label, label: 'First-name field label', widget: string, i18n: true, hint: 'Example: First name.' }
+              - { name: first_name_placeholder, label: 'First-name placeholder', widget: string, i18n: true, hint: 'Example: Your first name.' }
+              - { name: email_label, label: 'Email field label', widget: string, i18n: true, hint: 'Example: Email address.' }
+              - { name: email_placeholder, label: 'Email placeholder', widget: string, i18n: true, hint: 'Example: you@example.com.' }
+              - { name: submit, label: 'Submit button text', widget: string, i18n: true }
+              - { name: submitting, label: 'Submitting button text', widget: string, i18n: true, hint: 'Example: Signing you up ...' }
+              - { name: submitted, label: 'Completed button text', widget: string, i18n: true, hint: 'Example: Signed up.' }
+              - { name: success, label: 'Success message', widget: string, i18n: true, hint: 'Example: Thanks! You are on the list.' }
+              - { name: error, label: 'Error message', widget: string, i18n: true, hint: 'Example: Something went wrong. Please try again.' }
+              - { name: consent_pre, label: 'Consent text before link', widget: string, i18n: true }
+              - { name: consent_link, label: 'Consent link text', widget: string, i18n: true }
+              - { name: consent_post, label: 'Consent text after link', widget: string, i18n: true }
           - name: meta
-            label: 'SEO & Vorschau (zuletzt prüfen)'
+            label: 'SEO and social preview (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
+              - { name: title, label: 'Browser and SEO title', widget: string }
+              - { name: description, label: 'Description', widget: text }
       - name: kontakt
-        label: Kontakt
+        label: 'Contact page'
         file: content/pages/kontakt.yaml
         i18n: true
         fields:
@@ -141,64 +148,66 @@ collections:
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true, hint: 'Zeilenumbruch mit <br> möglich' }
-              - { name: intro, label: Einleitung, widget: text, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true, hint: 'Example: Let us meet. Use <br> for an intentional line break.' }
+              - { name: intro, label: 'Introduction', widget: text, i18n: true }
           - name: form
-            label: Kontaktformular
+            label: 'Contact form'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
-              - { name: name_label, label: 'Feld-Label: Name', widget: string, i18n: true }
-              - { name: name_placeholder, label: 'Platzhalter: Name', widget: string, i18n: false }
-              - { name: email_label, label: 'Feld-Label: E-Mail', widget: string, i18n: true }
-              - { name: email_placeholder, label: 'Platzhalter: E-Mail', widget: string, i18n: false }
-              - { name: message_label, label: 'Feld-Label: Nachricht', widget: string, i18n: true }
-              - { name: message_placeholder, label: 'Platzhalter: Nachricht', widget: string, i18n: false }
-              - { name: submit_label, label: Absende-Button, widget: string, i18n: true }
-              - { name: note, label: 'Hinweis unter dem Button', widget: string, i18n: true }
-              - { name: success_message, label: Erfolgsmeldung, widget: string, i18n: true }
-              - { name: error_message, label: Fehlermeldung, widget: string, i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
+              - { name: name_label, label: 'Name field label', widget: string, i18n: true }
+              - { name: name_placeholder, label: 'Name placeholder', widget: string, i18n: false }
+              - { name: email_label, label: 'Email field label', widget: string, i18n: true }
+              - { name: email_placeholder, label: 'Email placeholder', widget: string, i18n: false }
+              - { name: message_label, label: 'Message field label', widget: string, i18n: true }
+              - { name: message_placeholder, label: 'Message placeholder', widget: string, i18n: false }
+              - { name: submit_label, label: 'Submit button text', widget: string, i18n: true }
+              - { name: submitting_label, label: 'Submitting button text', widget: string, i18n: true, hint: 'Example: Sending ...' }
+              - { name: submitted_label, label: 'Completed button text', widget: string, i18n: true, hint: 'Example: Sent.' }
+              - { name: note, label: 'Note below the button', widget: string, i18n: true }
+              - { name: success_message, label: 'Success message', widget: string, i18n: true }
+              - { name: error_message, label: 'Error message', widget: string, i18n: true }
           - name: info
-            label: Info-Spalte
+            label: 'Contact information'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: email_label, label: 'Label: E-Mail', widget: string, i18n: true }
-              - { name: address_label, label: 'Label: Adresse', widget: string, i18n: true }
-              - { name: when_label, label: 'Label: Wann', widget: string, i18n: true }
-              - { name: when_value, label: 'Wann (Text)', widget: string, i18n: true }
-              - { name: highlight, label: Hervorhebung, widget: text, i18n: true }
+              - { name: email_label, label: 'Email label', widget: string, i18n: true }
+              - { name: address_label, label: 'Address label', widget: string, i18n: true }
+              - { name: when_label, label: 'Schedule label', widget: string, i18n: true }
+              - { name: when_value, label: 'Schedule text', widget: string, i18n: true }
+              - { name: highlight, label: 'Highlighted text', widget: text, i18n: true }
           - name: map
-            label: Karte
+            label: 'Map'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: false }
-              - { name: caption, label: Bildunterschrift, widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: false }
+              - { name: caption, label: 'Image caption', widget: string, i18n: true }
           - name: footer
-            label: Footer-Sonderfall
+            label: 'Page-specific footer override'
             widget: object
             collapsed: true
             i18n: true
-            hint: 'Kontakt hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
+            hint: 'Optional legacy override. Leave empty to use the global footer heading.'
             fields:
-              - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+              - { name: connect_heading, label: 'Connect column heading', widget: string, i18n: true }
           - name: meta
-            label: 'SEO & Vorschau (zuletzt prüfen)'
+            label: 'SEO and social preview (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
+              - { name: title, label: 'Browser and SEO title', widget: string }
+              - { name: description, label: 'Description', widget: text }
       - name: team
-        label: Über uns / Team
+        label: 'About us / team'
         file: content/pages/team.yaml
         i18n: true
         fields:
@@ -209,28 +218,28 @@ collections:
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: Überschrift, widget: string, i18n: true, hint: 'Zeilenumbruch mit <br> möglich' }
-              - { name: intro, label: Einleitung, widget: text, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true, hint: 'Example: We live the art of encounter. Use <br> for an intentional line break.' }
+              - { name: intro, label: 'Introduction', widget: text, i18n: true }
           - name: manifest
-            label: Manifest-Auszug
+            label: 'Manifest excerpt'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: quote, label: Zitat, widget: text, i18n: true }
-              - { name: source, label: Quelle, widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: quote, label: 'Quote', widget: text, i18n: true }
+              - { name: source, label: 'Source', widget: string, i18n: true }
           - name: team
-            label: Team
+            label: 'Team'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: Überschrift, widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - name: members
-                label: Personen
+                label: 'People'
                 widget: list
                 collapsed: true
                 minimize_collapsed: true
@@ -240,30 +249,30 @@ collections:
                 max: 2
                 fields:
                   - { name: name, label: Name, widget: string, i18n: duplicate }
-                  - { name: image, label: Bild, widget: image, i18n: duplicate }
-                  - { name: alt, label: Alt-Text, widget: string, i18n: duplicate }
-                  - { name: role, label: Rolle, widget: string, i18n: true }
-                  - { name: bio, label: Bio, widget: text, i18n: true }
+                  - { name: image, label: 'Image', widget: image, i18n: duplicate }
+                  - { name: alt, label: 'Image description', widget: string, i18n: duplicate }
+                  - { name: role, label: 'Role', widget: string, i18n: true }
+                  - { name: bio, label: 'Biography', widget: text, i18n: true }
           - name: quote_band
-            label: Buber-Zitat
+            label: 'Buber quote'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: quote, label: Zitat, widget: string, i18n: true }
-              - { name: source, label: Quelle, widget: string, i18n: true }
+              - { name: quote, label: 'Quote', widget: string, i18n: true }
+              - { name: source, label: 'Source', widget: string, i18n: true }
           - name: philosophy
-            label: Haltung
+            label: 'Our approach'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: Überschrift, widget: string, i18n: true }
-              - { name: p1, label: Absatz 1, widget: text, i18n: true }
-              - { name: p2, label: Absatz 2, widget: text, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
+              - { name: p1, label: 'First paragraph', widget: text, i18n: true }
+              - { name: p2, label: 'Second paragraph', widget: text, i18n: true }
               - name: pillars
-                label: Säulen
+                label: 'Principle cards'
                 widget: list
                 collapsed: true
                 minimize_collapsed: true
@@ -272,7 +281,7 @@ collections:
                 min: 3
                 max: 3
                 fields:
-                  - { name: title, label: Titel, widget: string, i18n: true }
+                  - { name: title, label: 'Title', widget: string, i18n: true }
                   - { name: text, label: Text, widget: text, i18n: true }
           - name: cta
             label: CTA
@@ -280,28 +289,28 @@ collections:
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: Überschrift, widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - { name: text, label: Text, widget: text, i18n: true }
-              - { name: button, label: Button, widget: string, i18n: true }
+              - { name: button, label: 'Button text', widget: string, i18n: true }
           - name: footer
-            label: Footer-Sonderfall
+            label: 'Page-specific footer override'
             widget: object
             collapsed: true
             i18n: true
-            hint: 'Team hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
+            hint: 'Optional legacy override. Leave empty to use the global footer heading.'
             fields:
-              - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+              - { name: connect_heading, label: 'Connect column heading', widget: string, i18n: true }
           - name: meta
-            label: 'SEO & Vorschau (zuletzt prüfen)'
+            label: 'SEO and social preview (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
+              - { name: title, label: 'Browser and SEO title', widget: string }
+              - { name: description, label: 'Description', widget: text }
       - name: journal_landing
-        label: Journal-Übersicht
+        label: 'Journal landing page'
         file: content/pages/journal.yaml
         i18n: true
         fields:
@@ -311,46 +320,153 @@ collections:
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: false }
-              - { name: heading, label: Überschrift, widget: string, i18n: true }
-              - { name: intro, label: Einleitung, widget: text, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: false }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
+              - { name: intro, label: 'Introduction', widget: text, i18n: true }
           - name: card
-            label: Beitragskarten
+            label: 'Article cards'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: read_more, label: 'Link: Weiterlesen', widget: string, i18n: true }
-              - { name: coming_soon, label: 'Badge: Bald verfügbar', widget: string, i18n: true }
+              - { name: read_more, label: 'Read-more link text', widget: string, i18n: true }
+              - { name: coming_soon, label: 'Coming-soon badge text', widget: string, required: false, i18n: true, hint: 'Example: Coming soon. Leave empty to show no badge on unpublished article cards.' }
           - name: cta
             label: CTA
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: Überschrift, widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - { name: text, label: Text, widget: text, i18n: true }
-              - { name: button, label: Button, widget: string, i18n: true }
+              - { name: button, label: 'Button text', widget: string, i18n: true }
           - name: article
-            label: Artikel-Seiten
+            label: 'Article pages'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: back, label: 'Link: Zurück zum Journal', widget: string, i18n: true }
-              - { name: related_label, label: 'Label: Weiterlesen', widget: string, i18n: true }
-              - { name: related_heading, label: 'Überschrift: Verwandte Beiträge', widget: string, i18n: true }
+              - { name: back, label: 'Back-to-journal link text', widget: string, i18n: true }
+              - { name: related_label, label: 'Related-content eyebrow', widget: string, required: false, i18n: true, hint: 'Example: Read next. Leave empty to omit the eyebrow.' }
+              - { name: related_heading, label: 'Related articles heading', widget: string, i18n: true }
           - name: meta
-            label: 'SEO & Vorschau (zuletzt prüfen)'
+            label: 'SEO and social preview (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
+              - { name: title, label: 'Browser and SEO title', widget: string }
+              - { name: description, label: 'Description', widget: text }
+      - name: programm
+        label: 'Programme page'
+        file: content/pages/programm.yaml
+        i18n: true
+        fields:
+          - name: hero
+            label: Hero
+            widget: object
+            collapsed: true
+            i18n: true
+            fields:
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, i18n: true, hint: 'Example: Programme. Leave empty to omit it.' }
+              - { name: heading, label: 'Page heading', widget: string, i18n: true, hint: 'Example: Movement as encounter.' }
+              - { name: intro, label: 'Introduction', widget: text, i18n: true, hint: 'Example: Our offerings combine bodywork, social practice, and artistic exploration.' }
+          - name: core
+            label: 'Monday class summary'
+            widget: object
+            collapsed: true
+            i18n: true
+            fields:
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, i18n: true, hint: 'Example: Open laboratory for contemporary dance.' }
+              - { name: heading, label: 'Section heading', widget: string, i18n: true, hint: 'Example: Monday class.' }
+              - { name: info_title, label: 'Facts-card title', widget: string, i18n: true, hint: 'Example: At a glance.' }
+              - name: rows
+                label: 'Facts-card rows'
+                widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: '{{fields.label}} - {{fields.value}}'
+                i18n: true
+                hint: 'Keep German and English lists in the same order and at the same length.'
+                fields:
+                  - { name: icon, label: 'Icon', widget: select, options: [clock, calendar, location, cost, people], i18n: duplicate }
+                  - { name: label, label: 'Row label', widget: string, i18n: true, hint: 'Example: When.' }
+                  - { name: value, label: 'Row value', widget: string, i18n: true, hint: 'Example: Every Monday, 17:45-19:15.' }
+              - { name: register_label, label: 'Registration button text', widget: string, i18n: true, hint: 'Example: Register now.' }
+              - { name: more_label, label: 'Details button text', widget: string, i18n: true, hint: 'Example: Learn more.' }
+              - { name: description_heading, label: 'Description heading', widget: string, i18n: true, hint: 'Example: What to expect.' }
+              - name: paragraphs
+                label: 'Description paragraphs'
+                widget: list
+                i18n: true
+                hint: 'Keep German and English lists in the same order and at the same length.'
+                field: { name: text, label: 'Paragraph', widget: text, hint: 'Example: Explain the structure and experience of a Monday class.' }
+              - { name: quote, label: 'Closing quote', widget: text, required: false, i18n: true, hint: 'Example: You do not need dance experience, only curiosity.' }
+          - name: projects
+            label: 'Current workshops and projects'
+            widget: object
+            collapsed: true
+            i18n: true
+            fields:
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, i18n: true, hint: 'Example: Current projects.' }
+              - { name: heading, label: 'Section heading', widget: string, i18n: true, hint: 'Example: What is happening now.' }
+          - name: outlook
+            label: 'Future-project cards'
+            widget: object
+            collapsed: true
+            i18n: true
+            fields:
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, i18n: true, hint: 'Example: Outlook.' }
+              - { name: heading, label: 'Section heading', widget: string, i18n: true, hint: 'Example: What comes next.' }
+              - { name: intro, label: 'Section introduction', widget: text, required: false, i18n: true, hint: 'Example: Projects we are currently developing.' }
+              - name: cards
+                label: 'Future-project cards'
+                widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: '{{fields.title}}'
+                required: false
+                i18n: true
+                hint: 'Keep German and English lists in the same order and at the same length.'
+                fields:
+                  - { name: label, label: 'Optional card badge', widget: string, required: false, i18n: true, hint: 'Example: Outdoor / Summer.' }
+                  - { name: title, label: 'Card title', widget: string, i18n: true, hint: 'Example: Moving in the Park.' }
+                  - { name: subtitle, label: 'Card subtitle', widget: string, required: false, i18n: true, hint: 'Example: Free Contact Improvisation in Graz parks.' }
+                  - name: paragraphs
+                    label: 'Card paragraphs'
+                    widget: list
+                    i18n: true
+                    field: { name: text, label: 'Paragraph', widget: text }
+                  - name: link
+                    label: 'Optional external link'
+                    widget: object
+                    required: false
+                    i18n: true
+                    fields:
+                      - { name: href, label: 'Link URL', widget: string, hint: 'Example: https://bewegt-im-park.at' }
+                      - { name: label, label: 'Link text', widget: string, i18n: true, hint: 'Example: bewegt-im-park.at' }
+          - name: cta
+            label: 'Closing call to action'
+            widget: object
+            collapsed: true
+            i18n: true
+            fields:
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, i18n: true, hint: 'Example: Invitation.' }
+              - { name: heading, label: 'Heading', widget: string, i18n: true, hint: 'Example: Come by.' }
+              - { name: text, label: 'Supporting text', widget: text, i18n: true, hint: 'Example: Include the recurring schedule and address.' }
+              - { name: button, label: 'Contact button text', widget: string, i18n: true, hint: 'Example: Get in touch.' }
+          - name: meta
+            label: 'SEO and social preview (review last)'
+            widget: object
+            collapsed: true
+            i18n: false
+            fields:
+              - { name: title, label: 'Browser and SEO title', widget: string, hint: 'Example: Programme - Wild Care | Graz.' }
+              - { name: description, label: 'SEO description', widget: text, hint: 'Example: Contact Improvisation classes and workshops in Graz.' }
+
       - name: montagskurs
-        label: Montagskurs
+        label: 'Monday class'
         file: content/pages/montagskurs.yaml
         i18n: true
         fields:
@@ -361,75 +477,75 @@ collections:
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift (Text für Sprachumschaltung)', widget: string, i18n: true }
-              - { name: heading_html, label: 'Überschrift (Anzeige)', widget: string, i18n: false, hint: 'Mit <br> und <span> für die Hervorhebung — muss inhaltlich zur Überschrift oben passen.' }
-              - { name: subtitle, label: Untertitel, widget: text, i18n: true }
-              - { name: schedule, label: Termin, widget: string, i18n: true }
-              - { name: address, label: Adresse, widget: string, i18n: false }
-              - { name: basis, label: Basis (Spende), widget: string, i18n: true }
-              - { name: cta, label: Anmelde-Button, widget: string, i18n: true }
-              - { name: image, label: Bild, widget: image, i18n: false }
-              - { name: image_alt, label: Alt-Text, widget: string, i18n: false }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Plain heading for language switching', widget: string, i18n: true }
+              - { name: heading_html, label: 'Display heading', widget: string, i18n: false, hint: 'Use <br> and <span> for layout and emphasis. Keep its wording aligned with the plain heading above.' }
+              - { name: subtitle, label: 'Subtitle', widget: text, i18n: true }
+              - { name: schedule, label: 'Schedule', widget: string, i18n: true }
+              - { name: address, label: 'Address', widget: string, i18n: false }
+              - { name: basis, label: 'Pricing / donation basis', widget: string, i18n: true }
+              - { name: cta, label: 'Registration button text', widget: string, i18n: true }
+              - { name: image, label: 'Image', widget: image, i18n: false }
+              - { name: image_alt, label: 'Image description', widget: string, i18n: false }
           - name: practice
-            label: Was ist Contact Improvisation
+            label: 'Contact Improvisation introduction'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
-              - { name: p1, label: Absatz 1, widget: text, i18n: true }
-              - { name: p2, label: Absatz 2, widget: text, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
+              - { name: p1, label: 'First paragraph', widget: text, i18n: true }
+              - { name: p2, label: 'Second paragraph', widget: text, i18n: true }
               - { name: video, label: Video, widget: file, i18n: false }
-              - { name: poster, label: Video-Standbild, widget: image, i18n: false }
+              - { name: poster, label: 'Video preview image', widget: image, i18n: false }
           - name: learn
-            label: Was du erforschst
+            label: 'What participants explore'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - name: cards
-                label: Karten
+                label: 'Cards'
                 widget: list
                 collapsed: true
                 minimize_collapsed: true
                 summary: '{{fields.title}}'
                 i18n: true
                 fields:
-                  - { name: title, label: Titel, widget: string, i18n: true }
+                  - { name: title, label: 'Title', widget: string, i18n: true }
                   - { name: text, label: Text, widget: text, i18n: true }
-              - { name: donation_note, label: Spenden-Hinweis, widget: text, i18n: true }
+              - { name: donation_note, label: 'Donation note', widget: text, i18n: true }
           - name: testimonials
-            label: Feedback
+            label: 'Testimonials'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - name: items
-                label: Zitate
+                label: 'Quotes'
                 widget: list
                 collapsed: true
                 minimize_collapsed: true
                 summary: '{{fields.author}}'
                 i18n: true
                 fields:
-                  - { name: quote, label: Zitat, widget: text, i18n: true }
+                  - { name: quote, label: 'Quote', widget: text, i18n: true }
                   - { name: author, label: Name, widget: string, i18n: duplicate }
           - name: team
-            label: Team
+            label: 'Team'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - name: members
-                label: Personen
+                label: 'People'
                 widget: list
                 collapsed: true
                 minimize_collapsed: true
@@ -439,66 +555,66 @@ collections:
                 max: 2
                 fields:
                   - { name: name, label: Name, widget: string, i18n: duplicate }
-                  - { name: image, label: Bild, widget: image, i18n: duplicate }
-                  - { name: alt, label: Alt-Text, widget: string, i18n: duplicate }
-                  - { name: role, label: Rolle, widget: string, i18n: true }
-                  - { name: bio, label: Bio, widget: text, i18n: true }
+                  - { name: image, label: 'Image', widget: image, i18n: duplicate }
+                  - { name: alt, label: 'Image description', widget: string, i18n: duplicate }
+                  - { name: role, label: 'Role', widget: string, i18n: true }
+                  - { name: bio, label: 'Biography', widget: text, i18n: true }
           - name: faq
-            label: Häufige Fragen
+            label: 'Frequently asked questions'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - name: items
-                label: Fragen
+                label: 'Questions'
                 widget: list
                 collapsed: true
                 minimize_collapsed: true
                 summary: '{{fields.q}}'
                 i18n: true
                 fields:
-                  - { name: q, label: Frage, widget: string, i18n: true }
-                  - { name: a, label: Antwort, widget: text, i18n: true }
+                  - { name: q, label: 'Question', widget: string, i18n: true }
+                  - { name: a, label: 'Answer', widget: text, i18n: true }
           - name: crosslink
-            label: Projekt-Verweis (Bewegungsrevolution)
+            label: 'Project cross-link (Bewegungsrevolution)'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - { name: text, label: Text, widget: text, i18n: true }
-              - { name: button, label: Button, widget: string, i18n: true }
+              - { name: button, label: 'Button text', widget: string, i18n: true }
           - name: cta
             label: CTA
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - { name: text, label: Text, widget: text, i18n: true }
-              - { name: button, label: Anmelde-Button, widget: string, i18n: true }
+              - { name: button, label: 'Registration button text', widget: string, i18n: true }
           - name: footer
-            label: Footer-Sonderfall
+            label: 'Page-specific footer override'
             widget: object
             collapsed: true
             i18n: true
-            hint: 'Montagskurs hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
+            hint: 'Optional legacy override. Leave empty to use the global footer heading.'
             fields:
-              - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+              - { name: connect_heading, label: 'Connect column heading', widget: string, i18n: true }
           - name: meta
-            label: 'SEO & Vorschau (zuletzt prüfen)'
+            label: 'SEO and social preview (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
+              - { name: title, label: 'Browser and SEO title', widget: string }
+              - { name: description, label: 'Description', widget: text }
       - name: mitmachen
-        label: Mitmachen
+        label: 'Join page'
         file: content/pages/mitmachen.yaml
         i18n: true
         fields:
@@ -508,63 +624,65 @@ collections:
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true, hint: 'Zeilenumbruch mit <br> möglich' }
-              - { name: intro, label: Einleitung, widget: text, i18n: true }
-          - { name: core_message, label: Kernaussage, widget: text, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true, hint: 'Example: There are many ways to take part. Use <br> for an intentional line break.' }
+              - { name: intro, label: 'Introduction', widget: text, i18n: true }
+          - { name: core_message, label: 'Core message', widget: text, i18n: true }
           - name: circles
-            label: Zwei Kreise
+            label: 'Participation circles'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
               - name: outer
-                label: 'Kreis: Offen (Montagskurs)'
+                label: 'Open circle (Monday class)'
                 widget: object
                 collapsed: true
                 i18n: true
                 fields:
-                  - { name: label, label: Label, widget: string, i18n: true }
-                  - { name: title, label: Titel, widget: string, i18n: true }
-                  - { name: desc, label: Kurzbeschreibung, widget: string, i18n: true }
-                  - { name: p1, label: Absatz 1, widget: text, i18n: true }
-                  - { name: p2, label: Absatz 2, widget: text, i18n: true }
+                  - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+                  - { name: title, label: 'Title', widget: string, i18n: true }
+                  - { name: desc, label: 'Short description', widget: string, i18n: true }
+                  - { name: p1, label: 'First paragraph', widget: text, i18n: true }
+                  - { name: p2, label: 'Second paragraph', widget: text, i18n: true }
                   - name: tags
-                    label: Tags
+                    label: 'Tags'
                     widget: list
+                    required: false
                     i18n: true
-                    field: { name: tag, label: Tag, widget: string }
+                    field: { name: tag, label: 'Tag', widget: string }
               - name: inner
-                label: 'Kreis: Innen (Vereinsmitglieder)'
+                label: 'Inner circle (members)'
                 widget: object
                 collapsed: true
                 i18n: true
                 fields:
-                  - { name: label, label: Label, widget: string, i18n: true }
-                  - { name: title, label: Titel, widget: string, i18n: true }
-                  - { name: desc, label: Kurzbeschreibung, widget: string, i18n: true }
-                  - { name: p1, label: Absatz 1, widget: text, i18n: true }
-                  - { name: p2, label: Absatz 2, widget: text, i18n: true }
+                  - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+                  - { name: title, label: 'Title', widget: string, i18n: true }
+                  - { name: desc, label: 'Short description', widget: string, i18n: true }
+                  - { name: p1, label: 'First paragraph', widget: text, i18n: true }
+                  - { name: p2, label: 'Second paragraph', widget: text, i18n: true }
                   - name: tags
-                    label: Tags
+                    label: 'Tags'
                     widget: list
+                    required: false
                     i18n: true
-                    field: { name: tag, label: Tag, widget: string }
+                    field: { name: tag, label: 'Tag', widget: string }
           - name: membership
-            label: Individuelle Mitgliedschaft
+            label: 'Individual membership'
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: label, label: Label, widget: string, i18n: true }
-              - { name: heading, label: 'Überschrift', widget: string, i18n: true }
-              - { name: p1, label: Absatz 1, widget: text, i18n: true }
-              - { name: p2, label: Absatz 2, widget: text, i18n: true }
-              - { name: choose_label, label: 'Hinweis: Stufe wählen', widget: string, i18n: true }
+              - { name: label, label: 'Optional eyebrow label', widget: string, required: false, hint: 'Optional decorative text. Example: About us, Our values, or Next session.', i18n: true }
+              - { name: heading, label: 'Heading', widget: string, i18n: true }
+              - { name: p1, label: 'First paragraph', widget: text, i18n: true }
+              - { name: p2, label: 'Second paragraph', widget: text, i18n: true }
+              - { name: choose_label, label: 'Tier selection prompt', widget: string, i18n: true }
               - name: tiers
-                label: Mitgliedschaftsstufen
+                label: 'Membership tiers'
                 widget: list
                 collapsed: true
                 minimize_collapsed: true
@@ -572,36 +690,36 @@ collections:
                 i18n: true
                 min: 3
                 max: 3
-                hint: 'Genau 3 Stufen (Saat/Stamm/Wurzel). Icon und tier_arg sind technische Werte, nur in der deutschen Fassung gepflegt.'
+                hint: 'Exactly three tiers. Icon and Tally field value are shared technical values.'
                 fields:
-                  - { name: icon, label: 'Icon (Emoji, nur Deutsch)', widget: string, i18n: false, required: false }
+                  - { name: icon, label: 'Icon (emoji, shared across languages)', widget: string, i18n: false, required: false }
                   - { name: name, label: Name, widget: string, i18n: true }
-                  - { name: amount, label: Betrag, widget: string, i18n: true }
-                  - { name: quote, label: Zitat, widget: string, i18n: true }
-                  - { name: desc, label: Beschreibung, widget: text, i18n: true }
-                  - { name: button, label: Button, widget: string, i18n: true }
-                  - { name: aria, label: 'ARIA-Label', widget: string, i18n: true }
-                  - { name: tier_arg, label: 'Tally-Feldwert (nur Deutsch, technisch)', widget: string, i18n: false, required: false }
-              - { name: note, label: Hinweis unter den Stufen, widget: text, i18n: true }
+                  - { name: amount, label: 'Amount', widget: string, i18n: true }
+                  - { name: quote, label: 'Quote', widget: string, i18n: true }
+                  - { name: desc, label: 'Description', widget: text, i18n: true }
+                  - { name: button, label: 'Button text', widget: string, i18n: true }
+                  - { name: aria, label: 'Accessible label', widget: string, i18n: true }
+                  - { name: tier_arg, label: 'Tally field value (technical, shared)', widget: string, i18n: false, required: false }
+              - { name: note, label: 'Note below membership tiers', widget: text, i18n: true }
           - name: footer
-            label: Footer-Sonderfall
+            label: 'Page-specific footer override'
             widget: object
             collapsed: true
             i18n: true
-            hint: 'Mitmachen hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
+            hint: 'Optional legacy override. Leave empty to use the global footer heading.'
             fields:
-              - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+              - { name: connect_heading, label: 'Connect column heading', widget: string, i18n: true }
           - name: meta
-            label: 'SEO & Vorschau (zuletzt prüfen)'
+            label: 'SEO and social preview (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
+              - { name: title, label: 'Browser and SEO title', widget: string }
+              - { name: description, label: 'Description', widget: text }
 
   - name: website
-    label: 'Website (Navigation & Footer)'
+    label: 'Website navigation and footer'
     i18n: true
     files:
       - name: global
@@ -615,22 +733,22 @@ collections:
             collapsed: true
             i18n: true
             fields:
-              - { name: home, label: Startseite, widget: string, i18n: true }
-              - { name: about, label: 'Über uns', widget: string, i18n: true }
-              - { name: program, label: Programm, widget: string, i18n: true }
-              - { name: join, label: Mitmachen, widget: string, i18n: true }
-              - { name: cta, label: 'CTA (Komm vorbei)', widget: string, i18n: true }
+              - { name: home, label: 'Homepage', widget: string, i18n: true }
+              - { name: about, label: 'About us', widget: string, i18n: true }
+              - { name: program, label: 'Programme', widget: string, i18n: true }
+              - { name: join, label: 'Join page', widget: string, i18n: true }
+              - { name: cta, label: 'Primary navigation button text', widget: string, i18n: true, hint: 'Example: Come by.' }
           - name: footer
             label: Footer
             widget: object
             collapsed: true
             i18n: true
             fields:
-              - { name: brand_text, label: Vereinsbeschreibung, widget: text, i18n: true }
-              - { name: pages_heading, label: 'Überschrift: Seiten', widget: string, i18n: true }
-              - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
-              - { name: contact_label, label: 'Link-Text: Kontakt', widget: string, i18n: true }
-              - { name: tagline, label: Schlusszeile, widget: string, i18n: true }
+              - { name: brand_text, label: 'Organisation description', widget: text, i18n: true }
+              - { name: pages_heading, label: 'Pages column heading', widget: string, i18n: true }
+              - { name: connect_heading, label: 'Connect column heading', widget: string, i18n: true }
+              - { name: contact_label, label: 'Contact link text', widget: string, i18n: true }
+              - { name: tagline, label: 'Footer closing line', widget: string, i18n: true }
 
   - name: journal
     label: Journal
@@ -642,41 +760,41 @@ collections:
     i18n: true
     fields:
       - name: language_mode
-        label: Sprachversionen
+        label: 'Available languages'
         widget: select
         options:
-          - { label: Deutsch, value: de_only }
-          - { label: Englisch, value: en_only }
-          - { label: Deutsch + Englisch, value: bilingual }
+          - { label: 'German', value: de_only }
+          - { label: 'English', value: en_only }
+          - { label: 'German and English', value: bilingual }
         default: de_only
         i18n: duplicate
-      - { name: title, label: Titel, widget: string, required: false, i18n: true }
-      - { name: title_html, label: 'Artikeltitel mit optionalem <br>', widget: string, required: false, i18n: true }
-      - { name: date, label: Datum, widget: datetime, i18n: duplicate }
-      - { name: sort_order, label: Sortierung bei gleichem Datum, widget: number, required: false, value_type: int, i18n: duplicate }
+      - { name: title, label: 'Title', widget: string, required: false, i18n: true }
+      - { name: title_html, label: 'Article title with optional <br>', widget: string, required: false, i18n: true }
+      - { name: date, label: 'Publication date', widget: datetime, i18n: duplicate }
+      - { name: sort_order, label: 'Sort order when dates match', widget: number, required: false, value_type: int, i18n: duplicate }
       - { name: status, label: Status, widget: select, options: [published, coming_soon], default: published, i18n: duplicate }
-      - { name: excerpt, label: Teaser, widget: text, required: false, i18n: true }
-      - { name: body, label: Artikeltext, widget: markdown, required: false, i18n: true }
-      - { name: image, label: Bild, widget: image, required: false, i18n: duplicate }
-      - { name: image_alt, label: Alt-Text, widget: string, required: false, i18n: duplicate }
-      - { name: hero_image, label: Hero-Bild, widget: image, required: false, i18n: duplicate }
-      - { name: hero_alt, label: Hero-Alt-Text, widget: string, required: false, i18n: duplicate }
-      - { name: hero_variant, label: Hero-Darstellung, widget: select, options: [cover, contained], default: cover, i18n: duplicate }
-      - { name: homepage_title, label: 'Titel auf der Startseite', widget: string, required: false, i18n: true }
-      - { name: homepage_excerpt, label: 'Kurz-Teaser auf der Startseite', widget: text, required: false, i18n: true }
-      - { name: homepage_image_alt, label: 'Alt-Text auf der Startseite', widget: string, required: false, i18n: duplicate }
-      - { name: tally, label: Tally-Script laden, widget: boolean, required: false, default: false, i18n: duplicate }
+      - { name: excerpt, label: 'Card summary', widget: text, required: false, i18n: true }
+      - { name: body, label: 'Article body', widget: markdown, required: false, i18n: true }
+      - { name: image, label: 'Image', widget: image, required: false, i18n: duplicate }
+      - { name: image_alt, label: 'Image description', widget: string, required: false, i18n: duplicate }
+      - { name: hero_image, label: 'Hero image', widget: image, required: false, i18n: duplicate }
+      - { name: hero_alt, label: 'Hero image description', widget: string, required: false, i18n: duplicate }
+      - { name: hero_variant, label: 'Hero image layout', widget: select, options: [cover, contained], default: cover, i18n: duplicate }
+      - { name: homepage_title, label: 'Homepage title override', widget: string, required: false, i18n: true }
+      - { name: homepage_excerpt, label: 'Short homepage summary', widget: text, required: false, i18n: true }
+      - { name: homepage_image_alt, label: 'Homepage image description', widget: string, required: false, i18n: duplicate }
+      - { name: tally, label: 'Load Tally script', widget: boolean, required: false, default: false, i18n: duplicate }
       - name: cta
-        label: Artikel-CTA
+        label: 'Article call to action'
         widget: object
         collapsed: true
         required: false
         i18n: true
         fields:
-          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
+          - { name: heading, label: 'Heading', widget: string, required: false, i18n: true }
           - { name: text, label: Text, widget: text, required: false, i18n: true }
           - name: buttons
-            label: Buttons
+            label: 'Buttons'
             widget: list
             collapsed: true
             minimize_collapsed: true
@@ -684,31 +802,31 @@ collections:
             required: false
             i18n: true
             fields:
-              - { name: label, label: Button-Text, widget: string, i18n: true }
-              - { name: kind, label: Typ, widget: select, options: [link, tally], default: link, i18n: duplicate }
-              - { name: style, label: Stil, widget: select, options: [primary, secondary], default: primary, i18n: duplicate }
+              - { name: label, label: 'Button text', widget: string, i18n: true, hint: 'Example: Register now or Learn more.' }
+              - { name: kind, label: 'Button type', widget: select, options: [link, tally], default: link, i18n: duplicate }
+              - { name: style, label: 'Style', widget: select, options: [primary, secondary], default: primary, i18n: duplicate }
               - { name: href, label: Link, widget: string, required: false, i18n: duplicate }
               - { name: tally_open, label: Tally-ID, widget: string, required: false, i18n: duplicate }
-      - { name: meta_description, label: SEO-Beschreibung, widget: text, required: false, i18n: true }
+      - { name: meta_description, label: 'SEO description', widget: text, required: false, i18n: true }
 
   - name: rechtliches
-    label: Rechtliches (nur Deutsch)
+    label: 'Legal pages (German only)'
     files:
       - name: impressum
-        label: Impressum
+        label: 'Legal notice'
         file: content/legal/impressum.md
         fields:
-          - { name: heading, label: Überschrift (H1), widget: string }
-          - { name: meta_title, label: Seitentitel (Browser-Tab), widget: string }
-          - { name: meta_description, label: SEO-Beschreibung, widget: text }
+          - { name: heading, label: 'Page heading (H1)', widget: string }
+          - { name: meta_title, label: 'Browser and SEO title', widget: string }
+          - { name: meta_description, label: 'SEO description', widget: text }
           - { name: body, label: Text, widget: markdown }
       - name: datenschutz
-        label: Datenschutzerklärung
+        label: 'Privacy policy'
         file: content/legal/datenschutz.md
         fields:
-          - { name: heading, label: Überschrift (H1), widget: string }
-          - { name: meta_title, label: Seitentitel (Browser-Tab), widget: string }
-          - { name: meta_description, label: SEO-Beschreibung, widget: text }
+          - { name: heading, label: 'Page heading (H1)', widget: string }
+          - { name: meta_title, label: 'Browser and SEO title', widget: string }
+          - { name: meta_description, label: 'SEO description', widget: text }
           - { name: body, label: Text, widget: markdown }
 
   - name: workshops
@@ -719,125 +837,92 @@ collections:
     format: yaml
     identifier_field: slug
     slug: '{{slug}}'
-    summary: '{{fields.card.title}}'
+    summary: '{{fields.title}}'
     i18n:
       structure: single_file
       locales: [de, en]
       default_locale: de
       initial_locales: [de]
     fields:
-      # ── Einstellungen & Logistik ─────────────────────────────
-      - { name: slug, label: Slug/URL, widget: string, i18n: false, hint: 'Beispiel: cellular-touch ergibt cellular-touch.html' }
+      # Publishing and logistics
+      - { name: slug, label: Page URL slug, widget: string, i18n: false, hint: 'Example: cellular-touch creates /cellular-touch.html. Use lowercase letters and hyphens.' }
       - name: language_mode
-        label: Sprachversionen der Detailseite
+        label: Available languages
         widget: select
         i18n: false
         options:
-          - { label: Deutsch, value: de_only }
-          - { label: Englisch, value: en_only }
-          - { label: Deutsch & Englisch, value: bilingual }
+          - { label: German only, value: de_only }
+          - { label: English only, value: en_only }
+          - { label: German and English, value: bilingual }
         default: de_only
-        hint: 'Bei "nur Deutsch"/"nur Englisch" zeigt die jeweils andere Sprachversion der Seite einen Hinweis statt einer Übersetzung.'
-      - { name: status, label: Status, widget: select, options: [draft, upcoming, current, past], default: upcoming, i18n: false }
-      - { name: detail_page, label: Detailseite veröffentlichen, widget: boolean, default: true, i18n: false, hint: 'Die Seite wird erst gebaut, wenn SEO, Hero, Praxis-Intro und Info-Karte ausgefüllt sind; bis dahin erscheint nur die Programm-Karte.' }
-      - { name: start_date, label: Startdatum, widget: datetime, i18n: false }
-      - { name: sort_order, label: Sortierung bei gleichem Datum, widget: number, required: false, value_type: int, i18n: false }
-      - { name: registration_url, label: Anmeldelink, widget: string, i18n: false }
-      # ── Inhalt ───────────────────────────────────────────────
+        hint: 'Choose which translations are actually available for this workshop detail page.'
+      - name: status
+        label: Workshop status
+        widget: select
+        options:
+          - { label: Draft - hidden everywhere, value: draft }
+          - { label: Upcoming - shown in programme, value: upcoming }
+          - { label: Current - shown in programme, value: current }
+          - { label: Past - detail page remains available, value: past }
+        default: upcoming
+        i18n: false
+      - { name: detail_page, label: Publish detail page, widget: boolean, default: true, i18n: false, hint: 'Requires a workshop title, hero content, and at least one content section.' }
+      - { name: start_date, label: Start date for sorting, widget: datetime, i18n: false, hint: 'Used to order programme cards. This date is not displayed; enter the visible date under Core workshop facts.' }
+      - { name: sort_order, label: Sort order when dates match, widget: number, required: false, value_type: int, i18n: false, hint: 'Example: 1 appears before 2 when two workshops have the same start date.' }
+      - { name: registration_url, label: Registration link, widget: string, i18n: false, hint: 'Example: https://tally.so/r/ABC123. Used by every registration button.' }
+
+      # Canonical content
+      - { name: title, label: Workshop title, widget: string, i18n: true, hint: 'Example: Cellular Touch. Used on the programme card, in navigation, and as the default hero and SEO title.' }
+      - name: registration
+        label: Registration action
+        widget: object
+        collapsed: true
+        i18n: true
+        fields:
+          - { name: label, label: Registration button text, widget: string, i18n: true, hint: 'Example: Register now.' }
+          - { name: note, label: Note below the hero button, widget: text, required: false, i18n: true, hint: 'Example: Limited to 20 participants. Leave empty when no note is needed.' }
+      - name: facts
+        label: Core workshop facts
+        widget: object
+        collapsed: true
+        i18n: true
+        fields:
+          - { name: date, label: Compact date, widget: string, required: false, i18n: true, hint: 'Example: 8-9 August 2026. Shown on the programme card and optionally in the hero.' }
+          - { name: time, label: Compact time, widget: string, required: false, i18n: true, hint: 'Example: 10:00-18:00. Shown only in the optional hero facts.' }
+          - { name: location, label: Location, widget: string, required: false, i18n: true, hint: 'Example: Orpheumgasse 11, 8010 Graz. Used in all fact summaries.' }
+          - { name: price, label: Compact price, widget: string, required: false, i18n: true, hint: 'Example: EUR 70-120 sliding scale. Shown on the programme card and optionally in the hero.' }
+          - { name: duration, label: Duration, widget: string, required: false, i18n: true, hint: 'Example: Two days. Shown on the programme card.' }
+          - name: format
+            label: What participants will do
+            widget: list
+            required: false
+            i18n: true
+            hint: 'Displayed in the What row of the facts card. Example entries: Contact Improvisation; Somatic research.'
+            field: { name: value, label: Format entry, widget: string, hint: 'Example: Contact Improvisation and somatic research.' }
+          - name: schedule
+            label: Detailed schedule
+            widget: list
+            required: false
+            i18n: true
+            hint: 'Displayed in the When row of the facts card.'
+            field: { name: value, label: Schedule line, widget: string, hint: 'Example: Saturday, 10:00-13:00 and 14:30-17:30.' }
+          - name: price_details
+            label: Detailed pricing
+            widget: list
+            required: false
+            i18n: true
+            hint: 'Displayed in the Price row of the facts card instead of the compact price.'
+            field: { name: value, label: Price line, widget: string, hint: 'Example: Reduced EUR 70; Regular EUR 120.' }
+
+      # Programme listing
       - name: card
-        label: Programm-Karte
+        label: Programme card
         widget: object
         collapsed: true
         i18n: true
         fields:
           - name: tags
-            label: Tags
-            widget: list
-            collapsed: true
-            minimize_collapsed: true
-            summary: '{{fields.label}}'
-            i18n: true
-            fields:
-              - { name: label, label: Text, widget: string, i18n: true }
-              - { name: style, label: Stil, widget: select, options: [default, moss], default: default, i18n: true }
-          - { name: title, label: Titel, widget: string, required: false, i18n: true }
-          - { name: subtitle, label: Untertitel, widget: string, required: false, i18n: true }
-          - { name: summary, label: Kurzbeschreibung, widget: text, required: false, i18n: true }
-          - { name: date, label: Datumstext, widget: string, required: false, i18n: true }
-          - { name: location, label: Ort, widget: string, required: false, i18n: true }
-          - { name: price, label: Preis, widget: string, required: false, i18n: true }
-          - { name: duration, label: Dauer, widget: string, required: false, i18n: true }
-          - { name: register_label, label: Anmeldebutton, widget: string, required: false, i18n: true }
-          - { name: detail_label, label: Detailbutton, widget: string, required: false, i18n: true }
-      - name: nav
-        label: Navigation
-        widget: object
-        collapsed: true
-        required: false
-        i18n: true
-        fields:
-          - { name: breadcrumb, label: Breadcrumb, widget: string, required: false, i18n: true }
-      - name: hero
-        label: Hero
-        widget: object
-        collapsed: true
-        required: false
-        i18n: true
-        fields:
-          - { name: badge, label: Badge, widget: string, required: false, i18n: true }
-          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true, hint: 'HTML wie <br> und <span> ist erlaubt.' }
-          - { name: heading_text, label: 'Überschrift (Text für Sprachumschaltung)', widget: string, required: false, i18n: true }
-          - { name: subtitle, label: Untertitel, widget: text, required: false, i18n: true }
-          - { name: cta_label, label: Button, widget: string, required: false, i18n: true }
-          - { name: cta_href, label: Button-Link, widget: string, required: false, i18n: true }
-          - { name: cta_note, label: Button-Hinweis, widget: text, required: false, i18n: true }
-          - { name: video, label: 'Video (optional — falls leer, wird die Bildkombination unten verwendet)', widget: file, required: false, i18n: true }
-          - { name: video_poster, label: Video-Standbild, widget: image, required: false, i18n: true }
-          - name: details
-            label: Eckdaten
-            widget: list
-            collapsed: true
-            minimize_collapsed: true
-            summary: '{{fields.text}}'
-            required: false
-            i18n: true
-            fields:
-              - { name: icon, label: Icon, widget: select, options: [calendar, clock, location, cost], default: calendar, i18n: true }
-              - { name: text, label: Text, widget: string, i18n: true }
-          - { name: visual_aria, label: Bildgruppe ARIA, widget: string, required: false, i18n: true }
-          - { name: main_image, label: Hauptbild, widget: image, required: false, i18n: true }
-          - { name: main_alt, label: Hauptbild Alt-Text, widget: string, required: false, i18n: true }
-          - { name: inset_image, label: Nebenbild, widget: image, required: false, i18n: true }
-          - { name: inset_alt, label: Nebenbild Alt-Text, widget: string, required: false, i18n: true }
-          - { name: note_title, label: Bildnotiz Titel, widget: string, required: false, i18n: true }
-          - { name: note_text, label: Bildnotiz Text, widget: text, required: false, i18n: true }
-      - name: practice
-        label: Praxis-Intro
-        widget: object
-        collapsed: true
-        required: false
-        i18n: true
-        fields:
-          - { name: label, label: Label, widget: string, required: false, i18n: true }
-          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
-          - name: paragraphs
-            label: Absätze
-            widget: list
-            collapsed: true
-            minimize_collapsed: true
-            required: false
-            i18n: true
-            field: { name: text, label: Absatz, widget: text }
-      - name: info
-        label: Info-Karte
-        widget: object
-        collapsed: true
-        required: false
-        i18n: true
-        fields:
-          - { name: title, label: Titel, widget: string, required: false, i18n: true }
-          - name: rows
-            label: Zeilen
+            label: Category tags
             widget: list
             collapsed: true
             minimize_collapsed: true
@@ -845,59 +930,110 @@ collections:
             required: false
             i18n: true
             fields:
-              - { name: icon, label: Icon, widget: select, options: [plus, calendar, location, cost, clock, people], default: plus, i18n: true }
-              - { name: label, label: Label, widget: string, i18n: true }
-              - name: values
-                label: Werte
-                widget: list
+              - { name: label, label: Tag text, widget: string, i18n: true, hint: 'Example: Guest workshop.' }
+              - name: style
+                label: Tag colour
+                widget: select
+                options:
+                  - { label: Neutral, value: default }
+                  - { label: Green, value: moss }
+                default: default
                 i18n: true
-                field: { name: value, label: Wert, widget: string }
-          - { name: cta_label, label: Button, widget: string, required: false, i18n: true }
-      - name: research
-        label: Forschungsfelder
+          - { name: subtitle, label: Card subtitle, widget: string, required: false, i18n: true, hint: 'Example: With Valentyn Korotkevych.' }
+          - { name: summary, label: Card summary, widget: text, required: false, i18n: true, hint: 'Example: A two-day Contact Improvisation workshop exploring touch, fascia, and momentum.' }
+          - { name: detail_label, label: Detail-page button text, widget: string, required: false, i18n: true, hint: 'Example: Learn more. Leave empty to use the site default.' }
+
+      # Detail-page hero
+      - name: hero
+        label: Page hero
         widget: object
         collapsed: true
         required: false
         i18n: true
         fields:
-          - { name: label, label: Label, widget: string, required: false, i18n: true }
-          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
-          - name: fields
-            label: Karten
+          - { name: badge, label: Hero category badge, widget: string, required: false, i18n: true, hint: 'Example: Guest Workshop - Contact Improvisation.' }
+          - { name: headline, label: Hero headline override, widget: string, required: false, i18n: true, hint: 'Example: Contact Improvisation. Leave empty to use the Workshop title.' }
+          - { name: headline_accent, label: Coloured second headline line, widget: string, required: false, i18n: true, hint: 'Example: with Valentyn Korotkevych. This line appears below the main headline.' }
+          - { name: subtitle, label: Hero introduction, widget: text, required: false, i18n: true, hint: 'Example: A somatic workshop moving from touch through falling into shared movement.' }
+          - { name: video, label: Hero video, widget: file, required: false, i18n: true, hint: 'Optional. When filled, the video replaces all hero image-composition fields below.' }
+          - { name: video_poster, label: Video preview image, widget: image, required: false, i18n: true, hint: 'Shown before the hero video loads. Used only when Hero video is filled.' }
+          - { name: show_details, label: Show compact facts in hero, widget: boolean, required: false, default: false, i18n: duplicate, hint: 'Displays compact date, time, location, and price below the hero introduction.' }
+          - { name: visual_aria, label: Image composition accessibility label, widget: string, required: false, i18n: true, hint: 'Example: Participants practising Contact Improvisation. Ignored when Hero video is filled.' }
+          - { name: main_image, label: Main hero image, widget: image, required: false, i18n: true, hint: 'Large image in image mode. Ignored when Hero video is filled.' }
+          - { name: main_alt, label: Main image description, widget: string, required: false, i18n: true, hint: 'Example: Two dancers sharing weight in a lift. Ignored when Hero video is filled.' }
+          - { name: inset_image, label: Smaller inset image, widget: image, required: false, i18n: true, hint: 'Smaller overlapping image in image mode. Ignored when Hero video is filled.' }
+          - { name: inset_alt, label: Inset image description, widget: string, required: false, i18n: true, hint: 'Example: Three participants researching touch. Ignored when Hero video is filled.' }
+          - { name: note_title, label: Image note title, widget: string, required: false, i18n: true, hint: 'Example: Cellular Touch. Ignored when Hero video is filled.' }
+          - { name: note_text, label: Image note text, widget: text, required: false, i18n: true, hint: 'Example: The membrane becomes a dancing boundary. Ignored when Hero video is filled.' }
+
+      # Workshop description and facts card
+      - name: description
+        label: Workshop description
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: label, label: Section label, widget: string, required: false, i18n: true, hint: 'Example: The Practice.' }
+          - { name: heading, label: Description heading, widget: string, required: false, i18n: true, hint: 'Example: Touch as cellular space.' }
+          - name: paragraphs
+            label: Description paragraphs
             widget: list
             collapsed: true
             minimize_collapsed: true
-            summary: '{{fields.number}} — {{fields.title}}'
+            required: false
+            i18n: true
+            hint: 'Main workshop description shown in the left column.'
+            field: { name: text, label: Paragraph, widget: text, hint: 'Example: Describe one aspect of the workshop practice in two to four sentences.' }
+          - { name: show_info, label: Show facts card beside description, widget: boolean, default: true, i18n: duplicate, hint: 'Places the central facts in a card in the right column.' }
+          - { name: info_title, label: Facts-card title override, widget: string, required: false, i18n: true, hint: 'Example: At a Glance. Leave empty to use the site default.' }
+
+      # Optional content sections
+      - name: research
+        label: Research cards
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        fields:
+          - { name: label, label: Section label, widget: string, required: false, i18n: true, hint: 'Example: Research Fields.' }
+          - { name: heading, label: Section heading, widget: string, required: false, i18n: true, hint: 'Example: What we explore.' }
+          - name: fields
+            label: Research cards
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.number}} - {{fields.title}}'
             required: false
             i18n: true
             fields:
-              - { name: number, label: Nummer, widget: string, i18n: true }
-              - { name: title, label: Titel, widget: string, i18n: true }
-              - { name: text, label: Text, widget: text, i18n: true }
-              - { name: highlighted, label: Hervorheben, widget: boolean, required: false, default: false, i18n: true }
+              - { name: number, label: Card number or eyebrow, widget: string, i18n: true, hint: 'Example: 01 or Week 1.' }
+              - { name: title, label: Card title, widget: string, i18n: true, hint: 'Example: Membrane.' }
+              - { name: text, label: Card description, widget: text, i18n: true, hint: 'Example: Sensing stability and flexibility from within.' }
+              - { name: highlighted, label: Highlight this card, widget: boolean, required: false, default: false, i18n: true, hint: 'Adds the accent border. Usually only one card should be highlighted.' }
       - name: image_band
-        label: Bildband
+        label: Image and text band
         widget: object
         collapsed: true
         required: false
         i18n: true
         fields:
-          - { name: label, label: Label, widget: string, required: false, i18n: true }
-          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
-          - { name: text, label: Text, widget: text, required: false, i18n: true }
-          - { name: image, label: Bild, widget: image, required: false, i18n: true }
-          - { name: alt, label: Alt-Text, widget: string, required: false, i18n: true }
+          - { name: label, label: Section label, widget: string, required: false, i18n: true, hint: 'Example: Flowing in / Flowing out.' }
+          - { name: heading, label: Section heading, widget: string, required: false, i18n: true, hint: 'Example: A dancing boundary.' }
+          - { name: text, label: Supporting text, widget: text, required: false, i18n: true, hint: 'Example: Holding together is not holding on.' }
+          - { name: image, label: Band image, widget: image, required: false, i18n: true, hint: 'Large image displayed beside the text.' }
+          - { name: alt, label: Band image description, widget: string, required: false, i18n: true, hint: 'Example: A group researching movement through touch.' }
       - name: facilitators
-        label: Leitung
+        label: Facilitators and quotes
         widget: object
         collapsed: true
         required: false
         i18n: true
         fields:
-          - { name: label, label: Label, widget: string, required: false, i18n: true }
-          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
+          - { name: label, label: Facilitator label, widget: string, required: false, i18n: true, hint: 'Example: Facilitator or Teaching team.' }
+          - { name: heading, label: Section heading, widget: string, required: false, i18n: true, hint: 'Example: Who guides the workshop. Leave empty for the compact layout.' }
           - name: members
-            label: Personen
+            label: Facilitators
             widget: list
             collapsed: true
             minimize_collapsed: true
@@ -905,42 +1041,34 @@ collections:
             required: false
             i18n: true
             fields:
-              - { name: name, label: Name, widget: string, i18n: true }
-              - { name: image, label: Bild, widget: image, i18n: true }
-              - { name: alt, label: Alt-Text, widget: string, i18n: true }
-              - { name: role, label: Rolle, widget: string, i18n: true }
-              - { name: bio, label: Bio, widget: text, i18n: true }
-      - name: testimonials
-        label: Stimmen
-        widget: object
-        collapsed: true
-        required: false
-        i18n: true
-        fields:
-          - { name: label, label: Label, widget: string, required: false, i18n: true }
-          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
-          - name: items
-            label: Zitate
+              - { name: name, label: Full name, widget: string, i18n: duplicate, hint: 'Example: Valentyn Korotkevych. Shared between languages.' }
+              - { name: image, label: Portrait image, widget: image, i18n: duplicate, hint: 'Shared between languages.' }
+              - { name: alt, label: Portrait image description, widget: string, i18n: true, hint: 'Example: Portrait of Valentyn Korotkevych.' }
+              - { name: role, label: Role or expertise, widget: string, i18n: true, hint: 'Example: Contact Improvisation - Somatic research.' }
+              - { name: bio, label: Biography, widget: text, i18n: true, hint: 'Example: Two to five sentences about the facilitator and their practice.' }
+          - name: quotes
+            label: Quotes beside facilitators
             widget: list
             collapsed: true
             minimize_collapsed: true
             summary: '{{fields.author}}'
             required: false
             i18n: true
+            hint: 'Optional quote cards shown in the right column beside facilitators.'
             fields:
-              - { name: quote, label: Zitat, widget: text, i18n: true }
-              - { name: author, label: 'Autor:in', widget: string, i18n: true }
+              - { name: quote, label: Quote text, widget: text, i18n: true, hint: 'Example: When we pay attention to tiny gestures, new pathways appear.' }
+              - { name: author, label: Quote author, widget: string, i18n: duplicate, hint: 'Example: Valentyn Korotkevych. Shared between languages.' }
       - name: faq
-        label: 'FAQ (optional)'
+        label: Frequently asked questions
         widget: object
         collapsed: true
         required: false
         i18n: true
         fields:
-          - { name: label, label: Label, widget: string, required: false, i18n: true }
-          - { name: heading, label: Überschrift, widget: string, required: false, i18n: true }
+          - { name: label, label: Section label, widget: string, required: false, i18n: true, hint: 'Example: FAQ. Leave empty to use the site default.' }
+          - { name: heading, label: Section heading, widget: string, required: false, i18n: true, hint: 'Example: Good to know.' }
           - name: items
-            label: Fragen
+            label: Questions and answers
             widget: list
             collapsed: true
             minimize_collapsed: true
@@ -948,20 +1076,22 @@ collections:
             required: false
             i18n: true
             fields:
-              - { name: q, label: Frage, widget: string, i18n: true }
-              - { name: a, label: Antwort, widget: text, i18n: true }
-      # ── SEO zuletzt ──────────────────────────────────────────
+              - { name: q, label: Question, widget: string, i18n: true, hint: 'Example: Do I need previous experience?' }
+              - { name: a, label: Answer, widget: text, i18n: true, hint: 'Example: No previous experience is required.' }
+
+      # Advanced metadata overrides
       - name: meta
-        label: 'SEO & Vorschau (zuletzt prüfen)'
+        label: Advanced SEO and social sharing
         widget: object
         collapsed: true
         required: false
         i18n: true
+        hint: 'Optional overrides. Leave fields empty to use the canonical workshop title, card summary, and hero image.'
         fields:
-          - { name: title, label: Seitentitel, widget: string, required: false, i18n: true }
-          - { name: description, label: Beschreibung, widget: text, required: false, i18n: true }
-          - { name: og_title, label: Social Title, widget: string, required: false, i18n: true }
-          - { name: og_description, label: Social Beschreibung, widget: text, required: false, i18n: true }
-          - { name: og_image, label: Social Bild, widget: image, required: false, i18n: true }
-          - { name: og_image_width, label: Bildbreite, widget: number, required: false, value_type: int, i18n: true }
-          - { name: og_image_height, label: Bildhöhe, widget: number, required: false, value_type: int, i18n: true }
+          - { name: title, label: Browser title override, widget: string, required: false, i18n: true, hint: 'Example: Cellular Touch with Valentyn Korotkevych | Wild Care.' }
+          - { name: description, label: Search description override, widget: text, required: false, i18n: true, hint: 'Example: A 150-160 character summary for search results.' }
+          - { name: og_title, label: Social sharing title override, widget: string, required: false, i18n: true, hint: 'Example: Cellular Touch with Valentyn Korotkevych.' }
+          - { name: og_description, label: Social sharing description override, widget: text, required: false, i18n: true, hint: 'Example: A short description for link previews.' }
+          - { name: og_image, label: Social sharing image override, widget: image, required: false, i18n: true, hint: 'Recommended size: 1200 x 630 px. Defaults to the main hero image.' }
+          - { name: og_image_width, label: Social image width in pixels, widget: number, required: false, value_type: int, i18n: true, hint: 'Example: 1200.' }
+          - { name: og_image_height, label: Social image height in pixels, widget: number, required: false, value_type: int, i18n: true, hint: 'Example: 630.' }

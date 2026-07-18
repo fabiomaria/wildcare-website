@@ -57,6 +57,13 @@
             }
         });
 
+        document.querySelectorAll('[data-placeholder-de][data-placeholder-en]').forEach(function (el) {
+            var placeholder = el.getAttribute('data-placeholder-' + lang);
+            if (placeholder !== null) {
+                el.setAttribute('placeholder', placeholder);
+            }
+        });
+
         // Journal articles render Markdown as per-locale HTML blocks. If the
         // requested language is unavailable, keep the available fallback visible.
         document.querySelectorAll('[data-journal-lang]').forEach(function (el) {

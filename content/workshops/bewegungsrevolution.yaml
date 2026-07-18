@@ -3,54 +3,39 @@ de:
   language_mode: bilingual
   status: past
   detail_page: true
-  start_date: 2026-05-11
+  start_date: 2026-05-11T00:00:00.000Z
   sort_order: 50
   registration_url: montagskurs.html
+  title: Bewegungsrevolution
+  registration:
+    label: Zum offenen Montagskurs
+    note: Die Bewegungsrevolution 2026 ist abgeschlossen. Der offene Montagskurs läuft weiter.
+  facts:
+    date: 11. Mai – 15. Juni 2026
+    time: Montags, 17:45–19:15
+    location: Orpheumgasse 11, Graz
+    price: Kostenlos
+    duration: 6 Wochen
+    format: []
+    schedule: []
+    price_details: []
   card:
     tags:
       - label: Rückblick
         style: default
       - label: Contact Improvisation
         style: moss
-    title: Bewegungsrevolution
     subtitle: 6 Wochen kostenlose Contact Improvisation
     summary: Ein geförderter Einsteiger:innen-Block in Graz mit sechs Themen rund um Schwerkraft, Berührung, Gewicht, Konsens und Jam-Kultur.
-    date: 11. Mai – 15. Juni 2026
-    location: Orpheumgasse 11, Graz
-    price: Kostenlos
-    duration: 6 Wochen
-    register_label: Zum Montagskurs
     detail_label: Rückblick lesen
-  meta:
-    title: Bewegungsrevolution — Kostenlose Contact Improvisation in Graz | Wild Care
-    description: 6 Wochen kostenlose Contact Improvisation in Graz. Jeden Montag 17:45, Orpheumgasse 11. Keine Erfahrung nötig. 11. Mai – 15. Juni 2026.
-    og_url: https://wildcare.space/bewegungsrevolution
-    og_title: Bewegungsrevolution — Kostenlose Contact Improvisation in Graz
-    og_description: 6 Wochen kostenlose Contact Improvisation in Graz. Jeden Montag 17:45, Orpheumgasse 11. Keine Erfahrung nötig.
-    og_image: assets/images/Bewegungsrevolution%20social%20preview.jpg
-    og_image_width: 1200
-    og_image_height: 630
-  nav:
-    breadcrumb: Bewegungsrevolution
   hero:
     badge: Gefördert · Kostenlos · Rückblick
-    heading_text: Contact Improvisation. Kostenlos. 6 Wochen.
-    heading: Contact Improvisation.<br><span>Kostenlos. 6&nbsp;Wochen.</span>
     subtitle: Spielerisch den eigenen Körper erforschen — mit Schwerkraft, Gleichgewicht und Berührung. Keine Vorkenntnisse nötig. Wirklich keine.
-    details:
-      - icon: calendar
-        text: 11. Mai – 15. Juni 2026
-      - icon: clock
-        text: Montags, 17:45–19:15
-      - icon: location
-        text: Orpheumgasse 11, Graz
-      - icon: cost
-        text: 100% kostenlos
-    cta_label: Zum offenen Montagskurs
-    cta_href: montagskurs.html
-    cta_note: Die Bewegungsrevolution 2026 ist abgeschlossen. Der offene Montagskurs läuft weiter.
     video: assets/what is ci.mp4
     video_poster: assets/images/bewegungsrevolution.png
+    headline: Contact Improvisation.
+    headline_accent: Kostenlos. 6 Wochen.
+    show_details: true
   research:
     label: Der Fahrplan
     heading: 6 Wochen, 6 Themen
@@ -74,10 +59,21 @@ de:
         title: Die Jam
         text: 'Kein:e Lehrer:in ruft Übungen aus. Du wählst: alleine tanzen, mit jemandem tanzen, zuschauen, ausruhen. Die Jam ist dort, wo CI lebt — nur ein Raum, ein Boden und andere Menschen, die bereit sind, mit ihren Körpern zuzuhören.'
         highlighted: true
-  testimonials:
-    label: Feedback
-    heading: Was Teilnehmer:innen sagen
-    items:
+  facilitators:
+    label: Wer unterrichtet
+    heading: Deine Begleiter:innen
+    members:
+      - name: Verena Eidenberger
+        image: assets/images/verena.jpg
+        alt: Verena Eidenberger
+        role: Tänzerin · Musik- und Tanzpädagogin
+        bio: Verena tanzt Contact Improvisation seit sie 18 ist, ist Musik- und Tanzpädagogin und freut sich darauf ihr Wissen spielerisch zu teilen. Sie liebt es frei zu tanzen und mit Körper, Stimme oder Instrumenten zu improvisieren.
+      - name: Fabio Maria Gerhold
+        image: assets/images/fabio.jpg
+        alt: Fabio Maria Gerhold
+        role: Tänzer · Yogalehrer
+        bio: Fabio unterrichtet Yoga und Contact Improvisation in Graz. Seine Arbeit verbindet Achtsamkeit, Embodiment und kreative Forschung. Er ist inspiriert von der Philosophie von Martin Buber und der Frage, wie wir uns wirklich begegnen können.
+    quotes:
       - quote: „Ich habe durch den Kurs ein besseres Verständnis bekommen, was Contact Improvisation ist, auch mein Körper versteht mehr und ich kann meinen Körper in der tänzerischen Begegnung bewusster einsetzen. Und es macht einfach Freude!“
         author: Anna
       - quote: „Ich tanze schon länger, schau aber wenn ich Zeit habe sehr gerne im Kurs vorbei, da die positive, kreative Energie sich super anfühlt und ich jedesmal neue Anregungen bekomme, weiter zu probieren, Neues zu integrieren — macht einfach richtig lebendig und glücklich.“
@@ -96,66 +92,46 @@ de:
         a: Dieser Block ist abgeschlossen. Du kannst aber jederzeit zum offenen Montagskurs kommen.
       - q: Wie kann ich euch erreichen?
         a: Schreib uns unter hello ät wildcare.space.
-  facilitators:
-    label: Wer unterrichtet
-    heading: Deine Begleiter:innen
-    members:
-      - name: Verena Eidenberger
-        image: assets/images/verena.jpg
-        alt: Verena Eidenberger
-        role: Tänzerin · Musik- und Tanzpädagogin
-        bio: Verena tanzt Contact Improvisation seit sie 18 ist, ist Musik- und Tanzpädagogin und freut sich darauf ihr Wissen spielerisch zu teilen. Sie liebt es frei zu tanzen und mit Körper, Stimme oder Instrumenten zu improvisieren.
-      - name: Fabio Maria Gerhold
-        image: assets/images/fabio.jpg
-        alt: Fabio Maria Gerhold
-        role: Tänzer · Yogalehrer
-        bio: Fabio unterrichtet Yoga und Contact Improvisation in Graz. Seine Arbeit verbindet Achtsamkeit, Embodiment und kreative Forschung. Er ist inspiriert von der Philosophie von Martin Buber und der Frage, wie wir uns wirklich begegnen können.
+  meta:
+    title: Bewegungsrevolution — Kostenlose Contact Improvisation in Graz | Wild Care
+    description: 6 Wochen kostenlose Contact Improvisation in Graz. Jeden Montag 17:45, Orpheumgasse 11. Keine Erfahrung nötig. 11. Mai – 15. Juni 2026.
+    og_url: https://wildcare.space/bewegungsrevolution
+    og_title: Bewegungsrevolution — Kostenlose Contact Improvisation in Graz
+    og_description: 6 Wochen kostenlose Contact Improvisation in Graz. Jeden Montag 17:45, Orpheumgasse 11. Keine Erfahrung nötig.
+    og_image: assets/images/Bewegungsrevolution%20social%20preview.jpg
+    og_image_width: 1200
+    og_image_height: 630
 en:
+  title: Bewegungsrevolution
+  registration:
+    label: Go to the open Monday class
+    note: Bewegungsrevolution 2026 is complete. The open Monday class continues.
+  facts:
+    date: 11 May – 15 June 2026
+    time: Mondays, 17:45–19:15
+    location: Orpheumgasse 11, Graz
+    price: Free
+    duration: 6 weeks
+    format: []
+    schedule: []
+    price_details: []
   card:
     tags:
       - label: Archive
         style: default
       - label: Contact Improvisation
         style: moss
-    title: Bewegungsrevolution
     subtitle: 6 weeks of free Contact Improvisation
     summary: A funded beginner block in Graz with six themes around gravity, touch, weight, consent and jam culture.
-    date: 11 May – 15 June 2026
-    location: Orpheumgasse 11, Graz
-    price: Free
-    duration: 6 weeks
-    register_label: Monday Class
     detail_label: Read the archive
-  meta:
-    title: Bewegungsrevolution — Free Contact Improvisation in Graz | Wild Care
-    description: 6 weeks of free Contact Improvisation in Graz. Mondays at 17:45, Orpheumgasse 11. No experience needed. 11 May – 15 June 2026.
-    og_url: https://wildcare.space/bewegungsrevolution
-    og_title: Bewegungsrevolution — Free Contact Improvisation in Graz
-    og_description: 6 weeks of free Contact Improvisation in Graz. Mondays at 17:45, Orpheumgasse 11. No experience needed.
-    og_image: assets/images/Bewegungsrevolution%20social%20preview.jpg
-    og_image_width: 1200
-    og_image_height: 630
-  nav:
-    breadcrumb: Bewegungsrevolution
   hero:
     badge: Funded · Free · Archive
-    heading_text: Contact Improvisation. Free. 6 Weeks.
-    heading: Contact Improvisation.<br><span>Free. 6&nbsp;Weeks.</span>
     subtitle: Playfully explore your own body — with gravity, balance and touch. No prior experience needed. Really none.
-    details:
-      - icon: calendar
-        text: 11 May – 15 June 2026
-      - icon: clock
-        text: Mondays, 17:45–19:15
-      - icon: location
-        text: Orpheumgasse 11, Graz
-      - icon: cost
-        text: 100% free
-    cta_label: Go to the open Monday class
-    cta_href: montagskurs.html
-    cta_note: Bewegungsrevolution 2026 is complete. The open Monday class continues.
     video: assets/what is ci.mp4
     video_poster: assets/images/bewegungsrevolution.png
+    headline: Contact Improvisation.
+    headline_accent: Free. 6 Weeks.
+    show_details: true
   research:
     label: The Schedule
     heading: 6 Weeks, 6 Topics
@@ -179,10 +155,21 @@ en:
         title: The Jam
         text: 'No teacher calls out exercises. You choose: dance alone, dance with someone, watch, rest. The jam is where CI lives — just a space, a floor and other people ready to listen with their bodies.'
         highlighted: true
-  testimonials:
-    label: Feedback
-    heading: What participants say
-    items:
+  facilitators:
+    label: Who teaches
+    heading: Your Guides
+    members:
+      - name: Verena Eidenberger
+        image: assets/images/verena.jpg
+        alt: Verena Eidenberger
+        role: Dancer · Music & Dance Educator
+        bio: Verena has been dancing Contact Improvisation since she was 18. She is a music and dance educator and loves sharing her knowledge playfully. She loves to dance freely and improvise with body, voice or instruments.
+      - name: Fabio Maria Gerhold
+        image: assets/images/fabio.jpg
+        alt: Fabio Maria Gerhold
+        role: Dancer · Yoga Teacher
+        bio: Fabio teaches Yoga and Contact Improvisation in Graz. His work combines mindfulness, embodiment and creative exploration. He is inspired by Martin Buber’s philosophy and the question of how we can truly meet each other.
+    quotes:
       - quote: “Through the class I gained a better understanding of what Contact Improvisation is. My body understands more too, and I can use my body more consciously in the dance encounter. And it’s simply joyful!”
         author: Anna
       - quote: “I’ve been dancing for a while, but I love dropping by the class whenever I have time. The positive, creative energy feels amazing and I always get new inspiration to keep exploring, to integrate new things — it simply makes you feel alive and happy.”
@@ -201,17 +188,12 @@ en:
         a: This block is complete. You can join the open Monday class anytime.
       - q: How can I contact you?
         a: You can email us using the address hello ät wildcare.space.
-  facilitators:
-    label: Who teaches
-    heading: Your Guides
-    members:
-      - name: Verena Eidenberger
-        image: assets/images/verena.jpg
-        alt: Verena Eidenberger
-        role: Dancer · Music & Dance Educator
-        bio: Verena has been dancing Contact Improvisation since she was 18. She is a music and dance educator and loves sharing her knowledge playfully. She loves to dance freely and improvise with body, voice or instruments.
-      - name: Fabio Maria Gerhold
-        image: assets/images/fabio.jpg
-        alt: Fabio Maria Gerhold
-        role: Dancer · Yoga Teacher
-        bio: Fabio teaches Yoga and Contact Improvisation in Graz. His work combines mindfulness, embodiment and creative exploration. He is inspired by Martin Buber’s philosophy and the question of how we can truly meet each other.
+  meta:
+    title: Bewegungsrevolution — Free Contact Improvisation in Graz | Wild Care
+    description: 6 weeks of free Contact Improvisation in Graz. Mondays at 17:45, Orpheumgasse 11. No experience needed. 11 May – 15 June 2026.
+    og_url: https://wildcare.space/bewegungsrevolution
+    og_title: Bewegungsrevolution — Free Contact Improvisation in Graz
+    og_description: 6 weeks of free Contact Improvisation in Graz. Mondays at 17:45, Orpheumgasse 11. No experience needed.
+    og_image: assets/images/Bewegungsrevolution%20social%20preview.jpg
+    og_image_width: 1200
+    og_image_height: 630

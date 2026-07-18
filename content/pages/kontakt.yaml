@@ -1,10 +1,4 @@
-# PHASE 0 SAMPLE — schema contract draft. Not yet read by any template.
-# Canonical structure = whatever the Sveltia UI writes on save (round-trip test).
-# Content extracted 1:1 from the live kontakt.html.
 de:
-  meta:
-    title: Kontakt — Wild Care | Verein für soziale Praxis, Graz
-    description: Nimm Kontakt mit Wild Care auf. Contact Improvisation und soziale Praxis — jeden Montag in Graz. Komm einfach vorbei.
   hero:
     label: Kontakt
     heading: Wir freuen uns<br>auf dich.
@@ -18,21 +12,26 @@ de:
     message_label: Nachricht
     message_placeholder: Was möchtest du uns sagen?
     submit_label: Nachricht senden
+    submitting_label: Wird gesendet ...
+    submitted_label: Gesendet
     note: Oder schreib uns direkt an
-    success_message: Danke, deine Nachricht wurde gesendet.
-    error_message: Etwas ist schiefgelaufen. Bitte versuch es erneut oder schreib uns direkt.
+    success_message: Nachricht gesendet. Danke, wir melden uns bei dir.
+    error_message: Nachricht nicht gesendet. Bitte versuch es erneut oder schreib uns direkt.
   info:
     email_label: E-Mail
     address_label: Adresse
     when_label: Wann
     when_value: Jeden Montag ab 17:45 Uhr
-    highlight: Komm einfach vorbei — du brauchst keine Anmeldung, keine Erfahrung, nur bequeme Kleidung und Neugier.
+    highlight: Wir freuen uns auf dich!
   map:
     label: So findest du uns
     heading: Orpheumgasse 11, Graz
     caption: Orpheumgasse 11, 8020 Graz — Nähe Orpheum Theater
   footer:
     connect_heading: Verbinden
+  meta:
+    title: Kontakt — Wild Care | Verein für soziale Praxis, Graz
+    description: Nimm Kontakt mit Wild Care auf. Contact Improvisation und soziale Praxis — jeden Montag in Graz. Komm einfach vorbei.
 en:
   hero:
     label: Contact
@@ -44,9 +43,11 @@ en:
     email_label: Email
     message_label: Message
     submit_label: Send Message
+    submitting_label: Sending ...
+    submitted_label: Sent
     note: Or write to us directly at
-    success_message: Thanks, your message has been sent.
-    error_message: Something went wrong. Please try again or email us directly.
+    success_message: Message sent. Thank you, we will get back to you.
+    error_message: Message not sent. Please try again or email us directly.
   info:
     email_label: Email
     address_label: Address
