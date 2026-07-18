@@ -46,16 +46,10 @@ collections:
         file: content/pages/index.yaml
         i18n: true
         fields:
-          - name: meta
-            label: 'SEO & Vorschau'
-            widget: object
-            i18n: false
-            fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
           - name: hero
             label: Hero (Video)
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: heading, label: 'Überschrift', widget: string, i18n: true, hint: 'Zeilenumbruch mit <br> möglich' }
@@ -66,6 +60,7 @@ collections:
           - name: event_banner
             label: Termin-Banner
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: tag, label: Tag-Label, widget: string, i18n: true }
@@ -76,6 +71,7 @@ collections:
           - name: values
             label: Vier Haltungen
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -83,6 +79,9 @@ collections:
               - name: cards
                 label: Karten
                 widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: '{{fields.title}}'
                 i18n: true
                 min: 4
                 max: 4
@@ -93,6 +92,7 @@ collections:
           - name: invitation
             label: Was passiert bei uns
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -104,6 +104,7 @@ collections:
           - name: journal
             label: Journal-Teaser
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: heading, label: 'Überschrift', widget: string, i18n: true }
@@ -111,6 +112,7 @@ collections:
           - name: cta
             label: E-Mail-Anmeldung
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: heading, label: 'Überschrift', widget: string, i18n: true }
@@ -120,21 +122,23 @@ collections:
               - { name: consent_pre, label: 'Einwilligung: Text vor Link', widget: string, i18n: true }
               - { name: consent_link, label: 'Einwilligung: Link-Text', widget: string, i18n: true }
               - { name: consent_post, label: 'Einwilligung: Text nach Link', widget: string, i18n: true }
+          - name: meta
+            label: 'SEO & Vorschau (zuletzt prüfen)'
+            widget: object
+            collapsed: true
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
       - name: kontakt
         label: Kontakt
         file: content/pages/kontakt.yaml
         i18n: true
         fields:
-          - name: meta
-            label: 'SEO & Vorschau'
-            widget: object
-            i18n: false
-            fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
           - name: hero
             label: Hero
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -143,6 +147,7 @@ collections:
           - name: form
             label: Kontaktformular
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: heading, label: 'Überschrift', widget: string, i18n: true }
@@ -159,6 +164,7 @@ collections:
           - name: info
             label: Info-Spalte
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: email_label, label: 'Label: E-Mail', widget: string, i18n: true }
@@ -169,6 +175,7 @@ collections:
           - name: map
             label: Karte
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -177,26 +184,29 @@ collections:
           - name: footer
             label: Footer-Sonderfall
             widget: object
+            collapsed: true
             i18n: true
             hint: 'Kontakt hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
             fields:
               - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+          - name: meta
+            label: 'SEO & Vorschau (zuletzt prüfen)'
+            widget: object
+            collapsed: true
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
       - name: team
         label: Über uns / Team
         file: content/pages/team.yaml
         i18n: true
         fields:
-          - name: meta
-            label: 'SEO & Vorschau'
-            widget: object
-            i18n: false
-            fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
           - { name: breadcrumb, label: Breadcrumb, widget: string, i18n: true }
           - name: hero
             label: Hero
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -205,6 +215,7 @@ collections:
           - name: manifest
             label: Manifest-Auszug
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -213,6 +224,7 @@ collections:
           - name: team
             label: Team
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -220,6 +232,9 @@ collections:
               - name: members
                 label: Personen
                 widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: '{{fields.name}}'
                 i18n: true
                 min: 2
                 max: 2
@@ -232,6 +247,7 @@ collections:
           - name: quote_band
             label: Buber-Zitat
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: quote, label: Zitat, widget: string, i18n: true }
@@ -239,6 +255,7 @@ collections:
           - name: philosophy
             label: Haltung
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -248,6 +265,9 @@ collections:
               - name: pillars
                 label: Säulen
                 widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: '{{fields.title}}'
                 i18n: true
                 min: 3
                 max: 3
@@ -257,6 +277,7 @@ collections:
           - name: cta
             label: CTA
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -266,25 +287,28 @@ collections:
           - name: footer
             label: Footer-Sonderfall
             widget: object
+            collapsed: true
             i18n: true
             hint: 'Team hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
             fields:
               - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+          - name: meta
+            label: 'SEO & Vorschau (zuletzt prüfen)'
+            widget: object
+            collapsed: true
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
       - name: journal_landing
         label: Journal-Übersicht
         file: content/pages/journal.yaml
         i18n: true
         fields:
-          - name: meta
-            label: 'SEO & Vorschau'
-            widget: object
-            i18n: false
-            fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
           - name: hero
             label: Hero
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: false }
@@ -293,6 +317,7 @@ collections:
           - name: card
             label: Beitragskarten
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: read_more, label: 'Link: Weiterlesen', widget: string, i18n: true }
@@ -300,6 +325,7 @@ collections:
           - name: cta
             label: CTA
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -309,27 +335,30 @@ collections:
           - name: article
             label: Artikel-Seiten
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: back, label: 'Link: Zurück zum Journal', widget: string, i18n: true }
               - { name: related_label, label: 'Label: Weiterlesen', widget: string, i18n: true }
               - { name: related_heading, label: 'Überschrift: Verwandte Beiträge', widget: string, i18n: true }
+          - name: meta
+            label: 'SEO & Vorschau (zuletzt prüfen)'
+            widget: object
+            collapsed: true
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
       - name: montagskurs
         label: Montagskurs
         file: content/pages/montagskurs.yaml
         i18n: true
         fields:
-          - name: meta
-            label: 'SEO & Vorschau'
-            widget: object
-            i18n: false
-            fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
           - { name: breadcrumb, label: Breadcrumb, widget: string, i18n: true }
           - name: hero
             label: Hero
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -345,6 +374,7 @@ collections:
           - name: practice
             label: Was ist Contact Improvisation
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -356,6 +386,7 @@ collections:
           - name: learn
             label: Was du erforschst
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -363,6 +394,9 @@ collections:
               - name: cards
                 label: Karten
                 widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: '{{fields.title}}'
                 i18n: true
                 fields:
                   - { name: title, label: Titel, widget: string, i18n: true }
@@ -371,6 +405,7 @@ collections:
           - name: testimonials
             label: Feedback
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -378,6 +413,9 @@ collections:
               - name: items
                 label: Zitate
                 widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: '{{fields.author}}'
                 i18n: true
                 fields:
                   - { name: quote, label: Zitat, widget: text, i18n: true }
@@ -385,6 +423,7 @@ collections:
           - name: team
             label: Team
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -392,6 +431,9 @@ collections:
               - name: members
                 label: Personen
                 widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: '{{fields.name}}'
                 i18n: true
                 min: 2
                 max: 2
@@ -404,6 +446,7 @@ collections:
           - name: faq
             label: Häufige Fragen
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -411,6 +454,9 @@ collections:
               - name: items
                 label: Fragen
                 widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: '{{fields.q}}'
                 i18n: true
                 fields:
                   - { name: q, label: Frage, widget: string, i18n: true }
@@ -418,6 +464,7 @@ collections:
           - name: crosslink
             label: Projekt-Verweis (Bewegungsrevolution)
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -427,6 +474,7 @@ collections:
           - name: cta
             label: CTA
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -436,25 +484,28 @@ collections:
           - name: footer
             label: Footer-Sonderfall
             widget: object
+            collapsed: true
             i18n: true
             hint: 'Montagskurs hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
             fields:
               - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+          - name: meta
+            label: 'SEO & Vorschau (zuletzt prüfen)'
+            widget: object
+            collapsed: true
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
       - name: mitmachen
         label: Mitmachen
         file: content/pages/mitmachen.yaml
         i18n: true
         fields:
-          - name: meta
-            label: 'SEO & Vorschau'
-            widget: object
-            i18n: false
-            fields:
-              - { name: title, label: Seitentitel, widget: string }
-              - { name: description, label: Beschreibung, widget: text }
           - name: hero
             label: Hero
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -464,6 +515,7 @@ collections:
           - name: circles
             label: Zwei Kreise
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -471,6 +523,7 @@ collections:
               - name: outer
                 label: 'Kreis: Offen (Montagskurs)'
                 widget: object
+                collapsed: true
                 i18n: true
                 fields:
                   - { name: label, label: Label, widget: string, i18n: true }
@@ -486,6 +539,7 @@ collections:
               - name: inner
                 label: 'Kreis: Innen (Vereinsmitglieder)'
                 widget: object
+                collapsed: true
                 i18n: true
                 fields:
                   - { name: label, label: Label, widget: string, i18n: true }
@@ -501,6 +555,7 @@ collections:
           - name: membership
             label: Individuelle Mitgliedschaft
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: label, label: Label, widget: string, i18n: true }
@@ -511,6 +566,9 @@ collections:
               - name: tiers
                 label: Mitgliedschaftsstufen
                 widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: '{{fields.name}} · {{fields.amount}}'
                 i18n: true
                 min: 3
                 max: 3
@@ -528,10 +586,19 @@ collections:
           - name: footer
             label: Footer-Sonderfall
             widget: object
+            collapsed: true
             i18n: true
             hint: 'Mitmachen hat historisch "Verbinden"; die Startseite nutzt "Verbunden bleiben".'
             fields:
               - { name: connect_heading, label: 'Überschrift: Verbinden', widget: string, i18n: true }
+          - name: meta
+            label: 'SEO & Vorschau (zuletzt prüfen)'
+            widget: object
+            collapsed: true
+            i18n: false
+            fields:
+              - { name: title, label: Seitentitel, widget: string }
+              - { name: description, label: Beschreibung, widget: text }
 
   - name: website
     label: 'Website (Navigation & Footer)'
@@ -545,6 +612,7 @@ collections:
           - name: nav
             label: Navigation
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: home, label: Startseite, widget: string, i18n: true }
@@ -555,6 +623,7 @@ collections:
           - name: footer
             label: Footer
             widget: object
+            collapsed: true
             i18n: true
             fields:
               - { name: brand_text, label: Vereinsbeschreibung, widget: text, i18n: true }
