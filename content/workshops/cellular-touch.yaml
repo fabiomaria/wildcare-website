@@ -41,10 +41,7 @@ de:
     quotes:
       - quote: “When we pay attention to tiny gestures, they can grow and become pathways we have not expanded into before.”
         author: Valentyn Korotkevych
-  faq:
-    label: ''
-    heading: ''
-    items: []
+  faq: null
 en:
   title: Cellular Touch
   registration:
@@ -134,12 +131,7 @@ en:
     quotes:
       - quote: “When we pay attention to tiny gestures, they can grow and become pathways we have not expanded into before.”
         author: Valentyn Korotkevych
-  faq:
-    label: Label
-    heading: Headline
-    items:
-      - q: Question
-        a: Answer
+  faq: null
   meta:
     title: Cellular Touch with Valentyn Korotkevych — Workshop | Wild Care
     description: 'Cellular Touch with Valentyn Korotkevych: a Contact Improvisation workshop on membranes, fascia, flow and momentum. 8-9 August 2026, Orpheumgasse, Graz.'
