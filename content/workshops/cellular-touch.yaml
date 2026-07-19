@@ -41,7 +41,10 @@ de:
     quotes:
       - quote: Zitat
         author: Valentyn Korotkevych
-  faq: null
+  faq:
+    label: ''
+    heading: ''
+    items: []
 en:
   title: Cellular Touch
   registration:
