@@ -1,7 +1,4 @@
 de:
-  meta:
-    title: Wild Care — Verein für soziale Praxis | Graz
-    description: Wild Care — Wir leben die Kunst der Begegnung. Contact Improvisation und soziale Praxis, jeden Montag in Graz.
   hero:
     heading: Wir leben die Kunst<br>der Begegnung.
     tagline: Kunst als lebendige, soziale Praxis. Jeden Montag in Graz — offen für alle, auf Spendenbasis.
@@ -51,6 +48,15 @@ de:
     consent_pre: Ich stimme der Speicherung meiner E-Mail gemäß
     consent_link: Datenschutzerklärung
     consent_post: zu.
+  meta:
+    title: Wild Care — Verein für soziale Praxis | Graz
+    description: Wild Care — Wir leben die Kunst der Begegnung. Contact Improvisation und soziale Praxis, jeden Montag in Graz.
+    og_title: ''
+    og_description: ''
+    og_image: /assets/uploads/cover-1640x856-2.webp
+    og_image_alt: ''
+    og_image_width: null
+    og_image_height: null
 en:
   hero:
     heading: We live the art<br>of encounter.
