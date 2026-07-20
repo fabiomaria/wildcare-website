@@ -8,7 +8,12 @@ sort_order: 2
 status: published
 excerpt: "Über das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen — und warum es mehr ist als Tanz."
 homepage_excerpt: "Über das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen."
-meta_description: "Was ist Contact Improvisation? Spielerisches Forschen mit Schwerkraft, Balance und Berührung. Warum es mehr ist als Tanz — und was du dabei lernst."
+meta:
+  description: "Was ist Contact Improvisation? Spielerisches Forschen mit Schwerkraft, Balance und Berührung. Warum es mehr ist als Tanz — und was du dabei lernst."
+  og_image: assets/images/warum-ci.jpg
+  og_image_alt: Zwei Menschen begegnen einander in einer Contact-Improvisation-Bewegung.
+  og_image_width: 1200
+  og_image_height: 1393
 image: assets/images/warum-ci.jpg
 image_alt: Contact Improvisation
 hero_image: assets/images/ci-cover.jpg

@@ -1,7 +1,8 @@
 ---
 heading: Datenschutz­erklärung
-meta_title: Datenschutz — Wild Care | Verein für soziale Praxis, Graz
-meta_description: Datenschutzerklärung von Wild Care — Verein für Kontaktimprovisation und soziale Praxis in Graz.
+meta:
+  title: Datenschutz — Wild Care | Verein für soziale Praxis, Graz
+  description: Datenschutzerklärung von Wild Care — Verein für Kontaktimprovisation und soziale Praxis in Graz.
 ---
 
 ## 1. Allgemeine Information

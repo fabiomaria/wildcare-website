@@ -15,15 +15,17 @@ permalink: "{{ post.href }}"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ titleDe }} &mdash; Wild Care Journal</title>
-    <meta name="description" content="{{ de.meta_description or de.excerpt or en.excerpt }}">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://wildcare.space/{{ post.href }}">
-    <meta property="og:title" content="{{ titleDe }} — Wild Care Journal">
-    <meta property="og:description" content="{{ de.meta_description or de.excerpt or en.excerpt }}">
-    <meta property="og:image" content="https://wildcare.space/{{ post.image | replace(' ', '%20') }}">
-    <meta property="og:locale" content="de_AT">
-    <meta name="twitter:card" content="summary_large_image">
+    {%- set seoMeta = en.meta if post.language_mode == "en_only" else de.meta -%}
+    {%- set seoCanonical = "https://wildcare.space/" ~ post.href -%}
+    {%- set seoType = "article" -%}
+    {%- set seoLocale = "en_US" if post.language_mode == "en_only" else "de_AT" -%}
+    {%- if post.language_mode == "bilingual" -%}
+    {%- set seoAlternateLocale = "en_US" -%}
+    {%- endif -%}
+    {%- set seoPublishedTime = post.date_iso -%}
+    {%- set seoFallbackImage = post.image -%}
+    {%- set seoFallbackImageAlt = post.image_alt -%}
+    {% include "partials/seo.njk" %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

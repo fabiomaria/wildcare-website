@@ -8,7 +8,12 @@ sort_order: 2
 status: published
 excerpt: "On the playful exploration of gravity, balance and trust — and why it is so much more than dance."
 homepage_excerpt: "On the playful exploration of gravity, balance, and trust."
-meta_description: "What is Contact Improvisation? Playful research with gravity, balance and touch. Why it is more than dance — and what you learn through it."
+meta:
+  description: "What is Contact Improvisation? Playful research with gravity, balance and touch. Why it is more than dance — and what you learn through it."
+  og_image: assets/images/warum-ci.jpg
+  og_image_alt: Two people meeting through a Contact Improvisation movement.
+  og_image_width: 1200
+  og_image_height: 1393
 image: assets/images/warum-ci.jpg
 image_alt: Contact Improvisation
 hero_image: assets/images/ci-cover.jpg

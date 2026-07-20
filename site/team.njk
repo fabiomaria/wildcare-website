@@ -8,15 +8,10 @@ permalink: team.html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ de.meta.title }}</title>
-    <meta name="description" content="{{ de.meta.description }}">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wildcare.space/team.html">
-    <meta property="og:title" content="{{ de.meta.title }}">
-    <meta property="og:description" content="{{ de.meta.description }}">
-    <meta property="og:image" content="https://wildcare.space/assets/images/social%20preview.jpg">
-    <meta property="og:locale" content="de_AT">
-    <meta name="twitter:card" content="summary_large_image">
+    {%- set seoMeta = de.meta -%}
+    {%- set seoCanonical = "https://wildcare.space/team.html" -%}
+    {%- set seoAlternateLocale = "en_US" -%}
+    {% include "partials/seo.njk" %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

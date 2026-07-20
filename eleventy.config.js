@@ -85,6 +85,24 @@ function plainText(value) {
     .trim();
 }
 
+function normalizeJournalLocale(locale) {
+  const source = isObject(locale) ? locale : {};
+  const meta = isObject(source.meta) ? source.meta : {};
+  const defaultTitle = source.title ? `${source.title} — Wild Care Journal` : "Wild Care Journal";
+  return {
+    ...source,
+    meta: {
+      ...meta,
+      title: meta.title || defaultTitle,
+      description: meta.description || source.meta_description || source.excerpt || "",
+      og_title: meta.og_title || meta.title || defaultTitle,
+      og_description: meta.og_description || meta.description || source.meta_description || source.excerpt || "",
+      og_image: meta.og_image || source.image || "",
+      og_image_alt: meta.og_image_alt || source.image_alt || "",
+    },
+  };
+}
+
 function normalizeWorkshopLocale(locale) {
   const source = isObject(locale) ? locale : {};
   const card = isObject(source.card) ? source.card : {};
@@ -138,6 +156,7 @@ function normalizeWorkshopLocale(locale) {
       og_title: meta.og_title || title,
       og_description: meta.og_description || meta.description || summary,
       og_image: meta.og_image || hero.main_image || "",
+      og_image_alt: meta.og_image_alt || hero.main_alt || "",
     },
   };
 }
@@ -191,6 +210,23 @@ function normalizeExternalUrl(value) {
   return raw.includes(".") && !raw.includes(" ") ? `https://${raw}` : raw;
 }
 
+function resolveNavigationUrl(value, pathPrefix = "") {
+  const url = String(value || "").trim();
+  if (!url) return "#";
+  if (/^(?:[a-z][a-z\d+.-]*:|\/|#)/i.test(url)) return url;
+  return `${pathPrefix || ""}${url}`;
+}
+
+function absoluteSiteUrl(value) {
+  const url = String(value || "").trim();
+  if (!url) return "";
+  try {
+    return new URL(url, "https://wildcare.space/").href;
+  } catch {
+    return url;
+  }
+}
+
 function loadJournalContent() {
   const dir = path.join(__dirname, "content", "journal");
   const entries = new Map();
@@ -229,8 +265,8 @@ function loadJournalContent() {
     const enHasContent = hasText(enRaw.title) || hasText(enRaw.body);
     const fallbackLocale = deHasContent ? deRaw : enRaw;
 
-    const de = mergeLocale(fallbackLocale, deRaw);
-    const en = mergeLocale(fallbackLocale, enRaw);
+    const de = normalizeJournalLocale(mergeLocale(fallbackLocale, deRaw));
+    const en = normalizeJournalLocale(mergeLocale(fallbackLocale, enRaw));
 
     const post = {
       slug: entry.slug,
@@ -251,6 +287,9 @@ function loadJournalContent() {
       de,
       en,
     };
+
+    const publishedDate = new Date(post.date);
+    post.date_iso = Number.isNaN(publishedDate.getTime()) ? "" : publishedDate.toISOString();
 
     post.de.date_label = formatMonth(post.date, "de-AT");
     post.en.date_label = formatMonth(post.date, "en");
@@ -309,8 +348,13 @@ function loadLegalContent() {
     const slug = path.basename(filename, ".md");
     const parsed = matter(fs.readFileSync(path.join(dir, filename), "utf8"));
     const body = parsed.content.trim();
+    const legacyMeta = {
+      title: parsed.data.meta_title || "",
+      description: parsed.data.meta_description || "",
+    };
     pages[slug] = {
       ...parsed.data,
+      meta: deepMerge(legacyMeta, parsed.data.meta || {}),
       body,
       // Plain rendering (no per-element classes) for pages whose original
       // markup wraps the whole prose block in one fade-up container.
@@ -409,6 +453,8 @@ function loadWorkshopContent() {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
   eleventyConfig.addFilter("attr", (value) => new nunjucks.runtime.SafeString(escapeHtmlAttr(value)));
+  eleventyConfig.addFilter("navigationUrl", resolveNavigationUrl);
+  eleventyConfig.addFilter("absoluteSiteUrl", absoluteSiteUrl);
 
   // Static assets, untouched per the brief (§3).
   eleventyConfig.addPassthroughCopy({ "css": "css" });

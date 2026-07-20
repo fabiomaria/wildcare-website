@@ -10,15 +10,10 @@ permalink: kontakt.html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ de.meta.title }}</title>
-    <meta name="description" content="{{ de.meta.description }}">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wildcare.space/kontakt.html">
-    <meta property="og:title" content="{{ de.meta.title }}">
-    <meta property="og:description" content="{{ de.meta.description }}">
-    <meta property="og:image" content="https://wildcare.space/assets/images/social%20preview.jpg">
-    <meta property="og:locale" content="de_AT">
-    <meta name="twitter:card" content="summary_large_image">
+    {%- set seoMeta = de.meta -%}
+    {%- set seoCanonical = "https://wildcare.space/kontakt.html" -%}
+    {%- set seoAlternateLocale = "en_US" -%}
+    {% include "partials/seo.njk" %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -180,20 +175,22 @@ permalink: kontakt.html
                     <h4
                         data-de="{{ siteDe.footer.pages_heading }}"
                         data-en="{{ siteEn.footer.pages_heading or siteDe.footer.pages_heading }}">{{ siteDe.footer.pages_heading }}</h4>
-                    <a href="index.html"
+                    <a href="{{ (siteDe.nav.home_url or 'index.html') | navigationUrl }}"
                         data-de="{{ siteDe.nav.home }}"
                         data-en="{{ siteEn.nav.home or siteDe.nav.home }}">{{ siteDe.nav.home }}</a>
-                    <a href="team.html"
+                    <a href="{{ (siteDe.nav.about_url or 'team.html') | navigationUrl }}"
                         data-de="{{ siteDe.nav.about }}"
                         data-en="{{ siteEn.nav.about or siteDe.nav.about }}">{{ siteDe.nav.about }}</a>
-                    <a href="programm.html"
+                    <a href="{{ (siteDe.nav.program_url or 'programm.html') | navigationUrl }}"
                         data-de="{{ siteDe.nav.program }}"
                         data-en="{{ siteEn.nav.program or siteDe.nav.program }}">{{ siteDe.nav.program }}</a>
-                    <a href="mitmachen.html"
+                    <a href="{{ (siteDe.nav.join_url or 'mitmachen.html') | navigationUrl }}"
                         data-de="{{ siteDe.nav.join }}"
                         data-en="{{ siteEn.nav.join or siteDe.nav.join }}">{{ siteDe.nav.join }}</a>
-                    <a href="journal.html">Journal</a>
-                    <a href="kontakt.html"
+                    <a href="{{ (siteDe.nav.journal_url or 'journal.html') | navigationUrl }}"
+                        data-de="{{ siteDe.nav.journal or 'Journal' }}"
+                        data-en="{{ siteEn.nav.journal or siteDe.nav.journal or 'Journal' }}">{{ siteDe.nav.journal or 'Journal' }}</a>
+                    <a href="{{ (siteDe.nav.cta_url or 'kontakt.html') | navigationUrl }}"
                         data-de="{{ siteDe.footer.contact_label }}"
                         data-en="{{ siteEn.footer.contact_label or siteDe.footer.contact_label }}">{{ siteDe.footer.contact_label }}</a>
                 </div>

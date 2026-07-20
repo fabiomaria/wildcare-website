@@ -2,20 +2,15 @@
 permalink: impressum.html
 ---
 {%- set legal = cms.legal.impressum -%}
+{%- set s = cms.site -%}
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ legal.meta_title }}</title>
-    <meta name="description" content="{{ legal.meta_description }}">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wildcare.space/impressum.html">
-    <meta property="og:title" content="{{ legal.meta_title }}">
-    <meta property="og:description" content="{{ legal.meta_description }}">
-    <meta property="og:image" content="https://wildcare.space/assets/images/social%20preview.jpg">
-    <meta property="og:locale" content="de_AT">
-    <meta name="twitter:card" content="summary_large_image">
+    {%- set seoMeta = legal.meta -%}
+    {%- set seoCanonical = "https://wildcare.space/impressum.html" -%}
+    {% include "partials/seo.njk" %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,17 +22,17 @@ permalink: impressum.html
 
     <nav>
         <div class="container nav-inner">
-            <a href="index.html" class="nav-logo">
+            <a href="{{ (s.de.nav.home_url or 'index.html') | navigationUrl }}" class="nav-logo">
                 Wild Care
                 <span class="breadcrumb">Graz</span>
             </a>
             <div class="nav-links">
-                <a href="index.html">Startseite</a>
-                <a href="team.html">&Uuml;ber uns</a>
-                <a href="programm.html">Programm</a>
-                <a href="journal.html">Journal</a>
-                <a href="mitmachen.html">Mitmachen</a>
-                <a href="kontakt.html" class="nav-cta">Komm vorbei</a>
+                <a href="{{ (s.de.nav.home_url or 'index.html') | navigationUrl }}">{{ s.de.nav.home }}</a>
+                <a href="{{ (s.de.nav.about_url or 'team.html') | navigationUrl }}">{{ s.de.nav.about }}</a>
+                <a href="{{ (s.de.nav.program_url or 'programm.html') | navigationUrl }}">{{ s.de.nav.program }}</a>
+                <a href="{{ (s.de.nav.journal_url or 'journal.html') | navigationUrl }}">{{ s.de.nav.journal or 'Journal' }}</a>
+                <a href="{{ (s.de.nav.join_url or 'mitmachen.html') | navigationUrl }}">{{ s.de.nav.join }}</a>
+                <a href="{{ (s.de.nav.cta_url or 'kontakt.html') | navigationUrl }}" class="nav-cta">{{ s.de.nav.cta }}</a>
             </div>
             <button class="nav-toggle" aria-label="Men&uuml;">
                 <span></span>
@@ -83,11 +78,11 @@ permalink: impressum.html
                 </div>
                 <div class="footer-links">
                     <h4>Seiten</h4>
-                    <a href="index.html">Startseite</a>
-                    <a href="team.html">&Uuml;ber uns</a>
-                    <a href="programm.html">Programm</a>
-                    <a href="mitmachen.html">Mitmachen</a>
-                    <a href="journal.html">Journal</a>
+                    <a href="{{ (s.de.nav.home_url or 'index.html') | navigationUrl }}">{{ s.de.nav.home }}</a>
+                    <a href="{{ (s.de.nav.about_url or 'team.html') | navigationUrl }}">{{ s.de.nav.about }}</a>
+                    <a href="{{ (s.de.nav.program_url or 'programm.html') | navigationUrl }}">{{ s.de.nav.program }}</a>
+                    <a href="{{ (s.de.nav.join_url or 'mitmachen.html') | navigationUrl }}">{{ s.de.nav.join }}</a>
+                    <a href="{{ (s.de.nav.journal_url or 'journal.html') | navigationUrl }}">{{ s.de.nav.journal or 'Journal' }}</a>
                 </div>
                 <div class="footer-links">
                     <h4>Verbinden</h4>

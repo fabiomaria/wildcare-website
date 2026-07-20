@@ -39,7 +39,11 @@ i18n:
 collections:
   - name: seiten
     label: 'Pages'
-    i18n: true
+    i18n:
+      structure: single_file
+      locales: [de, en]
+      default_locale: de
+      initial_locales: [de]
     files:
       - name: startseite
         label: 'Homepage'
@@ -130,13 +134,19 @@ collections:
               - { name: consent_link, label: 'Consent link text', widget: string, i18n: true }
               - { name: consent_post, label: 'Consent text after link', widget: string, i18n: true }
           - name: meta
-            label: 'SEO and social preview (review last)'
+            label: 'Advanced SEO and social sharing (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
               - { name: title, label: 'Browser and SEO title', widget: string }
               - { name: description, label: 'Description', widget: text }
+              - { name: og_title, label: 'Social sharing title override', widget: string, required: false, hint: 'Leave empty to use the browser and SEO title.' }
+              - { name: og_description, label: 'Social sharing description override', widget: text, required: false, hint: 'Leave empty to use the SEO description.' }
+              - { name: og_image, label: 'Social sharing image override', widget: image, required: false, hint: 'Recommended size: 1200 x 630 px. Leave empty to use the website default.' }
+              - { name: og_image_alt, label: 'Social image description', widget: string, required: false, hint: 'Describe what is visible in the custom image. Required when a custom social image is used.' }
+              - { name: og_image_width, label: 'Social image width in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel width.' }
+              - { name: og_image_height, label: 'Social image height in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel height.' }
       - name: kontakt
         label: 'Contact page'
         file: content/pages/kontakt.yaml
@@ -199,13 +209,19 @@ collections:
             fields:
               - { name: connect_heading, label: 'Connect column heading', widget: string, i18n: true }
           - name: meta
-            label: 'SEO and social preview (review last)'
+            label: 'Advanced SEO and social sharing (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
               - { name: title, label: 'Browser and SEO title', widget: string }
               - { name: description, label: 'Description', widget: text }
+              - { name: og_title, label: 'Social sharing title override', widget: string, required: false, hint: 'Leave empty to use the browser and SEO title.' }
+              - { name: og_description, label: 'Social sharing description override', widget: text, required: false, hint: 'Leave empty to use the SEO description.' }
+              - { name: og_image, label: 'Social sharing image override', widget: image, required: false, hint: 'Recommended size: 1200 x 630 px. Leave empty to use the website default.' }
+              - { name: og_image_alt, label: 'Social image description', widget: string, required: false, hint: 'Describe what is visible in the custom image. Required when a custom social image is used.' }
+              - { name: og_image_width, label: 'Social image width in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel width.' }
+              - { name: og_image_height, label: 'Social image height in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel height.' }
       - name: team
         label: 'About us / team'
         file: content/pages/team.yaml
@@ -302,13 +318,19 @@ collections:
             fields:
               - { name: connect_heading, label: 'Connect column heading', widget: string, i18n: true }
           - name: meta
-            label: 'SEO and social preview (review last)'
+            label: 'Advanced SEO and social sharing (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
               - { name: title, label: 'Browser and SEO title', widget: string }
               - { name: description, label: 'Description', widget: text }
+              - { name: og_title, label: 'Social sharing title override', widget: string, required: false, hint: 'Leave empty to use the browser and SEO title.' }
+              - { name: og_description, label: 'Social sharing description override', widget: text, required: false, hint: 'Leave empty to use the SEO description.' }
+              - { name: og_image, label: 'Social sharing image override', widget: image, required: false, hint: 'Recommended size: 1200 x 630 px. Leave empty to use the website default.' }
+              - { name: og_image_alt, label: 'Social image description', widget: string, required: false, hint: 'Describe what is visible in the custom image. Required when a custom social image is used.' }
+              - { name: og_image_width, label: 'Social image width in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel width.' }
+              - { name: og_image_height, label: 'Social image height in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel height.' }
       - name: journal_landing
         label: 'Journal landing page'
         file: content/pages/journal.yaml
@@ -351,13 +373,19 @@ collections:
               - { name: related_label, label: 'Related-content eyebrow', widget: string, required: false, i18n: true, hint: 'Example: Read next. Leave empty to omit the eyebrow.' }
               - { name: related_heading, label: 'Related articles heading', widget: string, i18n: true }
           - name: meta
-            label: 'SEO and social preview (review last)'
+            label: 'Advanced SEO and social sharing (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
               - { name: title, label: 'Browser and SEO title', widget: string }
               - { name: description, label: 'Description', widget: text }
+              - { name: og_title, label: 'Social sharing title override', widget: string, required: false, hint: 'Leave empty to use the browser and SEO title.' }
+              - { name: og_description, label: 'Social sharing description override', widget: text, required: false, hint: 'Leave empty to use the SEO description.' }
+              - { name: og_image, label: 'Social sharing image override', widget: image, required: false, hint: 'Recommended size: 1200 x 630 px. Leave empty to use the website default.' }
+              - { name: og_image_alt, label: 'Social image description', widget: string, required: false, hint: 'Describe what is visible in the custom image. Required when a custom social image is used.' }
+              - { name: og_image_width, label: 'Social image width in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel width.' }
+              - { name: og_image_height, label: 'Social image height in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel height.' }
       - name: programm
         label: 'Programme page'
         file: content/pages/programm.yaml
@@ -457,13 +485,19 @@ collections:
               - { name: text, label: 'Supporting text', widget: text, i18n: true, hint: 'Example: Include the recurring schedule and address.' }
               - { name: button, label: 'Contact button text', widget: string, i18n: true, hint: 'Example: Get in touch.' }
           - name: meta
-            label: 'SEO and social preview (review last)'
+            label: 'Advanced SEO and social sharing (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
               - { name: title, label: 'Browser and SEO title', widget: string, hint: 'Example: Programme - Wild Care | Graz.' }
               - { name: description, label: 'SEO description', widget: text, hint: 'Example: Contact Improvisation classes and workshops in Graz.' }
+              - { name: og_title, label: 'Social sharing title override', widget: string, required: false, hint: 'Leave empty to use the browser and SEO title.' }
+              - { name: og_description, label: 'Social sharing description override', widget: text, required: false, hint: 'Leave empty to use the SEO description.' }
+              - { name: og_image, label: 'Social sharing image override', widget: image, required: false, hint: 'Recommended size: 1200 x 630 px. Leave empty to use the website default.' }
+              - { name: og_image_alt, label: 'Social image description', widget: string, required: false, hint: 'Describe what is visible in the custom image. Required when a custom social image is used.' }
+              - { name: og_image_width, label: 'Social image width in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel width.' }
+              - { name: og_image_height, label: 'Social image height in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel height.' }
 
       - name: montagskurs
         label: 'Monday class'
@@ -606,13 +640,19 @@ collections:
             fields:
               - { name: connect_heading, label: 'Connect column heading', widget: string, i18n: true }
           - name: meta
-            label: 'SEO and social preview (review last)'
+            label: 'Advanced SEO and social sharing (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
               - { name: title, label: 'Browser and SEO title', widget: string }
               - { name: description, label: 'Description', widget: text }
+              - { name: og_title, label: 'Social sharing title override', widget: string, required: false, hint: 'Leave empty to use the browser and SEO title.' }
+              - { name: og_description, label: 'Social sharing description override', widget: text, required: false, hint: 'Leave empty to use the SEO description.' }
+              - { name: og_image, label: 'Social sharing image override', widget: image, required: false, hint: 'Recommended size: 1200 x 630 px. Leave empty to use the website default.' }
+              - { name: og_image_alt, label: 'Social image description', widget: string, required: false, hint: 'Describe what is visible in the custom image. Required when a custom social image is used.' }
+              - { name: og_image_width, label: 'Social image width in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel width.' }
+              - { name: og_image_height, label: 'Social image height in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel height.' }
       - name: mitmachen
         label: 'Join page'
         file: content/pages/mitmachen.yaml
@@ -710,17 +750,27 @@ collections:
             fields:
               - { name: connect_heading, label: 'Connect column heading', widget: string, i18n: true }
           - name: meta
-            label: 'SEO and social preview (review last)'
+            label: 'Advanced SEO and social sharing (review last)'
             widget: object
             collapsed: true
             i18n: false
             fields:
               - { name: title, label: 'Browser and SEO title', widget: string }
               - { name: description, label: 'Description', widget: text }
+              - { name: og_title, label: 'Social sharing title override', widget: string, required: false, hint: 'Leave empty to use the browser and SEO title.' }
+              - { name: og_description, label: 'Social sharing description override', widget: text, required: false, hint: 'Leave empty to use the SEO description.' }
+              - { name: og_image, label: 'Social sharing image override', widget: image, required: false, hint: 'Recommended size: 1200 x 630 px. Leave empty to use the website default.' }
+              - { name: og_image_alt, label: 'Social image description', widget: string, required: false, hint: 'Describe what is visible in the custom image. Required when a custom social image is used.' }
+              - { name: og_image_width, label: 'Social image width in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel width.' }
+              - { name: og_image_height, label: 'Social image height in pixels', widget: number, required: false, value_type: int, hint: 'Enter the custom image’s real pixel height.' }
 
   - name: website
     label: 'Website navigation and footer'
-    i18n: true
+    i18n:
+      structure: single_file
+      locales: [de, en]
+      default_locale: de
+      initial_locales: [de]
     files:
       - name: global
         label: 'Navigation & Footer'
@@ -734,10 +784,28 @@ collections:
             i18n: true
             fields:
               - { name: home, label: 'Homepage', widget: string, i18n: true }
+              - { name: home_url, label: 'Homepage link', widget: string, i18n: false, hint: 'Example: index.html. Relative links work from every page; full https:// links are also supported.' }
               - { name: about, label: 'About us', widget: string, i18n: true }
+              - { name: about_url, label: 'About-us link', widget: string, i18n: false, hint: 'Example: team.html.' }
               - { name: program, label: 'Programme', widget: string, i18n: true }
+              - { name: program_url, label: 'Programme link', widget: string, i18n: false, hint: 'Example: programm.html.' }
+              - { name: journal, label: 'Journal', widget: string, i18n: true }
+              - { name: journal_url, label: 'Journal link', widget: string, i18n: false, hint: 'Example: journal.html.' }
               - { name: join, label: 'Join page', widget: string, i18n: true }
+              - { name: join_url, label: 'Join-page link', widget: string, i18n: false, hint: 'Example: mitmachen.html.' }
               - { name: cta, label: 'Primary navigation button text', widget: string, i18n: true, hint: 'Example: Come by.' }
+              - { name: cta_url, label: 'Primary navigation button link', widget: string, i18n: false, hint: 'Example: kontakt.html.' }
+          - name: seo
+            label: 'SEO defaults'
+            widget: object
+            collapsed: true
+            i18n: true
+            hint: 'Fallback social image settings used when a page or article has no custom social image.'
+            fields:
+              - { name: default_og_image, label: 'Default social sharing image', widget: image, i18n: false, hint: 'Recommended size: 1200 x 630 px.' }
+              - { name: default_og_image_alt, label: 'Default social image description', widget: string, i18n: true, hint: 'Describe what is visible in the image; do not repeat the page title.' }
+              - { name: default_og_image_width, label: 'Default image width in pixels', widget: number, value_type: int, i18n: false }
+              - { name: default_og_image_height, label: 'Default image height in pixels', widget: number, value_type: int, i18n: false }
           - name: footer
             label: Footer
             widget: object
@@ -807,7 +875,22 @@ collections:
               - { name: style, label: 'Style', widget: select, options: [primary, secondary], default: primary, i18n: duplicate }
               - { name: href, label: Link, widget: string, required: false, i18n: duplicate }
               - { name: tally_open, label: Tally-ID, widget: string, required: false, i18n: duplicate }
-      - { name: meta_description, label: 'SEO description', widget: text, required: false, i18n: true }
+      - name: meta
+        label: 'Advanced SEO and social sharing'
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        hint: 'Optional overrides. The article title, excerpt, and card image are used as fallbacks.'
+        fields:
+          - { name: title, label: 'Browser title override', widget: string, required: false, i18n: true, hint: 'Leave empty to use the article title followed by Wild Care Journal.' }
+          - { name: description, label: 'Search description override', widget: text, required: false, i18n: true, hint: 'Leave empty to use the card summary.' }
+          - { name: og_title, label: 'Social sharing title override', widget: string, required: false, i18n: true, hint: 'Leave empty to use the browser title.' }
+          - { name: og_description, label: 'Social sharing description override', widget: text, required: false, i18n: true, hint: 'Leave empty to use the search description.' }
+          - { name: og_image, label: 'Social sharing image override', widget: image, required: false, i18n: true, hint: 'Recommended size: 1200 x 630 px. Leave empty to use the article card image.' }
+          - { name: og_image_alt, label: 'Social image description', widget: string, required: false, i18n: true, hint: 'Describe what is visible in the social image.' }
+          - { name: og_image_width, label: 'Social image width in pixels', widget: number, required: false, value_type: int, i18n: true, hint: 'Enter the social image’s real pixel width.' }
+          - { name: og_image_height, label: 'Social image height in pixels', widget: number, required: false, value_type: int, i18n: true, hint: 'Enter the social image’s real pixel height.' }
 
   - name: rechtliches
     label: 'Legal pages (German only)'
@@ -817,16 +900,38 @@ collections:
         file: content/legal/impressum.md
         fields:
           - { name: heading, label: 'Page heading (H1)', widget: string }
-          - { name: meta_title, label: 'Browser and SEO title', widget: string }
-          - { name: meta_description, label: 'SEO description', widget: text }
+          - name: meta
+            label: 'Advanced SEO and social sharing'
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: 'Browser and SEO title', widget: string }
+              - { name: description, label: 'SEO description', widget: text }
+              - { name: og_title, label: 'Social sharing title override', widget: string, required: false, hint: 'Leave empty to use the browser and SEO title.' }
+              - { name: og_description, label: 'Social sharing description override', widget: text, required: false, hint: 'Leave empty to use the SEO description.' }
+              - { name: og_image, label: 'Social sharing image override', widget: image, required: false, hint: 'Recommended size: 1200 x 630 px. Leave empty to use the website default.' }
+              - { name: og_image_alt, label: 'Social image description', widget: string, required: false, hint: 'Describe what is visible in the custom image.' }
+              - { name: og_image_width, label: 'Social image width in pixels', widget: number, required: false, value_type: int }
+              - { name: og_image_height, label: 'Social image height in pixels', widget: number, required: false, value_type: int }
           - { name: body, label: Text, widget: markdown }
       - name: datenschutz
         label: 'Privacy policy'
         file: content/legal/datenschutz.md
         fields:
           - { name: heading, label: 'Page heading (H1)', widget: string }
-          - { name: meta_title, label: 'Browser and SEO title', widget: string }
-          - { name: meta_description, label: 'SEO description', widget: text }
+          - name: meta
+            label: 'Advanced SEO and social sharing'
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: 'Browser and SEO title', widget: string }
+              - { name: description, label: 'SEO description', widget: text }
+              - { name: og_title, label: 'Social sharing title override', widget: string, required: false, hint: 'Leave empty to use the browser and SEO title.' }
+              - { name: og_description, label: 'Social sharing description override', widget: text, required: false, hint: 'Leave empty to use the SEO description.' }
+              - { name: og_image, label: 'Social sharing image override', widget: image, required: false, hint: 'Recommended size: 1200 x 630 px. Leave empty to use the website default.' }
+              - { name: og_image_alt, label: 'Social image description', widget: string, required: false, hint: 'Describe what is visible in the custom image.' }
+              - { name: og_image_width, label: 'Social image width in pixels', widget: number, required: false, value_type: int }
+              - { name: og_image_height, label: 'Social image height in pixels', widget: number, required: false, value_type: int }
           - { name: body, label: Text, widget: markdown }
 
   - name: workshops
@@ -1093,5 +1198,6 @@ collections:
           - { name: og_title, label: Social sharing title override, widget: string, required: false, i18n: true, hint: 'Example: Cellular Touch with Valentyn Korotkevych.' }
           - { name: og_description, label: Social sharing description override, widget: text, required: false, i18n: true, hint: 'Example: A short description for link previews.' }
           - { name: og_image, label: Social sharing image override, widget: image, required: false, i18n: true, hint: 'Recommended size: 1200 x 630 px. Defaults to the main hero image.' }
+          - { name: og_image_alt, label: Social image description, widget: string, required: false, i18n: true, hint: 'Describe what is visible in the social image.' }
           - { name: og_image_width, label: Social image width in pixels, widget: number, required: false, value_type: int, i18n: true, hint: 'Example: 1200.' }
           - { name: og_image_height, label: Social image height in pixels, widget: number, required: false, value_type: int, i18n: true, hint: 'Example: 630.' }

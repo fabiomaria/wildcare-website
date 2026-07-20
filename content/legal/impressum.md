@@ -1,7 +1,8 @@
 ---
 heading: Impressum
-meta_title: Impressum — Wild Care | Verein für soziale Praxis, Graz
-meta_description: Impressum von Wild Care — Verein für Kontaktimprovisation und soziale Praxis in Graz. Rechtliche Informationen gemäß österreichischem Recht.
+meta:
+  title: Impressum — Wild Care | Verein für soziale Praxis, Graz
+  description: Impressum von Wild Care — Verein für Kontaktimprovisation und soziale Praxis in Graz. Rechtliche Informationen gemäß österreichischem Recht.
 ---
 
 Informationspflicht laut §5 E-Commerce Gesetz, §14 Unternehmensgesetzbuch, §63 Gewerbeordnung und Offenlegungspflicht laut §25 Mediengesetz.

@@ -1,0 +1,36 @@
+{%- set sharedSeoDefaults = cms.site.de.seo or {} -%}
+{%- set localizedSeoDefaults = cms.site.en.seo if seoLocale == 'en_US' else sharedSeoDefaults -%}
+{%- set resolvedSeoTitle = seoMeta.title -%}
+{%- set resolvedSeoDescription = seoMeta.description -%}
+{%- set resolvedOgTitle = seoMeta.og_title or resolvedSeoTitle -%}
+{%- set resolvedOgDescription = seoMeta.og_description or resolvedSeoDescription -%}
+{%- set resolvedOgImage = seoMeta.og_image or seoFallbackImage or localizedSeoDefaults.default_og_image or sharedSeoDefaults.default_og_image or 'assets/images/social preview.jpg' -%}
+{%- if seoMeta.og_image -%}
+    {%- set resolvedOgImageAlt = seoMeta.og_image_alt -%}
+    {%- set resolvedOgImageWidth = seoMeta.og_image_width -%}
+    {%- set resolvedOgImageHeight = seoMeta.og_image_height -%}
+{%- else -%}
+    {%- set resolvedOgImageAlt = seoFallbackImageAlt or localizedSeoDefaults.default_og_image_alt or sharedSeoDefaults.default_og_image_alt or resolvedOgTitle -%}
+    {%- set resolvedOgImageWidth = seoFallbackImageWidth or localizedSeoDefaults.default_og_image_width or sharedSeoDefaults.default_og_image_width -%}
+    {%- set resolvedOgImageHeight = seoFallbackImageHeight or localizedSeoDefaults.default_og_image_height or sharedSeoDefaults.default_og_image_height -%}
+{%- endif -%}
+    <title>{{ resolvedSeoTitle }}</title>
+    <meta name="description" content="{{ resolvedSeoDescription | attr }}">
+    <link rel="canonical" href="{{ seoCanonical | absoluteSiteUrl | attr }}">
+    <meta property="og:type" content="{{ seoType or 'website' }}">
+    <meta property="og:url" content="{{ seoCanonical | absoluteSiteUrl | attr }}">
+    <meta property="og:site_name" content="Wild Care">
+    <meta property="og:title" content="{{ resolvedOgTitle | attr }}">
+    <meta property="og:description" content="{{ resolvedOgDescription | attr }}">
+    <meta property="og:image" content="{{ resolvedOgImage | absoluteSiteUrl | attr }}">
+{% if resolvedOgImageWidth %}    <meta property="og:image:width" content="{{ resolvedOgImageWidth }}">
+{% endif %}{% if resolvedOgImageHeight %}    <meta property="og:image:height" content="{{ resolvedOgImageHeight }}">
+{% endif %}    <meta property="og:image:alt" content="{{ resolvedOgImageAlt | attr }}">
+    <meta property="og:locale" content="{{ seoLocale or 'de_AT' }}">
+{% if seoAlternateLocale %}    <meta property="og:locale:alternate" content="{{ seoAlternateLocale }}">
+{% endif %}{% if seoPublishedTime %}    <meta property="article:published_time" content="{{ seoPublishedTime }}">
+{% endif %}    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ resolvedOgTitle | attr }}">
+    <meta name="twitter:description" content="{{ resolvedOgDescription | attr }}">
+    <meta name="twitter:image" content="{{ resolvedOgImage | absoluteSiteUrl | attr }}">
+    <meta name="twitter:image:alt" content="{{ resolvedOgImageAlt | attr }}">

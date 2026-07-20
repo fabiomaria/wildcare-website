@@ -8,7 +8,12 @@ sort_order: 1
 status: published
 excerpt: "Unser geförderter 6-Wochen-Block für Einsteiger:innen beginnt. Was wir vorhaben und warum Bewegung für alle zugänglich sein sollte."
 homepage_excerpt: "Unser geförderter 6-Wochen-Block für Einsteiger:innen beginnt. Was wir vorhaben."
-meta_description: "Wild Care startet einen geförderten 6-Wochen-Block Contact Improvisation in Graz. Kostenlos, offen für alle, jeden Montag ab Mai 2026."
+meta:
+  description: "Wild Care startet einen geförderten 6-Wochen-Block Contact Improvisation in Graz. Kostenlos, offen für alle, jeden Montag ab Mai 2026."
+  og_image: assets/images/Bewegungsrevolution social preview.jpg
+  og_image_alt: Bewegungsrevolution — Menschen tanzen Contact Improvisation bei Wild Care in Graz.
+  og_image_width: 1200
+  og_image_height: 630
 image: assets/images/bewegungsrevolution.png
 image_alt: Bewegungsrevolution Typografie
 homepage_image_alt: die Bewegungsrevolution

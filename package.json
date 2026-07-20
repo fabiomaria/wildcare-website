@@ -3,7 +3,8 @@
   "private": true,
   "description": "Wild Care static site — Eleventy build (see docs/superpowers/specs/2026-07-17-github-pages-cms-implementation-brief.md)",
   "scripts": {
-    "build": "eleventy",
+    "build": "eleventy && node scripts/validate-seo.js",
+    "check:seo": "node scripts/validate-seo.js",
     "dev": "eleventy --serve --port=8081"
   },
   "devDependencies": {

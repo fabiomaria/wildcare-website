@@ -79,14 +79,13 @@ oder Name). Klicke auf eine Zeile, um sie aufzuklappen und die Felder zu
 bearbeiten. Über den Ziehgriff links an der Zeile kannst du die
 Reihenfolge der Einträge per Drag-and-drop ändern.
 
-**Zweisprachigkeit:** Die meisten Textfelder gibt es doppelt — einmal
-Deutsch, einmal Englisch (im Editor stehen beide Versionen eines Feldes
-nebeneinander). Bitte trage beide Sprachen ein, sonst bleibt die englische
-Fassung leer bzw. übernimmt automatisch den deutschen Text. Ein paar
+**Zweisprachigkeit:** Wie bei Workshops gibt es oben im Seitenformular
+einen **Sprachumschalter (DE/EN)**. Wähle zuerst die Sprache, deren Inhalte
+du bearbeiten möchtest, und schalte danach für die Übersetzung um. Ein paar
 wenige Felder sind bewusst **nicht** zweisprachig, weil sie technisch oder
-sprachneutral sind — zum Beispiel die Uhrzeit oder Adresse im
-Termin-Banner der Startseite, oder der Seitentitel/die Beschreibung unter
-„SEO & Vorschau". Das ist normal, kein Fehler.
+sprachneutral sind — zum Beispiel die Uhrzeit oder Adresse im Termin-Banner
+der Startseite oder der Seitentitel/die Beschreibung unter „SEO & Vorschau".
+Diese Angaben werden nur einmal gepflegt und gelten für beide Sprachen.
 
 **Formulare:** Unter `Homepage → Email signup` pflegst du auch die Texte
 für Vorname, E-Mail, Senden, Warten, Erfolg und Fehler. Der Vorname wird
@@ -95,6 +94,30 @@ page → Contact form` gibt es entsprechend eigene Texte für `Sending`,
 `Sent`, Erfolg und Fehler. Die Website zeigt nach dem Absenden einen klar
 hervorgehobenen Status; diese Texte sollten deshalb kurz und eindeutig
 bleiben.
+
+**Navigation:** Unter `Website navigation and footer → Navigation & Footer`
+lassen sich die Texte und Ziele aller sechs Navigationslinks bearbeiten.
+Die Textfelder werden über den DE/EN-Sprachumschalter übersetzt; jedes
+Linkziel wird nur einmal gepflegt und gilt für beide Sprachen. Für interne
+Seiten genügt ein Dateiname wie `programm.html`, externe Ziele können als
+vollständige Adresse wie `https://example.org` eingetragen werden. Die
+Linkziele gelten auch für die entsprechenden Seitenlinks im Footer.
+
+**SEO und Link-Vorschauen:** Jede Seite, jeder Workshop, jeder
+Journal-Artikel und auch die Rechtstexte haben am Ende des Formulars den
+eingeklappten Bereich **„Advanced SEO and social sharing"**. `Browser and
+SEO title` und `SEO description` bestimmen Suchergebnis und Browsertitel.
+Die Social-Felder sind optionale Abweichungen für Vorschauen in Messenger-
+und Social-Media-Apps. Lässt du sie leer, verwendet die Website automatisch
+SEO-Titel, Beschreibung und das globale Vorschaubild unter `Website
+navigation and footer → SEO defaults`.
+
+Wenn du ein eigenes Social-Bild einträgst, ergänze immer eine kurze
+Bildbeschreibung sowie die tatsächliche Breite und Höhe in Pixeln. Empfohlen
+sind **1200 × 630 Pixel**. Die kanonische Seitenadresse wird automatisch aus
+der echten Seiten-URL erzeugt und kann im CMS bewusst nicht überschrieben
+werden — so kann nicht versehentlich eine falsche Adresse an Suchmaschinen
+gemeldet werden.
 
 ---
 
@@ -140,12 +163,11 @@ kommend, laufend oder vergangen, liegt im selben Ordner und benutzt genau
 dieselben Felder. Auch hier legst du über den „+"-Button einen neuen
 Eintrag an.
 
-**Zweisprachigkeit bei Workshops funktioniert anders als bei den übrigen
-Seiten:** Statt zwei Textfeldern nebeneinander gibt es oben im
-Workshop-Formular einen **Sprachumschalter** (DE/EN). Du wählst dort die
-Sprache aus, für die du gerade Inhalte einträgst, füllst die Abschnitte
-darunter für diese Sprache aus und schaltest dann um, um die andere
-Sprache zu ergänzen. Die technischen Basisangaben (Slug/URL, Status,
+**Zweisprachigkeit funktioniert wie bei den übrigen Seiten:** Oben im
+Workshop-Formular gibt es einen **Sprachumschalter** (DE/EN). Du wählst dort
+die Sprache aus, für die du gerade Inhalte einträgst, füllst die Abschnitte
+darunter für diese Sprache aus und schaltest dann um, um die andere Sprache
+zu ergänzen. Die technischen Basisangaben (Slug/URL, Status,
 Sprachversionen der Detailseite, Startdatum, Anmeldelink, …) sind
 sprachneutral und werden nur einmal gepflegt, unabhängig vom
 Sprachumschalter.
