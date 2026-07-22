@@ -293,7 +293,7 @@ function loadJournalContent() {
 
     post.de.date_label = formatMonth(post.date, "de-AT");
     post.en.date_label = formatMonth(post.date, "en");
-    post.has_article_page = post.status === "published" && (hasText(de.body) || hasText(en.body));
+    post.has_article_page = (post.status === "published" || post.status === "unlisted") && (hasText(de.body) || hasText(en.body));
     post.available_locales = [
       ...(deHasContent && hasText(de.body) ? ["de"] : []),
       ...(enHasContent && hasText(en.body) ? ["en"] : []),

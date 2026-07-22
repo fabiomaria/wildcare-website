@@ -840,7 +840,7 @@ collections:
       - { name: title_html, label: 'Article title with optional <br>', widget: string, required: false, i18n: true }
       - { name: date, label: 'Publication date', widget: datetime, i18n: duplicate }
       - { name: sort_order, label: 'Sort order when dates match', widget: number, required: false, value_type: int, i18n: duplicate }
-      - { name: status, label: Status, widget: select, options: [published, coming_soon], default: published, i18n: duplicate }
+      - { name: status, label: Status, widget: select, options: [published, coming_soon, unlisted], default: published, i18n: duplicate, hint: 'unlisted = article page is built and reachable by link, but hidden from the journal and homepage listings.' }
       - { name: excerpt, label: 'Card summary', widget: text, required: false, i18n: true }
       - { name: body, label: 'Article body', widget: markdown, required: false, i18n: true }
       - { name: image, label: 'Image', widget: image, required: false, i18n: duplicate }
@@ -969,6 +969,7 @@ collections:
           - { label: Upcoming - shown in programme, value: upcoming }
           - { label: Current - shown in programme, value: current }
           - { label: Past - detail page remains available, value: past }
+          - { label: Unlisted - detail page available, hidden from programme, value: unlisted }
         default: upcoming
         i18n: false
       - { name: detail_page, label: Publish detail page, widget: boolean, default: true, i18n: false, hint: 'Requires a workshop title, hero content, and at least one content section.' }
