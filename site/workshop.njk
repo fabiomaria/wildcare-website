@@ -175,7 +175,7 @@ permalink: "{{ workshop.href }}"
                         data-de="{{ de.description.heading | attr }}"
                         data-en="{{ en.description.heading | attr }}">{{ primary.description.heading }}</h2>
                     {% for paragraph in primary.description.paragraphs %}
-                    <p>{{ paragraph | safe }}</p>
+                    <p>{{ paragraph.text | safe }}</p>
                     {% endfor %}
                 </div>
 {% endif %}
@@ -194,8 +194,8 @@ permalink: "{{ workshop.href }}"
                             <div class="info-row-label"
                                 data-de="{{ s.de.workshop_ui.format_label | attr }}"
                                 data-en="{{ s.en.workshop_ui.format_label | attr }}">{{ s[workshop.primary_locale].workshop_ui.format_label }}</div>
-                            {% for value in primary.facts.format %}
-                            <div class="info-row-value">{{ value | safe }}</div>
+                            {% for row in primary.facts.format %}
+                            <div class="info-row-value">{{ row.value | safe }}</div>
                             {% endfor %}
                         </div>
                     </div>
@@ -205,7 +205,7 @@ permalink: "{{ workshop.href }}"
                         <div class="info-row-icon">{{ icon("calendar") }}</div>
                         <div class="info-row-content">
                             <div class="info-row-label" data-de="{{ s.de.workshop_ui.schedule_label | attr }}" data-en="{{ s.en.workshop_ui.schedule_label | attr }}">{{ s[workshop.primary_locale].workshop_ui.schedule_label }}</div>
-                            {% for value in primary.facts.schedule %}<div class="info-row-value">{{ value | safe }}</div>{% endfor %}
+                            {% for row in primary.facts.schedule %}<div class="info-row-value">{{ row.value | safe }}</div>{% endfor %}
                         </div>
                     </div>
 {% endif %}
@@ -223,7 +223,7 @@ permalink: "{{ workshop.href }}"
                         <div class="info-row-icon">{{ icon("cost") }}</div>
                         <div class="info-row-content">
                             <div class="info-row-label" data-de="{{ s.de.workshop_ui.price_label | attr }}" data-en="{{ s.en.workshop_ui.price_label | attr }}">{{ s[workshop.primary_locale].workshop_ui.price_label }}</div>
-                            {% if primary.facts.price_details and primary.facts.price_details.length %}{% for value in primary.facts.price_details %}<div class="info-row-value">{{ value | safe }}</div>{% endfor %}{% else %}<div class="info-row-value">{{ primary.facts.price | safe }}</div>{% endif %}
+                            {% if primary.facts.price_details and primary.facts.price_details.length %}{% for row in primary.facts.price_details %}<div class="info-row-value">{{ row.value | safe }}</div>{% endfor %}{% else %}<div class="info-row-value">{{ primary.facts.price | safe }}</div>{% endif %}
                         </div>
                     </div>
 {% endif %}

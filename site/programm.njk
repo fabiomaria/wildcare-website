@@ -98,8 +98,8 @@ permalink: programm.html
                         data-en="{{ en.core.description_heading | attr }}">{{ de.core.description_heading }}</h2>
                     {% for paragraph in de.core.paragraphs %}
                     <p
-                        data-de="{{ paragraph | attr }}"
-                        data-en="{{ en.core.paragraphs[loop.index0] | attr }}">{{ paragraph }}</p>
+                        data-de="{{ paragraph.text | attr }}"
+                        data-en="{{ en.core.paragraphs[loop.index0].text | attr }}">{{ paragraph.text }}</p>
                     {% endfor %}
                     <p class="quote"
                         data-de="{{ de.core.quote | attr }}"
@@ -212,8 +212,8 @@ permalink: programm.html
                         data-en="{{ enCard.subtitle | attr }}">{{ card.subtitle }}</div>
                     {% for paragraph in card.paragraphs %}
                     <p
-                        data-de="{{ paragraph | attr }}"
-                        data-en="{{ enCard.paragraphs[loop.index0] | attr }}">{{ paragraph }}</p>
+                        data-de="{{ paragraph.text | attr }}"
+                        data-en="{{ enCard.paragraphs[loop.index0].text | attr }}">{{ paragraph.text }}</p>
                     {% endfor %}
                     {% if card.link %}
                     <a href="{{ card.link.href }}" target="_blank" rel="noopener" class="btn btn-ghost">{{ card.link.label }}</a>

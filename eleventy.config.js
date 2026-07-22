@@ -135,9 +135,9 @@ function normalizeWorkshopLocale(locale) {
       location: card.location || hero.details?.find((detail) => detail.icon === "location")?.text || "",
       price: card.price || hero.details?.find((detail) => detail.icon === "cost")?.text || "",
       duration: card.duration || "",
-      format: info?.rows?.find((row) => row.icon === "plus")?.values || [],
-      schedule: info?.rows?.find((row) => row.icon === "calendar")?.values || [],
-      price_details: info?.rows?.find((row) => row.icon === "cost")?.values || [],
+      format: (info?.rows?.find((row) => row.icon === "plus")?.values || []).map((value) => ({ value })),
+      schedule: (info?.rows?.find((row) => row.icon === "calendar")?.values || []).map((value) => ({ value })),
+      price_details: (info?.rows?.find((row) => row.icon === "cost")?.values || []).map((value) => ({ value })),
     },
     card,
     hero: {

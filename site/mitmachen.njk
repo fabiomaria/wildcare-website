@@ -116,8 +116,8 @@ permalink: mitmachen.html
 {%- for tag in de.circles.outer.tags %}
 {%- set enTag = en.circles.outer.tags[loop.index0] if en.circles.outer.tags else null %}
                         <span class="circle-tag"
-                            data-de="{{ tag }}"
-                            data-en="{{ enTag if enTag else tag }}">{{ tag }}</span>
+                            data-de="{{ tag.tag }}"
+                            data-en="{{ enTag.tag if enTag else tag.tag }}">{{ tag.tag }}</span>
 {% endfor %}
                     </div>
                 </div>
@@ -136,8 +136,8 @@ permalink: mitmachen.html
 {%- for tag in de.circles.inner.tags %}
 {%- set enTag = en.circles.inner.tags[loop.index0] if en.circles.inner.tags else null %}
                         <span class="circle-tag"
-                            data-de="{{ tag }}"
-                            data-en="{{ enTag if enTag else tag }}">{{ tag }}</span>
+                            data-de="{{ tag.tag }}"
+                            data-en="{{ enTag.tag if enTag else tag.tag }}">{{ tag.tag }}</span>
 {% endfor %}
                     </div>
                 </div>

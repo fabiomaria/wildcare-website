@@ -3,7 +3,7 @@ de:
   language_mode: en_only
   status: current
   detail_page: true
-  start_date: 2026-10-17T00:00:00.000Z
+  start_date: 2026-10-09T00:00:00.000Z
   sort_order: 2
   registration_url: https://tally.so/r/PLACEHOLDER
   title: How We Move Together
@@ -11,16 +11,19 @@ de:
     label: Register now
     note: ''
   facts:
-    date: 17.–18. Oktober 2026
+    date: 9.–11. Oktober 2026
     time: ''
     location: Orpheumgasse, 8010 Graz
     price: 70–200 EUR Sliding Scale
-    duration: 2 days
+    duration: 2.5 days
     format:
-      - 17. Oktober
-      - 18. Oktober
-    schedule: []
-    price_details: []
+      - value: Contact Improvisation, somatics and dance research
+    schedule:
+      - value: <b>Friday</b> 19:00-21:00 (we can stay longer)
+      - value: <b>Saturday</b> 13:00-17:00 & 18:30-21:00 (communal dinner)
+      - value: <b>Sunday</b> 10:00-14:00 & 16:00-19:00 (communal lunch)
+    price_details:
+      - value: 70&ndash;200 EUR sliding scale contribution
   card:
     tags:
       - label: Workshop
@@ -47,18 +50,19 @@ en:
   registration:
     label: Register now
   facts:
-    date: 17–18 October 2026
+    date: 9–11 October 2026
     time: ''
     location: Orpheumgasse, 8010 Graz
     price: 70–200 EUR sliding scale
-    duration: 2 days
+    duration: 2.5 days
     format:
-      - Contact Improvisation, somatics and dance research
+      - value: Contact Improvisation, somatics and dance research
     schedule:
-      - <b>17 October 2026</b> 10:00-13:00 & 14:30-17:30
-      - <b>18 October 2026</b> 10:00-13:00 & 14:30-17:30
+      - value: <b>Friday</b> 19:00-21:00 (we can stay longer)
+      - value: <b>Saturday</b> 13:00-17:00 & 18:30-21:00 (communal dinner)
+      - value: <b>Sunday</b> 10:00-14:00 & 16:00-19:00 (communal lunch)
     price_details:
-      - 70&ndash;200 EUR sliding scale contribution
+      - value: 70&ndash;200 EUR sliding scale contribution
   card:
     tags:
       - label: Workshop

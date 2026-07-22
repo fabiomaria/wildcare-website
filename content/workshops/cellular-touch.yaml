@@ -17,10 +17,12 @@ de:
     price: 70–200 EUR Sliding Scale
     duration: 2 days
     format:
-      - 8 August
-      - 9 August
-    schedule: []
-    price_details: []
+      - value: Contact Improvisation, somatics and dance research
+    schedule:
+      - value: <b>8 August 2026</b> 10:00-13:00 & 14:30-17:30
+      - value: <b>9 August 2026</b> 10:00-13:00 & 17:00-20:00
+    price_details:
+      - value: 70&ndash;200 EUR sliding scale contribution
   card:
     tags:
       - label: Gastworkshop
@@ -33,7 +35,15 @@ de:
   hero:
     headline: Cellular Touch
     show_details: false
-  description: null
+  description:
+    label: The Practice
+    heading: Touch as cellular space.
+    paragraphs:
+      - text: Cellular touch arises from the awareness of semipermeable membrane layers, which are responsible for our form and organization. Transitional fluids pass, are received and exchanged through a quality of dance that facilitates the exchange between and within us.
+      - text: Cellular touch is made possible when we perceive the movement of fluid in and out of a membrane.
+      - text: <b>Flowing in</b> comes with a sense of self-fulfillment until the saturation of our internal structure, while preserving its flexibility and reliability.
+      - text: <b>Flowing out</b> allows a sense of Release into Gravity & Space (while continuing sensing the anchor to the ground, through the Center connection and extended reach of the 'roots')
+    show_info: true
   facilitators:
     label: ''
     heading: ''
@@ -53,12 +63,12 @@ en:
     price: 70–200 EUR sliding scale
     duration: 2 days
     format:
-      - Contact Improvisation, somatics and dance research
+      - value: Contact Improvisation, somatics and dance research
     schedule:
-      - <b>8 August 2026</b> 10:00-13:00 & 14:30-17:30
-      - <b>9 August 2026</b> 10:00-13:00 & 17:00-20:00
+      - value: <b>8 August 2026</b> 10:00-13:00 & 14:30-17:30
+      - value: <b>9 August 2026</b> 10:00-13:00 & 17:00-20:00
     price_details:
-      - 70&ndash;200 EUR sliding scale contribution
+      - value: 70&ndash;200 EUR sliding scale contribution
   card:
     tags:
       - label: Guest Workshop
@@ -85,10 +95,10 @@ en:
     label: The Practice
     heading: Touch as cellular space.
     paragraphs:
-      - Cellular touch arises from the awareness of semipermeable membrane layers, which are responsible for our form and organization. Transitional fluids pass, are received and exchanged through a quality of dance that facilitates the exchange between and within us.
-      - Cellular touch is made possible when we perceive the movement of fluid in and out of a membrane.
-      - <b>Flowing in</b> comes with a sense of self-fulfillment until the saturation of our internal structure, while preserving its flexibility and reliability.
-      - <b>Flowing out</b> allows a sense of Release into Gravity & Space (while continuing sensing the anchor to the ground, through the Center connection and extended reach of the 'roots')
+      - text: Cellular touch arises from the awareness of semipermeable membrane layers, which are responsible for our form and organization. Transitional fluids pass, are received and exchanged through a quality of dance that facilitates the exchange between and within us.
+      - text: Cellular touch is made possible when we perceive the movement of fluid in and out of a membrane.
+      - text: <b>Flowing in</b> comes with a sense of self-fulfillment until the saturation of our internal structure, while preserving its flexibility and reliability.
+      - text: <b>Flowing out</b> allows a sense of Release into Gravity & Space (while continuing sensing the anchor to the ground, through the Center connection and extended reach of the 'roots')
     show_info: true
   research:
     label: Research Fields

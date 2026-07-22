@@ -27,9 +27,9 @@ de:
     more_label: Mehr erfahren
     description_heading: Was dich erwartet
     paragraphs:
-      - Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Berührung. Es gibt keine festen Schritte, keine Choreografie und keinen Leistungsdruck — nur dich, den Raum und die Menschen darin.
-      - Du lernst, Gewicht zu teilen und abzugeben, durch Berührung zuzuhören und deinen Körper bewusster wahrzunehmen. Dabei regulierst du ganz nebenbei dein Nervensystem, übst Grenzen zu kommunizieren und entwickelst ein feines Gespür für dich und dein Gegenüber.
-      - 'Jede Session beginnt mit einer geführten Aufwärm-Phase und mündet in eine offene Jam — eine freie Tanzzeit, in der alles passieren darf: Stille, Bewegung, Begegnung.'
+      - text: Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Berührung. Es gibt keine festen Schritte, keine Choreografie und keinen Leistungsdruck — nur dich, den Raum und die Menschen darin.
+      - text: Du lernst, Gewicht zu teilen und abzugeben, durch Berührung zuzuhören und deinen Körper bewusster wahrzunehmen. Dabei regulierst du ganz nebenbei dein Nervensystem, übst Grenzen zu kommunizieren und entwickelst ein feines Gespür für dich und dein Gegenüber.
+      - text: 'Jede Session beginnt mit einer geführten Aufwärm-Phase und mündet in eine offene Jam — eine freie Tanzzeit, in der alles passieren darf: Stille, Bewegung, Begegnung.'
     quote: „Du brauchst keine Tanzerfahrung. Nur bequeme Kleidung, Neugier und die Bereitschaft, dich auf etwas Neues einzulassen.“
   projects:
     label: Aktuelle Projekte
@@ -43,8 +43,8 @@ de:
         title: We Just Met / Erste Begegnung
         subtitle: Die soziale Physik des Tanzes sichtbar machen
         paragraphs:
-          - 'Ein Format, in dem ein:e Erzähler:in während einer Contact-Improvisation-Session die Tänzer:innen einfriert — und dem Publikum erklärt, was gerade auf körperlicher und sozialer Ebene passiert. Schwerkraft, Vertrauen, Grenzen: Die unsichtbare Physik der Begegnung wird lesbar.'
-          - Unser Versuch, Contact Improvisation für ein Publikum zugänglich zu machen, das noch nie davon gehört hat.
+          - text: 'Ein Format, in dem ein:e Erzähler:in während einer Contact-Improvisation-Session die Tänzer:innen einfriert — und dem Publikum erklärt, was gerade auf körperlicher und sozialer Ebene passiert. Schwerkraft, Vertrauen, Grenzen: Die unsichtbare Physik der Begegnung wird lesbar.'
+          - text: Unser Versuch, Contact Improvisation für ein Publikum zugänglich zu machen, das noch nie davon gehört hat.
   cta:
     label: Einladung
     heading: Komm vorbei.
@@ -82,9 +82,9 @@ en:
     more_label: Learn more
     description_heading: What to Expect
     paragraphs:
-      - Contact Improvisation is the playful exploration of gravity, balance and touch. There are no fixed steps, no choreography and no pressure to perform — just you, the space and the people in it.
-      - You learn to share and release weight, to listen through touch and to become more aware of your body. Along the way, you naturally regulate your nervous system, practise communicating boundaries and develop a fine sense for yourself and those around you.
-      - 'Each session begins with a guided warm-up and flows into an open jam — a free dance time where anything can happen: stillness, movement, encounter.'
+      - text: Contact Improvisation is the playful exploration of gravity, balance and touch. There are no fixed steps, no choreography and no pressure to perform — just you, the space and the people in it.
+      - text: You learn to share and release weight, to listen through touch and to become more aware of your body. Along the way, you naturally regulate your nervous system, practise communicating boundaries and develop a fine sense for yourself and those around you.
+      - text: 'Each session begins with a guided warm-up and flows into an open jam — a free dance time where anything can happen: stillness, movement, encounter.'
     quote: “You don’t need any dance experience. Just comfortable clothing, curiosity and the willingness to try something new.”
   projects:
     label: Current Projects

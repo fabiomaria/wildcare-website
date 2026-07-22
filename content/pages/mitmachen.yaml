@@ -17,9 +17,9 @@ de:
       p1: Jeden Montag öffnen wir den Raum für alle. Keine Anmeldung, keine Verpflichtung, keine Vorkenntnisse. Du kommst, wenn du kommst — und gehst, wenn du gehst.
       p2: Auf Spendenbasis, weil Zugang wichtiger ist als Geld.
       tags:
-        - Jede:r willkommen
-        - Spendenbasis
-        - Keine Anmeldung
+        - tag: Jede:r willkommen
+        - tag: Spendenbasis
+        - tag: Keine Anmeldung
     inner:
       label: Innerer Kreis
       title: Vereinsmitglieder
@@ -27,10 +27,10 @@ de:
       p1: Menschen, die den Raum mittragen — mit Energie, Ideen, Präsenz oder finanziell. Als Mitglied hast du Zugang zu Vertiefungen und Mitsprache bei Entscheidungen.
       p2: Du gestaltest mit, was Wild Care wird.
       tags:
-        - Samstags-Labs
-        - Sharing Circles
-        - Gast-Workshops
-        - Mitsprache
+        - tag: Samstags-Labs
+        - tag: Sharing Circles
+        - tag: Gast-Workshops
+        - tag: Mitsprache
   membership:
     label: Individuelle Mitgliedschaft
     heading: So einzigartig wie du
@@ -81,9 +81,9 @@ en:
       p1: Every Monday we open the space for everyone. No sign-up, no commitment, no prior experience needed. You come when you come — and leave when you leave.
       p2: On a donation basis, because access matters more than money.
       tags:
-        - Everyone welcome
-        - Donation-based
-        - No sign-up
+        - tag: Everyone welcome
+        - tag: Donation-based
+        - tag: No sign-up
     inner:
       label: Inner Circle
       title: Association Members
@@ -91,10 +91,10 @@ en:
       p1: People who sustain the space — with energy, ideas, presence or financially. As a member, you have access to deeper sessions and a voice in decisions.
       p2: You help shape what Wild Care becomes.
       tags:
-        - Saturday Labs
-        - Sharing Circles
-        - Guest Workshops
-        - Voice in decisions
+        - tag: Saturday Labs
+        - tag: Sharing Circles
+        - tag: Guest Workshops
+        - tag: Voice in decisions
   membership:
     label: Individual Membership
     heading: As Unique as You

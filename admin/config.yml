@@ -428,8 +428,10 @@ collections:
                 label: 'Description paragraphs'
                 widget: list
                 i18n: true
+                summary: '{{fields.text}}'
                 hint: 'Keep German and English lists in the same order and at the same length.'
-                field: { name: text, label: 'Paragraph', widget: text, hint: 'Example: Explain the structure and experience of a Monday class.' }
+                fields:
+                  - { name: text, label: 'Paragraph', widget: text, i18n: true, hint: 'Example: Explain the structure and experience of a Monday class.' }
               - { name: quote, label: 'Closing quote', widget: text, required: false, i18n: true, hint: 'Example: You do not need dance experience, only curiosity.' }
           - name: projects
             label: 'Current workshops and projects'
@@ -465,7 +467,9 @@ collections:
                     label: 'Card paragraphs'
                     widget: list
                     i18n: true
-                    field: { name: text, label: 'Paragraph', widget: text }
+                    summary: '{{fields.text}}'
+                    fields:
+                      - { name: text, label: 'Paragraph', widget: text, i18n: true }
                   - name: link
                     label: 'Optional external link'
                     widget: object
@@ -692,7 +696,9 @@ collections:
                     widget: list
                     required: false
                     i18n: true
-                    field: { name: tag, label: 'Tag', widget: string }
+                    summary: '{{fields.tag}}'
+                    fields:
+                      - { name: tag, label: 'Tag', widget: string, i18n: true }
               - name: inner
                 label: 'Inner circle (members)'
                 widget: object
@@ -709,7 +715,9 @@ collections:
                     widget: list
                     required: false
                     i18n: true
-                    field: { name: tag, label: 'Tag', widget: string }
+                    summary: '{{fields.tag}}'
+                    fields:
+                      - { name: tag, label: 'Tag', widget: string, i18n: true }
           - name: membership
             label: 'Individual membership'
             widget: object
@@ -1003,22 +1011,28 @@ collections:
             widget: list
             required: false
             i18n: true
+            summary: '{{fields.value}}'
             hint: 'Displayed in the What row of the facts card. Example entries: Contact Improvisation; Somatic research.'
-            field: { name: value, label: Format entry, widget: string, hint: 'Example: Contact Improvisation and somatic research.' }
+            fields:
+              - { name: value, label: Format entry, widget: string, i18n: true, hint: 'Example: Contact Improvisation and somatic research.' }
           - name: schedule
             label: Detailed schedule
             widget: list
             required: false
             i18n: true
+            summary: '{{fields.value}}'
             hint: 'Displayed in the When row of the facts card.'
-            field: { name: value, label: Schedule line, widget: string, hint: 'Example: Saturday, 10:00-13:00 and 14:30-17:30.' }
+            fields:
+              - { name: value, label: Schedule line, widget: string, i18n: true, hint: 'Example: Saturday, 10:00-13:00 and 14:30-17:30.' }
           - name: price_details
             label: Detailed pricing
             widget: list
             required: false
             i18n: true
+            summary: '{{fields.value}}'
             hint: 'Displayed in the Price row of the facts card instead of the compact price.'
-            field: { name: value, label: Price line, widget: string, hint: 'Example: Reduced EUR 70; Regular EUR 120.' }
+            fields:
+              - { name: value, label: Price line, widget: string, i18n: true, hint: 'Example: Reduced EUR 70; Regular EUR 120.' }
 
       # Programme listing
       - name: card
@@ -1089,8 +1103,10 @@ collections:
             minimize_collapsed: true
             required: false
             i18n: true
+            summary: '{{fields.text}}'
             hint: 'Main workshop description shown in the left column.'
-            field: { name: text, label: Paragraph, widget: text, hint: 'Example: Describe one aspect of the workshop practice in two to four sentences.' }
+            fields:
+              - { name: text, label: Paragraph, widget: text, i18n: true, hint: 'Example: Describe one aspect of the workshop practice in two to four sentences.' }
           - { name: show_info, label: Show facts card beside description, widget: boolean, default: true, i18n: duplicate, hint: 'Places the central facts in a card in the right column.' }
           - { name: info_title, label: Facts-card title override, widget: string, required: false, i18n: true, hint: 'Example: At a Glance. Leave empty to use the site default.' }
 
