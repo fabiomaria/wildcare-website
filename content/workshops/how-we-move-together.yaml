@@ -1,7 +1,7 @@
 de:
   slug: how-we-move-together
   language_mode: en_only
-  status: upcoming
+  status: current
   detail_page: true
   start_date: 2026-10-17T00:00:00.000Z
   sort_order: 2
@@ -102,7 +102,7 @@ en:
         text: From perception to relational choice. Consent becomes tangible, negotiated and reversible — listening is labour, not a moment.
       - number: '03'
         title: Support ↔ Care
-        text: 'From choice to responsibility. Don’t impose, propose; don’t lift, accompany — care is relational, not sacrificial.'
+        text: From choice to responsibility. Don’t impose, propose; don’t lift, accompany — care is relational, not sacrificial.
       - number: '04'
         title: Trust ↔ Solidarity
         text: From responsibility to collective risk. Trust emerges from reliability, not demand; risk is ethical only when shared.
@@ -116,7 +116,7 @@ en:
   image_band:
     label: Day 1 → Day 2
     heading: From self to collective
-    text: 'Day 1 moves from self-awareness into listening and consent. Day 2 moves from support and care into trust, solidarity and the structures we choose to redesign together.'
+    text: Day 1 moves from self-awareness into listening and consent. Day 2 moves from support and care into trust, solidarity and the structures we choose to redesign together.
     image: assets/images/invitation.jpg
     alt: Group research through Contact Improvisation
   facilitators:
