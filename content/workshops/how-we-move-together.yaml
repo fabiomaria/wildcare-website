@@ -1,7 +1,7 @@
 de:
   slug: how-we-move-together
   language_mode: en_only
-  status: current
+  status: unlisted
   detail_page: true
   start_date: 2026-10-09T00:00:00.000Z
   sort_order: 2
@@ -34,8 +34,16 @@ de:
     summary: How We Move Together ist ein zweitägiger Contact-Improvisation-Workshop über Wahrnehmung, Konsens, Fürsorge, Vertrauen und die Strukturen, in denen wir uns bewegen — Kontaktimprovisation als politische Praxis.
     detail_label: Mehr erfahren
   hero:
+    badge: ''
     headline: How We Move Together
+    headline_accent: ''
+    subtitle: ''
     show_details: false
+    visual_aria: ''
+    main_alt: ''
+    inset_alt: ''
+    note_title: ''
+    note_text: ''
   description: null
   facilitators:
     label: ''
@@ -58,9 +66,9 @@ en:
     format:
       - value: Contact Improvisation, somatics and dance research
     schedule:
-      - value: <b>Friday</b> 19:00-21:00 (we can stay longer)
-      - value: <b>Saturday</b> 13:00-17:00 & 18:30-21:00 (communal dinner)
-      - value: <b>Sunday</b> 10:00-14:00 & 16:00-19:00 (communal lunch)
+      - value: <b>Friday 9. October</b> 19:00-21:00
+      - value: <b>Saturday 10 October</b> 13:00-17:00 & 18:30-21:00
+      - value: <b>Sunday11 October</b> 10:00-14:00 & 16:00-19:00
     price_details:
       - value: 70&ndash;200 EUR sliding scale contribution
   card:
@@ -88,12 +96,13 @@ en:
   description:
     label: The Practice
     heading: Contact Improvisation as a political practice.
+    show_info: true
+    info_title: ''
     paragraphs:
       - Over two days we treat Contact Improvisation not as a set of moves but as a practice of noticing, orienting and regulating attention — and of what becomes possible once awareness turns into relation.
       - The workshop follows a deliberate arc: from self-awareness to consent, from consent to care, from care to trust and solidarity, and finally to the structures and stereotypes that shape how we move together. Each step only becomes possible once the one before it exists.
       - <b>Flowing between self and group</b>, we practice taking space and noticing space, listening for the “no” as much as the “yes”, supporting by request rather than by rescue, and building trust from reliability rather than demand.
       - <b>Come as you are.</b> No previous Contact Improvisation experience is required — only a willingness to pay attention and to move with others.
-    show_info: true
   research:
     label: The Arc
     heading: Five thresholds over two days
