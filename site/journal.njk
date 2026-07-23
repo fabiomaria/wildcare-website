@@ -9,7 +9,7 @@ permalink: journal.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {%- set seoMeta = de.meta -%}
-    {%- set seoCanonical = "https://wildcare.space/journal.html" -%}
+    {%- set seoCanonical = "https://wildcare.space/journal" -%}
     {%- set seoAlternateLocale = "en_US" -%}
     {% include "partials/seo.njk" %}
 
@@ -50,7 +50,7 @@ permalink: journal.html
             <div class="journal-listing-grid">
 
                 {% for post in cms.journal.listingPosts %}
-                <a href="{% if post.status == 'published' %}{{ post.href }}{% else %}#{% endif %}" class="journal-card fade-up delay-{{ loop.index }}{% if post.status == 'coming_soon' %} coming-soon{% endif %}">
+                <a href="{% if post.status == 'published' %}{{ post.href | cleanUrl }}{% else %}#{% endif %}" class="journal-card fade-up delay-{{ loop.index }}{% if post.status == 'coming_soon' %} coming-soon{% endif %}">
                     <div class="journal-card-image">
                         <img src="{{ post.image }}" alt="{{ post.image_alt }}" loading="lazy">
                         {%- if post.status == 'coming_soon' %}
@@ -91,7 +91,7 @@ permalink: journal.html
                 data-en="{{ en.cta.heading | attr }}">{{ de.cta.heading }}</h2>
             <p data-de="{{ de.cta.text | attr }}"
                 data-en="{{ en.cta.text | attr }}">{{ de.cta.text }}</p>
-            <a href="kontakt.html" class="btn btn-primary"
+            <a href="kontakt" class="btn btn-primary"
                 data-de="{{ de.cta.button | attr }}"
                 data-en="{{ en.cta.button | attr }}">{{ de.cta.button }}</a>
         </div>

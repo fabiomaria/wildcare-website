@@ -10,7 +10,7 @@ permalink: programm.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {%- set seoMeta = de.meta -%}
-    {%- set seoCanonical = "https://wildcare.space/programm.html" -%}
+    {%- set seoCanonical = "https://wildcare.space/programm" -%}
     {%- set seoAlternateLocale = "en_US" -%}
     {% include "partials/seo.njk" %}
 
@@ -86,7 +86,7 @@ permalink: programm.html
                         <button class="btn btn-primary" style="flex: 1; justify-content: center;" data-tally-open="nplWX8" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
                             data-de="{{ de.core.register_label | attr }}"
                             data-en="{{ en.core.register_label | attr }}">{{ de.core.register_label }}</button>
-                        <a href="montagskurs.html" class="btn btn-secondary" style="flex: 1; justify-content: center;"
+                        <a href="montagskurs" class="btn btn-secondary" style="flex: 1; justify-content: center;"
                             data-de="{{ de.core.more_label | attr }}"
                             data-en="{{ en.core.more_label | attr }}">{{ de.core.more_label }}</a>
                     </div>
@@ -170,7 +170,7 @@ permalink: programm.html
                     <div style="margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: var(--border-subtle); display: flex; gap: var(--space-sm); flex-wrap: wrap;">
                         <a href="{{ workshop.registration_url }}" class="btn btn-primary" data-de="{{ workshop.de.registration.label | attr }}" data-en="{{ workshop.en.registration.label | attr }}">{{ workshop.de.registration.label }}</a>
                         {% if workshop.has_detail_page %}
-                        <a href="{{ workshop.href }}" class="btn btn-secondary"
+                        <a href="{{ workshop.href | cleanUrl }}" class="btn btn-secondary"
                             data-de="{{ (cardDe.detail_label or cms.site.de.workshop_ui.detail_label) | attr }}"
                             data-en="{{ (cardEn.detail_label or cms.site.en.workshop_ui.detail_label) | attr }}">{{ cardDe.detail_label or cms.site.de.workshop_ui.detail_label }}</a>
                         {% endif %}
@@ -240,7 +240,7 @@ permalink: programm.html
             <p
                 data-de="{{ de.cta.text | attr }}"
                 data-en="{{ en.cta.text | attr }}">{{ de.cta.text }}</p>
-            <a href="kontakt.html" class="btn btn-primary"
+            <a href="kontakt" class="btn btn-primary"
                 data-de="{{ de.cta.button | attr }}"
                 data-en="{{ en.cta.button | attr }}">{{ de.cta.button }}</a>
         </div>

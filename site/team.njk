@@ -9,7 +9,7 @@ permalink: team.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {%- set seoMeta = de.meta -%}
-    {%- set seoCanonical = "https://wildcare.space/team.html" -%}
+    {%- set seoCanonical = "https://wildcare.space/team" -%}
     {%- set seoAlternateLocale = "en_US" -%}
     {% include "partials/seo.njk" %}
 
@@ -168,7 +168,7 @@ permalink: team.html
             <p
                 data-de="{{ de.cta.text }}"
                 data-en="{{ en.cta.text or de.cta.text }}">{{ de.cta.text }}</p>
-            <a href="kontakt.html" class="btn btn-primary"
+            <a href="kontakt" class="btn btn-primary"
                 data-de="{{ de.cta.button }}"
                 data-en="{{ en.cta.button or de.cta.button }}">{{ de.cta.button }}</a>
         </div>

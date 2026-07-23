@@ -293,7 +293,7 @@ permalink: "{{ post.href }}"
     <div class="article-container">
 
         <div class="article-back">
-            <a href="../journal.html"
+            <a href="../journal"
                 data-de="{{ pageData.de.article.back | attr }}"
                 data-en="{{ pageData.en.article.back | attr }}">{{ pageData.de.article.back }}</a>
         </div>
@@ -339,7 +339,7 @@ permalink: "{{ post.href }}"
 
             <div class="related-grid fade-up delay-1">
                 {%- for related in post.related %}
-                <a href="{{ related.slug }}.html" class="related-card">
+                <a href="{{ related.slug }}" class="related-card">
                     <div class="related-card-image">
                         <img src="../{{ related.image }}" alt="{{ related.image_alt }}" loading="lazy">
                     </div>

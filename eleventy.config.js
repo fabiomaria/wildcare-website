@@ -202,6 +202,13 @@ function normalizeSlug(value) {
     .replace(/\.html$/i, "");
 }
 
+// Drop a trailing `.html` from an internal URL so the site links to and
+// canonicalises the extension-less form (GitHub Pages serves `foo.html` at
+// `/foo`). Files on disk keep their `.html` names; only the visible URL changes.
+function stripHtmlExt(url) {
+  return String(url || "").replace(/\.html(?=$|[#?])/i, "");
+}
+
 function normalizeExternalUrl(value) {
   const raw = String(value || "").trim();
   if (!raw || /^(https?:|mailto:|#|\/)/i.test(raw)) {
@@ -214,16 +221,16 @@ function resolveNavigationUrl(value, pathPrefix = "") {
   const url = String(value || "").trim();
   if (!url) return "#";
   if (/^(?:[a-z][a-z\d+.-]*:|\/|#)/i.test(url)) return url;
-  return `${pathPrefix || ""}${url}`;
+  return `${pathPrefix || ""}${stripHtmlExt(url)}`;
 }
 
 function absoluteSiteUrl(value) {
   const url = String(value || "").trim();
   if (!url) return "";
   try {
-    return new URL(url, "https://wildcare.space/").href;
+    return stripHtmlExt(new URL(url, "https://wildcare.space/").href);
   } catch {
-    return url;
+    return stripHtmlExt(url);
   }
 }
 
@@ -455,6 +462,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("attr", (value) => new nunjucks.runtime.SafeString(escapeHtmlAttr(value)));
   eleventyConfig.addFilter("navigationUrl", resolveNavigationUrl);
   eleventyConfig.addFilter("absoluteSiteUrl", absoluteSiteUrl);
+  eleventyConfig.addFilter("cleanUrl", stripHtmlExt);
 
   // Static assets, untouched per the brief (§3).
   eleventyConfig.addPassthroughCopy({ "css": "css" });

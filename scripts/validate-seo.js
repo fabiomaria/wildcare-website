@@ -28,7 +28,10 @@ const requiredMetadata = [
 
 for (const publicUrl of publicUrls) {
   const pathname = new URL(publicUrl).pathname;
-  const relativePath = pathname === "/" ? "index.html" : pathname.replace(/^\//, "");
+  let relativePath = pathname === "/" ? "index.html" : pathname.replace(/^\//, "");
+  // Sitemap URLs are extension-less (clean URLs); the built files on disk keep
+  // their `.html` names and GitHub Pages serves `foo.html` at `/foo`.
+  if (!/\.[a-z0-9]+$/i.test(relativePath)) relativePath += ".html";
   const html = fs.readFileSync(path.join(outputDir, relativePath), "utf8");
 
   for (const [label, pattern] of requiredMetadata) {

@@ -32,7 +32,7 @@ cta:
     - label: Alle Details
       kind: link
       style: secondary
-      href: ../bewegungsrevolution.html
+      href: ../bewegungsrevolution
 ---
 
 Es ist soweit: Wild Care hat eine Förderung von €490 über den ASVÖ und das Programm „Bewegungsrevolution“ erhalten. Damit starten wir ab 11. Mai 2026 einen kostenlosen 6-Wochen-Block Contact Improvisation — offen für alle, die Lust haben, sich zu bewegen. Keine Vorkenntnisse nötig, kein Mitgliedsbeitrag, keine Hürden.
