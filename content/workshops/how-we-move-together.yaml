@@ -106,28 +106,24 @@ en:
     show_info: true
     info_title: ''
   research:
-    label: The Arc
+    label: Program Overview
     heading: Five thresholds over two days
     fields:
-      - number: '01'
-        title: Space ↔ Self-awareness
-        text: 'From inside to outside: noticing, orienting and regulating attention. Taking space is an action; noticing space is accountability.'
-      - number: '02'
-        title: Listening ↔ Consent
-        text: From perception to relational choice. Consent becomes tangible, negotiated and reversible — listening is labour, not a moment.
-      - number: '03'
-        title: Support ↔ Care
-        text: From choice to responsibility. Don’t impose, propose; don’t lift, accompany — care is relational, not sacrificial.
-      - number: '04'
-        title: Trust ↔ Solidarity
-        text: From responsibility to collective risk. Trust emerges from reliability, not demand; risk is ethical only when shared.
-      - number: '05'
-        title: Structures ↔ Stereotypes
-        text: From solidarity to agency. Improvisation reproduces power unless consciously redesigned — freedom requires structure.
-      - number: '06'
-        title: How we move together
-        text: The whole arc, danced. Each day closes with a jam score that puts the day’s practice into shared play.
-        highlighted: true
+      - number: 00 Arrival Jam
+        title: What is already happening?
+        text: 'Before introducing concepts or exercises, we begin by dancing. The jam becomes our first observation: What attracts attention? How is space already organised? Which relationships begin to emerge?'
+      - number: 01 Space ↔ Self-awareness
+        title: How do I know where I am?
+        text: Through practices of perception, vision, peripheral awareness and self-orientation, we investigate how awareness of ourselves shapes every subsequent relationship. Rather than treating attention as passive observation, we explore it as an active practice.
+      - number: 02 Listening ↔ Consent
+        title: How does a dance begin?
+        text: Using invitation, response and reversible touch, we examine how contact emerges without assumption. Consent appears not as a rule to remember but as something continuously negotiated through movement.
+      - number: 03 Support ↔ Care
+        title: What happens when another body changes my possibilities?
+        text: By giving and receiving weight we begin to notice when support feels reliable, when it becomes effort, and how responsibility shifts between us. Rather than searching for correct techniques, we ask how support transforms both participants simultaneously.
+      - number: 04 Trust ↔ Solidarity
+        title: How do many bodies move together?
+        text: Through larger improvisational scores we investigate emergence, coordination and collective decision-making. Instead of assigning leadership, we ask how organisation appears, stabilises and dissolves within the group.
   image_band:
     label: Day 1 → Day 2
     heading: From self to collective
