@@ -57,6 +57,7 @@ en:
   title: How We Move Together
   registration:
     label: Register now
+    note: ''
   facts:
     date: 9–11 October 2026
     time: ''
@@ -95,14 +96,15 @@ en:
     note_text: 'Nothing political can happen without sensing oneself in relation: awareness precedes participation.'
   description:
     label: The Practice
-    heading: Contact Improvisation as a political practice.
-    show_info: true
-    info_title: ''
+    heading: Contact Improvisation as Social Enquiry
     paragraphs:
       - Over two days we treat Contact Improvisation not as a set of moves but as a practice of noticing, orienting and regulating attention — and of what becomes possible once awareness turns into relation.
-      - The workshop follows a deliberate arc: from self-awareness to consent, from consent to care, from care to trust and solidarity, and finally to the structures and stereotypes that shape how we move together. Each step only becomes possible once the one before it exists.
+      - text: Across two days, we will move through a series of carefully designed exercises, improvisational scores and collective explorations. We will work with orientation and disorientation, noticing ourselves in relation to others before making contact. We will practice recognizing invitations rather than assumptions, allowing touch to become something negotiated rather than automatic. Through weight-sharing, falling, following and supporting, we will explore how responsibility is built moment by moment—not as generosity, but as something created together.
+        The workshop follows a deliberate arc: from self-awareness to consent, from consent to care, from care to trust and solidarity, and finally to the structures and stereotypes that shape how we move together. Each step only becomes possible once the one before it exists.
       - <b>Flowing between self and group</b>, we practice taking space and noticing space, listening for the “no” as much as the “yes”, supporting by request rather than by rescue, and building trust from reliability rather than demand.
       - <b>Come as you are.</b> No previous Contact Improvisation experience is required — only a willingness to pay attention and to move with others.
+    show_info: true
+    info_title: ''
   research:
     label: The Arc
     heading: Five thresholds over two days
