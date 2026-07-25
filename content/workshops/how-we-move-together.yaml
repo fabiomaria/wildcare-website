@@ -40,7 +40,9 @@ de:
     subtitle: ''
     show_details: false
     visual_aria: ''
+    main_image: /assets/uploads/_dsc8336.webp
     main_alt: ''
+    inset_image: /assets/uploads/_dsc8761.webp
     inset_alt: ''
     note_title: ''
     note_text: ''
@@ -133,7 +135,7 @@ en:
       As the workshop unfolds, attention shifts from how to do Contact Improvisation toward how Contact Improvisation does us. Which roles do we repeatedly occupy? Which assumptions organise our movement before we become aware of them? What changes when we interrupt familiar habits instead of repeating them?
 
       Rather than presenting principles to adopt, the workshop develops practices of observation, reflection and experimentation. Social and political questions are not introduced as external frameworks but explored through the micro-organisation of movement itself: who notices first, who initiates, who follows, who carries risk, and how these roles continuously shift between bodies.
-    image: assets/images/invitation.jpg
+    image: /assets/uploads/acam6757.webp
     alt: Group research through Contact Improvisation
   facilitators:
     label: Facilitator
