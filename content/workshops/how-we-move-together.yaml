@@ -141,8 +141,11 @@ en:
       - name: Fran
         image: assets/images/invitation.jpg
         alt: Fran
-        role: Contact Improvisation · Somatic research
-        bio: 'Placeholder bio — to be provided. Fran facilitates How We Move Together, a Contact Improvisation practice rooted in attention, consent and mutual care. Instagram: @a_yielding_fran.'
+        role: Contact Improvisation · Social Inquiry
+        bio: |-
+          fran is a Contact Improvisation facilitator, researcher and writer exploring movement as a form of social inquiry. His work investigates how attention, touch, consent and cooperation emerge through embodied practice, treating Contact Improvisation as both a dance form and a way of studying how we organise ourselves together.
+
+          Drawing from experiences across Europe, Latin America and Asia, he designs workshops that combine rigorous movement research with curiosity, critical reflection and collective experimentation.
     quotes:
       - quote: “Don’t be polite, be precise. Don’t impose, propose. Don’t lift, accompany.”
         author: How We Move Together
