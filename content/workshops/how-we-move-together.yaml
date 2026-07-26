@@ -19,8 +19,8 @@ global:
   description:
     show_info: true
   image_band:
-    image_focus: center
     image: /assets/uploads/acam6757.webp
+    image_focus: center
   meta:
     og_image: assets/images/ci-cover.jpg
 locales:
@@ -71,9 +71,9 @@ locales:
       label: Program Overview
       heading: Five thresholds over two days
       fields:
-        - number: 00 Arrival Jam
+        - number: 00 Open Arrival Jam
           title: What is already happening?
-          text: 'Before introducing concepts or exercises, we begin by dancing. The jam becomes our first observation: What attracts attention? How is space already organised? Which relationships begin to emerge?'
+          text: 'Before introducing concepts or exercises, we begin by dancing. The jam becomes our first observation: What attracts attention? How is space already organised? Which relationships begin to emerge? This space is open for non-participants.'
         - number: 01 Space ↔ Self-awareness
           title: How do I know where I am?
           text: Through practices of perception, vision, peripheral awareness and self-orientation, we investigate how awareness of ourselves shapes every subsequent relationship. Rather than treating attention as passive observation, we explore it as an active practice.
@@ -86,15 +86,14 @@ locales:
         - number: 04 Trust ↔ Solidarity
           title: How do many bodies move together?
           text: Through larger improvisational scores we investigate emergence, coordination and collective decision-making. Instead of assigning leadership, we ask how organisation appears, stabilises and dissolves within the group.
+          highlighted: true
     image_band:
-      label: Day 1 → Day 2
+      label: Making the move
       heading: From self to collective
       body: |-
-        Across two days, we will move through a series of carefully designed exercises, improvisational scores and collective explorations. We will work with orientation and disorientation, noticing ourselves in relation to others before making contact. We will practice recognizing invitations rather than assumptions, allowing touch to become something negotiated rather than automatic. Through weight-sharing, falling, following and supporting, we will explore how responsibility is built moment by moment—not as generosity, but as something created together.
+        As the workshop unfolds, attention shifts from how to do Contact Improvisation toward **how Contact Improvisation does us**. Which roles do we repeatedly occupy? Which assumptions organise our movement before we become aware of them? What changes when we interrupt familiar habits instead of repeating them?
 
-        As the workshop unfolds, attention shifts from how to do Contact Improvisation toward how Contact Improvisation does us. Which roles do we repeatedly occupy? Which assumptions organise our movement before we become aware of them? What changes when we interrupt familiar habits instead of repeating them?
-
-        Rather than presenting principles to adopt, the workshop develops practices of observation, reflection and experimentation. Social and political questions are not introduced as external frameworks but explored through the micro-organisation of movement itself: who notices first, who initiates, who follows, who carries risk, and how these roles continuously shift between bodies.
+        Rather than presenting solutions, the workshop develops practices of observation, reflection and experimentation. Social and political questions are explored through the micro-organisation of movement itself: who notices first, who initiates, who follows, who carries risk, and how these roles continuously shift between bodies.
       alt: Group research through Contact Improvisation
     closing_cta:
       heading: Ready to move together?
@@ -104,14 +103,14 @@ locales:
       label: Facilitator
       members:
         - name: Fran
-          image: /assets/uploads/_dsc8761.webp
-          image_focus: top
+          image: /assets/uploads/mmexport1777769572196.webp
+          image_focus: center
           alt: Fran
           role: Contact Improvisation · Social Inquiry
           bio: |-
-            fran is a Contact Improvisation facilitator, researcher and writer exploring movement as a form of social inquiry. His work investigates how attention, touch, consent and cooperation emerge through embodied practice, treating Contact Improvisation as both a dance form and a way of studying how we organise ourselves together.
+            Contact Improvisation facilitator, researcher and writer exploring movement as a form of social inquiry. His work investigates how attention, touch, consent and cooperation emerge through embodied practice, treating Contact Improvisation as both a dance form and a way of studying how we organise ourselves together.
 
-            Drawing from experiences across Europe, Latin America and Asia, he designs workshops that combine rigorous movement research with curiosity, critical reflection and collective experimentation.
+            Drawing from experiences across Europe, Latin America and Asia, he designs workshops that combine movement research with curiosity, critical reflection and collective experimentation.
       quotes:
         - quote: “Don’t be polite, be precise. Don’t impose, propose. Don’t lift, accompany.”
           author: How We Move Together
