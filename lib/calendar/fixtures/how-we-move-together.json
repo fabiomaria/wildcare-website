@@ -1,0 +1,17 @@
+{
+  "schema_version": 2,
+  "global": {
+    "id": "how-we-move-together", "route": "/how-we-move-together", "intended_locales": ["en"],
+    "venue": "orpheumgasse", "image": "/assets/uploads/x.webp", "updated_at": "2026-07-26T10:00:00Z",
+    "registration": { "url": "https://tally.so/r/ABC", "availability": "available" },
+    "schedule": {
+      "event_status": "scheduled", "mode": "dates",
+      "sessions": [
+        { "id": "fri-eve", "start_local": "2026-10-09T19:00", "end_local": "2026-10-09T21:00" },
+        { "id": "sat-aft", "start_local": "2026-10-10T13:00", "end_local": "2026-10-10T17:00" },
+        { "id": "sun-morn", "start_local": "2026-10-11T10:00", "end_local": "2026-10-11T14:00" }
+      ]
+    }
+  },
+  "locales": { "en": { "title": "How We Move Together", "summary": "A two-day Contact Improvisation workshop." } }
+}
