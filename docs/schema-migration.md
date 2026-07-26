@@ -425,19 +425,19 @@ General command requirements:
 
 | ID       | Task                                            | Depends on         | State       |
 | -------- | ----------------------------------------------- | ------------------ | ----------- |
-| `MIG-00` | Freeze baseline and resolve remaining decisions | None               | Not started |
-| `MIG-01` | Create registry infrastructure                  | `MIG-00`           | Not started |
-| `MIG-02` | Catalogue every current content field           | `MIG-01`           | Not started |
-| `MIG-03` | Build validators and generated documentation    | `MIG-02`           | Not started |
-| `MIG-04` | Add normalized dual-read adapters               | `MIG-03`           | Not started |
-| `MIG-05` | Enforce the CMS contract                        | `MIG-03`           | Not started |
-| `MIG-06` | Build migration and downgrade engines           | `MIG-03`, `MIG-04` | Not started |
-| `MIG-07` | Cut over workshops                              | `MIG-05`, `MIG-06` | Not started |
-| `MIG-08` | Cut over site settings                          | `MIG-07`           | Not started |
-| `MIG-09` | Cut over every fixed page                       | `MIG-08`           | Not started |
-| `MIG-10` | Cut over journal records and bodies             | `MIG-09`           | Not started |
-| `MIG-11` | Cut over legal pages                            | `MIG-10`           | Not started |
-| `MIG-12` | Remove v1 compatibility code                    | `MIG-11`           | Not started |
+| `MIG-00` | Freeze baseline and resolve remaining decisions | None               | Complete                 |
+| `MIG-01` | Create registry infrastructure                  | `MIG-00`           | Complete                 |
+| `MIG-02` | Catalogue every current content field           | `MIG-01`           | Complete                 |
+| `MIG-03` | Build validators and generated documentation    | `MIG-02`           | Complete                 |
+| `MIG-04` | Add normalized dual-read adapters               | `MIG-03`           | Complete                 |
+| `MIG-05` | Enforce the CMS contract                        | `MIG-03`           | Release evidence pending |
+| `MIG-06` | Build migration and downgrade engines           | `MIG-03`, `MIG-04` | Complete                 |
+| `MIG-07` | Cut over workshops                              | `MIG-05`, `MIG-06` | Release evidence pending |
+| `MIG-08` | Cut over site settings                          | `MIG-07`           | Release evidence pending |
+| `MIG-09` | Cut over every fixed page                       | `MIG-08`           | Release evidence pending |
+| `MIG-10` | Cut over journal records and bodies             | `MIG-09`           | Release evidence pending |
+| `MIG-11` | Cut over legal pages                            | `MIG-10`           | Release evidence pending |
+| `MIG-12` | Remove v1 compatibility code                    | `MIG-11`           | Release evidence pending |
 
 ## 13. Executable tasks
 

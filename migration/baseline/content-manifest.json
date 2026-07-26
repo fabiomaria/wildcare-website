@@ -1,0 +1,218 @@
+{
+  "decisions": {
+    "journal_bodies": "markdown_files",
+    "known_language_asymmetries": [
+      "Workshop language_mode may intentionally expose only one detail-page locale.",
+      "Legal pages are intentionally German-only."
+    ],
+    "routes": "shared",
+    "supported_locales": [
+      "de",
+      "en"
+    ]
+  },
+  "files": [
+    {
+      "bytes": 2978,
+      "path": "content/journal/bewegungsrevolution.en.md",
+      "sha256": "2f322b1b2ba5a69c1cc412f7c28f1c262a47b17bdc7065539f3c02843c314434"
+    },
+    {
+      "bytes": 3173,
+      "path": "content/journal/bewegungsrevolution.md",
+      "sha256": "c59f46e2118aa21df7c165d00cd4c0001751409206b687becfbac46e7cfb2f8e"
+    },
+    {
+      "bytes": 2694,
+      "path": "content/journal/warum-ci.en.md",
+      "sha256": "d41a67626fe47cab09972c3f5677c2245df418b68e4a0c51cb3f870b2e448774"
+    },
+    {
+      "bytes": 2965,
+      "path": "content/journal/warum-ci.md",
+      "sha256": "73155d0148e4ad24d76b0879013842e16c4ada1cd0def4864eabc8c2c97c60d4"
+    },
+    {
+      "bytes": 5036,
+      "path": "content/legal/datenschutz.md",
+      "sha256": "153c9c6e2b51aa14f0ee2de92f4137732b1f656e54440e5006cbbb03c9fbc58c"
+    },
+    {
+      "bytes": 1651,
+      "path": "content/legal/impressum.md",
+      "sha256": "e5809c9525541a27081fffdc8bec7c978d16d8d966d0ef7a517c123dcf5e9944"
+    },
+    {
+      "bytes": 553,
+      "path": "content/pages/cellular-touch.yaml",
+      "sha256": "34e172daa2efb4b6fcec1e81dfbd925db321cf58b13d2bbf767b016f17c2ce46"
+    },
+    {
+      "bytes": 5064,
+      "path": "content/pages/index.yaml",
+      "sha256": "f1e53f0237949b9260bbf4dc050dc2f35b84dae9f0a7d0f392cc1cd47bc1fd34"
+    },
+    {
+      "bytes": 1295,
+      "path": "content/pages/journal.yaml",
+      "sha256": "b9d932ea1b64602ef1f8a660786bbeedc2552acb311b30ac4e8ae2739c7974be"
+    },
+    {
+      "bytes": 2234,
+      "path": "content/pages/kontakt.yaml",
+      "sha256": "5e5b84314360d6d5ab3ecb865e6a857e805925c80789bdd784d4d2908340f66c"
+    },
+    {
+      "bytes": 5742,
+      "path": "content/pages/mitmachen.yaml",
+      "sha256": "75061d2a770a817e033915160132379b53c8a90343c2cde8c770a005db7f2f23"
+    },
+    {
+      "bytes": 9598,
+      "path": "content/pages/montagskurs.yaml",
+      "sha256": "411e85b6f8aa4c3dc8eb95537837849a97fd17e91bab3432b333af225b10fed9"
+    },
+    {
+      "bytes": 4409,
+      "path": "content/pages/programm.yaml",
+      "sha256": "0a35ea2346c621c908e29e363d407ed83307c9da6c837126290ed69e50188abb"
+    },
+    {
+      "bytes": 5900,
+      "path": "content/pages/team.yaml",
+      "sha256": "cc41d2e353c89b615d1d45f2d006dd5a67a8fd4ce5e5040f2def0b8e01f2f8f8"
+    },
+    {
+      "bytes": 2233,
+      "path": "content/site.yaml",
+      "sha256": "1f86219d05c4f86bd510df43a9df4e81f02f07c2bc78f63d7db15f7788bc70ba"
+    },
+    {
+      "bytes": 11414,
+      "path": "content/workshops/bewegungsrevolution.yaml",
+      "sha256": "20b4e73839017caa31650eeeadea432e7d486dc8a85c131402e2d6be088eafb3"
+    },
+    {
+      "bytes": 10547,
+      "path": "content/workshops/cellular-touch.yaml",
+      "sha256": "cd7abd83bf9785cb16675bb01bc60201e96fd5c5f837e7be1a79545ebb6cd5bd"
+    },
+    {
+      "bytes": 15078,
+      "path": "content/workshops/how-we-move-together.yaml",
+      "sha256": "9cc2996900eec33128fc7ddcff306a82e9bb8ad686926f1aed9bb39ce6f5b0b5"
+    },
+    {
+      "bytes": 30564,
+      "path": "assets/images/bewegungsrevolution cover transparent.png",
+      "sha256": "dfd34a1c752b1ce83582a96f706c0b5d3c1f60d6dc7782a7d06d821872160f7e"
+    },
+    {
+      "bytes": 56831,
+      "path": "assets/images/bewegungsrevolution logo.png",
+      "sha256": "df318ddddcdfaf24f9f1fda3b0de54fe28fb1f95174ea5a1dc496de1757dc4ce"
+    },
+    {
+      "bytes": 543660,
+      "path": "assets/images/Bewegungsrevolution social preview.jpg",
+      "sha256": "c71056a42022e4cfd0277987a758a31f9226064ab8dc9774a3747866e4aa3187"
+    },
+    {
+      "bytes": 30564,
+      "path": "assets/images/bewegungsrevolution.png",
+      "sha256": "dfd34a1c752b1ce83582a96f706c0b5d3c1f60d6dc7782a7d06d821872160f7e"
+    },
+    {
+      "bytes": 57624,
+      "path": "assets/images/cellular-touch-membrane.jpg",
+      "sha256": "3e0c820f303d1372ad9b832ba5df0c8e17bbbaee105d961da1941a53e5db5324"
+    },
+    {
+      "bytes": 594407,
+      "path": "assets/images/cellular-touch-valentyn.jpg",
+      "sha256": "a43f971471ee37633f7aa7572e819587c6343466023cb0a5a4331d59a169133d"
+    },
+    {
+      "bytes": 853027,
+      "path": "assets/images/ci-cover.jpg",
+      "sha256": "2eb3b07f6ba968a88604f63cec7eb730a6189d7cba4571f8de4f18bff6101675"
+    },
+    {
+      "bytes": 161631,
+      "path": "assets/images/fabio.jpg",
+      "sha256": "5fd8d9ddd88d18df1f625cd362ba2ffe4ae9e0d60a0065f48492d3ab646c5b2f"
+    },
+    {
+      "bytes": 365408,
+      "path": "assets/images/invitation.jpg",
+      "sha256": "a3b9bd909db8a75e0112b600c9a0477f0a9891a711962ffda9ea4f531473e249"
+    },
+    {
+      "bytes": 290747,
+      "path": "assets/images/og-default.jpg",
+      "sha256": "d639416b74e1f99a96c7cd5bc6a6886d1cd1954017688c3b7ea4a221e26ce37c"
+    },
+    {
+      "bytes": 201361,
+      "path": "assets/images/programm-header.jpg",
+      "sha256": "40b9dde84d0ad3dc195f6506a63abf928a74cb1aeca75488a44577ca678106e1"
+    },
+    {
+      "bytes": 724252,
+      "path": "assets/images/social preview.jpg",
+      "sha256": "ed2b428969f5861e91b538d906756f4b1d104ec001848eedeaba08e2387c826d"
+    },
+    {
+      "bytes": 290747,
+      "path": "assets/images/team-header.jpg",
+      "sha256": "d639416b74e1f99a96c7cd5bc6a6886d1cd1954017688c3b7ea4a221e26ce37c"
+    },
+    {
+      "bytes": 226872,
+      "path": "assets/images/verena.jpg",
+      "sha256": "074354cfa3fcd8fbeb8129cad66e57fa8e91e6ca1ed2936d84378ef30a71445f"
+    },
+    {
+      "bytes": 287875,
+      "path": "assets/images/warum-ci.jpg",
+      "sha256": "2a5746db4d00228fd676b609c803212030cb09ee37426941364c9e0bad8f4a02"
+    },
+    {
+      "bytes": 395523,
+      "path": "assets/images/was-ist-kunst.jpg",
+      "sha256": "42b28802b1ee69b02dc48ac904ffd3dfca610e5ab37e405411660c34fa239430"
+    },
+    {
+      "bytes": 420420,
+      "path": "assets/uploads/_dsc8336.webp",
+      "sha256": "9fcb19515acf7ec11cdee7d80ba94d9e4ad274376278e4931ae0fc1c4af3fde2"
+    },
+    {
+      "bytes": 531042,
+      "path": "assets/uploads/_dsc8761.webp",
+      "sha256": "83e8ca9e2e7a223d6ffa60d29457863e889776aaf8e071e8a4c89a0eeacb2bf0"
+    },
+    {
+      "bytes": 603614,
+      "path": "assets/uploads/acam6757.webp",
+      "sha256": "8006870127242750af2a784e22a790f1b31511a7b8765273a75143150dec6b1c"
+    },
+    {
+      "bytes": 113446,
+      "path": "assets/uploads/cover-1640x856-2.webp",
+      "sha256": "d8c851d85925ab8193e21cb8aa52f134e75425b62ac94bf939ed9001b76be333"
+    },
+    {
+      "bytes": 24933593,
+      "path": "assets/video-hero.mp4",
+      "sha256": "8258b2249259991c1ad00f0c73327efe29637ea3af86b0e17475bac87bf6172c"
+    },
+    {
+      "bytes": 34028038,
+      "path": "assets/what is ci.mp4",
+      "sha256": "4743a4efb235c61d5060cbc0d72d0a10db79b43f2ed34ac3a28cb8ca8f5a3882"
+    }
+  ],
+  "generated_at": "2026-07-26",
+  "production_sha": "5aee401b5bdbafb1d48fb9169050c72c68941383"
+}

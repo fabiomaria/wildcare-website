@@ -1,91 +1,100 @@
-de:
-  meta:
-    title: Wild Care — Über uns | Team & Haltung
-    description: Lerne das Team hinter Wild Care kennen. Verena Eidenberger und Fabio Maria Gerhold über Begegnung, Bewegung und soziale Praxis in Graz.
-  breadcrumb: Über uns
-  hero:
-    label: Über uns
-    heading: Begegnung<br>als Praxis.
-    intro: Wild Care ist ein Ort, an dem Kunst nicht an der Wand hängt, sondern zwischen Menschen passiert. Wir schaffen Räume für Bewegung, Berührung und ein anderes Miteinander — mitten in Graz.
-  manifest:
-    label: Aus unserem Manifest
-    quote: Wir kreieren temporäre, sichere Räume — Mikro-Utopien — in denen wir ein anderes Miteinander üben können. Nicht das fertige Kunstwerk zählt, sondern das, was zwischen uns passiert.
-    source: Wild Care — Verein für Kunst als lebendige, soziale Praxis
-  team:
-    label: Die Menschen dahinter
-    heading: Unser Team
-    members:
-      - name: Verena Eidenberger
-        image: assets/images/verena.jpg
-        alt: Verena Eidenberger
-        role: Tänzerin · Musik- und Tanzpädagogin
-        bio: Verena bringt jahrelange Erfahrung in Tanz und Pädagogik mit. Ihr Zugang ist spielerisch und einladend — sie schafft Räume, in denen Menschen sich trauen, sich zu bewegen und zu begegnen. Ihre Rolle bei Wild Care entwickelt sich stetig weiter, so wie der Verein selbst.
-      - name: Fabio Maria Gerhold
-        image: assets/images/fabio.jpg
-        alt: Fabio Maria Gerhold
-        role: Tänzer · Yogalehrer · Gründer
-        bio: Fabio verbindet Contact Improvisation, Yoga und Philosophie. Inspiriert von Martin Bubers Dialogphilosophie — der Idee, dass wir erst im echten Gegenüber zu uns selbst finden — erforscht er, wie Körperpraxis zu einer Haltung der Fürsorge und Aufmerksamkeit werden kann.
-  quote_band:
-    quote: „Alles wirkliche Leben ist Begegnung.“
-    source: Martin Buber
-  philosophy:
-    label: Unsere Haltung
-    heading: Worin wir wurzeln
-    p1: Wild Care ist kein klassisches Tanzstudio und kein Therapieraum. Wir bewegen uns dort, wo Kunst, Körperarbeit und soziales Miteinander sich überschneiden.
-    p2: "Unser Zugang ist einfach: Wenn wir lernen, unseren eigenen Körper achtsam wahrzunehmen und anderen mit Offenheit zu begegnen, verändert das nicht nur den Tanz — sondern auch, wie wir durch die Welt gehen."
-    pillars:
-      - title: Kunst als Beziehung
-        text: Kunst entsteht nicht im stillen Kämmerlein, sondern zwischen Menschen. Was zählt, ist der Moment der Begegnung — nicht das Ergebnis.
-      - title: Wissen durch den Körper
-        text: Manche Dinge versteht man erst, wenn man sie spürt. Wir lernen durch Bewegung, Berührung und gemeinsames Tun — nicht nur durch Worte.
-      - title: Fürsorge als Praxis
-        text: "Fürsorge ist mehr als ein Gefühl. Sie zeigt sich in konkretem Handeln: Grenzen wahren, Raum geben, aufeinander achten — im Tanz und im Alltag."
-  cta:
-    label: Einladung
-    heading: Lerne uns kennen.
-    text: Komm einfach vorbei — du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag in Graz.
-    button: Kontakt aufnehmen
-  footer:
-    connect_heading: Verbinden
-en:
-  breadcrumb: About
-  hero:
-    label: About Us
-    heading: Encounter<br>as Practice.
-    intro: Wild Care is a place where art doesn’t hang on walls — it happens between people. We create spaces for movement, touch and a different way of being together — right here in Graz.
-  manifest:
-    label: From Our Manifesto
-    quote: We create temporary, safe spaces — micro-utopias — where we can practise a different way of being together. It’s not the finished artwork that matters, but what happens between us.
-    source: Wild Care — Association for Art as Living Social Practice
-  team:
-    label: The People Behind It
-    heading: Our Team
-    members:
-      - name: Verena Eidenberger
-        role: Dancer · Music & Dance Educator
-        bio: Verena brings years of experience in dance and education. Her approach is playful and welcoming — she creates spaces where people feel brave enough to move and connect. Her role at Wild Care keeps evolving, just like the association itself.
-      - name: Fabio Maria Gerhold
-        role: Dancer · Yoga Teacher · Founder
-        bio: Fabio weaves together Contact Improvisation, yoga and philosophy. Inspired by Martin Buber’s philosophy of dialogue — the idea that we only truly find ourselves through genuine encounter with another — he explores how body practice can become an attitude of care and attention.
-  quote_band:
-    quote: “All real living is meeting.”
-    source: Martin Buber
-  philosophy:
-    label: Our Approach
-    heading: Where We Take Root
-    p1: Wild Care is neither a conventional dance studio nor a therapy space. We move at the intersection of art, body work and social togetherness.
-    p2: "Our approach is simple: when we learn to perceive our own bodies with awareness and meet others with openness, it changes more than just the dance — it changes how we move through the world."
-    pillars:
-      - title: Art as Relationship
-        text: Art doesn’t emerge in isolation — it arises between people. What matters is the moment of encounter, not the outcome.
-      - title: Knowing Through the Body
-        text: Some things can only be understood by feeling them. We learn through movement, touch and doing things together — not just through words.
-      - title: Care as Practice
-        text: "Care is more than a feeling. It shows up in concrete action: honouring boundaries, making space, looking out for one another — in the dance and in everyday life."
-  cta:
-    label: Invitation
-    heading: Come meet us.
-    text: Just show up — no experience needed, only comfortable clothes and curiosity. Every Monday in Graz.
-    button: Get in Touch
-  footer:
-    connect_heading: Connect
+schema_version: 2
+global:
+  id: team
+  intended_locales:
+    - de
+    - en
+  status: published
+  route: /team
+locales:
+  de:
+    meta:
+      title: Wild Care — Über uns | Team & Haltung
+      description: Lerne das Team hinter Wild Care kennen. Verena Eidenberger und Fabio Maria Gerhold über Begegnung, Bewegung und soziale Praxis in Graz.
+    breadcrumb: Über uns
+    hero:
+      label: Über uns
+      heading: Begegnung<br>als Praxis.
+      intro: Wild Care ist ein Ort, an dem Kunst nicht an der Wand hängt, sondern zwischen Menschen passiert. Wir schaffen Räume für Bewegung, Berührung und ein anderes Miteinander — mitten in Graz.
+    manifest:
+      label: Aus unserem Manifest
+      quote: Wir kreieren temporäre, sichere Räume — Mikro-Utopien — in denen wir ein anderes Miteinander üben können. Nicht das fertige Kunstwerk zählt, sondern das, was zwischen uns passiert.
+      source: Wild Care — Verein für Kunst als lebendige, soziale Praxis
+    team:
+      label: Die Menschen dahinter
+      heading: Unser Team
+      members:
+        - name: Verena Eidenberger
+          image: assets/images/verena.jpg
+          alt: Verena Eidenberger
+          role: Tänzerin · Musik- und Tanzpädagogin
+          bio: Verena bringt jahrelange Erfahrung in Tanz und Pädagogik mit. Ihr Zugang ist spielerisch und einladend — sie schafft Räume, in denen Menschen sich trauen, sich zu bewegen und zu begegnen. Ihre Rolle bei Wild Care entwickelt sich stetig weiter, so wie der Verein selbst.
+        - name: Fabio Maria Gerhold
+          image: assets/images/fabio.jpg
+          alt: Fabio Maria Gerhold
+          role: Tänzer · Yogalehrer · Gründer
+          bio: Fabio verbindet Contact Improvisation, Yoga und Philosophie. Inspiriert von Martin Bubers Dialogphilosophie — der Idee, dass wir erst im echten Gegenüber zu uns selbst finden — erforscht er, wie Körperpraxis zu einer Haltung der Fürsorge und Aufmerksamkeit werden kann.
+    quote_band:
+      quote: „Alles wirkliche Leben ist Begegnung.“
+      source: Martin Buber
+    philosophy:
+      label: Unsere Haltung
+      heading: Worin wir wurzeln
+      p1: Wild Care ist kein klassisches Tanzstudio und kein Therapieraum. Wir bewegen uns dort, wo Kunst, Körperarbeit und soziales Miteinander sich überschneiden.
+      p2: 'Unser Zugang ist einfach: Wenn wir lernen, unseren eigenen Körper achtsam wahrzunehmen und anderen mit Offenheit zu begegnen, verändert das nicht nur den Tanz — sondern auch, wie wir durch die Welt gehen.'
+      pillars:
+        - title: Kunst als Beziehung
+          text: Kunst entsteht nicht im stillen Kämmerlein, sondern zwischen Menschen. Was zählt, ist der Moment der Begegnung — nicht das Ergebnis.
+        - title: Wissen durch den Körper
+          text: Manche Dinge versteht man erst, wenn man sie spürt. Wir lernen durch Bewegung, Berührung und gemeinsames Tun — nicht nur durch Worte.
+        - title: Fürsorge als Praxis
+          text: 'Fürsorge ist mehr als ein Gefühl. Sie zeigt sich in konkretem Handeln: Grenzen wahren, Raum geben, aufeinander achten — im Tanz und im Alltag.'
+    cta:
+      label: Einladung
+      heading: Lerne uns kennen.
+      text: Komm einfach vorbei — du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag in Graz.
+      button: Kontakt aufnehmen
+    footer:
+      connect_heading: Verbinden
+  en:
+    breadcrumb: About
+    hero:
+      label: About Us
+      heading: Encounter<br>as Practice.
+      intro: Wild Care is a place where art doesn’t hang on walls — it happens between people. We create spaces for movement, touch and a different way of being together — right here in Graz.
+    manifest:
+      label: From Our Manifesto
+      quote: We create temporary, safe spaces — micro-utopias — where we can practise a different way of being together. It’s not the finished artwork that matters, but what happens between us.
+      source: Wild Care — Association for Art as Living Social Practice
+    team:
+      label: The People Behind It
+      heading: Our Team
+      members:
+        - name: Verena Eidenberger
+          role: Dancer · Music & Dance Educator
+          bio: Verena brings years of experience in dance and education. Her approach is playful and welcoming — she creates spaces where people feel brave enough to move and connect. Her role at Wild Care keeps evolving, just like the association itself.
+        - name: Fabio Maria Gerhold
+          role: Dancer · Yoga Teacher · Founder
+          bio: Fabio weaves together Contact Improvisation, yoga and philosophy. Inspired by Martin Buber’s philosophy of dialogue — the idea that we only truly find ourselves through genuine encounter with another — he explores how body practice can become an attitude of care and attention.
+    quote_band:
+      quote: “All real living is meeting.”
+      source: Martin Buber
+    philosophy:
+      label: Our Approach
+      heading: Where We Take Root
+      p1: Wild Care is neither a conventional dance studio nor a therapy space. We move at the intersection of art, body work and social togetherness.
+      p2: 'Our approach is simple: when we learn to perceive our own bodies with awareness and meet others with openness, it changes more than just the dance — it changes how we move through the world.'
+      pillars:
+        - title: Art as Relationship
+          text: Art doesn’t emerge in isolation — it arises between people. What matters is the moment of encounter, not the outcome.
+        - title: Knowing Through the Body
+          text: Some things can only be understood by feeling them. We learn through movement, touch and doing things together — not just through words.
+        - title: Care as Practice
+          text: 'Care is more than a feeling. It shows up in concrete action: honouring boundaries, making space, looking out for one another — in the dance and in everyday life.'
+    cta:
+      label: Invitation
+      heading: Come meet us.
+      text: Just show up — no experience needed, only comfortable clothes and curiosity. Every Monday in Graz.
+      button: Get in Touch
+    footer:
+      connect_heading: Connect

@@ -1,36 +1,45 @@
-de:
-  meta:
-    title: Journal — Wild Care | Aus dem Labor
-    description: Einblicke, Gedanken und Neuigkeiten aus dem Wild Care Labor. Über Contact Improvisation, Bewegung und soziale Praxis in Graz.
-  hero:
-    label: Journal
-    heading: Aus dem Labor
-    intro: Gedanken, Einblicke und Neuigkeiten aus unserer Praxis. Über Bewegung, Begegnung und das, was dazwischen passiert.
-  card:
-    read_more: Weiterlesen →
-    coming_soon: Bald verfügbar
-  cta:
-    label: Einladung
-    heading: Komm vorbei.
-    text: Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz.
-    button: Kontakt aufnehmen
-  article:
-    back: ← Zurück zum Journal
-    related_label: Weiterlesen
-    related_heading: Verwandte Beiträge
-en:
-  hero:
-    heading: From the Lab
-    intro: Thoughts, glimpses and news from our practice. On movement, encounter, and what happens in between.
-  card:
-    read_more: Read more →
-    coming_soon: Coming soon
-  cta:
-    label: Invitation
-    heading: Come along.
-    text: No experience needed, just comfortable clothes and curiosity. Every Monday, 17:45, Orpheumgasse 11, Graz.
-    button: Get in Touch
-  article:
-    back: ← Back to Journal
-    related_label: Read More
-    related_heading: Related Posts
+schema_version: 2
+global:
+  id: journal
+  intended_locales:
+    - de
+    - en
+  status: published
+  route: /journal
+locales:
+  de:
+    meta:
+      title: Journal — Wild Care | Aus dem Labor
+      description: Einblicke, Gedanken und Neuigkeiten aus dem Wild Care Labor. Über Contact Improvisation, Bewegung und soziale Praxis in Graz.
+    hero:
+      label: Journal
+      heading: Aus dem Labor
+      intro: Gedanken, Einblicke und Neuigkeiten aus unserer Praxis. Über Bewegung, Begegnung und das, was dazwischen passiert.
+    card:
+      read_more: Weiterlesen →
+      coming_soon: Bald verfügbar
+    cta:
+      label: Einladung
+      heading: Komm vorbei.
+      text: Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz.
+      button: Kontakt aufnehmen
+    article:
+      back: ← Zurück zum Journal
+      related_label: Weiterlesen
+      related_heading: Verwandte Beiträge
+  en:
+    hero:
+      heading: From the Lab
+      intro: Thoughts, glimpses and news from our practice. On movement, encounter, and what happens in between.
+    card:
+      read_more: Read more →
+      coming_soon: Coming soon
+    cta:
+      label: Invitation
+      heading: Come along.
+      text: No experience needed, just comfortable clothes and curiosity. Every Monday, 17:45, Orpheumgasse 11, Graz.
+      button: Get in Touch
+    article:
+      back: ← Back to Journal
+      related_label: Read More
+      related_heading: Related Posts

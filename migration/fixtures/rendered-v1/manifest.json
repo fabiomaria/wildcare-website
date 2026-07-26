@@ -1,0 +1,70 @@
+[
+  {
+    "path": "bewegungsrevolution.html",
+    "sha256": "9943cd5ffef3d3c45edaef0258ce104f83a4ad597f5930a905d7a8799274ab47"
+  },
+  {
+    "path": "brand.html",
+    "sha256": "61ddf76923cfbe28133e53af138fc0fee567c49f1b62704762d2b6e4e7d48a7c"
+  },
+  {
+    "path": "cellular-touch.html",
+    "sha256": "ab3aab7905720ce0f05d005238766c03c8b3e5495194cabb2d9a03c9ab8e281b"
+  },
+  {
+    "path": "datenschutz.html",
+    "sha256": "393d46d6cf453b0b632d9accba0dfaed52cddc62ce5477e01918550413c2ee5d"
+  },
+  {
+    "path": "how-we-move-together.html",
+    "sha256": "bcb15e299a2d2815260af5c7d0d6d5a2300efd493c570386e4eb13de8831079f"
+  },
+  {
+    "path": "impressum.html",
+    "sha256": "5a386af0102f9a47782d9fe85dc1aa55c8b434f056e05f3ea5ea5418377b62d6"
+  },
+  {
+    "path": "index.html",
+    "sha256": "fb5cde091083981dc172023a28e4f22d6585c131595bf654af5251cbafa4da9e"
+  },
+  {
+    "path": "journal/bewegungsrevolution.html",
+    "sha256": "55f4ae558cca7d067b49ca3aff50d1b5d319bd1eec78c8e84082c7f5cc3358e3"
+  },
+  {
+    "path": "journal/warum-ci.html",
+    "sha256": "778272efbf640bb1c6599a5811c30941669e1c524e0f9fb00b38c45a92f4a607"
+  },
+  {
+    "path": "journal.html",
+    "sha256": "e418d42c5de3fda58f486e08fd7f7054d89a872eb9908ecf13a3156ede36df32"
+  },
+  {
+    "path": "kontakt.html",
+    "sha256": "422204fe5318cc68745c86d7354a4166067fc12a2f03cb045df79205c9f8c487"
+  },
+  {
+    "path": "mitmachen.html",
+    "sha256": "2a24fb94db1d2171f24b6bef62b2febcfed86dc52a425a83f19dee1454e90e27"
+  },
+  {
+    "path": "montagskurs.html",
+    "sha256": "bf3f627c36b898adc45452bf6e8f51520e13ed5ea3747a59a7520286b85763fa"
+  },
+  {
+    "path": "programm.html",
+    "sha256": "ca4a679504346dc76a40db64b87bfc6a89842482bc540eaff6d6709b4bf6c388"
+  },
+  {
+    "path": "team.html",
+    "sha256": "cfdc4b8920b0dbdced855c6fc2f462c94ef4b774e38b46b93f9d49ab489dbee3"
+  },
+  {
+    "path": "test.html",
+    "sha256": "3a80c62c1b05ab7187244c55ede73f6a58f061f71d5e941d1d3e8f39fddffe73"
+  },
+  {
+    "path": "test2.html",
+    "sha256": "d92e1265cb2a0e061ea7a7638af33e9bcffddb7cedf540316dde2eaec6db65e3"
+  }
+]

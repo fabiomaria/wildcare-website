@@ -1,0 +1,13 @@
+{
+  "schema_version": 2,
+  "registry_revision": 1,
+  "supported_locales": ["de"],
+  "enums": {},
+  "record_types": {
+    "test": {
+      "fields": [
+        { "id": "test.override", "class": "G+O", "path": "global.hero.image", "type": "string", "v1_downgrade": { "path": "hero.image" } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,70 @@
+schema_version: 2
+global:
+  id: bewegungsrevolution
+  intended_locales:
+    - de
+    - en
+  status: published
+  route: /journal/bewegungsrevolution
+  published_at: 2026-05-01T00:00:00.000Z
+  sort_order: 1
+  image:
+    src: assets/images/bewegungsrevolution.png
+  hero:
+    image:
+      src: assets/images/bewegungsrevolution.png
+    variant: contained
+  tally: true
+  meta:
+    og_image: assets/images/Bewegungsrevolution social preview.jpg
+    og_image_width: 1200
+    og_image_height: 630
+locales:
+  de:
+    title: 'Bewegungsrevolution: Wir starten'
+    title_html: Bewegungsrevolution:<br>Wir starten
+    homepage_title: 'Bewegungsrevolution: Wir starten'
+    excerpt: Unser geförderter 6-Wochen-Block für Einsteiger:innen beginnt. Was wir vorhaben und warum Bewegung für alle zugänglich sein sollte.
+    homepage_excerpt: Unser geförderter 6-Wochen-Block für Einsteiger:innen beginnt. Was wir vorhaben.
+    meta:
+      description: Wild Care startet einen geförderten 6-Wochen-Block Contact Improvisation in Graz. Kostenlos, offen für alle, jeden Montag ab Mai 2026.
+      og_image_alt: Bewegungsrevolution — Menschen tanzen Contact Improvisation bei Wild Care in Graz.
+    image_alt: Bewegungsrevolution Typografie
+    homepage_image_alt: die Bewegungsrevolution
+    hero_alt: Bewegungsrevolution — Typografie in Pink
+    cta:
+      heading: Mach mit
+      text: 11. Mai – 15. Juni 2026. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz. Kostenlos.
+      buttons:
+        - label: Jetzt anmelden
+          kind: tally
+          style: primary
+          tally_open: eq227x
+        - label: Alle Details
+          kind: link
+          style: secondary
+          href: ../bewegungsrevolution
+  en:
+    title: 'Bewegungsrevolution: We Begin'
+    title_html: Movement Revolution:<br>We’re Starting
+    homepage_title: 'Movement Revolution: We’re Starting'
+    excerpt: Our funded 6-week block for beginners is starting. What we have planned, and why movement should be accessible to everyone.
+    homepage_excerpt: Our funded 6-week block for beginners kicks off. Here’s what we have planned.
+    meta:
+      description: Wild Care starts a funded 6-week Contact Improvisation block in Graz. Free of charge, open to everyone, every Monday from May 2026.
+      og_image_alt: Movement Revolution — people dancing Contact Improvisation at Wild Care in Graz.
+    image_alt: Bewegungsrevolution Typografie
+    homepage_image_alt: die Bewegungsrevolution
+    hero_alt: Bewegungsrevolution — Typografie in Pink
+    cta:
+      heading: Join In
+      text: 11 May – 15 June 2026. Every Monday, 17:45, Orpheumgasse 11, Graz. Free of charge.
+      buttons:
+        - label: Sign up
+          kind: tally
+          style: primary
+          tally_open: eq227x
+        - label: All details
+          kind: link
+          style: secondary
+          href: ../bewegungsrevolution

@@ -1,0 +1,13 @@
+{
+  "schema_version": 2,
+  "registry_revision": 1,
+  "supported_locales": ["de"],
+  "enums": {},
+  "record_types": {
+    "test": {
+      "fields": [
+        { "id": "test.object", "class": "L", "path": "locales.{locale}.hero", "type": "object", "v1_downgrade": { "path": "hero" } }
+      ]
+    }
+  }
+}

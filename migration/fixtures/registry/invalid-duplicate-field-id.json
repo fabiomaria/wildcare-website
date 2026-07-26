@@ -1,0 +1,14 @@
+{
+  "schema_version": 2,
+  "registry_revision": 1,
+  "supported_locales": ["de"],
+  "enums": {},
+  "record_types": {
+    "test": {
+      "fields": [
+        { "id": "test.same", "class": "G", "path": "global.a", "type": "string", "v1_downgrade": { "path": "a" } },
+        { "id": "test.same", "class": "L", "path": "locales.{locale}.b", "type": "string", "v1_downgrade": { "path": "b" } }
+      ]
+    }
+  }
+}

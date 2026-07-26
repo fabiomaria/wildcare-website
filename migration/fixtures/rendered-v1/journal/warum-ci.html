@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Warum Contact Improvisation? — Wild Care Journal</title>
+    <meta name="description" content="Was ist Contact Improvisation? Spielerisches Forschen mit Schwerkraft, Balance und Berührung. Warum es mehr ist als Tanz — und was du dabei lernst.">
+    <link rel="canonical" href="https://wildcare.space/journal/warum-ci">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://wildcare.space/journal/warum-ci">
+    <meta property="og:site_name" content="Wild Care">
+    <meta property="og:title" content="Warum Contact Improvisation? — Wild Care Journal">
+    <meta property="og:description" content="Was ist Contact Improvisation? Spielerisches Forschen mit Schwerkraft, Balance und Berührung. Warum es mehr ist als Tanz — und was du dabei lernst.">
+    <meta property="og:image" content="https://wildcare.space/assets/images/warum-ci.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1393">
+    <meta property="og:image:alt" content="Zwei Menschen begegnen einander in einer Contact-Improvisation-Bewegung.">
+    <meta property="og:locale" content="de_AT">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="article:published_time" content="2026-03-01T00:00:00.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Warum Contact Improvisation? — Wild Care Journal">
+    <meta name="twitter:description" content="Was ist Contact Improvisation? Spielerisches Forschen mit Schwerkraft, Balance und Berührung. Warum es mehr ist als Tanz — und was du dabei lernst.">
+    <meta name="twitter:image" content="https://wildcare.space/assets/images/warum-ci.jpg">
+    <meta name="twitter:image:alt" content="Zwei Menschen begegnen einander in einer Contact-Improvisation-Bewegung.">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/styles.css?v=beb7b0ce9e03">
+
+    <style>
+        /* ================================
+           ARTICLE PAGE STYLES
+           ================================ */
+
+        /* Hero Banner */
+        .article-hero {
+            margin-top: 72px;
+            height: 360px;
+            position: relative;
+            overflow: hidden;
+            background: var(--sand);
+        }
+
+        .article-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(44, 36, 24, 0.05) 0%, rgba(44, 36, 24, 0.25) 100%);
+        }
+
+        /* Back Link */
+        .article-back {
+            padding: var(--space-lg) 0;
+        }
+
+        .article-back a {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--moss);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap var(--duration-fast) var(--ease-out);
+        }
+
+        .article-back a:hover {
+            color: var(--moss-dark);
+            gap: 10px;
+        }
+
+        /* Article Container */
+        .article-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        /* Article Header */
+        .article-header {
+            margin-bottom: var(--space-xl);
+        }
+
+        .article-date {
+            font-size: 0.75rem;
+            color: var(--moss);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-md);
+        }
+
+        .article-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.15;
+            margin-bottom: var(--space-lg);
+        }
+
+        .article-header .divider {
+            margin: 0;
+        }
+
+        /* Article Body */
+        .article-body p {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: var(--space-lg);
+            max-width: 100%;
+        }
+
+        .article-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-body blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: clamp(1.15rem, 2vw, 1.5rem);
+            line-height: 1.55;
+            color: var(--bark-light);
+            border-left: 3px solid var(--terracotta);
+            padding: var(--space-lg) var(--space-xl);
+            margin: var(--space-xl) 0;
+            background: var(--sand-light);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-variation-settings: 'SOFT' 100, 'WONK' 1;
+        }
+
+        .article-body blockquote p {
+            font-size: inherit;
+            line-height: inherit;
+            opacity: 1;
+            margin-bottom: 0;
+        }
+
+        .article-body a {
+            color: var(--terracotta);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: rgba(196, 119, 90, 0.3);
+            transition: text-decoration-color var(--duration-fast);
+        }
+
+        .article-body a:hover {
+            text-decoration-color: var(--terracotta);
+        }
+
+        /* Article CTA */
+        .article-cta {
+            margin-top: var(--space-2xl);
+            padding: var(--space-xl);
+            background: var(--sand-light);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .article-cta p {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin: 0 auto var(--space-lg);
+            max-width: 100%;
+        }
+
+        .article-cta h3 {
+            margin-bottom: var(--space-md);
+        }
+
+        /* Related Articles */
+        .related-section {
+            padding: var(--space-2xl) 0;
+        }
+
+        .related-section .section-header {
+            margin-bottom: var(--space-lg);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .related-card {
+            border: var(--border-subtle);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out);
+            background: var(--warmwhite);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .related-card:hover {
+            box-shadow: 0 12px 40px rgba(44, 36, 24, 0.06);
+            transform: translateY(-4px);
+            color: inherit;
+        }
+
+        .related-card-image {
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .related-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--duration-normal) var(--ease-out);
+        }
+
+        .related-card:hover .related-card-image img {
+            transform: scale(1.03);
+        }
+
+        .related-card-body {
+            padding: var(--space-lg);
+        }
+
+        .related-card-date {
+            font-size: 0.75rem;
+            color: var(--moss);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .related-card-body h4 {
+            font-size: 1.05rem;
+            line-height: 1.3;
+        }
+
+        /* ================================
+           RESPONSIVE OVERRIDES
+           ================================ */
+
+        @media (max-width: 968px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .article-hero { height: 240px; }
+        }
+    </style>
+</head>
+<body><nav>
+        <div class="container nav-inner">
+            <a href="../index" class="nav-logo">
+                Wild Care
+                <span class="breadcrumb">Journal</span>
+            </a>
+            <div class="nav-links">
+                <a href="../index"
+                    data-de="Startseite"
+                    data-en="Home">Startseite</a>
+                <a href="../team"
+                    data-de="Über uns"
+                    data-en="About Us">Über uns</a>
+                <a href="../programm"
+                    data-de="Programm"
+                    data-en="Programme">Programm</a>
+                <a href="../journal" class="active"
+                    data-de="Journal"
+                    data-en="Journal">Journal</a>
+                <a href="../mitmachen"
+                    data-de="Mitmachen"
+                    data-en="Get Involved">Mitmachen</a>
+                <a href="../kontakt" class="nav-cta"
+                    data-de="Komm vorbei"
+                    data-en="Come by">Komm vorbei</a>
+            </div>
+            <div class="lang-toggle">
+
+                <button class="lang-toggle-btn active" data-lang="de">DE</button>
+                <button class="lang-toggle-btn" data-lang="en">EN</button>
+
+            </div>
+            <button class="nav-toggle" data-aria-de="Men&uuml;" data-aria-en="Menu" aria-label="Men&uuml;">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+
+    <!-- ================================
+         HERO BANNER
+         ================================ -->
+
+    <header class="article-hero">
+        <img src="../assets/images/ci-cover.jpg" alt="Contact Improvisation — zwei Menschen in Bewegung">
+        <div class="article-hero-overlay"></div>
+    </header>
+
+    <!-- ================================
+         ARTICLE
+         ================================ -->
+
+    <div class="article-container">
+
+        <div class="article-back">
+            <a href="../journal"
+                data-de="← Zurück zum Journal"
+                data-en="← Back to Journal">← Zurück zum Journal</a>
+        </div>
+
+        <article>
+            <header class="article-header fade-up">
+                <p class="article-date"
+                    data-de="März 2026"
+                    data-en="March 2026">März 2026</p>
+                <h1 data-de="Warum Contact&lt;br&gt;Improvisation?"
+                    data-en="Why Contact&lt;br&gt;Improvisation?">Warum Contact&lt;br&gt;Improvisation?</h1>
+                <div class="divider"></div>
+            </header>
+            <section class="article-body fade-up delay-1" data-journal-lang="de" data-journal-fallback="true">
+                <p>Contact Improvisation ist das spielerische Erforschen von Schwerkraft, Gleichgewicht und Berührung. Zwei Menschen teilen sich einen Kontaktpunkt — eine Schulter, einen Rücken, eine Hand — und lassen daraus Bewegung entstehen. Es gibt keine festen Schritte, keine Choreografie, keinen Leistungsdruck. Und vor allem: keine Rollen. Niemand führt, niemand folgt. Stattdessen entsteht ein Dialog, der über den Körper geführt wird.</p>
+<p>Das klingt vielleicht zunächst abstrakt, ist aber erstaunlich konkret. In einer typischen Session lernst du, Gewicht abzugeben und Gewicht zu empfangen. Du spürst, wie sich dein Gleichgewicht verändert, wenn ein anderer Körper deinen berührt. Du merkst, wo deine Grenzen liegen — und übst, sie zu kommunizieren. Nicht mit Worten, sondern mit einer Geste, einer Veränderung im Tonus, einem Schritt zur Seite.</p>
+<blockquote>
+<p>Im Contact lernen wir etwas, das sich überall anwenden lässt: präsent zu sein, zuzuhören und zu antworten — nicht aus dem Kopf, sondern aus dem Körper.</p>
+</blockquote>
+<p>Was dabei passiert, geht weit über den Tanz hinaus. Körperwahrnehmung, Nervensystemregulation, die Fähigkeit, Grenzen spürbar zu machen — das sind Kompetenzen, die im Alltag genauso relevant sind wie auf der Tanzfläche. Wer geübt hat, im Tanz auf subtile Signale zu achten, nimmt diese Signale auch in Gesprächen, in Beziehungen und in Konflikten wahr. Contact Improvisation ist nicht nur eine Tanzform. Es ist ein Training für bewussteres Zusammenleben.</p>
+<p>Falls das alles neu für dich klingt: Umso besser. Unser <a href="bewegungsrevolution">Montagskurs in der Orpheumgasse</a> ist genau dafür gedacht — ein niedrigschwelliger Einstieg, kostenlos und ohne Vorkenntnisse. Komm einfach vorbei und probier es aus. Dein Körper weiß mehr, als du denkst.</p>
+
+
+                <div class="article-cta">
+                    <h3>Probier es aus</h3>
+                    <p>Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz. Keine Erfahrung nötig.</p>
+                    <a href="../kontakt" class="btn btn-primary">Kontakt &amp; Anfahrt</a>
+                </div>
+
+            </section>
+            <section class="article-body fade-up delay-1" data-journal-lang="en" hidden>
+                <p>Contact Improvisation is the playful exploration of gravity, balance, and touch. Two people share a point of contact — a shoulder, a back, a hand — and let movement emerge from there. There are no fixed steps, no choreography, no pressure to perform. And above all: no roles. Nobody leads, nobody follows. Instead, a dialogue unfolds through the body.</p>
+<p>That might sound abstract at first, but it’s surprisingly concrete. In a typical session, you learn to give weight and receive weight. You feel how your balance shifts when another body touches yours. You notice where your boundaries lie — and practise communicating them. Not with words, but with a gesture, a change in muscle tone, a step to the side.</p>
+<blockquote>
+<p>In Contact, we learn something that applies everywhere: to be present, to listen, and to respond — not from the head, but from the body.</p>
+</blockquote>
+<p>What happens goes far beyond dance. Body awareness, nervous system regulation, the ability to make boundaries tangible — these are skills just as relevant in everyday life as on the dance floor. Anyone who has practised paying attention to subtle signals in dance will also notice them in conversations, relationships, and conflicts. Contact Improvisation is not just a dance form. It is training for more conscious coexistence.</p>
+<p>If all of this sounds new to you: all the better. Our <a href="bewegungsrevolution">Monday class at Orpheumgasse</a> is designed exactly for that — a low-threshold entry point, free and with no prior experience needed. Just come by and try it out. Your body knows more than you think.</p>
+
+
+                <div class="article-cta">
+                    <h3>Try It Out</h3>
+                    <p>Every Monday, 17:45, Orpheumgasse 11, Graz. No experience needed.</p>
+                    <a href="../kontakt" class="btn btn-primary">Contact &amp; Directions</a>
+                </div>
+
+            </section>
+        </article>
+    </div>
+
+    <!-- ================================
+         RELATED ARTICLES
+         ================================ -->
+
+    <section class="related-section" style="background: var(--sand-light);">
+        <div class="article-container">
+            <div class="section-header fade-up">
+                <p class="label" data-de="Weiterlesen" data-en="Read More">Weiterlesen</p>
+                <h3 data-de="Verwandte Beiträge" data-en="Related Posts">Verwandte Beiträge</h3>
+            </div>
+
+            <div class="related-grid fade-up delay-1">
+                <a href="bewegungsrevolution" class="related-card">
+                    <div class="related-card-image">
+                        <img src="../assets/images/bewegungsrevolution.png" alt="Bewegungsrevolution Typografie" loading="lazy">
+                    </div>
+                    <div class="related-card-body">
+                        <p class="related-card-date" data-de="Mai 2026" data-en="May 2026">Mai 2026</p>
+                        <h4 data-de="Bewegungsrevolution: Wir starten" data-en="Movement Revolution: We’re Starting">Bewegungsrevolution: Wir starten</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>Wild Care</h4>
+                    <p data-de="Verein für Kontaktimprovisation und soziale Praxis. Wir leben die Kunst der Begegnung — jeden Montag in Graz." data-en="Association for Contact Improvisation and social practice. We live the art of encounter — every Monday in Graz.">Verein für Kontaktimprovisation und soziale Praxis. Wir leben die Kunst der Begegnung — jeden Montag in Graz.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-de="Seiten" data-en="Pages">Seiten</h4>
+                    <a href="../index" data-de="Startseite" data-en="Home">Startseite</a>
+                    <a href="../team" data-de="Über uns" data-en="About Us">Über uns</a>
+                    <a href="../programm" data-de="Programm" data-en="Programme">Programm</a>
+                    <a href="../mitmachen" data-de="Mitmachen" data-en="Get Involved">Mitmachen</a>
+                    <a href="../journal" data-de="Journal" data-en="Journal">Journal</a>
+                    <a href="../kontakt" data-de="Kontakt" data-en="Contact">Kontakt</a>
+                </div>
+                <div class="footer-links">
+                    <h4 data-de="Verbunden bleiben" data-en="Stay connected">Verbunden bleiben</h4>
+                    <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://facebook.com/wildcare.space" target="_blank" rel="noopener">Facebook</a>
+                    <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-legal"><a href="../impressum" data-de="Impressum" data-en="Legal notice">Impressum</a> &middot; <a href="../datenschutz" data-de="Datenschutz" data-en="Privacy policy">Datenschutz</a></span>
+                <span>&copy; 2026 Wild Care &mdash; Graz</span>
+                <span data-de="Mit Fürsorge gebaut" data-en="Built with care">Mit Fürsorge gebaut</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ================================
+         SCRIPTS
+         ================================ -->
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+    <script src="../js/i18n.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+de:
+  slug: how-we-move-together
+  language_mode: en_only
+  status: upcoming
+  detail_page: true
+  start_date: 2026-10-09T00:00:00.000Z
+  sort_order: 2
+  registration_url: https://tally.so/r/PLACEHOLDER
+  title: How We Move Together
+  registration:
+    label: Register now
+  facts:
+    date: 9–11 October 2026
+    time: ''
+    location: Orpheumgasse, 8010 Graz
+    price: 70–200 EUR sliding scale
+    duration: 2.5 days
+    format:
+      - value: Contact Improvisation, somatics and dance research
+    schedule:
+      - value: <b>Friday, 9 October</b> 19:00-21:00
+      - value: <b>Saturday, 10 October</b> 13:00-17:00 & 18:30-21:00
+      - value: <b>Sunday, 11 October</b> 10:00-14:00 & 16:00-19:00
+    price_details:
+      - value: 70&ndash;200 EUR sliding scale contribution
+  card:
+    tags:
+      - label: Workshop
+        style: default
+      - label: Contact Improvisation
+        style: moss
+    subtitle: With Fran
+    summary: How We Move Together is a two-day Contact Improvisation workshop on awareness, consent, care, trust and the structures we move within — Contact Improvisation as a political practice.
+    detail_label: Learn more
+  hero:
+    badge: Workshop · Contact Improvisation
+    headline: How We Move Together
+    headline_accent: Contact Improvisation as Social Inquiry
+    subtitle: A two-day Contact Improvisation intensive moving from self-awareness through consent, care and trust to the structures we move within.
+    show_details: true
+    visual_aria: How We Move Together workshop photos
+    main_image: /assets/uploads/_dsc8336.webp
+    main_image_focus: center
+    main_alt: Dancers sharing weight in a Contact Improvisation exchange
+    inset_image: /assets/uploads/_dsc8761.webp
+    inset_image_focus: top
+    inset_alt: Contact Improvisation research in a shared space
+    note_title: How We Move Together
+    note_text: 'Nothing political can happen without sensing oneself in relation: awareness precedes participation.'
+  description:
+    label: The Practice
+    heading: Contact Improvisation as Social Enquiry
+    body: Across two days, we will move through a series of carefully designed exercises, improvisational scores and collective explorations. We will work with orientation and disorientation, noticing ourselves in relation to others before making contact. We will practice recognizing invitations rather than assumptions, allowing touch to become something negotiated rather than automatic. Through weight-sharing, falling, following and supporting, we will explore how responsibility is built moment by moment—not as generosity, but as something created together.
+    show_info: true
+    info_title: ''
+  research:
+    label: Program Overview
+    heading: Five thresholds over two days
+    fields:
+      - number: 00 Arrival Jam
+        title: What is already happening?
+        text: 'Before introducing concepts or exercises, we begin by dancing. The jam becomes our first observation: What attracts attention? How is space already organised? Which relationships begin to emerge?'
+      - number: 01 Space ↔ Self-awareness
+        title: How do I know where I am?
+        text: Through practices of perception, vision, peripheral awareness and self-orientation, we investigate how awareness of ourselves shapes every subsequent relationship. Rather than treating attention as passive observation, we explore it as an active practice.
+      - number: 02 Listening ↔ Consent
+        title: How does a dance begin?
+        text: Using invitation, response and reversible touch, we examine how contact emerges without assumption. Consent appears not as a rule to remember but as something continuously negotiated through movement.
+      - number: 03 Support ↔ Care
+        title: What happens when another body changes my possibilities?
+        text: By giving and receiving weight we begin to notice when support feels reliable, when it becomes effort, and how responsibility shifts between us. Rather than searching for correct techniques, we ask how support transforms both participants simultaneously.
+      - number: 04 Trust ↔ Solidarity
+        title: How do many bodies move together?
+        text: Through larger improvisational scores we investigate emergence, coordination and collective decision-making. Instead of assigning leadership, we ask how organisation appears, stabilises and dissolves within the group.
+  image_band:
+    label: Day 1 → Day 2
+    heading: From self to collective
+    body: |-
+      Across two days, we will move through a series of carefully designed exercises, improvisational scores and collective explorations. We will work with orientation and disorientation, noticing ourselves in relation to others before making contact. We will practice recognizing invitations rather than assumptions, allowing touch to become something negotiated rather than automatic. Through weight-sharing, falling, following and supporting, we will explore how responsibility is built moment by moment—not as generosity, but as something created together.
+
+      As the workshop unfolds, attention shifts from how to do Contact Improvisation toward how Contact Improvisation does us. Which roles do we repeatedly occupy? Which assumptions organise our movement before we become aware of them? What changes when we interrupt familiar habits instead of repeating them?
+
+      Rather than presenting principles to adopt, the workshop develops practices of observation, reflection and experimentation. Social and political questions are not introduced as external frameworks but explored through the micro-organisation of movement itself: who notices first, who initiates, who follows, who carries risk, and how these roles continuously shift between bodies.
+    image: /assets/uploads/acam6757.webp
+    image_focus: center
+    alt: Group research through Contact Improvisation
+  closing_cta:
+    heading: Ready to move together?
+    text: Join us in Graz for How We Move Together.
+    button_label: Register now
+  facilitators:
+    label: Facilitator
+    heading: ''
+    members:
+      - name: Fran
+        image: /assets/uploads/_dsc8761.webp
+        image_focus: top
+        alt: Fran
+        role: Contact Improvisation · Social Inquiry
+        bio: |-
+          fran is a Contact Improvisation facilitator, researcher and writer exploring movement as a form of social inquiry. His work investigates how attention, touch, consent and cooperation emerge through embodied practice, treating Contact Improvisation as both a dance form and a way of studying how we organise ourselves together.
+
+          Drawing from experiences across Europe, Latin America and Asia, he designs workshops that combine rigorous movement research with curiosity, critical reflection and collective experimentation.
+    quotes:
+      - quote: “Don’t be polite, be precise. Don’t impose, propose. Don’t lift, accompany.”
+        author: How We Move Together
+      - quote: “Listening is labour; consent is not a moment but a process.”
+        author: How We Move Together
+  faq: null
+  meta:
+    title: How We Move Together with Fran — Workshop | Wild Care
+    description: 'How We Move Together: a two-day Contact Improvisation workshop on awareness, consent, care, trust and structure. 17-18 October 2026, Orpheumgasse, Graz.'
+    og_title: How We Move Together with Fran
+    og_description: A two-day Contact Improvisation workshop on awareness, consent, care, trust and structure. 17-18 October 2026, Orpheumgasse, Graz.
+    og_image: assets/images/ci-cover.jpg
+    og_image_alt: Dancers sharing weight in a Contact Improvisation exchange.
+en:
+  title: How We Move Together
+  registration:
+    label: Register now
+    note: ''
+  facts:
+    date: 9–11 October 2026
+    time: ''
+    location: Orpheumgasse, 8010 Graz
+    price: 70–200 EUR sliding scale
+    duration: 2.5 days
+    format:
+      - value: Contact Improvisation, somatics and dance research
+    schedule:
+      - value: <b>Friday, 9 October</b> 19:00-21:00
+      - value: <b>Saturday, 10 October</b> 13:00-17:00 & 18:30-21:00
+      - value: <b>Sunday, 11 October</b> 10:00-14:00 & 16:00-19:00
+    price_details:
+      - value: 70&ndash;200 EUR sliding scale contribution
+  card:
+    tags:
+      - label: Workshop
+        style: default
+      - label: Contact Improvisation
+        style: moss
+    subtitle: With Fran
+    summary: How We Move Together is a two-day Contact Improvisation workshop on awareness, consent, care, trust and the structures we move within — Contact Improvisation as a political practice.
+    detail_label: Learn more
+  hero:
+    badge: Workshop · Contact Improvisation
+    headline: How We Move Together
+    headline_accent: Contact Improvisation as Social Inquiry
+    subtitle: A two-day Contact Improvisation intensive moving from self-awareness through consent, care and trust to the structures we move within.
+    show_details: true
+    visual_aria: How We Move Together workshop photos
+    main_image: /assets/uploads/_dsc8336.webp
+    main_image_focus: center
+    main_alt: Dancers sharing weight in a Contact Improvisation exchange
+    inset_image: /assets/uploads/_dsc8761.webp
+    inset_image_focus: top
+    inset_alt: Contact Improvisation research in a shared space
+    note_title: How We Move Together
+    note_text: 'Nothing political can happen without sensing oneself in relation: awareness precedes participation.'
+  description:
+    label: The Practice
+    heading: Contact Improvisation as Social Enquiry
+    body: Across two days, we will move through a series of carefully designed exercises, improvisational scores and collective explorations. We will work with orientation and disorientation, noticing ourselves in relation to others before making contact. We will practice recognizing invitations rather than assumptions, allowing touch to become something negotiated rather than automatic. Through weight-sharing, falling, following and supporting, we will explore how responsibility is built moment by moment—not as generosity, but as something created together.
+    show_info: true
+    info_title: ''
+  research:
+    label: Program Overview
+    heading: Five thresholds over two days
+    fields:
+      - number: 00 Arrival Jam
+        title: What is already happening?
+        text: 'Before introducing concepts or exercises, we begin by dancing. The jam becomes our first observation: What attracts attention? How is space already organised? Which relationships begin to emerge?'
+      - number: 01 Space ↔ Self-awareness
+        title: How do I know where I am?
+        text: Through practices of perception, vision, peripheral awareness and self-orientation, we investigate how awareness of ourselves shapes every subsequent relationship. Rather than treating attention as passive observation, we explore it as an active practice.
+      - number: 02 Listening ↔ Consent
+        title: How does a dance begin?
+        text: Using invitation, response and reversible touch, we examine how contact emerges without assumption. Consent appears not as a rule to remember but as something continuously negotiated through movement.
+      - number: 03 Support ↔ Care
+        title: What happens when another body changes my possibilities?
+        text: By giving and receiving weight we begin to notice when support feels reliable, when it becomes effort, and how responsibility shifts between us. Rather than searching for correct techniques, we ask how support transforms both participants simultaneously.
+      - number: 04 Trust ↔ Solidarity
+        title: How do many bodies move together?
+        text: Through larger improvisational scores we investigate emergence, coordination and collective decision-making. Instead of assigning leadership, we ask how organisation appears, stabilises and dissolves within the group.
+  image_band:
+    label: Day 1 → Day 2
+    heading: From self to collective
+    body: |-
+      Across two days, we will move through a series of carefully designed exercises, improvisational scores and collective explorations. We will work with orientation and disorientation, noticing ourselves in relation to others before making contact. We will practice recognizing invitations rather than assumptions, allowing touch to become something negotiated rather than automatic. Through weight-sharing, falling, following and supporting, we will explore how responsibility is built moment by moment—not as generosity, but as something created together.
+
+      As the workshop unfolds, attention shifts from how to do Contact Improvisation toward how Contact Improvisation does us. Which roles do we repeatedly occupy? Which assumptions organise our movement before we become aware of them? What changes when we interrupt familiar habits instead of repeating them?
+
+      Rather than presenting principles to adopt, the workshop develops practices of observation, reflection and experimentation. Social and political questions are not introduced as external frameworks but explored through the micro-organisation of movement itself: who notices first, who initiates, who follows, who carries risk, and how these roles continuously shift between bodies.
+    image: /assets/uploads/acam6757.webp
+    image_focus: center
+    alt: Group research through Contact Improvisation
+  closing_cta:
+    heading: Ready to move together?
+    text: Join us in Graz for How We Move Together.
+    button_label: Register now
+  facilitators:
+    label: Facilitator
+    heading: ''
+    members:
+      - name: Fran
+        image: /assets/uploads/_dsc8761.webp
+        image_focus: top
+        alt: Fran
+        role: Contact Improvisation · Social Inquiry
+        bio: |-
+          fran is a Contact Improvisation facilitator, researcher and writer exploring movement as a form of social inquiry. His work investigates how attention, touch, consent and cooperation emerge through embodied practice, treating Contact Improvisation as both a dance form and a way of studying how we organise ourselves together.
+
+          Drawing from experiences across Europe, Latin America and Asia, he designs workshops that combine rigorous movement research with curiosity, critical reflection and collective experimentation.
+    quotes:
+      - quote: “Don’t be polite, be precise. Don’t impose, propose. Don’t lift, accompany.”
+        author: How We Move Together
+      - quote: “Listening is labour; consent is not a moment but a process.”
+        author: How We Move Together
+  faq: null
+  meta:
+    title: How We Move Together with Fran — Workshop | Wild Care
+    description: 'How We Move Together: a two-day Contact Improvisation workshop on awareness, consent, care, trust and structure. 17-18 October 2026, Orpheumgasse, Graz.'
+    og_title: How We Move Together with Fran
+    og_description: A two-day Contact Improvisation workshop on awareness, consent, care, trust and structure. 17-18 October 2026, Orpheumgasse, Graz.
+    og_image: assets/images/ci-cover.jpg
+    og_image_alt: Dancers sharing weight in a Contact Improvisation exchange.

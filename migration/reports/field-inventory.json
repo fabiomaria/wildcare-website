@@ -1,0 +1,2746 @@
+[
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.hero.image",
+    "path": "global.hero.image",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.id",
+    "path": "global.id",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.intended_locales.item",
+    "path": "global.intended_locales[]",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.meta.og_image",
+    "path": "global.meta.og_image",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.meta.og_image_height",
+    "path": "global.meta.og_image_height",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.meta.og_image_width",
+    "path": "global.meta.og_image_width",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.outlook.show_links",
+    "path": "global.outlook.show_links",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.practice.poster",
+    "path": "global.practice.poster",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.practice.video",
+    "path": "global.practice.video",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.route",
+    "path": "global.route",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.status",
+    "path": "global.status",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.article.back",
+    "path": "locales.{locale}.article.back",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.article.related_heading",
+    "path": "locales.{locale}.article.related_heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.article.related_label",
+    "path": "locales.{locale}.article.related_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.breadcrumb",
+    "path": "locales.{locale}.breadcrumb",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.card.coming_soon",
+    "path": "locales.{locale}.card.coming_soon",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.card.read_more",
+    "path": "locales.{locale}.card.read_more",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.heading",
+    "path": "locales.{locale}.circles.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.inner.desc",
+    "path": "locales.{locale}.circles.inner.desc",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.inner.label",
+    "path": "locales.{locale}.circles.inner.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.inner.p1",
+    "path": "locales.{locale}.circles.inner.p1",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.inner.p2",
+    "path": "locales.{locale}.circles.inner.p2",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.inner.tags.item.tag",
+    "path": "locales.{locale}.circles.inner.tags[].tag",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.inner.title",
+    "path": "locales.{locale}.circles.inner.title",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.label",
+    "path": "locales.{locale}.circles.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.outer.desc",
+    "path": "locales.{locale}.circles.outer.desc",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.outer.label",
+    "path": "locales.{locale}.circles.outer.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.outer.p1",
+    "path": "locales.{locale}.circles.outer.p1",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.outer.p2",
+    "path": "locales.{locale}.circles.outer.p2",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.outer.tags.item.tag",
+    "path": "locales.{locale}.circles.outer.tags[].tag",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.circles.outer.title",
+    "path": "locales.{locale}.circles.outer.title",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core_message",
+    "path": "locales.{locale}.core_message",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core.description_heading",
+    "path": "locales.{locale}.core.description_heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core.heading",
+    "path": "locales.{locale}.core.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core.info_title",
+    "path": "locales.{locale}.core.info_title",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core.label",
+    "path": "locales.{locale}.core.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core.more_label",
+    "path": "locales.{locale}.core.more_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core.paragraphs.item.text",
+    "path": "locales.{locale}.core.paragraphs[].text",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core.quote",
+    "path": "locales.{locale}.core.quote",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core.register_label",
+    "path": "locales.{locale}.core.register_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core.rows.item.icon",
+    "path": "locales.{locale}.core.rows[].icon",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core.rows.item.label",
+    "path": "locales.{locale}.core.rows[].label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.core.rows.item.value",
+    "path": "locales.{locale}.core.rows[].value",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.crosslink.button",
+    "path": "locales.{locale}.crosslink.button",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.crosslink.heading",
+    "path": "locales.{locale}.crosslink.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.crosslink.label",
+    "path": "locales.{locale}.crosslink.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.crosslink.text",
+    "path": "locales.{locale}.crosslink.text",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.button",
+    "path": "locales.{locale}.cta.button",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.consent_link",
+    "path": "locales.{locale}.cta.consent_link",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.consent_post",
+    "path": "locales.{locale}.cta.consent_post",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.consent_pre",
+    "path": "locales.{locale}.cta.consent_pre",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.email_label",
+    "path": "locales.{locale}.cta.email_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.email_placeholder",
+    "path": "locales.{locale}.cta.email_placeholder",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.error",
+    "path": "locales.{locale}.cta.error",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.first_name_label",
+    "path": "locales.{locale}.cta.first_name_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.first_name_placeholder",
+    "path": "locales.{locale}.cta.first_name_placeholder",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.heading",
+    "path": "locales.{locale}.cta.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.label",
+    "path": "locales.{locale}.cta.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.submit",
+    "path": "locales.{locale}.cta.submit",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.submitted",
+    "path": "locales.{locale}.cta.submitted",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.submitting",
+    "path": "locales.{locale}.cta.submitting",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.success",
+    "path": "locales.{locale}.cta.success",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.cta.text",
+    "path": "locales.{locale}.cta.text",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.event_banner.address",
+    "path": "locales.{locale}.event_banner.address",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.event_banner.basis",
+    "path": "locales.{locale}.event_banner.basis",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.event_banner.day",
+    "path": "locales.{locale}.event_banner.day",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.event_banner.tag",
+    "path": "locales.{locale}.event_banner.tag",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.event_banner.time",
+    "path": "locales.{locale}.event_banner.time",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.faq.heading",
+    "path": "locales.{locale}.faq.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.faq.items.item.a",
+    "path": "locales.{locale}.faq.items[].a",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.faq.items.item.q",
+    "path": "locales.{locale}.faq.items[].q",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.faq.label",
+    "path": "locales.{locale}.faq.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.footer.connect_heading",
+    "path": "locales.{locale}.footer.connect_heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.email_label",
+    "path": "locales.{locale}.form.email_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.email_placeholder",
+    "path": "locales.{locale}.form.email_placeholder",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.error_message",
+    "path": "locales.{locale}.form.error_message",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.heading",
+    "path": "locales.{locale}.form.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.message_label",
+    "path": "locales.{locale}.form.message_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.message_placeholder",
+    "path": "locales.{locale}.form.message_placeholder",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.name_label",
+    "path": "locales.{locale}.form.name_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.name_placeholder",
+    "path": "locales.{locale}.form.name_placeholder",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.note",
+    "path": "locales.{locale}.form.note",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.submit_label",
+    "path": "locales.{locale}.form.submit_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.submitted_label",
+    "path": "locales.{locale}.form.submitted_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.submitting_label",
+    "path": "locales.{locale}.form.submitting_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.form.success_message",
+    "path": "locales.{locale}.form.success_message",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.address",
+    "path": "locales.{locale}.hero.address",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.basis",
+    "path": "locales.{locale}.hero.basis",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.cta",
+    "path": "locales.{locale}.hero.cta",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.cta_ghost",
+    "path": "locales.{locale}.hero.cta_ghost",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.cta_primary",
+    "path": "locales.{locale}.hero.cta_primary",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.cta_secondary",
+    "path": "locales.{locale}.hero.cta_secondary",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.heading",
+    "path": "locales.{locale}.hero.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.heading_html",
+    "path": "locales.{locale}.hero.heading_html",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.image_alt",
+    "path": "locales.{locale}.hero.image_alt",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.intro",
+    "path": "locales.{locale}.hero.intro",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.label",
+    "path": "locales.{locale}.hero.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.schedule",
+    "path": "locales.{locale}.hero.schedule",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.subtitle",
+    "path": "locales.{locale}.hero.subtitle",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.tagline",
+    "path": "locales.{locale}.hero.tagline",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.info.address_label",
+    "path": "locales.{locale}.info.address_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.info.email_label",
+    "path": "locales.{locale}.info.email_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.info.highlight",
+    "path": "locales.{locale}.info.highlight",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.info.when_label",
+    "path": "locales.{locale}.info.when_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.info.when_value",
+    "path": "locales.{locale}.info.when_value",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.invitation.cta",
+    "path": "locales.{locale}.invitation.cta",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.invitation.heading",
+    "path": "locales.{locale}.invitation.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.invitation.label",
+    "path": "locales.{locale}.invitation.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.invitation.p1",
+    "path": "locales.{locale}.invitation.p1",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.invitation.p2",
+    "path": "locales.{locale}.invitation.p2",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.journal.all_posts",
+    "path": "locales.{locale}.journal.all_posts",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.journal.heading",
+    "path": "locales.{locale}.journal.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.learn.cards.item.text",
+    "path": "locales.{locale}.learn.cards[].text",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.learn.cards.item.title",
+    "path": "locales.{locale}.learn.cards[].title",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.learn.donation_note",
+    "path": "locales.{locale}.learn.donation_note",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.learn.heading",
+    "path": "locales.{locale}.learn.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.learn.label",
+    "path": "locales.{locale}.learn.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.manifest.label",
+    "path": "locales.{locale}.manifest.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.manifest.quote",
+    "path": "locales.{locale}.manifest.quote",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.manifest.source",
+    "path": "locales.{locale}.manifest.source",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.map.caption",
+    "path": "locales.{locale}.map.caption",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.map.heading",
+    "path": "locales.{locale}.map.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.map.label",
+    "path": "locales.{locale}.map.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.choose_label",
+    "path": "locales.{locale}.membership.choose_label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.heading",
+    "path": "locales.{locale}.membership.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.label",
+    "path": "locales.{locale}.membership.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.note",
+    "path": "locales.{locale}.membership.note",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.p1",
+    "path": "locales.{locale}.membership.p1",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.p2",
+    "path": "locales.{locale}.membership.p2",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.tiers.item.amount",
+    "path": "locales.{locale}.membership.tiers[].amount",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.tiers.item.aria",
+    "path": "locales.{locale}.membership.tiers[].aria",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.tiers.item.button",
+    "path": "locales.{locale}.membership.tiers[].button",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.tiers.item.desc",
+    "path": "locales.{locale}.membership.tiers[].desc",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.tiers.item.icon",
+    "path": "locales.{locale}.membership.tiers[].icon",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.tiers.item.name",
+    "path": "locales.{locale}.membership.tiers[].name",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.tiers.item.quote",
+    "path": "locales.{locale}.membership.tiers[].quote",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.membership.tiers.item.tier_arg",
+    "path": "locales.{locale}.membership.tiers[].tier_arg",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.meta.description",
+    "path": "locales.{locale}.meta.description",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.meta.og_description",
+    "path": "locales.{locale}.meta.og_description",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.meta.og_image_alt",
+    "path": "locales.{locale}.meta.og_image_alt",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.meta.og_title",
+    "path": "locales.{locale}.meta.og_title",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.meta.title",
+    "path": "locales.{locale}.meta.title",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.outlook.heading",
+    "path": "locales.{locale}.outlook.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.outlook.intro",
+    "path": "locales.{locale}.outlook.intro",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.outlook.label",
+    "path": "locales.{locale}.outlook.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.philosophy.heading",
+    "path": "locales.{locale}.philosophy.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.philosophy.label",
+    "path": "locales.{locale}.philosophy.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.philosophy.p1",
+    "path": "locales.{locale}.philosophy.p1",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.philosophy.p2",
+    "path": "locales.{locale}.philosophy.p2",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.philosophy.pillars.item.text",
+    "path": "locales.{locale}.philosophy.pillars[].text",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.philosophy.pillars.item.title",
+    "path": "locales.{locale}.philosophy.pillars[].title",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.practice.heading",
+    "path": "locales.{locale}.practice.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.practice.label",
+    "path": "locales.{locale}.practice.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.practice.p1",
+    "path": "locales.{locale}.practice.p1",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.practice.p2",
+    "path": "locales.{locale}.practice.p2",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.practice.poster",
+    "path": "locales.{locale}.practice.poster",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.projects.heading",
+    "path": "locales.{locale}.projects.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.projects.label",
+    "path": "locales.{locale}.projects.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.quote",
+    "path": "locales.{locale}.quote",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.quote_band.quote",
+    "path": "locales.{locale}.quote_band.quote",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.quote_band.source",
+    "path": "locales.{locale}.quote_band.source",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.team.heading",
+    "path": "locales.{locale}.team.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.team.label",
+    "path": "locales.{locale}.team.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.team.members.item.alt",
+    "path": "locales.{locale}.team.members[].alt",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.team.members.item.bio",
+    "path": "locales.{locale}.team.members[].bio",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.team.members.item.image",
+    "path": "locales.{locale}.team.members[].image",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.team.members.item.name",
+    "path": "locales.{locale}.team.members[].name",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.team.members.item.role",
+    "path": "locales.{locale}.team.members[].role",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.testimonials.heading",
+    "path": "locales.{locale}.testimonials.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.testimonials.items.item.author",
+    "path": "locales.{locale}.testimonials.items[].author",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.testimonials.items.item.quote",
+    "path": "locales.{locale}.testimonials.items[].quote",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.testimonials.label",
+    "path": "locales.{locale}.testimonials.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.values.cards.item.text",
+    "path": "locales.{locale}.values.cards[].text",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.values.cards.item.title",
+    "path": "locales.{locale}.values.cards[].title",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.values.heading",
+    "path": "locales.{locale}.values.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.values.label",
+    "path": "locales.{locale}.values.label",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.hero.image.src",
+    "path": "global.hero.image.src",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.hero.variant",
+    "path": "global.hero.variant",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.id",
+    "path": "global.id",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.image.src",
+    "path": "global.image.src",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.intended_locales.item",
+    "path": "global.intended_locales[]",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.meta.og_image",
+    "path": "global.meta.og_image",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.meta.og_image_height",
+    "path": "global.meta.og_image_height",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.meta.og_image_width",
+    "path": "global.meta.og_image_width",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.published_at",
+    "path": "global.published_at",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.route",
+    "path": "global.route",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.sort_order",
+    "path": "global.sort_order",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.status",
+    "path": "global.status",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "journal.g.global.tally",
+    "path": "global.tally",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": false,
+    "field_id": "journal.l.body",
+    "path": "locales.{locale}.body",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.cta.buttons.item.href",
+    "path": "locales.{locale}.cta.buttons[].href",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.cta.buttons.item.kind",
+    "path": "locales.{locale}.cta.buttons[].kind",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.cta.buttons.item.label",
+    "path": "locales.{locale}.cta.buttons[].label",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.cta.buttons.item.style",
+    "path": "locales.{locale}.cta.buttons[].style",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.cta.buttons.item.tally_open",
+    "path": "locales.{locale}.cta.buttons[].tally_open",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.cta.heading",
+    "path": "locales.{locale}.cta.heading",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.cta.text",
+    "path": "locales.{locale}.cta.text",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.excerpt",
+    "path": "locales.{locale}.excerpt",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.hero_alt",
+    "path": "locales.{locale}.hero_alt",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.homepage_excerpt",
+    "path": "locales.{locale}.homepage_excerpt",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.homepage_image_alt",
+    "path": "locales.{locale}.homepage_image_alt",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.homepage_title",
+    "path": "locales.{locale}.homepage_title",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.image_alt",
+    "path": "locales.{locale}.image_alt",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.meta.description",
+    "path": "locales.{locale}.meta.description",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.meta.og_description",
+    "path": "locales.{locale}.meta.og_description",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.meta.og_image_alt",
+    "path": "locales.{locale}.meta.og_image_alt",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.meta.og_title",
+    "path": "locales.{locale}.meta.og_title",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.meta.title",
+    "path": "locales.{locale}.meta.title",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.title",
+    "path": "locales.{locale}.title",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "journal.l.title_html",
+    "path": "locales.{locale}.title_html",
+    "record_type": "journal",
+    "source": "content/journal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "legal_page.g.global.id",
+    "path": "global.id",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "legal_page.g.global.intended_locales.item",
+    "path": "global.intended_locales[]",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "legal_page.g.global.meta.og_image",
+    "path": "global.meta.og_image",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "legal_page.g.global.meta.og_image_height",
+    "path": "global.meta.og_image_height",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "legal_page.g.global.meta.og_image_width",
+    "path": "global.meta.og_image_width",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "legal_page.g.global.route",
+    "path": "global.route",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "legal_page.g.global.status",
+    "path": "global.status",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": false,
+    "field_id": "legal_page.l.body",
+    "path": "locales.{locale}.body",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "legal_page.l.heading",
+    "path": "locales.{locale}.heading",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "legal_page.l.meta.description",
+    "path": "locales.{locale}.meta.description",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "legal_page.l.meta.og_description",
+    "path": "locales.{locale}.meta.og_description",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "legal_page.l.meta.og_image_alt",
+    "path": "locales.{locale}.meta.og_image_alt",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "legal_page.l.meta.og_title",
+    "path": "locales.{locale}.meta.og_title",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "legal_page.l.meta.title",
+    "path": "locales.{locale}.meta.title",
+    "record_type": "legal_page",
+    "source": "content/legal/records/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.id",
+    "path": "global.id",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.intended_locales.item",
+    "path": "global.intended_locales[]",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.nav.about_url",
+    "path": "global.nav.about_url",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.nav.cta_url",
+    "path": "global.nav.cta_url",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.nav.home_url",
+    "path": "global.nav.home_url",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.nav.join_url",
+    "path": "global.nav.join_url",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.nav.journal_url",
+    "path": "global.nav.journal_url",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.nav.program_url",
+    "path": "global.nav.program_url",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.seo.default_og_image",
+    "path": "global.seo.default_og_image",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.seo.default_og_image_height",
+    "path": "global.seo.default_og_image_height",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.seo.default_og_image_width",
+    "path": "global.seo.default_og_image_width",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "site_settings.g.global.status",
+    "path": "global.status",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.footer.brand_text",
+    "path": "locales.{locale}.footer.brand_text",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.footer.connect_heading",
+    "path": "locales.{locale}.footer.connect_heading",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.footer.contact_label",
+    "path": "locales.{locale}.footer.contact_label",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.footer.pages_heading",
+    "path": "locales.{locale}.footer.pages_heading",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.footer.tagline",
+    "path": "locales.{locale}.footer.tagline",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.nav.about",
+    "path": "locales.{locale}.nav.about",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.nav.cta",
+    "path": "locales.{locale}.nav.cta",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.nav.home",
+    "path": "locales.{locale}.nav.home",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.nav.join",
+    "path": "locales.{locale}.nav.join",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.nav.journal",
+    "path": "locales.{locale}.nav.journal",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.nav.program",
+    "path": "locales.{locale}.nav.program",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.seo.default_og_image_alt",
+    "path": "locales.{locale}.seo.default_og_image_alt",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.workshop_ui.detail_label",
+    "path": "locales.{locale}.workshop_ui.detail_label",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.workshop_ui.facilitators_label",
+    "path": "locales.{locale}.workshop_ui.facilitators_label",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.workshop_ui.faq_label",
+    "path": "locales.{locale}.workshop_ui.faq_label",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.workshop_ui.format_label",
+    "path": "locales.{locale}.workshop_ui.format_label",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.workshop_ui.info_title",
+    "path": "locales.{locale}.workshop_ui.info_title",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.workshop_ui.location_label",
+    "path": "locales.{locale}.workshop_ui.location_label",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.workshop_ui.price_label",
+    "path": "locales.{locale}.workshop_ui.price_label",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.workshop_ui.schedule_label",
+    "path": "locales.{locale}.workshop_ui.schedule_label",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "site_settings.l.workshop_ui.testimonials_label",
+    "path": "locales.{locale}.workshop_ui.testimonials_label",
+    "record_type": "site_settings",
+    "source": "content/site.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.description.show_info",
+    "path": "global.description.show_info",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.detail_page",
+    "path": "global.detail_page",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.hero.inset_image",
+    "path": "global.hero.inset_image",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.hero.inset_image_focus",
+    "path": "global.hero.inset_image_focus",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.hero.main_image",
+    "path": "global.hero.main_image",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.hero.main_image_focus",
+    "path": "global.hero.main_image_focus",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.hero.show_details",
+    "path": "global.hero.show_details",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.hero.video",
+    "path": "global.hero.video",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.hero.video_poster",
+    "path": "global.hero.video_poster",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.id",
+    "path": "global.id",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.image_band.image",
+    "path": "global.image_band.image",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.image_band.image_focus",
+    "path": "global.image_band.image_focus",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.intended_locales.item",
+    "path": "global.intended_locales[]",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.meta.og_image",
+    "path": "global.meta.og_image",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.meta.og_image_height",
+    "path": "global.meta.og_image_height",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.meta.og_image_width",
+    "path": "global.meta.og_image_width",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.registration.url",
+    "path": "global.registration.url",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.route",
+    "path": "global.route",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.sort_order",
+    "path": "global.sort_order",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.start_at",
+    "path": "global.start_at",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.status",
+    "path": "global.status",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.card.detail_label",
+    "path": "locales.{locale}.card.detail_label",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.card.subtitle",
+    "path": "locales.{locale}.card.subtitle",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.card.summary",
+    "path": "locales.{locale}.card.summary",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.card.tags.item.label",
+    "path": "locales.{locale}.card.tags[].label",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.card.tags.item.style",
+    "path": "locales.{locale}.card.tags[].style",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.closing_cta.button_label",
+    "path": "locales.{locale}.closing_cta.button_label",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.closing_cta.heading",
+    "path": "locales.{locale}.closing_cta.heading",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.closing_cta.text",
+    "path": "locales.{locale}.closing_cta.text",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.description.body",
+    "path": "locales.{locale}.description.body",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.description.heading",
+    "path": "locales.{locale}.description.heading",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.description.info_title",
+    "path": "locales.{locale}.description.info_title",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.description.label",
+    "path": "locales.{locale}.description.label",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facilitators.heading",
+    "path": "locales.{locale}.facilitators.heading",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facilitators.label",
+    "path": "locales.{locale}.facilitators.label",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facilitators.members.item.alt",
+    "path": "locales.{locale}.facilitators.members[].alt",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facilitators.members.item.bio",
+    "path": "locales.{locale}.facilitators.members[].bio",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facilitators.members.item.image",
+    "path": "locales.{locale}.facilitators.members[].image",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facilitators.members.item.image_focus",
+    "path": "locales.{locale}.facilitators.members[].image_focus",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facilitators.members.item.name",
+    "path": "locales.{locale}.facilitators.members[].name",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facilitators.members.item.role",
+    "path": "locales.{locale}.facilitators.members[].role",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facilitators.quotes.item.author",
+    "path": "locales.{locale}.facilitators.quotes[].author",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facilitators.quotes.item.quote",
+    "path": "locales.{locale}.facilitators.quotes[].quote",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.date",
+    "path": "locales.{locale}.facts.date",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.duration",
+    "path": "locales.{locale}.facts.duration",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.format.item",
+    "path": "locales.{locale}.facts.format[]",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.format.item.value",
+    "path": "locales.{locale}.facts.format[].value",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.location",
+    "path": "locales.{locale}.facts.location",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.price",
+    "path": "locales.{locale}.facts.price",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.price_details.item",
+    "path": "locales.{locale}.facts.price_details[]",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.price_details.item.value",
+    "path": "locales.{locale}.facts.price_details[].value",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.schedule.item",
+    "path": "locales.{locale}.facts.schedule[]",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.schedule.item.value",
+    "path": "locales.{locale}.facts.schedule[].value",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.time",
+    "path": "locales.{locale}.facts.time",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.faq.heading",
+    "path": "locales.{locale}.faq.heading",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.faq.items.item.a",
+    "path": "locales.{locale}.faq.items[].a",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.faq.items.item.q",
+    "path": "locales.{locale}.faq.items[].q",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.faq.label",
+    "path": "locales.{locale}.faq.label",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.hero.badge",
+    "path": "locales.{locale}.hero.badge",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.hero.headline",
+    "path": "locales.{locale}.hero.headline",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.hero.headline_accent",
+    "path": "locales.{locale}.hero.headline_accent",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.hero.inset_alt",
+    "path": "locales.{locale}.hero.inset_alt",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.hero.main_alt",
+    "path": "locales.{locale}.hero.main_alt",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.hero.note_text",
+    "path": "locales.{locale}.hero.note_text",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.hero.note_title",
+    "path": "locales.{locale}.hero.note_title",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.hero.subtitle",
+    "path": "locales.{locale}.hero.subtitle",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.hero.video_poster",
+    "path": "locales.{locale}.hero.video_poster",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.hero.visual_aria",
+    "path": "locales.{locale}.hero.visual_aria",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.image_band.alt",
+    "path": "locales.{locale}.image_band.alt",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.image_band.body",
+    "path": "locales.{locale}.image_band.body",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.image_band.heading",
+    "path": "locales.{locale}.image_band.heading",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.image_band.label",
+    "path": "locales.{locale}.image_band.label",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.meta.description",
+    "path": "locales.{locale}.meta.description",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.meta.og_description",
+    "path": "locales.{locale}.meta.og_description",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.meta.og_image_alt",
+    "path": "locales.{locale}.meta.og_image_alt",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.meta.og_title",
+    "path": "locales.{locale}.meta.og_title",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.meta.title",
+    "path": "locales.{locale}.meta.title",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.registration.label",
+    "path": "locales.{locale}.registration.label",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.registration.note",
+    "path": "locales.{locale}.registration.note",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.research.fields.item.highlighted",
+    "path": "locales.{locale}.research.fields[].highlighted",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.research.fields.item.number",
+    "path": "locales.{locale}.research.fields[].number",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.research.fields.item.text",
+    "path": "locales.{locale}.research.fields[].text",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.research.fields.item.title",
+    "path": "locales.{locale}.research.fields[].title",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.research.heading",
+    "path": "locales.{locale}.research.heading",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.research.label",
+    "path": "locales.{locale}.research.label",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.title",
+    "path": "locales.{locale}.title",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  }
+]

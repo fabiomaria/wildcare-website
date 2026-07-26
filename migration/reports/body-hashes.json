@@ -1,0 +1,59 @@
+{
+  "all_equal": true,
+  "body_files": [
+    {
+      "after_sha256": "22639c90bae1084eecec6cab0b48cef97acaee534b94b6b68cec1d5bf731ef31",
+      "before_sha256": "22639c90bae1084eecec6cab0b48cef97acaee534b94b6b68cec1d5bf731ef31",
+      "bytes": 1563,
+      "collection": "journal",
+      "equal": true,
+      "id": "bewegungsrevolution",
+      "locale": "en"
+    },
+    {
+      "after_sha256": "f8f89f0aa4fabf278a1a86e0641c6e9d6cec50bb6de5596a418f94d3ef656238",
+      "before_sha256": "f8f89f0aa4fabf278a1a86e0641c6e9d6cec50bb6de5596a418f94d3ef656238",
+      "bytes": 1733,
+      "collection": "journal",
+      "equal": true,
+      "id": "bewegungsrevolution",
+      "locale": "de"
+    },
+    {
+      "after_sha256": "059e6524eab53f5c50949eb3b7f6c2025688ce4162d69fa152b3d340b14e55b7",
+      "before_sha256": "059e6524eab53f5c50949eb3b7f6c2025688ce4162d69fa152b3d340b14e55b7",
+      "bytes": 1578,
+      "collection": "journal",
+      "equal": true,
+      "id": "warum-ci",
+      "locale": "en"
+    },
+    {
+      "after_sha256": "fec23111c5a0798522d98f5e0d4c1d6e742b4c079e4e11af6b5d33bc8f8d9244",
+      "before_sha256": "fec23111c5a0798522d98f5e0d4c1d6e742b4c079e4e11af6b5d33bc8f8d9244",
+      "bytes": 1783,
+      "collection": "journal",
+      "equal": true,
+      "id": "warum-ci",
+      "locale": "de"
+    },
+    {
+      "after_sha256": "02eb08d3cc53b34cc52302a98f1699e4ce13d7342dc20e254a4a76ea6f61f9ca",
+      "before_sha256": "02eb08d3cc53b34cc52302a98f1699e4ce13d7342dc20e254a4a76ea6f61f9ca",
+      "bytes": 4803,
+      "collection": "legal",
+      "equal": true,
+      "id": "datenschutz",
+      "locale": "de"
+    },
+    {
+      "after_sha256": "576e3addda75bc932274d9b20f508fef82c3ca0cb6570f7258d0696fb7578286",
+      "before_sha256": "576e3addda75bc932274d9b20f508fef82c3ca0cb6570f7258d0696fb7578286",
+      "bytes": 1388,
+      "collection": "legal",
+      "equal": true,
+      "id": "impressum",
+      "locale": "de"
+    }
+  ]
+}

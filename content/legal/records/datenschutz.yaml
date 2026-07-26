@@ -1,0 +1,13 @@
+schema_version: 2
+global:
+  id: datenschutz
+  intended_locales:
+    - de
+  status: published
+  route: /datenschutz
+locales:
+  de:
+    heading: Datenschutz­erklärung
+    meta:
+      title: Datenschutz — Wild Care | Verein für soziale Praxis, Graz
+      description: Datenschutzerklärung von Wild Care — Verein für Kontaktimprovisation und soziale Praxis in Graz.

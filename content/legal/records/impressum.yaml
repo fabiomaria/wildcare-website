@@ -1,0 +1,13 @@
+schema_version: 2
+global:
+  id: impressum
+  intended_locales:
+    - de
+  status: published
+  route: /impressum
+locales:
+  de:
+    heading: Impressum
+    meta:
+      title: Impressum — Wild Care | Verein für soziale Praxis, Graz
+      description: Impressum von Wild Care — Verein für Kontaktimprovisation und soziale Praxis in Graz. Rechtliche Informationen gemäß österreichischem Recht.

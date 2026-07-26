@@ -1,0 +1,16 @@
+schema_version: 2
+global:
+  id: cms-en-only
+  intended_locales:
+    - en
+  status: draft
+  route: /cms-en-only
+  hero:
+    image:
+      src: /assets/uploads/_dsc8336.webp
+      focal_point: center
+locales:
+  en:
+    title: English CMS test
+    hero:
+      image_alt: Dancers sharing weight

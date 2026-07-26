@@ -1,0 +1,63 @@
+{
+  "$id": "https://wildcare.space/schema/generated/site_settings.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "$comment": "33 leaf fields are enforced by scripts/schema/validate-content.js from registry revision 1."
+    }
+  ],
+  "properties": {
+    "global": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "intended_locales": {
+          "items": {
+            "enum": [
+              "de",
+              "en"
+            ]
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "status": {
+          "enum": [
+            "published"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "intended_locales",
+        "status"
+      ],
+      "type": "object"
+    },
+    "locales": {
+      "additionalProperties": {
+        "minProperties": 1,
+        "type": "object"
+      },
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$"
+      },
+      "type": "object"
+    },
+    "schema_version": {
+      "const": 2
+    }
+  },
+  "required": [
+    "schema_version",
+    "global",
+    "locales"
+  ],
+  "title": "Wild Care site_settings schema v2",
+  "type": "object"
+}

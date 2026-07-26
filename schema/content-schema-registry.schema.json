@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wildcare.space/schema/content-schema-registry.schema.json",
+  "title": "Wild Care content schema registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "registry_revision",
+    "supported_locales",
+    "enums",
+    "record_types"
+  ],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "registry_revision": { "type": "integer", "minimum": 1 },
+    "supported_locales": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$" }
+    },
+    "enums": { "type": "object" },
+    "ignored_content_keys": { "type": "array", "items": { "type": "string" } },
+    "record_types": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["source", "identity", "ordering", "templates", "fields"],
+        "properties": {
+          "source": { "type": "string" },
+          "identity": { "type": "object" },
+          "ordering": { "type": "object" },
+          "templates": { "type": "array", "items": { "type": "string" } },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "class",
+                "path",
+                "type",
+                "required",
+                "allow_empty",
+                "nullable",
+                "cms_visible",
+                "v1_source",
+                "v1_downgrade"
+              ],
+              "properties": {
+                "id": { "type": "string" },
+                "class": { "enum": ["G", "L", "G+O"] },
+                "path": { "type": "string" },
+                "type": { "type": "string" },
+                "required": { "type": "boolean" },
+                "required_when": { "type": "object" },
+                "allow_empty": { "type": "boolean" },
+                "nullable": { "type": "boolean" },
+                "enum": { "type": "string" },
+                "cms_visible": { "type": "boolean" },
+                "storage": { "type": "string" },
+                "path_pattern": { "type": "string" },
+                "override_path": { "type": "string" },
+                "atomic": { "type": "boolean" },
+                "v1_source": { "type": "object" },
+                "v1_downgrade": { "type": "object" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

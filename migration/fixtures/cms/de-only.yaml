@@ -1,0 +1,10 @@
+schema_version: 2
+global:
+  id: cms-de-only
+  intended_locales:
+    - de
+  status: draft
+  route: /cms-de-only
+locales:
+  de:
+    title: Deutscher CMS-Test

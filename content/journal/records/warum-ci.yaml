@@ -1,0 +1,59 @@
+schema_version: 2
+global:
+  id: warum-ci
+  intended_locales:
+    - de
+    - en
+  status: published
+  route: /journal/warum-ci
+  published_at: 2026-03-01T00:00:00.000Z
+  sort_order: 2
+  image:
+    src: assets/images/warum-ci.jpg
+  hero:
+    image:
+      src: assets/images/ci-cover.jpg
+    variant: cover
+  meta:
+    og_image: assets/images/warum-ci.jpg
+    og_image_width: 1200
+    og_image_height: 1393
+locales:
+  de:
+    title: Warum Contact Improvisation?
+    title_html: Warum Contact<br>Improvisation?
+    homepage_title: Warum Contact Improvisation?
+    excerpt: Über das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen — und warum es mehr ist als Tanz.
+    homepage_excerpt: Über das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen.
+    meta:
+      description: Was ist Contact Improvisation? Spielerisches Forschen mit Schwerkraft, Balance und Berührung. Warum es mehr ist als Tanz — und was du dabei lernst.
+      og_image_alt: Zwei Menschen begegnen einander in einer Contact-Improvisation-Bewegung.
+    image_alt: Contact Improvisation
+    hero_alt: Contact Improvisation — zwei Menschen in Bewegung
+    cta:
+      heading: Probier es aus
+      text: Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz. Keine Erfahrung nötig.
+      buttons:
+        - label: Kontakt & Anfahrt
+          kind: link
+          style: primary
+          href: ../kontakt
+  en:
+    title: Why Contact Improvisation?
+    title_html: Why Contact<br>Improvisation?
+    homepage_title: Why Contact Improvisation?
+    excerpt: On the playful exploration of gravity, balance and trust — and why it is so much more than dance.
+    homepage_excerpt: On the playful exploration of gravity, balance, and trust.
+    meta:
+      description: What is Contact Improvisation? Playful research with gravity, balance and touch. Why it is more than dance — and what you learn through it.
+      og_image_alt: Two people meeting through a Contact Improvisation movement.
+    image_alt: Contact Improvisation
+    hero_alt: Contact Improvisation — zwei Menschen in Bewegung
+    cta:
+      heading: Try It Out
+      text: Every Monday, 17:45, Orpheumgasse 11, Graz. No experience needed.
+      buttons:
+        - label: Contact & Directions
+          kind: link
+          style: primary
+          href: ../kontakt

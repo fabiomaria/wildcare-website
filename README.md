@@ -80,6 +80,7 @@ npm run deploy
 
 ## Project Documentation
 
+- [Greenfield CMS implementation playbook](docs/CMS-GREENFIELD-IMPLEMENTATION-PLAYBOOK.md)
 - [Current documentation index](docs/superpowers/README.md)
 - [Sveltia backend rework and follow-up](docs/superpowers/plans/2026-07-18-sveltia-backend-rework.md)
 - [CMS implementation brief](docs/superpowers/specs/2026-07-17-github-pages-cms-implementation-brief.md)

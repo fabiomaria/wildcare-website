@@ -1,0 +1,5672 @@
+{
+  "enums": {
+    "focal_point": [
+      "center",
+      "top",
+      "bottom",
+      "left",
+      "right",
+      "top-left",
+      "top-right",
+      "bottom-left",
+      "bottom-right"
+    ],
+    "journal_hero_variant": [
+      "cover",
+      "contained"
+    ],
+    "pricing_model": [
+      "fixed",
+      "donation",
+      "sliding_scale",
+      "free"
+    ],
+    "status": [
+      "draft",
+      "published",
+      "unlisted",
+      "upcoming",
+      "current",
+      "past",
+      "coming_soon"
+    ],
+    "status_by_record_type": {
+      "fixed_page": [
+        "draft",
+        "published",
+        "unlisted"
+      ],
+      "journal": [
+        "published",
+        "coming_soon",
+        "unlisted"
+      ],
+      "legal_page": [
+        "draft",
+        "published"
+      ],
+      "site_settings": [
+        "published"
+      ],
+      "workshop": [
+        "draft",
+        "upcoming",
+        "current",
+        "past",
+        "unlisted"
+      ]
+    }
+  },
+  "ignored_content_keys": [],
+  "record_types": {
+    "fixed_page": {
+      "fields": [
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.hero.image",
+          "nullable": false,
+          "path": "global.hero.image",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.hero.image"
+          },
+          "v1_source": {
+            "path": "de.hero.image"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.id",
+          "nullable": false,
+          "path": "global.id",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.id"
+          },
+          "v1_source": {
+            "path": "de.id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.intended_locales.item",
+          "nullable": false,
+          "path": "global.intended_locales[]",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.intended_locales[]"
+          },
+          "v1_source": {
+            "path": "de.intended_locales[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.meta.og_image",
+          "nullable": false,
+          "path": "global.meta.og_image",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.meta.og_image"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.meta.og_image_height",
+          "nullable": false,
+          "path": "global.meta.og_image_height",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.meta.og_image_height"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image_height"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.meta.og_image_width",
+          "nullable": false,
+          "path": "global.meta.og_image_width",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.meta.og_image_width"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image_width"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.outlook.show_links",
+          "nullable": false,
+          "path": "global.outlook.show_links",
+          "required": false,
+          "type": "boolean",
+          "v1_downgrade": {
+            "path": "de.outlook.show_links"
+          },
+          "v1_source": {
+            "path": "de.outlook.show_links"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.practice.poster",
+          "nullable": false,
+          "path": "global.practice.poster",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.practice.poster"
+          },
+          "v1_source": {
+            "path": "de.practice.poster"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.practice.video",
+          "nullable": false,
+          "path": "global.practice.video",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.practice.video"
+          },
+          "v1_source": {
+            "path": "de.practice.video"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.route",
+          "nullable": false,
+          "path": "global.route",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.route"
+          },
+          "v1_source": {
+            "path": "de.route"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "status",
+          "id": "fixed_page.g.global.status",
+          "nullable": false,
+          "path": "global.status",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.status"
+          },
+          "v1_source": {
+            "path": "de.status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.article.back",
+          "nullable": false,
+          "path": "locales.{locale}.article.back",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.article.back"
+          },
+          "v1_source": {
+            "path": "{locale}.article.back"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.article.related_heading",
+          "nullable": false,
+          "path": "locales.{locale}.article.related_heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.article.related_heading"
+          },
+          "v1_source": {
+            "path": "{locale}.article.related_heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.article.related_label",
+          "nullable": false,
+          "path": "locales.{locale}.article.related_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.article.related_label"
+          },
+          "v1_source": {
+            "path": "{locale}.article.related_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.breadcrumb",
+          "nullable": false,
+          "path": "locales.{locale}.breadcrumb",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.breadcrumb"
+          },
+          "v1_source": {
+            "path": "{locale}.breadcrumb"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.card.coming_soon",
+          "nullable": false,
+          "path": "locales.{locale}.card.coming_soon",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.card.coming_soon"
+          },
+          "v1_source": {
+            "path": "{locale}.card.coming_soon"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.card.read_more",
+          "nullable": false,
+          "path": "locales.{locale}.card.read_more",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.card.read_more"
+          },
+          "v1_source": {
+            "path": "{locale}.card.read_more"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.heading",
+          "nullable": false,
+          "path": "locales.{locale}.circles.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.inner.desc",
+          "nullable": false,
+          "path": "locales.{locale}.circles.inner.desc",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.inner.desc"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.inner.desc"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.inner.label",
+          "nullable": false,
+          "path": "locales.{locale}.circles.inner.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.inner.label"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.inner.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.inner.p1",
+          "nullable": false,
+          "path": "locales.{locale}.circles.inner.p1",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.inner.p1"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.inner.p1"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.inner.p2",
+          "nullable": false,
+          "path": "locales.{locale}.circles.inner.p2",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.inner.p2"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.inner.p2"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.inner.tags.item.tag",
+          "nullable": false,
+          "path": "locales.{locale}.circles.inner.tags[].tag",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.inner.tags[].tag"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.inner.tags[].tag"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.inner.title",
+          "nullable": false,
+          "path": "locales.{locale}.circles.inner.title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.inner.title"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.inner.title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.label",
+          "nullable": false,
+          "path": "locales.{locale}.circles.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.label"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.outer.desc",
+          "nullable": false,
+          "path": "locales.{locale}.circles.outer.desc",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.outer.desc"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.outer.desc"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.outer.label",
+          "nullable": false,
+          "path": "locales.{locale}.circles.outer.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.outer.label"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.outer.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.outer.p1",
+          "nullable": false,
+          "path": "locales.{locale}.circles.outer.p1",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.outer.p1"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.outer.p1"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.outer.p2",
+          "nullable": false,
+          "path": "locales.{locale}.circles.outer.p2",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.outer.p2"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.outer.p2"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.outer.tags.item.tag",
+          "nullable": false,
+          "path": "locales.{locale}.circles.outer.tags[].tag",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.outer.tags[].tag"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.outer.tags[].tag"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.circles.outer.title",
+          "nullable": false,
+          "path": "locales.{locale}.circles.outer.title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.circles.outer.title"
+          },
+          "v1_source": {
+            "path": "{locale}.circles.outer.title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core_message",
+          "nullable": false,
+          "path": "locales.{locale}.core_message",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core_message"
+          },
+          "v1_source": {
+            "path": "{locale}.core_message"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core.description_heading",
+          "nullable": false,
+          "path": "locales.{locale}.core.description_heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core.description_heading"
+          },
+          "v1_source": {
+            "path": "{locale}.core.description_heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core.heading",
+          "nullable": false,
+          "path": "locales.{locale}.core.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.core.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core.info_title",
+          "nullable": false,
+          "path": "locales.{locale}.core.info_title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core.info_title"
+          },
+          "v1_source": {
+            "path": "{locale}.core.info_title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core.label",
+          "nullable": false,
+          "path": "locales.{locale}.core.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core.label"
+          },
+          "v1_source": {
+            "path": "{locale}.core.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core.more_label",
+          "nullable": false,
+          "path": "locales.{locale}.core.more_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core.more_label"
+          },
+          "v1_source": {
+            "path": "{locale}.core.more_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core.paragraphs.item.text",
+          "nullable": false,
+          "path": "locales.{locale}.core.paragraphs[].text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core.paragraphs[].text"
+          },
+          "v1_source": {
+            "path": "{locale}.core.paragraphs[].text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core.quote",
+          "nullable": false,
+          "path": "locales.{locale}.core.quote",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core.quote"
+          },
+          "v1_source": {
+            "path": "{locale}.core.quote"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core.register_label",
+          "nullable": false,
+          "path": "locales.{locale}.core.register_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core.register_label"
+          },
+          "v1_source": {
+            "path": "{locale}.core.register_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core.rows.item.icon",
+          "nullable": false,
+          "path": "locales.{locale}.core.rows[].icon",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core.rows[].icon"
+          },
+          "v1_source": {
+            "path": "{locale}.core.rows[].icon"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core.rows.item.label",
+          "nullable": false,
+          "path": "locales.{locale}.core.rows[].label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core.rows[].label"
+          },
+          "v1_source": {
+            "path": "{locale}.core.rows[].label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.core.rows.item.value",
+          "nullable": false,
+          "path": "locales.{locale}.core.rows[].value",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.core.rows[].value"
+          },
+          "v1_source": {
+            "path": "{locale}.core.rows[].value"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.crosslink.button",
+          "nullable": false,
+          "path": "locales.{locale}.crosslink.button",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.crosslink.button"
+          },
+          "v1_source": {
+            "path": "{locale}.crosslink.button"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.crosslink.heading",
+          "nullable": false,
+          "path": "locales.{locale}.crosslink.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.crosslink.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.crosslink.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.crosslink.label",
+          "nullable": false,
+          "path": "locales.{locale}.crosslink.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.crosslink.label"
+          },
+          "v1_source": {
+            "path": "{locale}.crosslink.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.crosslink.text",
+          "nullable": false,
+          "path": "locales.{locale}.crosslink.text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.crosslink.text"
+          },
+          "v1_source": {
+            "path": "{locale}.crosslink.text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.button",
+          "nullable": false,
+          "path": "locales.{locale}.cta.button",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.button"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.button"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.consent_link",
+          "nullable": false,
+          "path": "locales.{locale}.cta.consent_link",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.consent_link"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.consent_link"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.consent_post",
+          "nullable": false,
+          "path": "locales.{locale}.cta.consent_post",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.consent_post"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.consent_post"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.consent_pre",
+          "nullable": false,
+          "path": "locales.{locale}.cta.consent_pre",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.consent_pre"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.consent_pre"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.email_label",
+          "nullable": false,
+          "path": "locales.{locale}.cta.email_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.email_label"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.email_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.email_placeholder",
+          "nullable": false,
+          "path": "locales.{locale}.cta.email_placeholder",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.email_placeholder"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.email_placeholder"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.error",
+          "nullable": false,
+          "path": "locales.{locale}.cta.error",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.error"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.error"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.first_name_label",
+          "nullable": false,
+          "path": "locales.{locale}.cta.first_name_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.first_name_label"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.first_name_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.first_name_placeholder",
+          "nullable": false,
+          "path": "locales.{locale}.cta.first_name_placeholder",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.first_name_placeholder"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.first_name_placeholder"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.heading",
+          "nullable": false,
+          "path": "locales.{locale}.cta.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.label",
+          "nullable": false,
+          "path": "locales.{locale}.cta.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.label"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.submit",
+          "nullable": false,
+          "path": "locales.{locale}.cta.submit",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.submit"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.submit"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.submitted",
+          "nullable": false,
+          "path": "locales.{locale}.cta.submitted",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.submitted"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.submitted"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.submitting",
+          "nullable": false,
+          "path": "locales.{locale}.cta.submitting",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.submitting"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.submitting"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.success",
+          "nullable": false,
+          "path": "locales.{locale}.cta.success",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.success"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.success"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.cta.text",
+          "nullable": false,
+          "path": "locales.{locale}.cta.text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.text"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.event_banner.address",
+          "nullable": false,
+          "path": "locales.{locale}.event_banner.address",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.event_banner.address"
+          },
+          "v1_source": {
+            "path": "{locale}.event_banner.address"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.event_banner.basis",
+          "nullable": false,
+          "path": "locales.{locale}.event_banner.basis",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.event_banner.basis"
+          },
+          "v1_source": {
+            "path": "{locale}.event_banner.basis"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.event_banner.day",
+          "nullable": false,
+          "path": "locales.{locale}.event_banner.day",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.event_banner.day"
+          },
+          "v1_source": {
+            "path": "{locale}.event_banner.day"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.event_banner.tag",
+          "nullable": false,
+          "path": "locales.{locale}.event_banner.tag",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.event_banner.tag"
+          },
+          "v1_source": {
+            "path": "{locale}.event_banner.tag"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.event_banner.time",
+          "nullable": false,
+          "path": "locales.{locale}.event_banner.time",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.event_banner.time"
+          },
+          "v1_source": {
+            "path": "{locale}.event_banner.time"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.faq.heading",
+          "nullable": false,
+          "path": "locales.{locale}.faq.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.faq.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.faq.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.faq.items.item.a",
+          "nullable": false,
+          "path": "locales.{locale}.faq.items[].a",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.faq.items[].a"
+          },
+          "v1_source": {
+            "path": "{locale}.faq.items[].a"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.faq.items.item.q",
+          "nullable": false,
+          "path": "locales.{locale}.faq.items[].q",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.faq.items[].q"
+          },
+          "v1_source": {
+            "path": "{locale}.faq.items[].q"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.faq.label",
+          "nullable": false,
+          "path": "locales.{locale}.faq.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.faq.label"
+          },
+          "v1_source": {
+            "path": "{locale}.faq.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.footer.connect_heading",
+          "nullable": false,
+          "path": "locales.{locale}.footer.connect_heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.footer.connect_heading"
+          },
+          "v1_source": {
+            "path": "{locale}.footer.connect_heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.email_label",
+          "nullable": false,
+          "path": "locales.{locale}.form.email_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.email_label"
+          },
+          "v1_source": {
+            "path": "{locale}.form.email_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.email_placeholder",
+          "nullable": false,
+          "path": "locales.{locale}.form.email_placeholder",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.email_placeholder"
+          },
+          "v1_source": {
+            "path": "{locale}.form.email_placeholder"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.error_message",
+          "nullable": false,
+          "path": "locales.{locale}.form.error_message",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.error_message"
+          },
+          "v1_source": {
+            "path": "{locale}.form.error_message"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.heading",
+          "nullable": false,
+          "path": "locales.{locale}.form.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.form.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.message_label",
+          "nullable": false,
+          "path": "locales.{locale}.form.message_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.message_label"
+          },
+          "v1_source": {
+            "path": "{locale}.form.message_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.message_placeholder",
+          "nullable": false,
+          "path": "locales.{locale}.form.message_placeholder",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.message_placeholder"
+          },
+          "v1_source": {
+            "path": "{locale}.form.message_placeholder"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.name_label",
+          "nullable": false,
+          "path": "locales.{locale}.form.name_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.name_label"
+          },
+          "v1_source": {
+            "path": "{locale}.form.name_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.name_placeholder",
+          "nullable": false,
+          "path": "locales.{locale}.form.name_placeholder",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.name_placeholder"
+          },
+          "v1_source": {
+            "path": "{locale}.form.name_placeholder"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.note",
+          "nullable": false,
+          "path": "locales.{locale}.form.note",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.note"
+          },
+          "v1_source": {
+            "path": "{locale}.form.note"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.submit_label",
+          "nullable": false,
+          "path": "locales.{locale}.form.submit_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.submit_label"
+          },
+          "v1_source": {
+            "path": "{locale}.form.submit_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.submitted_label",
+          "nullable": false,
+          "path": "locales.{locale}.form.submitted_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.submitted_label"
+          },
+          "v1_source": {
+            "path": "{locale}.form.submitted_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.submitting_label",
+          "nullable": false,
+          "path": "locales.{locale}.form.submitting_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.submitting_label"
+          },
+          "v1_source": {
+            "path": "{locale}.form.submitting_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.form.success_message",
+          "nullable": false,
+          "path": "locales.{locale}.form.success_message",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.form.success_message"
+          },
+          "v1_source": {
+            "path": "{locale}.form.success_message"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.address",
+          "nullable": false,
+          "path": "locales.{locale}.hero.address",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.address"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.address"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.basis",
+          "nullable": false,
+          "path": "locales.{locale}.hero.basis",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.basis"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.basis"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.cta",
+          "nullable": false,
+          "path": "locales.{locale}.hero.cta",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.cta"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.cta"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.cta_ghost",
+          "nullable": false,
+          "path": "locales.{locale}.hero.cta_ghost",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.cta_ghost"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.cta_ghost"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.cta_primary",
+          "nullable": false,
+          "path": "locales.{locale}.hero.cta_primary",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.cta_primary"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.cta_primary"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.cta_secondary",
+          "nullable": false,
+          "path": "locales.{locale}.hero.cta_secondary",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.cta_secondary"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.cta_secondary"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.heading",
+          "nullable": false,
+          "path": "locales.{locale}.hero.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.heading_html",
+          "nullable": false,
+          "path": "locales.{locale}.hero.heading_html",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.heading_html"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.heading_html"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.image_alt",
+          "nullable": false,
+          "path": "locales.{locale}.hero.image_alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.image_alt"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.image_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.intro",
+          "nullable": false,
+          "path": "locales.{locale}.hero.intro",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.intro"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.intro"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.label",
+          "nullable": false,
+          "path": "locales.{locale}.hero.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.label"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.schedule",
+          "nullable": false,
+          "path": "locales.{locale}.hero.schedule",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.schedule"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.schedule"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.subtitle",
+          "nullable": false,
+          "path": "locales.{locale}.hero.subtitle",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.subtitle"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.subtitle"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.tagline",
+          "nullable": false,
+          "path": "locales.{locale}.hero.tagline",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.tagline"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.tagline"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.info.address_label",
+          "nullable": false,
+          "path": "locales.{locale}.info.address_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.info.address_label"
+          },
+          "v1_source": {
+            "path": "{locale}.info.address_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.info.email_label",
+          "nullable": false,
+          "path": "locales.{locale}.info.email_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.info.email_label"
+          },
+          "v1_source": {
+            "path": "{locale}.info.email_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.info.highlight",
+          "nullable": false,
+          "path": "locales.{locale}.info.highlight",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.info.highlight"
+          },
+          "v1_source": {
+            "path": "{locale}.info.highlight"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.info.when_label",
+          "nullable": false,
+          "path": "locales.{locale}.info.when_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.info.when_label"
+          },
+          "v1_source": {
+            "path": "{locale}.info.when_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.info.when_value",
+          "nullable": false,
+          "path": "locales.{locale}.info.when_value",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.info.when_value"
+          },
+          "v1_source": {
+            "path": "{locale}.info.when_value"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.invitation.cta",
+          "nullable": false,
+          "path": "locales.{locale}.invitation.cta",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.invitation.cta"
+          },
+          "v1_source": {
+            "path": "{locale}.invitation.cta"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.invitation.heading",
+          "nullable": false,
+          "path": "locales.{locale}.invitation.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.invitation.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.invitation.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.invitation.label",
+          "nullable": false,
+          "path": "locales.{locale}.invitation.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.invitation.label"
+          },
+          "v1_source": {
+            "path": "{locale}.invitation.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.invitation.p1",
+          "nullable": false,
+          "path": "locales.{locale}.invitation.p1",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.invitation.p1"
+          },
+          "v1_source": {
+            "path": "{locale}.invitation.p1"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.invitation.p2",
+          "nullable": false,
+          "path": "locales.{locale}.invitation.p2",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.invitation.p2"
+          },
+          "v1_source": {
+            "path": "{locale}.invitation.p2"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.journal.all_posts",
+          "nullable": false,
+          "path": "locales.{locale}.journal.all_posts",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.journal.all_posts"
+          },
+          "v1_source": {
+            "path": "{locale}.journal.all_posts"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.journal.heading",
+          "nullable": false,
+          "path": "locales.{locale}.journal.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.journal.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.journal.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.learn.cards.item.text",
+          "nullable": false,
+          "path": "locales.{locale}.learn.cards[].text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.learn.cards[].text"
+          },
+          "v1_source": {
+            "path": "{locale}.learn.cards[].text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.learn.cards.item.title",
+          "nullable": false,
+          "path": "locales.{locale}.learn.cards[].title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.learn.cards[].title"
+          },
+          "v1_source": {
+            "path": "{locale}.learn.cards[].title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.learn.donation_note",
+          "nullable": false,
+          "path": "locales.{locale}.learn.donation_note",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.learn.donation_note"
+          },
+          "v1_source": {
+            "path": "{locale}.learn.donation_note"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.learn.heading",
+          "nullable": false,
+          "path": "locales.{locale}.learn.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.learn.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.learn.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.learn.label",
+          "nullable": false,
+          "path": "locales.{locale}.learn.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.learn.label"
+          },
+          "v1_source": {
+            "path": "{locale}.learn.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.manifest.label",
+          "nullable": false,
+          "path": "locales.{locale}.manifest.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.manifest.label"
+          },
+          "v1_source": {
+            "path": "{locale}.manifest.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.manifest.quote",
+          "nullable": false,
+          "path": "locales.{locale}.manifest.quote",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.manifest.quote"
+          },
+          "v1_source": {
+            "path": "{locale}.manifest.quote"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.manifest.source",
+          "nullable": false,
+          "path": "locales.{locale}.manifest.source",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.manifest.source"
+          },
+          "v1_source": {
+            "path": "{locale}.manifest.source"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.map.caption",
+          "nullable": false,
+          "path": "locales.{locale}.map.caption",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.map.caption"
+          },
+          "v1_source": {
+            "path": "{locale}.map.caption"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.map.heading",
+          "nullable": false,
+          "path": "locales.{locale}.map.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.map.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.map.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.map.label",
+          "nullable": false,
+          "path": "locales.{locale}.map.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.map.label"
+          },
+          "v1_source": {
+            "path": "{locale}.map.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.choose_label",
+          "nullable": false,
+          "path": "locales.{locale}.membership.choose_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.choose_label"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.choose_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.heading",
+          "nullable": false,
+          "path": "locales.{locale}.membership.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.label",
+          "nullable": false,
+          "path": "locales.{locale}.membership.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.label"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.note",
+          "nullable": false,
+          "path": "locales.{locale}.membership.note",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.note"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.note"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.p1",
+          "nullable": false,
+          "path": "locales.{locale}.membership.p1",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.p1"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.p1"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.p2",
+          "nullable": false,
+          "path": "locales.{locale}.membership.p2",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.p2"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.p2"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.tiers.item.amount",
+          "nullable": false,
+          "path": "locales.{locale}.membership.tiers[].amount",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.tiers[].amount"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.tiers[].amount"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.tiers.item.aria",
+          "nullable": false,
+          "path": "locales.{locale}.membership.tiers[].aria",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.tiers[].aria"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.tiers[].aria"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.tiers.item.button",
+          "nullable": false,
+          "path": "locales.{locale}.membership.tiers[].button",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.tiers[].button"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.tiers[].button"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.tiers.item.desc",
+          "nullable": false,
+          "path": "locales.{locale}.membership.tiers[].desc",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.tiers[].desc"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.tiers[].desc"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.tiers.item.icon",
+          "nullable": false,
+          "path": "locales.{locale}.membership.tiers[].icon",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.tiers[].icon"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.tiers[].icon"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.tiers.item.name",
+          "nullable": false,
+          "path": "locales.{locale}.membership.tiers[].name",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.tiers[].name"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.tiers[].name"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.tiers.item.quote",
+          "nullable": false,
+          "path": "locales.{locale}.membership.tiers[].quote",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.tiers[].quote"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.tiers[].quote"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.membership.tiers.item.tier_arg",
+          "nullable": false,
+          "path": "locales.{locale}.membership.tiers[].tier_arg",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.membership.tiers[].tier_arg"
+          },
+          "v1_source": {
+            "path": "{locale}.membership.tiers[].tier_arg"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.meta.description",
+          "nullable": false,
+          "path": "locales.{locale}.meta.description",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.description"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.description"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.meta.og_description",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_description",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_description"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_description"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.meta.og_image_alt",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_image_alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_image_alt"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_image_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.meta.og_title",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_title"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.meta.title",
+          "nullable": false,
+          "path": "locales.{locale}.meta.title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.title"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.outlook.heading",
+          "nullable": false,
+          "path": "locales.{locale}.outlook.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.outlook.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.outlook.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.outlook.intro",
+          "nullable": false,
+          "path": "locales.{locale}.outlook.intro",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.outlook.intro"
+          },
+          "v1_source": {
+            "path": "{locale}.outlook.intro"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.outlook.label",
+          "nullable": false,
+          "path": "locales.{locale}.outlook.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.outlook.label"
+          },
+          "v1_source": {
+            "path": "{locale}.outlook.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.philosophy.heading",
+          "nullable": false,
+          "path": "locales.{locale}.philosophy.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.philosophy.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.philosophy.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.philosophy.label",
+          "nullable": false,
+          "path": "locales.{locale}.philosophy.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.philosophy.label"
+          },
+          "v1_source": {
+            "path": "{locale}.philosophy.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.philosophy.p1",
+          "nullable": false,
+          "path": "locales.{locale}.philosophy.p1",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.philosophy.p1"
+          },
+          "v1_source": {
+            "path": "{locale}.philosophy.p1"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.philosophy.p2",
+          "nullable": false,
+          "path": "locales.{locale}.philosophy.p2",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.philosophy.p2"
+          },
+          "v1_source": {
+            "path": "{locale}.philosophy.p2"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.philosophy.pillars.item.text",
+          "nullable": false,
+          "path": "locales.{locale}.philosophy.pillars[].text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.philosophy.pillars[].text"
+          },
+          "v1_source": {
+            "path": "{locale}.philosophy.pillars[].text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.philosophy.pillars.item.title",
+          "nullable": false,
+          "path": "locales.{locale}.philosophy.pillars[].title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.philosophy.pillars[].title"
+          },
+          "v1_source": {
+            "path": "{locale}.philosophy.pillars[].title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.practice.heading",
+          "nullable": false,
+          "path": "locales.{locale}.practice.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.practice.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.practice.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.practice.label",
+          "nullable": false,
+          "path": "locales.{locale}.practice.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.practice.label"
+          },
+          "v1_source": {
+            "path": "{locale}.practice.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.practice.p1",
+          "nullable": false,
+          "path": "locales.{locale}.practice.p1",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.practice.p1"
+          },
+          "v1_source": {
+            "path": "{locale}.practice.p1"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.practice.p2",
+          "nullable": false,
+          "path": "locales.{locale}.practice.p2",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.practice.p2"
+          },
+          "v1_source": {
+            "path": "{locale}.practice.p2"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.practice.poster",
+          "nullable": false,
+          "path": "locales.{locale}.practice.poster",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.practice.poster"
+          },
+          "v1_source": {
+            "path": "{locale}.practice.poster"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.projects.heading",
+          "nullable": false,
+          "path": "locales.{locale}.projects.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.projects.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.projects.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.projects.label",
+          "nullable": false,
+          "path": "locales.{locale}.projects.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.projects.label"
+          },
+          "v1_source": {
+            "path": "{locale}.projects.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.quote",
+          "nullable": false,
+          "path": "locales.{locale}.quote",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.quote"
+          },
+          "v1_source": {
+            "path": "{locale}.quote"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.quote_band.quote",
+          "nullable": false,
+          "path": "locales.{locale}.quote_band.quote",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.quote_band.quote"
+          },
+          "v1_source": {
+            "path": "{locale}.quote_band.quote"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.quote_band.source",
+          "nullable": false,
+          "path": "locales.{locale}.quote_band.source",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.quote_band.source"
+          },
+          "v1_source": {
+            "path": "{locale}.quote_band.source"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.team.heading",
+          "nullable": false,
+          "path": "locales.{locale}.team.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.team.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.team.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.team.label",
+          "nullable": false,
+          "path": "locales.{locale}.team.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.team.label"
+          },
+          "v1_source": {
+            "path": "{locale}.team.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.team.members.item.alt",
+          "nullable": false,
+          "path": "locales.{locale}.team.members[].alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.team.members[].alt"
+          },
+          "v1_source": {
+            "path": "{locale}.team.members[].alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.team.members.item.bio",
+          "nullable": false,
+          "path": "locales.{locale}.team.members[].bio",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.team.members[].bio"
+          },
+          "v1_source": {
+            "path": "{locale}.team.members[].bio"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.team.members.item.image",
+          "nullable": false,
+          "path": "locales.{locale}.team.members[].image",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.team.members[].image"
+          },
+          "v1_source": {
+            "path": "{locale}.team.members[].image"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.team.members.item.name",
+          "nullable": false,
+          "path": "locales.{locale}.team.members[].name",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.team.members[].name"
+          },
+          "v1_source": {
+            "path": "{locale}.team.members[].name"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.team.members.item.role",
+          "nullable": false,
+          "path": "locales.{locale}.team.members[].role",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.team.members[].role"
+          },
+          "v1_source": {
+            "path": "{locale}.team.members[].role"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.testimonials.heading",
+          "nullable": false,
+          "path": "locales.{locale}.testimonials.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.testimonials.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.testimonials.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.testimonials.items.item.author",
+          "nullable": false,
+          "path": "locales.{locale}.testimonials.items[].author",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.testimonials.items[].author"
+          },
+          "v1_source": {
+            "path": "{locale}.testimonials.items[].author"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.testimonials.items.item.quote",
+          "nullable": false,
+          "path": "locales.{locale}.testimonials.items[].quote",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.testimonials.items[].quote"
+          },
+          "v1_source": {
+            "path": "{locale}.testimonials.items[].quote"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.testimonials.label",
+          "nullable": false,
+          "path": "locales.{locale}.testimonials.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.testimonials.label"
+          },
+          "v1_source": {
+            "path": "{locale}.testimonials.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.values.cards.item.text",
+          "nullable": false,
+          "path": "locales.{locale}.values.cards[].text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.values.cards[].text"
+          },
+          "v1_source": {
+            "path": "{locale}.values.cards[].text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.values.cards.item.title",
+          "nullable": false,
+          "path": "locales.{locale}.values.cards[].title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.values.cards[].title"
+          },
+          "v1_source": {
+            "path": "{locale}.values.cards[].title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.values.heading",
+          "nullable": false,
+          "path": "locales.{locale}.values.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.values.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.values.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.values.label",
+          "nullable": false,
+          "path": "locales.{locale}.values.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.values.label"
+          },
+          "v1_source": {
+            "path": "{locale}.values.label"
+          }
+        }
+      ],
+      "identity": {
+        "field": "global.id",
+        "filename_stem_must_match": true
+      },
+      "ordering": {
+        "primary": "global.route",
+        "tie_breakers": [
+          "global.sort_order",
+          "global.id"
+        ]
+      },
+      "source": "content/pages/*.yaml",
+      "templates": [
+        "index",
+        "kontakt",
+        "team",
+        "journal",
+        "programm",
+        "montagskurs",
+        "mitmachen"
+      ]
+    },
+    "journal": {
+      "fields": [
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "journal.g.global.hero.image.src",
+          "nullable": false,
+          "path": "global.hero.image.src",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.hero.image.src"
+          },
+          "v1_source": {
+            "path": "de.hero.image.src"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "journal_hero_variant",
+          "id": "journal.g.global.hero.variant",
+          "nullable": false,
+          "path": "global.hero.variant",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.hero.variant"
+          },
+          "v1_source": {
+            "path": "de.hero.variant"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "journal.g.global.id",
+          "nullable": false,
+          "path": "global.id",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.id"
+          },
+          "v1_source": {
+            "path": "de.id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "journal.g.global.image.src",
+          "nullable": false,
+          "path": "global.image.src",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.image.src"
+          },
+          "v1_source": {
+            "path": "de.image.src"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "journal.g.global.intended_locales.item",
+          "nullable": false,
+          "path": "global.intended_locales[]",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.intended_locales[]"
+          },
+          "v1_source": {
+            "path": "de.intended_locales[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "journal.g.global.meta.og_image",
+          "nullable": false,
+          "path": "global.meta.og_image",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.meta.og_image"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "journal.g.global.meta.og_image_height",
+          "nullable": false,
+          "path": "global.meta.og_image_height",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.meta.og_image_height"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image_height"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "journal.g.global.meta.og_image_width",
+          "nullable": false,
+          "path": "global.meta.og_image_width",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.meta.og_image_width"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image_width"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "journal.g.global.published_at",
+          "nullable": false,
+          "path": "global.published_at",
+          "required": false,
+          "type": "datetime",
+          "v1_downgrade": {
+            "path": "de.published_at"
+          },
+          "v1_source": {
+            "path": "de.published_at"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "journal.g.global.route",
+          "nullable": false,
+          "path": "global.route",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.route"
+          },
+          "v1_source": {
+            "path": "de.route"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "journal.g.global.sort_order",
+          "nullable": false,
+          "path": "global.sort_order",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.sort_order"
+          },
+          "v1_source": {
+            "path": "de.sort_order"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "status",
+          "id": "journal.g.global.status",
+          "nullable": false,
+          "path": "global.status",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.status"
+          },
+          "v1_source": {
+            "path": "de.status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "journal.g.global.tally",
+          "nullable": false,
+          "path": "global.tally",
+          "required": false,
+          "type": "boolean",
+          "v1_downgrade": {
+            "path": "de.tally"
+          },
+          "v1_source": {
+            "path": "de.tally"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": false,
+          "id": "journal.l.body",
+          "nullable": false,
+          "path": "locales.{locale}.body",
+          "path_pattern": "content/journal/bodies/{id}.{locale}.md",
+          "required": false,
+          "storage": "markdown_file",
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.body"
+          },
+          "v1_source": {
+            "path": "{locale}.body"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.cta.buttons.item.href",
+          "nullable": false,
+          "path": "locales.{locale}.cta.buttons[].href",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.buttons[].href"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.buttons[].href"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.cta.buttons.item.kind",
+          "nullable": false,
+          "path": "locales.{locale}.cta.buttons[].kind",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.buttons[].kind"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.buttons[].kind"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.cta.buttons.item.label",
+          "nullable": false,
+          "path": "locales.{locale}.cta.buttons[].label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.buttons[].label"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.buttons[].label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.cta.buttons.item.style",
+          "nullable": false,
+          "path": "locales.{locale}.cta.buttons[].style",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.buttons[].style"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.buttons[].style"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.cta.buttons.item.tally_open",
+          "nullable": false,
+          "path": "locales.{locale}.cta.buttons[].tally_open",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.buttons[].tally_open"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.buttons[].tally_open"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.cta.heading",
+          "nullable": false,
+          "path": "locales.{locale}.cta.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.cta.text",
+          "nullable": false,
+          "path": "locales.{locale}.cta.text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.cta.text"
+          },
+          "v1_source": {
+            "path": "{locale}.cta.text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.excerpt",
+          "nullable": false,
+          "path": "locales.{locale}.excerpt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.excerpt"
+          },
+          "v1_source": {
+            "path": "{locale}.excerpt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.hero_alt",
+          "nullable": false,
+          "path": "locales.{locale}.hero_alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero_alt"
+          },
+          "v1_source": {
+            "path": "{locale}.hero_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.homepage_excerpt",
+          "nullable": false,
+          "path": "locales.{locale}.homepage_excerpt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.homepage_excerpt"
+          },
+          "v1_source": {
+            "path": "{locale}.homepage_excerpt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.homepage_image_alt",
+          "nullable": false,
+          "path": "locales.{locale}.homepage_image_alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.homepage_image_alt"
+          },
+          "v1_source": {
+            "path": "{locale}.homepage_image_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.homepage_title",
+          "nullable": false,
+          "path": "locales.{locale}.homepage_title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.homepage_title"
+          },
+          "v1_source": {
+            "path": "{locale}.homepage_title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.image_alt",
+          "nullable": false,
+          "path": "locales.{locale}.image_alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.image_alt"
+          },
+          "v1_source": {
+            "path": "{locale}.image_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.meta.description",
+          "nullable": false,
+          "path": "locales.{locale}.meta.description",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.description"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.description"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.meta.og_description",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_description",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_description"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_description"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.meta.og_image_alt",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_image_alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_image_alt"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_image_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.meta.og_title",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_title"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.meta.title",
+          "nullable": false,
+          "path": "locales.{locale}.meta.title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.title"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.title",
+          "nullable": false,
+          "path": "locales.{locale}.title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.title"
+          },
+          "v1_source": {
+            "path": "{locale}.title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "journal.l.title_html",
+          "nullable": false,
+          "path": "locales.{locale}.title_html",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.title_html"
+          },
+          "v1_source": {
+            "path": "{locale}.title_html"
+          }
+        }
+      ],
+      "identity": {
+        "field": "global.id",
+        "filename_stem_must_match": true
+      },
+      "ordering": {
+        "primary": "global.published_at:desc",
+        "tie_breakers": [
+          "global.sort_order",
+          "global.id"
+        ]
+      },
+      "source": "content/journal/records/*.yaml",
+      "templates": [
+        "journal-post"
+      ]
+    },
+    "legal_page": {
+      "fields": [
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "legal_page.g.global.id",
+          "nullable": false,
+          "path": "global.id",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.id"
+          },
+          "v1_source": {
+            "path": "de.id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "legal_page.g.global.intended_locales.item",
+          "nullable": false,
+          "path": "global.intended_locales[]",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.intended_locales[]"
+          },
+          "v1_source": {
+            "path": "de.intended_locales[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "legal_page.g.global.meta.og_image",
+          "nullable": false,
+          "path": "global.meta.og_image",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.meta.og_image"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "legal_page.g.global.meta.og_image_height",
+          "nullable": false,
+          "path": "global.meta.og_image_height",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.meta.og_image_height"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image_height"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "legal_page.g.global.meta.og_image_width",
+          "nullable": false,
+          "path": "global.meta.og_image_width",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.meta.og_image_width"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image_width"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "legal_page.g.global.route",
+          "nullable": false,
+          "path": "global.route",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.route"
+          },
+          "v1_source": {
+            "path": "de.route"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "status",
+          "id": "legal_page.g.global.status",
+          "nullable": false,
+          "path": "global.status",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.status"
+          },
+          "v1_source": {
+            "path": "de.status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": false,
+          "id": "legal_page.l.body",
+          "nullable": false,
+          "path": "locales.{locale}.body",
+          "path_pattern": "content/legal/bodies/{id}.{locale}.md",
+          "required": false,
+          "storage": "markdown_file",
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.body"
+          },
+          "v1_source": {
+            "path": "{locale}.body"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "legal_page.l.heading",
+          "nullable": false,
+          "path": "locales.{locale}.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "legal_page.l.meta.description",
+          "nullable": false,
+          "path": "locales.{locale}.meta.description",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.description"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.description"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "legal_page.l.meta.og_description",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_description",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_description"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_description"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "legal_page.l.meta.og_image_alt",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_image_alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_image_alt"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_image_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "legal_page.l.meta.og_title",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_title"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "legal_page.l.meta.title",
+          "nullable": false,
+          "path": "locales.{locale}.meta.title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.title"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.title"
+          }
+        }
+      ],
+      "identity": {
+        "field": "global.id",
+        "filename_stem_must_match": true
+      },
+      "ordering": {
+        "primary": "global.id",
+        "tie_breakers": [
+          "global.sort_order",
+          "global.id"
+        ]
+      },
+      "source": "content/legal/records/*.yaml",
+      "templates": [
+        "legal"
+      ]
+    },
+    "site_settings": {
+      "fields": [
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "site_settings.g.global.id",
+          "nullable": false,
+          "path": "global.id",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.id"
+          },
+          "v1_source": {
+            "path": "de.id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "site_settings.g.global.intended_locales.item",
+          "nullable": false,
+          "path": "global.intended_locales[]",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.intended_locales[]"
+          },
+          "v1_source": {
+            "path": "de.intended_locales[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "site_settings.g.global.nav.about_url",
+          "nullable": false,
+          "path": "global.nav.about_url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.nav.about_url"
+          },
+          "v1_source": {
+            "path": "de.nav.about_url"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "site_settings.g.global.nav.cta_url",
+          "nullable": false,
+          "path": "global.nav.cta_url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.nav.cta_url"
+          },
+          "v1_source": {
+            "path": "de.nav.cta_url"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "site_settings.g.global.nav.home_url",
+          "nullable": false,
+          "path": "global.nav.home_url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.nav.home_url"
+          },
+          "v1_source": {
+            "path": "de.nav.home_url"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "site_settings.g.global.nav.join_url",
+          "nullable": false,
+          "path": "global.nav.join_url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.nav.join_url"
+          },
+          "v1_source": {
+            "path": "de.nav.join_url"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "site_settings.g.global.nav.journal_url",
+          "nullable": false,
+          "path": "global.nav.journal_url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.nav.journal_url"
+          },
+          "v1_source": {
+            "path": "de.nav.journal_url"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "site_settings.g.global.nav.program_url",
+          "nullable": false,
+          "path": "global.nav.program_url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.nav.program_url"
+          },
+          "v1_source": {
+            "path": "de.nav.program_url"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "site_settings.g.global.seo.default_og_image",
+          "nullable": false,
+          "path": "global.seo.default_og_image",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.seo.default_og_image"
+          },
+          "v1_source": {
+            "path": "de.seo.default_og_image"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "site_settings.g.global.seo.default_og_image_height",
+          "nullable": false,
+          "path": "global.seo.default_og_image_height",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.seo.default_og_image_height"
+          },
+          "v1_source": {
+            "path": "de.seo.default_og_image_height"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "site_settings.g.global.seo.default_og_image_width",
+          "nullable": false,
+          "path": "global.seo.default_og_image_width",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.seo.default_og_image_width"
+          },
+          "v1_source": {
+            "path": "de.seo.default_og_image_width"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "status",
+          "id": "site_settings.g.global.status",
+          "nullable": false,
+          "path": "global.status",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.status"
+          },
+          "v1_source": {
+            "path": "de.status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.footer.brand_text",
+          "nullable": false,
+          "path": "locales.{locale}.footer.brand_text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.footer.brand_text"
+          },
+          "v1_source": {
+            "path": "{locale}.footer.brand_text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.footer.connect_heading",
+          "nullable": false,
+          "path": "locales.{locale}.footer.connect_heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.footer.connect_heading"
+          },
+          "v1_source": {
+            "path": "{locale}.footer.connect_heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.footer.contact_label",
+          "nullable": false,
+          "path": "locales.{locale}.footer.contact_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.footer.contact_label"
+          },
+          "v1_source": {
+            "path": "{locale}.footer.contact_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.footer.pages_heading",
+          "nullable": false,
+          "path": "locales.{locale}.footer.pages_heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.footer.pages_heading"
+          },
+          "v1_source": {
+            "path": "{locale}.footer.pages_heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.footer.tagline",
+          "nullable": false,
+          "path": "locales.{locale}.footer.tagline",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.footer.tagline"
+          },
+          "v1_source": {
+            "path": "{locale}.footer.tagline"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.nav.about",
+          "nullable": false,
+          "path": "locales.{locale}.nav.about",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.nav.about"
+          },
+          "v1_source": {
+            "path": "{locale}.nav.about"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.nav.cta",
+          "nullable": false,
+          "path": "locales.{locale}.nav.cta",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.nav.cta"
+          },
+          "v1_source": {
+            "path": "{locale}.nav.cta"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.nav.home",
+          "nullable": false,
+          "path": "locales.{locale}.nav.home",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.nav.home"
+          },
+          "v1_source": {
+            "path": "{locale}.nav.home"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.nav.join",
+          "nullable": false,
+          "path": "locales.{locale}.nav.join",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.nav.join"
+          },
+          "v1_source": {
+            "path": "{locale}.nav.join"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.nav.journal",
+          "nullable": false,
+          "path": "locales.{locale}.nav.journal",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.nav.journal"
+          },
+          "v1_source": {
+            "path": "{locale}.nav.journal"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.nav.program",
+          "nullable": false,
+          "path": "locales.{locale}.nav.program",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.nav.program"
+          },
+          "v1_source": {
+            "path": "{locale}.nav.program"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.seo.default_og_image_alt",
+          "nullable": false,
+          "path": "locales.{locale}.seo.default_og_image_alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.seo.default_og_image_alt"
+          },
+          "v1_source": {
+            "path": "{locale}.seo.default_og_image_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.workshop_ui.detail_label",
+          "nullable": false,
+          "path": "locales.{locale}.workshop_ui.detail_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.workshop_ui.detail_label"
+          },
+          "v1_source": {
+            "path": "{locale}.workshop_ui.detail_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.workshop_ui.facilitators_label",
+          "nullable": false,
+          "path": "locales.{locale}.workshop_ui.facilitators_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.workshop_ui.facilitators_label"
+          },
+          "v1_source": {
+            "path": "{locale}.workshop_ui.facilitators_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.workshop_ui.faq_label",
+          "nullable": false,
+          "path": "locales.{locale}.workshop_ui.faq_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.workshop_ui.faq_label"
+          },
+          "v1_source": {
+            "path": "{locale}.workshop_ui.faq_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.workshop_ui.format_label",
+          "nullable": false,
+          "path": "locales.{locale}.workshop_ui.format_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.workshop_ui.format_label"
+          },
+          "v1_source": {
+            "path": "{locale}.workshop_ui.format_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.workshop_ui.info_title",
+          "nullable": false,
+          "path": "locales.{locale}.workshop_ui.info_title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.workshop_ui.info_title"
+          },
+          "v1_source": {
+            "path": "{locale}.workshop_ui.info_title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.workshop_ui.location_label",
+          "nullable": false,
+          "path": "locales.{locale}.workshop_ui.location_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.workshop_ui.location_label"
+          },
+          "v1_source": {
+            "path": "{locale}.workshop_ui.location_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.workshop_ui.price_label",
+          "nullable": false,
+          "path": "locales.{locale}.workshop_ui.price_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.workshop_ui.price_label"
+          },
+          "v1_source": {
+            "path": "{locale}.workshop_ui.price_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.workshop_ui.schedule_label",
+          "nullable": false,
+          "path": "locales.{locale}.workshop_ui.schedule_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.workshop_ui.schedule_label"
+          },
+          "v1_source": {
+            "path": "{locale}.workshop_ui.schedule_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "site_settings.l.workshop_ui.testimonials_label",
+          "nullable": false,
+          "path": "locales.{locale}.workshop_ui.testimonials_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.workshop_ui.testimonials_label"
+          },
+          "v1_source": {
+            "path": "{locale}.workshop_ui.testimonials_label"
+          }
+        }
+      ],
+      "identity": {
+        "field": "global.id",
+        "filename_stem_must_match": true
+      },
+      "ordering": {
+        "primary": "global.id",
+        "tie_breakers": [
+          "global.sort_order",
+          "global.id"
+        ]
+      },
+      "source": "content/site.yaml",
+      "templates": [
+        "site"
+      ]
+    },
+    "workshop": {
+      "fields": [
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.description.show_info",
+          "nullable": false,
+          "path": "global.description.show_info",
+          "required": false,
+          "type": "boolean",
+          "v1_downgrade": {
+            "path": "de.description.show_info"
+          },
+          "v1_source": {
+            "path": "de.description.show_info"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.detail_page",
+          "nullable": false,
+          "path": "global.detail_page",
+          "required": false,
+          "type": "boolean",
+          "v1_downgrade": {
+            "path": "de.detail_page"
+          },
+          "v1_source": {
+            "path": "de.detail_page"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.hero.inset_image",
+          "nullable": false,
+          "path": "global.hero.inset_image",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.hero.inset_image"
+          },
+          "v1_source": {
+            "path": "de.hero.inset_image"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "focal_point",
+          "id": "workshop.g.global.hero.inset_image_focus",
+          "nullable": false,
+          "path": "global.hero.inset_image_focus",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.hero.inset_image_focus"
+          },
+          "v1_source": {
+            "path": "de.hero.inset_image_focus"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.hero.main_image",
+          "nullable": false,
+          "path": "global.hero.main_image",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.hero.main_image"
+          },
+          "v1_source": {
+            "path": "de.hero.main_image"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "focal_point",
+          "id": "workshop.g.global.hero.main_image_focus",
+          "nullable": false,
+          "path": "global.hero.main_image_focus",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.hero.main_image_focus"
+          },
+          "v1_source": {
+            "path": "de.hero.main_image_focus"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.hero.show_details",
+          "nullable": false,
+          "path": "global.hero.show_details",
+          "required": false,
+          "type": "boolean",
+          "v1_downgrade": {
+            "path": "de.hero.show_details"
+          },
+          "v1_source": {
+            "path": "de.hero.show_details"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.hero.video",
+          "nullable": false,
+          "path": "global.hero.video",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.hero.video"
+          },
+          "v1_source": {
+            "path": "de.hero.video"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.hero.video_poster",
+          "nullable": false,
+          "path": "global.hero.video_poster",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.hero.video_poster"
+          },
+          "v1_source": {
+            "path": "de.hero.video_poster"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.id",
+          "nullable": false,
+          "path": "global.id",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.id"
+          },
+          "v1_source": {
+            "path": "de.id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.image_band.image",
+          "nullable": false,
+          "path": "global.image_band.image",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.image_band.image"
+          },
+          "v1_source": {
+            "path": "de.image_band.image"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "focal_point",
+          "id": "workshop.g.global.image_band.image_focus",
+          "nullable": false,
+          "path": "global.image_band.image_focus",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.image_band.image_focus"
+          },
+          "v1_source": {
+            "path": "de.image_band.image_focus"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.intended_locales.item",
+          "nullable": false,
+          "path": "global.intended_locales[]",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.intended_locales[]"
+          },
+          "v1_source": {
+            "path": "de.intended_locales[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.meta.og_image",
+          "nullable": false,
+          "path": "global.meta.og_image",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.meta.og_image"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.meta.og_image_height",
+          "nullable": false,
+          "path": "global.meta.og_image_height",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.meta.og_image_height"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image_height"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.meta.og_image_width",
+          "nullable": false,
+          "path": "global.meta.og_image_width",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.meta.og_image_width"
+          },
+          "v1_source": {
+            "path": "de.meta.og_image_width"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.registration.url",
+          "nullable": false,
+          "path": "global.registration.url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.registration.url"
+          },
+          "v1_source": {
+            "path": "de.registration.url"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.route",
+          "nullable": false,
+          "path": "global.route",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.route"
+          },
+          "v1_source": {
+            "path": "de.route"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.sort_order",
+          "nullable": false,
+          "path": "global.sort_order",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.sort_order"
+          },
+          "v1_source": {
+            "path": "de.sort_order"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.start_at",
+          "nullable": false,
+          "path": "global.start_at",
+          "required": false,
+          "type": "datetime",
+          "v1_downgrade": {
+            "path": "de.start_at"
+          },
+          "v1_source": {
+            "path": "de.start_at"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "status",
+          "id": "workshop.g.global.status",
+          "nullable": false,
+          "path": "global.status",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.status"
+          },
+          "v1_source": {
+            "path": "de.status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.card.detail_label",
+          "nullable": false,
+          "path": "locales.{locale}.card.detail_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.card.detail_label"
+          },
+          "v1_source": {
+            "path": "{locale}.card.detail_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.card.subtitle",
+          "nullable": false,
+          "path": "locales.{locale}.card.subtitle",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.card.subtitle"
+          },
+          "v1_source": {
+            "path": "{locale}.card.subtitle"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.card.summary",
+          "nullable": false,
+          "path": "locales.{locale}.card.summary",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.card.summary"
+          },
+          "v1_source": {
+            "path": "{locale}.card.summary"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.card.tags.item.label",
+          "nullable": false,
+          "path": "locales.{locale}.card.tags[].label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.card.tags[].label"
+          },
+          "v1_source": {
+            "path": "{locale}.card.tags[].label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.card.tags.item.style",
+          "nullable": false,
+          "path": "locales.{locale}.card.tags[].style",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.card.tags[].style"
+          },
+          "v1_source": {
+            "path": "{locale}.card.tags[].style"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.closing_cta.button_label",
+          "nullable": false,
+          "path": "locales.{locale}.closing_cta.button_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.closing_cta.button_label"
+          },
+          "v1_source": {
+            "path": "{locale}.closing_cta.button_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.closing_cta.heading",
+          "nullable": false,
+          "path": "locales.{locale}.closing_cta.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.closing_cta.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.closing_cta.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.closing_cta.text",
+          "nullable": false,
+          "path": "locales.{locale}.closing_cta.text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.closing_cta.text"
+          },
+          "v1_source": {
+            "path": "{locale}.closing_cta.text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.description.body",
+          "nullable": false,
+          "path": "locales.{locale}.description.body",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.description.body"
+          },
+          "v1_source": {
+            "path": "{locale}.description.body"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.description.heading",
+          "nullable": false,
+          "path": "locales.{locale}.description.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.description.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.description.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.description.info_title",
+          "nullable": false,
+          "path": "locales.{locale}.description.info_title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.description.info_title"
+          },
+          "v1_source": {
+            "path": "{locale}.description.info_title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.description.label",
+          "nullable": false,
+          "path": "locales.{locale}.description.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.description.label"
+          },
+          "v1_source": {
+            "path": "{locale}.description.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facilitators.heading",
+          "nullable": false,
+          "path": "locales.{locale}.facilitators.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facilitators.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.facilitators.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facilitators.label",
+          "nullable": false,
+          "path": "locales.{locale}.facilitators.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facilitators.label"
+          },
+          "v1_source": {
+            "path": "{locale}.facilitators.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facilitators.members.item.alt",
+          "nullable": false,
+          "path": "locales.{locale}.facilitators.members[].alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facilitators.members[].alt"
+          },
+          "v1_source": {
+            "path": "{locale}.facilitators.members[].alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facilitators.members.item.bio",
+          "nullable": false,
+          "path": "locales.{locale}.facilitators.members[].bio",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facilitators.members[].bio"
+          },
+          "v1_source": {
+            "path": "{locale}.facilitators.members[].bio"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facilitators.members.item.image",
+          "nullable": false,
+          "path": "locales.{locale}.facilitators.members[].image",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facilitators.members[].image"
+          },
+          "v1_source": {
+            "path": "{locale}.facilitators.members[].image"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "enum": "focal_point",
+          "id": "workshop.l.facilitators.members.item.image_focus",
+          "nullable": false,
+          "path": "locales.{locale}.facilitators.members[].image_focus",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facilitators.members[].image_focus"
+          },
+          "v1_source": {
+            "path": "{locale}.facilitators.members[].image_focus"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facilitators.members.item.name",
+          "nullable": false,
+          "path": "locales.{locale}.facilitators.members[].name",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facilitators.members[].name"
+          },
+          "v1_source": {
+            "path": "{locale}.facilitators.members[].name"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facilitators.members.item.role",
+          "nullable": false,
+          "path": "locales.{locale}.facilitators.members[].role",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facilitators.members[].role"
+          },
+          "v1_source": {
+            "path": "{locale}.facilitators.members[].role"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facilitators.quotes.item.author",
+          "nullable": false,
+          "path": "locales.{locale}.facilitators.quotes[].author",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facilitators.quotes[].author"
+          },
+          "v1_source": {
+            "path": "{locale}.facilitators.quotes[].author"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facilitators.quotes.item.quote",
+          "nullable": false,
+          "path": "locales.{locale}.facilitators.quotes[].quote",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facilitators.quotes[].quote"
+          },
+          "v1_source": {
+            "path": "{locale}.facilitators.quotes[].quote"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facts.date",
+          "nullable": false,
+          "path": "locales.{locale}.facts.date",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facts.date"
+          },
+          "v1_source": {
+            "path": "{locale}.facts.date"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facts.duration",
+          "nullable": false,
+          "path": "locales.{locale}.facts.duration",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facts.duration"
+          },
+          "v1_source": {
+            "path": "{locale}.facts.duration"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facts.format.item",
+          "nullable": false,
+          "path": "locales.{locale}.facts.format[]",
+          "required": false,
+          "type": "array",
+          "v1_downgrade": {
+            "path": "{locale}.facts.format[]"
+          },
+          "v1_source": {
+            "path": "{locale}.facts.format[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facts.format.item.value",
+          "nullable": false,
+          "path": "locales.{locale}.facts.format[].value",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facts.format[].value"
+          },
+          "v1_source": {
+            "path": "{locale}.facts.format[].value"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facts.location",
+          "nullable": false,
+          "path": "locales.{locale}.facts.location",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facts.location"
+          },
+          "v1_source": {
+            "path": "{locale}.facts.location"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facts.price",
+          "nullable": false,
+          "path": "locales.{locale}.facts.price",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facts.price"
+          },
+          "v1_source": {
+            "path": "{locale}.facts.price"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facts.price_details.item",
+          "nullable": false,
+          "path": "locales.{locale}.facts.price_details[]",
+          "required": false,
+          "type": "array",
+          "v1_downgrade": {
+            "path": "{locale}.facts.price_details[]"
+          },
+          "v1_source": {
+            "path": "{locale}.facts.price_details[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facts.price_details.item.value",
+          "nullable": false,
+          "path": "locales.{locale}.facts.price_details[].value",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facts.price_details[].value"
+          },
+          "v1_source": {
+            "path": "{locale}.facts.price_details[].value"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facts.schedule.item",
+          "nullable": false,
+          "path": "locales.{locale}.facts.schedule[]",
+          "required": false,
+          "type": "array",
+          "v1_downgrade": {
+            "path": "{locale}.facts.schedule[]"
+          },
+          "v1_source": {
+            "path": "{locale}.facts.schedule[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facts.schedule.item.value",
+          "nullable": false,
+          "path": "locales.{locale}.facts.schedule[].value",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facts.schedule[].value"
+          },
+          "v1_source": {
+            "path": "{locale}.facts.schedule[].value"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.facts.time",
+          "nullable": false,
+          "path": "locales.{locale}.facts.time",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.facts.time"
+          },
+          "v1_source": {
+            "path": "{locale}.facts.time"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.faq.heading",
+          "nullable": false,
+          "path": "locales.{locale}.faq.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.faq.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.faq.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.faq.items.item.a",
+          "nullable": false,
+          "path": "locales.{locale}.faq.items[].a",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.faq.items[].a"
+          },
+          "v1_source": {
+            "path": "{locale}.faq.items[].a"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.faq.items.item.q",
+          "nullable": false,
+          "path": "locales.{locale}.faq.items[].q",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.faq.items[].q"
+          },
+          "v1_source": {
+            "path": "{locale}.faq.items[].q"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.faq.label",
+          "nullable": false,
+          "path": "locales.{locale}.faq.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.faq.label"
+          },
+          "v1_source": {
+            "path": "{locale}.faq.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.hero.badge",
+          "nullable": false,
+          "path": "locales.{locale}.hero.badge",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.badge"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.badge"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.hero.headline",
+          "nullable": false,
+          "path": "locales.{locale}.hero.headline",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.headline"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.headline"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.hero.headline_accent",
+          "nullable": false,
+          "path": "locales.{locale}.hero.headline_accent",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.headline_accent"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.headline_accent"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.hero.inset_alt",
+          "nullable": false,
+          "path": "locales.{locale}.hero.inset_alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.inset_alt"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.inset_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.hero.main_alt",
+          "nullable": false,
+          "path": "locales.{locale}.hero.main_alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.main_alt"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.main_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.hero.note_text",
+          "nullable": false,
+          "path": "locales.{locale}.hero.note_text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.note_text"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.note_text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.hero.note_title",
+          "nullable": false,
+          "path": "locales.{locale}.hero.note_title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.note_title"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.note_title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.hero.subtitle",
+          "nullable": false,
+          "path": "locales.{locale}.hero.subtitle",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.subtitle"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.subtitle"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.hero.video_poster",
+          "nullable": false,
+          "path": "locales.{locale}.hero.video_poster",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.video_poster"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.video_poster"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.hero.visual_aria",
+          "nullable": false,
+          "path": "locales.{locale}.hero.visual_aria",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.visual_aria"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.visual_aria"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.image_band.alt",
+          "nullable": false,
+          "path": "locales.{locale}.image_band.alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.image_band.alt"
+          },
+          "v1_source": {
+            "path": "{locale}.image_band.alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.image_band.body",
+          "nullable": false,
+          "path": "locales.{locale}.image_band.body",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.image_band.body"
+          },
+          "v1_source": {
+            "path": "{locale}.image_band.body"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.image_band.heading",
+          "nullable": false,
+          "path": "locales.{locale}.image_band.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.image_band.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.image_band.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.image_band.label",
+          "nullable": false,
+          "path": "locales.{locale}.image_band.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.image_band.label"
+          },
+          "v1_source": {
+            "path": "{locale}.image_band.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.meta.description",
+          "nullable": false,
+          "path": "locales.{locale}.meta.description",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.description"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.description"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.meta.og_description",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_description",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_description"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_description"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.meta.og_image_alt",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_image_alt",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_image_alt"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_image_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.meta.og_title",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_title"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.meta.title",
+          "nullable": false,
+          "path": "locales.{locale}.meta.title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.title"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.registration.label",
+          "nullable": false,
+          "path": "locales.{locale}.registration.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.registration.label"
+          },
+          "v1_source": {
+            "path": "{locale}.registration.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.registration.note",
+          "nullable": false,
+          "path": "locales.{locale}.registration.note",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.registration.note"
+          },
+          "v1_source": {
+            "path": "{locale}.registration.note"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.research.fields.item.highlighted",
+          "nullable": false,
+          "path": "locales.{locale}.research.fields[].highlighted",
+          "required": false,
+          "type": "boolean",
+          "v1_downgrade": {
+            "path": "{locale}.research.fields[].highlighted"
+          },
+          "v1_source": {
+            "path": "{locale}.research.fields[].highlighted"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.research.fields.item.number",
+          "nullable": false,
+          "path": "locales.{locale}.research.fields[].number",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.research.fields[].number"
+          },
+          "v1_source": {
+            "path": "{locale}.research.fields[].number"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.research.fields.item.text",
+          "nullable": false,
+          "path": "locales.{locale}.research.fields[].text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.research.fields[].text"
+          },
+          "v1_source": {
+            "path": "{locale}.research.fields[].text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.research.fields.item.title",
+          "nullable": false,
+          "path": "locales.{locale}.research.fields[].title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.research.fields[].title"
+          },
+          "v1_source": {
+            "path": "{locale}.research.fields[].title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.research.heading",
+          "nullable": false,
+          "path": "locales.{locale}.research.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.research.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.research.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.research.label",
+          "nullable": false,
+          "path": "locales.{locale}.research.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.research.label"
+          },
+          "v1_source": {
+            "path": "{locale}.research.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "workshop.l.title",
+          "nullable": false,
+          "path": "locales.{locale}.title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.title"
+          },
+          "v1_source": {
+            "path": "{locale}.title"
+          }
+        }
+      ],
+      "identity": {
+        "field": "global.id",
+        "filename_stem_must_match": true
+      },
+      "ordering": {
+        "primary": "global.start_at",
+        "tie_breakers": [
+          "global.sort_order",
+          "global.id"
+        ]
+      },
+      "source": "content/workshops/*.yaml",
+      "templates": [
+        "workshop"
+      ]
+    }
+  },
+  "registry_revision": 1,
+  "schema_version": 2,
+  "supported_locales": [
+    "de",
+    "en"
+  ]
+}

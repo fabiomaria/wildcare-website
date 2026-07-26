@@ -1,0 +1,30 @@
+{
+  "implementation_date": "2026-07-26",
+  "local": {
+    "schema_registry": "passed",
+    "generated_docs": "passed",
+    "field_inventory": "343 classified, 0 unclassified",
+    "content_records": "15 v2 records passed",
+    "cms_static_contract": "7 collections passed",
+    "markdown_body_byte_parity": "6 files passed",
+    "downgrade": "17 files passed",
+    "downgrade_rendered_parity": "14 generated HTML files byte-identical after rebuilding from downgraded v1 content",
+    "sitemap_and_seo": "14 URLs passed",
+    "rendered_html_parity": "14 generated HTML files byte-identical to the recorded v1 baseline",
+    "http_smoke": [
+      "/",
+      "/admin/",
+      "/how-we-move-together.html"
+    ]
+  },
+  "pending_external_release_evidence": [
+    "Sveltia create/edit/save/reopen and media-control browser matrix",
+    "Preview deployment",
+    "Production edit/save/reopen cycle for each collection",
+    "Approved production visual regression review"
+  ],
+  "notes": [
+    "The connected browser-control surface was unavailable during implementation.",
+    "Tasks requiring production editorial evidence must remain release-pending until a human completes the recorded matrix."
+  ]
+}

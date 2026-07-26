@@ -1,0 +1,38 @@
+{
+  "body_files_verified": [
+    "content/journal/bodies/bewegungsrevolution.de.md",
+    "content/journal/bodies/bewegungsrevolution.en.md",
+    "content/journal/bodies/warum-ci.de.md",
+    "content/journal/bodies/warum-ci.en.md",
+    "content/legal/bodies/datenschutz.de.md",
+    "content/legal/bodies/impressum.de.md"
+  ],
+  "changes": [],
+  "collections": [
+    "workshops",
+    "site",
+    "pages",
+    "journal",
+    "legal"
+  ],
+  "idempotent": true,
+  "mode": "write",
+  "records_verified": [
+    "content/workshops/bewegungsrevolution.yaml",
+    "content/workshops/cellular-touch.yaml",
+    "content/workshops/how-we-move-together.yaml",
+    "content/site.yaml",
+    "content/pages/index.yaml",
+    "content/pages/journal.yaml",
+    "content/pages/kontakt.yaml",
+    "content/pages/mitmachen.yaml",
+    "content/pages/montagskurs.yaml",
+    "content/pages/programm.yaml",
+    "content/pages/team.yaml",
+    "content/journal/records/bewegungsrevolution.yaml",
+    "content/journal/records/warum-ci.yaml",
+    "content/legal/records/datenschutz.yaml",
+    "content/legal/records/impressum.yaml"
+  ],
+  "warnings": []
+}

@@ -1,0 +1,204 @@
+{
+  "collections": [
+    "workshops",
+    "site",
+    "pages",
+    "journal",
+    "legal"
+  ],
+  "intentional_serialization_differences": [
+    "Schema v2 omits optional empty strings.",
+    "Journal and legal front matter are separated from Markdown bodies."
+  ],
+  "normalized_records": [
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "workshops",
+      "equal": true,
+      "id": "bewegungsrevolution",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "en"
+      ],
+      "collection": "workshops",
+      "equal": true,
+      "id": "cellular-touch",
+      "intended_locales": [
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "en"
+      ],
+      "collection": "workshops",
+      "equal": true,
+      "id": "how-we-move-together",
+      "intended_locales": [
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "site",
+      "equal": true,
+      "id": "site",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "pages",
+      "equal": true,
+      "id": "index",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "pages",
+      "equal": true,
+      "id": "journal",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "pages",
+      "equal": true,
+      "id": "kontakt",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "pages",
+      "equal": true,
+      "id": "mitmachen",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "pages",
+      "equal": true,
+      "id": "montagskurs",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "pages",
+      "equal": true,
+      "id": "programm",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "pages",
+      "equal": true,
+      "id": "team",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "journal",
+      "equal": true,
+      "id": "bewegungsrevolution",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "journal",
+      "equal": true,
+      "id": "warum-ci",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de"
+      ],
+      "collection": "legal",
+      "equal": true,
+      "id": "datenschutz",
+      "intended_locales": [
+        "de"
+      ]
+    },
+    {
+      "available_locales": [
+        "de"
+      ],
+      "collection": "legal",
+      "equal": true,
+      "id": "impressum",
+      "intended_locales": [
+        "de"
+      ]
+    }
+  ],
+  "rendered_v1_manifest_present": true,
+  "warnings": []
+}

@@ -1,0 +1,31 @@
+{
+  "collections": [
+    "workshops",
+    "site",
+    "pages",
+    "journal",
+    "legal"
+  ],
+  "lossy_fields": [],
+  "mode": "write",
+  "outputs": [
+    "migration/downgraded/workshops/bewegungsrevolution.yaml",
+    "migration/downgraded/workshops/cellular-touch.yaml",
+    "migration/downgraded/workshops/how-we-move-together.yaml",
+    "migration/downgraded/site/site.yaml",
+    "migration/downgraded/pages/index.yaml",
+    "migration/downgraded/pages/journal.yaml",
+    "migration/downgraded/pages/kontakt.yaml",
+    "migration/downgraded/pages/mitmachen.yaml",
+    "migration/downgraded/pages/montagskurs.yaml",
+    "migration/downgraded/pages/programm.yaml",
+    "migration/downgraded/pages/team.yaml",
+    "migration/downgraded/journal/bewegungsrevolution.md",
+    "migration/downgraded/journal/bewegungsrevolution.en.md",
+    "migration/downgraded/journal/warum-ci.md",
+    "migration/downgraded/journal/warum-ci.en.md",
+    "migration/downgraded/legal/datenschutz.md",
+    "migration/downgraded/legal/impressum.md"
+  ],
+  "warnings": []
+}

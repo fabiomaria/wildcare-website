@@ -1,0 +1,10 @@
+schema_version: 2
+global:
+  id: invalid-missing-locale
+  intended_locales:
+    - en
+  status: published
+  route: /invalid-missing-locale
+locales:
+  de:
+    title: Falsche Sprache

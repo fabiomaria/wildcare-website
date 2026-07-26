@@ -1,0 +1,13 @@
+schema_version: 2
+global:
+  id: cms-bilingual
+  intended_locales:
+    - de
+    - en
+  status: draft
+  route: /cms-bilingual
+locales:
+  de:
+    title: Zweisprachiger CMS-Test
+  en:
+    title: Bilingual CMS test

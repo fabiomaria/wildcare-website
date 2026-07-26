@@ -1,0 +1,93 @@
+de:
+  hero:
+    label: Programm
+    heading: Bewegung als Begegnung.
+    intro: Unser Angebot verbindet Körperarbeit, soziale Praxis und künstlerische Forschung — offen für alle, die neugierig sind.
+  core:
+    label: Offenes Labor für zeitgenössischen Tanz
+    heading: Montagskurs
+    info_title: Auf einen Blick
+    rows:
+      - icon: clock
+        label: Was
+        value: Contact Improvisation — künstlerische Forschung & offene Praxis
+      - icon: calendar
+        label: Wann
+        value: Jeden Montag, 17:45 – 19:15
+      - icon: location
+        label: Wo
+        value: Orpheumgasse 11, 8020 Graz
+      - icon: cost
+        label: Kosten
+        value: Spendenbasis
+      - icon: people
+        label: Für
+        value: Alle — mit und ohne Vorkenntnisse
+    register_label: Jetzt anmelden
+    more_label: Mehr erfahren
+    description_heading: Was dich erwartet
+    paragraphs:
+      - text: Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Berührung. Es gibt keine festen Schritte, keine Choreografie und keinen Leistungsdruck — nur dich, den Raum und die Menschen darin.
+      - text: Du lernst, Gewicht zu teilen und abzugeben, durch Berührung zuzuhören und deinen Körper bewusster wahrzunehmen. Dabei regulierst du ganz nebenbei dein Nervensystem, übst Grenzen zu kommunizieren und entwickelst ein feines Gespür für dich und dein Gegenüber.
+      - text: 'Jede Session beginnt mit einer geführten Aufwärm-Phase und mündet in eine offene Jam — eine freie Tanzzeit, in der alles passieren darf: Stille, Bewegung, Begegnung.'
+    quote: „Du brauchst keine Tanzerfahrung. Nur bequeme Kleidung, Neugier und die Bereitschaft, dich auf etwas Neues einzulassen.“
+  projects:
+    label: Aktuelle Projekte
+    heading: Was gerade läuft
+  outlook:
+    label: Ausblick
+    heading: Was noch kommt
+    intro: Projekte, die wir gerade entwickeln oder planen. Hier entsteht etwas.
+  cta:
+    label: Einladung
+    heading: Komm vorbei.
+    text: Du brauchst keine Erfahrung, nur bequeme Kleidung und Neugier. Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz.
+    button: Kontakt aufnehmen
+  meta:
+    title: Programm — Wild Care | Graz
+    description: Contact Improvisation jeden Montag in Graz. Offener Workshop auf Spendenbasis — für alle, mit und ohne Vorkenntnisse.
+en:
+  hero:
+    label: Programme
+    heading: Movement as Encounter.
+    intro: Our offerings combine bodywork, social practice and artistic exploration — open to anyone who is curious.
+  core:
+    label: Our Core Format
+    heading: Monday Class
+    info_title: At a Glance
+    rows:
+      - icon: clock
+        label: What
+        value: Contact Improvisation — open workshop
+      - icon: calendar
+        label: When
+        value: Every Monday, 17:45 – 19:15
+      - icon: location
+        label: Where
+        value: Orpheumgasse 11, 8020 Graz
+      - icon: cost
+        label: Cost
+        value: Donation-based
+      - icon: people
+        label: For
+        value: Everyone — with or without prior experience
+    register_label: Sign up now
+    more_label: Learn more
+    description_heading: What to Expect
+    paragraphs:
+      - text: Contact Improvisation is the playful exploration of gravity, balance and touch. There are no fixed steps, no choreography and no pressure to perform — just you, the space and the people in it.
+      - text: You learn to share and release weight, to listen through touch and to become more aware of your body. Along the way, you naturally regulate your nervous system, practise communicating boundaries and develop a fine sense for yourself and those around you.
+      - text: 'Each session begins with a guided warm-up and flows into an open jam — a free dance time where anything can happen: stillness, movement, encounter.'
+    quote: “You don’t need any dance experience. Just comfortable clothing, curiosity and the willingness to try something new.”
+  projects:
+    label: Current Projects
+    heading: What’s Happening Now
+  outlook:
+    label: Outlook
+    heading: What’s Coming Next
+    intro: Projects we’re currently developing or planning. Something is taking shape here.
+  cta:
+    label: Invitation
+    heading: Come by.
+    text: You don’t need any experience, just comfortable clothing and curiosity. Every Monday, 17:45, Orpheumgasse 11, Graz.
+    button: Get in touch

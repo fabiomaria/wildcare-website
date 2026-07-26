@@ -2,9 +2,16 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const yaml = require("js-yaml");
-const matter = require("gray-matter");
 const MarkdownIt = require("markdown-it");
 const nunjucks = require("nunjucks");
+const {
+  journalPairs,
+  legalEntries,
+  migrateJournalEntry,
+  migrateLegalEntry,
+  migrateYamlRecord,
+  normalizeV2,
+} = require("./scripts/schema/lib");
 
 // Pages not yet templatized are passthrough-copied verbatim (brief §7 Phase 1/2:
 // incremental migration — remove a page from this list when its template ships).
@@ -51,17 +58,6 @@ function isObject(value) {
   return value && typeof value === "object" && !Array.isArray(value);
 }
 
-function mergeLocale(defaults, localized) {
-  return {
-    ...defaults,
-    ...localized,
-    cta: {
-      ...(defaults.cta || {}),
-      ...(localized.cta || {}),
-    },
-  };
-}
-
 function deepMerge(defaults, localized) {
   if (!defaults || typeof defaults !== "object" || Array.isArray(defaults)) {
     return localized === undefined ? defaults : localized;
@@ -80,6 +76,15 @@ function deepMerge(defaults, localized) {
     }
   }
   return merged;
+}
+
+function templateLocale(global, localized) {
+  const shared = { ...(global || {}) };
+  for (const key of [
+    "id", "intended_locales", "status", "route", "start_at",
+    "published_at", "sort_order", "detail_page",
+  ]) delete shared[key];
+  return deepMerge(shared, localized || {});
 }
 
 function plainText(value) {
@@ -115,6 +120,22 @@ function normalizeJournalLocale(locale) {
       og_image: meta.og_image || source.image || "",
       og_image_alt: meta.og_image_alt || source.image_alt || "",
     },
+  };
+}
+
+function v2LocalesForTemplates(raw, file) {
+  const collection = file === "content/site.yaml" ? "site" : "pages";
+  const source = raw?.schema_version === 2
+    ? raw
+    : migrateYamlRecord(collection, path.join(__dirname, file));
+  const normalized = normalizeV2(source, file);
+  return {
+    ...Object.fromEntries(Object.entries(normalized.locales)
+      .map(([locale, localized]) => [locale, templateLocale(normalized.global, localized)])),
+    global: normalized.global,
+    schemaVersion: normalized.schemaVersion,
+    availableLocales: normalized.availableLocales,
+    primaryLocale: normalized.primaryLocale,
   };
 }
 
@@ -185,19 +206,6 @@ function normalizeWorkshopLocale(locale) {
   };
 }
 
-function hasWorkshopContent(locale) {
-  return Boolean(
-    locale &&
-    (
-      locale.card?.title ||
-      locale.title ||
-      locale.meta?.title ||
-      locale.hero?.heading ||
-      locale.practice?.heading
-    )
-  );
-}
-
 function hasWorkshopDetailContent(locale) {
   // Both retired layouts required meta+hero plus one substantial body
   // section; with a single unified template (Task 5 amendment) neither
@@ -266,52 +274,67 @@ function loadJournalContent() {
     return { posts: [], listingPosts: [], articlePages: [], homepagePosts: [] };
   }
 
-  for (const filename of fs.readdirSync(dir)) {
-    if (!filename.endsWith(".md")) continue;
-
-    const stem = path.basename(filename, ".md");
-    const locale = stem.endsWith(".en") ? "en" : "de";
-    const slug = locale === "en" ? stem.slice(0, -3) : stem;
-
-    // Phase 0 round-trip files are intentionally left in working trees but
-    // must never leak into the generated public journal.
-    if (slug.startsWith("phase0-")) continue;
-
-    const parsed = matter(fs.readFileSync(path.join(dir, filename), "utf8"));
-    if (!entries.has(slug)) {
-      entries.set(slug, { slug, locales: {} });
+  const recordsDir = path.join(dir, "records");
+  if (fs.existsSync(recordsDir)) {
+    for (const filename of fs.readdirSync(recordsDir).filter((name) => name.endsWith(".yaml")).sort()) {
+      const recordFile = path.join(recordsDir, filename);
+      const raw = yaml.load(fs.readFileSync(recordFile, "utf8"));
+      const normalized = normalizeV2(raw, path.relative(__dirname, recordFile));
+      const id = normalized.global.id;
+      const entry = { slug: id, global: normalized.global, locales: {} };
+      for (const [locale, localized] of Object.entries(normalized.locales)) {
+        const bodyFile = path.join(dir, "bodies", `${id}.${locale}.md`);
+        if (!fs.existsSync(bodyFile)) throw new Error(`${path.relative(__dirname, bodyFile)} is required`);
+        const body = fs.readFileSync(bodyFile, "utf8");
+        entry.locales[locale] = {
+          ...templateLocale(normalized.global, localized),
+          body: body.trim(),
+          body_html: markdown.render(body.trim()),
+        };
+      }
+      entries.set(id, entry);
     }
-    entries.get(slug).locales[locale] = {
-      ...parsed.data,
-      body: parsed.content.trim(),
-      body_html: markdown.render(parsed.content.trim()),
-    };
+  } else {
+    for (const [id, pair] of journalPairs()) {
+      const migrated = migrateJournalEntry(id, pair);
+      const normalized = normalizeV2(migrated.record, `content/journal/${id}`);
+      const entry = { slug: id, global: normalized.global, locales: {} };
+      for (const [locale, localized] of Object.entries(normalized.locales)) {
+        const body = migrated.parsed[locale].content;
+        entry.locales[locale] = {
+          ...templateLocale(normalized.global, localized),
+          body: body.trim(),
+          body_html: markdown.render(body.trim()),
+        };
+      }
+      entries.set(id, entry);
+    }
   }
 
   const posts = Array.from(entries.values()).map((entry) => {
-    const duplicateSource = entry.locales.de || entry.locales.en || {};
+    const duplicateSource = entry.global || entry.locales.de || entry.locales.en || {};
     const deRaw = entry.locales.de || {};
     const enRaw = entry.locales.en || {};
     const deHasContent = hasText(deRaw.title) || hasText(deRaw.body);
     const enHasContent = hasText(enRaw.title) || hasText(enRaw.body);
-    const fallbackLocale = deHasContent ? deRaw : enRaw;
+    const primaryRaw = deHasContent ? deRaw : enRaw;
 
-    const de = normalizeJournalLocale(mergeLocale(fallbackLocale, deRaw));
-    const en = normalizeJournalLocale(mergeLocale(fallbackLocale, enRaw));
+    const de = normalizeJournalLocale(deHasContent ? deRaw : primaryRaw);
+    const en = normalizeJournalLocale(enHasContent ? enRaw : primaryRaw);
 
     const post = {
       slug: entry.slug,
       href: `journal/${entry.slug}.html`,
       status: duplicateSource.status || "published",
       language_mode: duplicateSource.language_mode || (deHasContent && enHasContent ? "bilingual" : deHasContent ? "de_only" : "en_only"),
-      date: duplicateSource.date || deRaw.date || enRaw.date || "",
+      date: duplicateSource.published_at || duplicateSource.date || deRaw.date || enRaw.date || "",
       sort_order: duplicateSource.sort_order || 999,
-      image: duplicateSource.image || deRaw.image || enRaw.image || "",
-      image_alt: duplicateSource.image_alt || deRaw.image_alt || enRaw.image_alt || "",
-      homepage_image_alt: duplicateSource.homepage_image_alt || deRaw.homepage_image_alt || enRaw.homepage_image_alt || duplicateSource.image_alt || "",
-      hero_image: duplicateSource.hero_image || duplicateSource.image || "",
-      hero_alt: duplicateSource.hero_alt || duplicateSource.image_alt || "",
-      hero_variant: duplicateSource.hero_variant || "cover",
+      image: duplicateSource.image?.src || duplicateSource.image || deRaw.image || enRaw.image || "",
+      image_alt: duplicateSource.image_alt || primaryRaw.image_alt || "",
+      homepage_image_alt: duplicateSource.homepage_image_alt || primaryRaw.homepage_image_alt || primaryRaw.image_alt || "",
+      hero_image: duplicateSource.hero?.image?.src || duplicateSource.hero_image || duplicateSource.image?.src || duplicateSource.image || "",
+      hero_alt: duplicateSource.hero_alt || primaryRaw.hero_alt || primaryRaw.image_alt || "",
+      hero_variant: duplicateSource.hero?.variant || duplicateSource.hero_variant || "cover",
       tally: duplicateSource.tally || false,
       has_de: deHasContent,
       has_en: enHasContent,
@@ -374,24 +397,38 @@ function loadLegalContent() {
     return pages;
   }
 
-  for (const filename of fs.readdirSync(dir)) {
-    if (!filename.endsWith(".md")) continue;
-    const slug = path.basename(filename, ".md");
-    const parsed = matter(fs.readFileSync(path.join(dir, filename), "utf8"));
-    const body = parsed.content.trim();
+  const recordsDir = path.join(dir, "records");
+  const inputs = fs.existsSync(recordsDir)
+    ? fs.readdirSync(recordsDir).filter((name) => name.endsWith(".yaml")).sort().map((filename) => {
+      const recordFile = path.join(recordsDir, filename);
+      return {
+        raw: yaml.load(fs.readFileSync(recordFile, "utf8")),
+        file: path.relative(__dirname, recordFile),
+        body: null,
+      };
+    })
+    : legalEntries().map(([id, sourceFile]) => {
+      const migrated = migrateLegalEntry(id, sourceFile);
+      return { raw: migrated.record, file: path.relative(__dirname, sourceFile), body: migrated.parsed.content };
+    });
+  for (const input of inputs) {
+    const normalized = normalizeV2(input.raw, input.file);
+    const slug = normalized.global.id;
+    const locale = normalized.primaryLocale;
+    const localized = templateLocale(normalized.global, normalized.locales[locale]);
+    const bodyFile = path.join(dir, "bodies", `${slug}.${locale}.md`);
+    const body = (input.body ?? fs.readFileSync(bodyFile, "utf8")).trim();
     const legacyMeta = {
-      title: parsed.data.meta_title || "",
-      description: parsed.data.meta_description || "",
+      title: localized.meta_title || "",
+      description: localized.meta_description || "",
     };
     pages[slug] = {
-      ...parsed.data,
-      meta: deepMerge(legacyMeta, parsed.data.meta || {}),
+      ...localized,
+      status: normalized.global.status,
+      route: normalized.global.route,
+      meta: deepMerge(legacyMeta, localized.meta || {}),
       body,
-      // Plain rendering (no per-element classes) for pages whose original
-      // markup wraps the whole prose block in one fade-up container.
       body_html: markdown.render(body),
-      // Per-element fade-up rendering for pages whose original markup put
-      // class="fade-up" on every individual heading/paragraph/list.
       body_html_fadeup: legalMarkdown.render(body),
     };
   }
@@ -408,51 +445,36 @@ function loadWorkshopContent() {
   const all = fs.readdirSync(dir)
     .filter((filename) => filename.endsWith(".yaml"))
     .map((filename) => {
-      const raw = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"));
-      const deSource = isObject(raw.de) ? raw.de : {};
-      const enSource = isObject(raw.en) ? raw.en : {};
-      // Head fields live at the top level (legacy shape) or under the default
-      // locale (Sveltia single_file i18n) — accept both.
-      const HEAD_KEYS = [
-        "slug", "language_mode", "status", "detail_page",
-        "start_date", "sort_order", "registration_url",
-      ];
-      const head = {};
-      for (const key of HEAD_KEYS) {
-        head[key] = raw[key] !== undefined
-          ? raw[key]
-          : deSource[key] !== undefined
-            ? deSource[key]
-            : enSource[key];
-      }
+      const recordFile = path.join(dir, filename);
+      const raw = yaml.load(fs.readFileSync(recordFile, "utf8"));
+      const source = raw?.schema_version === 2 ? raw : migrateYamlRecord("workshops", recordFile);
+      const normalized = normalizeV2(source, `content/workshops/${filename}`);
+      const deSource = isObject(normalized.locales.de) ? templateLocale(normalized.global, normalized.locales.de) : {};
+      const enSource = isObject(normalized.locales.en) ? templateLocale(normalized.global, normalized.locales.en) : {};
+      const head = {
+        slug: normalized.global.id,
+        language_mode: normalized.global.intended_locales.length === 2
+          ? "bilingual"
+          : `${normalized.global.intended_locales[0]}_only`,
+        status: normalized.global.status,
+        detail_page: normalized.global.detail_page,
+        start_date: normalized.global.start_at,
+        sort_order: normalized.global.sort_order,
+        registration_url: normalized.global.registration?.url,
+      };
       const deRaw = { ...deSource };
       const enRaw = { ...enSource };
-      for (const key of HEAD_KEYS) {
-        delete deRaw[key];
-        delete enRaw[key];
-      }
       const slug = normalizeSlug(head.slug || path.basename(filename, ".yaml"));
       const languageMode = head.language_mode || "bilingual";
-      const preferred = languageMode === "en_only" ? enRaw : deRaw;
-      const alternate = languageMode === "en_only" ? deRaw : enRaw;
-      const fallback = hasWorkshopContent(preferred) ? preferred : alternate;
-      let de = deepMerge(fallback, deRaw);
-      let en = deepMerge(fallback, enRaw);
+      let de = deRaw;
+      let en = enRaw;
 
-      // language_mode describes the detail page. For English-only entries,
-      // localized English media is authoritative; the DE locale exists only
-      // as a CMS compatibility shell until the language-neutral migration.
-      if (languageMode === "en_only") {
-        de = {
-          ...en,
-          card: deepMerge(en.card || {}, deRaw.card || {}),
-        };
-      } else if (languageMode === "de_only") {
-        en = {
-          ...de,
-          card: deepMerge(de.card || {}, enRaw.card || {}),
-        };
-      }
+      // A mono-lingual v2 record has no compatibility locale in storage. The
+      // template receives a render-only alias because its data attributes are
+      // inert on forced-language pages; available locale derivation still
+      // comes exclusively from `locales`.
+      if (languageMode === "en_only") de = enRaw;
+      if (languageMode === "de_only") en = deRaw;
       de = normalizeWorkshopLocale(de);
       en = normalizeWorkshopLocale(en);
       const primaryLocale = languageMode === "en_only" ? "en" : "de";
@@ -514,19 +536,20 @@ module.exports = function (eleventyConfig) {
 
   // CMS-managed content (content/**/*.yaml) → global data `cms`.
   // content/site.yaml → cms.site; content/pages/foo.yaml → cms.pages.foo
-  // content/journal/*.md → cms.journal (paired DE/EN Markdown files)
+  // v2 journal/legal metadata records and separately stored Markdown bodies.
   eleventyConfig.addGlobalData("cms", () => {
     const root = path.join(__dirname, "content");
     const data = { pages: {} };
     const load = (p) => yaml.load(fs.readFileSync(p, "utf8"));
     if (fs.existsSync(path.join(root, "site.yaml"))) {
-      data.site = load(path.join(root, "site.yaml"));
+      data.site = v2LocalesForTemplates(load(path.join(root, "site.yaml")), "content/site.yaml");
     }
     const pagesDir = path.join(root, "pages");
     if (fs.existsSync(pagesDir)) {
       for (const f of fs.readdirSync(pagesDir)) {
         if (f.endsWith(".yaml")) {
-          data.pages[path.basename(f, ".yaml")] = load(path.join(pagesDir, f));
+          const raw = load(path.join(pagesDir, f));
+          data.pages[path.basename(f, ".yaml")] = v2LocalesForTemplates(raw, `content/pages/${f}`);
         }
       }
     }

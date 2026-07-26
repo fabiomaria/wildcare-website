@@ -4,6 +4,7 @@ This directory records design decisions and implementation history. It is not ru
 
 ## Current
 
+- [`../CMS-GREENFIELD-IMPLEMENTATION-PLAYBOOK.md`](../CMS-GREENFIELD-IMPLEMENTATION-PLAYBOOK.md): reusable, technology-aware playbook for designing and implementing a new editorial CMS from zero.
 - [`plans/2026-07-18-sveltia-backend-rework.md`](plans/2026-07-18-sveltia-backend-rework.md): implemented Sveltia editor rework, unified workshop template, canonical workshop follow-up, optional decorative fields, page-schema cleanup, and form improvements.
 - [`specs/2026-07-17-github-pages-cms-implementation-brief.md`](specs/2026-07-17-github-pages-cms-implementation-brief.md): authoritative Eleventy, Sveltia, GitHub Pages, and Worker architecture.
 - [`specs/2026-07-17-github-pages-cms-design.md`](specs/2026-07-17-github-pages-cms-design.md): supporting CMS design record.
