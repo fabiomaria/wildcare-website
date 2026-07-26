@@ -442,42 +442,15 @@ collections:
               - { name: label, label: 'Optional eyebrow label', widget: string, required: false, i18n: true, hint: 'Example: Current projects.' }
               - { name: heading, label: 'Section heading', widget: string, i18n: true, hint: 'Example: What is happening now.' }
           - name: outlook
-            label: 'Future-project cards'
+            label: 'Upcoming workshops section'
             widget: object
             collapsed: true
             i18n: true
             fields:
               - { name: label, label: 'Optional eyebrow label', widget: string, required: false, i18n: true, hint: 'Example: Outlook.' }
               - { name: heading, label: 'Section heading', widget: string, i18n: true, hint: 'Example: What comes next.' }
-              - { name: intro, label: 'Section introduction', widget: text, required: false, i18n: true, hint: 'Example: Projects we are currently developing.' }
-              - name: cards
-                label: 'Future-project cards'
-                widget: list
-                collapsed: true
-                minimize_collapsed: true
-                summary: '{{fields.title}}'
-                required: false
-                i18n: true
-                hint: 'Keep German and English lists in the same order and at the same length.'
-                fields:
-                  - { name: label, label: 'Optional card badge', widget: string, required: false, i18n: true, hint: 'Example: Outdoor / Summer.' }
-                  - { name: title, label: 'Card title', widget: string, i18n: true, hint: 'Example: Moving in the Park.' }
-                  - { name: subtitle, label: 'Card subtitle', widget: string, required: false, i18n: true, hint: 'Example: Free Contact Improvisation in Graz parks.' }
-                  - name: paragraphs
-                    label: 'Card paragraphs'
-                    widget: list
-                    i18n: true
-                    summary: '{{fields.text}}'
-                    fields:
-                      - { name: text, label: 'Paragraph', widget: text, i18n: true }
-                  - name: link
-                    label: 'Optional external link'
-                    widget: object
-                    required: false
-                    i18n: true
-                    fields:
-                      - { name: href, label: 'Link URL', widget: string, hint: 'Example: https://bewegt-im-park.at' }
-                      - { name: label, label: 'Link text', widget: string, i18n: true, hint: 'Example: bewegt-im-park.at' }
+              - { name: intro, label: 'Section introduction', widget: text, required: false, i18n: true, hint: 'The cards below are generated automatically from workshops whose status is Upcoming.' }
+              - { name: show_links, label: 'Show links on upcoming workshop previews', widget: boolean, required: false, default: false, i18n: duplicate, hint: 'Off by default. Enable to show registration and detail-page buttons on these preview cards.' }
           - name: cta
             label: 'Closing call to action'
             widget: object
@@ -960,7 +933,7 @@ collections:
       # Publishing and logistics
       - { name: slug, label: Page URL slug, widget: string, i18n: false, hint: 'Example: cellular-touch creates /cellular-touch.html. Use lowercase letters and hyphens.' }
       - name: language_mode
-        label: Available languages
+        label: Workshop page language
         widget: select
         i18n: false
         options:
@@ -968,7 +941,7 @@ collections:
           - { label: English only, value: en_only }
           - { label: German and English, value: bilingual }
         default: de_only
-        hint: 'Choose which translations are actually available for this workshop detail page.'
+        hint: 'Choose which translations are actually available for this workshop detail page. The durable language-neutral content model is documented in docs/schema-migration.md.'
       - name: status
         label: Workshop status
         widget: select
@@ -1075,13 +1048,45 @@ collections:
           - { name: headline, label: Hero headline override, widget: string, required: false, i18n: true, hint: 'Example: Contact Improvisation. Leave empty to use the Workshop title.' }
           - { name: headline_accent, label: Coloured second headline line, widget: string, required: false, i18n: true, hint: 'Example: with Valentyn Korotkevych. This line appears below the main headline.' }
           - { name: subtitle, label: Hero introduction, widget: text, required: false, i18n: true, hint: 'Example: A somatic workshop moving from touch through falling into shared movement.' }
-          - { name: video, label: Hero video, widget: file, required: false, i18n: true, hint: 'Optional. When filled, the video replaces all hero image-composition fields below.' }
-          - { name: video_poster, label: Video preview image, widget: image, required: false, i18n: true, hint: 'Shown before the hero video loads. Used only when Hero video is filled.' }
+          - { name: video, label: Hero video, widget: file, required: false, i18n: true, hint: 'Optional. Selectable in either language editor. When filled, the video replaces all hero image-composition fields below.' }
+          - { name: video_poster, label: Video preview image, widget: image, required: false, i18n: true, hint: 'Selectable in either language editor. Shown before the hero video loads. Used only when Hero video is filled.' }
           - { name: show_details, label: Show compact facts in hero, widget: boolean, required: false, default: false, i18n: duplicate, hint: 'Displays compact date, time, location, and price below the hero introduction.' }
           - { name: visual_aria, label: Image composition accessibility label, widget: string, required: false, i18n: true, hint: 'Example: Participants practising Contact Improvisation. Ignored when Hero video is filled.' }
-          - { name: main_image, label: Main hero image, widget: image, required: false, i18n: true, hint: 'Large image in image mode. Ignored when Hero video is filled.' }
+          - { name: main_image, label: Main hero image, widget: image, required: false, i18n: true, hint: 'Editable in either language editor. Large image in image mode. Ignored when Hero video is filled.' }
+          - name: main_image_focus
+            label: Main hero image focal point
+            widget: select
+            default: center
+            i18n: true
+            hint: 'Controls the visible crop without changing the uploaded image.'
+            options:
+              - { label: Center, value: center }
+              - { label: Top, value: top }
+              - { label: Bottom, value: bottom }
+              - { label: Left, value: left }
+              - { label: Right, value: right }
+              - { label: Top left, value: top-left }
+              - { label: Top right, value: top-right }
+              - { label: Bottom left, value: bottom-left }
+              - { label: Bottom right, value: bottom-right }
           - { name: main_alt, label: Main image description, widget: string, required: false, i18n: true, hint: 'Example: Two dancers sharing weight in a lift. Ignored when Hero video is filled.' }
-          - { name: inset_image, label: Smaller inset image, widget: image, required: false, i18n: true, hint: 'Smaller overlapping image in image mode. Ignored when Hero video is filled.' }
+          - { name: inset_image, label: Smaller inset image, widget: image, required: false, i18n: true, hint: 'Editable in either language editor. Smaller overlapping image in image mode. Ignored when Hero video is filled.' }
+          - name: inset_image_focus
+            label: Inset hero image focal point
+            widget: select
+            default: center
+            i18n: true
+            hint: 'Controls the visible crop without changing the uploaded image.'
+            options:
+              - { label: Center, value: center }
+              - { label: Top, value: top }
+              - { label: Bottom, value: bottom }
+              - { label: Left, value: left }
+              - { label: Right, value: right }
+              - { label: Top left, value: top-left }
+              - { label: Top right, value: top-right }
+              - { label: Bottom left, value: bottom-left }
+              - { label: Bottom right, value: bottom-right }
           - { name: inset_alt, label: Inset image description, widget: string, required: false, i18n: true, hint: 'Example: Three participants researching touch. Ignored when Hero video is filled.' }
           - { name: note_title, label: Image note title, widget: string, required: false, i18n: true, hint: 'Example: Cellular Touch. Ignored when Hero video is filled.' }
           - { name: note_text, label: Image note text, widget: text, required: false, i18n: true, hint: 'Example: The membrane becomes a dancing boundary. Ignored when Hero video is filled.' }
@@ -1096,17 +1101,16 @@ collections:
         fields:
           - { name: label, label: Section label, widget: string, required: false, i18n: true, hint: 'Example: The Practice.' }
           - { name: heading, label: Description heading, widget: string, required: false, i18n: true, hint: 'Example: Touch as cellular space.' }
-          - name: paragraphs
-            label: Description paragraphs
-            widget: list
-            collapsed: true
-            minimize_collapsed: true
+          - name: body
+            label: Formatted description
+            widget: richtext
             required: false
             i18n: true
-            summary: '{{fields.text}}'
-            hint: 'Main workshop description shown in the left column.'
-            fields:
-              - { name: text, label: Paragraph, widget: text, i18n: true, hint: 'Example: Describe one aspect of the workshop practice in two to four sentences.' }
+            modes: [rich_text]
+            buttons: [bold, italic, link]
+            editor_components: []
+            use_markdown_shortcuts: false
+            hint: 'Main workshop description shown in the left column. Use paragraphs, bold, italic, and links; the frontend applies the Wild Care typography.'
           - { name: show_info, label: Show facts card beside description, widget: boolean, default: true, i18n: duplicate, hint: 'Places the central facts in a card in the right column.' }
           - { name: info_title, label: Facts-card title override, widget: string, required: false, i18n: true, hint: 'Example: At a Glance. Leave empty to use the site default.' }
 
@@ -1142,9 +1146,45 @@ collections:
         fields:
           - { name: label, label: Section label, widget: string, required: false, i18n: true, hint: 'Example: Flowing in / Flowing out.' }
           - { name: heading, label: Section heading, widget: string, required: false, i18n: true, hint: 'Example: A dancing boundary.' }
-          - { name: text, label: Supporting text, widget: text, required: false, i18n: true, hint: 'Example: Holding together is not holding on.' }
-          - { name: image, label: Band image, widget: image, required: false, i18n: true, hint: 'Large image displayed beside the text.' }
+          - name: body
+            label: Formatted supporting text
+            widget: richtext
+            required: false
+            i18n: true
+            modes: [rich_text]
+            buttons: [bold, italic, link]
+            editor_components: []
+            use_markdown_shortcuts: false
+            hint: 'Supporting text shown beside the image. Use paragraphs, bold, italic, and links; the frontend applies the Wild Care typography.'
+          - { name: image, label: Band image, widget: image, required: false, i18n: true, hint: 'Editable in either language editor. Large image displayed beside the text.' }
+          - name: image_focus
+            label: Band image focal point
+            widget: select
+            default: center
+            i18n: true
+            hint: 'Controls the visible crop without changing the uploaded image.'
+            options:
+              - { label: Center, value: center }
+              - { label: Top, value: top }
+              - { label: Bottom, value: bottom }
+              - { label: Left, value: left }
+              - { label: Right, value: right }
+              - { label: Top left, value: top-left }
+              - { label: Top right, value: top-right }
+              - { label: Bottom left, value: bottom-left }
+              - { label: Bottom right, value: bottom-right }
           - { name: alt, label: Band image description, widget: string, required: false, i18n: true, hint: 'Example: A group researching movement through touch.' }
+      - name: closing_cta
+        label: Final registration call to action
+        widget: object
+        collapsed: true
+        required: false
+        i18n: true
+        hint: 'Optional moss-green registration band shown after the workshop content.'
+        fields:
+          - { name: heading, label: CTA heading, widget: string, required: false, i18n: true, hint: 'Example: Ready to join us?' }
+          - { name: text, label: CTA supporting text, widget: text, required: false, i18n: true, hint: 'Example: Reserve your place for this workshop in Graz.' }
+          - { name: button_label, label: CTA button text override, widget: string, required: false, i18n: true, hint: 'Leave empty to use the main registration button text.' }
       - name: facilitators
         label: Facilitators and quotes
         widget: object
@@ -1164,7 +1204,23 @@ collections:
             i18n: true
             fields:
               - { name: name, label: Full name, widget: string, i18n: duplicate, hint: 'Example: Valentyn Korotkevych. Shared between languages.' }
-              - { name: image, label: Portrait image, widget: image, i18n: duplicate, hint: 'Shared between languages.' }
+              - { name: image, label: Portrait image, widget: image, i18n: true, hint: 'Editable in either language editor.' }
+              - name: image_focus
+                label: Portrait focal point
+                widget: select
+                default: center
+                i18n: true
+                hint: 'Controls the visible crop without changing the uploaded image.'
+                options:
+                  - { label: Center, value: center }
+                  - { label: Top, value: top }
+                  - { label: Bottom, value: bottom }
+                  - { label: Left, value: left }
+                  - { label: Right, value: right }
+                  - { label: Top left, value: top-left }
+                  - { label: Top right, value: top-right }
+                  - { label: Bottom left, value: bottom-left }
+                  - { label: Bottom right, value: bottom-right }
               - { name: alt, label: Portrait image description, widget: string, i18n: true, hint: 'Example: Portrait of Valentyn Korotkevych.' }
               - { name: role, label: Role or expertise, widget: string, i18n: true, hint: 'Example: Contact Improvisation - Somatic research.' }
               - { name: bio, label: Biography, widget: text, i18n: true, hint: 'Example: Two to five sentences about the facilitator and their practice.' }

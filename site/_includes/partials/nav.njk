@@ -1,38 +1,45 @@
 {%- set s = cms.site -%}
 {%- set base = pathPrefix or "" -%}
+{%- set navUi = s.en if pagePrimaryLocale == "en" else s.de -%}
 <nav>
         <div class="container nav-inner">
             <a href="{{ (s.de.nav.home_url or 'index.html') | navigationUrl(base) }}" class="nav-logo">
                 Wild Care
                 <span class="breadcrumb"{% if navBreadcrumbDe and navBreadcrumbEn %}
                     data-de="{{ navBreadcrumbDe }}"
-                    data-en="{{ navBreadcrumbEn }}"{% endif %}>{{ navBreadcrumbDe or "Graz" }}</span>
+                    data-en="{{ navBreadcrumbEn }}"{% endif %}>{% if pagePrimaryLocale == "en" %}{{ navBreadcrumbEn or navBreadcrumbDe or "Graz" }}{% else %}{{ navBreadcrumbDe or "Graz" }}{% endif %}</span>
             </a>
             <div class="nav-links">
                 <a href="{{ (s.de.nav.home_url or 'index.html') | navigationUrl(base) }}"{% if navActive == 'index' %} class="active"{% endif %}
                     data-de="{{ s.de.nav.home }}"
-                    data-en="{{ s.en.nav.home or s.de.nav.home }}">{{ s.de.nav.home }}</a>
+                    data-en="{{ s.en.nav.home or s.de.nav.home }}">{{ navUi.nav.home or s.de.nav.home }}</a>
                 <a href="{{ (s.de.nav.about_url or 'team.html') | navigationUrl(base) }}"{% if navActive == 'team' %} class="active"{% endif %}
                     data-de="{{ s.de.nav.about }}"
-                    data-en="{{ s.en.nav.about or s.de.nav.about }}">{{ s.de.nav.about }}</a>
+                    data-en="{{ s.en.nav.about or s.de.nav.about }}">{{ navUi.nav.about or s.de.nav.about }}</a>
                 <a href="{{ (s.de.nav.program_url or 'programm.html') | navigationUrl(base) }}"{% if navActive == 'programm' %} class="active"{% endif %}
                     data-de="{{ s.de.nav.program }}"
-                    data-en="{{ s.en.nav.program or s.de.nav.program }}">{{ s.de.nav.program }}</a>
+                    data-en="{{ s.en.nav.program or s.de.nav.program }}">{{ navUi.nav.program or s.de.nav.program }}</a>
                 <a href="{{ (s.de.nav.journal_url or 'journal.html') | navigationUrl(base) }}"{% if navActive == 'journal' %} class="active"{% endif %}
                     data-de="{{ s.de.nav.journal or 'Journal' }}"
-                    data-en="{{ s.en.nav.journal or s.de.nav.journal or 'Journal' }}">{{ s.de.nav.journal or 'Journal' }}</a>
+                    data-en="{{ s.en.nav.journal or s.de.nav.journal or 'Journal' }}">{{ navUi.nav.journal or s.de.nav.journal or 'Journal' }}</a>
                 <a href="{{ (s.de.nav.join_url or 'mitmachen.html') | navigationUrl(base) }}"{% if navActive == 'mitmachen' %} class="active"{% endif %}
                     data-de="{{ s.de.nav.join }}"
-                    data-en="{{ s.en.nav.join or s.de.nav.join }}">{{ s.de.nav.join }}</a>
+                    data-en="{{ s.en.nav.join or s.de.nav.join }}">{{ navUi.nav.join or s.de.nav.join }}</a>
                 <a href="{{ (s.de.nav.cta_url or 'kontakt.html') | navigationUrl(base) }}" class="nav-cta{% if navActive == 'kontakt' %} active{% endif %}"
                     data-de="{{ s.de.nav.cta }}"
-                    data-en="{{ s.en.nav.cta or s.de.nav.cta }}">{{ s.de.nav.cta }}</a>
+                    data-en="{{ s.en.nav.cta or s.de.nav.cta }}">{{ navUi.nav.cta or s.de.nav.cta }}</a>
             </div>
             <div class="lang-toggle">
+{% if pageLanguageMode == "en_only" %}
+                <button class="lang-toggle-btn active" data-lang="en">EN</button>
+{% elif pageLanguageMode == "de_only" %}
+                <button class="lang-toggle-btn active" data-lang="de">DE</button>
+{% else %}
                 <button class="lang-toggle-btn active" data-lang="de">DE</button>
                 <button class="lang-toggle-btn" data-lang="en">EN</button>
+{% endif %}
             </div>
-            <button class="nav-toggle" aria-label="Men&uuml;">
+            <button class="nav-toggle" data-aria-de="Men&uuml;" data-aria-en="Menu" aria-label="{% if pagePrimaryLocale == 'en' %}Menu{% else %}Men&uuml;{% endif %}">
                 <span></span>
                 <span></span>
                 <span></span>

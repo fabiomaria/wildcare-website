@@ -38,13 +38,6 @@ de:
     label: Ausblick
     heading: Was noch kommt
     intro: Projekte, die wir gerade entwickeln oder planen. Hier entsteht etwas.
-    cards:
-      - label: Performance / Lecture
-        title: We Just Met / Erste Begegnung
-        subtitle: Die soziale Physik des Tanzes sichtbar machen
-        paragraphs:
-          - text: 'Ein Format, in dem ein:e Erzähler:in während einer Contact-Improvisation-Session die Tänzer:innen einfriert — und dem Publikum erklärt, was gerade auf körperlicher und sozialer Ebene passiert. Schwerkraft, Vertrauen, Grenzen: Die unsichtbare Physik der Begegnung wird lesbar.'
-          - text: Unser Versuch, Contact Improvisation für ein Publikum zugänglich zu machen, das noch nie davon gehört hat.
   cta:
     label: Einladung
     heading: Komm vorbei.
@@ -93,7 +86,6 @@ en:
     label: Outlook
     heading: What’s Coming Next
     intro: Projects we’re currently developing or planning. Something is taking shape here.
-    cards: []
   cta:
     label: Invitation
     heading: Come by.

@@ -9,12 +9,11 @@ de:
   title: Cellular Touch
   registration:
     label: Register now
-    note: ''
   facts:
-    date: 8.–9. August 2026
+    date: 8–9 August 2026
     time: ''
     location: Orpheumgasse, 8010 Graz
-    price: 70–200 EUR Sliding Scale
+    price: 70–200 EUR sliding scale
     duration: 2 days
     format:
       - value: Contact Improvisation, somatics and dance research
@@ -25,33 +24,89 @@ de:
       - value: 70&ndash;200 EUR sliding scale contribution
   card:
     tags:
-      - label: Gastworkshop
+      - label: Guest Workshop
         style: default
       - label: Contact Improvisation
         style: moss
     subtitle: With Valentyn Korotkevych
     summary: Cellular Touch is a Contact Improvisation workshop on membranes, fascia, flow and momentum. Valentyn Korotkevych opens a somatic research space for touch, falling, geometry and shared support.
-    detail_label: Mehr erfahren
+    detail_label: Learn more
   hero:
+    badge: Guest Workshop · Contact Improvisation
     headline: Cellular Touch
+    headline_accent: with Valentyn Korotkevych
+    subtitle: A somatic Contact Improvisation workshop moving from touch through falling into evolving directions in space.
     show_details: false
+    visual_aria: Cellular Touch workshop photos
+    main_image: assets/images/cellular-touch-valentyn.jpg
+    main_alt: Valentyn Korotkevych in a Contact Improvisation lift
+    inset_image: assets/images/cellular-touch-membrane.jpg
+    inset_alt: Three people researching through a Contact Improvisation sequence
+    note_title: Cellular Touch
+    note_text: 'Flowing in, flowing out: the membrane becomes a dancing boundary between self, space and partner.'
   description:
     label: The Practice
     heading: Touch as cellular space.
-    paragraphs:
-      - text: Cellular touch arises from the awareness of semipermeable membrane layers, which are responsible for our form and organization. Transitional fluids pass, are received and exchanged through a quality of dance that facilitates the exchange between and within us.
-      - text: Cellular touch is made possible when we perceive the movement of fluid in and out of a membrane.
-      - text: <b>Flowing in</b> comes with a sense of self-fulfillment until the saturation of our internal structure, while preserving its flexibility and reliability.
-      - text: <b>Flowing out</b> allows a sense of Release into Gravity & Space (while continuing sensing the anchor to the ground, through the Center connection and extended reach of the 'roots')
+    body: |-
+      Cellular touch arises from the awareness of semipermeable membrane layers, which are responsible for our form and organization. Transitional fluids pass, are received and exchanged through a quality of dance that facilitates the exchange between and within us.
+
+      Cellular touch is made possible when we perceive the movement of fluid in and out of a membrane.
+
+      **Flowing in** comes with a sense of self-fulfillment until the saturation of our internal structure, while preserving its flexibility and reliability.
+
+      **Flowing out** allows a sense of Release into Gravity & Space (while continuing sensing the anchor to the ground, through the Center connection and extended reach of the 'roots')
     show_info: true
+  research:
+    label: Research Fields
+    heading: What we explore
+    fields:
+      - number: '01'
+        title: Membrane
+        text: 'Flowing in: sensing fullness, stability and flexibility from within.'
+      - number: '02'
+        title: Fascia
+        text: Reading superficial and deep fascia as a language of local and extended stretch.
+      - number: '03'
+        title: Unfixing
+        text: Noticing familiar patterns and letting tiny gestures grow into new movement pathways.
+      - number: '04'
+        title: Falling
+        text: Yielding into the support of the earth, partners and the shared body.
+      - number: '05'
+        title: Momentum
+        text: Translating forward energy into rotation and using the geometry of shared movement.
+      - number: '06'
+        title: Flow
+        text: Pendulum motion, trios and duets as invitations to expand trust and space.
+        highlighted: true
+  image_band:
+    label: Flowing in / Flowing out
+    heading: A dancing boundary
+    body: Holding together is not holding on. We practice receiving, yielding, expanding, anchoring back into the earth.
+    image: assets/images/cellular-touch-membrane.jpg
+    alt: Cellular Touch group research through touch
   facilitators:
-    label: ''
+    label: Facilitator
     heading: ''
-    members: []
+    members:
+      - name: Valentyn Korotkevych
+        image: assets/images/cellular-touch-valentyn.jpg
+        alt: Valentyn Korotkevych
+        role: Contact Improvisation · Somatic research
+        bio: Valentyn is a Ukrainian-Canadian somatic therapy practitioner, spoken word and movement artist. His work integrates Polyvagal theory, Deep Tissue Massage, and poetry of being an active body-mind connected system. <br>His approach to Contact Improvisation lies in the root of introspection, contemplation & fundamental feeling of honesty, inclusivity & mutual care.
     quotes:
       - quote: “When we pay attention to tiny gestures, they can grow and become pathways we have not expanded into before.”
         author: Valentyn Korotkevych
   faq: null
+  meta:
+    title: Cellular Touch with Valentyn Korotkevych — Workshop | Wild Care
+    description: 'Cellular Touch with Valentyn Korotkevych: a Contact Improvisation workshop on membranes, fascia, flow and momentum. 8-9 August 2026, Orpheumgasse, Graz.'
+    og_title: Cellular Touch with Valentyn Korotkevych
+    og_description: A Contact Improvisation workshop on membranes, fascia, flow and momentum. 8-9 August 2026, Orpheumgasse, Graz.
+    og_image: assets/images/cellular-touch-valentyn.jpg
+    og_image_alt: Valentyn Korotkevych and a partner sharing weight in a Contact Improvisation lift.
+    og_image_width: 2000
+    og_image_height: 1334
 en:
   title: Cellular Touch
   registration:
@@ -94,11 +149,14 @@ en:
   description:
     label: The Practice
     heading: Touch as cellular space.
-    paragraphs:
-      - text: Cellular touch arises from the awareness of semipermeable membrane layers, which are responsible for our form and organization. Transitional fluids pass, are received and exchanged through a quality of dance that facilitates the exchange between and within us.
-      - text: Cellular touch is made possible when we perceive the movement of fluid in and out of a membrane.
-      - text: <b>Flowing in</b> comes with a sense of self-fulfillment until the saturation of our internal structure, while preserving its flexibility and reliability.
-      - text: <b>Flowing out</b> allows a sense of Release into Gravity & Space (while continuing sensing the anchor to the ground, through the Center connection and extended reach of the 'roots')
+    body: |-
+      Cellular touch arises from the awareness of semipermeable membrane layers, which are responsible for our form and organization. Transitional fluids pass, are received and exchanged through a quality of dance that facilitates the exchange between and within us.
+
+      Cellular touch is made possible when we perceive the movement of fluid in and out of a membrane.
+
+      **Flowing in** comes with a sense of self-fulfillment until the saturation of our internal structure, while preserving its flexibility and reliability.
+
+      **Flowing out** allows a sense of Release into Gravity & Space (while continuing sensing the anchor to the ground, through the Center connection and extended reach of the 'roots')
     show_info: true
   research:
     label: Research Fields
@@ -126,7 +184,7 @@ en:
   image_band:
     label: Flowing in / Flowing out
     heading: A dancing boundary
-    text: Holding together is not holding on. We practice receiving, yielding, expanding, anchoring back into the earth.
+    body: Holding together is not holding on. We practice receiving, yielding, expanding, anchoring back into the earth.
     image: assets/images/cellular-touch-membrane.jpg
     alt: Cellular Touch group research through touch
   facilitators:

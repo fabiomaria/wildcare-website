@@ -32,10 +32,14 @@
     }
 
     function getLang() {
+        var forcedLang = document.documentElement.getAttribute('data-forced-lang');
+        if (forcedLang) return forcedLang;
         return localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
     }
 
     function setLang(lang) {
+        var forcedLang = document.documentElement.getAttribute('data-forced-lang');
+        if (forcedLang) lang = forcedLang;
         localStorage.setItem(STORAGE_KEY, lang);
         apply(lang);
     }
@@ -62,6 +66,11 @@
             if (placeholder !== null) {
                 el.setAttribute('placeholder', placeholder);
             }
+        });
+
+        // Rich-text workshop fields are rendered as per-locale HTML blocks.
+        document.querySelectorAll('[data-rich-lang]').forEach(function (el) {
+            el.hidden = el.getAttribute('data-rich-lang') !== lang;
         });
 
         // Journal articles render Markdown as per-locale HTML blocks. If the

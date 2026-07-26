@@ -113,6 +113,7 @@ permalink: programm.html
          AKTUELLE PROJEKTE
          ================================ -->
 
+    {% if cms.workshops.current.length %}
     <section>
         <div class="container">
             <div class="section-header fade-up" style="margin-bottom: 48px;">
@@ -124,7 +125,7 @@ permalink: programm.html
                     data-en="{{ en.projects.heading | attr }}">{{ de.projects.heading }}</h2>
             </div>
 
-            {% for workshop in cms.workshops.listed %}
+            {% for workshop in cms.workshops.current %}
             {%- set cardDe = workshop.de.card -%}
             {%- set cardEn = workshop.en.card -%}
             {%- set factsDe = workshop.de.facts -%}
@@ -180,11 +181,13 @@ permalink: programm.html
             {% endfor %}
         </div>
     </section>
+    {% endif %}
 
     <!-- ================================
          AUSBLICK
          ================================ -->
 
+    {% if cms.workshops.upcoming.length %}
     <section style="background: var(--sand-light);">
         <div class="container">
             <div class="section-header fade-up" style="margin-bottom: 48px;">
@@ -200,23 +203,59 @@ permalink: programm.html
             </div>
 
             <div class="ausblick-grid">
-                {% for card in de.outlook.cards %}
-                {%- set enCard = en.outlook.cards[loop.index0] -%}
+                {% for workshop in cms.workshops.upcoming %}
+                {%- set cardDe = workshop.de.card -%}
+                {%- set cardEn = workshop.en.card -%}
+                {%- set factsDe = workshop.de.facts -%}
+                {%- set factsEn = workshop.en.facts -%}
                 <div class="preview-card fade-up delay-{{ loop.index }}">
-                    <div class="preview-card-label" data-de="{{ card.label | attr }}" data-en="{{ enCard.label | attr }}">{{ card.label }}</div>
+                    <div class="preview-card-label"
+                        data-de="{{ factsDe.date | attr }}"
+                        data-en="{{ factsEn.date | attr }}">{{ factsDe.date }}</div>
                     <h3
-                        data-de="{{ card.title | attr }}"
-                        data-en="{{ enCard.title | attr }}">{{ card.title }}</h3>
+                        data-de="{{ workshop.de.title | attr }}"
+                        data-en="{{ workshop.en.title | attr }}">{{ workshop.de.title }}</h3>
+                    {% if cardDe.subtitle or cardEn.subtitle %}
                     <div class="preview-card-subtitle"
-                        data-de="{{ card.subtitle | attr }}"
-                        data-en="{{ enCard.subtitle | attr }}">{{ card.subtitle }}</div>
-                    {% for paragraph in card.paragraphs %}
+                        data-de="{{ cardDe.subtitle | attr }}"
+                        data-en="{{ cardEn.subtitle | attr }}">{{ cardDe.subtitle }}</div>
+                    {% endif %}
                     <p
-                        data-de="{{ paragraph.text | attr }}"
-                        data-en="{{ enCard.paragraphs[loop.index0].text | attr }}">{{ paragraph.text }}</p>
-                    {% endfor %}
-                    {% if card.link %}
-                    <a href="{{ card.link.href }}" target="_blank" rel="noopener" class="btn btn-ghost">{{ card.link.label }}</a>
+                        data-de="{{ cardDe.summary | attr }}"
+                        data-en="{{ cardEn.summary | attr }}">{{ cardDe.summary }}</p>
+
+                    <div class="projekt-details">
+                        {% if factsDe.location or factsEn.location %}
+                        <div class="projekt-detail">
+                            {{ icon("location") }}
+                            <span data-de="{{ factsDe.location | attr }}" data-en="{{ factsEn.location | attr }}">{{ factsDe.location }}</span>
+                        </div>
+                        {% endif %}
+                        {% if factsDe.price or factsEn.price %}
+                        <div class="projekt-detail">
+                            {{ icon("cost") }}
+                            <span data-de="{{ factsDe.price | attr }}" data-en="{{ factsEn.price | attr }}">{{ factsDe.price | safe }}</span>
+                        </div>
+                        {% endif %}
+                        {% if factsDe.duration or factsEn.duration %}
+                        <div class="projekt-detail">
+                            {{ icon("people") }}
+                            <span data-de="{{ factsDe.duration | attr }}" data-en="{{ factsEn.duration | attr }}">{{ factsDe.duration }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    {% if de.outlook.show_links %}
+                        {% if workshop.registration_url %}
+                    <a href="{{ workshop.registration_url }}" class="btn btn-ghost"
+                        data-de="{{ workshop.de.registration.label | attr }}"
+                        data-en="{{ workshop.en.registration.label | attr }}">{{ workshop.de.registration.label }}</a>
+                        {% endif %}
+                        {% if workshop.has_detail_page %}
+                    <a href="{{ workshop.href | cleanUrl }}" class="btn btn-ghost"
+                        data-de="{{ (cardDe.detail_label or cms.site.de.workshop_ui.detail_label) | attr }}"
+                        data-en="{{ (cardEn.detail_label or cms.site.en.workshop_ui.detail_label) | attr }}">{{ cardDe.detail_label or cms.site.de.workshop_ui.detail_label }}</a>
+                        {% endif %}
                     {% endif %}
                 </div>
 
@@ -224,6 +263,7 @@ permalink: programm.html
             </div>
         </div>
     </section>
+    {% endif %}
 
     <!-- ================================
          CTA

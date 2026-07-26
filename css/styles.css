@@ -1806,6 +1806,17 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
     object-fit: cover;
 }
 
+/* Non-destructive display crops selected in the workshop CMS. */
+img.media-focus-center       { object-position: 50% 50%; }
+img.media-focus-top          { object-position: 50% 15%; }
+img.media-focus-bottom       { object-position: 50% 85%; }
+img.media-focus-left         { object-position: 15% 50%; }
+img.media-focus-right        { object-position: 85% 50%; }
+img.media-focus-top-left     { object-position: 15% 15%; }
+img.media-focus-top-right    { object-position: 85% 15%; }
+img.media-focus-bottom-left  { object-position: 15% 85%; }
+img.media-focus-bottom-right { object-position: 85% 85%; }
+
 .workshop-process-grid {
     display: grid;
     grid-template-columns: 0.85fr 1.15fr;

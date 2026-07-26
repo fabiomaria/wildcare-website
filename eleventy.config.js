@@ -18,6 +18,12 @@ const markdown = new MarkdownIt({
   typographer: false,
 });
 
+const richTextMarkdown = new MarkdownIt({
+  html: false,
+  linkify: false,
+  typographer: false,
+});
+
 function escapeHtmlAttr(value) {
   return String(value ?? "")
     .replace(/&/g, "&amp;")
@@ -85,6 +91,15 @@ function plainText(value) {
     .trim();
 }
 
+function normalizeRichText(value) {
+  if (hasText(value)) return value;
+  if (!Array.isArray(value)) return "";
+  return value
+    .map((item) => isObject(item) ? item.text : item)
+    .filter(hasText)
+    .join("\n\n");
+}
+
 function normalizeJournalLocale(locale) {
   const source = isObject(locale) ? locale : {};
   const meta = isObject(source.meta) ? source.meta : {};
@@ -109,6 +124,14 @@ function normalizeWorkshopLocale(locale) {
   const hero = isObject(source.hero) ? source.hero : {};
   const practice = isObject(source.practice) ? source.practice : null;
   const info = isObject(source.info) ? source.info : null;
+  const description = isObject(source.description) ? source.description : (practice || info ? {
+    label: practice?.label || "",
+    heading: practice?.heading || "",
+    paragraphs: practice?.paragraphs || [],
+    show_info: info?.enabled ?? Boolean(info),
+    info_title: info?.title || "",
+  } : null);
+  const imageBand = isObject(source.image_band) ? source.image_band : null;
   const meta = isObject(source.meta) ? source.meta : {};
   const title = source.title || card.title || source.nav?.breadcrumb || hero.heading_text || plainText(hero.heading);
   const summary = card.summary || hero.subtitle || "";
@@ -122,13 +145,10 @@ function normalizeWorkshopLocale(locale) {
     ...source,
     title,
     registration,
-    description: isObject(source.description) ? source.description : (practice || info ? {
-      label: practice?.label || "",
-      heading: practice?.heading || "",
-      paragraphs: practice?.paragraphs || [],
-      show_info: info?.enabled ?? Boolean(info),
-      info_title: info?.title || "",
-    } : null),
+    description: description ? {
+      ...description,
+      body: normalizeRichText(description.body || description.paragraphs),
+    } : null,
     facts: isObject(source.facts) ? source.facts : {
       date: card.date || hero.details?.find((detail) => detail.icon === "calendar")?.text || "",
       time: hero.details?.find((detail) => detail.icon === "clock")?.text || "",
@@ -148,6 +168,10 @@ function normalizeWorkshopLocale(locale) {
     info: info ? {
       ...info,
       enabled: info.enabled ?? true,
+    } : null,
+    image_band: imageBand ? {
+      ...imageBand,
+      body: normalizeRichText(imageBand.body || imageBand.text),
     } : null,
     meta: {
       ...meta,
@@ -395,7 +419,11 @@ function loadWorkshopContent() {
       ];
       const head = {};
       for (const key of HEAD_KEYS) {
-        head[key] = raw[key] !== undefined ? raw[key] : deSource[key];
+        head[key] = raw[key] !== undefined
+          ? raw[key]
+          : deSource[key] !== undefined
+            ? deSource[key]
+            : enSource[key];
       }
       const deRaw = { ...deSource };
       const enRaw = { ...enSource };
@@ -411,9 +439,9 @@ function loadWorkshopContent() {
       let de = deepMerge(fallback, deRaw);
       let en = deepMerge(fallback, enRaw);
 
-      // language_mode describes the detail page. Sveltia still writes its
-      // default DE locale for en_only entries, so ignore partial alternate
-      // detail fields there while retaining translated programme-card copy.
+      // language_mode describes the detail page. For English-only entries,
+      // localized English media is authoritative; the DE locale exists only
+      // as a CMS compatibility shell until the language-neutral migration.
       if (languageMode === "en_only") {
         de = {
           ...en,
@@ -450,9 +478,15 @@ function loadWorkshopContent() {
       return (a.sort_order || 999) - (b.sort_order || 999);
     });
 
+  const hasListingTitle = (workshop) => Boolean(workshop.de.title || workshop.en.title);
+  const current = all.filter((workshop) => workshop.status === "current" && hasListingTitle(workshop));
+  const upcoming = all.filter((workshop) => workshop.status === "upcoming" && hasListingTitle(workshop));
+
   return {
     all,
-    listed: all.filter((workshop) => (workshop.status === "upcoming" || workshop.status === "current") && (workshop.de.title || workshop.en.title)),
+    current,
+    upcoming,
+    listed: [...current, ...upcoming],
     pages: all.filter((workshop) => workshop.has_detail_page),
   };
 }
@@ -460,6 +494,7 @@ function loadWorkshopContent() {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
   eleventyConfig.addFilter("attr", (value) => new nunjucks.runtime.SafeString(escapeHtmlAttr(value)));
+  eleventyConfig.addFilter("richText", (value) => new nunjucks.runtime.SafeString(richTextMarkdown.render(String(value || ""))));
   eleventyConfig.addFilter("navigationUrl", resolveNavigationUrl);
   eleventyConfig.addFilter("absoluteSiteUrl", absoluteSiteUrl);
   eleventyConfig.addFilter("cleanUrl", stripHtmlExt);

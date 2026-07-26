@@ -17,7 +17,7 @@ permalink: "{{ workshop.href }}"
 {%- set alternate = en -%}
 {%- endif -%}
 <!DOCTYPE html>
-<html lang="{{ workshop.primary_locale }}">
+<html lang="{{ workshop.primary_locale }}"{% if workshop.language_mode != "bilingual" %} data-forced-lang="{{ workshop.primary_locale }}"{% endif %}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +42,8 @@ permalink: "{{ workshop.href }}"
     {%- set navActive = "programm" -%}
     {%- set navBreadcrumbDe = de.title -%}
     {%- set navBreadcrumbEn = en.title -%}
+    {%- set pageLanguageMode = workshop.language_mode -%}
+    {%- set pagePrimaryLocale = workshop.primary_locale -%}
     {% include "partials/nav.njk" %}
 
     <!-- ================================
@@ -138,10 +140,10 @@ permalink: "{{ workshop.href }}"
                     data-aria-en="{{ en.hero.visual_aria | attr }}"
                     aria-label="{{ primary.hero.visual_aria }}">
                     <figure class="workshop-photo-main">
-                        <img src="{{ primary.hero.main_image }}" alt="{{ primary.hero.main_alt }}">
+                        <img src="{{ primary.hero.main_image }}" alt="{{ primary.hero.main_alt }}" class="media-focus-{{ primary.hero.main_image_focus or 'center' }}">
                     </figure>
                     <figure class="workshop-photo-inset">
-                        <img src="{{ primary.hero.inset_image }}" alt="{{ primary.hero.inset_alt }}">
+                        <img src="{{ primary.hero.inset_image }}" alt="{{ primary.hero.inset_alt }}" class="media-focus-{{ primary.hero.inset_image_focus or 'center' }}">
                     </figure>
                     <div class="workshop-visual-note">
                         <span
@@ -166,7 +168,7 @@ permalink: "{{ workshop.href }}"
     <section class="detail-about">
         <div class="container">
             <div class="detail-about-grid">
-{% if primary.description.heading or (primary.description.paragraphs and primary.description.paragraphs.length) %}
+{% if primary.description.heading or primary.description.body %}
                 <div class="detail-about-text fade-up">
                     <p class="label"
                         data-de="{{ de.description.label | attr }}"
@@ -174,9 +176,12 @@ permalink: "{{ workshop.href }}"
                     <h2
                         data-de="{{ de.description.heading | attr }}"
                         data-en="{{ en.description.heading | attr }}">{{ primary.description.heading }}</h2>
-                    {% for paragraph in primary.description.paragraphs %}
-                    <p>{{ paragraph.text | safe }}</p>
-                    {% endfor %}
+{% if workshop.language_mode == "bilingual" %}
+                    <div data-rich-lang="de"{% if workshop.primary_locale != "de" %} hidden{% endif %}>{{ de.description.body | richText }}</div>
+                    <div data-rich-lang="en"{% if workshop.primary_locale != "en" %} hidden{% endif %}>{{ en.description.body | richText }}</div>
+{% else %}
+                    <div>{{ primary.description.body | richText }}</div>
+{% endif %}
                 </div>
 {% endif %}
 {% if primary.description.show_info %}
@@ -289,12 +294,15 @@ permalink: "{{ workshop.href }}"
                 <h2
                     data-de="{{ de.image_band.heading | attr }}"
                     data-en="{{ en.image_band.heading | attr }}">{{ primary.image_band.heading }}</h2>
-                <p
-                    data-de="{{ de.image_band.text | attr }}"
-                    data-en="{{ en.image_band.text | attr }}">{{ primary.image_band.text }}</p>
+{% if workshop.language_mode == "bilingual" %}
+                <div data-rich-lang="de"{% if workshop.primary_locale != "de" %} hidden{% endif %}>{{ de.image_band.body | richText }}</div>
+                <div data-rich-lang="en"{% if workshop.primary_locale != "en" %} hidden{% endif %}>{{ en.image_band.body | richText }}</div>
+{% else %}
+                <div>{{ primary.image_band.body | richText }}</div>
+{% endif %}
             </div>
             <div class="workshop-image-frame fade-up delay-2">
-                <img src="{{ primary.image_band.image }}" alt="{{ primary.image_band.alt }}">
+                <img src="{{ primary.image_band.image }}" alt="{{ primary.image_band.alt }}" class="media-focus-{{ primary.image_band.image_focus or 'center' }}">
             </div>
         </div>
     </section>
@@ -318,7 +326,7 @@ permalink: "{{ workshop.href }}"
 {%- set altMember = alternate.facilitators.members[loop.index0] %}
                     <div class="detail-team-member fade-up delay-{{ loop.index }}">
                         <div class="detail-team-portrait workshop-team-portrait">
-                            <img src="{{ member.image }}" alt="{{ member.alt }}" loading="lazy">
+                            <img src="{{ member.image }}" alt="{{ member.alt }}" class="media-focus-{{ member.image_focus or 'center' }}" loading="lazy">
                         </div>
                         <div class="detail-team-info">
 {% if loop.first %}
@@ -384,6 +392,28 @@ permalink: "{{ workshop.href }}"
                 </div>
 {% endfor %}
             </div>
+        </div>
+    </section>
+{% endif %}
+
+    <!-- ================================
+         FINAL REGISTRATION CTA
+         ================================ -->
+
+{% if primary.closing_cta and primary.closing_cta.heading %}
+    <section class="cta-section">
+        <div class="container fade-up">
+            <h2
+                data-de="{{ de.closing_cta.heading | attr }}"
+                data-en="{{ en.closing_cta.heading | attr }}">{{ primary.closing_cta.heading }}</h2>
+{% if primary.closing_cta.text %}
+            <p
+                data-de="{{ de.closing_cta.text | attr }}"
+                data-en="{{ en.closing_cta.text | attr }}">{{ primary.closing_cta.text }}</p>
+{% endif %}
+            <a href="{{ workshop.registration_url }}" class="btn btn-primary"
+                data-de="{{ (de.closing_cta.button_label or de.registration.label) | attr }}"
+                data-en="{{ (en.closing_cta.button_label or en.registration.label) | attr }}">{{ primary.closing_cta.button_label or primary.registration.label }}</a>
         </div>
     </section>
 {% endif %}

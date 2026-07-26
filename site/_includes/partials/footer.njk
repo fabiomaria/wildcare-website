@@ -1,32 +1,33 @@
 {%- set s = cms.site -%}
 {%- set base = pathPrefix or "" -%}
+{%- set footerUi = s.en if pagePrimaryLocale == "en" else s.de -%}
 <footer class="page-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h4>Wild Care</h4>
-                    <p data-de="{{ s.de.footer.brand_text }}" data-en="{{ s.en.footer.brand_text or s.de.footer.brand_text }}">{{ s.de.footer.brand_text }}</p>
+                    <p data-de="{{ s.de.footer.brand_text }}" data-en="{{ s.en.footer.brand_text or s.de.footer.brand_text }}">{{ footerUi.footer.brand_text or s.de.footer.brand_text }}</p>
                 </div>
                 <div class="footer-links">
-                    <h4 data-de="{{ s.de.footer.pages_heading }}" data-en="{{ s.en.footer.pages_heading or s.de.footer.pages_heading }}">{{ s.de.footer.pages_heading }}</h4>
-                    <a href="{{ (s.de.nav.home_url or 'index.html') | navigationUrl(base) }}" data-de="{{ s.de.nav.home }}" data-en="{{ s.en.nav.home or s.de.nav.home }}">{{ s.de.nav.home }}</a>
-                    <a href="{{ (s.de.nav.about_url or 'team.html') | navigationUrl(base) }}" data-de="{{ s.de.nav.about }}" data-en="{{ s.en.nav.about or s.de.nav.about }}">{{ s.de.nav.about }}</a>
-                    <a href="{{ (s.de.nav.program_url or 'programm.html') | navigationUrl(base) }}" data-de="{{ s.de.nav.program }}" data-en="{{ s.en.nav.program or s.de.nav.program }}">{{ s.de.nav.program }}</a>
-                    <a href="{{ (s.de.nav.join_url or 'mitmachen.html') | navigationUrl(base) }}" data-de="{{ s.de.nav.join }}" data-en="{{ s.en.nav.join or s.de.nav.join }}">{{ s.de.nav.join }}</a>
-                    <a href="{{ (s.de.nav.journal_url or 'journal.html') | navigationUrl(base) }}" data-de="{{ s.de.nav.journal or 'Journal' }}" data-en="{{ s.en.nav.journal or s.de.nav.journal or 'Journal' }}">{{ s.de.nav.journal or 'Journal' }}</a>
-                    <a href="{{ (s.de.nav.cta_url or 'kontakt.html') | navigationUrl(base) }}" data-de="{{ s.de.footer.contact_label }}" data-en="{{ s.en.footer.contact_label or s.de.footer.contact_label }}">{{ s.de.footer.contact_label }}</a>
+                    <h4 data-de="{{ s.de.footer.pages_heading }}" data-en="{{ s.en.footer.pages_heading or s.de.footer.pages_heading }}">{{ footerUi.footer.pages_heading or s.de.footer.pages_heading }}</h4>
+                    <a href="{{ (s.de.nav.home_url or 'index.html') | navigationUrl(base) }}" data-de="{{ s.de.nav.home }}" data-en="{{ s.en.nav.home or s.de.nav.home }}">{{ footerUi.nav.home or s.de.nav.home }}</a>
+                    <a href="{{ (s.de.nav.about_url or 'team.html') | navigationUrl(base) }}" data-de="{{ s.de.nav.about }}" data-en="{{ s.en.nav.about or s.de.nav.about }}">{{ footerUi.nav.about or s.de.nav.about }}</a>
+                    <a href="{{ (s.de.nav.program_url or 'programm.html') | navigationUrl(base) }}" data-de="{{ s.de.nav.program }}" data-en="{{ s.en.nav.program or s.de.nav.program }}">{{ footerUi.nav.program or s.de.nav.program }}</a>
+                    <a href="{{ (s.de.nav.join_url or 'mitmachen.html') | navigationUrl(base) }}" data-de="{{ s.de.nav.join }}" data-en="{{ s.en.nav.join or s.de.nav.join }}">{{ footerUi.nav.join or s.de.nav.join }}</a>
+                    <a href="{{ (s.de.nav.journal_url or 'journal.html') | navigationUrl(base) }}" data-de="{{ s.de.nav.journal or 'Journal' }}" data-en="{{ s.en.nav.journal or s.de.nav.journal or 'Journal' }}">{{ footerUi.nav.journal or s.de.nav.journal or 'Journal' }}</a>
+                    <a href="{{ (s.de.nav.cta_url or 'kontakt.html') | navigationUrl(base) }}" data-de="{{ s.de.footer.contact_label }}" data-en="{{ s.en.footer.contact_label or s.de.footer.contact_label }}">{{ footerUi.footer.contact_label or s.de.footer.contact_label }}</a>
                 </div>
                 <div class="footer-links">
-                    <h4 data-de="{{ footerConnectHeadingDe or s.de.footer.connect_heading }}" data-en="{{ footerConnectHeadingEn or s.en.footer.connect_heading or s.de.footer.connect_heading }}">{{ footerConnectHeadingDe or s.de.footer.connect_heading }}</h4>
+                    <h4 data-de="{{ footerConnectHeadingDe or s.de.footer.connect_heading }}" data-en="{{ footerConnectHeadingEn or s.en.footer.connect_heading or s.de.footer.connect_heading }}">{% if pagePrimaryLocale == "en" %}{{ footerConnectHeadingEn or s.en.footer.connect_heading or s.de.footer.connect_heading }}{% else %}{{ footerConnectHeadingDe or s.de.footer.connect_heading }}{% endif %}</h4>
                     <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
                     <a href="https://facebook.com/wildcare.space" target="_blank" rel="noopener">Facebook</a>
                     <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span class="footer-legal"><a href="{{ base }}impressum">Impressum</a> &middot; <a href="{{ base }}datenschutz">Datenschutz</a></span>
+                <span class="footer-legal"><a href="{{ base }}impressum" data-de="Impressum" data-en="Legal notice">{% if pagePrimaryLocale == "en" %}Legal notice{% else %}Impressum{% endif %}</a> &middot; <a href="{{ base }}datenschutz" data-de="Datenschutz" data-en="Privacy policy">{% if pagePrimaryLocale == "en" %}Privacy policy{% else %}Datenschutz{% endif %}</a></span>
                 <span>&copy; 2026 Wild Care &mdash; Graz</span>
-                <span data-de="{{ s.de.footer.tagline }}" data-en="{{ s.en.footer.tagline or s.de.footer.tagline }}">{{ s.de.footer.tagline }}</span>
+                <span data-de="{{ s.de.footer.tagline }}" data-en="{{ s.en.footer.tagline or s.de.footer.tagline }}">{{ footerUi.footer.tagline or s.de.footer.tagline }}</span>
             </div>
         </div>
     </footer>
