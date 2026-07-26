@@ -6,6 +6,7 @@
     "build": "eleventy && node scripts/validate-seo.js",
     "check:seo": "node scripts/validate-seo.js",
     "dev": "eleventy --serve --port=8081",
+    "test:calendar": "node --test lib/calendar/*.test.js",
     "schema:registry": "node scripts/schema/validate-registry.js",
     "schema:inventory": "node scripts/schema/inventory.js",
     "schema:docs": "node scripts/schema/generate-docs.js",
