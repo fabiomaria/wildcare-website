@@ -1,212 +1,181 @@
-# Wild Care content schema migration
+# Wild Care content schema v2 — executable migration contract
 
-Status: Proposed
+Status: Ready for implementation
 
-Target schema: v2
+Contract version: 2.0
 
-Scope: Site settings, fixed pages, workshops, journal posts, and legal pages
+Target content schema: 2
 
 CMS: Sveltia CMS
 
 Frontend: Eleventy
 
-## Current release status — 2026-07-26
-
-This release is the compatibility step before the atomic v2 migration described
-below. It keeps the current v1 content envelope so existing CMS entries remain
-editable, while implementing the workshop-page requirements that prompted this
-specification:
-
-- workshop language mode and status remain shared publishing controls;
-- English-only workshop pages suppress the public language selector;
-- workshop media can be selected from either CMS language editor;
-- hero, image-band, and facilitator images have non-destructive focal-point
-  controls;
-- the practice and image-band text blocks use restricted rich-text fields;
-- workshop pages support an optional closing registration call to action;
-- the Programme page derives “What’s happening now” from `current` workshops
-  and “What’s coming next” from `upcoming` workshops;
-- upcoming workshop previews do not render clickable links unless
-  `outlook.show_links` is explicitly enabled.
-
-Because Sveltia v1 locale ownership still makes shared fields belong to its
-default locale, mono-lingual entries retain a compatibility locale shell in
-this release. The v2 cutover removes that workaround by moving shared objects
-under `global` and making `de` and `en` optional content objects.
+Scope: Site settings, every fixed page, workshops, journal posts, and legal
+pages
 
 ## 1. Purpose
 
-The current content model uses Sveltia CMS native internationalization. In that
-model, every collection has one default locale. Fields configured with
-`i18n: false` exist only in the default locale, while fields configured with
-`i18n: duplicate` are read-only in every other locale.
+This document is the execution contract for moving Wild Care CMS content from
+the current locale-owned schema to a language-neutral schema.
 
-This creates three recurring problems:
+It replaces the earlier design draft. Implementation is split into
+dependency-ordered tasks. A task is complete only when its listed artifacts
+exist, its commands pass, and its evidence has been recorded.
 
-1. Global settings such as language mode, publication status, URLs, images, and
-   focal points are presented as if they belong to one language.
-2. An English-only entry cannot remove German when German is the collection
-   default; changing the default merely reverses the problem for German-only
-   entries.
-3. A CMS configuration and content files using different default locales can
-   make entries disappear from the editor with “Entry not found.”
+The migration solves these current problems:
 
-Schema v2 removes locale ownership from global data. The CMS will edit one
-language-neutral record containing:
+- shared fields appear to belong to the CMS default language;
+- image controls become read-only in another language editor;
+- mono-lingual entries require compatibility content in an unused locale;
+- changing CMS locale configuration independently from content can make an
+  entry disappear with “Entry not found”;
+- localization rules are repeated in documentation, CMS configuration,
+  adapters, validators, and migration scripts.
 
-- a `global` object for shared operational data;
-- an optional `de` object for German content;
-- an optional `en` object for English content.
+## 2. Current production compatibility state
 
-Sveltia native i18n will not be enabled for v2 collections. This makes global
-fields editable exactly once and makes each language an explicit, optional
-content object.
+The release deployed on 2026-07-26 remains schema v1. It contains compatibility
+improvements required before the v2 migration:
 
-## 2. Goals
+- workshop language and status controls;
+- English-only frontend rendering;
+- editable workshop media in either v1 language editor;
+- non-destructive image focal points;
+- restricted rich text for workshop practice and image-band content;
+- optional workshop closing calls to action;
+- Programme sections generated from workshop status;
+- non-clickable upcoming workshop previews by default.
 
-- Make global fields editable regardless of the page language.
-- Never disable shared image, video, or focal-point controls because of locale.
-- Do not render a German content form for an English-only entry, or an English
-  content form for a German-only entry.
-- Keep bilingual entries editable in one screen without duplicated global data.
-- Preserve current frontend URLs and visual output during migration.
-- Provide a dual-read period and an explicit rollback path.
-- Validate language mode against the language objects that actually exist.
-- Use structured data for dates, prices, links, and media where practical.
+The v1 compatibility locale shells remain until the relevant collection
+completes its v2 cutover.
 
-## 3. Non-goals
+## 3. Contract authority
 
-- Changing the visual design of any page.
-- Changing public URLs.
-- Translating missing content automatically.
-- Introducing a different CMS.
-- Allowing arbitrary HTML from rich-text fields.
-- Deleting legacy content before parity has been verified.
+### 3.1 Normative artifacts
 
-## 4. Current content inventory
+Once Task `MIG-01` is complete, these files are authoritative:
 
-| Content type | Current storage | Current locale model | Main issue |
-| --- | --- | --- | --- |
-| Site settings | `content/site.yaml` | `de` and `en` in one file | Shared routes and media live under German |
-| Fixed pages | `content/pages/*.yaml` | `de` and `en` in one file | Non-translated fields belong to the default locale |
-| Workshops | `content/workshops/*.yaml` | `de` and `en` in one file | Entry ID and shared media are locale-owned |
-| Journal posts | Paired `.md` and `.en.md` files | Separate files | Shared dates, status, and media are duplicated |
-| Legal pages | `content/legal/*.md` | German-only files | No explicit language mode or schema version |
+| Artifact                                     | Authority                                                                                                 |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `schema/content-schema-v2.registry.json`     | Field paths, types, localization classes, requirements, enums, ordering, references, and resolution rules |
+| `schema/content-schema-registry.schema.json` | Valid shape of the registry itself                                                                        |
+| `schema/generated/*.schema.json`             | Generated validation schemas for v2 records                                                               |
+| `admin/config.yml`                           | CMS labels, hints, grouping, widgets, and editorial layout                                                |
+| `docs/generated/content-schema-v2.md`        | Generated human-readable field catalogue; never edited manually                                           |
+| This document                                | Task order, release gates, rollback, and change control                                                   |
 
-`content/pages/cellular-touch.yaml` is an obsolete Phase 0 sample. The canonical
-Cellular Touch entry is `content/workshops/cellular-touch.yaml`. The sample
-should be removed only after the v2 workshop cutover has passed parity checks.
+If this document and the registry disagree about a field, the registry wins.
+If the CMS configuration disagrees with the registry, CI must fail.
 
-## 5. Canonical v2 envelope
+### 3.2 No duplicated field catalogue
 
-All CMS-managed records use the same top-level contract:
+This document intentionally does not contain an exhaustive table of page
+fields. Task `MIG-02` records every field for every content type in the
+machine-readable registry. Task `MIG-03` generates the readable catalogue from
+that registry.
+
+### 3.3 Change control
+
+A registry change requires all of the following in one pull request:
+
+1. increment `registry_revision`;
+2. update or add a fixture;
+3. regenerate derived JSON schemas and documentation;
+4. update CMS configuration if editor-visible fields changed;
+5. update migration and downgrade mappings when storage changed;
+6. pass the complete schema contract check.
+
+Generated files must never be edited by hand.
+
+## 4. Canonical v2 record
+
+All YAML-managed v2 records use this envelope:
 
 ```yaml
 schema_version: 2
 global:
   id: how-we-move-together
-  language_mode: en_only
-  status: unlisted
-  route: /how-we-move-together.html
-de: null
-en:
-  title: How We Move Together
-```
-
-### 5.1 Required global fields
-
-Every record must contain:
-
-| Field | Type | Meaning |
-| --- | --- | --- |
-| `schema_version` | integer | Must be `2` |
-| `global.id` | string | Stable content identifier; never translated |
-| `global.language_mode` | enum | `de_only`, `en_only`, or `bilingual` |
-| `global.status` | enum | Content-type-specific publication state |
-| `global.route` | string | Canonical public path |
-
-### 5.2 Language invariants
-
-The build validator must enforce:
-
-| `language_mode` | Required object | Forbidden object |
-| --- | --- | --- |
-| `de_only` | `de` | `en` |
-| `en_only` | `en` | `de` |
-| `bilingual` | `de` and `en` | None |
-
-An absent language is represented by `null` or an omitted key. It must not be
-represented by a duplicate of another language.
-
-Sveltia does not currently support dependent fields. Therefore `de` and `en`
-are configured as optional Object fields. When absent, the CMS shows only an
-“add content” control rather than rendering the language’s full form. The build
-validator, not conditional UI logic, enforces the table above.
-
-## 6. Global versus localized field policy
-
-Use the following decision rule:
-
-- Put a value in `global` if translating it would be incorrect.
-- Put a value under `de` or `en` if a reader may perceive or hear it.
-- Split a concept when it has both operational and presentational parts.
-
-### 6.1 Always global
-
-- IDs, slugs, routes, templates, and schema versions
-- publication status and sorting keys
-- machine-readable dates and times
-- registration destinations and external URLs
-- image and video file paths
-- focal points and display variants
-- numeric prices, currency codes, and capacity
-- map coordinates
-- form endpoint identifiers
-- relationships to other records
-
-### 6.2 Always localized
-
-- headings, labels, summaries, and paragraphs
-- rich-text content
-- alternative text and accessibility descriptions
-- human-readable dates, times, prices, and addresses
-- button labels
-- biographies and role descriptions
-- SEO titles and descriptions
-- quote text
-
-### 6.3 Split fields
-
-Examples:
-
-```yaml
-global:
+  intended_locales:
+    - en
+  status: upcoming
+  route: /how-we-move-together
+  start_at: 2026-10-09T19:00:00+02:00
   registration:
-    url: https://tally.so/r/example
+    url: https://tally.so/r/PLACEHOLDER
   hero:
     main_image:
-      src: /assets/uploads/example.webp
-      focal_point: top
-en:
-  registration:
-    label: Register now
-  hero:
-    main_image_alt: Two dancers sharing weight
+      src: /assets/uploads/_dsc8336.webp
+      focal_point: center
+locales:
+  en:
+    title: How We Move Together
+    registration:
+      label: Register now
+    hero:
+      main_image_alt: Dancers sharing weight
 ```
 
-### 6.4 Optional localization classes
+Rules:
 
-Not every value is permanently global or permanently translated. V2 assigns
-every field path one of four localization classes:
+1. `schema_version` must equal `2`.
+2. `global` is required.
+3. `locales` is a map keyed by BCP 47-compatible locale identifiers.
+4. Missing locales are omitted; they are not represented by `null`, empty
+   objects, or copied fallback content.
+5. `global.intended_locales` expresses editorial intent.
+6. Available locales are derived only from non-empty keys in `locales`.
+7. The validator requires the intended and available locale sets to match.
+8. Templates branch only on derived available locales, never on
+   `intended_locales`.
+9. A detail page never silently substitutes content from another language.
 
-| Class | Storage | Resolution |
-| --- | --- | --- |
-| `G` | `global` only | The same value is used for every language |
-| `L` | `de` and/or `en` only | A value must exist for each enabled language |
-| `G+O` | Global default plus optional locale override | Locale override, otherwise global value |
-| `S` | Split object | Operational subfields are global; presentation subfields are localized |
+Example validation error:
 
-Example of a shared image that may later need a language-specific version:
+```text
+content/workshops/example.yaml:
+declared intended locale "en", but locales.en is missing.
+Add English content or remove "en" from global.intended_locales.
+```
+
+## 5. Localization contract
+
+### 5.1 Leaf classes
+
+Localization classes apply only to leaf values. Objects and lists are
+structural paths and do not have a localization class.
+
+| Class | Storage                                                   | Resolution                                                                   |
+| ----- | --------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `G`   | `global`                                                  | Use the global value                                                         |
+| `L`   | `locales.<locale>`                                        | Use the requested locale value                                               |
+| `G+O` | Global default plus an explicitly allowed locale override | Locale override, then global value, otherwise validation error when required |
+
+No `S` class exists.
+
+### 5.2 Default policy
+
+Operational fields default to `G`, including:
+
+- IDs, routes, status, dates, and ordering;
+- media paths, focal points, and variants;
+- URLs, form endpoints, and action types;
+- numeric prices, currencies, and capacity;
+- coordinates and relationships.
+
+Reader-facing copy defaults to `L`, including:
+
+- headings, labels, paragraphs, rich text, and quotes;
+- alternative text and accessible names;
+- formatted dates, prices, schedules, and addresses;
+- biographies and button labels;
+- SEO titles, descriptions, and image descriptions.
+
+`G+O` is opt-in per registry field. Supporting an override in the resolver does
+not automatically permit one in content or expose one in the CMS.
+
+### 5.3 Override storage
+
+Permitted overrides live under a dedicated namespace:
 
 ```yaml
 global:
@@ -214,688 +183,880 @@ global:
     image:
       src: /assets/images/hero.webp
       focal_point: center
-de:
-  hero:
-    image_alt: Menschen in Bewegung
-en:
-  hero:
-    image:
-      src: /assets/images/hero-with-english-text.webp # optional G+O override
-      focal_point: top                         # optional paired override
-    image_alt: People moving
+locales:
+  en:
+    overrides:
+      hero:
+        image:
+          src: /assets/images/hero-en.webp
+          focal_point: top
 ```
 
-Locale overrides are allowed only on paths marked `G+O` in this specification.
-The content adapter resolves each such field as:
+The registry must define:
+
+- the global path;
+- the override path;
+- whether the override is scalar or an atomic object group;
+- whether an override is required to replace every field in that group.
+
+Empty strings never count as overrides. Partial atomic-object overrides are
+invalid.
+
+### 5.4 Required and empty values
+
+Every `L` field definition includes:
+
+- `required`;
+- optional `required_when`;
+- `allow_empty`;
+- `nullable`.
+
+Optional values should be omitted. Empty strings are valid only where the
+registry explicitly sets `allow_empty: true`.
+
+### 5.5 Adding override support
+
+Promoting a field from `G` to `G+O` requires:
+
+1. one registry change;
+2. one resolver fixture with an override;
+3. one resolver fixture without an override;
+4. one invalid empty or partial override fixture;
+5. a CMS control for the override;
+6. migration and downgrade coverage.
+
+## 6. Identity, routing, ordering, and references
+
+### 6.1 Identity
+
+`global.id` is authoritative.
+
+- For file collections, the filename stem must equal `global.id`.
+- IDs are unique within a record type.
+- Routes are unique across all public records.
+- Routes are not derived from IDs because existing German-named routes must
+  remain stable.
+
+### 6.2 Routes
+
+Routes remain `G` during schema v2. Bilingual pages continue to serve both
+languages at one canonical URL. This deliberately preserves current URLs,
+incoming links, and the existing client-side language switch.
+
+Localized routes require a separate routing, redirect, canonical, and
+`hreflang` design. They are not part of this migration.
+
+### 6.3 Cross-record ordering
+
+`sort_order` is an optional non-negative integer used only as a tie-breaker.
+When absent it resolves to `999`.
+
+The registry specifies the primary ordering for each listing. Final ordering is
+always deterministic:
 
 ```text
-locale override → global default → validation error when required
+primary date or status order → sort_order → global.id
 ```
 
-This provides optional localization without duplicating every non-localized
-object. It also supports text-bearing graphics, language-specific registration
-destinations, culturally localized names, or different media crops when those
-are genuinely needed.
+Ties are allowed because `global.id` provides the final stable key.
 
-## 7. Target schemas by content type
+### 6.4 Ordered nested items
 
-### 7.1 Site settings
+Global lists define membership and order. Every repeatable item has a stable
+`id`. Localized item content is stored in a map keyed by that ID.
 
-File: `content/site.yaml`
+The validator must:
 
-```yaml
-schema_version: 2
-global:
-  id: site
-  language_mode: bilingual
-  status: published
-  routes:
-    home: /index.html
-    team: /team.html
-    programme: /programm.html
-    journal: /journal.html
-    participate: /mitmachen.html
-    contact: /kontakt.html
-  seo:
-    default_og_image:
-      src: /assets/images/social-preview.jpg
-      width: 1200
-      height: 630
-  contact:
-    email: hello@wildcare.space
-  social: {}
-de:
-  nav: {}
-  footer: {}
-  workshop_ui: {}
-  seo:
-    default_og_image_alt: ""
-en:
-  nav: {}
-  footer: {}
-  workshop_ui: {}
-  seo:
-    default_og_image_alt: ""
+- reject a localized key not present in the global list;
+- reject duplicate global IDs;
+- enforce required localized fields for every enabled locale;
+- allow omitted optional localized fields;
+- never join localized content by array position.
+
+## 7. Required enums
+
+The registry contains the authoritative enum arrays. It must include at least
+the current values below.
+
+### 7.1 Status by record type
+
+| Record type   | Values                                             |
+| ------------- | -------------------------------------------------- |
+| Site settings | `published`                                        |
+| Fixed page    | `draft`, `published`, `unlisted`                   |
+| Workshop      | `draft`, `upcoming`, `current`, `past`, `unlisted` |
+| Journal       | `published`, `coming_soon`, `unlisted`             |
+| Legal page    | `draft`, `published`                               |
+
+### 7.2 Shared enums
+
+```text
+focal_point:
+  center
+  top
+  bottom
+  left
+  right
+  top-left
+  top-right
+  bottom-left
+  bottom-right
+
+journal_hero_variant:
+  cover
+  contained
+
+pricing_model:
+  fixed
+  donation
+  sliding_scale
+  free
 ```
 
-Navigation labels are localized; route destinations are global.
+Templates are enumerated per record type in the registry. Unknown template,
+status, focal-point, media-variant, or pricing-model values are build errors.
 
-### 7.2 Fixed pages
+## 8. Journal body storage
 
-Files: `content/pages/*.yaml`
+Journal Markdown does not move into YAML.
 
-```yaml
-schema_version: 2
-global:
-  id: team
-  language_mode: bilingual
-  status: published
-  route: /team.html
-  template: team
-  media:
-    verena_portrait:
-      src: /assets/images/verena.jpg
-      focal_point: center
-    fabio_portrait:
-      src: /assets/images/fabio.jpg
-      focal_point: center
-  actions:
-    contact:
-      href: /kontakt.html
-de:
-  meta: {}
-  hero: {}
-  sections: []
-en:
-  meta: {}
-  hero: {}
-  sections: []
+Target layout:
+
+```text
+content/journal/
+  records/
+    warum-ci.yaml
+  bodies/
+    warum-ci.de.md
+    warum-ci.en.md
 ```
 
-Page-specific modules may remain named objects during the first migration.
-Converting every fixed page to a page-builder list is a separate decision and is
-not required for v2.
+The YAML record contains global metadata and localized metadata. Body filenames
+are derived from `global.id` and the locale key; they are not stored as a third
+identity value.
 
-### 7.3 Workshops
+The registry marks the logical `body` field as:
 
-Files: `content/workshops/*.yaml`
-
-```yaml
-schema_version: 2
-global:
-  id: how-we-move-together
-  language_mode: en_only
-  status: unlisted
-  route: /how-we-move-together.html
-  detail_page: true
-  start_at: 2026-10-09T19:00:00+02:00
-  end_at: 2026-10-11T19:00:00+02:00
-  sort_order: 2
-  registration:
-    url: https://tally.so/r/PLACEHOLDER
-  pricing:
-    currency: EUR
-    minimum: 70
-    maximum: 200
-    model: sliding_scale
-  location:
-    name: Orpheumgasse
-    postal_code: "8010"
-    city: Graz
-  hero:
-    show_details: true
-    video: null
-    video_poster: null
-    main_image:
-      src: /assets/uploads/_dsc8336.webp
-      focal_point: center
-    inset_image:
-      src: /assets/uploads/_dsc8761.webp
-      focal_point: top
-  image_band:
-    image:
-      src: /assets/uploads/acam6757.webp
-      focal_point: center
-  facilitators:
-    - id: fran
-      name: Fran
-      image:
-        src: /assets/uploads/_dsc8761.webp
-        focal_point: top
-de: null
-en:
-  title: How We Move Together
-  registration:
-    label: Register now
-    note: ""
-  facts:
-    date: 9–11 October 2026
-    time: ""
-    location: Orpheumgasse, 8010 Graz
-    price: 70–200 EUR sliding scale
-  card: {}
-  hero:
-    badge: Workshop · Contact Improvisation
-    headline: How We Move Together
-    main_image_alt: Dancers sharing weight
-    inset_image_alt: Contact Improvisation research
-  description: {}
-  research: {}
-  image_band:
-    alt: Group research through Contact Improvisation
-  facilitators:
-    fran:
-      role: Contact Improvisation · Social Inquiry
-      bio: ""
-      image_alt: Fran
-  meta: {}
+```json
+{
+  "class": "L",
+  "storage": "markdown_file",
+  "path_pattern": "content/journal/bodies/{id}.{locale}.md"
+}
 ```
 
-Facilitators use stable IDs so localized biographies can reference the same
-global person without relying on list position.
+The converter must preserve the Markdown body bytes after the existing front
+matter delimiter, including the final-newline state. The validator requires
+exactly one body file for every intended journal locale and rejects orphan body
+files.
 
-### 7.4 Journal posts
+## 9. Reader contract
 
-Target files: `content/journal/*.yaml`
-
-Journal posts move from paired Markdown files into one YAML record. Markdown
-bodies remain Markdown strings edited with the RichText widget.
-
-```yaml
-schema_version: 2
-global:
-  id: warum-ci
-  language_mode: bilingual
-  status: published
-  route: /journal/warum-ci.html
-  published_at: 2026-03-01
-  sort_order: 2
-  card_image:
-    src: /assets/images/warum-ci.jpg
-    focal_point: center
-  hero_image:
-    src: /assets/images/ci-cover.jpg
-    focal_point: center
-    variant: cover
-de:
-  title: Warum Contact Improvisation?
-  excerpt: ""
-  image_alt: ""
-  hero_alt: ""
-  body: |-
-    Markdown content
-  cta: {}
-  meta: {}
-en:
-  title: Why Contact Improvisation?
-  excerpt: ""
-  image_alt: ""
-  hero_alt: ""
-  body: |-
-    Markdown content
-  cta: {}
-  meta: {}
-```
-
-The old `.md` and `.en.md` files remain readable during the transition but are
-deleted only after the YAML records pass parity checks.
-
-### 7.5 Legal pages
-
-Target files: `content/legal/*.yaml`
-
-```yaml
-schema_version: 2
-global:
-  id: datenschutz
-  language_mode: de_only
-  status: published
-  route: /datenschutz.html
-  effective_date: null
-de:
-  heading: Datenschutzerklärung
-  meta: {}
-  body: |-
-    Markdown content
-en: null
-```
-
-### 7.6 Exhaustive object localization catalogue
-
-The following catalogue covers every current CMS-managed page object. Nested
-fields inherit the object classification unless a field-level exception is
-listed.
-
-#### Shared objects used on every page
-
-| Object or field | Class | Migration rule |
-| --- | --- | --- |
-| Record ID, route, template, status, sort order | `G` | Move to `global` |
-| Language mode | `G` | One selector outside all language objects |
-| Section enabled/disabled state | `G` | Store once; localized copy does not control layout |
-| Section order and stable item IDs | `G` | Lists use IDs; localized lists reference those IDs |
-| Heading, label, eyebrow, paragraph, quote | `L` | Store only under enabled languages |
-| Internal/external URL | `G+O` | Global default; allow a locale-specific destination |
-| Button style, action kind, icon key | `G` | Button label remains localized |
-| Image/video source, focal point, display variant | `G+O` | Global by default; locale override allowed |
-| Image alt text, caption, ARIA description | `L` | Required per enabled language when media is informative |
-| SEO canonical route and image dimensions | `G` | Store once |
-| SEO image source | `G+O` | Allow text-bearing localized social images |
-| SEO title, description, image alt | `L` | Store per enabled language |
-| Person ID and list order | `G` | Use stable IDs |
-| Person name and portrait | `G+O` | Global default with optional cultural/media override |
-| Person role, biography, portrait alt | `L` | Store per enabled language |
-| Form endpoint, field keys, validation rules | `G` | Never translate |
-| Form labels, placeholders, state and error messages | `L` | Store per enabled language |
-
-#### Site settings — `content/site.yaml`
-
-| Current object | Class | Field treatment |
-| --- | --- | --- |
-| `nav` | `S` | Route fields are `G+O`; visible labels are `L` |
-| `seo` | `S` | Default image and dimensions are `G+O`/`G`; alt text is `L` |
-| `footer` | `L` | All current footer copy is localized |
-| `workshop_ui` | `L` | Facts-card, facilitator, FAQ, and detail labels are localized |
-| Contact/social configuration added later | `S` | Destinations and handles are `G`; visible labels are `L` |
-
-#### Homepage — `content/pages/index.yaml`
-
-| Current object | Class | Field treatment |
-| --- | --- | --- |
-| `hero` | `S` | Copy is `L`; CTA destinations and any media are `G+O` |
-| `event_banner` | `S` | Machine schedule/location are `G`; tag, formatted day/time/address/basis are `L` |
-| `values` | `S` | Card IDs/order are `G`; label, heading, card title/text are `L` |
-| `invitation` | `S` | Copy is `L`; CTA destination is `G+O` |
-| `quote` | `L` | Quote and optional attribution are localized |
-| `journal` | `S` | Query/count/source are `G`; heading and “all posts” label are `L` |
-| Newsletter `cta` | `S` | Endpoint, provider/list ID, consent URL, and field keys are `G`; all visible copy is `L` |
-| `meta` | `S` | Follows the shared SEO rule |
-
-#### Contact — `content/pages/kontakt.yaml`
-
-| Current object | Class | Field treatment |
-| --- | --- | --- |
-| `hero` | `L` | Current fields are localized copy; future media is `G+O` |
-| `form` | `S` | Submission endpoint, method, field keys, and required rules are `G`; labels, placeholders, progress, success, and errors are `L` |
-| `info` | `S` | Email/address/schedule source data are `G+O`; labels, formatted schedule, and highlight are `L` |
-| `map` | `S` | Coordinates, provider, zoom, and destination URL are `G`; label, heading, caption, and accessible name are `L` |
-| `footer` | `L` | Page-specific footer copy override |
-| `meta` | `S` | Follows the shared SEO rule |
-
-#### Team — `content/pages/team.yaml`
-
-| Current object | Class | Field treatment |
-| --- | --- | --- |
-| `breadcrumb` | `L` | Localized navigation copy |
-| `hero` | `L` | Current fields are localized copy; future media is `G+O` |
-| `manifest` | `S` | Quote/copy are `L`; source name is `G+O` |
-| `team.members` | `S` | Member IDs/order are `G`; name/image/focal point are `G+O`; alt/role/bio are `L` |
-| `quote_band` | `S` | Quote is `L`; source is `G+O` |
-| `philosophy` | `S` | Pillar IDs/order are `G`; all visible copy is `L` |
-| `cta` | `S` | Destination/style are `G+O`/`G`; label, heading, text, and button are `L` |
-| `footer` | `L` | Page-specific footer copy override |
-| `meta` | `S` | Follows the shared SEO rule |
-
-#### Journal landing — `content/pages/journal.yaml`
-
-| Current object | Class | Field treatment |
-| --- | --- | --- |
-| `hero` | `L` | Label, heading, and intro are localized |
-| `card` | `L` | “Read more” and empty-state copy are localized |
-| `cta` | `S` | Destination/style are `G+O`/`G`; visible copy is `L` |
-| `article` | `L` | Back, related label, and related heading are localized UI copy |
-| Journal query/sort/pagination | `G` | Add to `global` if these become configurable |
-| `meta` | `S` | Follows the shared SEO rule |
-
-#### Programme — `content/pages/programm.yaml`
-
-| Current object | Class | Field treatment |
-| --- | --- | --- |
-| `hero` | `L` | Current fields are localized copy |
-| `core` | `S` | Row IDs/order/icons are `G`; row labels/values and section copy are `L`; registration/detail destinations are `G+O` |
-| `projects` | `S` | Workshop query/filter is `G`; label and heading are `L` |
-| `outlook` | `S` | Card IDs/order and link destinations are `G+O`; card and section copy are `L` |
-| `cta` | `S` | Destination/style are `G+O`/`G`; visible copy is `L` |
-| `meta` | `S` | Follows the shared SEO rule |
-
-#### Monday class — `content/pages/montagskurs.yaml`
-
-| Current object | Class | Field treatment |
-| --- | --- | --- |
-| `breadcrumb` | `L` | Localized navigation copy |
-| `hero` | `S` | Image/focal point, structured schedule/address, and CTA destination are `G+O`; headings, formatted schedule/address/basis, CTA label, and alt are `L` |
-| `practice` | `S` | Video/poster/focal point are `G+O`; label, heading, paragraphs, and media descriptions are `L` |
-| `learn` | `S` | Card IDs/order are `G`; all visible copy and donation note are `L` |
-| `testimonials` | `S` | Testimonial IDs/order/author identity are `G+O`; quote and optional author display override are `L` |
-| `team.members` | `S` | Same person rules as the Team page |
-| `faq` | `S` | Item IDs/order are `G`; questions and answers are `L` |
-| `crosslink` | `S` | Destination is `G+O`; visible copy is `L` |
-| `cta` | `S` | Destination/style are `G+O`/`G`; visible copy is `L` |
-| `footer` | `L` | Page-specific footer copy override |
-| `meta` | `S` | Follows the shared SEO rule |
-
-#### Participation — `content/pages/mitmachen.yaml`
-
-| Current object | Class | Field treatment |
-| --- | --- | --- |
-| `hero` | `L` | Current fields are localized copy |
-| `core_message` | `L` | Localized copy |
-| `circles` | `S` | Outer/inner IDs and tag IDs/order are `G`; all visible descriptions and tags are `L` |
-| `membership` | `S` | Tier IDs, icon, numeric price, currency, billing period, action target, and `tier_arg` are `G+O`; names, formatted amounts, quote, description, button, ARIA, and notes are `L` |
-| `footer` | `L` | Page-specific footer copy override |
-| `meta` | `S` | Follows the shared SEO rule |
-
-#### Workshops — `content/workshops/*.yaml`
-
-| Current object | Class | Field treatment |
-| --- | --- | --- |
-| Publishing/logistics | `S` | Slug/route, status, detail-page flag, machine dates, sort order, registration URL are `G`; displayed facts are `L` |
-| `registration` | `S` | URL/action kind are `G+O`; label and note are `L` |
-| `facts` | `S` | Structured dates, location, price, duration, format IDs, and schedule IDs are `G`; formatted rows are `L` |
-| `card` | `S` | Tag style/IDs are `G`; tag labels, subtitle, summary, and detail label are `L` |
-| `hero` | `S` | Video, poster, images, focal points, and show-details flag are `G+O`; badge, headings, subtitle, ARIA, alt text, and note are `L` |
-| `description` | `S` | Enabled/show-info flags are `G`; label, heading, body, and info title are `L` |
-| `research.fields` | `S` | Card IDs/order and highlighted flag are `G`; number/eyebrow, title, and text are `L` |
-| `image_band` | `S` | Enabled flag, image, and focal point are `G+O`; label, heading, body, and alt are `L` |
-| `closing_cta` | `S` | Enabled flag, destination, and style are `G+O`/`G`; heading, text, and button label are `L` |
-| `facilitators.members` | `S` | Stable person IDs/order are `G`; name/image/focal point are `G+O`; alt, role, and bio are `L` |
-| `facilitators.quotes` | `S` | Quote IDs/order and author identity are `G+O`; quote and optional author display override are `L` |
-| `faq.items` | `S` | Item IDs/order are `G`; questions and answers are `L` |
-| `meta` | `S` | Follows the shared SEO rule |
-
-#### Journal posts — current paired Markdown files
-
-| Current object | Class | Field treatment |
-| --- | --- | --- |
-| `language_mode`, date, sort order, status | `G` | Store once in the YAML record |
-| Title and excerpts | `L` | Store per enabled language |
-| Card/hero image and variant | `G+O` | Global default with optional locale override |
-| Card/hero alt text | `L` | Store per enabled language |
-| Markdown body | `L` | Store per enabled language without modifying Markdown |
-| `tally` and CTA button action/style/target | `G+O` | Operational values global; locale override allowed for target |
-| CTA heading/text/button label | `L` | Store per enabled language |
-| `meta` | `S` | Follows the shared SEO rule |
-
-#### Legal pages — `content/legal/*`
-
-| Current object | Class | Field treatment |
-| --- | --- | --- |
-| ID, route, status, effective date | `G` | Store once |
-| Heading and Markdown body | `L` | German currently required; English optional only if language mode changes |
-| External legal references | `G+O` | May use a global destination with localized link labels in the body |
-| `meta` | `S` | Follows the shared SEO rule |
-
-### 7.7 Object-shape requirements
-
-To make optional localization reliable across every page:
-
-1. Every repeatable item receives a stable `id`; localized arrays must not be
-   joined by position.
-2. A locale override may replace a scalar or a complete media/action object,
-   but may not partially replace an object in a way that leaves an invalid
-   combination.
-3. If a localized media `src` override exists, its paired focal point may
-   override the global focal point; localized alt text remains required.
-4. Global lists define membership and order. Locale objects provide copy keyed
-   by item ID.
-5. Empty strings do not count as overrides.
-6. Removing a global object removes it from every locale.
-7. Adding a locale does not duplicate global objects; it adds only localized
-   copy and optional overrides.
-8. The adapter must report every consumed fallback or override in `--check`
-   mode so migration results are auditable.
-
-## 8. CMS configuration
-
-### 8.1 Collection rules
-
-V2 collections must:
-
-- omit collection-level `i18n`;
-- define `schema_version` as a hidden field with default `2`;
-- define `global` as a required Object field;
-- define `de` and `en` as optional Object fields;
-- keep all media paths and focal points inside `global`;
-- keep all alternative text inside the relevant language object;
-- use `widget: richtext` with the existing restricted toolbar for large text;
-- use no inline styles and introduce no frontend design tokens.
-
-### 8.2 Language selector
-
-`global.language_mode` is an ordinary Select field. It is visible and editable
-once, independent of German or English content.
-
-The three options are:
-
-- German only (`de_only`)
-- English only (`en_only`)
-- German and English (`bilingual`)
-
-### 8.3 CMS validation limitations
-
-Sveltia cannot currently show or hide arbitrary fields based on another field.
-The editor therefore cannot automatically add or remove `de` and `en` when the
-language mode changes.
-
-Mitigations:
-
-1. Keep both language objects optional.
-2. Add clear hints to the language selector and language objects.
-3. Reject invalid combinations in the repository build.
-4. Provide an idempotent migration/normalization script.
-5. Add CMS event-hook validation later only if it can remain version-stable.
-
-## 9. Frontend reader contract
-
-Eleventy receives normalized records in this shape:
+All templates consume this normalized shape:
 
 ```js
 {
   schemaVersion: 2,
   global: {},
   locales: {
-    de: null,
     en: {}
   },
-  primaryLocale: "en",
-  availableLocales: ["en"]
+  availableLocales: ["en"],
+  primaryLocale: "en"
 }
 ```
 
-Templates must not read raw YAML directly. A content adapter selects the
-requested locale and combines:
+The adapter:
 
-1. the immutable `global` object;
-2. the requested language object;
-3. explicitly defined site UI fallbacks.
+1. detects `schema_version`;
+2. reads v1 through the existing compatibility path;
+3. reads v2 through the registry-backed resolver;
+4. validates before normalization;
+5. returns the same normalized interface for both versions;
+6. records every `G+O` fallback or override in check mode.
 
-Localized content must never silently fall back to another language on a detail
-page. Missing required localized content is a build error.
+Programme cards may use the record’s primary locale when the surrounding page
+does not contain that locale. That exception is explicit and must not translate
+or relabel the workshop content.
 
-Programme cards may use the entry’s primary language when the surrounding page
-does not have a matching translation. This fallback must be explicit and
-visually remain in the source language.
+## 10. Command contract
 
-## 10. Migration sequence
+The tasks below add these package scripts. Once the task that introduces a
+command is complete, the command becomes a required release gate.
 
-The order is mandatory. The “Entry not found” incident occurred because a new
-CMS locale contract was loaded against old production content.
+```text
+npm run schema:registry
+npm run schema:docs
+npm run schema:docs -- --check
+npm run schema:cms -- --check
+npm run schema:validate -- --all
+npm run schema:migrate -- --collection <name> --check
+npm run schema:migrate -- --collection <name> --write
+npm run schema:downgrade -- --collection <name> --check
+npm run schema:downgrade -- --collection <name> --write
+npm run schema:parity -- --collection <name>
+npm run build
+```
 
-### Phase 0 — Freeze and fixtures
+General command requirements:
 
-1. Record the production commit SHA.
-2. Export every CMS-managed content file.
-3. Save representative rendered HTML and screenshots for every page type.
-4. Add fixtures for `de_only`, `en_only`, and `bilingual`.
-5. Document all known intentional language asymmetries.
+- `--check` never writes;
+- `--write` refuses a dirty target file unless `--force` is explicitly passed;
+- converters refuse unknown input shapes;
+- converters are idempotent;
+- output is deterministic;
+- scripts create no network side effects;
+- errors name the file and registry field ID;
+- a non-empty warning set produces a non-zero exit unless explicitly allowlisted.
 
-### Phase 1 — Dual-read frontend
+## 11. Task execution rules
 
-1. Add `schema_version` detection.
-2. Preserve current v1 readers.
-3. Add v2 adapters and validators.
-4. Make templates consume only normalized adapter output.
-5. Build both v1 and v2 fixtures in CI.
+1. Tasks run in dependency order.
+2. A collection cutover cannot start until every foundation task is complete.
+3. CMS editing is frozen only for the collection currently being cut over.
+4. CMS config and content for one collection ship in the same commit.
+5. Every collection completes a production editing cycle before the next
+   collection starts.
+6. Do not remove v1 readers until every collection has passed its editing cycle.
+7. Each task records evidence in its named report or fixture path.
+8. Failed acceptance commands block the next task.
 
-No CMS configuration changes occur in this phase.
+## 12. Task ledger
 
-### Phase 2 — Idempotent converters
+| ID       | Task                                            | Depends on         | State       |
+| -------- | ----------------------------------------------- | ------------------ | ----------- |
+| `MIG-00` | Freeze baseline and resolve remaining decisions | None               | Not started |
+| `MIG-01` | Create registry infrastructure                  | `MIG-00`           | Not started |
+| `MIG-02` | Catalogue every current content field           | `MIG-01`           | Not started |
+| `MIG-03` | Build validators and generated documentation    | `MIG-02`           | Not started |
+| `MIG-04` | Add normalized dual-read adapters               | `MIG-03`           | Not started |
+| `MIG-05` | Enforce the CMS contract                        | `MIG-03`           | Not started |
+| `MIG-06` | Build migration and downgrade engines           | `MIG-03`, `MIG-04` | Not started |
+| `MIG-07` | Cut over workshops                              | `MIG-05`, `MIG-06` | Not started |
+| `MIG-08` | Cut over site settings                          | `MIG-07`           | Not started |
+| `MIG-09` | Cut over every fixed page                       | `MIG-08`           | Not started |
+| `MIG-10` | Cut over journal records and bodies             | `MIG-09`           | Not started |
+| `MIG-11` | Cut over legal pages                            | `MIG-10`           | Not started |
+| `MIG-12` | Remove v1 compatibility code                    | `MIG-11`           | Not started |
 
-Create scripts:
+## 13. Executable tasks
 
-- `scripts/migrate-site-schema-v2.js`
-- `scripts/migrate-pages-schema-v2.js`
-- `scripts/migrate-workshops-schema-v2.js`
-- `scripts/migrate-journal-schema-v2.js`
-- `scripts/migrate-legal-schema-v2.js`
-- `scripts/validate-content-schema-v2.js`
+### MIG-00 — Freeze baseline and resolve remaining decisions
 
-Each converter must:
+Objective: Create a reproducible v1 reference before writing migration code.
 
-- refuse unknown input shapes;
-- support `--check` without writing;
-- write deterministic YAML;
-- preserve Markdown exactly;
-- never infer a translation;
-- emit a field-level migration report;
-- be safe to run twice;
-- create no network side effects.
+Artifacts:
 
-### Phase 3 — Content conversion
+- `migration/baseline/production-sha.txt`
+- `migration/baseline/content-manifest.json`
+- `migration/fixtures/v1/`
+- `migration/fixtures/rendered-v1/`
+- `migration/fixtures/screenshots-v1/`
 
-1. Convert site settings.
-2. Convert fixed pages.
-3. Convert workshops.
-4. Convert journal posts.
-5. Convert legal pages.
-6. Run v1-versus-v2 normalized-data comparisons.
-7. Run rendered HTML and screenshot parity checks.
+Actions:
 
-### Phase 4 — Atomic CMS cutover
+1. Record the deployed production commit.
+2. Hash every CMS-managed source file and referenced asset.
+3. Copy representative fixtures for:
+   - `de_only`, `en_only`, and bilingual records;
+   - every fixed page;
+   - every workshop status;
+   - both journal hero variants;
+   - each legal page.
+4. Save normalized data, rendered HTML, and approved screenshots.
+5. Record known intentional language asymmetries.
+6. Confirm the enum lists in Section 7.
+7. Confirm shared routes remain the v2 policy.
+8. Confirm journal bodies remain Markdown files.
 
-The v2 CMS configuration and all v2 content files must be published in the same
-production commit. A local v2 CMS must not point at a repository revision that
-still contains v1 files.
+Acceptance:
 
-For local review, use either:
+```sh
+npm run build
+node scripts/validate-seo.js
+git diff --check
+```
 
-- a local CMS backend reading the working tree; or
-- a preview branch containing both the v2 config and converted content.
+Done when:
 
-Do not test a working-tree `admin/config.yml` against unrelated production
-content.
+- every current content type has at least one fixture;
+- the manifest contains a hash for every source and media file;
+- the fixture build matches production at the recorded SHA;
+- no migration implementation has started.
 
-### Phase 5 — Cleanup
+Rollback: Delete only the newly created baseline artifacts.
 
-After at least one successful production editing cycle:
+### MIG-01 — Create registry infrastructure
+
+Objective: Make field knowledge machine-readable.
+
+Artifacts:
+
+- `schema/content-schema-registry.schema.json`
+- `schema/content-schema-v2.registry.json`
+- `scripts/schema/validate-registry.js`
+- package script `schema:registry`
+
+Registry minimum structure:
+
+```json
+{
+  "schema_version": 2,
+  "registry_revision": 1,
+  "supported_locales": ["de", "en"],
+  "enums": {},
+  "record_types": {
+    "workshop": {
+      "source": "content/workshops/*.yaml",
+      "identity": {},
+      "ordering": {},
+      "fields": []
+    }
+  }
+}
+```
+
+Each leaf field definition must contain:
+
+- a stable field `id`;
+- class `G`, `L`, or `G+O`;
+- global and/or locale storage path;
+- value type;
+- required and empty-value policy;
+- enum reference when applicable;
+- list/reference metadata when applicable;
+- CMS visibility;
+- v1 source mapping;
+- v1 downgrade mapping.
+
+Actions:
+
+1. Add a JSON meta-schema for the registry.
+2. Validate stable field-ID uniqueness.
+3. Reject object-level localization classes.
+4. Reject `G+O` entries without explicit override paths and fixtures.
+5. Reject field definitions without downgrade mappings.
+6. Add the enums from Section 7.
+
+Acceptance:
+
+```sh
+npm run schema:registry
+npm run schema:registry -- --fixture invalid-duplicate-field-id
+npm run schema:registry -- --fixture invalid-object-class
+npm run schema:registry -- --fixture invalid-override
+```
+
+The valid registry exits `0`. Every invalid fixture must exit non-zero with the
+expected field-specific error.
+
+Rollback: Remove the registry infrastructure; no content changes occur.
+
+### MIG-02 — Catalogue every current content field
+
+Objective: Cover all CMS-managed objects without maintaining a prose duplicate.
+
+Record types:
+
+- site settings;
+- fixed pages:
+  - homepage;
+  - contact;
+  - team;
+  - journal landing;
+  - programme;
+  - Monday class;
+  - participation;
+- workshops;
+- journal posts;
+- legal pages.
+
+Actions:
+
+1. Inventory paths from `admin/config.yml`, every content source, and template
+   reads.
+2. Add every leaf path to the registry.
+3. Classify operational fields as `G` unless a real override use case exists.
+4. Add stable IDs to every repeatable-item contract.
+5. Define required, optional, nullable, and empty-string behavior.
+6. Define primary sort and tie-breaking for every listing.
+7. Define reference targets and orphan rules.
+8. Define v1 forward and downgrade mappings.
+9. Add an explicit allowlist for content keys that are deliberately ignored.
+
+Evidence:
+
+- `migration/reports/field-inventory.json`
+- `migration/reports/unclassified-paths.json`
+
+Acceptance:
+
+```sh
+npm run schema:registry
+npm run schema:inventory -- --check
+```
+
+Done when:
+
+- every CMS field, content leaf, and template content read is classified;
+- `unclassified-paths.json` contains an empty array;
+- every repeatable object has an ID and orphan policy;
+- no speculative `G+O` field remains.
+
+Rollback: Revert registry entries and inventory reports; content remains v1.
+
+### MIG-03 — Build validators and generated documentation
+
+Objective: Enforce the registry and eliminate hand-maintained schema tables.
+
+Artifacts:
+
+- `scripts/schema/generate-json-schemas.js`
+- `scripts/schema/validate-content.js`
+- `scripts/schema/generate-docs.js`
+- `schema/generated/*.schema.json`
+- `docs/generated/content-schema-v2.md`
+- package scripts `schema:validate` and `schema:docs`
+
+Validation requirements:
+
+- record envelope and schema version;
+- ID, filename, and route rules;
+- intended-versus-available locale equality;
+- required, nullable, and empty values;
+- enum membership;
+- media existence;
+- list-ID uniqueness and localized orphan rejection;
+- allowed global and locale paths;
+- `G+O` atomicity;
+- deterministic sort fields;
+- journal body presence and orphan detection.
+
+Acceptance:
+
+```sh
+npm run schema:registry
+npm run schema:docs
+npm run schema:docs -- --check
+npm run schema:validate -- --fixtures
+git diff --exit-code -- schema/generated docs/generated
+```
+
+Done when valid fixtures pass, every invalid fixture fails for the expected
+reason, and regeneration leaves the working tree unchanged.
+
+Rollback: Remove generated artifacts and scripts; v1 readers remain unchanged.
+
+### MIG-04 — Add normalized dual-read adapters
+
+Objective: Let v1 and v2 records render through one template contract.
+
+Artifacts:
+
+- registry-backed resolver modules under `scripts/schema/` or `_data/`;
+- updated Eleventy data loaders;
+- v1/v2 normalized-data parity fixtures;
+- package script `schema:parity`.
+
+Actions:
+
+1. Detect `schema_version` per record.
+2. Keep existing v1 readers unchanged behind an adapter boundary.
+3. Resolve v2 `G`, `L`, and allowed `G+O` values from the registry.
+4. Derive available and primary locales.
+5. Prevent implicit cross-language fallback on detail pages.
+6. Preserve the explicit Programme-card primary-locale exception.
+7. Emit a machine-readable override/fallback report in check mode.
+8. Make templates consume normalized records only.
+
+Acceptance:
+
+```sh
+npm run schema:parity -- --fixtures
+npm run schema:validate -- --all
+npm run build
+node scripts/validate-seo.js
+```
+
+Done when paired v1 and v2 fixtures produce equivalent normalized data and
+approved rendered HTML.
+
+Rollback: Revert the adapter boundary. No production content has changed.
+
+### MIG-05 — Enforce the CMS contract
+
+Objective: Make the CMS representation agree with the registry without forcing
+editorial labels and layout into the registry.
+
+Artifacts:
+
+- `scripts/schema/check-cms-contract.js`
+- optional generated CMS field fragments;
+- package script `schema:cms`;
+- CMS browser fixtures for every language combination.
+
+Actions:
+
+1. Remove collection-level native i18n from a v2 test collection.
+2. Expose `global.intended_locales` once.
+3. Represent `locales.de` and `locales.en` as optional objects.
+4. Test the repository’s pinned Sveltia build for multi-select support.
+5. If multi-select is unsuitable, use a list of locale select values without
+   changing the stored array contract.
+6. Ensure shared media and focal-point controls are editable once.
+7. Expose only registry-approved `G+O` overrides.
+8. Check CMS type, required state, enum options, and storage path against the
+   registry.
+9. Keep human-facing labels, hints, grouping, and collapsed state hand-authored.
+
+CMS acceptance matrix:
+
+| Intended locales | Required editor result                                                                |
+| ---------------- | ------------------------------------------------------------------------------------- |
+| `[de]`           | One shared section and an optional German content object; no populated English object |
+| `[en]`           | One shared section and an optional English content object; no populated German object |
+| `[de, en]`       | One shared section and both language objects                                          |
+
+Because Sveltia does not guarantee dependent field visibility, unused optional
+locale objects may still show an “add content” control. They must not contain a
+duplicated form or be required to save.
+
+Acceptance:
+
+```sh
+npm run schema:cms -- --check
+npm run schema:validate -- --fixtures
+npm run dev
+```
+
+Browser evidence must show create, edit, save, reopen, image replace/remove,
+focal-point selection, and locale-intent changes for all three matrix rows.
+
+Rollback: Revert the v2 test collection configuration. Production collections
+remain v1.
+
+### MIG-06 — Build migration and downgrade engines
+
+Objective: Provide deterministic, reversible conversion before any cutover.
+
+Artifacts:
+
+- `scripts/schema/migrate-content.js`
+- `scripts/schema/downgrade-content.js`
+- collection mapping modules;
+- package scripts `schema:migrate` and `schema:downgrade`;
+- deterministic field-level reports under `migration/reports/`.
+
+Forward-converter requirements:
+
+- refuse unknown v1 shapes;
+- preserve localized copy without translation;
+- derive no content from another locale;
+- move shared values according to the registry;
+- omit optional empty values unless explicitly allowed;
+- create stable nested IDs deterministically;
+- preserve asset paths;
+- preserve journal body bytes;
+- produce the same output on a second run.
+
+Downgrade requirements:
+
+- reconstruct the v1 shape required by the current production adapter and CMS;
+- preserve every locale and approved override;
+- refuse a lossy mapping rather than choosing silently;
+- report fields that cannot be represented in v1;
+- produce the same output on a second run.
+
+Acceptance for every collection:
+
+```sh
+npm run schema:migrate -- --collection <name> --check
+npm run schema:migrate -- --collection <name> --write
+npm run schema:migrate -- --collection <name> --check
+npm run schema:downgrade -- --collection <name> --check
+npm run schema:downgrade -- --collection <name> --write
+npm run schema:parity -- --collection <name>
+```
+
+The round trip must reproduce the normalized v1 data. Any intentional
+serialization difference must be listed in a deterministic allowlist.
+
+Rollback: Revert the scripts and generated test outputs. Production content
+remains v1.
+
+### MIG-07 — Cut over workshops
+
+Objective: Use workshops as the first production v2 collection.
+
+Scope:
+
+- `content/workshops/*.yaml`;
+- the Workshops collection in `admin/config.yml`;
+- workshop loaders and templates;
+- Programme workshop queries;
+- workshop-specific CMS fixtures.
+
+Actions:
+
+1. Freeze workshop editing.
+2. Fetch the latest `production` branch.
+3. Run the workshop converter in check mode.
+4. Convert every workshop.
+5. Update the Workshops CMS collection in the same commit.
+6. Run validation, normalized parity, HTML parity, SEO, and screenshot checks.
+7. Run the downgrade converter in check mode against the converted content.
+8. Deploy to a preview branch and complete the CMS acceptance matrix.
+9. Merge the one-collection cutover commit to `production`.
+10. Complete at least one real production workshop edit and reopen the entry.
+11. End the workshop editing freeze.
+
+Acceptance:
+
+```sh
+npm run schema:migrate -- --collection workshops --check
+npm run schema:validate -- --all
+npm run schema:cms -- --check
+npm run schema:parity -- --collection workshops
+npm run schema:downgrade -- --collection workshops --check
+npm run build
+node scripts/validate-seo.js
+```
+
+Frontend checks:
+
+- current and upcoming Programme sections remain status-driven;
+- upcoming previews remain non-clickable by default;
+- mono-lingual detail pages have one language and no toggle;
+- bilingual detail pages retain both languages;
+- rich text, media, focal points, and calls to action retain approved output.
+
+Rollback: Follow Section 14 for `workshops` only.
+
+### MIG-08 — Cut over site settings
+
+Objective: Move shared navigation, footer, SEO defaults, routes, and workshop UI
+copy to v2.
+
+Scope:
+
+- `content/site.yaml`;
+- the Site Settings CMS collection;
+- navigation, footer, SEO, and workshop UI consumers.
+
+Actions and release sequence are identical to `MIG-07`, scoped to site settings.
+Route destinations remain global; visible labels remain localized.
+
+Acceptance:
+
+```sh
+npm run schema:migrate -- --collection site --check
+npm run schema:validate -- --all
+npm run schema:cms -- --check
+npm run schema:parity -- --collection site
+npm run schema:downgrade -- --collection site --check
+npm run build
+```
+
+Rollback: Follow Section 14 for `site`.
+
+### MIG-09 — Cut over every fixed page
+
+Objective: Convert every page under `content/pages/` without introducing a page
+builder.
+
+Required pages:
+
+- homepage;
+- contact;
+- team;
+- journal landing;
+- programme;
+- Monday class;
+- participation.
+
+The obsolete `content/pages/cellular-touch.yaml` sample is excluded from public
+content but retained until `MIG-12`.
+
+Actions:
+
+1. Convert and release one fixed-page CMS collection at a time if their config
+   contracts differ.
+2. Run parity after each page, not after the group.
+3. Stop the task immediately if one page fails; previously completed page
+   cutovers remain valid.
+4. Do not convert named sections into a generic page-builder list.
+
+Acceptance per page:
+
+```sh
+npm run schema:migrate -- --collection pages --record <id> --check
+npm run schema:parity -- --collection pages --record <id>
+npm run schema:downgrade -- --collection pages --record <id> --check
+npm run schema:validate -- --all
+npm run build
+```
+
+Done when every listed page completes a production edit/save/reopen cycle.
+
+Rollback: Follow Section 14 for the affected page collection only.
+
+### MIG-10 — Cut over journal records and Markdown bodies
+
+Objective: Consolidate duplicated journal metadata while preserving Markdown as
+files.
+
+Scope:
+
+- paired files under `content/journal/`;
+- target `records/` and `bodies/` directories;
+- Journal CMS collection;
+- journal list and post adapters.
+
+Actions:
+
+1. Parse each existing front matter block.
+2. Require duplicated shared metadata to agree before conversion.
+3. Write one YAML record per post.
+4. Extract each body to the derived locale body filename byte-for-byte.
+5. Preserve both `cover` and `contained` hero variants.
+6. Reject missing, duplicate, or orphan body files.
+7. Keep the old paired files until the production editing cycle passes.
+
+Acceptance:
+
+```sh
+npm run schema:migrate -- --collection journal --check
+npm run schema:validate -- --all
+npm run schema:parity -- --collection journal
+npm run schema:downgrade -- --collection journal --check
+npm run build
+```
+
+Additional evidence:
+
+- body-file hashes before and after extraction;
+- readable Git diffs for an edited German and English body;
+- CMS save/reopen proof for metadata and both Markdown bodies.
+
+Rollback: Follow Section 14 for `journal`; restore paired files through the
+downgrade converter.
+
+### MIG-11 — Cut over legal pages
+
+Objective: Give legal pages an explicit schema and language intent without
+changing their public presentation.
+
+Scope:
+
+- Datenschutz;
+- Impressum;
+- Legal CMS collection or file editor;
+- legal page loaders.
+
+Actions:
+
+1. Convert current German bodies without creating English content.
+2. Set intended locales to `[de]`.
+3. Preserve routes and body text exactly.
+4. Validate links and effective dates when present.
+
+Acceptance:
+
+```sh
+npm run schema:migrate -- --collection legal --check
+npm run schema:validate -- --all
+npm run schema:parity -- --collection legal
+npm run schema:downgrade -- --collection legal --check
+npm run build
+```
+
+Rollback: Follow Section 14 for `legal`.
+
+### MIG-12 — Remove v1 compatibility code
+
+Objective: Finish the migration only after every collection is proven editable
+in production.
+
+Preconditions:
+
+- all previous tasks are complete;
+- every collection has completed a production save/reopen cycle;
+- no v1 record remains;
+- all downgrade checks pass;
+- the last v1-compatible commit SHA is recorded.
+
+Actions:
 
 1. Remove v1 readers.
-2. Remove paired legacy journal Markdown files.
-3. Remove the obsolete `content/pages/cellular-touch.yaml` sample.
-4. Remove compatibility comments and unused field aliases.
-5. Keep the converter and validator for auditability.
+2. Remove v1-only aliases and compatibility locale shells.
+3. Remove old paired journal files.
+4. Remove `content/pages/cellular-touch.yaml`.
+5. Keep forward and downgrade converters for audit and emergency recovery.
+6. Keep v1 fixtures needed by downgrade tests.
+7. Update this task ledger to `Complete`.
 
-## 11. Field migration rules
+Acceptance:
 
-### 11.1 Images
+```sh
+npm run schema:registry
+npm run schema:docs -- --check
+npm run schema:cms -- --check
+npm run schema:validate -- --all
+npm run schema:downgrade -- --all --check
+npm run build
+node scripts/validate-seo.js
+git diff --check
+```
 
-For every image:
+Rollback: Revert the cleanup commit. Do not revert any already-proven v2
+collection.
 
-- move `src`, focal point, and display variant to `global`;
-- keep `alt` and ARIA descriptions localized;
-- preserve the original full-resolution asset;
-- use CSS `object-position` classes for display crops;
-- never write crop coordinates into inline CSS.
+## 14. Per-collection rollback
 
-### 11.2 Links and calls to action
+Rollback is collection-scoped because cutovers are collection-scoped.
 
-- move `href`, Tally IDs, and action type to `global`;
-- keep button labels, headings, and explanatory text localized.
+Before each cutover:
 
-### 11.3 Dates and schedules
+1. record the source commit SHA;
+2. produce a clean downgrade report;
+3. create a branch containing the converted collection;
+4. record hashes for all files in that collection;
+5. freeze editing for that collection.
 
-- add machine-readable ISO date/time fields to `global`;
-- retain localized display strings during v2;
-- do not generate copy automatically until formatting requirements are agreed.
+If a v2 collection fails after editors have saved content:
 
-### 11.4 Prices
+1. stop editing only that collection;
+2. branch from the failing production state to preserve v2 edits;
+3. run the downgrade converter against that branch;
+4. validate normalized parity and rendered output;
+5. commit the downgraded collection and its v1 CMS configuration together;
+6. deploy;
+7. reopen representative entries in the v1 CMS;
+8. resume editing only after save/reopen succeeds.
 
-- add numeric minimum/maximum and ISO currency to `global`;
-- retain localized display text for sliding-scale explanations.
+Never:
 
-### 11.5 People
+- revert only `admin/config.yml`;
+- revert only content files;
+- discard post-cutover editorial commits;
+- hand-copy v2 content into v1;
+- proceed after a lossy downgrade warning.
 
-- assign each person a stable global ID;
-- store name, portrait, and focal point globally unless culturally localized;
-- store role, biography, and portrait alternative text per language.
+## 15. Global completion gate
 
-### 11.6 SEO
+Schema v2 is complete only when:
 
-- keep canonical route and social image path global;
-- keep title, description, social title, social description, and image alt text
-  localized;
-- validate social image dimensions against the actual asset where possible.
+- the registry covers every current CMS-managed leaf path;
+- generated documentation is current;
+- every record validates as v2;
+- no unclassified or orphan path exists;
+- all CMS collections pass create/edit/save/reopen checks;
+- all shared media controls remain editable;
+- all locale-intent combinations validate;
+- all downgrade checks pass;
+- all 14 current sitemap URLs build with valid SEO;
+- approved visual regression checks pass;
+- `MIG-12` is complete.
 
-## 12. Validation and acceptance criteria
-
-### 12.1 Schema validation
-
-- Every record has `schema_version: 2`.
-- Every `global.id` is unique within its content type.
-- `language_mode` matches the existing language objects.
-- Every referenced media path exists.
-- Every focal point is one of the nine supported presets.
-- Every published record has required SEO fields.
-- No locale contains fields classified as global.
-
-### 12.2 CMS acceptance
-
-- An English-only entry opens without a German editing pane.
-- A German-only entry opens without an English editing pane.
-- A bilingual entry shows both optional language objects.
-- Language mode is visible once and is editable.
-- Image Replace and Remove buttons work for every language mode.
-- Focal-point controls work for every language mode.
-- Saving and reopening an entry preserves all values.
-- A config/content version mismatch produces a clear validation error, not
-  “Entry not found.”
-
-### 12.3 Frontend acceptance
-
-- All existing URLs remain unchanged.
-- English-only detail pages emit `lang="en"` and no German toggle.
-- German-only detail pages emit `lang="de"` and no English toggle.
-- Bilingual pages retain both languages.
-- Programme cards follow the documented language fallback.
-- Rich text retains paragraph, bold, italic, and link formatting.
-- Hero, image-band, and portrait crops match their focal points.
-- SEO validation passes for every sitemap URL.
-- Visual regression screenshots match approved references.
-
-## 13. Rollback
-
-Before cutover, preserve the last v1-compatible commit SHA.
-
-If the v2 CMS or build fails:
-
-1. Stop CMS editing.
-2. Revert the single atomic v2 cutover commit.
-3. Redeploy the v1 config and content together.
-4. Preserve any v2 edits in a separate branch.
-5. Fix the converter or adapter and rerun parity checks.
-
-Never revert only `admin/config.yml` or only the content files. They form one
-versioned contract.
-
-## 14. Open decisions
-
-- Whether fixed pages should retain named sections or adopt a page-builder list.
-- Whether journal bodies should move to YAML or remain in paired Markdown files
-  with a separate global registry.
-- Whether human-readable workshop dates should eventually be generated from
-  structured global dates.
-- Whether facilitator identities should become a reusable people collection.
-- Whether legal pages will remain German-only.
-
-These decisions do not block the workshop v2 schema, but they should be resolved
-before starting the all-content conversion scripts.
+Until then, the migration is in progress even if one or more collections
+already use v2.

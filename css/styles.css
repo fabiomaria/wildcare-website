@@ -1796,6 +1796,10 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
     line-height: 1.75;
 }
 
+.workshop-image-copy p:not(.label) + p:not(.label) {
+    margin-top: var(--space-md);
+}
+
 .workshop-image-frame {
     min-height: 540px;
 }
