@@ -1,5 +1,25 @@
 {
   "enums": {
+    "availability": [
+      "available",
+      "sold_out",
+      "waitlist",
+      "unavailable"
+    ],
+    "event_status": [
+      "scheduled",
+      "cancelled",
+      "postponed",
+      "rescheduled",
+      "moved_online"
+    ],
+    "event_type": [
+      "jam",
+      "performance",
+      "talk",
+      "retreat",
+      "other"
+    ],
     "focal_point": [
       "center",
       "top",
@@ -15,11 +35,19 @@
       "cover",
       "contained"
     ],
+    "page_mode": [
+      "minimal",
+      "full"
+    ],
     "pricing_model": [
       "fixed",
       "donation",
       "sliding_scale",
       "free"
+    ],
+    "schedule_mode": [
+      "dates",
+      "recurring"
     ],
     "status": [
       "draft",
@@ -31,6 +59,13 @@
       "coming_soon"
     ],
     "status_by_record_type": {
+      "event": [
+        "draft",
+        "upcoming",
+        "current",
+        "past",
+        "unlisted"
+      ],
       "fixed_page": [
         "draft",
         "published",
@@ -48,6 +83,9 @@
       "site_settings": [
         "published"
       ],
+      "venue": [
+        "published"
+      ],
       "workshop": [
         "draft",
         "upcoming",
@@ -55,10 +93,514 @@
         "past",
         "unlisted"
       ]
-    }
+    },
+    "weekday": [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+      "sunday"
+    ]
   },
   "ignored_content_keys": [],
   "record_types": {
+    "event": {
+      "fields": [
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "event_type",
+          "id": "event.g.global.event_type",
+          "nullable": false,
+          "path": "global.event_type",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.event_type"
+          },
+          "v1_source": {
+            "path": "de.event_type"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.id",
+          "nullable": false,
+          "path": "global.id",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.id"
+          },
+          "v1_source": {
+            "path": "de.id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.intended_locales.item",
+          "nullable": false,
+          "path": "global.intended_locales[]",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.intended_locales[]"
+          },
+          "v1_source": {
+            "path": "de.intended_locales[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "page_mode",
+          "id": "event.g.global.page_mode",
+          "nullable": false,
+          "path": "global.page_mode",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.page_mode"
+          },
+          "v1_source": {
+            "path": "de.page_mode"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "availability",
+          "id": "event.g.global.registration.availability",
+          "nullable": false,
+          "path": "global.registration.availability",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.registration.availability"
+          },
+          "v1_source": {
+            "path": "de.registration.availability"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.registration.url",
+          "nullable": false,
+          "path": "global.registration.url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.registration.url"
+          },
+          "v1_source": {
+            "path": "de.registration.url"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.route",
+          "nullable": false,
+          "path": "global.route",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.route"
+          },
+          "v1_source": {
+            "path": "de.route"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "event_status",
+          "id": "event.g.global.schedule.event_status",
+          "nullable": false,
+          "path": "global.schedule.event_status",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.event_status"
+          },
+          "v1_source": {
+            "path": "de.schedule.event_status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.schedule.featured_occurrences.item.id",
+          "nullable": false,
+          "path": "global.schedule.featured_occurrences[].id",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.featured_occurrences[].id"
+          },
+          "v1_source": {
+            "path": "de.schedule.featured_occurrences[].id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.schedule.featured_occurrences.item.teacher",
+          "nullable": false,
+          "path": "global.schedule.featured_occurrences[].teacher",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.featured_occurrences[].teacher"
+          },
+          "v1_source": {
+            "path": "de.schedule.featured_occurrences[].teacher"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "schedule_mode",
+          "id": "event.g.global.schedule.mode",
+          "nullable": false,
+          "path": "global.schedule.mode",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.mode"
+          },
+          "v1_source": {
+            "path": "de.schedule.mode"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.schedule.previous_start_local",
+          "nullable": false,
+          "path": "global.schedule.previous_start_local",
+          "required": false,
+          "type": "null",
+          "v1_downgrade": {
+            "path": "de.schedule.previous_start_local"
+          },
+          "v1_source": {
+            "path": "de.schedule.previous_start_local"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.schedule.recurrence.anchor",
+          "nullable": false,
+          "path": "global.schedule.recurrence.anchor",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.anchor"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.anchor"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.schedule.recurrence.end_time",
+          "nullable": false,
+          "path": "global.schedule.recurrence.end_time",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.end_time"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.end_time"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.schedule.recurrence.except.item",
+          "nullable": false,
+          "path": "global.schedule.recurrence.except[]",
+          "required": false,
+          "type": "array",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.except[]"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.except[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.schedule.recurrence.horizon_months",
+          "nullable": false,
+          "path": "global.schedule.recurrence.horizon_months",
+          "required": true,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.horizon_months"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.horizon_months"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.schedule.recurrence.start_time",
+          "nullable": false,
+          "path": "global.schedule.recurrence.start_time",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.start_time"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.start_time"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "weekday",
+          "id": "event.g.global.schedule.recurrence.weekday",
+          "nullable": false,
+          "path": "global.schedule.recurrence.weekday",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.weekday"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.weekday"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.schedule.sessions.item.end_local",
+          "nullable": false,
+          "path": "global.schedule.sessions[].end_local",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.sessions[].end_local"
+          },
+          "v1_source": {
+            "path": "de.schedule.sessions[].end_local"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.schedule.sessions.item.id",
+          "nullable": false,
+          "path": "global.schedule.sessions[].id",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.sessions[].id"
+          },
+          "v1_source": {
+            "path": "de.schedule.sessions[].id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.schedule.sessions.item.start_local",
+          "nullable": false,
+          "path": "global.schedule.sessions[].start_local",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.sessions[].start_local"
+          },
+          "v1_source": {
+            "path": "de.schedule.sessions[].start_local"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "event_status",
+          "id": "event.g.global.schedule.sessions.item.status",
+          "nullable": false,
+          "path": "global.schedule.sessions[].status",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.sessions[].status"
+          },
+          "v1_source": {
+            "path": "de.schedule.sessions[].status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.sort_order",
+          "nullable": false,
+          "path": "global.sort_order",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.sort_order"
+          },
+          "v1_source": {
+            "path": "de.sort_order"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.start_at",
+          "nullable": false,
+          "path": "global.start_at",
+          "required": false,
+          "type": "datetime",
+          "v1_downgrade": {
+            "path": "de.start_at"
+          },
+          "v1_source": {
+            "path": "de.start_at"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "status",
+          "id": "event.g.global.status",
+          "nullable": false,
+          "path": "global.status",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.status"
+          },
+          "v1_source": {
+            "path": "de.status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.updated_at",
+          "nullable": false,
+          "path": "global.updated_at",
+          "required": false,
+          "type": "datetime",
+          "v1_downgrade": {
+            "path": "de.updated_at"
+          },
+          "v1_source": {
+            "path": "de.updated_at"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "event.g.global.venue",
+          "nullable": false,
+          "path": "global.venue",
+          "reference": {
+            "orphan": "error",
+            "target": "venue"
+          },
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.venue"
+          },
+          "v1_source": {
+            "path": "de.venue"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "event.l.summary",
+          "nullable": false,
+          "path": "locales.{locale}.summary",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.summary"
+          },
+          "v1_source": {
+            "path": "{locale}.summary"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "event.l.title",
+          "nullable": false,
+          "path": "locales.{locale}.title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.title"
+          },
+          "v1_source": {
+            "path": "{locale}.title"
+          }
+        }
+      ],
+      "identity": {
+        "field": "global.id",
+        "filename_stem_must_match": true
+      },
+      "ordering": {
+        "primary": "global.start_at",
+        "tie_breakers": [
+          "global.sort_order",
+          "global.id"
+        ]
+      },
+      "source": "content/events/*.yaml",
+      "templates": [
+        "event"
+      ]
+    },
     "fixed_page": {
       "fields": [
         {
@@ -180,7 +722,7 @@
           "id": "fixed_page.g.global.practice.poster",
           "nullable": false,
           "path": "global.practice.poster",
-          "required": true,
+          "required": false,
           "type": "string",
           "v1_downgrade": {
             "path": "de.practice.poster"
@@ -225,6 +767,185 @@
           "allow_empty": false,
           "class": "G",
           "cms_visible": true,
+          "enum": "event_status",
+          "id": "fixed_page.g.global.schedule.event_status",
+          "nullable": false,
+          "path": "global.schedule.event_status",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.event_status"
+          },
+          "v1_source": {
+            "path": "de.schedule.event_status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.featured_occurrences.item.id",
+          "nullable": false,
+          "path": "global.schedule.featured_occurrences[].id",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.featured_occurrences[].id"
+          },
+          "v1_source": {
+            "path": "de.schedule.featured_occurrences[].id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.featured_occurrences.item.teacher",
+          "nullable": false,
+          "path": "global.schedule.featured_occurrences[].teacher",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.featured_occurrences[].teacher"
+          },
+          "v1_source": {
+            "path": "de.schedule.featured_occurrences[].teacher"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "schedule_mode",
+          "id": "fixed_page.g.global.schedule.mode",
+          "nullable": false,
+          "path": "global.schedule.mode",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.mode"
+          },
+          "v1_source": {
+            "path": "de.schedule.mode"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.previous_start_local",
+          "nullable": false,
+          "path": "global.schedule.previous_start_local",
+          "required": false,
+          "type": "null",
+          "v1_downgrade": {
+            "path": "de.schedule.previous_start_local"
+          },
+          "v1_source": {
+            "path": "de.schedule.previous_start_local"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.recurrence.anchor",
+          "nullable": false,
+          "path": "global.schedule.recurrence.anchor",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.anchor"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.anchor"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.recurrence.end_time",
+          "nullable": false,
+          "path": "global.schedule.recurrence.end_time",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.end_time"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.end_time"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.recurrence.except.item",
+          "nullable": false,
+          "path": "global.schedule.recurrence.except[]",
+          "required": false,
+          "type": "array",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.except[]"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.except[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.recurrence.horizon_months",
+          "nullable": false,
+          "path": "global.schedule.recurrence.horizon_months",
+          "required": false,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.horizon_months"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.horizon_months"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.recurrence.start_time",
+          "nullable": false,
+          "path": "global.schedule.recurrence.start_time",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.start_time"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.start_time"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "weekday",
+          "id": "fixed_page.g.global.schedule.recurrence.weekday",
+          "nullable": false,
+          "path": "global.schedule.recurrence.weekday",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.weekday"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.weekday"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
           "enum": "status",
           "id": "fixed_page.g.global.status",
           "nullable": false,
@@ -236,6 +957,42 @@
           },
           "v1_source": {
             "path": "de.status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.updated_at",
+          "nullable": false,
+          "path": "global.updated_at",
+          "required": false,
+          "type": "datetime",
+          "v1_downgrade": {
+            "path": "de.updated_at"
+          },
+          "v1_source": {
+            "path": "de.updated_at"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.venue",
+          "nullable": false,
+          "path": "global.venue",
+          "reference": {
+            "orphan": "error",
+            "target": "venue"
+          },
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.venue"
+          },
+          "v1_source": {
+            "path": "de.venue"
           }
         },
         {
@@ -2642,6 +3399,22 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
+          "id": "fixed_page.l.schedule.featured_occurrences.2026_11_16.note",
+          "nullable": false,
+          "path": "locales.{locale}.schedule.featured_occurrences.2026-11-16.note",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.schedule.featured_occurrences.2026-11-16.note"
+          },
+          "v1_source": {
+            "path": "{locale}.schedule.featured_occurrences.2026-11-16.note"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
           "id": "fixed_page.l.team.heading",
           "nullable": false,
           "path": "locales.{locale}.team.heading",
@@ -4262,6 +5035,168 @@
         "site"
       ]
     },
+    "venue": {
+      "fields": [
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "venue.g.global.city",
+          "nullable": false,
+          "path": "global.city",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.city"
+          },
+          "v1_source": {
+            "path": "de.city"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "venue.g.global.country",
+          "nullable": false,
+          "path": "global.country",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.country"
+          },
+          "v1_source": {
+            "path": "de.country"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "venue.g.global.geo_lat",
+          "nullable": false,
+          "path": "global.geo_lat",
+          "required": false,
+          "type": "number",
+          "v1_downgrade": {
+            "path": "de.geo_lat"
+          },
+          "v1_source": {
+            "path": "de.geo_lat"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "venue.g.global.geo_lng",
+          "nullable": false,
+          "path": "global.geo_lng",
+          "required": false,
+          "type": "number",
+          "v1_downgrade": {
+            "path": "de.geo_lng"
+          },
+          "v1_source": {
+            "path": "de.geo_lng"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "venue.g.global.id",
+          "nullable": false,
+          "path": "global.id",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.id"
+          },
+          "v1_source": {
+            "path": "de.id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "venue.g.global.name",
+          "nullable": false,
+          "path": "global.name",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.name"
+          },
+          "v1_source": {
+            "path": "de.name"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "venue.g.global.postal_code",
+          "nullable": false,
+          "path": "global.postal_code",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.postal_code"
+          },
+          "v1_source": {
+            "path": "de.postal_code"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "venue.g.global.street",
+          "nullable": false,
+          "path": "global.street",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.street"
+          },
+          "v1_source": {
+            "path": "de.street"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "venue.g.global.url",
+          "nullable": false,
+          "path": "global.url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.url"
+          },
+          "v1_source": {
+            "path": "de.url"
+          }
+        }
+      ],
+      "identity": {
+        "field": "global.id",
+        "filename_stem_must_match": true
+      },
+      "locale_neutral": true,
+      "ordering": {
+        "primary": "global.id",
+        "tie_breakers": [
+          "global.sort_order",
+          "global.id"
+        ]
+      },
+      "source": "content/venues/*.yaml",
+      "templates": []
+    },
     "workshop": {
       "fields": [
         {
@@ -4527,6 +5462,23 @@
           "allow_empty": false,
           "class": "G",
           "cms_visible": true,
+          "enum": "availability",
+          "id": "workshop.g.global.registration.availability",
+          "nullable": false,
+          "path": "global.registration.availability",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.registration.availability"
+          },
+          "v1_source": {
+            "path": "de.registration.availability"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
           "id": "workshop.g.global.registration.url",
           "nullable": false,
           "path": "global.registration.url",
@@ -4553,6 +5505,250 @@
           },
           "v1_source": {
             "path": "de.route"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "event_status",
+          "id": "workshop.g.global.schedule.event_status",
+          "nullable": false,
+          "path": "global.schedule.event_status",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.event_status"
+          },
+          "v1_source": {
+            "path": "de.schedule.event_status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.schedule.featured_occurrences.item.id",
+          "nullable": false,
+          "path": "global.schedule.featured_occurrences[].id",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.featured_occurrences[].id"
+          },
+          "v1_source": {
+            "path": "de.schedule.featured_occurrences[].id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.schedule.featured_occurrences.item.teacher",
+          "nullable": false,
+          "path": "global.schedule.featured_occurrences[].teacher",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.featured_occurrences[].teacher"
+          },
+          "v1_source": {
+            "path": "de.schedule.featured_occurrences[].teacher"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "schedule_mode",
+          "id": "workshop.g.global.schedule.mode",
+          "nullable": false,
+          "path": "global.schedule.mode",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.mode"
+          },
+          "v1_source": {
+            "path": "de.schedule.mode"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.schedule.previous_start_local",
+          "nullable": false,
+          "path": "global.schedule.previous_start_local",
+          "required": false,
+          "type": "null",
+          "v1_downgrade": {
+            "path": "de.schedule.previous_start_local"
+          },
+          "v1_source": {
+            "path": "de.schedule.previous_start_local"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.schedule.recurrence.anchor",
+          "nullable": false,
+          "path": "global.schedule.recurrence.anchor",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.anchor"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.anchor"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.schedule.recurrence.end_time",
+          "nullable": false,
+          "path": "global.schedule.recurrence.end_time",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.end_time"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.end_time"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.schedule.recurrence.except.item",
+          "nullable": false,
+          "path": "global.schedule.recurrence.except[]",
+          "required": false,
+          "type": "array",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.except[]"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.except[]"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.schedule.recurrence.horizon_months",
+          "nullable": false,
+          "path": "global.schedule.recurrence.horizon_months",
+          "required": true,
+          "type": "integer",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.horizon_months"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.horizon_months"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.schedule.recurrence.start_time",
+          "nullable": false,
+          "path": "global.schedule.recurrence.start_time",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.start_time"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.start_time"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "weekday",
+          "id": "workshop.g.global.schedule.recurrence.weekday",
+          "nullable": false,
+          "path": "global.schedule.recurrence.weekday",
+          "required": true,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.weekday"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.weekday"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.schedule.sessions.item.end_local",
+          "nullable": false,
+          "path": "global.schedule.sessions[].end_local",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.sessions[].end_local"
+          },
+          "v1_source": {
+            "path": "de.schedule.sessions[].end_local"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.schedule.sessions.item.id",
+          "nullable": false,
+          "path": "global.schedule.sessions[].id",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.sessions[].id"
+          },
+          "v1_source": {
+            "path": "de.schedule.sessions[].id"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.schedule.sessions.item.start_local",
+          "nullable": false,
+          "path": "global.schedule.sessions[].start_local",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.sessions[].start_local"
+          },
+          "v1_source": {
+            "path": "de.schedule.sessions[].start_local"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "enum": "event_status",
+          "id": "workshop.g.global.schedule.sessions.item.status",
+          "nullable": false,
+          "path": "global.schedule.sessions[].status",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.sessions[].status"
+          },
+          "v1_source": {
+            "path": "de.schedule.sessions[].status"
           }
         },
         {
@@ -4602,6 +5798,42 @@
           },
           "v1_source": {
             "path": "de.status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.updated_at",
+          "nullable": false,
+          "path": "global.updated_at",
+          "required": false,
+          "type": "datetime",
+          "v1_downgrade": {
+            "path": "de.updated_at"
+          },
+          "v1_source": {
+            "path": "de.updated_at"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "workshop.g.global.venue",
+          "nullable": false,
+          "path": "global.venue",
+          "reference": {
+            "orphan": "error",
+            "target": "venue"
+          },
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.venue"
+          },
+          "v1_source": {
+            "path": "de.venue"
           }
         },
         {
@@ -5663,7 +6895,7 @@
       ]
     }
   },
-  "registry_revision": 1,
+  "registry_revision": 2,
   "schema_version": 2,
   "supported_locales": [
     "de",

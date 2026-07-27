@@ -1,10 +1,10 @@
 {
-  "$id": "https://wildcare.space/schema/generated/fixed_page.schema.json",
+  "$id": "https://wildcare.space/schema/generated/event.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
   "allOf": [
     {
-      "$comment": "190 leaf fields are enforced by scripts/schema/validate-content.js from registry revision 2."
+      "$comment": "29 leaf fields are enforced by scripts/schema/validate-content.js from registry revision 2."
     }
   ],
   "properties": {
@@ -28,7 +28,9 @@
         "status": {
           "enum": [
             "draft",
-            "published",
+            "upcoming",
+            "current",
+            "past",
             "unlisted"
           ]
         }
@@ -60,6 +62,6 @@
     "global",
     "locales"
   ],
-  "title": "Wild Care fixed_page schema v2",
+  "title": "Wild Care event schema v2",
   "type": "object"
 }

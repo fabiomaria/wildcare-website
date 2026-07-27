@@ -2,9 +2,47 @@
 
 <!-- Generated from schema/content-schema-v2.registry.json. Do not edit. -->
 
-Registry revision: 1
+Registry revision: 2
 
 Supported locales: `de`, `en`
+
+## event
+
+Source: `content/events/*.yaml`
+
+Templates: `event`
+
+| Field ID | Class | Storage path | Type | Required | CMS |
+| --- | --- | --- | --- | --- | --- |
+| `event.g.global.event_type` | G | `global.event_type` | string | no | yes |
+| `event.g.global.id` | G | `global.id` | string | yes | yes |
+| `event.g.global.intended_locales.item` | G | `global.intended_locales[]` | string | no | yes |
+| `event.g.global.page_mode` | G | `global.page_mode` | string | no | yes |
+| `event.g.global.registration.availability` | G | `global.registration.availability` | string | no | yes |
+| `event.g.global.registration.url` | G | `global.registration.url` | string | no | yes |
+| `event.g.global.route` | G | `global.route` | string | no | yes |
+| `event.g.global.schedule.event_status` | G | `global.schedule.event_status` | string | no | yes |
+| `event.g.global.schedule.featured_occurrences.item.id` | G | `global.schedule.featured_occurrences[].id` | string | yes | yes |
+| `event.g.global.schedule.featured_occurrences.item.teacher` | G | `global.schedule.featured_occurrences[].teacher` | string | no | yes |
+| `event.g.global.schedule.mode` | G | `global.schedule.mode` | string | no | yes |
+| `event.g.global.schedule.previous_start_local` | G | `global.schedule.previous_start_local` | null | no | yes |
+| `event.g.global.schedule.recurrence.anchor` | G | `global.schedule.recurrence.anchor` | string | yes | yes |
+| `event.g.global.schedule.recurrence.end_time` | G | `global.schedule.recurrence.end_time` | string | yes | yes |
+| `event.g.global.schedule.recurrence.except.item` | G | `global.schedule.recurrence.except[]` | array | no | yes |
+| `event.g.global.schedule.recurrence.horizon_months` | G | `global.schedule.recurrence.horizon_months` | integer | yes | yes |
+| `event.g.global.schedule.recurrence.start_time` | G | `global.schedule.recurrence.start_time` | string | yes | yes |
+| `event.g.global.schedule.recurrence.weekday` | G | `global.schedule.recurrence.weekday` | string | yes | yes |
+| `event.g.global.schedule.sessions.item.end_local` | G | `global.schedule.sessions[].end_local` | string | no | yes |
+| `event.g.global.schedule.sessions.item.id` | G | `global.schedule.sessions[].id` | string | no | yes |
+| `event.g.global.schedule.sessions.item.start_local` | G | `global.schedule.sessions[].start_local` | string | no | yes |
+| `event.g.global.schedule.sessions.item.status` | G | `global.schedule.sessions[].status` | string | no | yes |
+| `event.g.global.sort_order` | G | `global.sort_order` | integer | no | yes |
+| `event.g.global.start_at` | G | `global.start_at` | datetime | no | yes |
+| `event.g.global.status` | G | `global.status` | string | yes | yes |
+| `event.g.global.updated_at` | G | `global.updated_at` | datetime | no | yes |
+| `event.g.global.venue` | G | `global.venue` | string | no | yes |
+| `event.l.summary` | L | `locales.{locale}.summary` | string | no | yes |
+| `event.l.title` | L | `locales.{locale}.title` | string | no | yes |
 
 ## fixed_page
 
@@ -21,10 +59,23 @@ Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mi
 | `fixed_page.g.global.meta.og_image_height` | G | `global.meta.og_image_height` | integer | no | yes |
 | `fixed_page.g.global.meta.og_image_width` | G | `global.meta.og_image_width` | integer | no | yes |
 | `fixed_page.g.global.outlook.show_links` | G | `global.outlook.show_links` | boolean | no | yes |
-| `fixed_page.g.global.practice.poster` | G | `global.practice.poster` | string | yes | yes |
+| `fixed_page.g.global.practice.poster` | G | `global.practice.poster` | string | no | yes |
 | `fixed_page.g.global.practice.video` | G | `global.practice.video` | string | no | yes |
 | `fixed_page.g.global.route` | G | `global.route` | string | no | yes |
+| `fixed_page.g.global.schedule.event_status` | G | `global.schedule.event_status` | string | no | yes |
+| `fixed_page.g.global.schedule.featured_occurrences.item.id` | G | `global.schedule.featured_occurrences[].id` | string | no | yes |
+| `fixed_page.g.global.schedule.featured_occurrences.item.teacher` | G | `global.schedule.featured_occurrences[].teacher` | string | no | yes |
+| `fixed_page.g.global.schedule.mode` | G | `global.schedule.mode` | string | no | yes |
+| `fixed_page.g.global.schedule.previous_start_local` | G | `global.schedule.previous_start_local` | null | no | yes |
+| `fixed_page.g.global.schedule.recurrence.anchor` | G | `global.schedule.recurrence.anchor` | string | no | yes |
+| `fixed_page.g.global.schedule.recurrence.end_time` | G | `global.schedule.recurrence.end_time` | string | no | yes |
+| `fixed_page.g.global.schedule.recurrence.except.item` | G | `global.schedule.recurrence.except[]` | array | no | yes |
+| `fixed_page.g.global.schedule.recurrence.horizon_months` | G | `global.schedule.recurrence.horizon_months` | integer | no | yes |
+| `fixed_page.g.global.schedule.recurrence.start_time` | G | `global.schedule.recurrence.start_time` | string | no | yes |
+| `fixed_page.g.global.schedule.recurrence.weekday` | G | `global.schedule.recurrence.weekday` | string | no | yes |
 | `fixed_page.g.global.status` | G | `global.status` | string | yes | yes |
+| `fixed_page.g.global.updated_at` | G | `global.updated_at` | datetime | no | yes |
+| `fixed_page.g.global.venue` | G | `global.venue` | string | no | yes |
 | `fixed_page.l.article.back` | L | `locales.{locale}.article.back` | string | no | yes |
 | `fixed_page.l.article.related_heading` | L | `locales.{locale}.article.related_heading` | string | no | yes |
 | `fixed_page.l.article.related_label` | L | `locales.{locale}.article.related_label` | string | no | yes |
@@ -175,6 +226,7 @@ Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mi
 | `fixed_page.l.quote` | L | `locales.{locale}.quote` | string | no | yes |
 | `fixed_page.l.quote_band.quote` | L | `locales.{locale}.quote_band.quote` | string | no | yes |
 | `fixed_page.l.quote_band.source` | L | `locales.{locale}.quote_band.source` | string | no | yes |
+| `fixed_page.l.schedule.featured_occurrences.2026_11_16.note` | L | `locales.{locale}.schedule.featured_occurrences.2026-11-16.note` | string | no | yes |
 | `fixed_page.l.team.heading` | L | `locales.{locale}.team.heading` | string | no | yes |
 | `fixed_page.l.team.label` | L | `locales.{locale}.team.label` | string | no | yes |
 | `fixed_page.l.team.members.item.alt` | L | `locales.{locale}.team.members[].alt` | string | no | yes |
@@ -299,6 +351,24 @@ Templates: `site`
 | `site_settings.l.workshop_ui.schedule_label` | L | `locales.{locale}.workshop_ui.schedule_label` | string | no | yes |
 | `site_settings.l.workshop_ui.testimonials_label` | L | `locales.{locale}.workshop_ui.testimonials_label` | string | no | yes |
 
+## venue
+
+Source: `content/venues/*.yaml`
+
+Templates:
+
+| Field ID | Class | Storage path | Type | Required | CMS |
+| --- | --- | --- | --- | --- | --- |
+| `venue.g.global.city` | G | `global.city` | string | yes | yes |
+| `venue.g.global.country` | G | `global.country` | string | yes | yes |
+| `venue.g.global.geo_lat` | G | `global.geo_lat` | number | no | yes |
+| `venue.g.global.geo_lng` | G | `global.geo_lng` | number | no | yes |
+| `venue.g.global.id` | G | `global.id` | string | yes | yes |
+| `venue.g.global.name` | G | `global.name` | string | yes | yes |
+| `venue.g.global.postal_code` | G | `global.postal_code` | string | yes | yes |
+| `venue.g.global.street` | G | `global.street` | string | yes | yes |
+| `venue.g.global.url` | G | `global.url` | string | no | yes |
+
 ## workshop
 
 Source: `content/workshops/*.yaml`
@@ -323,11 +393,29 @@ Templates: `workshop`
 | `workshop.g.global.meta.og_image` | G | `global.meta.og_image` | string | no | yes |
 | `workshop.g.global.meta.og_image_height` | G | `global.meta.og_image_height` | integer | no | yes |
 | `workshop.g.global.meta.og_image_width` | G | `global.meta.og_image_width` | integer | no | yes |
+| `workshop.g.global.registration.availability` | G | `global.registration.availability` | string | no | yes |
 | `workshop.g.global.registration.url` | G | `global.registration.url` | string | no | yes |
 | `workshop.g.global.route` | G | `global.route` | string | no | yes |
+| `workshop.g.global.schedule.event_status` | G | `global.schedule.event_status` | string | no | yes |
+| `workshop.g.global.schedule.featured_occurrences.item.id` | G | `global.schedule.featured_occurrences[].id` | string | yes | yes |
+| `workshop.g.global.schedule.featured_occurrences.item.teacher` | G | `global.schedule.featured_occurrences[].teacher` | string | no | yes |
+| `workshop.g.global.schedule.mode` | G | `global.schedule.mode` | string | no | yes |
+| `workshop.g.global.schedule.previous_start_local` | G | `global.schedule.previous_start_local` | null | no | yes |
+| `workshop.g.global.schedule.recurrence.anchor` | G | `global.schedule.recurrence.anchor` | string | yes | yes |
+| `workshop.g.global.schedule.recurrence.end_time` | G | `global.schedule.recurrence.end_time` | string | yes | yes |
+| `workshop.g.global.schedule.recurrence.except.item` | G | `global.schedule.recurrence.except[]` | array | no | yes |
+| `workshop.g.global.schedule.recurrence.horizon_months` | G | `global.schedule.recurrence.horizon_months` | integer | yes | yes |
+| `workshop.g.global.schedule.recurrence.start_time` | G | `global.schedule.recurrence.start_time` | string | yes | yes |
+| `workshop.g.global.schedule.recurrence.weekday` | G | `global.schedule.recurrence.weekday` | string | yes | yes |
+| `workshop.g.global.schedule.sessions.item.end_local` | G | `global.schedule.sessions[].end_local` | string | no | yes |
+| `workshop.g.global.schedule.sessions.item.id` | G | `global.schedule.sessions[].id` | string | no | yes |
+| `workshop.g.global.schedule.sessions.item.start_local` | G | `global.schedule.sessions[].start_local` | string | no | yes |
+| `workshop.g.global.schedule.sessions.item.status` | G | `global.schedule.sessions[].status` | string | no | yes |
 | `workshop.g.global.sort_order` | G | `global.sort_order` | integer | no | yes |
 | `workshop.g.global.start_at` | G | `global.start_at` | datetime | no | yes |
 | `workshop.g.global.status` | G | `global.status` | string | yes | yes |
+| `workshop.g.global.updated_at` | G | `global.updated_at` | datetime | no | yes |
+| `workshop.g.global.venue` | G | `global.venue` | string | no | yes |
 | `workshop.l.card.detail_label` | L | `locales.{locale}.card.detail_label` | string | no | yes |
 | `workshop.l.card.subtitle` | L | `locales.{locale}.card.subtitle` | string | no | yes |
 | `workshop.l.card.summary` | L | `locales.{locale}.card.summary` | string | no | yes |
@@ -396,8 +484,14 @@ Templates: `workshop`
 
 ## Enums
 
+- `availability`: `available`, `sold_out`, `waitlist`, `unavailable`
+- `event_status`: `scheduled`, `cancelled`, `postponed`, `rescheduled`, `moved_online`
+- `event_type`: `jam`, `performance`, `talk`, `retreat`, `other`
 - `focal_point`: `center`, `top`, `bottom`, `left`, `right`, `top-left`, `top-right`, `bottom-left`, `bottom-right`
 - `journal_hero_variant`: `cover`, `contained`
+- `page_mode`: `minimal`, `full`
 - `pricing_model`: `fixed`, `donation`, `sliding_scale`, `free`
+- `schedule_mode`: `dates`, `recurring`
 - `status`: `draft`, `published`, `unlisted`, `upcoming`, `current`, `past`, `coming_soon`
+- `weekday`: `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`
 
