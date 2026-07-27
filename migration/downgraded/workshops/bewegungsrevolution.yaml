@@ -3,13 +3,39 @@ de:
   language_mode: bilingual
   status: past
   detail_page: true
-  start_date: 2026-05-11T00:00:00.000Z
+  start_date: 2026-05-11T17:45:00.000Z
   sort_order: 50
   registration_url: montagskurs.html
+  updated_at: 2026-07-26T10:00:00.000Z
   registration:
     url: montagskurs.html
+    availability: unavailable
     label: Zum offenen Montagskurs
     note: Die Bewegungsrevolution 2026 ist abgeschlossen. Der offene Montagskurs läuft weiter.
+  venue: orpheumgasse
+  schedule:
+    event_status: scheduled
+    previous_start_local: null
+    mode: dates
+    sessions:
+      - id: week-1
+        start_local: 2026-05-11T17:45
+        end_local: 2026-05-11T19:15
+      - id: week-2
+        start_local: 2026-05-18T17:45
+        end_local: 2026-05-18T19:15
+      - id: week-3
+        start_local: 2026-05-25T17:45
+        end_local: 2026-05-25T19:15
+      - id: week-4
+        start_local: 2026-06-01T17:45
+        end_local: 2026-06-01T19:15
+      - id: week-5
+        start_local: 2026-06-08T17:45
+        end_local: 2026-06-08T19:15
+      - id: week-6
+        start_local: 2026-06-15T17:45
+        end_local: 2026-06-15T19:15
   hero:
     show_details: true
     video: assets/what is ci.mp4
@@ -103,10 +129,36 @@ de:
       - q: Wie kann ich euch erreichen?
         a: Schreib uns unter hello ät wildcare.space.
 en:
+  updated_at: 2026-07-26T10:00:00.000Z
   registration:
     url: montagskurs.html
+    availability: unavailable
     label: Go to the open Monday class
     note: Bewegungsrevolution 2026 is complete. The open Monday class continues.
+  venue: orpheumgasse
+  schedule:
+    event_status: scheduled
+    previous_start_local: null
+    mode: dates
+    sessions:
+      - id: week-1
+        start_local: 2026-05-11T17:45
+        end_local: 2026-05-11T19:15
+      - id: week-2
+        start_local: 2026-05-18T17:45
+        end_local: 2026-05-18T19:15
+      - id: week-3
+        start_local: 2026-05-25T17:45
+        end_local: 2026-05-25T19:15
+      - id: week-4
+        start_local: 2026-06-01T17:45
+        end_local: 2026-06-01T19:15
+      - id: week-5
+        start_local: 2026-06-08T17:45
+        end_local: 2026-06-08T19:15
+      - id: week-6
+        start_local: 2026-06-15T17:45
+        end_local: 2026-06-15T19:15
   hero:
     show_details: true
     video: assets/what is ci.mp4

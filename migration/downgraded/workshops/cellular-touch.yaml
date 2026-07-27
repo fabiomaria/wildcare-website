@@ -3,12 +3,32 @@ en:
   language_mode: en_only
   status: current
   detail_page: true
-  start_date: 2026-08-08T00:00:00.000Z
+  start_date: 2026-08-08T10:00:00.000Z
   sort_order: 1
   registration_url: https://tally.so/r/1ABgjL
+  updated_at: 2026-07-26T10:00:00.000Z
   registration:
     url: https://tally.so/r/1ABgjL
+    availability: available
     label: Register now
+  venue: orpheumgasse
+  schedule:
+    event_status: scheduled
+    previous_start_local: null
+    mode: dates
+    sessions:
+      - id: sat-morning
+        start_local: 2026-08-08T10:00
+        end_local: 2026-08-08T13:00
+      - id: sat-afternoon
+        start_local: 2026-08-08T14:30
+        end_local: 2026-08-08T17:30
+      - id: sun-morning
+        start_local: 2026-08-09T10:00
+        end_local: 2026-08-09T13:00
+      - id: sun-evening
+        start_local: 2026-08-09T17:00
+        end_local: 2026-08-09T20:00
   hero:
     show_details: false
     main_image: assets/images/cellular-touch-valentyn.jpg

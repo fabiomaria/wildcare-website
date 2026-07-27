@@ -2,6 +2,238 @@
   {
     "class": "G",
     "cms_visible": true,
+    "field_id": "event.g.global.event_type",
+    "path": "global.event_type",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.id",
+    "path": "global.id",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.intended_locales.item",
+    "path": "global.intended_locales[]",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.page_mode",
+    "path": "global.page_mode",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.registration.availability",
+    "path": "global.registration.availability",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.registration.url",
+    "path": "global.registration.url",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.route",
+    "path": "global.route",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.event_status",
+    "path": "global.schedule.event_status",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.featured_occurrences.item.id",
+    "path": "global.schedule.featured_occurrences[].id",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.featured_occurrences.item.teacher",
+    "path": "global.schedule.featured_occurrences[].teacher",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.mode",
+    "path": "global.schedule.mode",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.previous_start_local",
+    "path": "global.schedule.previous_start_local",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.recurrence.anchor",
+    "path": "global.schedule.recurrence.anchor",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.recurrence.end_time",
+    "path": "global.schedule.recurrence.end_time",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.recurrence.except.item",
+    "path": "global.schedule.recurrence.except[]",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.recurrence.horizon_months",
+    "path": "global.schedule.recurrence.horizon_months",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.recurrence.start_time",
+    "path": "global.schedule.recurrence.start_time",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.recurrence.weekday",
+    "path": "global.schedule.recurrence.weekday",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.sessions.item.end_local",
+    "path": "global.schedule.sessions[].end_local",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.sessions.item.id",
+    "path": "global.schedule.sessions[].id",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.sessions.item.start_local",
+    "path": "global.schedule.sessions[].start_local",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.schedule.sessions.item.status",
+    "path": "global.schedule.sessions[].status",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.sort_order",
+    "path": "global.sort_order",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.start_at",
+    "path": "global.start_at",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.status",
+    "path": "global.status",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.updated_at",
+    "path": "global.updated_at",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "event.g.global.venue",
+    "path": "global.venue",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "event.l.summary",
+    "path": "locales.{locale}.summary",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "event.l.title",
+    "path": "locales.{locale}.title",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
     "field_id": "fixed_page.g.global.hero.image",
     "path": "global.hero.image",
     "record_type": "fixed_page",
@@ -82,8 +314,112 @@
   {
     "class": "G",
     "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.event_status",
+    "path": "global.schedule.event_status",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.featured_occurrences.item.id",
+    "path": "global.schedule.featured_occurrences[].id",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.featured_occurrences.item.teacher",
+    "path": "global.schedule.featured_occurrences[].teacher",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.mode",
+    "path": "global.schedule.mode",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.previous_start_local",
+    "path": "global.schedule.previous_start_local",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.recurrence.anchor",
+    "path": "global.schedule.recurrence.anchor",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.recurrence.end_time",
+    "path": "global.schedule.recurrence.end_time",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.recurrence.except.item",
+    "path": "global.schedule.recurrence.except[]",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.recurrence.horizon_months",
+    "path": "global.schedule.recurrence.horizon_months",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.recurrence.start_time",
+    "path": "global.schedule.recurrence.start_time",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.recurrence.weekday",
+    "path": "global.schedule.recurrence.weekday",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
     "field_id": "fixed_page.g.global.status",
     "path": "global.status",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.updated_at",
+    "path": "global.updated_at",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.venue",
+    "path": "global.venue",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
@@ -1290,6 +1626,14 @@
   {
     "class": "L",
     "cms_visible": true,
+    "field_id": "fixed_page.l.schedule.featured_occurrences.2026_11_16.note",
+    "path": "locales.{locale}.schedule.featured_occurrences.2026-11-16.note",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
     "field_id": "fixed_page.l.team.heading",
     "path": "locales.{locale}.team.heading",
     "record_type": "fixed_page",
@@ -2058,6 +2402,78 @@
   {
     "class": "G",
     "cms_visible": true,
+    "field_id": "venue.g.global.city",
+    "path": "global.city",
+    "record_type": "venue",
+    "source": "content/venues/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "venue.g.global.country",
+    "path": "global.country",
+    "record_type": "venue",
+    "source": "content/venues/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "venue.g.global.geo_lat",
+    "path": "global.geo_lat",
+    "record_type": "venue",
+    "source": "content/venues/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "venue.g.global.geo_lng",
+    "path": "global.geo_lng",
+    "record_type": "venue",
+    "source": "content/venues/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "venue.g.global.id",
+    "path": "global.id",
+    "record_type": "venue",
+    "source": "content/venues/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "venue.g.global.name",
+    "path": "global.name",
+    "record_type": "venue",
+    "source": "content/venues/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "venue.g.global.postal_code",
+    "path": "global.postal_code",
+    "record_type": "venue",
+    "source": "content/venues/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "venue.g.global.street",
+    "path": "global.street",
+    "record_type": "venue",
+    "source": "content/venues/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "venue.g.global.url",
+    "path": "global.url",
+    "record_type": "venue",
+    "source": "content/venues/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
     "field_id": "workshop.g.global.description.show_info",
     "path": "global.description.show_info",
     "record_type": "workshop",
@@ -2186,6 +2602,14 @@
   {
     "class": "G",
     "cms_visible": true,
+    "field_id": "workshop.g.global.registration.availability",
+    "path": "global.registration.availability",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
     "field_id": "workshop.g.global.registration.url",
     "path": "global.registration.url",
     "record_type": "workshop",
@@ -2196,6 +2620,126 @@
     "cms_visible": true,
     "field_id": "workshop.g.global.route",
     "path": "global.route",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.event_status",
+    "path": "global.schedule.event_status",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.featured_occurrences.item.id",
+    "path": "global.schedule.featured_occurrences[].id",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.featured_occurrences.item.teacher",
+    "path": "global.schedule.featured_occurrences[].teacher",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.mode",
+    "path": "global.schedule.mode",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.previous_start_local",
+    "path": "global.schedule.previous_start_local",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.recurrence.anchor",
+    "path": "global.schedule.recurrence.anchor",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.recurrence.end_time",
+    "path": "global.schedule.recurrence.end_time",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.recurrence.except.item",
+    "path": "global.schedule.recurrence.except[]",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.recurrence.horizon_months",
+    "path": "global.schedule.recurrence.horizon_months",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.recurrence.start_time",
+    "path": "global.schedule.recurrence.start_time",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.recurrence.weekday",
+    "path": "global.schedule.recurrence.weekday",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.sessions.item.end_local",
+    "path": "global.schedule.sessions[].end_local",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.sessions.item.id",
+    "path": "global.schedule.sessions[].id",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.sessions.item.start_local",
+    "path": "global.schedule.sessions[].start_local",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.sessions.item.status",
+    "path": "global.schedule.sessions[].status",
     "record_type": "workshop",
     "source": "content/workshops/*.yaml"
   },
@@ -2220,6 +2764,22 @@
     "cms_visible": true,
     "field_id": "workshop.g.global.status",
     "path": "global.status",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.updated_at",
+    "path": "global.updated_at",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "workshop.g.global.venue",
+    "path": "global.venue",
     "record_type": "workshop",
     "source": "content/workshops/*.yaml"
   },

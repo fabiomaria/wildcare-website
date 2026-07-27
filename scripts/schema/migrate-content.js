@@ -42,7 +42,7 @@ function recordChange(collection, source, target, value) {
 }
 
 for (const collection of collections) {
-  if (["site", "pages", "workshops"].includes(collection)) {
+  if (["site", "pages", "workshops", "venues", "events"].includes(collection)) {
     for (const file of contentFilesFor(collection)) {
       const migrated = migrateYamlRecord(collection, file);
       recordChange(collection, file, file, migrated);

@@ -4,9 +4,17 @@
     "site",
     "pages",
     "journal",
-    "legal"
+    "legal",
+    "venues",
+    "events"
   ],
-  "lossy_fields": [],
+  "lossy_fields": [
+    "global.schedule.*",
+    "global.venue",
+    "global.registration.availability",
+    "global.event_type",
+    "global.page_mode"
+  ],
   "mode": "write",
   "outputs": [
     "migration/downgraded/workshops/bewegungsrevolution.yaml",
@@ -27,5 +35,7 @@
     "migration/downgraded/legal/datenschutz.md",
     "migration/downgraded/legal/impressum.md"
   ],
-  "warnings": []
+  "warnings": [
+    "venue and event records are v2-only and have no v1 downgrade target"
+  ]
 }

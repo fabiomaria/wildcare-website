@@ -123,8 +123,11 @@ if (args.write) {
     mode: "write",
     collections,
     outputs: outputs.map((item) => relative(item.target)),
-    lossy_fields: [],
-    warnings: [],
+    lossy_fields: [
+      "global.schedule.*", "global.venue", "global.registration.availability",
+      "global.event_type", "global.page_mode",
+    ],
+    warnings: ["venue and event records are v2-only and have no v1 downgrade target"],
   });
 }
 console.log(args.write

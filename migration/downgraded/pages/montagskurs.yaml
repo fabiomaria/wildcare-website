@@ -1,4 +1,20 @@
 de:
+  updated_at: 2026-07-26T10:00:00.000Z
+  venue: orpheumgasse
+  schedule:
+    event_status: scheduled
+    previous_start_local: null
+    mode: recurring
+    recurrence:
+      weekday: monday
+      start_time: '17:45'
+      end_time: '19:15'
+      anchor: '2026-01-05'
+      horizon_months: 6
+      except: []
+    featured_occurrences:
+      '2026-11-16':
+        note: Besonderer Abend mit Gastlehrperson.
   hero:
     image: assets/images/warum-ci.jpg
     label: Offener Workshop
@@ -85,6 +101,22 @@ de:
   footer:
     connect_heading: Verbinden
 en:
+  updated_at: 2026-07-26T10:00:00.000Z
+  venue: orpheumgasse
+  schedule:
+    event_status: scheduled
+    previous_start_local: null
+    mode: recurring
+    recurrence:
+      weekday: monday
+      start_time: '17:45'
+      end_time: '19:15'
+      anchor: '2026-01-05'
+      horizon_months: 6
+      except: []
+    featured_occurrences:
+      '2026-11-16':
+        note: Special evening with a guest teacher.
   hero:
     image: assets/images/warum-ci.jpg
     label: Open Workshop
