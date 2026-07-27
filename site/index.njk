@@ -63,34 +63,11 @@ permalink: index.html
     </header>
 
     <!-- ================================
-         NEXT EVENT BANNER
+         UPCOMING EVENTS SLIDER
          ================================ -->
 
-    <div class="event-banner">
-        <div class="container event-banner-inner">
-            <div class="event-banner-info">
-                <span class="event-banner-tag"
-                    data-de="{{ de.event_banner.tag }}"
-                    data-en="{{ en.event_banner.tag or de.event_banner.tag }}">{{ de.event_banner.tag }}</span>
-                <div class="event-banner-detail">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                    <span data-de="{{ de.event_banner.day }}" data-en="{{ en.event_banner.day or de.event_banner.day }}">{{ de.event_banner.day }}</span>
-                </div>
-                <div class="event-banner-detail">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    {{ de.event_banner.time }}
-                </div>
-                <div class="event-banner-detail">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    {{ de.event_banner.address }}
-                </div>
-                <div class="event-banner-detail">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>
-                    <span data-de="{{ de.event_banner.basis }}" data-en="{{ en.event_banner.basis or de.event_banner.basis }}">{{ de.event_banner.basis }}</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    {%- set upcomingVariant = "slim" -%}
+    {% include "partials/upcoming-slider.njk" %}
 
     <!-- ================================
          CORE VALUES
@@ -272,6 +249,7 @@ permalink: index.html
         }
     </script>
     <script src="js/i18n.js"></script>
+    <script src="js/upcoming-slider.js"></script>
     <script>
         (function () {
             var form = document.getElementById('signup-form');
