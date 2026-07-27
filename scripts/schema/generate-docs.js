@@ -21,7 +21,7 @@ const lines = [
 for (const [name, definition] of Object.entries(registry.record_types)) {
   lines.push(`## ${name}`, "");
   lines.push(`Source: \`${definition.source}\``, "");
-  lines.push(`Templates: ${definition.templates.map((item) => `\`${item}\``).join(", ")}`, "");
+  lines.push(`Templates:${definition.templates.length ? ` ${definition.templates.map((item) => `\`${item}\``).join(", ")}` : ""}`, "");
   lines.push("| Field ID | Class | Storage path | Type | Required | CMS |", "| --- | --- | --- | --- | --- | --- |");
   for (const field of definition.fields) {
     lines.push(`| \`${field.id}\` | ${field.class} | \`${field.path}\` | ${field.type}${field.storage ? ` / ${field.storage}` : ""} | ${field.required ? "yes" : "no"} | ${field.cms_visible ? "yes" : "no"} |`);

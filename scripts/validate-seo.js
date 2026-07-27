@@ -3,7 +3,7 @@ const path = require("node:path");
 
 const projectRoot = path.join(__dirname, "..");
 const outputDir = path.join(projectRoot, "_site");
-const sitemap = fs.readFileSync(path.join(projectRoot, "sitemap.xml"), "utf8");
+const sitemap = fs.readFileSync(path.join(outputDir, "sitemap.xml"), "utf8");
 const publicUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 
 const requiredMetadata = [
