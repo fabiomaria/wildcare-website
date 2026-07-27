@@ -1,0 +1,15 @@
+schema_version: 2
+global:
+  id: invalid-schedule-start-at-mismatch
+  intended_locales: [en]
+  status: upcoming
+  route: /invalid-schedule-start-at-mismatch
+  start_at: 2026-09-01T17:00:00.000Z
+  venue: fixture-venue
+  schedule:
+    event_status: scheduled
+    mode: dates
+    sessions:
+      - { id: session, start_local: "2026-09-01T18:00", end_local: "2026-09-01T20:00" }
+locales:
+  en: { title: Invalid Start, summary: Invalid fixture. }

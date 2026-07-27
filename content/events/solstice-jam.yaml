@@ -1,0 +1,28 @@
+schema_version: 2
+global:
+  id: solstice-jam
+  intended_locales: [de, en]
+  event_type: jam
+  status: upcoming
+  route: /events/solstice-jam
+  page_mode: minimal
+  venue: orpheumgasse
+  start_at: 2026-06-21T18:00:00.000Z
+  updated_at: 2026-07-26T10:00:00Z
+  sort_order: 10
+  registration:
+    url: https://tally.so/r/EXAMPLE
+    availability: available
+  schedule:
+    event_status: scheduled
+    previous_start_local: null
+    mode: dates
+    sessions:
+      - { id: eve, start_local: "2026-06-21T18:00", end_local: "2026-06-21T22:00" }
+locales:
+  de:
+    title: Sonnenwend-Jam
+    summary: Ein offener Contact-Improvisation-Jam zur Sommersonnenwende.
+  en:
+    title: Solstice Jam
+    summary: An open Contact Improvisation jam for the summer solstice.

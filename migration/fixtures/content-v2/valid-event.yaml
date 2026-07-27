@@ -1,0 +1,22 @@
+schema_version: 2
+global:
+  id: fixture-event
+  intended_locales: [en]
+  event_type: talk
+  status: upcoming
+  route: /events/fixture-event
+  page_mode: full
+  venue: fixture-venue
+  start_at: 2026-09-01T18:00:00.000Z
+  updated_at: 2026-07-26T10:00:00Z
+  registration:
+    availability: available
+  schedule:
+    event_status: scheduled
+    mode: dates
+    sessions:
+      - { id: evening, start_local: "2026-09-01T18:00", end_local: "2026-09-01T20:00" }
+locales:
+  en:
+    title: Fixture Event
+    summary: A valid fixture event.

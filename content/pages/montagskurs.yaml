@@ -6,12 +6,30 @@ global:
     - en
   status: published
   route: /montagskurs
+  updated_at: 2026-07-26T10:00:00Z
+  venue: orpheumgasse
+  schedule:
+    event_status: scheduled
+    previous_start_local: null
+    mode: recurring
+    recurrence:
+      weekday: monday
+      start_time: "17:45"
+      end_time: "19:15"
+      anchor: "2026-01-05"
+      horizon_months: 6
+      except: []
+    featured_occurrences:
+      - { id: "2026-11-16", teacher: Guest Name }
   hero:
     image: assets/images/warum-ci.jpg
   practice:
     video: assets/what is ci.mp4
 locales:
   de:
+    schedule:
+      featured_occurrences:
+        "2026-11-16": { note: Besonderer Abend mit Gastlehrperson. }
     meta:
       title: Montagskurs — Contact Improvisation in Graz | Wild Care
       description: Offener Contact Improvisation Workshop in Graz. Jeden Montag 17:45, Orpheumgasse 11. Auf Spendenbasis, keine Vorkenntnisse nötig.
@@ -96,6 +114,9 @@ locales:
     footer:
       connect_heading: Verbinden
   en:
+    schedule:
+      featured_occurrences:
+        "2026-11-16": { note: Special evening with a guest teacher. }
     breadcrumb: Monday Class
     hero:
       label: Open Workshop

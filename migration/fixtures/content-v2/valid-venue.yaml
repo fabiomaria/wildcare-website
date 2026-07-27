@@ -1,0 +1,8 @@
+schema_version: 2
+global:
+  id: fixture-venue
+  name: Fixture Venue
+  street: Test Street 1
+  postal_code: "8010"
+  city: Graz
+  country: AT

@@ -1,0 +1,20 @@
+schema_version: 2
+global:
+  id: invalid-event-orphan-venue
+  intended_locales: [en]
+  event_type: talk
+  status: upcoming
+  route: /events/invalid-event-orphan-venue
+  page_mode: minimal
+  venue: nowhere
+  start_at: 2026-09-01T18:00:00.000Z
+  updated_at: 2026-07-26T10:00:00Z
+  schedule:
+    event_status: scheduled
+    mode: dates
+    sessions:
+      - { id: evening, start_local: "2026-09-01T18:00", end_local: "2026-09-01T20:00" }
+locales:
+  en:
+    title: Invalid Event
+    summary: An invalid fixture event.

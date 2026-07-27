@@ -1,0 +1,25 @@
+schema_version: 2
+global:
+  id: invalid-schedule-orphan-featured-note
+  intended_locales: [en]
+  status: published
+  route: /invalid-schedule-orphan-featured-note
+  venue: fixture-venue
+  schedule:
+    event_status: scheduled
+    mode: recurring
+    recurrence:
+      weekday: monday
+      start_time: "17:45"
+      end_time: "19:15"
+      anchor: "2026-01-05"
+      horizon_months: 6
+      except: []
+    featured_occurrences: [{ id: "2026-11-16" }]
+locales:
+  en:
+    title: Invalid Featured
+    summary: Invalid fixture.
+    schedule:
+      featured_occurrences:
+        "2026-12-01": { note: Orphan note }

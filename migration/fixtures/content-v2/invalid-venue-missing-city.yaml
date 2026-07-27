@@ -1,0 +1,7 @@
+schema_version: 2
+global:
+  id: invalid-venue-missing-city
+  name: Invalid Venue
+  street: Test Street 1
+  postal_code: "8010"
+  country: AT

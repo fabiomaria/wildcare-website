@@ -1,0 +1,19 @@
+schema_version: 2
+global:
+  id: valid-schedule-recurring
+  intended_locales: [en]
+  status: upcoming
+  route: /valid-schedule-recurring
+  venue: fixture-venue
+  schedule:
+    event_status: scheduled
+    mode: recurring
+    recurrence:
+      weekday: monday
+      start_time: "17:45"
+      end_time: "19:15"
+      anchor: "2026-01-05"
+      horizon_months: 6
+      except: []
+locales:
+  en: { title: Valid Recurring, summary: Valid recurring fixture. }
