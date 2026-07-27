@@ -1,0 +1,90 @@
+{% from "partials/icon.njk" import icon %}
+
+{%- macro upcomingTag(kind) -%}
+{%- if kind == "montagskurs" -%}
+<span class="upcoming-tag upcoming-tag--recurring" data-de="Jeden Montag" data-en="Every Monday">Jeden Montag</span>
+{%- elif kind == "featured" -%}
+<span class="upcoming-tag upcoming-tag--featured" data-de="★ Besonderer Montag" data-en="★ Special Monday">★ Besonderer Montag</span>
+{%- elif kind == "event" -%}
+<span class="upcoming-tag upcoming-tag--workshop" data-de="Event" data-en="Event">Event</span>
+{%- else -%}
+<span class="upcoming-tag upcoming-tag--workshop" data-de="Workshop" data-en="Workshop">Workshop</span>
+{%- endif -%}
+{%- endmacro -%}
+
+{%- set isSlim = upcomingVariant == "slim" -%}
+
+{% if upcomingItems.length %}
+<section class="upcoming-slider upcoming-slider--{{ upcomingVariant }}" aria-label="Kommende Termine">
+  <div class="container">
+    <div class="upcoming-head">
+{% if isSlim %}
+      <h2 class="sr-only" data-de="Kommende Termine" data-en="Upcoming Events">Kommende Termine</h2>
+      <span class="label" data-de="Termine" data-en="Upcoming">Termine</span>
+{% else %}
+      <div>
+        <p class="label" data-de="Termine" data-en="Upcoming">Termine</p>
+        <h2 data-de="Was noch kommt" data-en="What&#8217;s Coming Next">Was noch kommt</h2>
+      </div>
+{% endif %}
+      <div class="upcoming-nav">
+        <button class="upcoming-arrow" data-upcoming-prev data-aria-de="Zurück" data-aria-en="Previous" aria-label="Zurück" disabled>‹</button>
+        <button class="upcoming-arrow" data-upcoming-next data-aria-de="Weiter" data-aria-en="Next" aria-label="Weiter">›</button>
+      </div>
+    </div>
+
+    <ul class="upcoming-track" data-upcoming-track>
+{% for item in upcomingItems %}
+{%- set cardTitleDe = "Montagskurs" if (item.kind == "montagskurs" or item.kind == "featured") else item.title.de -%}
+{%- set cardTitleEn = "Monday Class" if (item.kind == "montagskurs" or item.kind == "featured") else item.title.en -%}
+{%- set ariaDe = cardTitleDe ~ ", " ~ item.dateLabel.de ~ (", " ~ item.timeLabel if item.timeLabel else "") -%}
+{%- set ariaEn = cardTitleEn ~ ", " ~ item.dateLabel.en ~ (", " ~ item.timeLabel if item.timeLabel else "") -%}
+      <li>
+{% if isSlim %}
+        <a class="upcoming-card upcoming-card--slim" href="{{ item.detailHref }}"
+            data-aria-de="{{ ariaDe | attr }}" data-aria-en="{{ ariaEn | attr }}" aria-label="{{ ariaDe | attr }}">
+          {{ upcomingTag(item.kind) }}
+          <h3 data-de="{{ cardTitleDe | attr }}" data-en="{{ cardTitleEn | attr }}">{{ cardTitleDe }}</h3>
+          <div class="upcoming-date-slim"
+              data-de="{{ (item.dateLabel.de ~ (' · ' ~ item.timeLabel if item.timeLabel else '')) | attr }}"
+              data-en="{{ (item.dateLabel.en ~ (' · ' ~ item.timeLabel if item.timeLabel else '')) | attr }}">{{ item.dateLabel.de }}{% if item.timeLabel %} · {{ item.timeLabel }}{% endif %}</div>
+          <span class="upcoming-card-arrow" aria-hidden="true">→</span>
+        </a>
+{% else %}
+        <article class="upcoming-card">
+          {{ upcomingTag(item.kind) }}
+          <h3 data-de="{{ cardTitleDe | attr }}" data-en="{{ cardTitleEn | attr }}">{{ cardTitleDe }}</h3>
+{% if item.subtitle %}
+          <div class="upcoming-subtitle" data-de="{{ item.subtitle.de | attr }}" data-en="{{ item.subtitle.en | attr }}">{{ item.subtitle.de }}</div>
+{% endif %}
+{% if item.teacher %}
+          <div class="upcoming-subtitle">{{ item.teacher }}</div>
+{% endif %}
+          <div class="upcoming-detail">
+            {{ icon("calendar") }}
+            <span data-de="{{ item.dateLabel.de | attr }}" data-en="{{ item.dateLabel.en | attr }}">{{ item.dateLabel.de }}</span>
+          </div>
+{% if item.timeLabel %}
+          <div class="upcoming-detail">
+            {{ icon("clock") }}
+            {{ item.timeLabel }}
+          </div>
+{% endif %}
+          <div class="upcoming-detail">
+            {{ icon("location") }}
+            {{ item.venueName }}
+          </div>
+          <div class="upcoming-actions">
+            <a class="btn btn-secondary" href="{{ item.detailHref }}" data-de="Mehr erfahren" data-en="Learn more">Mehr erfahren</a>
+            <a class="btn btn-ghost" href="{{ item.icsHref }}" download data-de="Zum Kalender hinzufügen" data-en="Add to Calendar">Zum Kalender hinzufügen</a>
+          </div>
+        </article>
+{% endif %}
+      </li>
+{% endfor %}
+    </ul>
+
+    <div class="upcoming-dots" data-upcoming-dots></div>
+  </div>
+</section>
+{% endif %}
