@@ -1,0 +1,36 @@
+---
+pagination:
+  data: montagskursFeatured
+  size: 1
+  alias: occ
+permalink: "montagskurs/{{ occ.date }}.html"
+---
+{%- set seoMeta = { title: 'Montagskurs — ' ~ occ.date ~ ' | Wild Care', description: occ.note_de or 'Montagskurs für Contact Improvisation in Graz.' } -%}
+{%- set seoCanonical = 'https://wildcare.space/montagskurs/' ~ occ.date -%}
+{%- set seoLocale = 'de_AT' -%}
+{%- set seoFallbackImage = 'assets/images/social preview.jpg' -%}
+{%- set seoFallbackImageAlt = 'Wild Care Contact Improvisation' -%}
+{%- set seoFallbackImageWidth = 1200 -%}
+{%- set seoFallbackImageHeight = 630 -%}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include "partials/seo.njk" %}
+  <script type="application/ld+json">{{ occ | featuredOccurrenceJsonLd | json | safe }}</script>
+  <link rel="stylesheet" href="../css/styles.css?v={{ assetVersion }}">
+</head>
+<body>
+  {% include "partials/nav.njk" %}
+  <main class="page-hero"><div class="container">
+    <h1>Montagskurs — {{ occ.date }}</h1>
+    <p>{{ occ.start_local }}–{{ occ.end_local }}</p>
+    {% if occ.teacher %}<p>{{ occ.teacher }}</p>{% endif %}
+    <p data-de="{{ occ.note_de | attr }}" data-en="{{ occ.note_en | attr }}">{{ occ.note_de }}</p>
+    {%- set calId = 'montagskurs' -%}
+    {% include "partials/add-to-calendar.njk" %}
+  </div></main>
+  {% include "partials/footer.njk" %}
+</body>
+</html>
