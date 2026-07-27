@@ -8,7 +8,7 @@ const matter = require("gray-matter");
 
 const ROOT = path.resolve(__dirname, "../..");
 const LOCALES = ["de", "en"];
-const COLLECTIONS = ["workshops", "site", "pages", "journal", "legal"];
+const COLLECTIONS = ["workshops", "site", "pages", "journal", "legal", "venues", "events"];
 const PAGE_ROUTES = {
   index: "/",
   kontakt: "/kontakt",
@@ -393,6 +393,8 @@ function contentFilesFor(collection) {
     return listYaml(path.join(ROOT, "content/pages")).filter((file) => path.basename(file) !== "cellular-touch.yaml");
   }
   if (collection === "workshops") return listYaml(path.join(ROOT, "content/workshops"));
+  if (collection === "venues") return listYaml(path.join(ROOT, "content/venues"));
+  if (collection === "events") return listYaml(path.join(ROOT, "content/events"));
   if (collection === "journal") return listYaml(path.join(ROOT, "content/journal/records"));
   if (collection === "legal") return listYaml(path.join(ROOT, "content/legal/records"));
   return [];

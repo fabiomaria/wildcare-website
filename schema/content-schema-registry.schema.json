@@ -28,6 +28,7 @@
         "type": "object",
         "required": ["source", "identity", "ordering", "templates", "fields"],
         "properties": {
+          "locale_neutral": { "type": "boolean" },
           "source": { "type": "string" },
           "identity": { "type": "object" },
           "ordering": { "type": "object" },
@@ -58,6 +59,15 @@
                 "allow_empty": { "type": "boolean" },
                 "nullable": { "type": "boolean" },
                 "enum": { "type": "string" },
+                "reference": {
+                  "type": "object",
+                  "required": ["target", "orphan"],
+                  "properties": {
+                    "target": { "type": "string" },
+                    "orphan": { "enum": ["error", "warn"] }
+                  },
+                  "additionalProperties": false
+                },
                 "cms_visible": { "type": "boolean" },
                 "storage": { "type": "string" },
                 "path_pattern": { "type": "string" },

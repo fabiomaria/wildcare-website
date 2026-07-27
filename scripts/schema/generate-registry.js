@@ -29,6 +29,19 @@ const recordTypes = {
     templates: ["workshop"],
     ordering: { primary: "global.start_at", tie_breakers: ["global.sort_order", "global.id"] },
   },
+  venue: {
+    source: "content/venues/*.yaml",
+    records: contentFilesFor("venues"),
+    templates: [],
+    ordering: { primary: "global.id", tie_breakers: ["global.sort_order", "global.id"] },
+    locale_neutral: true,
+  },
+  event: {
+    source: "content/events/*.yaml",
+    records: contentFilesFor("events"),
+    templates: ["event"],
+    ordering: { primary: "global.start_at", tie_breakers: ["global.sort_order", "global.id"] },
+  },
   journal: {
     source: "content/journal/records/*.yaml",
     records: contentFilesFor("journal"),
@@ -73,6 +86,12 @@ function enumFor(pathName) {
   if (/(?:^|\.)focal_point$|_focus$/.test(pathName)) return "focal_point";
   if (pathName === "global.hero.variant" || pathName.endsWith(".hero_variant")) return "journal_hero_variant";
   if (pathName.endsWith(".pricing_model")) return "pricing_model";
+  if (pathName === "global.schedule.event_status" || pathName === "global.schedule.sessions[].status") return "event_status";
+  if (pathName === "global.schedule.mode") return "schedule_mode";
+  if (pathName === "global.schedule.recurrence.weekday") return "weekday";
+  if (pathName === "global.registration.availability") return "availability";
+  if (pathName === "global.event_type") return "event_type";
+  if (pathName === "global.page_mode") return "page_mode";
   return undefined;
 }
 
@@ -86,15 +105,19 @@ function fieldId(recordType, field) {
 
 function registryField(recordType, field) {
   const enumName = enumFor(field.path);
+  const defaultRequired = recordType === "venue"
+    ? ["global.id", "global.name", "global.street", "global.postal_code", "global.city", "global.country"].includes(field.path)
+    : ["global.id", "global.intended_locales", "global.status"].includes(field.path);
   return {
     id: fieldId(recordType, field),
     class: field.class,
     path: field.path,
     type: field.type,
-    required: field.required ?? ["global.id", "global.intended_locales", "global.status"].includes(field.path),
+    required: field.required ?? defaultRequired,
     allow_empty: false,
     nullable: false,
     ...(enumName ? { enum: enumName } : {}),
+    ...(field.path === "global.venue" ? { reference: { target: "venue", orphan: "error" } } : {}),
     ...(field.storage ? {
       storage: field.storage,
       path_pattern: field.path_pattern,
@@ -180,6 +203,8 @@ if (require("node:fs").existsSync(cmsFile)) {
     seiten: "fixed_page",
     website: "site_settings",
     workshops: "workshop",
+    venues: "venue",
+    events: "event",
     journal: "journal",
     rechtliches: "legal_page",
   };
@@ -212,7 +237,7 @@ if (require("node:fs").existsSync(cmsFile)) {
 
 const registry = {
   schema_version: 2,
-  registry_revision: 1,
+  registry_revision: 2,
   supported_locales: LOCALES,
   enums: {
     status: ["draft", "published", "unlisted", "upcoming", "current", "past", "coming_soon"],
@@ -222,10 +247,18 @@ const registry = {
       workshop: ["draft", "upcoming", "current", "past", "unlisted"],
       journal: ["published", "coming_soon", "unlisted"],
       legal_page: ["draft", "published"],
+      venue: ["published"],
+      event: ["draft", "upcoming", "current", "past", "unlisted"],
     },
     focal_point: ["center", "top", "bottom", "left", "right", "top-left", "top-right", "bottom-left", "bottom-right"],
     journal_hero_variant: ["cover", "contained"],
     pricing_model: ["fixed", "donation", "sliding_scale", "free"],
+    event_status: ["scheduled", "cancelled", "postponed", "rescheduled", "moved_online"],
+    availability: ["available", "sold_out", "waitlist", "unavailable"],
+    event_type: ["jam", "performance", "talk", "retreat", "other"],
+    weekday: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"],
+    schedule_mode: ["dates", "recurring"],
+    page_mode: ["minimal", "full"],
   },
   ignored_content_keys: [],
   record_types: recordTypes,
