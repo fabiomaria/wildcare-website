@@ -28,7 +28,7 @@ component, rendered in two variants:
 2. **Programme page** (`site/programm.njk`) — replaces the "Ausblick" section
    entirely, and moves to the **top** of the page (right after `.page-hero`,
    before the Montagskurs section). Full cards, beige background, one
-   "+ Kalender" button + one "Mehr erfahren" link per card.
+   "Mehr erfahren" link + one "Add to Calendar" link per card.
 
 Both pull from the same underlying ordered list, capped to the next 6
 upcoming items. "Aktuelle Projekte" (the rich workshop cards further down
@@ -120,10 +120,11 @@ for njk):
                              //   leaf page already built in the calendar work).
   icsHref: string | null,   // `/calendar/<def.id>.ics` — null only if a def
                              //   somehow has no calendar page (shouldn't happen;
-                             //   defensive, not expected to trigger).
-  googleUrl: string,        // kept internally in case a future card wants it —
-                             //   NOT rendered as a second button per the "one
-                             //   calendar action" decision below.
+                             //   defensive, not expected to trigger). No Google
+                             //   Calendar URL anywhere — `calendarGoogleUrl` is
+                             //   no longer used by any template as of this
+                             //   session; `.ics` is the sole calendar action
+                             //   sitewide (see "Programme page variant" below).
   teacher: string | null,   // featured only
 }
 ```
@@ -136,16 +137,50 @@ date in the existing implementation). Pure function, unit-tested like every
 other `lib/calendar` module — no build-time dependency, the specific date is
 passed in by the caller.
 
+## Semantic HTML requirements (both variants)
+
+These apply to the shared partial, not per-variant — called out separately so
+they can't be lost in one variant's styling pass:
+
+- **The track is a list, not a `<div>` soup.** `.upcoming-track` is a
+  `<ul>`; each card is a `<li>` (the `<article>`/`<a>` card markup lives
+  *inside* the `<li>`, it doesn't replace it). This is a genuine collection
+  of related items — the DOM should say so, both for crawlers and for
+  assistive tech (list semantics announce "list of N items").
+- **Every section gets a real heading, visible or not.** The programme
+  variant already has a visible `<h2>` ("Was noch kommt") — fine as-is. The
+  homepage variant's terracotta band currently has no heading, only a
+  `<span class="label">Termine</span>` (styling chrome, not a heading
+  element) — add `<h2 class="sr-only">Kommende Termine</h2>` (bilingual via
+  `data-de`/`data-en` same as everywhere else) using the site's existing
+  `.sr-only` utility class (already defined in `css/styles.css`, no new CSS
+  needed for this part). The visible `.label` span stays for the visual
+  design; the `<h2>` exists purely so deleting "Ausblick" doesn't leave a
+  section with no semantic header, and so the homepage band was never
+  missing one in the first place. Both `<h2>`s are siblings at the same
+  outline depth as the section headings around them — no level-skipping.
+- **Whole-card links stay single-purpose and coherently labelled.** On the
+  slim (homepage) card, the entire `<li>` content is one `<a>` — verified no
+  interactive element (button, nested link) is ever placed inside it. The
+  decorative arrow glyph (`→`) gets `aria-hidden="true"` so it doesn't get
+  read/parsed as content. The `<a>` carries an explicit `aria-label` (via
+  `data-aria-de`/`data-aria-en`, the same mechanism `js/i18n.js` already
+  swaps per `CLAUDE.md`'s bilingual pattern) summarizing kind + title + date
+  — e.g. "Montagskurs, Montag, 3. August, 17:45–19:15" — rather than relying
+  on a bot/screen reader to concatenate the visually-arranged tag+title+date
+  text into something coherent on its own.
+
 ## Homepage variant (slim)
 
 - Replaces `.event-banner` in `site/index.njk`, same position (immediately
   after the hero).
 - Terracotta band (matches the old banner's visual identity/position),
-  horizontally scrollable card track, scroll-snap, prev/next arrow buttons,
-  dot indicators reflecting scroll position.
+  horizontally scrollable `<ul class="upcoming-track">`, scroll-snap,
+  prev/next arrow buttons, dot indicators reflecting scroll position.
 - Card: tag chip (styled per `kind`) + title + one compact `dateLabel · timeLabel`
-  line. **Whole card is an `<a href="{{ item.detailHref }}">`** — no
-  add-to-calendar actions on this variant.
+  line, inside an `<li>`. **Whole card is an `<a href="{{ item.detailHref }}">`**
+  wrapping that content — no add-to-calendar actions on this variant. See
+  "Semantic HTML requirements" above for the heading + link-labelling rules.
 - Bilingual: tag chip text is UI chrome (hardcoded `data-de`/`data-en` in the
   partial, not content), title/date use the item's `{de, en}` pairs the same
   way every other `data-de`/`data-en` pair on the site works.
@@ -156,19 +191,30 @@ passed in by the caller.
   and before the existing Montagskurs `<section>`. Background `var(--sand-light)`
   (beige) — same section/card color pairing the current "Ausblick" already
   uses (`.preview-card` on `--sand-light`), so this isn't a new color pairing.
-- The existing "Ausblick" `<section>` block is deleted outright.
+- The existing "Ausblick" `<section>` block is deleted outright — its visible
+  `<h2>` is replaced by this section's own `<h2>` (see "Semantic HTML
+  requirements" above), so the page never has a heading-less gap where
+  "Ausblick" used to be.
 - Card: tag chip + title + subtitle (if present) + one date/time detail row
-  (clock icon) + one venue detail row (pin icon) + **exactly two actions**:
-  `+ Kalender` (`.btn-secondary`, `icsHref`) and `Mehr erfahren` (`.btn-ghost`,
-  arrow, `detailHref`). The earlier mockup's second "Google" button is
-  dropped — one calendar action, one "read more" action, full stop.
+  (clock icon) + one venue detail row (pin icon), each card an `<article>`
+  inside an `<li>` of the shared `<ul class="upcoming-track">` + **exactly
+  two actions**: `Mehr erfahren` (`.btn-secondary`, bordered, `detailHref`)
+  and `Zum Kalender hinzufügen` / `Add to Calendar` (`.btn-ghost`, terracotta
+  text + arrow, `icsHref`) — matching the single-button, ghost-arrow
+  add-to-calendar convention just established across `workshop.njk`/
+  `event.njk`/`montagskurs.njk`/`programm.njk`'s info-cards (see
+  `site/_includes/partials/add-to-calendar.njk`, now a single `.ics` link,
+  no separate Google Calendar button — `.ics` opens in Google/Apple/Outlook
+  alike). The earlier mockup's separate "Google" button is dropped
+  everywhere, not just here.
 
 ## Shared component
 
 - One new njk partial, `site/_includes/partials/upcoming-slider.njk`, taking
   `items` and a `variant` (`"slim" | "full"`) parameter, rendering the
-  head/track/arrows/dots and switching card markup on `variant`. Included from
-  both `site/index.njk` and `site/programm.njk` — not two copy-pasted blocks.
+  `<h2>` + head/track/arrows/dots and switching card markup (`<a>` vs.
+  `<article>` inside each `<li>`) on `variant`. Included from both
+  `site/index.njk` and `site/programm.njk` — not two copy-pasted blocks.
 - One new script, `js/upcoming-slider.js` (mirrors the existing
   `js/i18n.js` — small, dependency-free, one concern), handling scroll-snap
   arrow scrolling + dot sync + active-state tracking. Loaded on both pages.
