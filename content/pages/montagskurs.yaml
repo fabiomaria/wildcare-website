@@ -1,192 +1,188 @@
-schema_version: 2
-global:
-  id: montagskurs
-  intended_locales:
-    - de
-    - en
-  status: published
-  route: /montagskurs
-  venue: orpheumgasse
-  updated_at: 2026-07-26T10:00:00Z
-  schedule:
-    event_status: scheduled
-    previous_start_local: null
-    mode: recurring
-    recurrence:
-      weekday: monday
-      start_time: "17:45"
-      end_time: "19:15"
-      anchor: "2026-01-05"
-      horizon_months: 6
-      except: []
-    featured_occurrences:
-      - id: "2026-07-27"
-        teacher: Liane Mah
+de:
+  schema_version: 2
+  global:
+    id: montagskurs
+    status: published
+    route: /montagskurs
+    venue: orpheumgasse
+    updated_at: 2026-07-26T10:00:00.000Z
+    schedule:
+      event_status: scheduled
+      previous_start_local: null
+      mode: recurring
+      recurrence:
+        weekday: monday
+        start_time: '17:45'
+        end_time: '19:15'
+        anchor: '2026-01-05'
+        horizon_months: 6
+        except: []
+      featured_occurrences:
+        - id: '2026-07-27'
+          teacher: Liane Mah
+    hero:
+      image: assets/images/warum-ci.jpg
+    practice:
+      video: assets/what is ci.mp4
+  breadcrumb: Montagskurs
   hero:
-    image: assets/images/warum-ci.jpg
+    label: Offener Workshop
+    heading: Contact Improvisation in Graz.
+    heading_html: Contact Improvisation<br>in <span>Graz</span>.
+    subtitle: Spielerisch den eigenen Körper erforschen — mit Schwerkraft, Gleichgewicht und Berührung. Keine Vorkenntnisse nötig. Wirklich keine.
+    schedule: Jeden Montag, 17:45–19:15
+    address: Orpheumgasse 11, Graz
+    basis: Spendenbasis
+    cta: Jetzt anmelden
+    image_alt: Contact Improvisation
   practice:
-    video: assets/what is ci.mp4
-locales:
-  de:
-    breadcrumb: Montagskurs
-    hero:
-      label: Offener Workshop
-      heading: Contact Improvisation in Graz.
-      heading_html: Contact Improvisation<br>in <span>Graz</span>.
-      subtitle: Spielerisch den eigenen Körper erforschen — mit Schwerkraft, Gleichgewicht und Berührung. Keine Vorkenntnisse nötig. Wirklich keine.
-      schedule: Jeden Montag, 17:45–19:15
-      address: Orpheumgasse 11, Graz
-      basis: Spendenbasis
-      cta: Jetzt anmelden
-      image_alt: Contact Improvisation
-    practice:
-      label: Die Praxis
-      heading: Was ist Contact Improvisation?
-      p1: Contact Improvisation ist eine zeitgenössische Tanz- und Bewegungsform, die in den 1970er-Jahren in den USA entstand. Im Zentrum steht das Spiel mit Schwerkraft, Berührung und Gleichgewicht — das gemeinsame Forschen mit dem Körper.
-      p2: 'Dabei wird nicht nur der Körper, sondern auch der Geist berührt: In der Begegnung entsteht ein Feld von Präsenz, Vertrauen und kreativer Aufmerksamkeit. Contact Improvisation lädt ein, Gewohnheiten loszulassen, sich auf das Unbekannte einzulassen — und Bewegung als eine Form des Dialogs zu erleben, jenseits von Worten.'
-      poster: assets/images/warum-ci.jpg
-    learn:
-      label: Was du erforschst
-      heading: Im Montagskurs
-      cards:
-        - title: Körperwahrnehmung
-          text: Deinen Körper bewusster spüren — Gewicht, Atem, Erdung. Die Basis für alles, was kommt.
-        - title: Gewicht teilen
-          text: Gewicht abgeben und aufnehmen. Vertrauen in den Körper des Gegenübers — und in den eigenen.
-        - title: Fallen & Auffangen
-          text: Sicher zu Boden kommen, sich auffangen lassen. Die Angst vor dem Fallen verlieren — im Tanz und im Leben.
-        - title: Berührung als Sprache
-          text: Durch den Körper kommunizieren — zuhören, antworten, Grenzen spüren und setzen.
-        - title: Nervensystem-Regulation
-          text: Durch achtsame Bewegung und Berührung dein Nervensystem beruhigen — ganz nebenbei.
-        - title: Freies Tanzen
-          text: Jede Session mündet in eine offene Jam — eine freie Tanzzeit, in der alles passieren darf.
-      donation_note: Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20 € pro Termin, ganz so, wie es für dich passt.
-    testimonials:
-      label: Feedback
-      heading: Was Teilnehmer:innen sagen
-      items:
-        - quote: „Ich habe durch den Kurs ein besseres Verständnis bekommen, was Contact Improvisation ist, auch mein Körper versteht mehr und ich kann meinen Körper in der tänzerischen Begegnung bewusster einsetzen. Und es macht einfach Freude!“
-          author: Anna
-        - quote: „Ich tanze schon länger, schau aber wenn ich Zeit habe sehr gerne im Kurs vorbei, da die positive, kreative Energie sich super anfühlt und ich jedesmal neue Anregungen bekomme, weiter zu probieren, Neues zu integrieren — macht einfach richtig lebendig und glücklich.“
-          author: Iris
-    team:
-      label: Wer unterrichtet
-      heading: Deine Begleiter:innen
-      members:
-        - name: Verena Eidenberger
-          image: assets/images/verena.jpg
-          alt: Verena Eidenberger
-          role: Tänzerin · Musik- und Tanzpädagogin
-          bio: Verena tanzt Contact Improvisation seit sie 18 ist, ist Musik- und Tanzpädagogin und freut sich darauf ihr Wissen spielerisch zu teilen. Sie liebt es frei zu tanzen und mit Körper, Stimme oder Instrumenten zu improvisieren.
-        - name: Fabio Maria Gerhold
-          image: assets/images/fabio.jpg
-          alt: Fabio Maria Gerhold
-          role: Tänzer · Yogalehrer
-          bio: Fabio unterrichtet Yoga und Contact Improvisation in Graz. Seine Arbeit verbindet Achtsamkeit, Embodiment und kreative Forschung. Er ist inspiriert von der Philosophie von Martin Buber und der Frage, wie wir uns wirklich begegnen können.
-    faq:
-      label: Häufige Fragen
-      heading: Gut zu wissen
-      items:
-        - q: Tanzt man immer zu zweit?
-          a: Nein. Wir tanzen in wechselnden Konstellationen — alleine, zu zweit, in Gruppen. Es gibt keine festen Paare.
-        - q: Was soll ich mitbringen?
-          a: Bequeme Kleidung, in der du rollen kannst (ohne harte Reißverschlüsse), rutschfeste Socken oder barfuß, eine Wasserflasche.
-        - q: Brauche ich Tanzerfahrung?
-          a: Nein, gar keine. Wir beginnen immer bei Null und bauen langsam auf. Jede:r ist willkommen — genau so, wie du bist.
-        - q: Was kostet es?
-          a: Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20 € pro Termin.
-    crosslink:
-      label: Aktuelles Projekt
-      heading: Bewegungsrevolution
-      text: 6 Wochen kostenlose Contact Improvisation für Einsteiger:innen. Gefördert durch den ASVÖ. 11. Mai – 15. Juni 2026.
-      button: Mehr erfahren
-    cta:
-      label: Einladung
-      heading: Komm tanz mit uns.
-      text: Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz. Auf Spendenbasis, Einstieg jederzeit.
-      button: Jetzt anmelden
-    footer:
-      connect_heading: Verbinden
-    meta:
-      title: Montagskurs — Contact Improvisation in Graz | Wild Care
-      description: Offener Contact Improvisation Workshop in Graz. Jeden Montag 17:45, Orpheumgasse 11. Auf Spendenbasis, keine Vorkenntnisse nötig.
-    schedule:
-      featured_occurrences:
-        "2026-07-27":
-          note: Besonderer Abend mit Gastlehrperson.
-  en:
-    breadcrumb: Monday Class
-    hero:
-      label: Open Workshop
-      heading: Contact Improvisation in Graz.
-      subtitle: Playfully explore your own body — with gravity, balance and touch. No prior experience needed. Really none.
-      schedule: Every Monday, 17:45–19:15
-      basis: Donation-based
-      cta: Sign up now
-    practice:
-      label: The Practice
-      heading: What is Contact Improvisation?
-      p1: Contact Improvisation is a contemporary dance and movement form that originated in the USA in the 1970s. At its core is the play with gravity, touch and balance — a shared exploration through the body.
-      p2: 'It touches not only the body but also the mind: in the encounter, a field of presence, trust and creative attention emerges. Contact Improvisation invites you to let go of habits, to embrace the unknown — and to experience movement as a form of dialogue, beyond words.'
-    learn:
-      label: What you explore
-      heading: In the Monday Class
-      cards:
-        - title: Body Awareness
-          text: Feel your body more consciously — weight, breath, grounding. The foundation for everything that follows.
-        - title: Sharing Weight
-          text: Giving and receiving weight. Trust in the body of your partner — and in your own.
-        - title: Falling & Catching
-          text: Getting to the ground safely, being caught. Losing the fear of falling — in dance and in life.
-        - title: Touch as Language
-          text: Communicating through the body — listening, responding, sensing and setting boundaries.
-        - title: Nervous System Regulation
-          text: Calm your nervous system through mindful movement and touch — naturally, along the way.
-        - title: Free Dance
-          text: Each session flows into an open jam — a free dance time where anything can happen.
-      donation_note: The class is donation-based. You give what you can. As a guideline, 10–20 € per session helps us, whatever feels right for you.
-    testimonials:
-      label: Feedback
-      heading: What participants say
-      items:
-        - quote: “Through the class I gained a better understanding of what Contact Improvisation is. My body understands more too, and I can use my body more consciously in the dance encounter. And it’s simply joyful!”
-        - quote: “I’ve been dancing for a while, but I love dropping by the class whenever I have time. The positive, creative energy feels amazing and I always get new inspiration to keep exploring, to integrate new things — it simply makes you feel alive and happy.”
-    team:
-      label: Who teaches
-      heading: Your Guides
-      members:
-        - name: Verena Eidenberger
-          role: Dancer · Music & Dance Educator
-          bio: Verena has been dancing Contact Improvisation since she was 18. She is a music and dance educator and loves sharing her knowledge playfully. She loves to dance freely and improvise with body, voice or instruments.
-        - name: Fabio Maria Gerhold
-          role: Dancer · Yoga Teacher
-          bio: Fabio teaches Yoga and Contact Improvisation in Graz. His work combines mindfulness, embodiment and creative exploration. He is inspired by Martin Buber’s philosophy and the question of how we can truly meet each other.
-    faq:
-      label: FAQ
-      heading: Good to Know
-      items:
-        - q: Do you always dance in pairs?
-          a: No. We dance in changing constellations — alone, in pairs, in groups. There are no fixed partners.
-        - q: What should I bring?
-          a: Comfortable clothing you can roll in (no hard zippers), non-slip socks or barefoot, a water bottle.
-        - q: Do I need dance experience?
-          a: None at all. We always start from zero and build up slowly. Everyone is welcome — just as you are.
-        - q: How much does it cost?
-          a: The class is donation-based. You give what you can. As a guideline, 10–20 € per session helps us.
-    crosslink:
-      label: Current Project
-      heading: Bewegungsrevolution
-      text: 6 weeks of free Contact Improvisation for beginners. Funded by ASVÖ. 11 May – 15 June 2026.
-      button: Learn more
-    cta:
-      label: Invitation
-      heading: Come dance with us.
-      text: Every Monday, 17:45, Orpheumgasse 11, Graz. Donation-based, join anytime.
-      button: Sign up now
-    footer:
-      connect_heading: Connect
-    schedule:
-      featured_occurrences:
-        "2026-07-27":
-          note: Special evening with a guest teacher.
+    label: Die Praxis
+    heading: Was ist Contact Improvisation?
+    p1: Contact Improvisation ist eine zeitgenössische Tanz- und Bewegungsform, die in den 1970er-Jahren in den USA entstand. Im Zentrum steht das Spiel mit Schwerkraft, Berührung und Gleichgewicht — das gemeinsame Forschen mit dem Körper.
+    p2: 'Dabei wird nicht nur der Körper, sondern auch der Geist berührt: In der Begegnung entsteht ein Feld von Präsenz, Vertrauen und kreativer Aufmerksamkeit. Contact Improvisation lädt ein, Gewohnheiten loszulassen, sich auf das Unbekannte einzulassen — und Bewegung als eine Form des Dialogs zu erleben, jenseits von Worten.'
+    poster: assets/images/warum-ci.jpg
+  learn:
+    label: Was du erforschst
+    heading: Im Montagskurs
+    cards:
+      - title: Körperwahrnehmung
+        text: Deinen Körper bewusster spüren — Gewicht, Atem, Erdung. Die Basis für alles, was kommt.
+      - title: Gewicht teilen
+        text: Gewicht abgeben und aufnehmen. Vertrauen in den Körper des Gegenübers — und in den eigenen.
+      - title: Fallen & Auffangen
+        text: Sicher zu Boden kommen, sich auffangen lassen. Die Angst vor dem Fallen verlieren — im Tanz und im Leben.
+      - title: Berührung als Sprache
+        text: Durch den Körper kommunizieren — zuhören, antworten, Grenzen spüren und setzen.
+      - title: Nervensystem-Regulation
+        text: Durch achtsame Bewegung und Berührung dein Nervensystem beruhigen — ganz nebenbei.
+      - title: Freies Tanzen
+        text: Jede Session mündet in eine offene Jam — eine freie Tanzzeit, in der alles passieren darf.
+    donation_note: "Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20\_€ pro Termin, ganz so, wie es für dich passt."
+  testimonials:
+    label: Feedback
+    heading: Was Teilnehmer:innen sagen
+    items:
+      - quote: „Ich habe durch den Kurs ein besseres Verständnis bekommen, was Contact Improvisation ist, auch mein Körper versteht mehr und ich kann meinen Körper in der tänzerischen Begegnung bewusster einsetzen. Und es macht einfach Freude!“
+        author: Anna
+      - quote: „Ich tanze schon länger, schau aber wenn ich Zeit habe sehr gerne im Kurs vorbei, da die positive, kreative Energie sich super anfühlt und ich jedesmal neue Anregungen bekomme, weiter zu probieren, Neues zu integrieren — macht einfach richtig lebendig und glücklich.“
+        author: Iris
+  team:
+    label: Wer unterrichtet
+    heading: Deine Begleiter:innen
+    members:
+      - name: Verena Eidenberger
+        image: assets/images/verena.jpg
+        alt: Verena Eidenberger
+        role: Tänzerin · Musik- und Tanzpädagogin
+        bio: Verena tanzt Contact Improvisation seit sie 18 ist, ist Musik- und Tanzpädagogin und freut sich darauf ihr Wissen spielerisch zu teilen. Sie liebt es frei zu tanzen und mit Körper, Stimme oder Instrumenten zu improvisieren.
+      - name: Fabio Maria Gerhold
+        image: assets/images/fabio.jpg
+        alt: Fabio Maria Gerhold
+        role: Tänzer · Yogalehrer
+        bio: Fabio unterrichtet Yoga und Contact Improvisation in Graz. Seine Arbeit verbindet Achtsamkeit, Embodiment und kreative Forschung. Er ist inspiriert von der Philosophie von Martin Buber und der Frage, wie wir uns wirklich begegnen können.
+  faq:
+    label: Häufige Fragen
+    heading: Gut zu wissen
+    items:
+      - q: Tanzt man immer zu zweit?
+        a: Nein. Wir tanzen in wechselnden Konstellationen — alleine, zu zweit, in Gruppen. Es gibt keine festen Paare.
+      - q: Was soll ich mitbringen?
+        a: Bequeme Kleidung, in der du rollen kannst (ohne harte Reißverschlüsse), rutschfeste Socken oder barfuß, eine Wasserflasche.
+      - q: Brauche ich Tanzerfahrung?
+        a: Nein, gar keine. Wir beginnen immer bei Null und bauen langsam auf. Jede:r ist willkommen — genau so, wie du bist.
+      - q: Was kostet es?
+        a: "Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20\_€ pro Termin."
+  crosslink:
+    label: Aktuelles Projekt
+    heading: Bewegungsrevolution
+    text: 6 Wochen kostenlose Contact Improvisation für Einsteiger:innen. Gefördert durch den ASVÖ. 11. Mai – 15. Juni 2026.
+    button: Mehr erfahren
+  cta:
+    label: Einladung
+    heading: Komm tanz mit uns.
+    text: Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz. Auf Spendenbasis, Einstieg jederzeit.
+    button: Jetzt anmelden
+  footer:
+    connect_heading: Verbinden
+  meta:
+    title: Montagskurs — Contact Improvisation in Graz | Wild Care
+    description: Offener Contact Improvisation Workshop in Graz. Jeden Montag 17:45, Orpheumgasse 11. Auf Spendenbasis, keine Vorkenntnisse nötig.
+  schedule:
+    featured_occurrences:
+      '2026-07-27':
+        note: Besonderer Abend mit Gastlehrperson.
+en:
+  breadcrumb: Monday Class
+  hero:
+    label: Open Workshop
+    heading: Contact Improvisation in Graz.
+    subtitle: Playfully explore your own body — with gravity, balance and touch. No prior experience needed. Really none.
+    schedule: Every Monday, 17:45–19:15
+    basis: Donation-based
+    cta: Sign up now
+  practice:
+    label: The Practice
+    heading: What is Contact Improvisation?
+    p1: Contact Improvisation is a contemporary dance and movement form that originated in the USA in the 1970s. At its core is the play with gravity, touch and balance — a shared exploration through the body.
+    p2: 'It touches not only the body but also the mind: in the encounter, a field of presence, trust and creative attention emerges. Contact Improvisation invites you to let go of habits, to embrace the unknown — and to experience movement as a form of dialogue, beyond words.'
+  learn:
+    label: What you explore
+    heading: In the Monday Class
+    cards:
+      - title: Body Awareness
+        text: Feel your body more consciously — weight, breath, grounding. The foundation for everything that follows.
+      - title: Sharing Weight
+        text: Giving and receiving weight. Trust in the body of your partner — and in your own.
+      - title: Falling & Catching
+        text: Getting to the ground safely, being caught. Losing the fear of falling — in dance and in life.
+      - title: Touch as Language
+        text: Communicating through the body — listening, responding, sensing and setting boundaries.
+      - title: Nervous System Regulation
+        text: Calm your nervous system through mindful movement and touch — naturally, along the way.
+      - title: Free Dance
+        text: Each session flows into an open jam — a free dance time where anything can happen.
+    donation_note: "The class is donation-based. You give what you can. As a guideline, 10–20\_€ per session helps us, whatever feels right for you."
+  testimonials:
+    label: Feedback
+    heading: What participants say
+    items:
+      - quote: “Through the class I gained a better understanding of what Contact Improvisation is. My body understands more too, and I can use my body more consciously in the dance encounter. And it’s simply joyful!”
+      - quote: “I’ve been dancing for a while, but I love dropping by the class whenever I have time. The positive, creative energy feels amazing and I always get new inspiration to keep exploring, to integrate new things — it simply makes you feel alive and happy.”
+  team:
+    label: Who teaches
+    heading: Your Guides
+    members:
+      - name: Verena Eidenberger
+        role: Dancer · Music & Dance Educator
+        bio: Verena has been dancing Contact Improvisation since she was 18. She is a music and dance educator and loves sharing her knowledge playfully. She loves to dance freely and improvise with body, voice or instruments.
+      - name: Fabio Maria Gerhold
+        role: Dancer · Yoga Teacher
+        bio: Fabio teaches Yoga and Contact Improvisation in Graz. His work combines mindfulness, embodiment and creative exploration. He is inspired by Martin Buber’s philosophy and the question of how we can truly meet each other.
+  faq:
+    label: FAQ
+    heading: Good to Know
+    items:
+      - q: Do you always dance in pairs?
+        a: No. We dance in changing constellations — alone, in pairs, in groups. There are no fixed partners.
+      - q: What should I bring?
+        a: Comfortable clothing you can roll in (no hard zippers), non-slip socks or barefoot, a water bottle.
+      - q: Do I need dance experience?
+        a: None at all. We always start from zero and build up slowly. Everyone is welcome — just as you are.
+      - q: How much does it cost?
+        a: "The class is donation-based. You give what you can. As a guideline, 10–20\_€ per session helps us."
+  crosslink:
+    label: Current Project
+    heading: Bewegungsrevolution
+    text: 6 weeks of free Contact Improvisation for beginners. Funded by ASVÖ. 11 May – 15 June 2026.
+    button: Learn more
+  cta:
+    label: Invitation
+    heading: Come dance with us.
+    text: Every Monday, 17:45, Orpheumgasse 11, Graz. Donation-based, join anytime.
+    button: Sign up now
+  footer:
+    connect_heading: Connect
+  schedule:
+    featured_occurrences:
+      '2026-07-27':
+        note: Special evening with a guest teacher.

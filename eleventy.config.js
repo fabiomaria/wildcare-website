@@ -10,6 +10,7 @@ const {
   migrateJournalEntry,
   migrateLegalEntry,
   migrateYamlRecord,
+  normalizeNativeI18nRecord,
   normalizeV2,
 } = require("./scripts/schema/lib");
 const calendar = require("./lib/calendar");
@@ -126,8 +127,9 @@ function normalizeJournalLocale(locale) {
 
 function v2LocalesForTemplates(raw, file) {
   const collection = file === "content/site.yaml" ? "site" : "pages";
-  const source = raw?.schema_version === 2
-    ? raw
+  const adapted = normalizeNativeI18nRecord(raw);
+  const source = adapted?.schema_version === 2
+    ? adapted
     : migrateYamlRecord(collection, path.join(__dirname, file));
   const normalized = normalizeV2(source, file);
   return {
@@ -448,7 +450,8 @@ function loadWorkshopContent() {
     .map((filename) => {
       const recordFile = path.join(dir, filename);
       const raw = yaml.load(fs.readFileSync(recordFile, "utf8"));
-      const source = raw?.schema_version === 2 ? raw : migrateYamlRecord("workshops", recordFile);
+      const adapted = normalizeNativeI18nRecord(raw);
+      const source = adapted?.schema_version === 2 ? adapted : migrateYamlRecord("workshops", recordFile);
       const normalized = normalizeV2(source, `content/workshops/${filename}`);
       const deSource = isObject(normalized.locales.de) ? templateLocale(normalized.global, normalized.locales.de) : {};
       const enSource = isObject(normalized.locales.en) ? templateLocale(normalized.global, normalized.locales.en) : {};
@@ -532,7 +535,7 @@ function loadCalendar() {
     const dir = path.join(__dirname, "content", collection);
     if (!fs.existsSync(dir)) continue;
     for (const filename of fs.readdirSync(dir).filter((name) => name.endsWith(".yaml")).sort()) {
-      const raw = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"));
+      const raw = normalizeNativeI18nRecord(yaml.load(fs.readFileSync(path.join(dir, filename), "utf8")));
       if (raw?.global?.schedule) definitions.push(calendar.toDefinition(raw, { venues }));
     }
   }
@@ -643,7 +646,7 @@ function loadUpcomingItems(cal, workshopContent, { limit = 6, now = new Date() }
   }
   const montagskursPath = path.join(__dirname, "content", "pages", "montagskurs.yaml");
   if (fs.existsSync(montagskursPath)) {
-    const raw = yaml.load(fs.readFileSync(montagskursPath, "utf8"));
+    const raw = normalizeNativeI18nRecord(yaml.load(fs.readFileSync(montagskursPath, "utf8")));
     statusById.set(raw.global.id, { status: raw.global.status, includable: true });
   }
 

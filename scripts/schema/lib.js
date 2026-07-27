@@ -23,8 +23,77 @@ function isObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
 
+function normalizeNativeI18nRecord(record) {
+  // Application consumers may also call this function with an already
+  // normalized record. Keep that object byte-for-byte equivalent and avoid
+  // treating the `de`/`en` fields inside its `locales` map as native blocks.
+  if (!isObject(record) || record.schema_version === 2) return record;
+
+  const topLevelKeys = Object.keys(record);
+  const localeEntries = topLevelKeys
+    .filter((locale) => LOCALES.includes(locale) && isObject(record[locale]))
+    .map((locale) => [locale, record[locale]]);
+
+  // A record with no native locale blocks is still allowed through here: the
+  // legacy migration path handles those records. Once a record looks like a
+  // native record, however, silently accepting a malformed primary block can
+  // make a save appear successful while dropping shared settings.
+  if (!localeEntries.length) return record;
+  const unsupported = topLevelKeys.filter((key) => !LOCALES.includes(key));
+  if (unsupported.length) {
+    throw new Error(`native i18n record mixes locale blocks with top-level fields: ${unsupported.join(", ")}`);
+  }
+
+  const primaryEntries = localeEntries.filter(([, value]) =>
+    value.schema_version === 2 && isObject(value.global));
+  if (!primaryEntries.length) {
+    throw new Error("native i18n record must have one locale block containing schema_version: 2 and global");
+  }
+  const [primaryLocale, primary] = primaryEntries[0];
+  if (primaryEntries.length > 1) {
+    throw new Error(`native i18n record has multiple primary locales: ${primaryEntries.map(([locale]) => locale).join(", ")}`);
+  }
+
+  // Sveltia keeps shared fields in the primary locale, but hand-edited files
+  // sometimes duplicate them in another block. Identical duplicates are
+  // harmless; conflicting duplicates are ambiguous and must not be merged.
+  for (const [locale, value] of localeEntries) {
+    if (locale === primaryLocale) continue;
+    if (value.schema_version !== undefined && value.schema_version !== primary.schema_version) {
+      throw new Error(`native i18n record has conflicting schema_version in ${locale}`);
+    }
+    if (value.global !== undefined) {
+      if (!isObject(value.global)) throw new Error(`native i18n record has invalid global in ${locale}`);
+      for (const [key, sharedValue] of Object.entries(value.global)) {
+        if (key === "intended_locales") continue;
+        if (primary.global[key] !== undefined && !deepEqual(primary.global[key], sharedValue)) {
+          throw new Error(`native i18n record has conflicting global.${key} between ${primaryLocale} and ${locale}`);
+        }
+      }
+    }
+  }
+
+  const locales = {};
+  for (const [locale, value] of localeEntries) {
+    const localized = { ...value };
+    delete localized.schema_version;
+    delete localized.global;
+    const cleaned = omitEmpty(localized);
+    if (cleaned) locales[locale] = cleaned;
+  }
+
+  return {
+    schema_version: 2,
+    global: {
+      ...primary.global,
+      intended_locales: Object.keys(locales),
+    },
+    locales,
+  };
+}
+
 function readYaml(file) {
-  return yaml.load(fs.readFileSync(file, "utf8"));
+  return normalizeNativeI18nRecord(yaml.load(fs.readFileSync(file, "utf8")));
 }
 
 function writeYaml(file, value) {
@@ -191,6 +260,7 @@ function selectedCollections(args) {
 }
 
 function normalizeV2(record, file = "<record>") {
+  record = normalizeNativeI18nRecord(record);
   assertV2(record, file);
   const locales = {};
   for (const locale of Object.keys(record.locales)) {
@@ -426,6 +496,7 @@ module.exports = {
   migrateJournalEntry,
   migrateLegalEntry,
   migrateYamlRecord,
+  normalizeNativeI18nRecord,
   normalizeV2,
   omitEmpty,
   promoteGlobalFields,

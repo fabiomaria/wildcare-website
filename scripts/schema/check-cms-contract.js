@@ -9,7 +9,14 @@ const file = path.join(ROOT, "admin/config.yml");
 const config = yaml.load(fs.readFileSync(file, "utf8"));
 const registry = JSON.parse(fs.readFileSync(path.join(ROOT, "schema/content-schema-v2.registry.json"), "utf8"));
 const errors = [];
-if (config.i18n) errors.push("root i18n configuration must be removed for schema v2");
+if (
+  config.i18n?.structure !== "single_file" ||
+  JSON.stringify(config.i18n?.locales) !== JSON.stringify(registry.supported_locales) ||
+  config.i18n?.default_locale !== "de" ||
+  config.i18n?.initial_locales !== "default"
+) {
+  errors.push("root i18n must configure native single_file de/en editing with German default and default locale initialization");
+}
 if (config.output?.omit_empty_optional_fields !== true) {
   errors.push("output.omit_empty_optional_fields must be true so optional empty values remain omitted");
 }
@@ -22,6 +29,8 @@ const recordTypeByCollection = {
   seiten: "fixed_page",
   website: "site_settings",
   workshops: "workshop",
+  workshops_de: "workshop",
+  workshops_en: "workshop",
   venues: "venue",
   events: "event",
   journal: "journal",
@@ -51,12 +60,22 @@ function inspectEnums(fields, collectionName) {
 }
 
 for (const collection of config.collections) {
-  if (collection.i18n) errors.push(`${collection.name}: collection-level native i18n is forbidden`);
+  const isPages = collection.name === "seiten";
+  const isFixedI18n = isPages || collection.name === "website";
+  const isPrimaryI18n = ["workshops_de", "workshops_en"].includes(collection.name);
+  if (collection.i18n && !isFixedI18n && !isPrimaryI18n) errors.push(`${collection.name}: collection-level native i18n is forbidden`);
+  if ((isFixedI18n || isPrimaryI18n) && !collection.i18n) errors.push(`${collection.name}: collection-level native i18n must be enabled for migrated content`);
   const entries = collection.files || (collection.fields ? [collection] : []);
   for (const entry of entries) {
     if (["journal_bodies", "legal_bodies"].includes(collection.name)) continue;
+    const isNativeFixed = isFixedI18n && entry.i18n === true;
+    const isNativePrimary = isPrimaryI18n && Boolean(collection.i18n);
+    if (entry.i18n && !isFixedI18n && !isPrimaryI18n) errors.push(`${collection.name}/${entry.name || "<folder>"}: native i18n is only enabled for migrated content`);
+    if (isFixedI18n && entry.i18n !== true) errors.push(`${collection.name}/${entry.name || "<folder>"}: file-level native i18n must be enabled`);
     const fields = fieldMap(entry.fields);
-    const requiredFields = collection.name === "venues" ? ["schema_version", "global"] : ["schema_version", "global", "locales"];
+    const requiredFields = collection.name === "venues" || isNativeFixed || isNativePrimary
+      ? ["schema_version", "global"]
+      : ["schema_version", "global", "locales"];
     for (const required of requiredFields) {
       if (!fields.has(required)) errors.push(`${collection.name}/${entry.name || "<folder>"}: missing ${required}`);
     }
@@ -65,21 +84,46 @@ for (const collection of config.collections) {
       errors.push(`${collection.name}: schema_version must be a hidden field with default 2`);
     }
     const global = fieldMap(fields.get("global")?.fields);
-    const globalRequired = collection.name === "venues" ? ["id", "name", "street", "postal_code", "city", "country"] : ["id", "intended_locales", "status"];
+    const globalRequired = collection.name === "venues"
+      ? ["id", "name", "street", "postal_code", "city", "country"]
+      : (isNativeFixed || isNativePrimary) ? ["id", "status"] : ["id", "intended_locales", "status"];
+    if (isNativePrimary) globalRequired.push("primary_locale");
     for (const required of globalRequired) {
       if (!global.has(required)) errors.push(`${collection.name}: global.${required} is missing`);
     }
     const intended = global.get("intended_locales");
-    if (intended && (intended.widget !== "select" || intended.multiple !== true)) {
+    if (!isNativeFixed && intended && (intended.widget !== "select" || intended.multiple !== true)) {
       errors.push(`${collection.name}: global.intended_locales must be a multi-select`);
     }
-    if (intended && JSON.stringify(optionValues(intended)) !== JSON.stringify(registry.supported_locales)) {
+    if (!isNativeFixed && intended && JSON.stringify(optionValues(intended)) !== JSON.stringify(registry.supported_locales)) {
       errors.push(`${collection.name}: intended locale options disagree with the registry`);
     }
     const recordType = recordTypeByCollection[collection.name];
     const status = global.get("status");
     if (recordType && status && JSON.stringify(optionValues(status)) !== JSON.stringify(registry.enums.status_by_record_type[recordType])) {
       errors.push(`${collection.name}: status options disagree with the registry`);
+    }
+    if (isNativeFixed || isNativePrimary) {
+      if (fields.has("locales")) errors.push(`${collection.name}/${entry.name}: native i18n fields must not be wrapped in a locales object`);
+      for (const [name, field] of fields) {
+        if (!["schema_version", "global"].includes(name) && field.i18n !== true) {
+          errors.push(`${collection.name}/${entry.name}: ${name} must use native i18n`);
+        }
+      }
+      const nativeTeam = isPages && entry.name === "team";
+      if (!nativeTeam) {
+        inspectEnums(entry.fields, collection.name);
+        continue;
+      }
+      for (const name of ["breadcrumb", "hero", "manifest", "team", "quote_band", "philosophy", "cta", "footer", "meta"]) {
+        if (fields.get(name)?.i18n !== true) errors.push(`seiten/team: ${name} must use native i18n`);
+      }
+      const teamFields = fieldMap(fields.get("team")?.fields);
+      if (teamFields.get("members")?.i18n !== "duplicate") {
+        errors.push("seiten/team: team.members must synchronize list structure with i18n: duplicate");
+      }
+      inspectEnums(entry.fields, collection.name);
+      continue;
     }
     const locales = fieldMap(fields.get("locales")?.fields);
     if (collection.name === "venues") continue;
@@ -92,17 +136,6 @@ for (const collection of config.collections) {
     inspectEnums(entry.fields, collection.name);
   }
 }
-
-function findI18n(value, prefix = "config") {
-  if (Array.isArray(value)) value.forEach((item, index) => findI18n(item, `${prefix}[${index}]`));
-  else if (value && typeof value === "object") {
-    for (const [key, child] of Object.entries(value)) {
-      if (key === "i18n") errors.push(`${prefix}.i18n: native i18n flag remains`);
-      findI18n(child, `${prefix}.${key}`);
-    }
-  }
-}
-findI18n(config);
 
 const matrix = {
   "de-only.yaml": ["de"],

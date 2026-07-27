@@ -1,71 +1,67 @@
-schema_version: 2
-global:
-  id: site
-  intended_locales:
-    - de
-    - en
-  status: published
+de:
+  schema_version: 2
+  global:
+    id: site
+    status: published
+    nav:
+      home_url: index.html
+      about_url: team.html
+      program_url: programm.html
+      journal_url: journal.html
+      join_url: mitmachen.html
+      cta_url: kontakt.html
+    seo:
+      default_og_image: assets/images/social preview.jpg
+      default_og_image_width: 1200
+      default_og_image_height: 630
   nav:
-    home_url: index.html
-    about_url: team.html
-    program_url: programm.html
-    journal_url: journal.html
-    join_url: mitmachen.html
-    cta_url: kontakt.html
+    home: Startseite
+    about: Über uns
+    program: Programm
+    journal: Journal
+    join: Mitmachen
+    cta: Komm vorbei
   seo:
-    default_og_image: assets/images/social preview.jpg
-    default_og_image_width: 1200
-    default_og_image_height: 630
-locales:
-  de:
-    nav:
-      home: Startseite
-      about: Über uns
-      program: Programm
-      journal: Journal
-      join: Mitmachen
-      cta: Komm vorbei
-    seo:
-      default_og_image_alt: Menschen tanzen Contact Improvisation bei Wild Care in Graz; im Bild steht „Jede Begegnung ist das erste Mal“.
-    footer:
-      brand_text: Verein für Kontaktimprovisation und soziale Praxis. Wir leben die Kunst der Begegnung — jeden Montag in Graz.
-      pages_heading: Seiten
-      connect_heading: Verbunden bleiben
-      contact_label: Kontakt
-      tagline: Mit Fürsorge gebaut
-    workshop_ui:
-      info_title: Auf einen Blick
-      format_label: Was
-      schedule_label: Wann
-      location_label: Wo
-      price_label: Preis
-      facilitators_label: Leitung
-      testimonials_label: Stimmen
-      faq_label: Häufige Fragen
-      detail_label: Mehr erfahren
-  en:
-    nav:
-      home: Home
-      about: About Us
-      program: Programme
-      journal: Journal
-      join: Get Involved
-      cta: Come by
-    seo:
-      default_og_image_alt: People dancing Contact Improvisation at Wild Care in Graz; the image reads “Every encounter is the first time.”
-    footer:
-      brand_text: Association for Contact Improvisation and social practice. We live the art of encounter — every Monday in Graz.
-      pages_heading: Pages
-      connect_heading: Stay connected
-      contact_label: Contact
-      tagline: Built with care
-    workshop_ui:
-      info_title: At a Glance
-      format_label: What
-      schedule_label: When
-      location_label: Where
-      price_label: Price
-      facilitators_label: Facilitators
-      testimonials_label: Testimonials
-      faq_label: FAQ
-      detail_label: Learn more
+    default_og_image_alt: Menschen tanzen Contact Improvisation bei Wild Care in Graz; im Bild steht „Jede Begegnung ist das erste Mal“.
+  footer:
+    brand_text: Verein für Kontaktimprovisation und soziale Praxis. Wir leben die Kunst der Begegnung — jeden Montag in Graz.
+    pages_heading: Seiten
+    connect_heading: Verbunden bleiben
+    contact_label: Kontakt
+    tagline: Mit Fürsorge gebaut
+  workshop_ui:
+    info_title: Auf einen Blick
+    format_label: Was
+    schedule_label: Wann
+    location_label: Wo
+    price_label: Preis
+    facilitators_label: Leitung
+    testimonials_label: Stimmen
+    faq_label: Häufige Fragen
+    detail_label: Mehr erfahren
+en:
+  nav:
+    home: Home
+    about: About Us
+    program: Programme
+    journal: Journal
+    join: Get Involved
+    cta: Come by
+  seo:
+    default_og_image_alt: People dancing Contact Improvisation at Wild Care in Graz; the image reads “Every encounter is the first time.”
+  footer:
+    brand_text: Association for Contact Improvisation and social practice. We live the art of encounter — every Monday in Graz.
+    pages_heading: Pages
+    connect_heading: Stay connected
+    contact_label: Contact
+    tagline: Built with care
+  workshop_ui:
+    info_title: At a Glance
+    format_label: What
+    schedule_label: When
+    location_label: Where
+    price_label: Price
+    facilitators_label: Facilitators
+    testimonials_label: Testimonials
+    faq_label: FAQ
+    detail_label: Learn more
