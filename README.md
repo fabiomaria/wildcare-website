@@ -46,6 +46,22 @@ The site now uses schema v2 content records. The migration moved shared metadata
 
 The migration is reversible by design: `npm run schema:check` validates the registry, CMS contract, content, parity, and downgrade fixtures, and `npm run build` verifies the rendered site before deployment.
 
+### Calendar and event publishing
+
+Calendar-aware workshops, events, and recurring classes use the structured `global.schedule` block. Calendar definitions live in `lib/calendar/` and are loaded by Eleventy from `content/workshops/`, `content/events/`, and scheduled fixed pages such as `content/pages/montagskurs.yaml`.
+
+Each published dated record can produce:
+
+- an Event JSON-LD block with structured date, venue, status, and registration data;
+- a per-event iCalendar feed at `/calendar/<id>.ics`;
+- the subscribable master feed at `/wildcare.ics`;
+- a human-readable leaf page for events and featured Montagskurs dates;
+- inclusion in the generated `/sitemap.xml` when it has an HTML page.
+
+Featured occurrence pages use human-readable dates in their title, description, heading, and `<time>` elements. Their JSON-LD uses the leaf-page URL and event name, while the machine-readable `startDate` and `endDate` remain floating local times.
+
+Preview calendar changes locally with `npm run dev`, then check `/montagskurs/<date>`, `/events/<id>`, `/wildcare.ics`, and `/sitemap.xml`. The deployment workflow runs `npm run schema:check` and `npm run build` before publishing.
+
 One editorial regression is that this v2 CMS shape no longer provides side-by-side locale editing in the editor. That makes bilingual edits slower and more error-prone, so it should be treated as an open issue rather than a desired end state.
 
 ## Editing Guide
