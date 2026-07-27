@@ -567,6 +567,88 @@ function loadMontagskursFeatured(cal) {
   }));
 }
 
+function nowLocalString(date) {
+  const fmt = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Vienna", year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", hour12: false,
+  });
+  const parts = Object.fromEntries(fmt.formatToParts(date).map((p) => [p.type, p.value]));
+  const hour = parts.hour === "24" ? "00" : parts.hour; // Intl hour12:false quirk on some ICU builds
+  return `${parts.year}-${parts.month}-${parts.day}T${hour}:${parts.minute}`;
+}
+
+function buildUpcomingCard({ def, kind, occurrence }) {
+  const isRecurringKind = kind === "montagskurs" || kind === "featured";
+
+  const dateLabel = isRecurringKind
+    ? {
+        de: calendar.formatNextOccurrence(def.recurrence.weekday, occurrence.start_local, "de"),
+        en: calendar.formatNextOccurrence(def.recurrence.weekday, occurrence.start_local, "en"),
+      }
+    : {
+        de: calendar.formatDateRange(def.span.start, def.span.end, "de"),
+        en: calendar.formatDateRange(def.span.start, def.span.end, "en"),
+      };
+
+  const timeLabel = isRecurringKind
+    ? `${def.recurrence.start_time}–${def.recurrence.end_time}`
+    : def.sessions.length === 1
+      ? `${def.sessions[0].start_local.slice(11, 16)}–${def.sessions[0].end_local.slice(11, 16)}`
+      : null;
+
+  const title = isRecurringKind
+    ? null
+    : {
+        de: def.locales.de?.title || def.locales.en?.title || def.id,
+        en: def.locales.en?.title || def.locales.de?.title || def.id,
+      };
+
+  let subtitle = null;
+  if (kind === "featured") {
+    const noteDe = def.locales.de?.schedule?.featured_occurrences?.[occurrence.id]?.note;
+    const noteEn = def.locales.en?.schedule?.featured_occurrences?.[occurrence.id]?.note;
+    if (noteDe || noteEn) subtitle = { de: noteDe || noteEn, en: noteEn || noteDe };
+  } else if (def.locales.de?.subtitle || def.locales.en?.subtitle) {
+    subtitle = { de: def.locales.de?.subtitle || def.locales.en?.subtitle, en: def.locales.en?.subtitle || def.locales.de?.subtitle };
+  }
+
+  return {
+    kind,
+    id: kind === "featured" ? `${def.id}-${occurrence.id}` : def.id,
+    title,
+    subtitle,
+    dateLabel,
+    timeLabel,
+    venueName: def.venue.name,
+    detailHref: kind === "featured" ? `/montagskurs/${occurrence.id}` : def.route,
+    icsHref: `/calendar/${def.id}.ics`,
+    teacher: kind === "featured" ? occurrence.teacher || null : null,
+  };
+}
+
+function loadUpcomingItems(cal, workshopContent, { limit = 6, now = new Date() } = {}) {
+  const statusById = new Map();
+  for (const w of workshopContent.all) {
+    statusById.set(w.slug, { status: w.status, includable: w.has_detail_page });
+  }
+  const eventsDir = path.join(__dirname, "content", "events");
+  if (fs.existsSync(eventsDir)) {
+    for (const filename of fs.readdirSync(eventsDir).filter((f) => f.endsWith(".yaml"))) {
+      const raw = yaml.load(fs.readFileSync(path.join(eventsDir, filename), "utf8"));
+      statusById.set(raw.global.id, { status: raw.global.status, includable: true });
+    }
+  }
+  const montagskursPath = path.join(__dirname, "content", "pages", "montagskurs.yaml");
+  if (fs.existsSync(montagskursPath)) {
+    const raw = yaml.load(fs.readFileSync(montagskursPath, "utf8"));
+    statusById.set(raw.global.id, { status: raw.global.status, includable: true });
+  }
+
+  const nowLocal = nowLocalString(now);
+  const selected = calendar.selectUpcomingItems(cal.definitions, { nowLocal, statusById, limit });
+  return selected.map(buildUpcomingCard);
+}
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
   eleventyConfig.addFilter("attr", (value) => new nunjucks.runtime.SafeString(escapeHtmlAttr(value)));
@@ -617,6 +699,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("calendar", () => calendarData);
   eleventyConfig.addGlobalData("eventPages", () => loadEventContent());
   eleventyConfig.addGlobalData("montagskursFeatured", () => loadMontagskursFeatured(calendarData));
+  eleventyConfig.addGlobalData("upcomingItems", () => loadUpcomingItems(calendarData, loadWorkshopContent()));
   eleventyConfig.addFilter("eventJsonLd", (def) => def.mode === "recurring"
     ? calendar.recurringJsonLd(def, { locale: def.primaryLocale })
     : calendar.eventJsonLd(def, { locale: def.primaryLocale }));
