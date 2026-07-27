@@ -2010,6 +2010,98 @@ collections:
                 label: Canonical route
                 widget: hidden
                 default: /montagskurs
+              - name: venue
+                label: Venue
+                widget: relation
+                collection: venues
+                search_fields: [global.name]
+                value_field: global.id
+                display_fields: [global.name]
+                hint: Pick from the Venues collection. Shows the venue name, not its internal ID.
+                required: false
+              - name: updated_at
+                label: Last updated
+                widget: datetime
+                required: false
+                hint: Bump this whenever the schedule below changes — it drives calendar-app update detection for the .ics subscription feed.
+              - name: schedule
+                label: Structured schedule (calendar, JSON-LD, .ics)
+                widget: object
+                required: false
+                hint: Drives the add-to-calendar links, search-engine event markup, and the sitewide upcoming-events lists. Montagskurs is always a weekly Recurring schedule.
+                fields:
+                  - name: event_status
+                    label: Schedule status
+                    widget: select
+                    options:
+                      - { label: Scheduled, value: scheduled }
+                      - { label: Cancelled, value: cancelled }
+                      - { label: Postponed (new date not yet set), value: postponed }
+                      - { label: Rescheduled (new date set below), value: rescheduled }
+                      - { label: Moved online, value: moved_online }
+                    default: scheduled
+                  - name: previous_start_local
+                    label: Original start time (only if rescheduled)
+                    widget: string
+                    required: false
+                    hint: 'Leave empty unless Schedule status is Rescheduled. Format: YYYY-MM-DDTHH:mm.'
+                  - name: mode
+                    label: Schedule type
+                    widget: hidden
+                    default: recurring
+                  - name: recurrence
+                    label: Weekly recurrence
+                    widget: object
+                    fields:
+                      - name: weekday
+                        label: Day of the week
+                        widget: select
+                        options:
+                          - { label: Monday, value: monday }
+                          - { label: Tuesday, value: tuesday }
+                          - { label: Wednesday, value: wednesday }
+                          - { label: Thursday, value: thursday }
+                          - { label: Friday, value: friday }
+                          - { label: Saturday, value: saturday }
+                          - { label: Sunday, value: sunday }
+                        default: monday
+                      - name: start_time
+                        label: Start time
+                        widget: string
+                        hint: '24-hour clock, no seconds. Example: 17:45.'
+                      - name: end_time
+                        label: End time
+                        widget: string
+                        hint: '24-hour clock, no seconds. Example: 19:15.'
+                      - name: anchor
+                        label: First occurrence date
+                        widget: string
+                        hint: 'The very first date this weekly pattern started. Format: YYYY-MM-DD. Example: 2026-01-05.'
+                      - name: horizon_months
+                        label: Show occurrences this many months ahead
+                        widget: number
+                        value_type: int
+                        hint: Does not limit the calendar subscription feed, which is unbounded.
+                      - name: except
+                        label: Skipped dates (holidays, breaks)
+                        widget: list
+                        required: false
+                        hint: 'Format: YYYY-MM-DD, one per entry.'
+                        field: { name: date, label: Date, widget: string }
+                  - name: featured_occurrences
+                    label: Special sessions (guest teacher, highlighted date)
+                    widget: list
+                    required: false
+                    hint: Highlights one specific Monday with its own note and dedicated page. The date must match a real Monday from the recurrence pattern above.
+                    fields:
+                      - name: id
+                        label: Date
+                        widget: string
+                        hint: 'Format: YYYY-MM-DD. Example: 2026-11-16.'
+                      - name: teacher
+                        label: Guest teacher name
+                        widget: string
+                        required: false
               - name: hero
                 label: Hero
                 widget: object
@@ -2029,6 +2121,7 @@ collections:
                   - name: poster
                     label: Video preview image
                     widget: image
+                    required: false
               - name: meta
                 label: Advanced SEO and social sharing (review last)
                 widget: object
@@ -3820,6 +3913,134 @@ collections:
                 label: Registration link
                 widget: string
                 required: false
+              - name: availability
+                label: Availability
+                widget: select
+                options: [available, sold_out, waitlist, unavailable]
+          - name: venue
+            label: Venue
+            widget: relation
+            collection: venues
+            search_fields: [global.name]
+            value_field: global.id
+            display_fields: [global.name]
+            hint: Pick from the Venues collection. Shows the venue name, not its internal ID.
+            required: false
+          - name: updated_at
+            label: Last updated
+            widget: datetime
+            required: false
+          - name: schedule
+            label: Structured schedule (calendar, JSON-LD, .ics)
+            widget: object
+            required: false
+            hint: Drives the add-to-calendar links, search-engine event markup, and the sitewide upcoming-events lists. Leave the whole section empty for a workshop with no calendar-tracked dates.
+            fields:
+              - name: event_status
+                label: Schedule status
+                widget: select
+                options:
+                  - { label: Scheduled, value: scheduled }
+                  - { label: Cancelled, value: cancelled }
+                  - { label: Postponed (new date not yet set), value: postponed }
+                  - { label: Rescheduled (new date set below), value: rescheduled }
+                  - { label: Moved online, value: moved_online }
+                default: scheduled
+              - name: previous_start_local
+                label: Original start time (only if rescheduled)
+                widget: string
+                required: false
+                hint: 'Leave empty unless Schedule status is Rescheduled. Format: YYYY-MM-DDTHH:mm, local time, no timezone letter. Example: 2026-10-02T19:00.'
+              - name: mode
+                label: Schedule type
+                widget: select
+                options:
+                  - { label: 'Dates — one or more specific sessions', value: dates }
+                  - { label: 'Recurring — a repeating weekly class', value: recurring }
+                default: dates
+                hint: Use Dates for a workshop or one-off event. Use Recurring only for an ongoing weekly class like Montagskurs.
+              - name: sessions
+                label: Sessions (Dates mode only)
+                widget: list
+                required: false
+                hint: One entry per session (e.g. a Friday evening and a Saturday day session both belong to the same workshop). Leave empty in Recurring mode.
+                fields:
+                  - name: id
+                    label: Session ID
+                    widget: string
+                    hint: 'A short stable slug, e.g. fri-eve or sat-morning. Never rename after publishing — it is used as part of the calendar entry''s permanent ID.'
+                  - name: start_local
+                    label: Start
+                    widget: string
+                    hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T19:00.'
+                  - name: end_local
+                    label: End
+                    widget: string
+                    hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T21:00.'
+                  - name: status
+                    label: Status override for this session only
+                    widget: select
+                    required: false
+                    hint: Leave empty to use the overall Schedule status above. Set this only when a single session (not the whole workshop) is cancelled or moved.
+                    options:
+                      - { label: Scheduled, value: scheduled }
+                      - { label: Cancelled, value: cancelled }
+                      - { label: Postponed, value: postponed }
+                      - { label: Rescheduled, value: rescheduled }
+                      - { label: Moved online, value: moved_online }
+              - name: recurrence
+                label: Weekly recurrence (Recurring mode only)
+                widget: object
+                required: false
+                fields:
+                  - name: weekday
+                    label: Day of the week
+                    widget: select
+                    options:
+                      - { label: Monday, value: monday }
+                      - { label: Tuesday, value: tuesday }
+                      - { label: Wednesday, value: wednesday }
+                      - { label: Thursday, value: thursday }
+                      - { label: Friday, value: friday }
+                      - { label: Saturday, value: saturday }
+                      - { label: Sunday, value: sunday }
+                  - name: start_time
+                    label: Start time
+                    widget: string
+                    hint: '24-hour clock, no seconds. Example: 17:45.'
+                  - name: end_time
+                    label: End time
+                    widget: string
+                    hint: '24-hour clock, no seconds. Example: 19:15.'
+                  - name: anchor
+                    label: First occurrence date
+                    widget: string
+                    hint: 'The very first date this weekly pattern started (or starts). Format: YYYY-MM-DD. Example: 2026-01-05.'
+                  - name: horizon_months
+                    label: Show occurrences this many months ahead
+                    widget: number
+                    value_type: int
+                    hint: 'Controls how far into the future the website lists upcoming dates for this class. Example: 6. Does not limit the calendar subscription feed, which is unbounded.'
+                  - name: except
+                    label: Skipped dates (holidays, breaks)
+                    widget: list
+                    required: false
+                    hint: 'Dates to remove from the weekly pattern. Format: YYYY-MM-DD, one per entry.'
+                    field: { name: date, label: Date, widget: string }
+              - name: featured_occurrences
+                label: Special sessions (guest teacher, highlighted date)
+                widget: list
+                required: false
+                hint: Highlights one specific occurrence of a recurring class with its own note and, optionally, a dedicated page. The date must match a real occurrence of the weekly pattern above.
+                fields:
+                  - name: id
+                    label: Date
+                    widget: string
+                    hint: 'Format: YYYY-MM-DD. Example: 2026-11-16.'
+                  - name: teacher
+                    label: Guest teacher name
+                    widget: string
+                    required: false
           - name: hero
             label: Page hero
             widget: object
@@ -4897,6 +5118,254 @@ collections:
                     widget: string
                     required: false
                     hint: Describe what is visible in the social image.
+  - name: venues
+    label: Venues
+    folder: content/venues
+    create: true
+    extension: yaml
+    format: yaml
+    identifier_field: global.id
+    fields:
+      - name: schema_version
+        label: Schema version
+        widget: hidden
+        default: 2
+      - name: global
+        label: Venue details
+        widget: object
+        fields:
+          - name: id
+            label: Stable ID
+            widget: string
+            hint: 'Lowercase, no spaces — used in URLs and to link workshops/events to this venue. Example: orpheumgasse. Never rename after publishing.'
+          - name: name
+            label: Venue name
+            widget: string
+            hint: 'Shown on calendar entries and add-to-calendar links, not the workshop or event title. Example: Orpheumgasse Studio.'
+          - name: street
+            label: Street and number
+            widget: string
+            hint: 'Example: Orpheumgasse 11.'
+          - name: postal_code
+            label: Postal code
+            widget: string
+            hint: 'Example: 8010.'
+          - name: city
+            label: City
+            widget: string
+            hint: 'Example: Graz.'
+          - name: country
+            label: Country code
+            widget: string
+            default: AT
+            hint: 'Two-letter ISO country code. Example: AT for Austria.'
+          - name: geo_lat
+            label: Latitude
+            widget: number
+            required: false
+            hint: Optional. Improves map/search accuracy.
+          - name: geo_lng
+            label: Longitude
+            widget: number
+            required: false
+            hint: Optional. Improves map/search accuracy.
+          - name: url
+            label: Venue website
+            widget: string
+            required: false
+            hint: Optional link to the venue's own website, if it has one.
+  - name: events
+    label: Events
+    folder: content/events
+    create: true
+    extension: yaml
+    format: yaml
+    identifier_field: global.id
+    fields:
+      - name: schema_version
+        widget: hidden
+        default: 2
+      - name: global
+        widget: object
+        fields:
+          - { name: id, widget: string }
+          - name: intended_locales
+            widget: select
+            multiple: true
+            options: [de, en]
+          - name: status
+            widget: select
+            options: [draft, upcoming, current, past, unlisted]
+          - { name: route, widget: string }
+          - name: event_type
+            widget: select
+            options: [jam, performance, talk, retreat, other]
+          - name: page_mode
+            widget: select
+            options: [minimal, full]
+          - name: venue
+            label: Venue
+            widget: relation
+            collection: venues
+            search_fields: [global.name]
+            value_field: global.id
+            display_fields: [global.name]
+            hint: Pick from the Venues collection. Shows the venue name, not its internal ID.
+            required: false
+          - name: start_at
+            label: Start date for sorting
+            widget: datetime
+            required: false
+          - name: updated_at
+            label: Last updated
+            widget: datetime
+            required: false
+          - name: sort_order
+            label: Sort order when dates match
+            widget: number
+            required: false
+            value_type: int
+          - name: registration
+            label: Registration
+            widget: object
+            required: false
+            fields:
+              - name: url
+                label: Registration link
+                widget: string
+                required: false
+              - name: availability
+                label: Availability
+                widget: select
+                options: [available, sold_out, waitlist, unavailable]
+          - name: schedule
+            label: Structured schedule (calendar, JSON-LD, .ics)
+            widget: object
+            hint: Drives the add-to-calendar links, search-engine event markup, and the sitewide upcoming-events lists.
+            fields:
+              - name: event_status
+                label: Schedule status
+                widget: select
+                options:
+                  - { label: Scheduled, value: scheduled }
+                  - { label: Cancelled, value: cancelled }
+                  - { label: Postponed (new date not yet set), value: postponed }
+                  - { label: Rescheduled (new date set below), value: rescheduled }
+                  - { label: Moved online, value: moved_online }
+                default: scheduled
+              - name: previous_start_local
+                label: Original start time (only if rescheduled)
+                widget: string
+                required: false
+                hint: 'Leave empty unless Schedule status is Rescheduled. Format: YYYY-MM-DDTHH:mm, local time, no timezone letter. Example: 2026-10-02T19:00.'
+              - name: mode
+                label: Schedule type
+                widget: select
+                options:
+                  - { label: 'Dates — one or more specific sessions', value: dates }
+                  - { label: 'Recurring — a repeating weekly class', value: recurring }
+                default: dates
+                hint: Events are almost always Dates mode — Recurring is for an ongoing weekly class like Montagskurs.
+              - name: sessions
+                label: Sessions (Dates mode only)
+                widget: list
+                required: false
+                hint: One entry per session. A one-off event usually has exactly one.
+                fields:
+                  - name: id
+                    label: Session ID
+                    widget: string
+                    hint: 'A short stable slug, e.g. eve. Never rename after publishing.'
+                  - name: start_local
+                    label: Start
+                    widget: string
+                    hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-06-21T18:00.'
+                  - name: end_local
+                    label: End
+                    widget: string
+                    hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-06-21T22:00.'
+                  - name: status
+                    label: Status override for this session only
+                    widget: select
+                    required: false
+                    hint: Leave empty to use the overall Schedule status above.
+                    options:
+                      - { label: Scheduled, value: scheduled }
+                      - { label: Cancelled, value: cancelled }
+                      - { label: Postponed, value: postponed }
+                      - { label: Rescheduled, value: rescheduled }
+                      - { label: Moved online, value: moved_online }
+              - name: recurrence
+                label: Weekly recurrence (Recurring mode only)
+                widget: object
+                required: false
+                fields:
+                  - name: weekday
+                    label: Day of the week
+                    widget: select
+                    options:
+                      - { label: Monday, value: monday }
+                      - { label: Tuesday, value: tuesday }
+                      - { label: Wednesday, value: wednesday }
+                      - { label: Thursday, value: thursday }
+                      - { label: Friday, value: friday }
+                      - { label: Saturday, value: saturday }
+                      - { label: Sunday, value: sunday }
+                  - name: start_time
+                    label: Start time
+                    widget: string
+                    hint: '24-hour clock, no seconds. Example: 17:45.'
+                  - name: end_time
+                    label: End time
+                    widget: string
+                    hint: '24-hour clock, no seconds. Example: 19:15.'
+                  - name: anchor
+                    label: First occurrence date
+                    widget: string
+                    hint: 'Format: YYYY-MM-DD. Example: 2026-01-05.'
+                  - name: horizon_months
+                    label: Show occurrences this many months ahead
+                    widget: number
+                    value_type: int
+                    hint: Does not limit the calendar subscription feed, which is unbounded.
+                  - name: except
+                    label: Skipped dates (holidays, breaks)
+                    widget: list
+                    required: false
+                    hint: 'Format: YYYY-MM-DD, one per entry.'
+                    field: { name: date, label: Date, widget: string }
+              - name: featured_occurrences
+                label: Special sessions (guest teacher, highlighted date)
+                widget: list
+                required: false
+                hint: The date must match a real occurrence of the weekly pattern above.
+                fields:
+                  - name: id
+                    label: Date
+                    widget: string
+                    hint: 'Format: YYYY-MM-DD. Example: 2026-11-16.'
+                  - name: teacher
+                    label: Guest teacher name
+                    widget: string
+                    required: false
+      - name: locales
+        label: Language content
+        widget: object
+        fields:
+          - name: de
+            label: German content
+            widget: object
+            required: false
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: summary, label: Summary, widget: text }
+          - name: en
+            label: English content
+            widget: object
+            required: false
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: summary, label: Summary, widget: text }
   - name: journal_bodies
     label: Journal bodies
     folder: content/journal/bodies

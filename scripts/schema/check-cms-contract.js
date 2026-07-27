@@ -22,6 +22,8 @@ const recordTypeByCollection = {
   seiten: "fixed_page",
   website: "site_settings",
   workshops: "workshop",
+  venues: "venue",
+  events: "event",
   journal: "journal",
   rechtliches: "legal_page",
 };
@@ -37,6 +39,12 @@ function inspectEnums(fields, collectionName) {
         errors.push(`${collectionName}: ${field.name} focal-point options disagree with the registry`);
       }
     }
+    if (field.widget === "select" && ["event_status", "availability", "event_type", "weekday", "schedule_mode", "page_mode"].includes(field.name)) {
+      const expected = registry.enums[field.name];
+      if (JSON.stringify(optionValues(field)) !== JSON.stringify(expected)) {
+        errors.push(`${collectionName}: ${field.name} options disagree with the registry`);
+      }
+    }
     inspectEnums(field.fields, collectionName);
     inspectEnums(field.types, collectionName);
   }
@@ -48,7 +56,8 @@ for (const collection of config.collections) {
   for (const entry of entries) {
     if (["journal_bodies", "legal_bodies"].includes(collection.name)) continue;
     const fields = fieldMap(entry.fields);
-    for (const required of ["schema_version", "global", "locales"]) {
+    const requiredFields = collection.name === "venues" ? ["schema_version", "global"] : ["schema_version", "global", "locales"];
+    for (const required of requiredFields) {
       if (!fields.has(required)) errors.push(`${collection.name}/${entry.name || "<folder>"}: missing ${required}`);
     }
     const version = fields.get("schema_version");
@@ -56,7 +65,8 @@ for (const collection of config.collections) {
       errors.push(`${collection.name}: schema_version must be a hidden field with default 2`);
     }
     const global = fieldMap(fields.get("global")?.fields);
-    for (const required of ["id", "intended_locales", "status"]) {
+    const globalRequired = collection.name === "venues" ? ["id", "name", "street", "postal_code", "city", "country"] : ["id", "intended_locales", "status"];
+    for (const required of globalRequired) {
       if (!global.has(required)) errors.push(`${collection.name}: global.${required} is missing`);
     }
     const intended = global.get("intended_locales");
@@ -72,6 +82,7 @@ for (const collection of config.collections) {
       errors.push(`${collection.name}: status options disagree with the registry`);
     }
     const locales = fieldMap(fields.get("locales")?.fields);
+    if (collection.name === "venues") continue;
     for (const locale of ["de", "en"]) {
       const localized = locales.get(locale);
       if (!localized || localized.widget !== "object" || localized.required !== false) {
