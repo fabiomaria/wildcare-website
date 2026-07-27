@@ -5,7 +5,7 @@ pagination:
   alias: occ
 permalink: "montagskurs/{{ occ.date }}.html"
 ---
-{%- set seoMeta = { title: 'Montagskurs — ' ~ occ.date ~ ' | Wild Care', description: occ.note_de or 'Montagskurs für Contact Improvisation in Graz.' } -%}
+{%- set seoMeta = { title: 'Montagskurs mit ' ~ occ.teacher ~ ' — ' ~ occ.date_label_de ~ ' | Wild Care', description: (occ.note_de or 'Besonderer Montagskurs für Contact Improvisation in Graz.') ~ ' ' ~ occ.date_label_de ~ ', ' ~ occ.time_label ~ '.' } -%}
 {%- set seoCanonical = 'https://wildcare.space/montagskurs/' ~ occ.date -%}
 {%- set seoLocale = 'de_AT' -%}
 {%- set seoFallbackImage = 'assets/images/social preview.jpg' -%}
@@ -24,8 +24,9 @@ permalink: "montagskurs/{{ occ.date }}.html"
 <body>
   {% include "partials/nav.njk" %}
   <main class="page-hero"><div class="container">
-    <h1>Montagskurs — {{ occ.date }}</h1>
-    <p>{{ occ.start_local }}–{{ occ.end_local }}</p>
+    <p class="label" data-de="Montagskurs" data-en="Monday Class">Montagskurs</p>
+    <h1>Montagskurs — <time datetime="{{ occ.start_local }}">{{ occ.date_label_de }}</time></h1>
+    <p><time datetime="{{ occ.start_local }}">{{ occ.date_label_de }}</time>, {{ occ.time_label }}</p>
     {% if occ.teacher %}<p>{{ occ.teacher }}</p>{% endif %}
     <p data-de="{{ occ.note_de | attr }}" data-en="{{ occ.note_en | attr }}">{{ occ.note_de }}</p>
     {%- set calId = 'montagskurs' -%}

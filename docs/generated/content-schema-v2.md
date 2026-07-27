@@ -226,7 +226,7 @@ Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mi
 | `fixed_page.l.quote` | L | `locales.{locale}.quote` | string | no | yes |
 | `fixed_page.l.quote_band.quote` | L | `locales.{locale}.quote_band.quote` | string | no | yes |
 | `fixed_page.l.quote_band.source` | L | `locales.{locale}.quote_band.source` | string | no | yes |
-| `fixed_page.l.schedule.featured_occurrences.2026_11_16.note` | L | `locales.{locale}.schedule.featured_occurrences.2026-11-16.note` | string | no | yes |
+| `fixed_page.l.schedule.featured_occurrences.2026_07_27.note` | L | `locales.{locale}.schedule.featured_occurrences.2026-07-27.note` | string | no | yes |
 | `fixed_page.l.team.heading` | L | `locales.{locale}.team.heading` | string | no | yes |
 | `fixed_page.l.team.label` | L | `locales.{locale}.team.label` | string | no | yes |
 | `fixed_page.l.team.members.item.alt` | L | `locales.{locale}.team.members[].alt` | string | no | yes |

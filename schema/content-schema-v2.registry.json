@@ -3399,16 +3399,16 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
-          "id": "fixed_page.l.schedule.featured_occurrences.2026_11_16.note",
+          "id": "fixed_page.l.schedule.featured_occurrences.2026_07_27.note",
           "nullable": false,
-          "path": "locales.{locale}.schedule.featured_occurrences.2026-11-16.note",
+          "path": "locales.{locale}.schedule.featured_occurrences.2026-07-27.note",
           "required": false,
           "type": "string",
           "v1_downgrade": {
-            "path": "{locale}.schedule.featured_occurrences.2026-11-16.note"
+            "path": "{locale}.schedule.featured_occurrences.2026-07-27.note"
           },
           "v1_source": {
-            "path": "{locale}.schedule.featured_occurrences.2026-11-16.note"
+            "path": "{locale}.schedule.featured_occurrences.2026-07-27.note"
           }
         },
         {

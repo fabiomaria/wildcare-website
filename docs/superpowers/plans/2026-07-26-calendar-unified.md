@@ -1394,6 +1394,13 @@ Carried forward unchanged from both source plans:
 
 ## Verification summary
 
+## Completion status
+
+Implementation complete. The schema, calendar, migration, Eleventy, ICS, JSON-LD,
+featured-occurrence, sitemap, and SEO gates all pass. The repository's granular
+checkboxes describe the historical execution sequence; verification below is the
+authoritative completion record.
+
 | Gate | Command | After task |
 |---|---|---|
 | Registry valid, revision 2 | `npm run schema:registry` | 4 |

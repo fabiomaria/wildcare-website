@@ -6,8 +6,8 @@ global:
     - en
   status: published
   route: /montagskurs
-  updated_at: 2026-07-26T10:00:00Z
   venue: orpheumgasse
+  updated_at: 2026-07-26T10:00:00Z
   schedule:
     event_status: scheduled
     previous_start_local: null
@@ -20,19 +20,14 @@ global:
       horizon_months: 6
       except: []
     featured_occurrences:
-      - { id: "2026-11-16", teacher: Guest Name }
+      - id: "2026-07-27"
+        teacher: Liane Mah
   hero:
     image: assets/images/warum-ci.jpg
   practice:
     video: assets/what is ci.mp4
 locales:
   de:
-    schedule:
-      featured_occurrences:
-        "2026-11-16": { note: Besonderer Abend mit Gastlehrperson. }
-    meta:
-      title: Montagskurs — Contact Improvisation in Graz | Wild Care
-      description: Offener Contact Improvisation Workshop in Graz. Jeden Montag 17:45, Orpheumgasse 11. Auf Spendenbasis, keine Vorkenntnisse nötig.
     breadcrumb: Montagskurs
     hero:
       label: Offener Workshop
@@ -66,7 +61,7 @@ locales:
           text: Durch achtsame Bewegung und Berührung dein Nervensystem beruhigen — ganz nebenbei.
         - title: Freies Tanzen
           text: Jede Session mündet in eine offene Jam — eine freie Tanzzeit, in der alles passieren darf.
-      donation_note: "Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20\_€ pro Termin, ganz so, wie es für dich passt."
+      donation_note: Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20 € pro Termin, ganz so, wie es für dich passt.
     testimonials:
       label: Feedback
       heading: Was Teilnehmer:innen sagen
@@ -100,7 +95,7 @@ locales:
         - q: Brauche ich Tanzerfahrung?
           a: Nein, gar keine. Wir beginnen immer bei Null und bauen langsam auf. Jede:r ist willkommen — genau so, wie du bist.
         - q: Was kostet es?
-          a: "Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20\_€ pro Termin."
+          a: Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20 € pro Termin.
     crosslink:
       label: Aktuelles Projekt
       heading: Bewegungsrevolution
@@ -113,10 +108,14 @@ locales:
       button: Jetzt anmelden
     footer:
       connect_heading: Verbinden
-  en:
+    meta:
+      title: Montagskurs — Contact Improvisation in Graz | Wild Care
+      description: Offener Contact Improvisation Workshop in Graz. Jeden Montag 17:45, Orpheumgasse 11. Auf Spendenbasis, keine Vorkenntnisse nötig.
     schedule:
       featured_occurrences:
-        "2026-11-16": { note: Special evening with a guest teacher. }
+        "2026-07-27":
+          note: Besonderer Abend mit Gastlehrperson.
+  en:
     breadcrumb: Monday Class
     hero:
       label: Open Workshop
@@ -146,7 +145,7 @@ locales:
           text: Calm your nervous system through mindful movement and touch — naturally, along the way.
         - title: Free Dance
           text: Each session flows into an open jam — a free dance time where anything can happen.
-      donation_note: "The class is donation-based. You give what you can. As a guideline, 10–20\_€ per session helps us, whatever feels right for you."
+      donation_note: The class is donation-based. You give what you can. As a guideline, 10–20 € per session helps us, whatever feels right for you.
     testimonials:
       label: Feedback
       heading: What participants say
@@ -174,7 +173,7 @@ locales:
         - q: Do I need dance experience?
           a: None at all. We always start from zero and build up slowly. Everyone is welcome — just as you are.
         - q: How much does it cost?
-          a: "The class is donation-based. You give what you can. As a guideline, 10–20\_€ per session helps us."
+          a: The class is donation-based. You give what you can. As a guideline, 10–20 € per session helps us.
     crosslink:
       label: Current Project
       heading: Bewegungsrevolution
@@ -187,3 +186,7 @@ locales:
       button: Sign up now
     footer:
       connect_heading: Connect
+    schedule:
+      featured_occurrences:
+        "2026-07-27":
+          note: Special evening with a guest teacher.

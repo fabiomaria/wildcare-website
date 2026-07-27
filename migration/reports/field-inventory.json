@@ -1626,8 +1626,8 @@
   {
     "class": "L",
     "cms_visible": true,
-    "field_id": "fixed_page.l.schedule.featured_occurrences.2026_11_16.note",
-    "path": "locales.{locale}.schedule.featured_occurrences.2026-11-16.note",
+    "field_id": "fixed_page.l.schedule.featured_occurrences.2026_07_27.note",
+    "path": "locales.{locale}.schedule.featured_occurrences.2026-07-27.note",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },

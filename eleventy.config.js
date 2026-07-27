@@ -561,6 +561,9 @@ function loadMontagskursFeatured(cal) {
   return (def.featured || []).map((occurrence) => ({
     date: occurrence.id, teacher: occurrence.teacher, start_local: occurrence.start_local,
     end_local: occurrence.end_local,
+    date_label_de: calendar.formatNextOccurrence(def.recurrence.weekday, occurrence.start_local, "de"),
+    date_label_en: calendar.formatNextOccurrence(def.recurrence.weekday, occurrence.start_local, "en"),
+    time_label: `${occurrence.start_local.slice(11, 16)}–${occurrence.end_local.slice(11, 16)}`,
     note_de: def.locales.de?.schedule?.featured_occurrences?.[occurrence.id]?.note || "",
     note_en: def.locales.en?.schedule?.featured_occurrences?.[occurrence.id]?.note || "",
     href: `montagskurs/${occurrence.id}.html`, def,
@@ -703,11 +706,26 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("eventJsonLd", (def) => def.mode === "recurring"
     ? calendar.recurringJsonLd(def, { locale: def.primaryLocale })
     : calendar.eventJsonLd(def, { locale: def.primaryLocale }));
-  eleventyConfig.addFilter("featuredOccurrenceJsonLd", (occurrence) => calendar.eventJsonLd({
-    ...occurrence.def, mode: "dates", recurrence: undefined,
-    sessions: [{ id: occurrence.date, start_local: occurrence.start_local, end_local: occurrence.end_local }],
-    span: { start: occurrence.start_local, end: occurrence.end_local },
-  }, { locale: occurrence.def.primaryLocale }));
+  eleventyConfig.addFilter("featuredOccurrenceJsonLd", (occurrence) => {
+    const locale = occurrence.def.primaryLocale;
+    const sourceLocale = occurrence.def.locales[locale] || {};
+    const title = locale === "en" ? "Monday Class" : "Montagskurs";
+    const dateLabel = locale === "en" ? occurrence.date_label_en : occurrence.date_label_de;
+    const description = locale === "en" ? occurrence.note_en : occurrence.note_de;
+    return calendar.eventJsonLd({
+      ...occurrence.def,
+      route: `/montagskurs/${occurrence.date}`,
+      mode: "dates",
+      recurrence: undefined,
+      locales: { ...occurrence.def.locales, [locale]: {
+        ...sourceLocale,
+        title: `${title}${occurrence.teacher ? (locale === "en" ? ` with ${occurrence.teacher}` : ` mit ${occurrence.teacher}`) : ""} — ${dateLabel}`,
+        summary: description,
+      } },
+      sessions: [{ id: occurrence.date, start_local: occurrence.start_local, end_local: occurrence.end_local }],
+      span: { start: occurrence.start_local, end: occurrence.end_local },
+    }, { locale });
+  });
   eleventyConfig.addFilter("calendarGoogleUrl", (def) => {
     const locale = def.locales[def.primaryLocale] || {};
     const location = `${def.venue.name}, ${def.venue.street}, ${def.venue.postal_code} ${def.venue.city}`;
