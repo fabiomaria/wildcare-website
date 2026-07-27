@@ -1,0 +1,6 @@
+{%- set def = calendar.byId[calId] -%}
+{%- if def -%}
+<div style="text-align: center; margin-top: var(--space-sm);">
+  <a class="btn btn-ghost" href="/calendar/{{ def.id }}.ics" download data-de="Zum Kalender hinzufügen" data-en="Add to Calendar">Zum Kalender hinzufügen</a>
+</div>
+{%- endif -%}

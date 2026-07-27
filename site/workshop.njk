@@ -30,6 +30,8 @@ permalink: "{{ workshop.href }}"
     {%- set seoFallbackImage = primary.hero.main_image -%}
     {%- set seoFallbackImageAlt = primary.hero.main_alt -%}
     {% include "partials/seo.njk" %}
+    {%- set jsonldId = workshop.slug -%}
+    {% include "partials/event-jsonld.njk" %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,7 +90,8 @@ permalink: "{{ workshop.href }}"
 {% if primary.facts.date %}
                         <div class="detail-hero-detail">
                             <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                            <span data-de="{{ de.facts.date | attr }}" data-en="{{ en.facts.date | attr }}">{{ primary.facts.date }}</span>
+                            {%- set calendarDef = calendar.byId[workshop.slug] -%}
+                            {% if calendarDef %}<span data-de="{{ calendarDef | formatDefDate('de') | attr }}" data-en="{{ calendarDef | formatDefDate('en') | attr }}">{{ calendarDef | formatDefDate(workshop.primary_locale) }}</span>{% else %}<span data-de="{{ de.facts.date | attr }}" data-en="{{ en.facts.date | attr }}">{{ primary.facts.date }}</span>{% endif %}
                         </div>
 {% endif %}
 {% if primary.facts.time %}
@@ -237,6 +240,8 @@ permalink: "{{ workshop.href }}"
                             data-de="{{ de.registration.label | attr }}"
                             data-en="{{ en.registration.label | attr }}">{{ primary.registration.label }}</a>
                     </div>
+                    {%- set calId = workshop.slug -%}
+                    {% include "partials/add-to-calendar.njk" %}
                 </div>
 {% endif %}
             </div>

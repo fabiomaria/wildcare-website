@@ -90,6 +90,8 @@ permalink: programm.html
                             data-de="{{ de.core.more_label | attr }}"
                             data-en="{{ en.core.more_label | attr }}">{{ de.core.more_label }}</a>
                     </div>
+                    {%- set calId = "montagskurs" -%}
+                    {% include "partials/add-to-calendar.njk" %}
                 </div>
 
                 <div class="montagskurs-description fade-up delay-2">

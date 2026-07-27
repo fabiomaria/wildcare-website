@@ -1,0 +1,82 @@
+---
+pagination:
+  data: eventPages
+  size: 1
+  alias: event
+permalink: "{{ event.href }}"
+---
+{% from "partials/icon.njk" import icon %}
+{%- set s = cms.site -%}
+{%- set locale = event.primary_locale -%}
+{%- set copy = event.en if locale == 'en' else event.de -%}
+{%- set fallback = event.de if locale == 'en' else event.en -%}
+{%- set title = copy.title or fallback.title or event.slug -%}
+{%- set summary = copy.summary or fallback.summary or title -%}
+{%- set def = calendar.byId[event.slug] -%}
+{%- set seoMeta = { title: title ~ ' | Wild Care', description: summary, og_title: title, og_description: summary } -%}
+{%- set seoCanonical = 'https://wildcare.space' ~ event.route -%}
+{%- set seoLocale = 'en_US' if locale == 'en' else 'de_AT' -%}
+{%- set seoFallbackImage = 'assets/images/social preview.jpg' -%}
+{%- set seoFallbackImageAlt = 'Wild Care Contact Improvisation' -%}
+{%- set seoFallbackImageWidth = 1200 -%}
+{%- set seoFallbackImageHeight = 630 -%}
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include "partials/seo.njk" %}
+  {%- set jsonldId = event.slug -%}
+  {% include "partials/event-jsonld.njk" %}
+  <link rel="stylesheet" href="../css/styles.css?v={{ assetVersion }}">
+</head>
+<body>
+  {% include "partials/nav.njk" %}
+  <main>
+    <header class="page-hero">
+      <div class="container">
+        <h1 data-de="{{ (event.de.title or title) | attr }}" data-en="{{ (event.en.title or title) | attr }}">{{ title }}</h1>
+        <p data-de="{{ (event.de.summary or summary) | attr }}" data-en="{{ (event.en.summary or summary) | attr }}">{{ summary }}</p>
+
+        <div class="info-card">
+          <div class="info-card-title"
+              data-de="{{ s.de.workshop_ui.info_title | attr }}"
+              data-en="{{ s.en.workshop_ui.info_title | attr }}">{{ s[locale].workshop_ui.info_title }}</div>
+
+          <div class="info-row">
+            <div class="info-row-icon">{{ icon("calendar") }}</div>
+            <div class="info-row-content">
+              <div class="info-row-label"
+                  data-de="{{ s.de.workshop_ui.schedule_label | attr }}"
+                  data-en="{{ s.en.workshop_ui.schedule_label | attr }}">{{ s[locale].workshop_ui.schedule_label }}</div>
+              <div class="info-row-value"
+                  data-de="{{ def | formatDefDate('de') | attr }}"
+                  data-en="{{ def | formatDefDate('en') | attr }}">{{ def | formatDefDate(locale) }}</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-row-icon">{{ icon("location") }}</div>
+            <div class="info-row-content">
+              <div class="info-row-label"
+                  data-de="{{ s.de.workshop_ui.location_label | attr }}"
+                  data-en="{{ s.en.workshop_ui.location_label | attr }}">{{ s[locale].workshop_ui.location_label }}</div>
+              <div class="info-row-value">{{ def.venue.name }}, {{ def.venue.street }}, {{ def.venue.postal_code }} {{ def.venue.city }}</div>
+            </div>
+          </div>
+
+{% if def.registrationUrl %}
+          <div class="info-card-cta">
+            <a href="{{ def.registrationUrl }}" class="btn btn-primary" style="width: 100%; justify-content: center;"
+                data-de="Jetzt anmelden" data-en="Register now">Jetzt anmelden</a>
+          </div>
+{% endif %}
+          {%- set calId = event.slug -%}
+          {% include "partials/add-to-calendar.njk" %}
+        </div>
+      </div>
+    </header>
+  </main>
+  {% include "partials/footer.njk" %}
+</body>
+</html>

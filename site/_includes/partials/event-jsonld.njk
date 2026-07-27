@@ -1,0 +1,4 @@
+{%- set def = calendar.byId[jsonldId] -%}
+{%- if def -%}
+<script type="application/ld+json">{{ def | eventJsonLd | json | safe }}</script>
+{%- endif -%}

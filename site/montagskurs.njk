@@ -1,8 +1,11 @@
 ---
 permalink: montagskurs.html
 ---
+{% from "partials/icon.njk" import icon %}
 {%- set de = cms.pages.montagskurs.de -%}
 {%- set en = cms.pages.montagskurs.en -%}
+{%- set s = cms.site -%}
+{%- set def = calendar.byId.montagskurs -%}
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -12,6 +15,8 @@ permalink: montagskurs.html
     {%- set seoCanonical = "https://wildcare.space/montagskurs" -%}
     {%- set seoAlternateLocale = "en_US" -%}
     {% include "partials/seo.njk" %}
+    {%- set jsonldId = "montagskurs" -%}
+    {% include "partials/event-jsonld.njk" %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,29 +48,52 @@ permalink: montagskurs.html
                         data-de="{{ de.hero.subtitle }}"
                         data-en="{{ en.hero.subtitle or de.hero.subtitle }}">{{ de.hero.subtitle }}</p>
 
-                    <div class="detail-hero-details">
-                        <div class="detail-hero-detail">
-                            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                            <span
-                                data-de="{{ de.hero.schedule }}"
-                                data-en="{{ en.hero.schedule or de.hero.schedule }}">{{ de.hero.schedule }}</span>
-                        </div>
-                        <div class="detail-hero-detail">
-                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            {{ de.hero.address }}
-                        </div>
-                        <div class="detail-hero-detail">
-                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 6v2M12 16v2"/></svg>
-                            <span
-                                data-de="{{ de.hero.basis }}"
-                                data-en="{{ en.hero.basis or de.hero.basis }}">{{ de.hero.basis }}</span>
-                        </div>
-                    </div>
+                    <div class="info-card">
+                        <div class="info-card-title"
+                            data-de="{{ s.de.workshop_ui.info_title | attr }}"
+                            data-en="{{ s.en.workshop_ui.info_title | attr }}">{{ s.de.workshop_ui.info_title }}</div>
 
-                    <div class="detail-hero-cta">
-                        <button class="btn btn-primary" data-tally-open="nplWX8" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
-                            data-de="{{ de.hero.cta }}"
-                            data-en="{{ en.hero.cta or de.hero.cta }}">{{ de.hero.cta }}</button>
+                        <div class="info-row">
+                            <div class="info-row-icon">{{ icon("calendar") }}</div>
+                            <div class="info-row-content">
+                                <div class="info-row-label"
+                                    data-de="{{ s.de.workshop_ui.schedule_label | attr }}"
+                                    data-en="{{ s.en.workshop_ui.schedule_label | attr }}">{{ s.de.workshop_ui.schedule_label }}</div>
+                                <div class="info-row-value"
+                                    data-de="{{ def | formatDefDate('de') | attr }}"
+                                    data-en="{{ def | formatDefDate('en') | attr }}">{{ def | formatDefDate('de') }}</div>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-row-icon">{{ icon("location") }}</div>
+                            <div class="info-row-content">
+                                <div class="info-row-label"
+                                    data-de="{{ s.de.workshop_ui.location_label | attr }}"
+                                    data-en="{{ s.en.workshop_ui.location_label | attr }}">{{ s.de.workshop_ui.location_label }}</div>
+                                <div class="info-row-value">{{ def.venue.name }}, {{ def.venue.street }}, {{ def.venue.postal_code }} {{ def.venue.city }}</div>
+                            </div>
+                        </div>
+
+                        <div class="info-row">
+                            <div class="info-row-icon">{{ icon("cost") }}</div>
+                            <div class="info-row-content">
+                                <div class="info-row-label"
+                                    data-de="{{ s.de.workshop_ui.price_label | attr }}"
+                                    data-en="{{ s.en.workshop_ui.price_label | attr }}">{{ s.de.workshop_ui.price_label }}</div>
+                                <div class="info-row-value"
+                                    data-de="{{ de.hero.basis | attr }}"
+                                    data-en="{{ (en.hero.basis or de.hero.basis) | attr }}">{{ de.hero.basis }}</div>
+                            </div>
+                        </div>
+
+                        <div class="info-card-cta">
+                            <button class="btn btn-primary" style="width: 100%; justify-content: center;" data-tally-open="nplWX8" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
+                                data-de="{{ de.hero.cta | attr }}"
+                                data-en="{{ (en.hero.cta or de.hero.cta) | attr }}">{{ de.hero.cta }}</button>
+                        </div>
+                        {%- set calId = "montagskurs" -%}
+                        {% include "partials/add-to-calendar.njk" %}
                     </div>
                 </div>
 
