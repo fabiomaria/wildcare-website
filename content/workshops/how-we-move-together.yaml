@@ -5,11 +5,24 @@ global:
     - en
   status: upcoming
   route: /how-we-move-together
-  start_at: 2026-10-09T00:00:00.000Z
+  start_at: 2026-10-09T19:00:00.000Z
+  updated_at: 2026-07-26T10:00:00Z
   sort_order: 2
   detail_page: true
   registration:
     url: https://tally.so/r/lbXDW5
+    availability: available
+  venue: orpheumgasse
+  schedule:
+    event_status: scheduled
+    previous_start_local: null
+    mode: dates
+    sessions:
+      - { id: fri-eve, start_local: "2026-10-09T19:00", end_local: "2026-10-09T21:00" }
+      - { id: sat-aft, start_local: "2026-10-10T13:00", end_local: "2026-10-10T17:00" }
+      - { id: sat-eve, start_local: "2026-10-10T18:30", end_local: "2026-10-10T21:00" }
+      - { id: sun-morn, start_local: "2026-10-11T10:00", end_local: "2026-10-11T14:00" }
+      - { id: sun-aft, start_local: "2026-10-11T16:00", end_local: "2026-10-11T19:00" }
   hero:
     show_details: true
     main_image: /assets/uploads/_dsc8336.webp
@@ -23,6 +36,8 @@ global:
     image_focus: center
   meta:
     og_image: assets/images/ci-cover.jpg
+    og_image_width: 1200
+    og_image_height: 630
 locales:
   en:
     title: How We Move Together
