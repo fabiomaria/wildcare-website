@@ -1,0 +1,150 @@
+# Review package: 53ede7c6..HEAD
+
+## Commits
+4b8fc0c6 feat(calendar): recurring series, featured overrides, master feed
+
+## Files changed
+ lib/calendar/ics-recurring.test.js | 44 ++++++++++++++++++++++++++++
+ lib/calendar/ics.js                | 60 +++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 103 insertions(+), 1 deletion(-)
+
+## Diff
+diff --git a/lib/calendar/ics-recurring.test.js b/lib/calendar/ics-recurring.test.js
+new file mode 100644
+index 00000000..6ab2f81c
+--- /dev/null
++++ b/lib/calendar/ics-recurring.test.js
+@@ -0,0 +1,44 @@
++// lib/calendar/ics-recurring.test.js
++"use strict";
++const test = require("node:test");
++const assert = require("node:assert/strict");
++const { recurringVevents, masterFeed } = require("./ics");
++
++const REC_DEF = {
++  id: "montagskurs", route: "/montagskurs", updatedAt: "2026-07-26T10:00:00Z",
++  eventStatus: "scheduled", primaryLocale: "de",
++  venue: { name: "Orpheumgasse Studio", street: "Orpheumgasse 11", postal_code: "8010", city: "Graz", country: "AT" },
++  registrationUrl: null,
++  locales: { de: { title: "Montagskurs" } },
++  recurrence: { weekday: "monday", start_time: "17:45", end_time: "19:15", anchor: "2026-01-05", except: ["2026-01-19"] },
++  featured: [{ id: "2026-11-16", teacher: "Guest", start_local: "2026-11-16T17:45", end_local: "2026-11-16T19:15" }],
++};
++
++test("recurringVevents emits an unbounded RRULE series with EXDATE and a RECURRENCE-ID override sharing the UID", () => {
++  const blocks = recurringVevents(REC_DEF);
++  const series = blocks[0];
++  assert.ok(series.includes("UID:montagskurs@wildcare.space"));
++  assert.ok(series.includes("DTSTART:20260105T174500"));
++  assert.ok(series.includes("RRULE:FREQ=WEEKLY;BYDAY=MO"));
++  assert.ok(series.includes("EXDATE:20260119T174500"));
++
++  const override = blocks[1];
++  assert.ok(override.includes("UID:montagskurs@wildcare.space"), "override shares series UID");
++  assert.ok(override.includes("RECURRENCE-ID:20261116T174500"));
++  assert.ok(override.includes("DTSTART:20261116T174500"));
++});
++
++test("masterFeed aggregates dates-mode and recurring definitions into one VCALENDAR", () => {
++  const datesDef = {
++    id: "hw", route: "/hw", updatedAt: "2026-07-26T10:00:00Z", eventStatus: "scheduled", primaryLocale: "en",
++    venue: REC_DEF.venue, registrationUrl: null, locales: { en: { title: "HW" } },
++    mode: "dates", sessions: [{ id: "s1", start_local: "2026-10-09T19:00", end_local: "2026-10-09T21:00", status: "scheduled", uid: "hw-s1@wildcare.space" }],
++  };
++  const recDef = Object.assign({ mode: "recurring" }, REC_DEF);
++  const feed = masterFeed([datesDef, recDef]);
++  assert.ok(feed.startsWith("BEGIN:VCALENDAR\r\n"));
++  assert.ok(feed.endsWith("END:VCALENDAR\r\n"));
++  assert.ok(feed.includes("UID:hw-s1@wildcare.space"));
++  assert.ok(feed.includes("UID:montagskurs@wildcare.space"));
++  assert.ok(feed.includes("RRULE:FREQ=WEEKLY;BYDAY=MO"));
++});
+diff --git a/lib/calendar/ics.js b/lib/calendar/ics.js
+index b2d47c43..0a504a4a 100644
+--- a/lib/calendar/ics.js
++++ b/lib/calendar/ics.js
+@@ -1,13 +1,14 @@
+ "use strict";
+ const { escapeText, assemble } = require("./text");
+ const { formatIcsLocal, formatUtcStamp, sequenceFromUpdatedAt } = require("./datetime");
++const { rruleString, exdateLocals, firstOccurrenceLocal } = require("./expand");
+ 
+ const ORIGIN = "https://wildcare.space";
+ const PRODID = "-//Wild Care//Calendar//EN";
+ const ICS_STATUS = { scheduled: "CONFIRMED", cancelled: "CANCELLED", postponed: "TENTATIVE", rescheduled: "TENTATIVE", moved_online: "CONFIRMED" };
+ 
+ function venueSummaryLine(v) {
+   return `${v.name}, ${v.street}, ${v.postal_code} ${v.city}`;
+ }
+ 
+ function descriptionFor(def, locale) {
+@@ -48,11 +49,68 @@ function buildCalendar(vevents) {
+   const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", `PRODID:${PRODID}`, "CALSCALE:GREGORIAN", "METHOD:PUBLISH"];
+   for (const block of vevents) lines.push(...block);
+   lines.push("END:VCALENDAR");
+   return assemble(lines);
+ }
+ 
+ function perEventCalendar(def) {
+   return buildCalendar(eventVevents(def));
+ }
+ 
+-module.exports = { venueSummaryLine, eventVevents, buildCalendar, perEventCalendar };
++function recurringVevents(def) {
++  const stamp = formatUtcStamp(def.updatedAt);
++  const seq = sequenceFromUpdatedAt(def.updatedAt);
++  const title = (def.locales[def.primaryLocale] || {}).title || def.id;
++  const location = venueSummaryLine(def.venue);
++  const uid = `${def.id}@wildcare.space`;
++  const first = firstOccurrenceLocal(def.recurrence);
++
++  const series = [
++    "BEGIN:VEVENT",
++    `UID:${uid}`,
++    `DTSTAMP:${stamp}`,
++    `DTSTART:${formatIcsLocal(first.start_local)}`,
++    `DTEND:${formatIcsLocal(first.end_local)}`,
++    `RRULE:${rruleString(def.recurrence)}`,
++  ];
++  const exdates = exdateLocals(def.recurrence);
++  if (exdates.length) series.push(`EXDATE:${exdates.map(formatIcsLocal).join(",")}`);
++  series.push(`SUMMARY:${escapeText(title)}`);
++  series.push(`LOCATION:${escapeText(location)}`);
++  series.push(`URL:${ORIGIN}${def.route}`);
++  series.push(`STATUS:${ICS_STATUS[def.eventStatus] || "CONFIRMED"}`);
++  series.push(`SEQUENCE:${seq}`);
++  series.push(`LAST-MODIFIED:${stamp}`);
++  series.push("END:VEVENT");
++
++  const blocks = [series];
++  for (const f of def.featured || []) {
++    const summary = f.teacher ? `${title} — ${f.teacher}` : title;
++    blocks.push([
++      "BEGIN:VEVENT",
++      `UID:${uid}`,
++      `RECURRENCE-ID:${formatIcsLocal(f.start_local)}`,
++      `DTSTAMP:${stamp}`,
++      `DTSTART:${formatIcsLocal(f.start_local)}`,
++      `DTEND:${formatIcsLocal(f.end_local)}`,
++      `SUMMARY:${escapeText(summary)}`,
++      `LOCATION:${escapeText(location)}`,
++      `URL:${ORIGIN}${def.route}/${f.id}`,
++      `STATUS:CONFIRMED`,
++      `SEQUENCE:${seq}`,
++      `LAST-MODIFIED:${stamp}`,
++      "END:VEVENT",
++    ]);
++  }
++  return blocks;
++}
++
++function masterFeed(defs) {
++  const vevents = [];
++  for (const def of defs) {
++    if (def.mode === "recurring") vevents.push(...recurringVevents(def));
++    else vevents.push(...eventVevents(def));
++  }
++  return buildCalendar(vevents);
++}
++
++module.exports = { venueSummaryLine, eventVevents, buildCalendar, perEventCalendar, recurringVevents, masterFeed };

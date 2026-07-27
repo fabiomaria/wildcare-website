@@ -1,0 +1,120 @@
+# Review package: 9e8a9389..HEAD
+
+## Commits
+0488c466 feat(calendar): RFC-5545 text primitives (escape/fold/assemble)
+
+## Files changed
+ lib/calendar/text.js      | 35 +++++++++++++++++++++++++++++++++++
+ lib/calendar/text.test.js | 37 +++++++++++++++++++++++++++++++++++++
+ package.json              |  1 +
+ 3 files changed, 73 insertions(+)
+
+## Diff
+diff --git a/lib/calendar/text.js b/lib/calendar/text.js
+new file mode 100644
+index 00000000..5d35f1ac
+--- /dev/null
++++ b/lib/calendar/text.js
+@@ -0,0 +1,35 @@
++"use strict";
++
++function escapeText(value) {
++  return String(value)
++    .replace(/\\/g, "\\\\")
++    .replace(/\r\n|\r|\n/g, "\\n")
++    .replace(/;/g, "\\;")
++    .replace(/,/g, "\\,");
++}
++
++function foldLine(line) {
++  const segments = [];
++  let current = "";
++  let octets = 0;
++  for (const ch of line) {
++    // iterating a string yields whole code points (surrogate-pair safe)
++    const b = Buffer.byteLength(ch, "utf8");
++    if (octets + b > 75) {
++      segments.push(current);
++      current = " " + ch; // leading space counts toward the 75-octet budget
++      octets = 1 + b;
++    } else {
++      current += ch;
++      octets += b;
++    }
++  }
++  segments.push(current);
++  return segments.join("\r\n");
++}
++
++function assemble(lines) {
++  return lines.map(foldLine).join("\r\n") + "\r\n";
++}
++
++module.exports = { escapeText, foldLine, assemble };
+diff --git a/lib/calendar/text.test.js b/lib/calendar/text.test.js
+new file mode 100644
+index 00000000..7bac9c67
+--- /dev/null
++++ b/lib/calendar/text.test.js
+@@ -0,0 +1,37 @@
++"use strict";
++const test = require("node:test");
++const assert = require("node:assert/strict");
++const { escapeText, foldLine, assemble } = require("./text");
++
++test("escapeText escapes backslash, semicolon, comma, newline (backslash first)", () => {
++  assert.equal(escapeText("a,b;c\\d\ne"), "a\\,b\\;c\\\\d\\ne");
++});
++
++test("foldLine leaves a short line unchanged", () => {
++  assert.equal(foldLine("UID:abc@wildcare.space"), "UID:abc@wildcare.space");
++});
++
++test("foldLine folds long ASCII at 75 octets with a leading space on continuation", () => {
++  const line = "DESCRIPTION:" + "x".repeat(120);
++  const folded = foldLine(line);
++  const segs = folded.split("\r\n");
++  assert.ok(segs.length >= 2, "should fold into >=2 segments");
++  assert.ok(Buffer.byteLength(segs[0], "utf8") <= 75, "first segment <=75 octets");
++  assert.equal(segs[1][0], " ", "continuation starts with a space");
++  // reconstruct: strip the leading space of each continuation
++  const rebuilt = segs[0] + segs.slice(1).map((s) => s.slice(1)).join("");
++  assert.equal(rebuilt, line);
++});
++
++test("foldLine never splits a multi-octet code point", () => {
++  const line = "SUMMARY:" + "é".repeat(60); // é = 2 octets
++  for (const seg of foldLine(line).split("\r\n")) {
++    assert.ok(Buffer.byteLength(seg, "utf8") <= 75);
++    assert.ok(!seg.includes("�"), "no replacement char");
++  }
++});
++
++test("assemble folds each line and terminates with CRLF", () => {
++  const out = assemble(["BEGIN:VCALENDAR", "END:VCALENDAR"]);
++  assert.equal(out, "BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n");
++});
+diff --git a/package.json b/package.json
+index 44099fb4..ff3d9060 100644
+--- a/package.json
++++ b/package.json
+@@ -1,18 +1,19 @@
+ {
+   "name": "wildcare-website",
+   "private": true,
+   "description": "Wild Care static site — Eleventy build (see docs/superpowers/specs/2026-07-17-github-pages-cms-implementation-brief.md)",
+   "scripts": {
+     "build": "eleventy && node scripts/validate-seo.js",
+     "check:seo": "node scripts/validate-seo.js",
+     "dev": "eleventy --serve --port=8081",
++    "test:calendar": "node --test lib/calendar/*.test.js",
+     "schema:registry": "node scripts/schema/validate-registry.js",
+     "schema:inventory": "node scripts/schema/inventory.js",
+     "schema:docs": "node scripts/schema/generate-docs.js",
+     "schema:cms": "node scripts/schema/check-cms-contract.js",
+     "schema:validate": "node scripts/schema/validate-content.js",
+     "schema:migrate": "node scripts/schema/migrate-content.js",
+     "schema:downgrade": "node scripts/schema/downgrade-content.js",
+     "schema:parity": "node scripts/schema/check-parity.js",
+     "schema:check": "npm run schema:registry && npm run schema:docs -- --check && npm run schema:inventory -- --check && npm run schema:cms -- --check && npm run schema:validate -- --all && node scripts/schema/verify-body-hashes.js --check && npm run schema:migrate -- --all --check && npm run schema:downgrade -- --all --check && npm run schema:parity -- --fixtures"
+   },

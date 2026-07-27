@@ -1,0 +1,80 @@
+# Review package: cda2706b..HEAD
+
+## Commits
+638e3382 fix(calendar): reject calendar-invalid days in parseLocal (Feb 30, leap-year Feb 29)
+
+## Files changed
+ lib/calendar/datetime.js      | 11 ++++++++++-
+ lib/calendar/datetime.test.js |  9 +++++++++
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+
+## Diff
+diff --git a/lib/calendar/datetime.js b/lib/calendar/datetime.js
+index 8d964a94..40ba46a8 100644
+--- a/lib/calendar/datetime.js
++++ b/lib/calendar/datetime.js
+@@ -1,20 +1,29 @@
+ "use strict";
+ 
++function daysInMonth(year, month) {
++  const isLeap = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
++  const lengths = [31, isLeap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
++  return lengths[month - 1];
++}
++
+ function parseLocal(s) {
+   const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?$/.exec(String(s));
+   if (!m) throw new Error("invalid local datetime: " + s);
+   const [, y, mo, d, h, mi, sec] = m;
+-  const month = Number(mo), day = Number(d), hour = Number(h), min = Number(mi);
++  const year = Number(y), month = Number(mo), day = Number(d), hour = Number(h), min = Number(mi);
+   if (month < 1 || month > 12 || day < 1 || day > 31 || hour > 23 || min > 59) {
+     throw new Error("invalid local datetime: " + s);
+   }
++  if (day > daysInMonth(year, month)) {
++    throw new Error("invalid local datetime: " + s);
++  }
+   return { y, mo, d, h, mi, s: sec || "00" };
+ }
+ 
+ function formatIcsLocal(s) {
+   const p = parseLocal(s);
+   return `${p.y}${p.mo}${p.d}T${p.h}${p.mi}${p.s}`;
+ }
+ 
+ function utcParts(isoZ) {
+   const dt = new Date(isoZ);
+diff --git a/lib/calendar/datetime.test.js b/lib/calendar/datetime.test.js
+index 931ead31..1192c40f 100644
+--- a/lib/calendar/datetime.test.js
++++ b/lib/calendar/datetime.test.js
+@@ -6,20 +6,29 @@ const { formatIcsLocal, formatUtcStamp, sequenceFromUpdatedAt, overallSpan, pars
+ 
+ test("formatIcsLocal pads seconds and strips separators (floating, no Z)", () => {
+   assert.equal(formatIcsLocal("2026-10-09T19:00"), "20261009T190000");
+   assert.equal(formatIcsLocal("2026-10-09T19:00:30"), "20261009T190030");
+ });
+ 
+ test("parseLocal throws on malformed input", () => {
+   assert.throws(() => parseLocal("2026-13-09 19:00"), /invalid local datetime/);
+ });
+ 
++test("parseLocal throws on calendar-invalid day (Feb 30)", () => {
++  assert.throws(() => parseLocal("2026-02-30T12:00"), /invalid local datetime/);
++});
++
++test("parseLocal accepts Feb 29 in a leap year but rejects it in a non-leap year", () => {
++  assert.deepEqual(parseLocal("2028-02-29T12:00"), { y: "2028", mo: "02", d: "29", h: "12", mi: "00", s: "00" });
++  assert.throws(() => parseLocal("2026-02-29T12:00"), /invalid local datetime/);
++});
++
+ test("formatUtcStamp renders a UTC basic-format stamp with Z", () => {
+   assert.equal(formatUtcStamp("2026-07-26T10:00:00Z"), "20260726T100000Z");
+ });
+ 
+ test("sequenceFromUpdatedAt yields a monotonic YYYYMMDDHHMM integer", () => {
+   assert.equal(sequenceFromUpdatedAt("2026-07-26T10:05:00Z"), 202607261005);
+   assert.ok(sequenceFromUpdatedAt("2026-07-26T10:06:00Z") > sequenceFromUpdatedAt("2026-07-26T10:05:00Z"));
+ });
+ 
+ test("overallSpan returns earliest start and latest end", () => {

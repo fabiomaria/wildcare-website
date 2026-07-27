@@ -1,0 +1,114 @@
+# Review package: 4b8fc0c6..HEAD
+
+## Commits
+71fc8ed7 feat(calendar): public index + end-to-end fixture tests
+
+## Files changed
+ lib/calendar/fixtures/how-we-move-together.json | 17 +++++++++++++++
+ lib/calendar/fixtures/montagskurs.json          | 16 ++++++++++++++
+ lib/calendar/index.js                           | 16 ++++++++++++++
+ lib/calendar/index.test.js                      | 28 +++++++++++++++++++++++++
+ 4 files changed, 77 insertions(+)
+
+## Diff
+diff --git a/lib/calendar/fixtures/how-we-move-together.json b/lib/calendar/fixtures/how-we-move-together.json
+new file mode 100644
+index 00000000..12f75ba8
+--- /dev/null
++++ b/lib/calendar/fixtures/how-we-move-together.json
+@@ -0,0 +1,17 @@
++{
++  "schema_version": 2,
++  "global": {
++    "id": "how-we-move-together", "route": "/how-we-move-together", "intended_locales": ["en"],
++    "venue": "orpheumgasse", "image": "/assets/uploads/x.webp", "updated_at": "2026-07-26T10:00:00Z",
++    "registration": { "url": "https://tally.so/r/ABC", "availability": "available" },
++    "schedule": {
++      "event_status": "scheduled", "mode": "dates",
++      "sessions": [
++        { "id": "fri-eve", "start_local": "2026-10-09T19:00", "end_local": "2026-10-09T21:00" },
++        { "id": "sat-aft", "start_local": "2026-10-10T13:00", "end_local": "2026-10-10T17:00" },
++        { "id": "sun-morn", "start_local": "2026-10-11T10:00", "end_local": "2026-10-11T14:00" }
++      ]
++    }
++  },
++  "locales": { "en": { "title": "How We Move Together", "summary": "A two-day Contact Improvisation workshop." } }
++}
+diff --git a/lib/calendar/fixtures/montagskurs.json b/lib/calendar/fixtures/montagskurs.json
+new file mode 100644
+index 00000000..28927656
+--- /dev/null
++++ b/lib/calendar/fixtures/montagskurs.json
+@@ -0,0 +1,16 @@
++{
++  "schema_version": 2,
++  "global": {
++    "id": "montagskurs", "route": "/montagskurs", "intended_locales": ["de", "en"],
++    "venue": "orpheumgasse", "updated_at": "2026-07-26T10:00:00Z",
++    "schedule": {
++      "event_status": "scheduled", "mode": "recurring",
++      "recurrence": { "weekday": "monday", "start_time": "17:45", "end_time": "19:15", "anchor": "2026-01-05", "horizon_months": 6, "except": [] },
++      "featured_occurrences": [{ "id": "2026-11-16", "teacher": "Guest Teacher" }]
++    }
++  },
++  "locales": {
++    "de": { "title": "Montagskurs", "schedule": { "featured_occurrences": { "2026-11-16": { "note": "Sonderabend" } } } },
++    "en": { "title": "Monday Class", "schedule": { "featured_occurrences": { "2026-11-16": { "note": "Special evening" } } } }
++  }
++}
+diff --git a/lib/calendar/index.js b/lib/calendar/index.js
+new file mode 100644
+index 00000000..28669313
+--- /dev/null
++++ b/lib/calendar/index.js
+@@ -0,0 +1,16 @@
++"use strict";
++const { toDefinition } = require("./model");
++const { eventJsonLd, recurringJsonLd } = require("./jsonld");
++const { perEventCalendar, masterFeed, eventVevents, recurringVevents, buildCalendar } = require("./ics");
++const { googleUrl } = require("./google");
++const { formatDateRange, formatRecurring } = require("./format");
++const { expandRecurrence } = require("./expand");
++
++module.exports = {
++  toDefinition,
++  eventJsonLd, recurringJsonLd,
++  perEventCalendar, masterFeed, eventVevents, recurringVevents, buildCalendar,
++  googleUrl,
++  formatDateRange, formatRecurring,
++  expandRecurrence,
++};
+diff --git a/lib/calendar/index.test.js b/lib/calendar/index.test.js
+new file mode 100644
+index 00000000..1d5ba29d
+--- /dev/null
++++ b/lib/calendar/index.test.js
+@@ -0,0 +1,28 @@
++"use strict";
++const test = require("node:test");
++const assert = require("node:assert/strict");
++const fs = require("node:fs");
++const path = require("node:path");
++const cal = require("./index");
++
++const VENUES = {
++  orpheumgasse: { name: "Orpheumgasse Studio", street: "Orpheumgasse 11", postal_code: "8010", city: "Graz", country: "AT" },
++};
++const load = (f) => JSON.parse(fs.readFileSync(path.join(__dirname, "fixtures", f), "utf8"));
++
++test("end-to-end: dates-mode fixture → definition → ICS + JSON-LD", () => {
++  const def = cal.toDefinition(load("how-we-move-together.json"), { venues: VENUES });
++  const ics = cal.perEventCalendar(def);
++  assert.ok(ics.includes("BEGIN:VEVENT"));
++  assert.ok(ics.endsWith("END:VCALENDAR\r\n"));
++  const ld = cal.eventJsonLd(def, { locale: def.primaryLocale });
++  assert.equal(ld["@type"], "Event");
++  assert.ok(ld.startDate && ld.endDate);
++});
++
++test("end-to-end: recurring fixture → master feed contains series + override", () => {
++  const def = cal.toDefinition(load("montagskurs.json"), { venues: VENUES });
++  const feed = cal.masterFeed([def]);
++  assert.ok(feed.includes("RRULE:FREQ=WEEKLY;BYDAY=MO"));
++  assert.ok(feed.includes("RECURRENCE-ID:"));
++});
