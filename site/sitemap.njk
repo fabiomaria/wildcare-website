@@ -1,0 +1,13 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- set staticPaths = ["/", "/team", "/programm", "/mitmachen", "/kontakt", "/journal", "/montagskurs", "/impressum", "/datenschutz", "/brand"] -%}
+{%- for p in staticPaths %}<url><loc>https://wildcare.space{{ p }}</loc></url>{% endfor -%}
+{%- for w in cms.workshops.pages %}<url><loc>{{ ("/" + w.slug) | absoluteSiteUrl }}</loc></url>{% endfor -%}
+{%- for e in eventPages %}<url><loc>https://wildcare.space{{ e.route }}</loc></url>{% endfor -%}
+{%- for occ in montagskursFeatured %}<url><loc>https://wildcare.space/montagskurs/{{ occ.date }}</loc></url>{% endfor -%}
+{%- for a in journalArticlePages %}<url><loc>{{ a.href | absoluteSiteUrl }}</loc></url>{% endfor %}
+</urlset>
