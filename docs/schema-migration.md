@@ -87,6 +87,18 @@ A registry change requires all of the following in one pull request:
 
 Generated files must never be edited by hand.
 
+Calendar revision 2 adds locale-neutral `venue` records and localized `event`
+records. Dated records carry a `global.schedule` block in either `dates` or
+`recurring` mode. Session and recurrence times are quoted floating-local
+strings; `global.start_at` must match the earliest dates-mode session. The
+schedule uses the closed `event_status`, `availability`, `event_type`,
+`weekday`, `schedule_mode`, and `page_mode` enums. `global.venue` references a
+venue record and orphan references are errors. Stable IDs are required for
+sessions and featured occurrences, including localized featured notes. The
+fixed-page Montagskurs carries a recurring schedule, so validation is based on
+the presence of the schedule block rather than record type. `lib/calendar/`
+consumes these records for Eleventy JSON-LD, ICS feeds, and generated pages.
+
 ## 4. Canonical v2 record
 
 All YAML-managed v2 records use this envelope:
@@ -1054,7 +1066,7 @@ Schema v2 is complete only when:
 - all shared media controls remain editable;
 - all locale-intent combinations validate;
 - all downgrade checks pass;
-- all 14 current sitemap URLs build with valid SEO;
+- all generated sitemap URLs (including event and featured-occurrence leaves) build with valid SEO;
 - approved visual regression checks pass;
 - `MIG-12` is complete.
 
