@@ -1,0 +1,9 @@
+---
+pagination:
+  data: calendar.pages
+  size: 1
+  alias: def
+permalink: "calendar/{{ def.id }}.ics"
+eleventyExcludeFromCollections: true
+---
+{{- def | perEventIcs | safe -}}
