@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOCKUP v2 — Homepage slim slider</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="file:///Users/fabiogerhold/Sandboxes/Claude/fabio-gerhold/projects/wild-care/website/css/styles.css">
+<style>
+.mockup-flag {
+  position: fixed; bottom: 16px; right: 16px; z-index: 999;
+  background: var(--bark); color: var(--warmwhite); font-family: var(--font-body);
+  font-size: 0.75rem; padding: 8px 14px; border-radius: var(--radius-sm);
+  opacity: 0.85;
+}
+.fake-hero {
+  background: linear-gradient(135deg, var(--moss-dark), var(--bark));
+  padding-top: calc(72px + var(--space-3xl));
+  padding-bottom: var(--space-2xl);
+  color: var(--warmwhite);
+}
+.fake-hero h1, .fake-hero p { color: var(--warmwhite); }
+.fake-hero p { opacity: 0.85; max-width: 560px; }
+
+/* ============================================
+   NEW COMPONENT — Slim upcoming slider (homepage)
+   Replaces .event-banner. No add-to-calendar actions here —
+   the whole card is a link through to the relevant page.
+   Same slider mechanics as the full version on /programm,
+   just a shorter card with less information.
+   ============================================ */
+.upcoming-slim-section {
+  position: relative;
+  background: var(--terracotta);
+  color: var(--warmwhite);
+  padding: var(--space-lg) 0 var(--space-xl);
+  overflow: hidden;
+}
+.upcoming-slim-section::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -10%;
+  width: 300px; height: 300px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+.upcoming-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+  position: relative;
+}
+.upcoming-head .label { color: var(--warmwhite); opacity: 0.85; }
+.upcoming-nav { display: flex; gap: var(--space-sm); }
+.upcoming-arrow {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: transparent;
+  color: var(--warmwhite);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+.upcoming-arrow:hover { background: rgba(255,255,255,0.15); transform: translateY(-1px); }
+.upcoming-arrow:disabled { opacity: 0.3; cursor: default; }
+.upcoming-arrow:disabled:hover { background: transparent; transform: none; }
+
+.upcoming-track {
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-sm);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.upcoming-track::-webkit-scrollbar { display: none; }
+
+/* slim card: compact, whole-card link, no action row */
+.upcoming-card-slim {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  width: 260px;
+  background: var(--warmwhite);
+  color: var(--bark);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-out);
+  position: relative;
+}
+.upcoming-card-slim:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(44,36,24,0.12);
+  color: var(--bark);
+}
+@media (max-width: 640px) {
+  .upcoming-card-slim { width: 74vw; }
+}
+.upcoming-tag {
+  align-self: flex-start;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--sand);
+  color: var(--moss-dark);
+}
+.upcoming-tag.is-workshop { background: rgba(196,119,90,0.15); color: var(--terracotta-dark); }
+.upcoming-tag.is-featured { background: var(--moss); color: var(--warmwhite); }
+
+.upcoming-card-slim h3 { font-size: 1.05rem; margin: 2px 0 0; }
+.upcoming-card-slim .upcoming-date-slim { font-size: 0.8125rem; opacity: 0.65; }
+.upcoming-card-slim .slim-arrow {
+  position: absolute; bottom: var(--space-md); right: var(--space-lg);
+  color: var(--terracotta);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+.upcoming-card-slim:hover .slim-arrow { transform: translateX(4px); }
+
+.upcoming-dots {
+  display: flex; justify-content: center; gap: 8px;
+  margin-top: var(--space-md);
+}
+.upcoming-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  border: none; cursor: pointer; padding: 0;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+.upcoming-dot.is-active { background: var(--warmwhite); }
+</style>
+</head>
+<body>
+
+<div class="mockup-flag">MOCKUP v2 — homepage: slim slider (no add-to-calendar, whole card links out)</div>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">Wild Care<span class="breadcrumb">Graz</span></a>
+    <div class="nav-links">
+      <a href="#" class="active">Startseite</a>
+      <a href="#">Über uns</a>
+      <a href="#">Programm</a>
+      <a href="#">Journal</a>
+      <a href="#">Mitmachen</a>
+      <a href="#" class="nav-cta">Komm vorbei</a>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-toggle-btn active">DE</button>
+      <button class="lang-toggle-btn">EN</button>
+    </div>
+  </div>
+</nav>
+
+<header class="fake-hero">
+  <div class="container">
+    <h1>Wir leben die Kunst<br>der Begegnung.</h1>
+    <p>Kunst als lebendige, soziale Praxis. Jeden Montag in Graz — offen für alle, auf Spendenbasis.</p>
+    <div class="button-row" style="display:flex; gap:16px; margin-top: 32px;">
+      <button class="btn btn-primary">Komm vorbei</button>
+      <a href="#" class="btn btn-secondary" style="color: var(--warmwhite); border-color: rgba(255,255,255,0.35);">Mehr erfahren</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================================
+     SLIM UPCOMING SLIDER  (replaces .event-banner)
+     ================================ -->
+<section class="upcoming-slim-section" aria-label="Kommende Termine">
+  <div class="container">
+    <div class="upcoming-head">
+      <span class="label">Termine</span>
+      <div class="upcoming-nav">
+        <button class="upcoming-arrow" id="upPrev" aria-label="Zurück" disabled>‹</button>
+        <button class="upcoming-arrow" id="upNext" aria-label="Weiter">›</button>
+      </div>
+    </div>
+
+    <div class="upcoming-track" id="upTrack">
+
+      <a class="upcoming-card-slim" href="montagskurs">
+        <span class="upcoming-tag">Jeden Montag</span>
+        <h3>Montagskurs</h3>
+        <div class="upcoming-date-slim">Mo, 3. August · 17:45–19:15</div>
+        <span class="slim-arrow">→</span>
+      </a>
+
+      <a class="upcoming-card-slim" href="cellular-touch">
+        <span class="upcoming-tag is-workshop">Workshop</span>
+        <h3>Cellular Touch</h3>
+        <div class="upcoming-date-slim">8.–9. August 2026</div>
+        <span class="slim-arrow">→</span>
+      </a>
+
+      <a class="upcoming-card-slim" href="how-we-move-together">
+        <span class="upcoming-tag is-workshop">Workshop</span>
+        <h3>How We Move Together</h3>
+        <div class="upcoming-date-slim">9.–11. Oktober 2026</div>
+        <span class="slim-arrow">→</span>
+      </a>
+
+      <a class="upcoming-card-slim" href="montagskurs/2026-11-16">
+        <span class="upcoming-tag is-featured">★ Gastlehrperson</span>
+        <h3>Montagskurs — Special</h3>
+        <div class="upcoming-date-slim">Mo, 16. November</div>
+        <span class="slim-arrow">→</span>
+      </a>
+
+    </div>
+
+    <div class="upcoming-dots" id="upDots"></div>
+  </div>
+</section>
+
+<div class="container" style="padding: 80px 24px;">
+  <p style="opacity:0.5; font-size: 0.875rem;">↓ rest of the homepage continues below as today (values, testimonials, CTA section, footer) — omitted from this mockup.</p>
+</div>
+
+<script>
+const track = document.getElementById('upTrack');
+const prev = document.getElementById('upPrev');
+const next = document.getElementById('upNext');
+const dotsWrap = document.getElementById('upDots');
+const cards = [...track.children];
+
+cards.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'upcoming-dot' + (i === 0 ? ' is-active' : '');
+  dot.setAttribute('aria-label', 'Zu Termin ' + (i + 1));
+  dot.addEventListener('click', () => cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' }));
+  dotsWrap.appendChild(dot);
+});
+const dots = [...dotsWrap.children];
+
+function updateActive() {
+  const trackLeft = track.scrollLeft;
+  let closest = 0, closestDist = Infinity;
+  cards.forEach((c, i) => {
+    const dist = Math.abs(c.offsetLeft - trackLeft);
+    if (dist < closestDist) { closestDist = dist; closest = i; }
+  });
+  dots.forEach((d, i) => d.classList.toggle('is-active', i === closest));
+  prev.disabled = closest === 0;
+  next.disabled = closest === cards.length - 1;
+}
+track.addEventListener('scroll', () => requestAnimationFrame(updateActive));
+prev.addEventListener('click', () => track.scrollBy({ left: -280, behavior: 'smooth' }));
+next.addEventListener('click', () => track.scrollBy({ left: 280, behavior: 'smooth' }));
+updateActive();
+</script>
+
+</body>
+</html>

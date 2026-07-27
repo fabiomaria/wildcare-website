@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOCKUP — Programme month calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="file:///Users/fabiogerhold/Sandboxes/Claude/fabio-gerhold/projects/wild-care/website/css/styles.css">
+<style>
+.mockup-flag {
+  position: fixed; bottom: 16px; right: 16px; z-index: 999;
+  background: var(--bark); color: var(--warmwhite); font-family: var(--font-body);
+  font-size: 0.75rem; padding: 8px 14px; border-radius: var(--radius-sm);
+  opacity: 0.85;
+}
+
+/* ============================================
+   NEW COMPONENT — Month calendar
+   Replaces the "Ausblick" preview-card section. Built from existing
+   tokens only (--moss / --terracotta / --sand-light / --space-* / --radius-*).
+   ============================================ */
+.month-cal {
+  background: var(--warmwhite);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  max-width: 560px;
+  margin: 0 auto;
+}
+.month-cal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+.month-cal-title { font-size: 1.3rem; }
+.month-cal-arrow {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: var(--border-medium);
+  background: transparent;
+  color: var(--bark);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+.month-cal-arrow:hover { background: var(--sand-light); }
+
+.month-cal-weekdays, .month-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.month-cal-weekdays {
+  margin-bottom: var(--space-sm);
+}
+.month-cal-weekdays span {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--moss);
+  opacity: 0.8;
+  padding-bottom: 6px;
+}
+.month-cal-grid { gap: 4px; }
+.month-cal-day {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  color: var(--bark);
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+.month-cal-day.is-empty { visibility: hidden; }
+.month-cal-day.has-event { cursor: pointer; font-weight: 500; }
+.month-cal-day.has-event:hover { background: var(--sand-light); }
+.month-cal-day .dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--terracotta);
+  margin-top: 3px;
+}
+.month-cal-day.is-featured .dot { background: var(--moss); width: 6px; height: 6px; }
+.month-cal-day.is-selected { background: var(--terracotta); color: var(--warmwhite); }
+.month-cal-day.is-selected .dot { background: var(--warmwhite); }
+.month-cal-day.is-today { box-shadow: inset 0 0 0 1.5px var(--moss); }
+
+.month-cal-legend {
+  display: flex; gap: var(--space-lg); justify-content: center;
+  margin-top: var(--space-md);
+  font-size: 0.8rem; opacity: 0.7;
+}
+.month-cal-legend span { display: flex; align-items: center; gap: 6px; }
+.month-cal-legend .dot { width: 6px; height: 6px; border-radius: 50%; display:inline-block; }
+
+/* Detail panel — reuses the same card language as the homepage slider cards */
+.cal-detail {
+  max-width: 560px;
+  margin: var(--space-lg) auto 0;
+  background: var(--warmwhite);
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  display: none;
+  gap: var(--space-sm);
+  flex-direction: column;
+}
+.cal-detail.is-visible { display: flex; }
+.cal-detail-tag {
+  align-self: flex-start;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: var(--radius-sm);
+  background: var(--sand); color: var(--moss-dark);
+}
+.cal-detail-tag.is-featured { background: var(--moss); color: var(--warmwhite); }
+.cal-detail h4 { font-size: 1.1rem; }
+.cal-detail-row { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; opacity: 0.8; }
+.cal-detail-row svg { width: 16px; height: 16px; stroke: currentColor; opacity: 0.7; flex-shrink: 0; }
+.cal-detail-actions { display: flex; gap: var(--space-sm); margin-top: var(--space-sm); padding-top: var(--space-sm); border-top: var(--border-subtle); }
+.cal-detail-actions .btn { padding: 10px 16px; font-size: 0.8125rem; }
+.cal-detail-empty { text-align: center; opacity: 0.5; font-size: 0.875rem; padding: var(--space-md) 0; }
+</style>
+</head>
+<body>
+
+<div class="mockup-flag">MOCKUP — programme page: “Ausblick” cards → month calendar</div>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">Wild Care<span class="breadcrumb">Graz</span></a>
+    <div class="nav-links">
+      <a href="#">Startseite</a>
+      <a href="#">Über uns</a>
+      <a href="#" class="active">Programm</a>
+      <a href="#">Journal</a>
+      <a href="#">Mitmachen</a>
+      <a href="#" class="nav-cta">Komm vorbei</a>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-toggle-btn active">DE</button>
+      <button class="lang-toggle-btn">EN</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <p class="label">Programm</p>
+    <h1>Bewegung als Begegnung.</h1>
+    <p>Unser Angebot verbindet Körperarbeit, soziale Praxis und künstlerische Forschung — offen für alle, die neugierig sind.</p>
+  </div>
+</header>
+
+<div class="container" style="padding: 40px 24px 0;">
+  <p style="opacity:0.5; font-size: 0.875rem;">↑ Montagskurs info card + Aktuelle Projekte cards continue above, unchanged — omitted from this mockup.</p>
+</div>
+
+<!-- ================================
+     MONTH CALENDAR  (replaces the "Ausblick" preview-card section)
+     ================================ -->
+<section style="background: var(--sand-light); padding: var(--space-2xl) 0;">
+  <div class="container">
+    <div class="section-header" style="margin-bottom: 48px;">
+      <p class="label">Termine</p>
+      <h2>Was noch kommt</h2>
+      <p>Alle kommenden Termine auf einen Blick — Montagskurs, Workshops und Events.</p>
+    </div>
+
+    <div class="month-cal">
+      <div class="month-cal-header">
+        <button class="month-cal-arrow" id="calPrev" aria-label="Vorheriger Monat">‹</button>
+        <h3 class="month-cal-title" id="calTitle">Oktober 2026</h3>
+        <button class="month-cal-arrow" id="calNext" aria-label="Nächster Monat">›</button>
+      </div>
+      <div class="month-cal-weekdays">
+        <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+      </div>
+      <div class="month-cal-grid" id="calGrid"></div>
+      <div class="month-cal-legend">
+        <span><i class="dot" style="background: var(--terracotta);"></i> Termin</span>
+        <span><i class="dot" style="background: var(--moss);"></i> Besonderer Montag</span>
+      </div>
+    </div>
+
+    <div class="cal-detail" id="calDetail"></div>
+  </div>
+</section>
+
+<script>
+// Mockup-only data: two real months from the actual content, enough to
+// demonstrate month navigation + click-to-see-detail. In the real build
+// this comes from `calendar.definitions` (dates mode: every session date;
+// recurring mode: expandRecurrence() for the visible month + featured_occurrences).
+const MONTHS = {
+  '2026-10': {
+    label: 'Oktober 2026',
+    firstWeekday: 3, // Thu = index 3 (Mo=0)
+    daysInMonth: 31,
+    events: {
+      5: [{ tag: 'Jeden Montag', tagClass: '', title: 'Montagskurs', time: '17:45 – 19:15', loc: 'Orpheumgasse 11, Graz' }],
+      9: [{ tag: 'Workshop · Tag 1', tagClass: 'is-workshop', title: 'How We Move Together', time: '19:00 – 21:00', loc: 'Orpheumgasse 11, Graz', sub: 'mit Fran' }],
+      10: [{ tag: 'Workshop · Tag 2', tagClass: 'is-workshop', title: 'How We Move Together', time: '13:00 – 21:00', loc: 'Orpheumgasse 11, Graz', sub: 'mit Fran' }],
+      11: [{ tag: 'Workshop · Tag 3', tagClass: 'is-workshop', title: 'How We Move Together', time: '10:00 – 19:00', loc: 'Orpheumgasse 11, Graz', sub: 'mit Fran' }],
+      12: [{ tag: 'Jeden Montag', tagClass: '', title: 'Montagskurs', time: '17:45 – 19:15', loc: 'Orpheumgasse 11, Graz' }],
+      19: [{ tag: 'Jeden Montag', tagClass: '', title: 'Montagskurs', time: '17:45 – 19:15', loc: 'Orpheumgasse 11, Graz' }],
+      26: [{ tag: 'Jeden Montag', tagClass: '', title: 'Montagskurs', time: '17:45 – 19:15', loc: 'Orpheumgasse 11, Graz' }],
+    },
+  },
+  '2026-11': {
+    label: 'November 2026',
+    firstWeekday: 6, // Sun = index 6
+    daysInMonth: 30,
+    events: {
+      2: [{ tag: 'Jeden Montag', tagClass: '', title: 'Montagskurs', time: '17:45 – 19:15', loc: 'Orpheumgasse 11, Graz' }],
+      9: [{ tag: 'Jeden Montag', tagClass: '', title: 'Montagskurs', time: '17:45 – 19:15', loc: 'Orpheumgasse 11, Graz' }],
+      16: [{ tag: '★ Besonderer Montag', tagClass: 'is-featured', title: 'Montagskurs — Gastlehrperson', time: '17:45 – 19:15', loc: 'Orpheumgasse 11, Graz', sub: 'Besonderer Abend mit Gastlehrperson', featured: true }],
+      23: [{ tag: 'Jeden Montag', tagClass: '', title: 'Montagskurs', time: '17:45 – 19:15', loc: 'Orpheumgasse 11, Graz' }],
+      30: [{ tag: 'Jeden Montag', tagClass: '', title: 'Montagskurs', time: '17:45 – 19:15', loc: 'Orpheumgasse 11, Graz' }],
+    },
+  },
+};
+const ORDER = ['2026-10', '2026-11'];
+let monthIdx = 0;
+
+const titleEl = document.getElementById('calTitle');
+const gridEl = document.getElementById('calGrid');
+const detailEl = document.getElementById('calDetail');
+const prevBtn = document.getElementById('calPrev');
+const nextBtn = document.getElementById('calNext');
+
+function render() {
+  const key = ORDER[monthIdx];
+  const m = MONTHS[key];
+  titleEl.textContent = m.label;
+  prevBtn.disabled = monthIdx === 0;
+  nextBtn.disabled = monthIdx === ORDER.length - 1;
+  gridEl.innerHTML = '';
+  detailEl.classList.remove('is-visible');
+  detailEl.innerHTML = '';
+
+  for (let i = 0; i < m.firstWeekday; i++) {
+    const blank = document.createElement('div');
+    blank.className = 'month-cal-day is-empty';
+    gridEl.appendChild(blank);
+  }
+  for (let d = 1; d <= m.daysInMonth; d++) {
+    const dayEvents = m.events[d];
+    const cell = document.createElement('button');
+    cell.className = 'month-cal-day' + (dayEvents ? ' has-event' : '');
+    if (dayEvents && dayEvents.some(e => e.featured)) cell.classList.add('is-featured');
+    cell.innerHTML = d + (dayEvents ? '<span class="dot"></span>' : '');
+    if (dayEvents) {
+      cell.addEventListener('click', () => selectDay(cell, dayEvents));
+    }
+    gridEl.appendChild(cell);
+  }
+}
+
+function selectDay(cell, events) {
+  [...gridEl.children].forEach(c => c.classList.remove('is-selected'));
+  cell.classList.add('is-selected');
+  detailEl.classList.add('is-visible');
+  detailEl.innerHTML = events.map(e => `
+    <span class="cal-detail-tag${e.featured ? ' is-featured' : ''}">${e.tag}</span>
+    <h4>${e.title}</h4>
+    ${e.sub ? `<div style="font-size:0.875rem;opacity:0.65;margin-top:-6px;">${e.sub}</div>` : ''}
+    <div class="cal-detail-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      ${e.time}
+    </div>
+    <div class="cal-detail-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      ${e.loc}
+    </div>
+    <div class="cal-detail-actions">
+      <a class="btn btn-secondary" href="#">+ Kalender</a>
+      <a class="btn btn-ghost" href="#">Google</a>
+    </div>
+  `).join('<hr style="border:none;border-top:var(--border-subtle);margin:12px 0;">');
+}
+
+prevBtn.addEventListener('click', () => { if (monthIdx > 0) { monthIdx--; render(); } });
+nextBtn.addEventListener('click', () => { if (monthIdx < ORDER.length - 1) { monthIdx++; render(); } });
+render();
+</script>
+
+</body>
+</html>

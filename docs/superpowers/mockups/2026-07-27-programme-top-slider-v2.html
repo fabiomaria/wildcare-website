@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOCKUP v2 — Programme page, full slider at top</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="file:///Users/fabiogerhold/Sandboxes/Claude/fabio-gerhold/projects/wild-care/website/css/styles.css">
+<style>
+.mockup-flag {
+  position: fixed; bottom: 16px; right: 16px; z-index: 999;
+  background: var(--bark); color: var(--warmwhite); font-family: var(--font-body);
+  font-size: 0.75rem; padding: 8px 14px; border-radius: var(--radius-sm);
+  opacity: 0.85;
+}
+
+/* ============================================
+   NEW COMPONENT — Full upcoming slider (programme page)
+   Sits right after the page-hero, on a beige (sand-light) section
+   background, replacing the old "Ausblick" preview-card section.
+   Same slider mechanics as the homepage version, full card content
+   + add-to-calendar actions restored.
+   ============================================ */
+.upcoming-section {
+  position: relative;
+  background: var(--sand-light);
+  padding: var(--space-xl) 0 var(--space-2xl);
+}
+.upcoming-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.upcoming-head h2 { margin-bottom: 4px; }
+.upcoming-nav { display: flex; gap: var(--space-sm); }
+.upcoming-arrow {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: var(--border-medium);
+  background: transparent;
+  color: var(--bark);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+.upcoming-arrow:hover { background: var(--sand); transform: translateY(-1px); }
+.upcoming-arrow:disabled { opacity: 0.3; cursor: default; }
+.upcoming-arrow:disabled:hover { background: transparent; transform: none; }
+
+.upcoming-track {
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-sm);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.upcoming-track::-webkit-scrollbar { display: none; }
+
+.upcoming-card {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  width: 320px;
+  position: relative;
+  background: var(--warmwhite);
+  border: 1px solid transparent;
+  color: var(--bark);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+.upcoming-card::before {
+  content: '';
+  position: absolute;
+  top: var(--space-lg); left: var(--space-lg);
+  width: 32px; height: 3px;
+  background: var(--terracotta);
+  opacity: 0.4;
+  border-radius: 2px;
+}
+.upcoming-card:hover { background: var(--sand); transform: translateY(-2px); }
+@media (max-width: 640px) {
+  .upcoming-card { width: 82vw; }
+}
+.upcoming-tag {
+  align-self: flex-start;
+  margin-top: var(--space-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--sand);
+  color: var(--moss-dark);
+}
+.upcoming-tag.is-workshop { background: rgba(196,119,90,0.15); color: var(--terracotta-dark); }
+.upcoming-tag.is-featured { background: var(--moss); color: var(--warmwhite); }
+
+.upcoming-card h3 { font-size: 1.25rem; margin: 2px 0 0; }
+.upcoming-card .upcoming-subtitle { font-size: 0.875rem; opacity: 0.65; margin-top: -6px; }
+
+.upcoming-detail {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.875rem; opacity: 0.75;
+}
+.upcoming-detail svg { flex-shrink: 0; width: 16px; height: 16px; stroke: currentColor; opacity: 0.7; }
+
+.upcoming-actions {
+  display: flex; gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: var(--border-subtle);
+}
+.upcoming-actions .btn { padding: 10px 16px; font-size: 0.8125rem; }
+
+.upcoming-dots {
+  display: flex; justify-content: center; gap: 8px;
+  margin-top: var(--space-lg);
+}
+.upcoming-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--sand);
+  border: none; cursor: pointer; padding: 0;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+.upcoming-dot.is-active { background: var(--terracotta); }
+</style>
+</head>
+<body>
+
+<div class="mockup-flag">MOCKUP v2 — /programm: full slider moved to top (beige bg), replaces “Ausblick”</div>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">Wild Care<span class="breadcrumb">Graz</span></a>
+    <div class="nav-links">
+      <a href="#">Startseite</a>
+      <a href="#">Über uns</a>
+      <a href="#" class="active">Programm</a>
+      <a href="#">Journal</a>
+      <a href="#">Mitmachen</a>
+      <a href="#" class="nav-cta">Komm vorbei</a>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-toggle-btn active">DE</button>
+      <button class="lang-toggle-btn">EN</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <p class="label">Programm</p>
+    <h1>Bewegung als Begegnung.</h1>
+    <p>Unser Angebot verbindet Körperarbeit, soziale Praxis und künstlerische Forschung — offen für alle, die neugierig sind.</p>
+  </div>
+</header>
+
+<!-- ================================
+     UPCOMING EVENTS SLIDER  (replaces "Ausblick", now first section on the page)
+     ================================ -->
+<section class="upcoming-section" aria-label="Kommende Termine">
+  <div class="container">
+    <div class="upcoming-head">
+      <div>
+        <p class="label">Termine</p>
+        <h2>Was noch kommt</h2>
+      </div>
+      <div class="upcoming-nav">
+        <button class="upcoming-arrow" id="upPrev" aria-label="Zurück" disabled>‹</button>
+        <button class="upcoming-arrow" id="upNext" aria-label="Weiter">›</button>
+      </div>
+    </div>
+
+    <div class="upcoming-track" id="upTrack">
+
+      <article class="upcoming-card">
+        <span class="upcoming-tag">Jeden Montag</span>
+        <h3>Montagskurs</h3>
+        <div class="upcoming-subtitle">Nächster Termin: Montag, 3. August</div>
+        <div class="upcoming-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          17:45 – 19:15
+        </div>
+        <div class="upcoming-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Orpheumgasse 11, Graz
+        </div>
+        <div class="upcoming-actions">
+          <a class="btn btn-secondary" href="#">+ Kalender</a>
+          <a class="btn btn-ghost" href="#">Google</a>
+        </div>
+      </article>
+
+      <article class="upcoming-card">
+        <span class="upcoming-tag is-workshop">Workshop</span>
+        <h3>Cellular Touch</h3>
+        <div class="upcoming-subtitle">mit Valentyn Korotkevych</div>
+        <div class="upcoming-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          8.–9. August 2026
+        </div>
+        <div class="upcoming-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Orpheumgasse 11, Graz
+        </div>
+        <div class="upcoming-actions">
+          <a class="btn btn-secondary" href="#">+ Kalender</a>
+          <a class="btn btn-ghost" href="#">Google</a>
+        </div>
+      </article>
+
+      <article class="upcoming-card">
+        <span class="upcoming-tag is-workshop">Workshop</span>
+        <h3>How We Move Together</h3>
+        <div class="upcoming-subtitle">mit Fran</div>
+        <div class="upcoming-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          9.–11. Oktober 2026
+        </div>
+        <div class="upcoming-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Orpheumgasse 11, Graz
+        </div>
+        <div class="upcoming-actions">
+          <a class="btn btn-secondary" href="#">+ Kalender</a>
+          <a class="btn btn-ghost" href="#">Google</a>
+        </div>
+      </article>
+
+      <article class="upcoming-card">
+        <span class="upcoming-tag is-featured">★ Besonderer Montag</span>
+        <h3>Montagskurs — Gastlehrperson</h3>
+        <div class="upcoming-subtitle">Besonderer Abend mit Gastlehrperson</div>
+        <div class="upcoming-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Montag, 16. November
+        </div>
+        <div class="upcoming-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          17:45 – 19:15
+        </div>
+        <div class="upcoming-actions">
+          <a class="btn btn-secondary" href="#">+ Kalender</a>
+          <a class="btn btn-ghost" href="#">Google</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="upcoming-dots" id="upDots"></div>
+  </div>
+</section>
+
+<div class="container" style="padding: 40px 24px;">
+  <p style="opacity:0.5; font-size: 0.875rem;">↓ Montagskurs info card + Aktuelle Projekte cards continue below, unchanged. “Ausblick” is gone — this slider replaces it and now leads the page.</p>
+</div>
+
+<script>
+const track = document.getElementById('upTrack');
+const prev = document.getElementById('upPrev');
+const next = document.getElementById('upNext');
+const dotsWrap = document.getElementById('upDots');
+const cards = [...track.children];
+
+cards.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'upcoming-dot' + (i === 0 ? ' is-active' : '');
+  dot.setAttribute('aria-label', 'Zu Termin ' + (i + 1));
+  dot.addEventListener('click', () => cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' }));
+  dotsWrap.appendChild(dot);
+});
+const dots = [...dotsWrap.children];
+
+function updateActive() {
+  const trackLeft = track.scrollLeft;
+  let closest = 0, closestDist = Infinity;
+  cards.forEach((c, i) => {
+    const dist = Math.abs(c.offsetLeft - trackLeft);
+    if (dist < closestDist) { closestDist = dist; closest = i; }
+  });
+  dots.forEach((d, i) => d.classList.toggle('is-active', i === closest));
+  prev.disabled = closest === 0;
+  next.disabled = closest === cards.length - 1;
+}
+track.addEventListener('scroll', () => requestAnimationFrame(updateActive));
+prev.addEventListener('click', () => track.scrollBy({ left: -340, behavior: 'smooth' }));
+next.addEventListener('click', () => track.scrollBy({ left: 340, behavior: 'smooth' }));
+updateActive();
+</script>
+
+</body>
+</html>
