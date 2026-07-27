@@ -40,6 +40,14 @@ Hero headings and SEO titles are optional overrides. Decorative badges and eyebr
 
 The Programme page is also CMS-managed. Keep index-matched German and English lists in the same order and at the same length.
 
+## Schema Migration
+
+The site now uses schema v2 content records. The migration moved shared metadata into a language-neutral `global` block and localized copy into `locales`, while keeping page URLs stable. Journal and legal articles now split into canonical records plus per-language body files under `content/journal/` and `content/legal/`, and workshops use the same v2 record shape across the CMS and build.
+
+The migration is reversible by design: `npm run schema:check` validates the registry, CMS contract, content, parity, and downgrade fixtures, and `npm run build` verifies the rendered site before deployment.
+
+One editorial regression is that this v2 CMS shape no longer provides side-by-side locale editing in the editor. That makes bilingual edits slower and more error-prone, so it should be treated as an open issue rather than a desired end state.
+
 ## Editing Guide
 
 See [EDITING.md](EDITING.md) for the non-technical editor workflow. CMS field labels are English and include examples describing where each value appears.
