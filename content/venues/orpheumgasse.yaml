@@ -1,8 +1,8 @@
 schema_version: 2
 global:
   id: orpheumgasse
-  name: Orpheumgasse Studio
-  street: Orpheumgasse 11
-  postal_code: "8010"
+  name: Orpheumgasse
+  street: Orpheumgasse
+  postal_code: '8010'
   city: Graz
   country: AT
