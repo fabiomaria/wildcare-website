@@ -12,6 +12,7 @@ const {
   migrateYamlRecord,
   normalizeV2,
 } = require("./scripts/schema/lib");
+const calendar = require("./lib/calendar");
 
 // Pages not yet templatized are passthrough-copied verbatim (brief §7 Phase 1/2:
 // incremental migration — remove a page from this list when its template ships).
@@ -513,6 +514,59 @@ function loadWorkshopContent() {
   };
 }
 
+function loadVenues() {
+  const dir = path.join(__dirname, "content", "venues");
+  const venues = {};
+  if (!fs.existsSync(dir)) return venues;
+  for (const filename of fs.readdirSync(dir).filter((name) => name.endsWith(".yaml")).sort()) {
+    const global = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8")).global;
+    venues[global.id] = global;
+  }
+  return venues;
+}
+
+function loadCalendar() {
+  const venues = loadVenues();
+  const definitions = [];
+  for (const collection of ["workshops", "events", "pages"]) {
+    const dir = path.join(__dirname, "content", collection);
+    if (!fs.existsSync(dir)) continue;
+    for (const filename of fs.readdirSync(dir).filter((name) => name.endsWith(".yaml")).sort()) {
+      const raw = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"));
+      if (raw?.global?.schedule) definitions.push(calendar.toDefinition(raw, { venues }));
+    }
+  }
+  definitions.sort((a, b) => a.id.localeCompare(b.id));
+  return { venues, definitions, pages: definitions, byId: Object.fromEntries(definitions.map((def) => [def.id, def])) };
+}
+
+function loadEventContent() {
+  const dir = path.join(__dirname, "content", "events");
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter((name) => name.endsWith(".yaml")).sort().map((filename) => {
+    const raw = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"));
+    const global = raw.global;
+    const primary = global.intended_locales?.[0] || "de";
+    return {
+      slug: global.id, route: global.route, page_mode: global.page_mode || "minimal",
+      primary_locale: primary, de: raw.locales?.de || {}, en: raw.locales?.en || {},
+      href: `events/${global.id}.html`,
+    };
+  });
+}
+
+function loadMontagskursFeatured(cal) {
+  const def = cal.byId.montagskurs;
+  if (!def) return [];
+  return (def.featured || []).map((occurrence) => ({
+    date: occurrence.id, teacher: occurrence.teacher, start_local: occurrence.start_local,
+    end_local: occurrence.end_local,
+    note_de: def.locales.de?.schedule?.featured_occurrences?.[occurrence.id]?.note || "",
+    note_en: def.locales.en?.schedule?.featured_occurrences?.[occurrence.id]?.note || "",
+    href: `montagskurs/${occurrence.id}.html`, def,
+  }));
+}
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
   eleventyConfig.addFilter("attr", (value) => new nunjucks.runtime.SafeString(escapeHtmlAttr(value)));
@@ -529,7 +583,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "CNAME": "CNAME" });
   eleventyConfig.addPassthroughCopy({ ".nojekyll": ".nojekyll" });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
-  eleventyConfig.addPassthroughCopy({ "sitemap.xml": "sitemap.xml" });
   for (const page of PASSTHROUGH_PAGES) {
     eleventyConfig.addPassthroughCopy({ [page]: page });
   }
@@ -560,6 +613,32 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addGlobalData("journalArticlePages", () => loadJournalContent().articlePages);
   eleventyConfig.addGlobalData("workshopPages", () => loadWorkshopContent().pages);
+  const calendarData = loadCalendar();
+  eleventyConfig.addGlobalData("calendar", () => calendarData);
+  eleventyConfig.addGlobalData("eventPages", () => loadEventContent());
+  eleventyConfig.addGlobalData("montagskursFeatured", () => loadMontagskursFeatured(calendarData));
+  eleventyConfig.addFilter("eventJsonLd", (def) => def.mode === "recurring"
+    ? calendar.recurringJsonLd(def, { locale: def.primaryLocale })
+    : calendar.eventJsonLd(def, { locale: def.primaryLocale }));
+  eleventyConfig.addFilter("featuredOccurrenceJsonLd", (occurrence) => calendar.eventJsonLd({
+    ...occurrence.def, mode: "dates", recurrence: undefined,
+    sessions: [{ id: occurrence.date, start_local: occurrence.start_local, end_local: occurrence.end_local }],
+    span: { start: occurrence.start_local, end: occurrence.end_local },
+  }, { locale: occurrence.def.primaryLocale }));
+  eleventyConfig.addFilter("calendarGoogleUrl", (def) => {
+    const locale = def.locales[def.primaryLocale] || {};
+    const location = `${def.venue.name}, ${def.venue.street}, ${def.venue.postal_code} ${def.venue.city}`;
+    if (def.mode === "recurring") {
+      const first = calendar.expandRecurrence(def.recurrence, { from: def.recurrence.anchor, to: def.recurrence.anchor })[0];
+      return calendar.googleUrl({ title: locale.title, details: locale.summary || "", location, start_local: first.start_local, end_local: first.end_local });
+    }
+    return calendar.googleUrl({ title: locale.title, details: locale.summary || "", location, start_local: def.span.start, end_local: def.span.end });
+  });
+  eleventyConfig.addFilter("perEventIcs", (def) => def.mode === "recurring"
+    ? calendar.buildCalendar(calendar.recurringVevents(def)) : calendar.perEventCalendar(def));
+  eleventyConfig.addFilter("masterIcs", (defs) => calendar.masterFeed(defs));
+  eleventyConfig.addFilter("formatDefDate", (def, locale) => def.mode === "recurring"
+    ? calendar.formatRecurring(def.recurrence, locale) : calendar.formatDateRange(def.span.start, def.span.end, locale));
   eleventyConfig.addGlobalData("assetVersion", () => {
     const css = fs.readFileSync(path.join(__dirname, "css", "styles.css"));
     return crypto.createHash("sha256").update(css).digest("hex").slice(0, 12);
