@@ -9,6 +9,11 @@ de:
       og_image_width: 1640
       og_image_height: 720
   hero:
+    show_cta_primary: false
+    show_cta_secondary: true
+    show_cta_ghost: true
+    cta_secondary_url: programm
+    cta_ghost_url: mitmachen
     heading: Wir leben die Kunst<br>der Begegnung.
     tagline: 'Kunst als lebendige, soziale Praxis — in Bewegung, Klang, Wort und Bild. Unser erstes Labor: Contact Improvisation, jeden Montag in Graz.'
     cta_primary: Komm vorbei

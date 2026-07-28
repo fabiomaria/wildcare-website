@@ -44,15 +44,27 @@ permalink: index.html
                     data-de="{{ de.hero.tagline }}"
                     data-en="{{ en.hero.tagline or de.hero.tagline }}">{{ de.hero.tagline }}</p>
                 <div class="button-row fade-up delay-2">
+                    {% if de.hero.show_cta_primary != false %}
+                    {% if de.hero.cta_primary_url %}
+                    <a href="{{ de.hero.cta_primary_url }}" class="btn btn-primary"
+                        data-de="{{ de.hero.cta_primary }}"
+                        data-en="{{ en.hero.cta_primary or de.hero.cta_primary }}">{{ de.hero.cta_primary }}</a>
+                    {% else %}
                     <button class="btn btn-primary" data-tally-open="nplWX8" data-tally-emoji-text="👋" data-tally-emoji-animation="wave"
                         data-de="{{ de.hero.cta_primary }}"
                         data-en="{{ en.hero.cta_primary or de.hero.cta_primary }}">{{ de.hero.cta_primary }}</button>
-                    <a href="programm" class="btn btn-secondary"
+                    {% endif %}
+                    {% endif %}
+                    {% if de.hero.show_cta_secondary != false %}
+                    <a href="{{ de.hero.cta_secondary_url or 'programm' }}" class="btn btn-secondary"
                         data-de="{{ de.hero.cta_secondary }}"
                         data-en="{{ en.hero.cta_secondary or de.hero.cta_secondary }}">{{ de.hero.cta_secondary }}</a>
-                    <a href="mitmachen" class="btn btn-ghost"
+                    {% endif %}
+                    {% if de.hero.show_cta_ghost != false %}
+                    <a href="{{ de.hero.cta_ghost_url or 'mitmachen' }}" class="btn btn-ghost"
                         data-de="{{ de.hero.cta_ghost }}"
                         data-en="{{ en.hero.cta_ghost or de.hero.cta_ghost }}">{{ de.hero.cta_ghost }}</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

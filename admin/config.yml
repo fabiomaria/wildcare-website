@@ -97,15 +97,49 @@ collections:
               - name: tagline
                 label: Subtitle
                 widget: text
+              - name: show_cta_primary
+                label: Show “Visit” button
+                widget: boolean
+                default: true
+                i18n: false
+                hint: Turn this off to temporarily hide the first button in the video hero. The button text and Tally form are kept for later.
               - name: cta_primary
                 label: Visit button text
                 widget: string
+              - name: cta_primary_url
+                label: Visit button link (optional)
+                widget: string
+                required: false
+                i18n: false
+                hint: Leave empty to open the existing Tally signup form. Enter a URL to turn this into a normal link.
+              - name: show_cta_secondary
+                label: Show “Learn more” button
+                widget: boolean
+                default: true
+                i18n: false
               - name: cta_secondary
                 label: Learn more button text
                 widget: string
+              - name: cta_secondary_url
+                label: Learn more button link
+                widget: string
+                required: false
+                i18n: false
+                hint: Enter an internal path such as programm or an external URL.
+              - name: show_cta_ghost
+                label: Show “Membership” button
+                widget: boolean
+                default: true
+                i18n: false
               - name: cta_ghost
                 label: Membership button text
                 widget: string
+              - name: cta_ghost_url
+                label: Membership button link
+                widget: string
+                required: false
+                i18n: false
+                hint: Enter an internal path such as mitmachen or an external URL.
             i18n: true
           - name: event_banner
             label: Event banner
