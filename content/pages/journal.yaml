@@ -5,11 +5,11 @@ de:
     status: published
     route: /journal
   meta:
-    title: Journal — Wild Care | Aus dem Labor
-    description: Einblicke, Gedanken und Neuigkeiten aus dem Wild Care Labor. Über Contact Improvisation, Bewegung und soziale Praxis in Graz.
+    title: Journal — Wild Care | Aus den Laboren
+    description: Einblicke, Gedanken und Neuigkeiten aus den Wild Care Laboren. Über Contact Improvisation, Bewegung und soziale Praxis in Graz.
   hero:
     label: Journal
-    heading: Aus dem Labor
+    heading: Aus den Laboren
     intro: Gedanken, Einblicke und Neuigkeiten aus unserer Praxis. Über Bewegung, Begegnung und das, was dazwischen passiert.
   card:
     read_more: Weiterlesen →
@@ -25,7 +25,7 @@ de:
     related_heading: Verwandte Beiträge
 en:
   hero:
-    heading: From the Lab
+    heading: From the Labs
     intro: Thoughts, glimpses and news from our practice. On movement, encounter, and what happens in between.
   card:
     read_more: Read more →

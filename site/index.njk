@@ -113,6 +113,7 @@ permalink: index.html
                     <h2 data-de="{{ de.invitation.heading }}" data-en="{{ en.invitation.heading or de.invitation.heading }}">{{ de.invitation.heading }}</h2>
                     <p data-de="{{ de.invitation.p1 }}" data-en="{{ en.invitation.p1 or de.invitation.p1 }}">{{ de.invitation.p1 }}</p>
                     <p data-de="{{ de.invitation.p2 }}" data-en="{{ en.invitation.p2 or de.invitation.p2 }}">{{ de.invitation.p2 }}</p>
+                    {% if de.invitation.p3 %}<p data-de="{{ de.invitation.p3 }}" data-en="{{ en.invitation.p3 or de.invitation.p3 }}">{{ de.invitation.p3 }}</p>{% endif %}
                     <div class="button-row" style="margin-top: 8px;">
                         <a href="montagskurs" class="btn btn-ghost" data-de="{{ de.invitation.cta }}" data-en="{{ en.invitation.cta or de.invitation.cta }}">{{ de.invitation.cta }}</a>
                     </div>

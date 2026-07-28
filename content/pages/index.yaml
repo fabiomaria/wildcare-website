@@ -10,7 +10,7 @@ de:
       og_image_height: 720
   hero:
     heading: Wir leben die Kunst<br>der Begegnung.
-    tagline: Kunst als lebendige, soziale Praxis. Jeden Montag in Graz — offen für alle, auf Spendenbasis.
+    tagline: 'Kunst als lebendige, soziale Praxis — in Bewegung, Klang, Wort und Bild. Unser erstes Labor: Contact Improvisation, jeden Montag in Graz.'
     cta_primary: Komm vorbei
     cta_secondary: Mehr erfahren
     cta_ghost: Mitglied werden
@@ -33,14 +33,15 @@ de:
       - title: Radikale Fürsorge
         text: Nicht nur Sanftmut, sondern auch Klarheit. Eigene Grenzen wahren und anderen den Raum geben, gesehen zu werden.
   invitation:
-    label: Labor für Zusammenleben
+    label: Labore für Zusammenleben
     heading: Was passiert bei uns?
-    p1: Contact Improvisation ist das spielerische Forschen mit Schwerkraft, Gleichgewicht und Berührung. Es gibt keine festen Schritte, keinen Leistungsdruck und keine Rollen.
-    p2: Du lernst, durch achtsamen Körperkontakt deinen Körper bewusster zu erleben, dein Nervensystem zu regulieren und Grenzen zu kommunizieren — im Tanz wie im Alltag.
+    p1: Wir schaffen Räume, in denen Menschen sich im Machen begegnen. Welches Material dabei im Zentrum steht — Bewegung, Klang, Wort, Bild — ist offen. Die Haltung bleibt dieselbe.
+    p2: 'Unser derzeitiges Kernformat ist Contact Improvisation: das spielerische Forschen mit Schwerkraft, Gleichgewicht und Berührung. Keine festen Schritte, kein Leistungsdruck, keine Rollen. Du lernst, deinen Körper bewusster zu erleben, dein Nervensystem zu regulieren und Grenzen zu kommunizieren — im Tanz wie im Alltag.'
+    p3: Weitere Labore sind in Entstehung. Wenn du eines mitgestalten willst, melde dich.
     cta: Zum Montagskurs
   quote: Bei uns steht nicht das fertige Kunstwerk an der Wand oder die perfekte Pose auf der Bühne im Mittelpunkt, sondern das, was zwischen uns passiert.
   journal:
-    heading: Aus dem Labor
+    heading: Aus den Laboren
     all_posts: Alle Beiträge
   cta:
     heading: Bleib auf dem Laufenden
@@ -59,12 +60,12 @@ de:
     consent_post: zu.
   meta:
     title: Wild Care — Verein für soziale Praxis | Graz
-    description: Wild Care — Wir leben die Kunst der Begegnung. Contact Improvisation und soziale Praxis, jeden Montag in Graz.
+    description: Wild Care — Kunst als lebendige, soziale Praxis in Graz. Interdisziplinäre Labore für Begegnung; aktuell Contact Improvisation, jeden Montag.
     og_image_alt: Contact Improvisation dancers sharing weight — Wild Care, Graz.
 en:
   hero:
     heading: We live the art<br>of encounter.
-    tagline: Art as a living, social practice. Every Monday in Graz — open to everyone, donation-based.
+    tagline: 'Art as a living, social practice — through movement, sound, word and image. Our first Lab: Contact Improvisation, every Monday in Graz.'
     cta_primary: Join us
     cta_secondary: Learn more
     cta_ghost: Become a member
@@ -85,14 +86,15 @@ en:
       - title: Radical Care
         text: Not just gentleness, but also clarity. Holding your own boundaries while giving others the space to be seen.
   invitation:
-    label: A Lab for Living Together
+    label: Labs for Living Together
     heading: What happens here?
-    p1: Contact Improvisation is the playful exploration of gravity, balance, and touch. There are no fixed steps, no pressure to perform, and no assigned roles.
-    p2: Through mindful physical contact, you learn to experience your body more consciously, regulate your nervous system, and communicate boundaries — in dance and in everyday life.
+    p1: We create spaces where people meet through making. Which material sits at the centre — movement, sound, word, image — stays open. The attitude stays the same.
+    p2: 'Our current core format is Contact Improvisation: the playful exploration of gravity, balance and touch. No fixed steps, no pressure to perform, no assigned roles. You learn to experience your body more consciously, regulate your nervous system, and communicate boundaries — in dance and in everyday life.'
+    p3: More Labs are forming. If you'd like to shape one, get in touch.
     cta: To the Monday Class
   quote: For us, it’s not about the finished artwork on the wall or the perfect pose on stage — it’s about what happens between us.
   journal:
-    heading: From the Lab
+    heading: From the Labs
     all_posts: All Posts
   cta:
     heading: Stay in the loop

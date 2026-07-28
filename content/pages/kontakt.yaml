@@ -15,7 +15,7 @@ de:
     email_label: E-Mail
     email_placeholder: deine@email.at
     message_label: Nachricht
-    message_placeholder: Was möchtest du uns sagen?
+    message_placeholder: Was möchtest du uns sagen — oder welches Labor möchtest du vorschlagen?
     submit_label: Nachricht senden
     submitting_label: Wird gesendet ...
     submitted_label: Gesendet

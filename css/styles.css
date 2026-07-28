@@ -1223,6 +1223,20 @@ body.has-hero-video nav.nav-scrolled .nav-logo {
     margin-bottom: var(--space-lg);
 }
 
+/* Labs map */
+.labs-section { background: var(--sand-light); }
+.labs-intro { max-width: 680px; margin: 18px 0 0; opacity: 0.75; line-height: 1.7; }
+.labs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+.lab-card { min-height: 190px; display: flex; flex-direction: column; }
+.lab-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-sm); margin-bottom: var(--space-md); }
+.lab-card h3 { margin: 0; font-size: 1.35rem; }
+.lab-card p { margin: 0; line-height: 1.65; opacity: 0.78; }
+.lab-status { color: var(--terracotta); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; }
+.lab-link { margin-top: auto; padding-top: var(--space-md); color: var(--terracotta); font-size: 0.85rem; }
+.labs-cta { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: var(--border-subtle); text-align: center; }
+.labs-cta p { margin: 0; max-width: 620px; font-size: 1.1rem; }
+
+
 .invitation-image {
     position: relative;
 }
@@ -2908,6 +2922,7 @@ img.media-focus-bottom-right { object-position: 85% 85%; }
     .voice-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
     .journal-listing-grid { grid-template-columns: 1fr; }
+    .labs-grid { grid-template-columns: 1fr; }
     .team-grid { grid-template-columns: minmax(0, 320px); gap: var(--space-xl); }
     .philosophy-grid { grid-template-columns: 1fr; }
     .kontakt-grid { grid-template-columns: 1fr; gap: var(--space-xl); }

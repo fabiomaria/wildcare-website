@@ -53,7 +53,7 @@ en:
     label: Register now
   facts:
     date: 9–11 October 2026
-    location: Orpheumgasse, 8010 Graz
+    location: Orpheumgasse, 8020 Graz
     price: 70–200 EUR sliding scale
     duration: 2.5 days
     format:
@@ -71,13 +71,13 @@ en:
       - label: Contact Improvisation
         style: moss
     subtitle: With Fran
-    summary: How We Move Together is a two-day Contact Improvisation workshop on awareness, consent, care, trust and the structures we move within — Contact Improvisation as a political practice.
+    summary: How We Move Together is a two and a half day Contact Improvisation workshop on awareness, consent, care, trust and the structures we move within — Contact Improvisation as a political practice.
     detail_label: Learn more
   hero:
     badge: Workshop · Contact Improvisation
     headline: How We Move Together
     headline_accent: Contact Improvisation as Social Inquiry
-    subtitle: A two-day Contact Improvisation intensive moving from self-awareness through consent, care and trust to the structures we move within.
+    subtitle: A two and a half day Contact Improvisation intensive moving from self-awareness through consent, care and trust to the structures we move within.
     visual_aria: How We Move Together workshop photos
     main_alt: Dancers sharing weight in a Contact Improvisation exchange
     inset_alt: Contact Improvisation research in a shared space
@@ -87,12 +87,12 @@ en:
     label: The Practice
     heading: Contact Improvisation as Social Enquiry
     body: |-
-      Across two days, we will move through a series of carefully designed exercises, improvisational scores and collective explorations. We will work with orientation and disorientation, noticing ourselves in relation to others before making contact. We will practice recognizing invitations rather than assumptions, allowing touch to become something negotiated rather than automatic. Through weight-sharing, falling, following and supporting, we will explore how responsibility is built moment by moment—not as generosity, but as something created together.
+      Across two and a half days, we will move through a series of carefully designed exercises, improvisational scores and collective explorations. We will work with orientation and disorientation, noticing ourselves in relation to others before making contact. We will practice recognizing invitations rather than assumptions, allowing touch to become something negotiated rather than automatic. Through weight-sharing, falling, following and supporting, we will explore how responsibility is built moment by moment—not as generosity, but as something created together.
 
       **No previous experience** with Contact Improvisation is required. Only curiosity, respect and a willingness to investigate together.
   research:
     label: Program Overview
-    heading: Five thresholds over two days
+    heading: Five thresholds over two and a half days
     fields:
       - number: 00 Open Arrival Jam
         title: What is already happening?
@@ -139,7 +139,7 @@ en:
         author: Fran
   meta:
     title: How We Move Together with Fran — Workshop | Wild Care
-    description: 'How We Move Together: a two-day Contact Improvisation workshop on awareness, consent, care, trust and structure. 17-18 October 2026, Orpheumgasse, Graz.'
+    description: 'How We Move Together: a two and a half day Contact Improvisation workshop on awareness, consent, care, trust and structure. 9–11 October 2026, Orpheumgasse, Graz.'
     og_title: How We Move Together with Fran
-    og_description: A two-day Contact Improvisation workshop on awareness, consent, care, trust and structure. 17-18 October 2026, Orpheumgasse, Graz.
+    og_description: A two and a half day Contact Improvisation workshop on awareness, consent, care, trust and structure. 9–11 October 2026, Orpheumgasse, Graz.
     og_image_alt: Dancers sharing weight in a Contact Improvisation exchange.

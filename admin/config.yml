@@ -179,6 +179,10 @@ collections:
               - name: p2
                 label: Second paragraph
                 widget: text
+              - name: p3
+                label: Third paragraph
+                widget: text
+                required: false
               - name: cta
                 label: Button text
                 widget: string
@@ -957,6 +961,49 @@ collections:
                 widget: text
                 hint: 'Example: Our offerings combine bodywork, social practice, and artistic exploration.'
             i18n: true
+          - name: labs
+            label: Labs map
+            widget: object
+            collapsed: true
+            fields:
+              - name: label
+                label: Eyebrow label
+                widget: string
+              - name: heading
+                label: Heading
+                widget: string
+              - name: intro
+                label: Introduction
+                widget: text
+              - name: items
+                label: Labs
+                widget: list
+                collapsed: true
+                summary: '{{fields.name}} — {{fields.status_label}}'
+                fields:
+                  - name: name
+                    label: Name
+                    widget: string
+                  - name: status_label
+                    label: Status
+                    widget: string
+                  - name: text
+                    label: Description
+                    widget: text
+                  - name: link
+                    label: Link
+                    widget: string
+                    required: false
+              - name: cta_text
+                label: Invitation text
+                widget: text
+              - name: cta_button
+                label: Button text
+                widget: string
+              - name: cta_url
+                label: Button link
+                widget: string
+            i18n: true
           - name: core
             label: Monday class summary
             widget: object
@@ -1632,6 +1679,27 @@ collections:
           - name: core_message
             label: Core message
             widget: text
+            i18n: true
+          - name: propose
+            label: Propose a Lab
+            widget: object
+            collapsed: true
+            fields:
+              - name: label
+                label: Eyebrow label
+                widget: string
+              - name: heading
+                label: Heading
+                widget: string
+              - name: p1
+                label: First paragraph
+                widget: text
+              - name: p2
+                label: Second paragraph
+                widget: text
+              - name: button
+                label: Button text
+                widget: string
             i18n: true
           - name: circles
             label: Participation circles

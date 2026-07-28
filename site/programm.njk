@@ -52,6 +52,37 @@ permalink: programm.html
     {% include "partials/upcoming-slider.njk" %}
 
     <!-- ================================
+         LABS
+         ================================ -->
+
+    <section class="labs-section">
+        <div class="container">
+            <div class="section-header fade-up" style="margin-bottom: 40px;">
+                <p class="label" data-de="{{ de.labs.label | attr }}" data-en="{{ en.labs.label | attr }}">{{ de.labs.label }}</p>
+                <h2 data-de="{{ de.labs.heading | attr }}" data-en="{{ en.labs.heading | attr }}">{{ de.labs.heading }}</h2>
+                <p class="labs-intro" data-de="{{ de.labs.intro | attr }}" data-en="{{ en.labs.intro | attr }}">{{ de.labs.intro }}</p>
+            </div>
+            <div class="labs-grid">
+                {% for item in de.labs.items %}
+                {% set enItem = en.labs.items[loop.index0] %}
+                <article class="card lab-card fade-up delay-{{ loop.index }}">
+                    <div class="lab-card-top">
+                        <h3 data-de="{{ item.name | attr }}" data-en="{{ enItem.name | attr }}">{{ item.name }}</h3>
+                        <span class="lab-status" data-de="{{ item.status_label | attr }}" data-en="{{ enItem.status_label | attr }}">{{ item.status_label }}</span>
+                    </div>
+                    <p data-de="{{ item.text | attr }}" data-en="{{ enItem.text | attr }}">{{ item.text }}</p>
+                    {% if item.link %}<a class="lab-link" href="{{ item.link | cleanUrl }}" data-de="Mehr erfahren" data-en="Learn more">Mehr erfahren</a>{% endif %}
+                </article>
+                {% endfor %}
+            </div>
+            <div class="labs-cta fade-up">
+                <p data-de="{{ de.labs.cta_text | attr }}" data-en="{{ en.labs.cta_text | attr }}">{{ de.labs.cta_text }}</p>
+                <a href="{{ de.labs.cta_url | cleanUrl }}" class="btn btn-ghost" data-de="{{ de.labs.cta_button | attr }}" data-en="{{ en.labs.cta_button | attr }}">{{ de.labs.cta_button }}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
          MONTAGSKURS
          ================================ -->
 

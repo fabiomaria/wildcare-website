@@ -12,6 +12,12 @@ de:
     heading: Mitgestalten,<br>nicht konsumieren.
     intro: Wild Care ist kein Dienstleister und kein Studio. Wir sind ein lebendiger Organismus — und du kannst Teil davon werden.
   core_message: Wild Care lebt von Menschen, die mitgestalten. Es gibt keine starre Mitgliedschafts-Schablone — wie du dich einbringst, gestaltest du selbst.
+  propose:
+    label: Für Mitgestalter:innen
+    heading: Schlag ein Labor vor.
+    p1: Wild Care ist nicht an eine Kunstform gebunden. Wenn du mit Klang, Text, Bild, Ritual oder Essen arbeitest und einen Raum suchst, in dem Beziehung wichtiger ist als Ergebnis — erzähl uns davon.
+    p2: Du brauchst kein fertiges Konzept. Ein Impuls, ein Nachmittag, ein Experiment reicht als Anfang. Wir bringen Raum, Rahmen und Menschen; du bringst deine Praxis.
+    button: Labor vorschlagen
   circles:
     label: Zwei Kreise, ein Raum
     heading: Wie Wild Care funktioniert
@@ -32,7 +38,7 @@ de:
       p1: Menschen, die den Raum mittragen — mit Energie, Ideen, Präsenz oder finanziell. Als Mitglied hast du Zugang zu Vertiefungen und Mitsprache bei Entscheidungen.
       p2: Du gestaltest mit, was Wild Care wird.
       tags:
-        - tag: Samstags-Labs
+        - tag: Samstags-Vertiefungen
         - tag: Sharing Circles
         - tag: Gast-Workshops
         - tag: Mitsprache
@@ -55,17 +61,17 @@ de:
         name: Stamm
         amount: €35 / Jahr
         quote: „Ich trage den Raum mit.“
-        desc: Zugang zu Samstags-Labs und Sharing Circles.
+        desc: Zugang zu Samstags-Vertiefungen und Sharing Circles.
         button: Diese Stufe wählen
         aria: Mitgliedschaft Stamm, 35 Euro pro Jahr wählen
         tier_arg: Trunk (35 €)
       - icon: 🪴
         name: Wurzel
-        amount: €50+ / Jahr
+        amount: €60+ / Jahr
         quote: „Ich investiere in die Vision.“
-        desc: Samstags-Labs, Sharing Circles, Gast-Workshops und Mitsprache bei Entscheidungen.
+        desc: Samstags-Vertiefungen, Sharing Circles, Gast-Workshops und Mitsprache bei Entscheidungen.
         button: Diese Stufe wählen
-        aria: Mitgliedschaft Wurzel, 50 Euro oder mehr pro Jahr wählen
+        aria: Mitgliedschaft Wurzel, 60 Euro oder mehr pro Jahr wählen
         tier_arg: Root (60+ €)
     note: Alle Stufen sind gleichwertig. Es geht nicht um den Betrag — es geht darum, dass du da bist.
   footer:
@@ -76,6 +82,12 @@ en:
     heading: Co-create,<br>don’t consume.
     intro: Wild Care is not a service provider or a studio. We are a living organism — and you can become part of it.
   core_message: Wild Care thrives on people who co-create. There is no rigid membership template — how you contribute is up to you.
+  propose:
+    label: For Co-creators
+    heading: Propose a Lab.
+    p1: Wild Care isn't tied to a single art form. If you work with sound, text, image, ritual or food, and you're looking for a space where relationship matters more than outcome — tell us about it.
+    p2: You don't need a finished concept. An impulse, an afternoon, an experiment is enough to start. We bring space, frame and people; you bring your practice.
+    button: Propose a Lab
   circles:
     label: Two Circles, One Space
     heading: How Wild Care Works
@@ -96,7 +108,7 @@ en:
       p1: People who sustain the space — with energy, ideas, presence or financially. As a member, you have access to deeper sessions and a voice in decisions.
       p2: You help shape what Wild Care becomes.
       tags:
-        - tag: Saturday Labs
+        - tag: Saturday Deep Dives
         - tag: Sharing Circles
         - tag: Guest Workshops
         - tag: Voice in decisions
@@ -116,15 +128,15 @@ en:
       - name: Trunk
         amount: €35 / year
         quote: “I help sustain the space.”
-        desc: Access to Saturday Labs and Sharing Circles.
+        desc: Access to Saturday Deep Dives and Sharing Circles.
         button: Select this tier
         aria: Select Trunk membership, 35 euros per year
       - name: Root
-        amount: €50+ / year
+        amount: €60+ / year
         quote: “I invest in the vision.”
-        desc: Saturday Labs, Sharing Circles, guest workshops, and a voice in decisions.
+        desc: Saturday Deep Dives, Sharing Circles, guest workshops, and a voice in decisions.
         button: Select this tier
-        aria: Select Root membership, 50 euros or more per year
+        aria: Select Root membership, 60 euros or more per year
     note: All tiers are equal. It’s not about the amount — it’s about you being here.
   footer:
     connect_heading: Connect

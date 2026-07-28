@@ -6,10 +6,35 @@ de:
     route: /programm
   hero:
     label: Programm
-    heading: Bewegung als Begegnung.
-    intro: Unser Angebot verbindet Körperarbeit, soziale Praxis und künstlerische Forschung — offen für alle, die neugierig sind.
+    heading: Kunst als Begegnung.
+    intro: Unser Angebot verbindet künstlerische Forschung, Körperarbeit und soziale Praxis — offen für alle, die neugierig sind. Die einzelnen Formate nennen wir Labore.
+  labs:
+    label: Unsere Labore
+    heading: Ein Rahmen, viele Formen
+    intro: Wild Care ist nicht an eine Kunstform gebunden. Wir nennen unsere Formate Labore — jedes arbeitet mit einem anderen Material, alle mit derselben Haltung.
+    items:
+      - name: Bewegung
+        status_label: aktiv
+        text: Contact Improvisation, jeden Montag. Unser erstes und derzeit lebendigstes Labor.
+        link: montagskurs.html
+      - name: Klang
+        status_label: in Entstehung
+        text: Improvisation mit Stimme, Körper und Instrumenten. Wächst gerade aus unserer Montagspraxis heraus.
+      - name: Wort
+        status_label: in Entstehung
+        text: Schreiben als Form der Beobachtung. Beginnt im Journal und sucht ein eigenes Format.
+        link: journal.html
+      - name: Bild
+        status_label: offen für Vorschläge
+        text: Zeichnen, Fotografie, Material. Hier ist noch niemand — der Platz ist frei.
+      - name: Ritual & Tisch
+        status_label: offen für Vorschläge
+        text: Gemeinsam kochen, essen, den Jahreslauf markieren. Ein Labor, das wir uns wünschen.
+    cta_text: Du arbeitest mit einem dieser Materialien — oder einem ganz anderen?
+    cta_button: Labor vorschlagen
+    cta_url: mitmachen.html
   core:
-    label: Offenes Labor für zeitgenössischen Tanz
+    label: Unser erstes Labor · Offene Praxis für Contact Improvisation
     heading: Montagskurs
     info_title: Auf einen Blick
     rows:
@@ -54,10 +79,33 @@ de:
 en:
   hero:
     label: Programme
-    heading: Movement as Encounter.
-    intro: Our offerings combine bodywork, social practice and artistic exploration — open to anyone who is curious.
+    heading: Art as Encounter.
+    intro: Our offerings combine artistic research, bodywork and social practice — open to anyone who is curious. We call the individual formats Labs.
+  labs:
+    label: Our Labs
+    heading: One frame, many materials
+    intro: Wild Care isn't tied to a single art form. We call our formats Labs — each works with a different material, all with the same attitude.
+    items:
+      - name: Movement
+        status_label: active
+        text: Contact Improvisation, every Monday. Our first and currently most alive Lab.
+      - name: Sound
+        status_label: forming
+        text: Improvisation with voice, body and instruments. Growing out of our Monday practice.
+      - name: Word
+        status_label: forming
+        text: Writing as a form of noticing. Begins in the Journal, looking for a format of its own.
+      - name: Image
+        status_label: open for proposals
+        text: Drawing, photography, material. Nobody here yet — the place is free.
+      - name: Ritual & Table
+        status_label: open for proposals
+        text: Cooking, eating, marking the turn of the year together. A Lab we'd like to exist.
+    cta_text: Do you work with one of these materials — or something else entirely?
+    cta_button: Propose a Lab
+    cta_url: mitmachen.html
   core:
-    label: Our Core Format
+    label: Our First Lab · Open Contact Improvisation Practice
     heading: Monday Class
     info_title: At a Glance
     rows:

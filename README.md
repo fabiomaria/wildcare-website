@@ -81,6 +81,8 @@ git diff --check
 
 For rendering changes, review at least the homepage, Programme, a workshop detail page, About Us, and Contact at desktop and mobile widths.
 
+CSS is sacrosanct: do not edit `css/styles.css` or add new CSS; reuse the existing component classes in templates.
+
 ## Forms and Workers
 
 - `worker/`: homepage email signup to Notion. Stores the submitted first name in Notion's `Name` field and retains email fallback compatibility for older clients.

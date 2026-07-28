@@ -2583,6 +2583,22 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
+          "id": "fixed_page.l.invitation.p3",
+          "nullable": false,
+          "path": "locales.{locale}.invitation.p3",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.invitation.p3"
+          },
+          "v1_source": {
+            "path": "{locale}.invitation.p3"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
           "id": "fixed_page.l.journal.all_posts",
           "nullable": false,
           "path": "locales.{locale}.journal.all_posts",
@@ -2609,6 +2625,166 @@
           },
           "v1_source": {
             "path": "{locale}.journal.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.labs.cta_button",
+          "nullable": false,
+          "path": "locales.{locale}.labs.cta_button",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.labs.cta_button"
+          },
+          "v1_source": {
+            "path": "{locale}.labs.cta_button"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.labs.cta_text",
+          "nullable": false,
+          "path": "locales.{locale}.labs.cta_text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.labs.cta_text"
+          },
+          "v1_source": {
+            "path": "{locale}.labs.cta_text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.labs.cta_url",
+          "nullable": false,
+          "path": "locales.{locale}.labs.cta_url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.labs.cta_url"
+          },
+          "v1_source": {
+            "path": "{locale}.labs.cta_url"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.labs.heading",
+          "nullable": false,
+          "path": "locales.{locale}.labs.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.labs.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.labs.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.labs.intro",
+          "nullable": false,
+          "path": "locales.{locale}.labs.intro",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.labs.intro"
+          },
+          "v1_source": {
+            "path": "{locale}.labs.intro"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.labs.items.item.link",
+          "nullable": false,
+          "path": "locales.{locale}.labs.items[].link",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.labs.items[].link"
+          },
+          "v1_source": {
+            "path": "{locale}.labs.items[].link"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.labs.items.item.name",
+          "nullable": false,
+          "path": "locales.{locale}.labs.items[].name",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.labs.items[].name"
+          },
+          "v1_source": {
+            "path": "{locale}.labs.items[].name"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.labs.items.item.status_label",
+          "nullable": false,
+          "path": "locales.{locale}.labs.items[].status_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.labs.items[].status_label"
+          },
+          "v1_source": {
+            "path": "{locale}.labs.items[].status_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.labs.items.item.text",
+          "nullable": false,
+          "path": "locales.{locale}.labs.items[].text",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.labs.items[].text"
+          },
+          "v1_source": {
+            "path": "{locale}.labs.items[].text"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.labs.label",
+          "nullable": false,
+          "path": "locales.{locale}.labs.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.labs.label"
+          },
+          "v1_source": {
+            "path": "{locale}.labs.label"
           }
         },
         {
@@ -3031,22 +3207,6 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
-          "id": "fixed_page.l.meta.og_description",
-          "nullable": false,
-          "path": "locales.{locale}.meta.og_description",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.meta.og_description"
-          },
-          "v1_source": {
-            "path": "{locale}.meta.og_description"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
           "id": "fixed_page.l.meta.og_image_alt",
           "nullable": false,
           "path": "locales.{locale}.meta.og_image_alt",
@@ -3057,22 +3217,6 @@
           },
           "v1_source": {
             "path": "{locale}.meta.og_image_alt"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "fixed_page.l.meta.og_title",
-          "nullable": false,
-          "path": "locales.{locale}.meta.og_title",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.meta.og_title"
-          },
-          "v1_source": {
-            "path": "{locale}.meta.og_title"
           }
         },
         {
@@ -3345,6 +3489,86 @@
           },
           "v1_source": {
             "path": "{locale}.projects.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.propose.button",
+          "nullable": false,
+          "path": "locales.{locale}.propose.button",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.propose.button"
+          },
+          "v1_source": {
+            "path": "{locale}.propose.button"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.propose.heading",
+          "nullable": false,
+          "path": "locales.{locale}.propose.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.propose.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.propose.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.propose.label",
+          "nullable": false,
+          "path": "locales.{locale}.propose.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.propose.label"
+          },
+          "v1_source": {
+            "path": "{locale}.propose.label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.propose.p1",
+          "nullable": false,
+          "path": "locales.{locale}.propose.p1",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.propose.p1"
+          },
+          "v1_source": {
+            "path": "{locale}.propose.p1"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.propose.p2",
+          "nullable": false,
+          "path": "locales.{locale}.propose.p2",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.propose.p2"
+          },
+          "v1_source": {
+            "path": "{locale}.propose.p2"
           }
         },
         {
@@ -5332,23 +5556,7 @@
         {
           "allow_empty": false,
           "class": "G",
-          "cms_visible": true,
-          "id": "workshop.g.global.hero.video_poster",
-          "nullable": false,
-          "path": "global.hero.video_poster",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.hero.video_poster"
-          },
-          "v1_source": {
-            "path": "de.hero.video_poster"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
+          "cms_visible": false,
           "id": "workshop.g.global.id",
           "nullable": false,
           "path": "global.id",
@@ -5462,6 +5670,22 @@
           "allow_empty": false,
           "class": "G",
           "cms_visible": true,
+          "id": "workshop.g.global.primary_locale",
+          "nullable": false,
+          "path": "global.primary_locale",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.primary_locale"
+          },
+          "v1_source": {
+            "path": "de.primary_locale"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
           "enum": "availability",
           "id": "workshop.g.global.registration.availability",
           "nullable": false,
@@ -5528,38 +5752,6 @@
           "allow_empty": false,
           "class": "G",
           "cms_visible": true,
-          "id": "workshop.g.global.schedule.featured_occurrences.item.id",
-          "nullable": false,
-          "path": "global.schedule.featured_occurrences[].id",
-          "required": true,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.schedule.featured_occurrences[].id"
-          },
-          "v1_source": {
-            "path": "de.schedule.featured_occurrences[].id"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "workshop.g.global.schedule.featured_occurrences.item.teacher",
-          "nullable": false,
-          "path": "global.schedule.featured_occurrences[].teacher",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.schedule.featured_occurrences[].teacher"
-          },
-          "v1_source": {
-            "path": "de.schedule.featured_occurrences[].teacher"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
           "enum": "schedule_mode",
           "id": "workshop.g.global.schedule.mode",
           "nullable": false,
@@ -5587,103 +5779,6 @@
           },
           "v1_source": {
             "path": "de.schedule.previous_start_local"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "workshop.g.global.schedule.recurrence.anchor",
-          "nullable": false,
-          "path": "global.schedule.recurrence.anchor",
-          "required": true,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.schedule.recurrence.anchor"
-          },
-          "v1_source": {
-            "path": "de.schedule.recurrence.anchor"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "workshop.g.global.schedule.recurrence.end_time",
-          "nullable": false,
-          "path": "global.schedule.recurrence.end_time",
-          "required": true,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.schedule.recurrence.end_time"
-          },
-          "v1_source": {
-            "path": "de.schedule.recurrence.end_time"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "workshop.g.global.schedule.recurrence.except.item",
-          "nullable": false,
-          "path": "global.schedule.recurrence.except[]",
-          "required": false,
-          "type": "array",
-          "v1_downgrade": {
-            "path": "de.schedule.recurrence.except[]"
-          },
-          "v1_source": {
-            "path": "de.schedule.recurrence.except[]"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "workshop.g.global.schedule.recurrence.horizon_months",
-          "nullable": false,
-          "path": "global.schedule.recurrence.horizon_months",
-          "required": true,
-          "type": "integer",
-          "v1_downgrade": {
-            "path": "de.schedule.recurrence.horizon_months"
-          },
-          "v1_source": {
-            "path": "de.schedule.recurrence.horizon_months"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "workshop.g.global.schedule.recurrence.start_time",
-          "nullable": false,
-          "path": "global.schedule.recurrence.start_time",
-          "required": true,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.schedule.recurrence.start_time"
-          },
-          "v1_source": {
-            "path": "de.schedule.recurrence.start_time"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "enum": "weekday",
-          "id": "workshop.g.global.schedule.recurrence.weekday",
-          "nullable": false,
-          "path": "global.schedule.recurrence.weekday",
-          "required": true,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.schedule.recurrence.weekday"
-          },
-          "v1_source": {
-            "path": "de.schedule.recurrence.weekday"
           }
         },
         {
@@ -5732,23 +5827,6 @@
           },
           "v1_source": {
             "path": "de.schedule.sessions[].start_local"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "enum": "event_status",
-          "id": "workshop.g.global.schedule.sessions.item.status",
-          "nullable": false,
-          "path": "global.schedule.sessions[].status",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.schedule.sessions[].status"
-          },
-          "v1_source": {
-            "path": "de.schedule.sessions[].status"
           }
         },
         {
@@ -5994,22 +6072,6 @@
           },
           "v1_source": {
             "path": "{locale}.description.heading"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "workshop.l.description.info_title",
-          "nullable": false,
-          "path": "locales.{locale}.description.info_title",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.description.info_title"
-          },
-          "v1_source": {
-            "path": "{locale}.description.info_title"
           }
         },
         {
