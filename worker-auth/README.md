@@ -52,7 +52,7 @@ worker URL for live CMS login.
 - `ALLOWED_DOMAINS` (plain var, set in `wrangler.toml`) — comma-separated list
   of `host[:port]` values allowed to start the flow, checked against the
   request's `Origin`/`Referer`. Not secret, just an allowlist. Currently set
-  to `wildcare.space,localhost:8080,localhost:8081,localhost:8082` (the
+  to `wildcare.space,www.wildcare.space,localhost:8080,localhost:8081,localhost:8082` (the
   deployed domain plus the ports used by `npm run dev`'s Eleventy preview
   server — adjust if the site owner's local dev setup differs).
 - `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` (Worker secrets, **not**

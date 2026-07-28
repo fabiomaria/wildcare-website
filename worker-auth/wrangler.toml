@@ -7,7 +7,7 @@ compatibility_date = "2026-07-17"
 # flow (checked against the request's Origin/Referer). Not secret — this is
 # just an allowlist, not a credential. Update to match the deployed site's
 # domain plus whatever local dev port(s) are in use.
-ALLOWED_DOMAINS = "wildcare.space,localhost:8080,localhost:8081,localhost:8082"
+ALLOWED_DOMAINS = "wildcare.space,www.wildcare.space,localhost:8080,localhost:8081,localhost:8082"
 
 # Secrets (never committed, set via `wrangler secret put <NAME>`):
 #   GITHUB_CLIENT_ID
