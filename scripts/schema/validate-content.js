@@ -102,6 +102,7 @@ function validateRecord(record, { type, registry, venueIds = new Set() }) {
     const recurrence = schedule.recurrence || {};
     if (!registry.enums.weekday.includes(recurrence.weekday)) add(`recurrence.weekday invalid: ${recurrence.weekday}`);
     for (const key of ["start_time", "end_time"]) if (!/^\d{2}:\d{2}$/.test(recurrence[key] || "")) add(`recurrence.${key} must be HH:mm`);
+    if (typeof recurrence.anchor !== "string" || !LOCAL_DATE.test(recurrence.anchor)) add("recurrence.anchor must be a quoted YYYY-MM-DD string");
     const overrides = schedule.overrides || [];
     const overrideDates = new Set();
     for (const override of overrides) {
