@@ -2,19 +2,19 @@ en:
   schema_version: 2
   global:
     id: how-we-move-together
-    status: upcoming
+    primary_locale: en
+    status: current
     route: /how-we-move-together
     start_at: 2026-10-09T19:00:00.000Z
-    updated_at: 2026-07-26T10:00:00.000Z
     sort_order: 2
     detail_page: true
     registration:
       url: https://tally.so/r/lbXDW5
       availability: available
     venue: orpheumgasse
+    updated_at: 2026-07-26T10:00:00.000Z
     schedule:
       event_status: scheduled
-      previous_start_local: null
       mode: dates
       sessions:
         - id: fri-eve
@@ -47,7 +47,6 @@ en:
       og_image: assets/images/ci-cover.jpg
       og_image_width: 1200
       og_image_height: 630
-    primary_locale: en
   title: How We Move Together
   registration:
     label: Register now
