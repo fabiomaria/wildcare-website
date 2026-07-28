@@ -27,9 +27,11 @@ worker URL for live CMS login.
 ## Routes
 
 - `GET /auth` (also served at `GET /`) — starts the flow. Validates the
-  request's `Origin`/`Referer` against `ALLOWED_DOMAINS`, sets a short-lived
-  `HttpOnly` state cookie (scoped to `/callback`) for CSRF protection, and
-  redirects to `https://github.com/login/oauth/authorize` with `scope=repo`
+  request's `Origin`/`Referer` against `ALLOWED_DOMAINS` when the browser sends
+  one; top-level OAuth popups are also allowed when both headers are omitted.
+  It sets a short-lived `HttpOnly` state cookie (scoped to `/callback`) for
+  CSRF protection, and redirects to
+  `https://github.com/login/oauth/authorize` with `scope=repo`
   (Sveltia/Decap needs repo write access to commit content changes).
 - `GET /callback` — GitHub redirects here with `?code=&state=`. Validates
   `state` against the cookie set in `/auth`, exchanges

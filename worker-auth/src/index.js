@@ -18,10 +18,10 @@ function getAllowedDomains(env) {
 // Only allow the flow to be kicked off from an origin we recognize
 // (the deployed site + local Eleventy dev preview). Checks Origin first,
 // falling back to Referer since browsers don't always send Origin on a
-// top-level navigation/redirect. The GitHub -> /callback request is
-// protected by the state cookie instead because GitHub may not send a
-// useful Referer/Origin back to us.
-function isRequestFromAllowedOrigin(request, env) {
+// top-level navigation/redirect. Some browsers omit both headers when a
+// popup is opened directly, so /auth may allow a missing header; its callback
+// is still protected by the short-lived state cookie.
+function isRequestFromAllowedOrigin(request, env, { allowMissingOrigin = false } = {}) {
     const allowedDomains = getAllowedDomains(env);
     if (allowedDomains.length === 0) {
         return false;
@@ -29,7 +29,7 @@ function isRequestFromAllowedOrigin(request, env) {
 
     const originHeader = request.headers.get("Origin") || request.headers.get("Referer");
     if (!originHeader) {
-        return false;
+        return allowMissingOrigin;
     }
 
     let host;
@@ -75,7 +75,7 @@ function readCookie(request, name) {
 // GET /auth — kicks off the flow: bounce the browser to GitHub's authorize
 // screen. The CMS opens this in a popup window.
 function handleAuth(request, env) {
-    if (!isRequestFromAllowedOrigin(request, env)) {
+    if (!isRequestFromAllowedOrigin(request, env, { allowMissingOrigin: true })) {
         return textResponse("Forbidden: origin not allowed", 403);
     }
 
