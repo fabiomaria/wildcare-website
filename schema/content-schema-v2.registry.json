@@ -784,38 +784,6 @@
           "allow_empty": false,
           "class": "G",
           "cms_visible": true,
-          "id": "fixed_page.g.global.schedule.featured_occurrences.item.id",
-          "nullable": false,
-          "path": "global.schedule.featured_occurrences[].id",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.schedule.featured_occurrences[].id"
-          },
-          "v1_source": {
-            "path": "de.schedule.featured_occurrences[].id"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "fixed_page.g.global.schedule.featured_occurrences.item.teacher",
-          "nullable": false,
-          "path": "global.schedule.featured_occurrences[].teacher",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.schedule.featured_occurrences[].teacher"
-          },
-          "v1_source": {
-            "path": "de.schedule.featured_occurrences[].teacher"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
           "enum": "schedule_mode",
           "id": "fixed_page.g.global.schedule.mode",
           "nullable": false,
@@ -833,11 +801,91 @@
           "allow_empty": false,
           "class": "G",
           "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.overrides.item.date",
+          "nullable": false,
+          "path": "global.schedule.overrides[].date",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.overrides[].date"
+          },
+          "v1_source": {
+            "path": "de.schedule.overrides[].date"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.overrides.item.note_de",
+          "nullable": false,
+          "path": "global.schedule.overrides[].note_de",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.overrides[].note_de"
+          },
+          "v1_source": {
+            "path": "de.schedule.overrides[].note_de"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.overrides.item.note_en",
+          "nullable": false,
+          "path": "global.schedule.overrides[].note_en",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.overrides[].note_en"
+          },
+          "v1_source": {
+            "path": "de.schedule.overrides[].note_en"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.overrides.item.status",
+          "nullable": false,
+          "path": "global.schedule.overrides[].status",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.overrides[].status"
+          },
+          "v1_source": {
+            "path": "de.schedule.overrides[].status"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.overrides.item.teacher",
+          "nullable": false,
+          "path": "global.schedule.overrides[].teacher",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.overrides[].teacher"
+          },
+          "v1_source": {
+            "path": "de.schedule.overrides[].teacher"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
           "id": "fixed_page.g.global.schedule.previous_start_local",
           "nullable": false,
           "path": "global.schedule.previous_start_local",
           "required": false,
-          "type": "null",
+          "type": "string",
           "v1_downgrade": {
             "path": "de.schedule.previous_start_local"
           },
@@ -853,12 +901,28 @@
           "nullable": false,
           "path": "global.schedule.recurrence.anchor",
           "required": false,
-          "type": "string",
+          "type": "datetime",
           "v1_downgrade": {
             "path": "de.schedule.recurrence.anchor"
           },
           "v1_source": {
             "path": "de.schedule.recurrence.anchor"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
+          "id": "fixed_page.g.global.schedule.recurrence.default_teacher",
+          "nullable": false,
+          "path": "global.schedule.recurrence.default_teacher",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.schedule.recurrence.default_teacher"
+          },
+          "v1_source": {
+            "path": "de.schedule.recurrence.default_teacher"
           }
         },
         {
@@ -875,22 +939,6 @@
           },
           "v1_source": {
             "path": "de.schedule.recurrence.end_time"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "fixed_page.g.global.schedule.recurrence.except.item",
-          "nullable": false,
-          "path": "global.schedule.recurrence.except[]",
-          "required": false,
-          "type": "array",
-          "v1_downgrade": {
-            "path": "de.schedule.recurrence.except[]"
-          },
-          "v1_source": {
-            "path": "de.schedule.recurrence.except[]"
           }
         },
         {
@@ -2263,6 +2311,22 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
+          "id": "fixed_page.l.hero.cta_ghost_url",
+          "nullable": false,
+          "path": "locales.{locale}.hero.cta_ghost_url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.cta_ghost_url"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.cta_ghost_url"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
           "id": "fixed_page.l.hero.cta_primary",
           "nullable": false,
           "path": "locales.{locale}.hero.cta_primary",
@@ -2289,6 +2353,22 @@
           },
           "v1_source": {
             "path": "{locale}.hero.cta_secondary"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.cta_secondary_url",
+          "nullable": false,
+          "path": "locales.{locale}.hero.cta_secondary_url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.cta_secondary_url"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.cta_secondary_url"
           }
         },
         {
@@ -2385,6 +2465,54 @@
           },
           "v1_source": {
             "path": "{locale}.hero.schedule"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.show_cta_ghost",
+          "nullable": false,
+          "path": "locales.{locale}.hero.show_cta_ghost",
+          "required": false,
+          "type": "boolean",
+          "v1_downgrade": {
+            "path": "{locale}.hero.show_cta_ghost"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.show_cta_ghost"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.show_cta_primary",
+          "nullable": false,
+          "path": "locales.{locale}.hero.show_cta_primary",
+          "required": false,
+          "type": "boolean",
+          "v1_downgrade": {
+            "path": "{locale}.hero.show_cta_primary"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.show_cta_primary"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.show_cta_secondary",
+          "nullable": false,
+          "path": "locales.{locale}.hero.show_cta_secondary",
+          "required": false,
+          "type": "boolean",
+          "v1_downgrade": {
+            "path": "{locale}.hero.show_cta_secondary"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.show_cta_secondary"
           }
         },
         {
@@ -3617,22 +3745,6 @@
           },
           "v1_source": {
             "path": "{locale}.quote_band.source"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "fixed_page.l.schedule.featured_occurrences.2026_07_27.note",
-          "nullable": false,
-          "path": "locales.{locale}.schedule.featured_occurrences.2026-07-27.note",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.schedule.featured_occurrences.2026-07-27.note"
-          },
-          "v1_source": {
-            "path": "{locale}.schedule.featured_occurrences.2026-07-27.note"
           }
         },
         {

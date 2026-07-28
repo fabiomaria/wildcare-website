@@ -172,7 +172,9 @@ for (const [type, definition] of Object.entries(recordTypes)) {
 function cmsType(field) {
   if (field.widget === "boolean") return "boolean";
   if (field.widget === "number") return field.value_type === "int" ? "integer" : "number";
-  if (field.widget === "datetime") return "datetime";
+  if (field.widget === "datetime") {
+    return ["date", "time", "datetime-local"].includes(field.type) || field.time_format === false ? "string" : "datetime";
+  }
   if (field.widget === "list" && !field.fields) return "array";
   return "string";
 }

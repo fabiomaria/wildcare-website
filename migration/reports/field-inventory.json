@@ -322,24 +322,48 @@
   {
     "class": "G",
     "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.featured_occurrences.item.id",
-    "path": "global.schedule.featured_occurrences[].id",
-    "record_type": "fixed_page",
-    "source": "content/pages/*.yaml"
-  },
-  {
-    "class": "G",
-    "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.featured_occurrences.item.teacher",
-    "path": "global.schedule.featured_occurrences[].teacher",
-    "record_type": "fixed_page",
-    "source": "content/pages/*.yaml"
-  },
-  {
-    "class": "G",
-    "cms_visible": true,
     "field_id": "fixed_page.g.global.schedule.mode",
     "path": "global.schedule.mode",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.overrides.item.date",
+    "path": "global.schedule.overrides[].date",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.overrides.item.note_de",
+    "path": "global.schedule.overrides[].note_de",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.overrides.item.note_en",
+    "path": "global.schedule.overrides[].note_en",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.overrides.item.status",
+    "path": "global.schedule.overrides[].status",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.overrides.item.teacher",
+    "path": "global.schedule.overrides[].teacher",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
@@ -362,16 +386,16 @@
   {
     "class": "G",
     "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.recurrence.end_time",
-    "path": "global.schedule.recurrence.end_time",
+    "field_id": "fixed_page.g.global.schedule.recurrence.default_teacher",
+    "path": "global.schedule.recurrence.default_teacher",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
   {
     "class": "G",
     "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.recurrence.except.item",
-    "path": "global.schedule.recurrence.except[]",
+    "field_id": "fixed_page.g.global.schedule.recurrence.end_time",
+    "path": "global.schedule.recurrence.end_time",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
@@ -1058,6 +1082,14 @@
   {
     "class": "L",
     "cms_visible": true,
+    "field_id": "fixed_page.l.hero.cta_ghost_url",
+    "path": "locales.{locale}.hero.cta_ghost_url",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
     "field_id": "fixed_page.l.hero.cta_primary",
     "path": "locales.{locale}.hero.cta_primary",
     "record_type": "fixed_page",
@@ -1068,6 +1100,14 @@
     "cms_visible": true,
     "field_id": "fixed_page.l.hero.cta_secondary",
     "path": "locales.{locale}.hero.cta_secondary",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.cta_secondary_url",
+    "path": "locales.{locale}.hero.cta_secondary_url",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
@@ -1116,6 +1156,30 @@
     "cms_visible": true,
     "field_id": "fixed_page.l.hero.schedule",
     "path": "locales.{locale}.hero.schedule",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.show_cta_ghost",
+    "path": "locales.{locale}.hero.show_cta_ghost",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.show_cta_primary",
+    "path": "locales.{locale}.hero.show_cta_primary",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.show_cta_secondary",
+    "path": "locales.{locale}.hero.show_cta_secondary",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
@@ -1732,14 +1796,6 @@
     "cms_visible": true,
     "field_id": "fixed_page.l.quote_band.source",
     "path": "locales.{locale}.quote_band.source",
-    "record_type": "fixed_page",
-    "source": "content/pages/*.yaml"
-  },
-  {
-    "class": "L",
-    "cms_visible": true,
-    "field_id": "fixed_page.l.schedule.featured_occurrences.2026_07_27.note",
-    "path": "locales.{locale}.schedule.featured_occurrences.2026-07-27.note",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },

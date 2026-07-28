@@ -1298,43 +1298,73 @@ collections:
                         default: monday
                       - name: start_time
                         label: Start time
-                        widget: string
+                        widget: datetime
+                        type: time
+                        date_format: false
+                        time_format: 'HH:mm'
                         hint: '24-hour clock, no seconds. Example: 17:45.'
                       - name: end_time
                         label: End time
-                        widget: string
+                        widget: datetime
+                        type: time
+                        date_format: false
+                        time_format: 'HH:mm'
                         hint: '24-hour clock, no seconds. Example: 19:15.'
                       - name: anchor
                         label: First occurrence date
-                        widget: string
+                        widget: datetime
+                        type: date
+                        date_format: 'YYYY-MM-DD'
+                        time_format: false
                         hint: 'The very first date this weekly pattern started. Format: YYYY-MM-DD. Example: 2026-01-05.'
                       - name: horizon_months
                         label: Show occurrences this many months ahead
                         widget: number
                         value_type: int
                         hint: Does not limit the calendar subscription feed, which is unbounded.
-                      - name: except
-                        label: Skipped dates (holidays, breaks)
-                        widget: list
+                      - name: default_teacher
+                        label: Default teacher
+                        widget: string
                         required: false
-                        hint: 'Format: YYYY-MM-DD, one per entry.'
-                        field:
-                          name: date
-                          label: Date
-                          widget: string
-                  - name: featured_occurrences
-                    label: Special sessions (guest teacher, highlighted date)
+                        hint: Teacher shown for every Monday unless changed below.
+                  - name: overrides
+                    label: Changes to individual Mondays
                     widget: list
                     required: false
-                    hint: Highlights one specific Monday with its own note and dedicated page. The date must match a real Monday from the recurrence pattern above.
+                    collapsed: true
+                    minimize_collapsed: true
+                    summary: '{{fields.date}} — {{fields.status}}'
+                    hint: Add only Mondays that differ from the normal schedule. Use Cancelled for holidays or breaks.
                     fields:
-                      - name: id
+                      - name: date
                         label: Date
-                        widget: string
-                        hint: 'Format: YYYY-MM-DD. Example: 2026-11-16.'
+                        widget: datetime
+                        type: date
+                        date_format: 'YYYY-MM-DD'
+                        time_format: false
+                        hint: 'Format: YYYY-MM-DD. It must be a Monday in the recurring schedule.'
+                      - name: status
+                        label: Session status
+                        widget: select
+                        required: false
+                        options:
+                          - label: Scheduled / special
+                            value: scheduled
+                          - label: Cancelled / break
+                            value: cancelled
+                        default: scheduled
                       - name: teacher
-                        label: Guest teacher name
+                        label: Teacher for this Monday
                         widget: string
+                        required: false
+                        hint: Leave empty to use the default teacher.
+                      - name: note_de
+                        label: Note (German)
+                        widget: text
+                        required: false
+                      - name: note_en
+                        label: Note (English)
+                        widget: text
                         required: false
               - name: hero
                 label: Hero
@@ -2687,11 +2717,17 @@ collections:
                     hint: A short stable slug, e.g. fri-eve or sat-morning. Never rename after publishing — it is used as part of the calendar entry's permanent ID.
                   - name: start_local
                     label: Start
-                    widget: string
+                    widget: datetime
+                    type: datetime-local
+                    date_format: 'YYYY-MM-DD'
+                    time_format: 'HH:mm'
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T19:00.'
                   - name: end_local
                     label: End
-                    widget: string
+                    widget: datetime
+                    type: datetime-local
+                    date_format: 'YYYY-MM-DD'
+                    time_format: 'HH:mm'
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T21:00.'
                   - name: status
                     label: Status override for this session only
@@ -2734,15 +2770,24 @@ collections:
                         value: sunday
                   - name: start_time
                     label: Start time
-                    widget: string
+                    widget: datetime
+                    type: time
+                    date_format: false
+                    time_format: 'HH:mm'
                     hint: '24-hour clock, no seconds. Example: 17:45.'
                   - name: end_time
                     label: End time
-                    widget: string
+                    widget: datetime
+                    type: time
+                    date_format: false
+                    time_format: 'HH:mm'
                     hint: '24-hour clock, no seconds. Example: 19:15.'
                   - name: anchor
                     label: First occurrence date
-                    widget: string
+                    widget: datetime
+                    type: date
+                    date_format: 'YYYY-MM-DD'
+                    time_format: false
                     hint: 'The very first date this weekly pattern started (or starts). Format: YYYY-MM-DD. Example: 2026-01-05.'
                   - name: horizon_months
                     label: Show occurrences this many months ahead
@@ -2757,7 +2802,10 @@ collections:
                     field:
                       name: date
                       label: Date
-                      widget: string
+                      widget: datetime
+                      type: date
+                      date_format: 'YYYY-MM-DD'
+                      time_format: false
               - name: featured_occurrences
                 label: Special sessions (guest teacher, highlighted date)
                 widget: list
@@ -2766,7 +2814,10 @@ collections:
                 fields:
                   - name: id
                     label: Date
-                    widget: string
+                    widget: datetime
+                    type: date
+                    date_format: 'YYYY-MM-DD'
+                    time_format: false
                     hint: 'Format: YYYY-MM-DD. Example: 2026-11-16.'
                   - name: teacher
                     label: Guest teacher name
@@ -3541,11 +3592,17 @@ collections:
                     hint: A short stable slug, e.g. fri-eve or sat-morning. Never rename after publishing — it is used as part of the calendar entry's permanent ID.
                   - name: start_local
                     label: Start
-                    widget: string
+                    widget: datetime
+                    type: datetime-local
+                    date_format: 'YYYY-MM-DD'
+                    time_format: 'HH:mm'
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T19:00.'
                   - name: end_local
                     label: End
-                    widget: string
+                    widget: datetime
+                    type: datetime-local
+                    date_format: 'YYYY-MM-DD'
+                    time_format: 'HH:mm'
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T21:00.'
                   - name: status
                     label: Status override for this session only
@@ -3588,15 +3645,24 @@ collections:
                         value: sunday
                   - name: start_time
                     label: Start time
-                    widget: string
+                    widget: datetime
+                    type: time
+                    date_format: false
+                    time_format: 'HH:mm'
                     hint: '24-hour clock, no seconds. Example: 17:45.'
                   - name: end_time
                     label: End time
-                    widget: string
+                    widget: datetime
+                    type: time
+                    date_format: false
+                    time_format: 'HH:mm'
                     hint: '24-hour clock, no seconds. Example: 19:15.'
                   - name: anchor
                     label: First occurrence date
-                    widget: string
+                    widget: datetime
+                    type: date
+                    date_format: 'YYYY-MM-DD'
+                    time_format: false
                     hint: 'The very first date this weekly pattern started (or starts). Format: YYYY-MM-DD. Example: 2026-01-05.'
                   - name: horizon_months
                     label: Show occurrences this many months ahead
@@ -3611,7 +3677,10 @@ collections:
                     field:
                       name: date
                       label: Date
-                      widget: string
+                      widget: datetime
+                      type: date
+                      date_format: 'YYYY-MM-DD'
+                      time_format: false
               - name: featured_occurrences
                 label: Special sessions (guest teacher, highlighted date)
                 widget: list
@@ -3620,7 +3689,10 @@ collections:
                 fields:
                   - name: id
                     label: Date
-                    widget: string
+                    widget: datetime
+                    type: date
+                    date_format: 'YYYY-MM-DD'
+                    time_format: false
                     hint: 'Format: YYYY-MM-DD. Example: 2026-11-16.'
                   - name: teacher
                     label: Guest teacher name
@@ -4442,11 +4514,17 @@ collections:
                     hint: A short stable slug, e.g. eve. Never rename after publishing.
                   - name: start_local
                     label: Start
-                    widget: string
+                    widget: datetime
+                    type: datetime-local
+                    date_format: 'YYYY-MM-DD'
+                    time_format: 'HH:mm'
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-06-21T18:00.'
                   - name: end_local
                     label: End
-                    widget: string
+                    widget: datetime
+                    type: datetime-local
+                    date_format: 'YYYY-MM-DD'
+                    time_format: 'HH:mm'
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-06-21T22:00.'
                   - name: status
                     label: Status override for this session only
@@ -4489,15 +4567,24 @@ collections:
                         value: sunday
                   - name: start_time
                     label: Start time
-                    widget: string
+                    widget: datetime
+                    type: time
+                    date_format: false
+                    time_format: 'HH:mm'
                     hint: '24-hour clock, no seconds. Example: 17:45.'
                   - name: end_time
                     label: End time
-                    widget: string
+                    widget: datetime
+                    type: time
+                    date_format: false
+                    time_format: 'HH:mm'
                     hint: '24-hour clock, no seconds. Example: 19:15.'
                   - name: anchor
                     label: First occurrence date
-                    widget: string
+                    widget: datetime
+                    type: date
+                    date_format: 'YYYY-MM-DD'
+                    time_format: false
                     hint: 'Format: YYYY-MM-DD. Example: 2026-01-05.'
                   - name: horizon_months
                     label: Show occurrences this many months ahead
@@ -4512,7 +4599,10 @@ collections:
                     field:
                       name: date
                       label: Date
-                      widget: string
+                      widget: datetime
+                      type: date
+                      date_format: 'YYYY-MM-DD'
+                      time_format: false
               - name: featured_occurrences
                 label: Special sessions (guest teacher, highlighted date)
                 widget: list
@@ -4521,7 +4611,10 @@ collections:
                 fields:
                   - name: id
                     label: Date
-                    widget: string
+                    widget: datetime
+                    type: date
+                    date_format: 'YYYY-MM-DD'
+                    time_format: false
                     hint: 'Format: YYYY-MM-DD. Example: 2026-11-16.'
                   - name: teacher
                     label: Guest teacher name

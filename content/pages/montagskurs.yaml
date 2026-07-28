@@ -8,18 +8,33 @@ de:
     updated_at: 2026-07-26T10:00:00.000Z
     schedule:
       event_status: scheduled
-      previous_start_local: null
       mode: recurring
       recurrence:
         weekday: monday
-        start_time: '17:45'
-        end_time: '19:15'
-        anchor: '2026-01-05'
+        start_time: 17:45
+        end_time: 19:15
+        anchor: 2026-01-05
         horizon_months: 6
-        except: []
-      featured_occurrences:
-        - id: '2026-07-27'
+        default_teacher: Verena Eidenberger
+      overrides:
+        - date: '2026-07-27'
           teacher: Liane Mah
+          note_de: The Tai Chi of Contact Improvisation
+          note_en: The Tai Chi of Contact Improvisation
+        - date: '2026-08-03'
+          status: cancelled
+          note_de: Sommerpause
+          note_en: Summer Break
+        - date: '2026-08-10'
+          status: cancelled
+          note_de: Sommerpause
+          note_en: Summer Break
+        - date: '2026-08-17'
+          status: cancelled
+        - date: '2026-08-24'
+          status: cancelled
+        - date: '2026-08-31'
+          status: cancelled
     hero:
       image: assets/images/warum-ci.jpg
     practice:
@@ -57,7 +72,7 @@ de:
         text: Durch achtsame Bewegung und Berührung dein Nervensystem beruhigen — ganz nebenbei.
       - title: Freies Tanzen
         text: Jede Session mündet in eine offene Jam — eine freie Tanzzeit, in der alles passieren darf.
-    donation_note: "Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20\_€ pro Termin, ganz so, wie es für dich passt."
+    donation_note: Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20 € pro Termin, ganz so, wie es für dich passt.
   testimonials:
     label: Feedback
     heading: Was Teilnehmer:innen sagen
@@ -91,7 +106,7 @@ de:
       - q: Brauche ich Tanzerfahrung?
         a: Nein, gar keine. Wir beginnen immer bei Null und bauen langsam auf. Jede:r ist willkommen — genau so, wie du bist.
       - q: Was kostet es?
-        a: "Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20\_€ pro Termin."
+        a: Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20 € pro Termin.
   crosslink:
     label: Aktuelles Projekt
     heading: Cellular Touch
@@ -107,10 +122,6 @@ de:
   meta:
     title: Montagskurs — Contact Improvisation in Graz | Wild Care
     description: Offener Contact Improvisation Workshop in Graz. Jeden Montag 17:45, Orpheumgasse 11. Auf Spendenbasis, keine Vorkenntnisse nötig.
-  schedule:
-    featured_occurrences:
-      '2026-07-27':
-        note: Besonderer Abend mit Gastlehrperson.
 en:
   breadcrumb: Monday Class
   hero:
@@ -141,7 +152,7 @@ en:
         text: Calm your nervous system through mindful movement and touch — naturally, along the way.
       - title: Free Dance
         text: Each session flows into an open jam — a free dance time where anything can happen.
-    donation_note: "The class is donation-based. You give what you can. As a guideline, 10–20\_€ per session helps us, whatever feels right for you."
+    donation_note: The class is donation-based. You give what you can. As a guideline, 10–20 € per session helps us, whatever feels right for you.
   testimonials:
     label: Feedback
     heading: What participants say
@@ -169,7 +180,7 @@ en:
       - q: Do I need dance experience?
         a: None at all. We always start from zero and build up slowly. Everyone is welcome — just as you are.
       - q: How much does it cost?
-        a: "The class is donation-based. You give what you can. As a guideline, 10–20\_€ per session helps us."
+        a: The class is donation-based. You give what you can. As a guideline, 10–20 € per session helps us.
   crosslink:
     label: Current Project
     heading: Cellular Touch
@@ -182,7 +193,3 @@ en:
     button: Sign up now
   footer:
     connect_heading: Connect
-  schedule:
-    featured_occurrences:
-      '2026-07-27':
-        note: Special evening with a guest teacher.

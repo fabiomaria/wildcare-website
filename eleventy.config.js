@@ -567,8 +567,8 @@ function loadMontagskursFeatured(cal) {
     date_label_de: calendar.formatNextOccurrence(def.recurrence.weekday, occurrence.start_local, "de"),
     date_label_en: calendar.formatNextOccurrence(def.recurrence.weekday, occurrence.start_local, "en"),
     time_label: `${occurrence.start_local.slice(11, 16)}–${occurrence.end_local.slice(11, 16)}`,
-    note_de: def.locales.de?.schedule?.featured_occurrences?.[occurrence.id]?.note || "",
-    note_en: def.locales.en?.schedule?.featured_occurrences?.[occurrence.id]?.note || "",
+    note_de: occurrence.note_de || "",
+    note_en: occurrence.note_en || "",
     href: `montagskurs/${occurrence.id}.html`, def,
   }));
 }
@@ -611,8 +611,9 @@ function buildUpcomingCard({ def, kind, occurrence }) {
 
   let subtitle = null;
   if (kind === "featured") {
-    const noteDe = def.locales.de?.schedule?.featured_occurrences?.[occurrence.id]?.note;
-    const noteEn = def.locales.en?.schedule?.featured_occurrences?.[occurrence.id]?.note;
+    const override = (def.overrides || []).find((item) => item.id === occurrence.id);
+    const noteDe = override?.note_de;
+    const noteEn = override?.note_en;
     if (noteDe || noteEn) subtitle = { de: noteDe || noteEn, en: noteEn || noteDe };
   } else if (def.locales.de?.subtitle || def.locales.en?.subtitle) {
     subtitle = { de: def.locales.de?.subtitle || def.locales.en?.subtitle, en: def.locales.en?.subtitle || def.locales.de?.subtitle };
@@ -628,7 +629,7 @@ function buildUpcomingCard({ def, kind, occurrence }) {
     venueName: def.venue.name,
     detailHref: kind === "featured" ? `/montagskurs/${occurrence.id}` : def.route,
     icsHref: `/calendar/${def.id}.ics`,
-    teacher: kind === "featured" ? occurrence.teacher || null : null,
+    teacher: occurrence?.teacher || null,
   };
 }
 

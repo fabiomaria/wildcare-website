@@ -5,7 +5,7 @@ pagination:
   alias: occ
 permalink: "montagskurs/{{ occ.date }}.html"
 ---
-{%- set seoMeta = { title: 'Montagskurs mit ' ~ occ.teacher ~ ' — ' ~ occ.date_label_de ~ ' | Wild Care', description: (occ.note_de or 'Besonderer Montagskurs für Contact Improvisation in Graz.') ~ ' ' ~ occ.date_label_de ~ ', ' ~ occ.time_label ~ '.' } -%}
+{%- set seoMeta = { title: 'Montagskurs' ~ (' mit ' ~ occ.teacher if occ.teacher else '') ~ ' — ' ~ occ.date_label_de ~ ' | Wild Care', description: (occ.note_de or 'Besonderer Montagskurs für Contact Improvisation in Graz.') ~ ' ' ~ occ.date_label_de ~ ', ' ~ occ.time_label ~ '.' } -%}
 {%- set seoCanonical = 'https://wildcare.space/montagskurs/' ~ occ.date -%}
 {%- set seoLocale = 'de_AT' -%}
 {%- set seoFallbackImage = 'assets/images/social preview.jpg' -%}

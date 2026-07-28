@@ -7,6 +7,8 @@ const {
 } = require("./lib");
 
 const LOCAL_DT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?$/;
+const LOCAL_DATE = /^\d{4}-\d{2}-\d{2}$/;
+const WEEKDAY_NUM = { sunday: 0, monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5, saturday: 6 };
 
 function getPath(value, dotted) {
   const parts = dotted.split(".");
@@ -100,6 +102,19 @@ function validateRecord(record, { type, registry, venueIds = new Set() }) {
     const recurrence = schedule.recurrence || {};
     if (!registry.enums.weekday.includes(recurrence.weekday)) add(`recurrence.weekday invalid: ${recurrence.weekday}`);
     for (const key of ["start_time", "end_time"]) if (!/^\d{2}:\d{2}$/.test(recurrence[key] || "")) add(`recurrence.${key} must be HH:mm`);
+    const overrides = schedule.overrides || [];
+    const overrideDates = new Set();
+    for (const override of overrides) {
+      if (typeof override.date !== "string" || !LOCAL_DATE.test(override.date)) add("schedule.overrides[].date must be YYYY-MM-DD");
+      else if (new Date(`${override.date}T00:00:00Z`).getUTCDay() !== WEEKDAY_NUM[recurrence.weekday]) {
+        add(`schedule.overrides[].date must fall on ${recurrence.weekday}: ${override.date}`);
+      }
+      if (overrideDates.has(override.date)) add(`schedule.overrides[]: duplicate date: ${override.date}`);
+      overrideDates.add(override.date);
+      if (!["scheduled", "cancelled"].includes(override.status || "scheduled")) {
+        add(`schedule.overrides[].status invalid: ${override.status}`);
+      }
+    }
   }
   if (schedule) {
     const globalIds = new Set((schedule.featured_occurrences || []).map((item) => item.id));

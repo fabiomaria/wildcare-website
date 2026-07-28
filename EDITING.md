@@ -95,6 +95,22 @@ page → Contact form` gibt es entsprechend eigene Texte für `Sending`,
 hervorgehobenen Status; diese Texte sollten deshalb kurz und eindeutig
 bleiben.
 
+### Montagskurs: Lehrer:innen und Pausen
+
+Unter `Seiten → Montagskurs → Shared settings → Structured schedule` findest
+du die wöchentliche Grundregel und die individuellen Änderungen:
+
+- `Default teacher` ist die Person, die standardmäßig für jeden Montag angezeigt wird.
+- Unter `Changes to individual Mondays` legst du nur Montags-Termine an, die
+  davon abweichen. Du kannst dort eine andere Lehrperson eintragen oder den
+  Termin als `Cancelled / break` markieren.
+- Das Datum muss im Format `YYYY-MM-DD` eingetragen werden und ein Montag sein.
+  Optional kannst du eine Notiz auf Deutsch und Englisch ergänzen.
+
+Pausen werden nicht mehr in einer separaten Liste gepflegt: Für jeden
+ausgefallenen Montag gibt es genau einen Eintrag unter `Changes to individual
+Mondays`.
+
 **Navigation:** Unter `Website navigation and footer → Navigation & Footer`
 lassen sich die Texte und Ziele aller sechs Navigationslinks bearbeiten.
 Die Textfelder werden über den DE/EN-Sprachumschalter übersetzt; jedes
