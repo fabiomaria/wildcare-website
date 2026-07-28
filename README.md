@@ -95,6 +95,8 @@ Never commit Worker secrets. They are managed through Wrangler.
 
 Pushing the `production` branch triggers `.github/workflows/deploy.yml`, which builds `_site/` and deploys it to GitHub Pages.
 
+Because the CMS also commits directly to `production`, fetch and rebase onto the latest remote branch before pushing local changes (for example, `git fetch origin production && git rebase origin/production`).
+
 Generated pages append a content hash to `css/styles.css`. This prevents GitHub Pages and Cloudflare from combining newly deployed HTML with an older cached stylesheet; keep stylesheet references tied to the global `assetVersion` value in `eleventy.config.js`.
 
 The signup Worker is deployed separately:
