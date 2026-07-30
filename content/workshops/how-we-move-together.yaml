@@ -69,13 +69,13 @@ en:
         style: default
       - label: Contact Improvisation
         style: moss
-    subtitle: With Fran
+    subtitle: with fran
     summary: How We Move Together is a two and a half day Contact Improvisation workshop on awareness, consent, care, trust and the structures we move within — Contact Improvisation as a political practice.
     detail_label: Learn more
   hero:
     badge: Workshop · Contact Improvisation
     headline: How We Move Together
-    headline_accent: Contact Improvisation as Social Inquiry
+    headline_accent: Contact Improvisation as Social Enquiry
     subtitle: A two and a half day Contact Improvisation intensive moving from self-awareness through consent, care and trust to the structures we move within.
     visual_aria: How We Move Together workshop photos
     main_alt: Dancers sharing weight in a Contact Improvisation exchange
@@ -95,7 +95,7 @@ en:
     fields:
       - number: 00 Open Arrival Jam
         title: What is already happening?
-        text: 'Before introducing concepts or exercises, we begin by dancing. The jam becomes our first observation: What attracts attention? How is space already organised? Which relationships begin to emerge? This space is open for non-participants.'
+        text: 'Before introducing concepts or exercises, we begin by dancing. The jam becomes our first observation: What attracts attention? How is space already organised? Which relationships begin to emerge? The first jam is open to everyone, including people who are not taking part in the workshop, as long as there is enough room for everyone to move and fall safely.'
       - number: 01 Space ↔ Self-awareness
         title: How do I know where I am?
         text: Through practices of perception, vision, peripheral awareness and self-orientation, we investigate how awareness of ourselves shapes every subsequent relationship. Rather than treating attention as passive observation, we explore it as an active practice.
@@ -124,21 +124,21 @@ en:
   facilitators:
     label: Facilitator
     members:
-      - name: Fran
+      - name: fran
         image: /assets/uploads/mmexport1777769572196.webp
         image_focus: center
-        alt: Fran
-        role: Contact Improvisation · Social Inquiry
+        alt: fran
+        role: Contact Improvisation · Social Enquiry
         bio: |-
-          Contact Improvisation facilitator, researcher and writer exploring movement as a form of social inquiry. His work investigates how attention, touch, consent and cooperation emerge through embodied practice, treating Contact Improvisation as both a dance form and a way of studying how we organise ourselves together.
+          Contact Improvisation facilitator, researcher and writer exploring movement as a form of social enquiry. His work investigates how attention, touch, consent and cooperation emerge through embodied practice, treating Contact Improvisation as both a dance form and a way of studying how we organise ourselves together.
 
           Drawing from experiences across Europe, Latin America and Asia, he designs workshops that combine movement research with curiosity, critical reflection and collective experimentation.
     quotes:
-      - quote: “Don’t be polite, be precise. Don’t impose, propose. Don’t lift, accompany.”
-        author: Fran
+      - quote: “Don’t impose, propose. Don’t lift, accompany. Find balance in mutual respect, not control.”
+        author: fran
   meta:
-    title: How We Move Together with Fran — Workshop | Wild Care
+    title: How We Move Together with fran — Workshop | Wild Care
     description: 'How We Move Together: a two and a half day Contact Improvisation workshop on awareness, consent, care, trust and structure. 9–11 October 2026, Orpheumgasse, Graz.'
-    og_title: How We Move Together with Fran
+    og_title: How We Move Together with fran
     og_description: A two and a half day Contact Improvisation workshop on awareness, consent, care, trust and structure. 9–11 October 2026, Orpheumgasse, Graz.
     og_image_alt: Dancers sharing weight in a Contact Improvisation exchange.

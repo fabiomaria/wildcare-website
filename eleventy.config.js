@@ -552,6 +552,7 @@ function loadEventContent() {
     const primary = global.intended_locales?.[0] || "de";
     return {
       slug: global.id, route: global.route, page_mode: global.page_mode || "minimal",
+      related_workshop: global.related_workshop || null,
       primary_locale: primary, de: raw.locales?.de || {}, en: raw.locales?.en || {},
       href: `events/${global.id}.html`,
     };

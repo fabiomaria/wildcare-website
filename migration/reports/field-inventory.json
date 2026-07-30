@@ -50,6 +50,14 @@
   {
     "class": "G",
     "cms_visible": true,
+    "field_id": "event.g.global.related_workshop",
+    "path": "global.related_workshop",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
     "field_id": "event.g.global.route",
     "path": "global.route",
     "record_type": "event",

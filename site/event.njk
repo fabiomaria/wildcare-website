@@ -74,6 +74,13 @@ permalink: "{{ event.href }}"
           {%- set calId = event.slug -%}
           {% include "partials/add-to-calendar.njk" %}
         </div>
+{% if event.related_workshop %}
+        <p class="event-related-link">
+          <a class="btn btn-secondary" href="/{{ event.related_workshop }}"
+              data-de="Mehr über den Workshop"
+              data-en="Learn more about the workshop">Mehr über den Workshop</a>
+        </p>
+{% endif %}
       </div>
     </header>
   </main>

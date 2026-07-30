@@ -211,6 +211,22 @@
           "allow_empty": false,
           "class": "G",
           "cms_visible": true,
+          "id": "event.g.global.related_workshop",
+          "nullable": false,
+          "path": "global.related_workshop",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.related_workshop"
+          },
+          "v1_source": {
+            "path": "de.related_workshop"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
           "id": "event.g.global.route",
           "nullable": false,
           "path": "global.route",

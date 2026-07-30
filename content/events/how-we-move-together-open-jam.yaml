@@ -1,0 +1,29 @@
+schema_version: 2
+global:
+  id: how-we-move-together-open-jam
+  intended_locales:
+    - de
+    - en
+  status: upcoming
+  route: /events/how-we-move-together-open-jam
+  event_type: jam
+  page_mode: minimal
+  related_workshop: how-we-move-together
+  venue: orpheumgasse
+  start_at: 2026-10-09T19:00:00.000Z
+  updated_at: 2026-07-30T14:44
+  sort_order: 1
+  schedule:
+    event_status: scheduled
+    mode: dates
+    sessions:
+      - id: opening
+        start_local: 2026-10-09T19:00
+        end_local: 2026-10-09T21:00
+locales:
+  de:
+    title: Offene Jam — How We Move Together
+    summary: Eine offene Contact-Improvisation-Jam vor dem Wochenendworkshop. Alle sind willkommen.
+  en:
+    title: Open Arrival Jam — How We Move Together
+    summary: An open Contact Improvisation jam. Everyone is welcome.

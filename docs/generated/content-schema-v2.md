@@ -20,6 +20,7 @@ Templates: `event`
 | `event.g.global.page_mode` | G | `global.page_mode` | string | no | yes |
 | `event.g.global.registration.availability` | G | `global.registration.availability` | string | no | yes |
 | `event.g.global.registration.url` | G | `global.registration.url` | string | no | yes |
+| `event.g.global.related_workshop` | G | `global.related_workshop` | string | no | yes |
 | `event.g.global.route` | G | `global.route` | string | no | yes |
 | `event.g.global.schedule.event_status` | G | `global.schedule.event_status` | string | no | yes |
 | `event.g.global.schedule.featured_occurrences.item.id` | G | `global.schedule.featured_occurrences[].id` | string | yes | yes |

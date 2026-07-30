@@ -4426,6 +4426,18 @@ collections:
             options:
               - minimal
               - full
+          - name: related_workshop
+            label: Related workshop
+            widget: relation
+            collection: workshops_en
+            search_fields:
+              - global.id
+              - en.title
+            value_field: global.id
+            display_fields:
+              - en.title
+            required: false
+            hint: Optional workshop this event belongs to. Adds a link on the event page.
           - name: venue
             label: Venue
             widget: relation
