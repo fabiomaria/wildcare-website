@@ -19,7 +19,7 @@ const PAGE_ROUTES = {
   mitmachen: "/mitmachen",
 };
 
-const FLOATING_LOCAL_WITH_OPTIONAL_SECONDS = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2})(?::\d{2}(?:\.\d{1,3})?)?$/;
+const FLOATING_LOCAL_WITH_OPTIONAL_SECONDS = /^(\d{4}-\d{2}-\d{2})[ T](\d{2}:\d{2})(?::\d{2}(?:\.\d{1,3})?)?$/;
 
 // Sveltia's datetime widget may serialize a local datetime with seconds even
 // though the content contract stores floating-local values at minute precision.
@@ -37,7 +37,7 @@ function normalizeCalendarRecord(record) {
       const match = typeof session[key] === "string"
         ? session[key].match(FLOATING_LOCAL_WITH_OPTIONAL_SECONDS)
         : null;
-      if (match) session[key] = match[1];
+      if (match) session[key] = `${match[1]}T${match[2]}`;
     }
   }
 
@@ -47,6 +47,9 @@ function normalizeCalendarRecord(record) {
     .sort();
   if (starts.length && (global.start_at === undefined || global.start_at === null || global.start_at === "")) {
     global.start_at = `${starts[0]}:00.000Z`;
+  }
+  if ((global.updated_at === undefined || global.updated_at === null || global.updated_at === "") && global.start_at) {
+    global.updated_at = global.start_at instanceof Date ? global.start_at.toISOString() : String(global.start_at);
   }
   return record;
 }

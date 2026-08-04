@@ -1,0 +1,8 @@
+schema_version: 2
+global:
+  id: graz-andritz
+  name: Graz, Andritz
+  street: Andritz
+  postal_code: '8045'
+  city: Graz
+  country: AT

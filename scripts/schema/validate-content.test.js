@@ -35,7 +35,7 @@ test("CMS datetime output is normalized before validation", () => {
       schedule: {
         event_status: "scheduled",
         mode: "dates",
-        sessions: [{ id: "session", start_local: "2026-08-10T17:30:00", end_local: "2026-08-10T19:00:00.000" }],
+        sessions: [{ id: "session", start_local: "2026-08-10 17:30", end_local: "2026-08-10 19:00" }],
       },
     },
     locales: { en: { title: "CMS Event", summary: "Normalized CMS output." } },
@@ -44,5 +44,6 @@ test("CMS datetime output is normalized before validation", () => {
   assert.equal(normalized.global.schedule.sessions[0].start_local, "2026-08-10T17:30");
   assert.equal(normalized.global.schedule.sessions[0].end_local, "2026-08-10T19:00");
   assert.equal(normalized.global.start_at, "2026-08-10T17:30:00.000Z");
+  assert.equal(normalized.global.updated_at, "2026-08-10T17:30:00.000Z");
   assert.deepEqual(validateRecord(record, { type: "event", registry, venueIds }).errors, []);
 });
