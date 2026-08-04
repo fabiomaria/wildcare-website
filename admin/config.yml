@@ -141,29 +141,6 @@ collections:
                 i18n: false
                 hint: Enter an internal path such as mitmachen or an external URL.
             i18n: true
-          - name: event_banner
-            label: Event banner
-            widget: object
-            collapsed: true
-            fields:
-              - name: tag
-                label: Optional event badge
-                widget: string
-                required: false
-                hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
-              - name: day
-                label: Day label
-                widget: string
-              - name: time
-                label: Time
-                widget: string
-              - name: address
-                label: Address
-                widget: string
-              - name: basis
-                label: Pricing / donation basis
-                widget: string
-            i18n: true
           - name: values
             label: Four values
             widget: object

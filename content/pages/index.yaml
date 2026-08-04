@@ -20,12 +20,6 @@ de:
     show_cta_ghost: true
     cta_ghost: Mitglied werden
     cta_ghost_url: mitmachen
-  event_banner:
-    tag: Nächster Termin
-    day: Jeden Montag
-    time: 17:45 – 19:15
-    address: Orpheumgasse 11, Graz
-    basis: Spendenbasis
   values:
     label: Was uns leitet
     heading: Vier Haltungen
@@ -75,10 +69,6 @@ en:
     cta_primary: Join us
     cta_secondary: Learn more
     cta_ghost: Become a member
-  event_banner:
-    tag: Next Session
-    day: Every Monday
-    basis: Donation-based
   values:
     label: What guides us
     heading: Four Principles
