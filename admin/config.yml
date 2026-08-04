@@ -35,6 +35,12 @@ collections:
       - name: startseite
         label: Homepage
         file: content/pages/index.yaml
+        i18n:
+          locales:
+            - de
+            - en
+          default_locale: de
+          initial_locales: all
         fields:
           - name: schema_version
             label: Schema version
@@ -297,7 +303,6 @@ collections:
                 required: false
                 hint: Describe what is visible in the custom image. Required when a custom social image is used.
             i18n: true
-        i18n: true
       - name: kontakt
         label: Contact page
         file: content/pages/kontakt.yaml

@@ -68,10 +68,10 @@ for (const collection of config.collections) {
   const entries = collection.files || (collection.fields ? [collection] : []);
   for (const entry of entries) {
     if (["journal_bodies", "legal_bodies"].includes(collection.name)) continue;
-    const isNativeFixed = isFixedI18n && entry.i18n === true;
+    const isNativeFixed = isFixedI18n && (entry.i18n === true || typeof entry.i18n === "object");
     const isNativePrimary = isPrimaryI18n && Boolean(collection.i18n);
     if (entry.i18n && !isFixedI18n && !isPrimaryI18n) errors.push(`${collection.name}/${entry.name || "<folder>"}: native i18n is only enabled for migrated content`);
-    if (isFixedI18n && entry.i18n !== true) errors.push(`${collection.name}/${entry.name || "<folder>"}: file-level native i18n must be enabled`);
+    if (isFixedI18n && !isNativeFixed) errors.push(`${collection.name}/${entry.name || "<folder>"}: file-level native i18n must be enabled`);
     const fields = fieldMap(entry.fields);
     const requiredFields = collection.name === "venues" || isNativeFixed || isNativePrimary
       ? ["schema_version", "global"]
