@@ -1,0 +1,19 @@
+schema_version: 2
+global:
+  id: garden-jam
+  intended_locales:
+    - de
+  status: current
+  route: garden jam
+  event_type: jam
+  page_mode: minimal
+  registration:
+    url: https://tally.so/r/2EYXlp
+    availability: available
+  schedule:
+    event_status: scheduled
+    mode: dates
+    sessions:
+      - id: garden-jam
+        start_local: 2026-08-10 17:30
+        end_local: 2026-08-16 21:00
