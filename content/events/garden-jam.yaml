@@ -4,10 +4,9 @@ global:
   intended_locales:
     - de
   status: current
-  route: /events/garden-jam
+  route: garden jam
   event_type: jam
   page_mode: minimal
-  venue: graz-andritz
   registration:
     url: https://tally.so/r/2EYXlp
     availability: available
@@ -17,7 +16,7 @@ global:
     sessions:
       - id: garden-jam
         start_local: 2026-08-10 17:30
-        end_local: 2026-08-16 21:00
+        end_local: 2026-08-10 21:00
 locales:
   de:
     title: Community Jam im Garten
