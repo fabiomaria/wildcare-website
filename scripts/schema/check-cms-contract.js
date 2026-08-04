@@ -59,6 +59,18 @@ function inspectEnums(fields, collectionName) {
   }
 }
 
+function inspectNestedI18n(fields, scope, inherited = false, pathParts = []) {
+  for (const field of fields || []) {
+    const fieldPath = [...pathParts, field.name];
+    if (inherited && field.i18n === undefined) {
+      errors.push(`${scope}: ${fieldPath.join(".")} must declare i18n explicitly so it remains editable in non-default locales`);
+    }
+    const childInherited = field.i18n === true || (field.i18n === undefined && inherited);
+    inspectNestedI18n(field.fields, scope, childInherited, fieldPath);
+    inspectNestedI18n(field.types, scope, childInherited, fieldPath);
+  }
+}
+
 for (const collection of config.collections) {
   const isPages = collection.name === "seiten";
   const isFixedI18n = isPages || collection.name === "website";
@@ -72,6 +84,14 @@ for (const collection of config.collections) {
     const isNativePrimary = isPrimaryI18n && Boolean(collection.i18n);
     if (entry.i18n && !isFixedI18n && !isPrimaryI18n) errors.push(`${collection.name}/${entry.name || "<folder>"}: native i18n is only enabled for migrated content`);
     if (isFixedI18n && !isNativeFixed) errors.push(`${collection.name}/${entry.name || "<folder>"}: file-level native i18n must be enabled`);
+    if (isPages && (
+      typeof entry.i18n !== "object" ||
+      JSON.stringify(entry.i18n.locales) !== JSON.stringify(registry.supported_locales) ||
+      entry.i18n.default_locale !== "de" ||
+      entry.i18n.initial_locales !== "all"
+    )) {
+      errors.push(`seiten/${entry.name}: must explicitly initialize German and English at file level`);
+    }
     const fields = fieldMap(entry.fields);
     const requiredFields = collection.name === "venues" || isNativeFixed || isNativePrimary
       ? ["schema_version", "global"]
@@ -110,6 +130,8 @@ for (const collection of config.collections) {
           errors.push(`${collection.name}/${entry.name}: ${name} must use native i18n`);
         }
       }
+      if (isPages) inspectNestedI18n(entry.fields, "seiten", false, [entry.name]);
+      if (isNativePrimary) inspectNestedI18n(entry.fields, collection.name, false);
       const nativeTeam = isPages && entry.name === "team";
       if (!nativeTeam) {
         inspectEnums(entry.fields, collection.name);

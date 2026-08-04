@@ -99,10 +99,12 @@ collections:
               - name: heading
                 label: Heading
                 widget: string
+                i18n: true
                 hint: 'Example: Movement as encounter. Use <br> for an intentional line break.'
               - name: tagline
                 label: Subtitle
                 widget: text
+                i18n: true
               - name: show_cta_primary
                 label: Show “Visit” button
                 widget: boolean
@@ -112,6 +114,7 @@ collections:
               - name: cta_primary
                 label: Visit button text
                 widget: string
+                i18n: true
               - name: cta_primary_url
                 label: Visit button link (optional)
                 widget: string
@@ -126,6 +129,7 @@ collections:
               - name: cta_secondary
                 label: Learn more button text
                 widget: string
+                i18n: true
               - name: cta_secondary_url
                 label: Learn more button link
                 widget: string
@@ -140,6 +144,7 @@ collections:
               - name: cta_ghost
                 label: Membership button text
                 widget: string
+                i18n: true
               - name: cta_ghost_url
                 label: Membership button link
                 widget: string
@@ -156,13 +161,16 @@ collections:
                 label: Optional eyebrow label
                 widget: string
                 required: false
+                i18n: true
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
                 label: Heading
                 widget: string
+                i18n: true
               - name: cards
                 label: Cards
                 widget: list
+                i18n: true
                 collapsed: true
                 minimize_collapsed: true
                 summary: '{{fields.title}}'
@@ -173,9 +181,11 @@ collections:
                   - name: title
                     label: Title
                     widget: string
+                    i18n: true
                   - name: text
                     label: Text
                     widget: text
+                    i18n: true
             i18n: true
           - name: invitation
             label: Invitation section
@@ -186,23 +196,29 @@ collections:
                 label: Optional eyebrow label
                 widget: string
                 required: false
+                i18n: true
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
                 label: Heading
                 widget: string
+                i18n: true
               - name: p1
                 label: First paragraph
                 widget: text
+                i18n: true
               - name: p2
                 label: Second paragraph
                 widget: text
+                i18n: true
               - name: p3
                 label: Third paragraph
                 widget: text
                 required: false
+                i18n: true
               - name: cta
                 label: Button text
                 widget: string
+                i18n: true
             i18n: true
           - name: quote
             label: Manifest quote
@@ -216,9 +232,11 @@ collections:
               - name: heading
                 label: Heading
                 widget: string
+                i18n: true
               - name: all_posts
                 label: All articles button text
                 widget: string
+                i18n: true
             i18n: true
           - name: cta
             label: Email signup
@@ -228,53 +246,67 @@ collections:
               - name: heading
                 label: Heading
                 widget: string
+                i18n: true
               - name: text
                 label: Text
                 widget: text
+                i18n: true
               - name: first_name_label
                 label: First-name field label
                 widget: string
+                i18n: true
                 hint: 'Example: First name.'
               - name: first_name_placeholder
                 label: First-name placeholder
                 widget: string
+                i18n: true
                 hint: 'Example: Your first name.'
               - name: email_label
                 label: Email field label
                 widget: string
+                i18n: true
                 hint: 'Example: Email address.'
               - name: email_placeholder
                 label: Email placeholder
                 widget: string
+                i18n: true
                 hint: 'Example: you@example.com.'
               - name: submit
                 label: Submit button text
                 widget: string
+                i18n: true
               - name: submitting
                 label: Submitting button text
                 widget: string
+                i18n: true
                 hint: 'Example: Signing you up ...'
               - name: submitted
                 label: Completed button text
                 widget: string
+                i18n: true
                 hint: 'Example: Signed up.'
               - name: success
                 label: Success message
                 widget: string
+                i18n: true
                 hint: 'Example: Thanks! You are on the list.'
               - name: error
                 label: Error message
                 widget: string
+                i18n: true
                 hint: 'Example: Something went wrong. Please try again.'
               - name: consent_pre
                 label: Consent text before link
                 widget: string
+                i18n: true
               - name: consent_link
                 label: Consent link text
                 widget: string
+                i18n: true
               - name: consent_post
                 label: Consent text after link
                 widget: string
+                i18n: true
             i18n: true
           - name: meta
             label: Advanced SEO and social sharing (review last)
@@ -284,23 +316,28 @@ collections:
               - name: title
                 label: Browser and SEO title
                 widget: string
+                i18n: true
               - name: description
                 label: Description
                 widget: text
+                i18n: true
               - name: og_title
                 label: Social sharing title override
                 widget: string
                 required: false
+                i18n: true
                 hint: Leave empty to use the browser and SEO title.
               - name: og_description
                 label: Social sharing description override
                 widget: text
                 required: false
+                i18n: true
                 hint: Leave empty to use the SEO description.
               - name: og_image_alt
                 label: Social image description
                 widget: string
                 required: false
+                i18n: true
                 hint: Describe what is visible in the custom image. Required when a custom social image is used.
             i18n: true
       - name: kontakt
@@ -362,15 +399,18 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
                 hint: 'Example: Let us meet. Use <br> for an intentional line break.'
               - name: intro
+                i18n: true
                 label: Introduction
                 widget: text
             i18n: true
@@ -380,44 +420,57 @@ collections:
             collapsed: true
             fields:
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: name_label
+                i18n: true
                 label: Name field label
                 widget: string
               - name: name_placeholder
+                i18n: true
                 label: Name placeholder
                 widget: string
               - name: email_label
+                i18n: true
                 label: Email field label
                 widget: string
               - name: email_placeholder
+                i18n: true
                 label: Email placeholder
                 widget: string
               - name: message_label
+                i18n: true
                 label: Message field label
                 widget: string
               - name: message_placeholder
+                i18n: true
                 label: Message placeholder
                 widget: string
               - name: submit_label
+                i18n: true
                 label: Submit button text
                 widget: string
               - name: submitting_label
+                i18n: true
                 label: Submitting button text
                 widget: string
                 hint: 'Example: Sending ...'
               - name: submitted_label
+                i18n: true
                 label: Completed button text
                 widget: string
                 hint: 'Example: Sent.'
               - name: note
+                i18n: true
                 label: Note below the button
                 widget: string
               - name: success_message
+                i18n: true
                 label: Success message
                 widget: string
               - name: error_message
+                i18n: true
                 label: Error message
                 widget: string
             i18n: true
@@ -427,18 +480,23 @@ collections:
             collapsed: true
             fields:
               - name: email_label
+                i18n: true
                 label: Email label
                 widget: string
               - name: address_label
+                i18n: true
                 label: Address label
                 widget: string
               - name: when_label
+                i18n: true
                 label: Schedule label
                 widget: string
               - name: when_value
+                i18n: true
                 label: Schedule text
                 widget: string
               - name: highlight
+                i18n: true
                 label: Highlighted text
                 widget: text
             i18n: true
@@ -448,14 +506,17 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: caption
+                i18n: true
                 label: Image caption
                 widget: string
             i18n: true
@@ -466,6 +527,7 @@ collections:
             hint: Optional legacy override. Leave empty to use the global footer heading.
             fields:
               - name: connect_heading
+                i18n: true
                 label: Connect column heading
                 widget: string
             i18n: true
@@ -475,32 +537,47 @@ collections:
             collapsed: true
             fields:
               - name: title
+                i18n: true
                 label: Browser and SEO title
                 widget: string
               - name: description
+                i18n: true
                 label: Description
                 widget: text
               - name: og_title
+                i18n: true
                 label: Social sharing title override
                 widget: string
                 required: false
                 hint: Leave empty to use the browser and SEO title.
               - name: og_description
+                i18n: true
                 label: Social sharing description override
                 widget: text
                 required: false
                 hint: Leave empty to use the SEO description.
               - name: og_image_alt
+                i18n: true
                 label: Social image description
                 widget: string
                 required: false
                 hint: Describe what is visible in the custom image. Required when a custom social image is used.
             i18n: true
-        i18n: true
+        i18n:
+          locales:
+            - de
+            - en
+          default_locale: de
+          initial_locales: all
       - name: team
         label: About us / team
         file: content/pages/team.yaml
-        i18n: true
+        i18n:
+          locales:
+            - de
+            - en
+          default_locale: de
+          initial_locales: all
         fields:
           - name: schema_version
             label: Schema version
@@ -562,15 +639,18 @@ collections:
             i18n: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
                 hint: 'Example: We live the art of encounter. Use <br> for an intentional line break.'
               - name: intro
+                i18n: true
                 label: Introduction
                 widget: text
           - name: manifest
@@ -580,14 +660,17 @@ collections:
             i18n: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: quote
+                i18n: true
                 label: Quote
                 widget: text
               - name: source
+                i18n: true
                 label: Source
                 widget: string
           - name: team
@@ -597,11 +680,13 @@ collections:
             i18n: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: members
@@ -641,9 +726,11 @@ collections:
             i18n: true
             fields:
               - name: quote
+                i18n: true
                 label: Quote
                 widget: string
               - name: source
+                i18n: true
                 label: Source
                 widget: string
           - name: philosophy
@@ -653,17 +740,21 @@ collections:
             i18n: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: p1
+                i18n: true
                 label: First paragraph
                 widget: text
               - name: p2
+                i18n: true
                 label: Second paragraph
                 widget: text
               - name: pillars
@@ -691,17 +782,21 @@ collections:
             i18n: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: text
+                i18n: true
                 label: Text
                 widget: text
               - name: button
+                i18n: true
                 label: Button text
                 widget: string
           - name: footer
@@ -713,6 +808,7 @@ collections:
             hint: Optional legacy override. Leave empty to use the global footer heading.
             fields:
               - name: connect_heading
+                i18n: true
                 label: Connect column heading
                 widget: string
           - name: meta
@@ -723,24 +819,29 @@ collections:
             i18n: true
             fields:
               - name: title
+                i18n: true
                 label: Browser and SEO title
                 widget: string
                 required: false
               - name: description
+                i18n: true
                 label: Description
                 widget: text
                 required: false
               - name: og_title
+                i18n: true
                 label: Social sharing title override
                 widget: string
                 required: false
                 hint: Leave empty to use the browser and SEO title.
               - name: og_description
+                i18n: true
                 label: Social sharing description override
                 widget: text
                 required: false
                 hint: Leave empty to use the SEO description.
               - name: og_image_alt
+                i18n: true
                 label: Social image description
                 widget: string
                 required: false
@@ -804,14 +905,17 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: intro
+                i18n: true
                 label: Introduction
                 widget: text
             i18n: true
@@ -821,9 +925,11 @@ collections:
             collapsed: true
             fields:
               - name: read_more
+                i18n: true
                 label: Read-more link text
                 widget: string
               - name: coming_soon
+                i18n: true
                 label: Coming-soon badge text
                 widget: string
                 required: false
@@ -835,17 +941,21 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: text
+                i18n: true
                 label: Text
                 widget: text
               - name: button
+                i18n: true
                 label: Button text
                 widget: string
             i18n: true
@@ -855,14 +965,17 @@ collections:
             collapsed: true
             fields:
               - name: back
+                i18n: true
                 label: Back-to-journal link text
                 widget: string
               - name: related_label
+                i18n: true
                 label: Related-content eyebrow
                 widget: string
                 required: false
                 hint: 'Example: Read next. Leave empty to omit the eyebrow.'
               - name: related_heading
+                i18n: true
                 label: Related articles heading
                 widget: string
             i18n: true
@@ -872,28 +985,38 @@ collections:
             collapsed: true
             fields:
               - name: title
+                i18n: true
                 label: Browser and SEO title
                 widget: string
               - name: description
+                i18n: true
                 label: Description
                 widget: text
               - name: og_title
+                i18n: true
                 label: Social sharing title override
                 widget: string
                 required: false
                 hint: Leave empty to use the browser and SEO title.
               - name: og_description
+                i18n: true
                 label: Social sharing description override
                 widget: text
                 required: false
                 hint: Leave empty to use the SEO description.
               - name: og_image_alt
+                i18n: true
                 label: Social image description
                 widget: string
                 required: false
                 hint: Describe what is visible in the custom image. Required when a custom social image is used.
             i18n: true
-        i18n: true
+        i18n:
+          locales:
+            - de
+            - en
+          default_locale: de
+          initial_locales: all
       - name: programm
         label: Programme page
         file: content/pages/programm.yaml
@@ -964,15 +1087,18 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Example: Programme. Leave empty to omit it.'
               - name: heading
+                i18n: true
                 label: Page heading
                 widget: string
                 hint: 'Example: Movement as encounter.'
               - name: intro
+                i18n: true
                 label: Introduction
                 widget: text
                 hint: 'Example: Our offerings combine bodywork, social practice, and artistic exploration.'
@@ -983,40 +1109,51 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Eyebrow label
                 widget: string
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: intro
+                i18n: true
                 label: Introduction
                 widget: text
               - name: items
+                i18n: true
                 label: Labs
                 widget: list
                 collapsed: true
                 summary: '{{fields.name}} — {{fields.status_label}}'
                 fields:
                   - name: name
+                    i18n: true
                     label: Name
                     widget: string
                   - name: status_label
+                    i18n: true
                     label: Status
                     widget: string
                   - name: text
+                    i18n: true
                     label: Description
                     widget: text
                   - name: link
+                    i18n: true
                     label: Link
                     widget: string
                     required: false
               - name: cta_text
+                i18n: true
                 label: Invitation text
                 widget: text
               - name: cta_button
+                i18n: true
                 label: Button text
                 widget: string
               - name: cta_url
+                i18n: true
                 label: Button link
                 widget: string
             i18n: true
@@ -1026,19 +1163,23 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Example: Open laboratory for contemporary dance.'
               - name: heading
+                i18n: true
                 label: Section heading
                 widget: string
                 hint: 'Example: Monday class.'
               - name: info_title
+                i18n: true
                 label: Facts-card title
                 widget: string
                 hint: 'Example: At a glance.'
               - name: rows
+                i18n: true
                 label: Facts-card rows
                 widget: list
                 collapsed: true
@@ -1047,6 +1188,7 @@ collections:
                 hint: Keep German and English lists in the same order and at the same length.
                 fields:
                   - name: icon
+                    i18n: true
                     label: Icon
                     widget: select
                     options:
@@ -1056,36 +1198,44 @@ collections:
                       - cost
                       - people
                   - name: label
+                    i18n: true
                     label: Row label
                     widget: string
                     hint: 'Example: When.'
                   - name: value
+                    i18n: true
                     label: Row value
                     widget: string
                     hint: 'Example: Every Monday, 17:45-19:15.'
               - name: register_label
+                i18n: true
                 label: Registration button text
                 widget: string
                 hint: 'Example: Register now.'
               - name: more_label
+                i18n: true
                 label: Details button text
                 widget: string
                 hint: 'Example: Learn more.'
               - name: description_heading
+                i18n: true
                 label: Description heading
                 widget: string
                 hint: 'Example: What to expect.'
               - name: paragraphs
+                i18n: true
                 label: Description paragraphs
                 widget: list
                 summary: '{{fields.text}}'
                 hint: Keep German and English lists in the same order and at the same length.
                 fields:
                   - name: text
+                    i18n: true
                     label: Paragraph
                     widget: text
                     hint: 'Example: Explain the structure and experience of a Monday class.'
               - name: quote
+                i18n: true
                 label: Closing quote
                 widget: text
                 required: false
@@ -1097,11 +1247,13 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Example: Current projects.'
               - name: heading
+                i18n: true
                 label: Section heading
                 widget: string
                 hint: 'Example: What is happening now.'
@@ -1112,15 +1264,18 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Example: Outlook.'
               - name: heading
+                i18n: true
                 label: Section heading
                 widget: string
                 hint: 'Example: What comes next.'
               - name: intro
+                i18n: true
                 label: Section introduction
                 widget: text
                 required: false
@@ -1132,19 +1287,23 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Example: Invitation.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
                 hint: 'Example: Come by.'
               - name: text
+                i18n: true
                 label: Supporting text
                 widget: text
                 hint: 'Example: Include the recurring schedule and address.'
               - name: button
+                i18n: true
                 label: Contact button text
                 widget: string
                 hint: 'Example: Get in touch.'
@@ -1155,30 +1314,40 @@ collections:
             collapsed: true
             fields:
               - name: title
+                i18n: true
                 label: Browser and SEO title
                 widget: string
                 hint: 'Example: Programme - Wild Care | Graz.'
               - name: description
+                i18n: true
                 label: SEO description
                 widget: text
                 hint: 'Example: Contact Improvisation classes and workshops in Graz.'
               - name: og_title
+                i18n: true
                 label: Social sharing title override
                 widget: string
                 required: false
                 hint: Leave empty to use the browser and SEO title.
               - name: og_description
+                i18n: true
                 label: Social sharing description override
                 widget: text
                 required: false
                 hint: Leave empty to use the SEO description.
               - name: og_image_alt
+                i18n: true
                 label: Social image description
                 widget: string
                 required: false
                 hint: Describe what is visible in the custom image. Required when a custom social image is used.
             i18n: true
-        i18n: true
+        i18n:
+          locales:
+            - de
+            - en
+          default_locale: de
+          initial_locales: all
       - name: montagskurs
         label: Monday class
         file: content/pages/montagskurs.yaml
@@ -1401,33 +1570,42 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Plain heading for language switching
                 widget: string
               - name: heading_html
+                i18n: true
                 label: Display heading
                 widget: string
                 hint: Use <br> and <span> for layout and emphasis. Keep its wording aligned with the plain heading above.
               - name: subtitle
+                i18n: true
                 label: Subtitle
                 widget: text
               - name: schedule
+                i18n: true
                 label: Schedule
                 widget: string
               - name: address
+                i18n: true
                 label: Address
                 widget: string
               - name: basis
+                i18n: true
                 label: Pricing / donation basis
                 widget: string
               - name: cta
+                i18n: true
                 label: Registration button text
                 widget: string
               - name: image_alt
+                i18n: true
                 label: Image description
                 widget: string
             i18n: true
@@ -1437,17 +1615,21 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: p1
+                i18n: true
                 label: First paragraph
                 widget: text
               - name: p2
+                i18n: true
                 label: Second paragraph
                 widget: text
             i18n: true
@@ -1457,14 +1639,17 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: cards
+                i18n: true
                 label: Cards
                 widget: list
                 collapsed: true
@@ -1472,12 +1657,15 @@ collections:
                 summary: '{{fields.title}}'
                 fields:
                   - name: title
+                    i18n: true
                     label: Title
                     widget: string
                   - name: text
+                    i18n: true
                     label: Text
                     widget: text
               - name: donation_note
+                i18n: true
                 label: Donation note
                 widget: text
             i18n: true
@@ -1487,14 +1675,17 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: items
+                i18n: true
                 label: Quotes
                 widget: list
                 collapsed: true
@@ -1502,9 +1693,11 @@ collections:
                 summary: '{{fields.author}}'
                 fields:
                   - name: quote
+                    i18n: true
                     label: Quote
                     widget: text
                   - name: author
+                    i18n: true
                     label: Name
                     widget: string
             i18n: true
@@ -1514,14 +1707,17 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: members
+                i18n: true
                 label: People
                 widget: list
                 collapsed: true
@@ -1531,18 +1727,23 @@ collections:
                 max: 2
                 fields:
                   - name: name
+                    i18n: true
                     label: Name
                     widget: string
                   - name: image
+                    i18n: true
                     label: Image
                     widget: image
                   - name: alt
+                    i18n: true
                     label: Image description
                     widget: string
                   - name: role
+                    i18n: true
                     label: Role
                     widget: string
                   - name: bio
+                    i18n: true
                     label: Biography
                     widget: text
             i18n: true
@@ -1552,14 +1753,17 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: items
+                i18n: true
                 label: Questions
                 widget: list
                 collapsed: true
@@ -1567,9 +1771,11 @@ collections:
                 summary: '{{fields.q}}'
                 fields:
                   - name: q
+                    i18n: true
                     label: Question
                     widget: string
                   - name: a
+                    i18n: true
                     label: Answer
                     widget: text
             i18n: true
@@ -1579,17 +1785,21 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: text
+                i18n: true
                 label: Text
                 widget: text
               - name: button
+                i18n: true
                 label: Button text
                 widget: string
             i18n: true
@@ -1599,17 +1809,21 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: text
+                i18n: true
                 label: Text
                 widget: text
               - name: button
+                i18n: true
                 label: Registration button text
                 widget: string
             i18n: true
@@ -1620,6 +1834,7 @@ collections:
             hint: Optional legacy override. Leave empty to use the global footer heading.
             fields:
               - name: connect_heading
+                i18n: true
                 label: Connect column heading
                 widget: string
             i18n: true
@@ -1629,28 +1844,38 @@ collections:
             collapsed: true
             fields:
               - name: title
+                i18n: true
                 label: Browser and SEO title
                 widget: string
               - name: description
+                i18n: true
                 label: Description
                 widget: text
               - name: og_title
+                i18n: true
                 label: Social sharing title override
                 widget: string
                 required: false
                 hint: Leave empty to use the browser and SEO title.
               - name: og_description
+                i18n: true
                 label: Social sharing description override
                 widget: text
                 required: false
                 hint: Leave empty to use the SEO description.
               - name: og_image_alt
+                i18n: true
                 label: Social image description
                 widget: string
                 required: false
                 hint: Describe what is visible in the custom image. Required when a custom social image is used.
             i18n: true
-        i18n: true
+        i18n:
+          locales:
+            - de
+            - en
+          default_locale: de
+          initial_locales: all
       - name: mitmachen
         label: Join page
         file: content/pages/mitmachen.yaml
@@ -1710,15 +1935,18 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
                 hint: 'Example: There are many ways to take part. Use <br> for an intentional line break.'
               - name: intro
+                i18n: true
                 label: Introduction
                 widget: text
             i18n: true
@@ -1732,18 +1960,23 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Eyebrow label
                 widget: string
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: p1
+                i18n: true
                 label: First paragraph
                 widget: text
               - name: p2
+                i18n: true
                 label: Second paragraph
                 widget: text
               - name: button
+                i18n: true
                 label: Button text
                 widget: string
             i18n: true
@@ -1753,73 +1986,91 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: outer
+                i18n: true
                 label: Open circle (Monday class)
                 widget: object
                 collapsed: true
                 fields:
                   - name: label
+                    i18n: true
                     label: Optional eyebrow label
                     widget: string
                     required: false
                     hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
                   - name: title
+                    i18n: true
                     label: Title
                     widget: string
                   - name: desc
+                    i18n: true
                     label: Short description
                     widget: string
                   - name: p1
+                    i18n: true
                     label: First paragraph
                     widget: text
                   - name: p2
+                    i18n: true
                     label: Second paragraph
                     widget: text
                   - name: tags
+                    i18n: true
                     label: Tags
                     widget: list
                     required: false
                     summary: '{{fields.tag}}'
                     fields:
                       - name: tag
+                        i18n: true
                         label: Tag
                         widget: string
               - name: inner
+                i18n: true
                 label: Inner circle (members)
                 widget: object
                 collapsed: true
                 fields:
                   - name: label
+                    i18n: true
                     label: Optional eyebrow label
                     widget: string
                     required: false
                     hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
                   - name: title
+                    i18n: true
                     label: Title
                     widget: string
                   - name: desc
+                    i18n: true
                     label: Short description
                     widget: string
                   - name: p1
+                    i18n: true
                     label: First paragraph
                     widget: text
                   - name: p2
+                    i18n: true
                     label: Second paragraph
                     widget: text
                   - name: tags
+                    i18n: true
                     label: Tags
                     widget: list
                     required: false
                     summary: '{{fields.tag}}'
                     fields:
                       - name: tag
+                        i18n: true
                         label: Tag
                         widget: string
             i18n: true
@@ -1829,23 +2080,29 @@ collections:
             collapsed: true
             fields:
               - name: label
+                i18n: true
                 label: Optional eyebrow label
                 widget: string
                 required: false
                 hint: 'Optional decorative text. Example: About us, Our values, or Next session.'
               - name: heading
+                i18n: true
                 label: Heading
                 widget: string
               - name: p1
+                i18n: true
                 label: First paragraph
                 widget: text
               - name: p2
+                i18n: true
                 label: Second paragraph
                 widget: text
               - name: choose_label
+                i18n: true
                 label: Tier selection prompt
                 widget: string
               - name: tiers
+                i18n: true
                 label: Membership tiers
                 widget: list
                 collapsed: true
@@ -1856,32 +2113,41 @@ collections:
                 hint: Exactly three tiers. Icon and Tally field value are shared technical values.
                 fields:
                   - name: icon
+                    i18n: true
                     label: Icon (emoji, shared across languages)
                     widget: string
                     required: false
                   - name: name
+                    i18n: true
                     label: Name
                     widget: string
                   - name: amount
+                    i18n: true
                     label: Amount
                     widget: string
                   - name: quote
+                    i18n: true
                     label: Quote
                     widget: string
                   - name: desc
+                    i18n: true
                     label: Description
                     widget: text
                   - name: button
+                    i18n: true
                     label: Button text
                     widget: string
                   - name: aria
+                    i18n: true
                     label: Accessible label
                     widget: string
                   - name: tier_arg
+                    i18n: true
                     label: Tally field value (technical, shared)
                     widget: string
                     required: false
               - name: note
+                i18n: true
                 label: Note below membership tiers
                 widget: text
             i18n: true
@@ -1892,6 +2158,7 @@ collections:
             hint: Optional legacy override. Leave empty to use the global footer heading.
             fields:
               - name: connect_heading
+                i18n: true
                 label: Connect column heading
                 widget: string
             i18n: true
@@ -1901,28 +2168,38 @@ collections:
             collapsed: true
             fields:
               - name: title
+                i18n: true
                 label: Browser and SEO title
                 widget: string
               - name: description
+                i18n: true
                 label: Description
                 widget: text
               - name: og_title
+                i18n: true
                 label: Social sharing title override
                 widget: string
                 required: false
                 hint: Leave empty to use the browser and SEO title.
               - name: og_description
+                i18n: true
                 label: Social sharing description override
                 widget: text
                 required: false
                 hint: Leave empty to use the SEO description.
               - name: og_image_alt
+                i18n: true
                 label: Social image description
                 widget: string
                 required: false
                 hint: Describe what is visible in the custom image. Required when a custom social image is used.
             i18n: true
-        i18n: true
+        i18n:
+          locales:
+            - de
+            - en
+          default_locale: de
+          initial_locales: all
   - name: website
     label: Website navigation and footer
     files:
@@ -2963,10 +3240,12 @@ collections:
         collapsed: true
         fields:
           - name: label
+            i18n: true
             label: Registration button text
             widget: string
             hint: 'Example: Register now.'
           - name: note
+            i18n: true
             label: Note below the hero button
             widget: text
             required: false
@@ -2978,31 +3257,37 @@ collections:
         collapsed: true
         fields:
           - name: date
+            i18n: true
             label: Compact date
             widget: string
             required: false
             hint: 'Example: 8-9 August 2026. Shown on the programme card and optionally in the hero.'
           - name: time
+            i18n: true
             label: Compact time
             widget: string
             required: false
             hint: 'Example: 10:00-18:00. Shown only in the optional hero facts.'
           - name: location
+            i18n: true
             label: Location
             widget: string
             required: false
             hint: 'Example: Orpheumgasse 11, 8010 Graz. Used in all fact summaries.'
           - name: price
+            i18n: true
             label: Compact price
             widget: string
             required: false
             hint: 'Example: EUR 70-120 sliding scale. Shown on the programme card and optionally in the hero.'
           - name: duration
+            i18n: true
             label: Duration
             widget: string
             required: false
             hint: 'Example: Two days. Shown on the programme card.'
           - name: format
+            i18n: true
             label: What participants will do
             widget: list
             required: false
@@ -3010,10 +3295,12 @@ collections:
             hint: 'Displayed in the What row of the facts card. Example entries: Contact Improvisation; Somatic research.'
             fields:
               - name: value
+                i18n: true
                 label: Format entry
                 widget: string
                 hint: 'Example: Contact Improvisation and somatic research.'
           - name: schedule
+            i18n: true
             label: Detailed schedule
             widget: list
             required: false
@@ -3021,10 +3308,12 @@ collections:
             hint: Displayed in the When row of the facts card.
             fields:
               - name: value
+                i18n: true
                 label: Schedule line
                 widget: string
                 hint: 'Example: Saturday, 10:00-13:00 and 14:30-17:30.'
           - name: price_details
+            i18n: true
             label: Detailed pricing
             widget: list
             required: false
@@ -3032,6 +3321,7 @@ collections:
             hint: Displayed in the Price row of the facts card instead of the compact price.
             fields:
               - name: value
+                i18n: true
                 label: Price line
                 widget: string
                 hint: 'Example: Reduced EUR 70; Regular EUR 120.'
@@ -3042,6 +3332,7 @@ collections:
         collapsed: true
         fields:
           - name: tags
+            i18n: true
             label: Category tags
             widget: list
             collapsed: true
@@ -3050,10 +3341,12 @@ collections:
             required: false
             fields:
               - name: label
+                i18n: true
                 label: Tag text
                 widget: string
                 hint: 'Example: Guest workshop.'
               - name: style
+                i18n: true
                 label: Tag colour
                 widget: select
                 options:
@@ -3063,16 +3356,19 @@ collections:
                     value: moss
                 default: default
           - name: subtitle
+            i18n: true
             label: Card subtitle
             widget: string
             required: false
             hint: 'Example: With Valentyn Korotkevych.'
           - name: summary
+            i18n: true
             label: Card summary
             widget: text
             required: false
             hint: 'Example: A two-day Contact Improvisation workshop exploring touch, fascia, and momentum.'
           - name: detail_label
+            i18n: true
             label: Detail-page button text
             widget: string
             required: false
@@ -3085,46 +3381,55 @@ collections:
         required: false
         fields:
           - name: badge
+            i18n: true
             label: Hero category badge
             widget: string
             required: false
             hint: 'Example: Guest Workshop - Contact Improvisation.'
           - name: headline
+            i18n: true
             label: Hero headline override
             widget: string
             required: false
             hint: 'Example: Contact Improvisation. Leave empty to use the Workshop title.'
           - name: headline_accent
+            i18n: true
             label: Coloured second headline line
             widget: string
             required: false
             hint: 'Example: with Valentyn Korotkevych. This line appears below the main headline.'
           - name: subtitle
+            i18n: true
             label: Hero introduction
             widget: text
             required: false
             hint: 'Example: A somatic workshop moving from touch through falling into shared movement.'
           - name: visual_aria
+            i18n: true
             label: Image composition accessibility label
             widget: string
             required: false
             hint: 'Example: Participants practising Contact Improvisation. Ignored when Hero video is filled.'
           - name: main_alt
+            i18n: true
             label: Main image description
             widget: string
             required: false
             hint: 'Example: Two dancers sharing weight in a lift. Ignored when Hero video is filled.'
           - name: inset_alt
+            i18n: true
             label: Inset image description
             widget: string
             required: false
             hint: 'Example: Three participants researching touch. Ignored when Hero video is filled.'
           - name: note_title
+            i18n: true
             label: Image note title
             widget: string
             required: false
             hint: 'Example: Cellular Touch. Ignored when Hero video is filled.'
           - name: note_text
+            i18n: true
             label: Image note text
             widget: text
             required: false
@@ -3137,16 +3442,19 @@ collections:
         required: false
         fields:
           - name: label
+            i18n: true
             label: Section label
             widget: string
             required: false
             hint: 'Example: The Practice.'
           - name: heading
+            i18n: true
             label: Description heading
             widget: string
             required: false
             hint: 'Example: Touch as cellular space.'
           - name: body
+            i18n: true
             label: Formatted description
             widget: richtext
             required: false
@@ -3160,6 +3468,7 @@ collections:
             use_markdown_shortcuts: false
             hint: Main workshop description shown in the left column. Use paragraphs, bold, italic, and links; the frontend applies the Wild Care typography.
           - name: info_title
+            i18n: true
             label: Facts-card title override
             widget: string
             required: false
@@ -3172,16 +3481,19 @@ collections:
         required: false
         fields:
           - name: label
+            i18n: true
             label: Section label
             widget: string
             required: false
             hint: 'Example: Research Fields.'
           - name: heading
+            i18n: true
             label: Section heading
             widget: string
             required: false
             hint: 'Example: What we explore.'
           - name: fields
+            i18n: true
             label: Research cards
             widget: list
             collapsed: true
@@ -3190,18 +3502,22 @@ collections:
             required: false
             fields:
               - name: number
+                i18n: true
                 label: Card number or eyebrow
                 widget: string
                 hint: 'Example: 01 or Week 1.'
               - name: title
+                i18n: true
                 label: Card title
                 widget: string
                 hint: 'Example: Membrane.'
               - name: text
+                i18n: true
                 label: Card description
                 widget: text
                 hint: 'Example: Sensing stability and flexibility from within.'
               - name: highlighted
+                i18n: true
                 label: Highlight this card
                 widget: boolean
                 required: false
@@ -3215,16 +3531,19 @@ collections:
         required: false
         fields:
           - name: label
+            i18n: true
             label: Section label
             widget: string
             required: false
             hint: 'Example: Flowing in / Flowing out.'
           - name: heading
+            i18n: true
             label: Section heading
             widget: string
             required: false
             hint: 'Example: A dancing boundary.'
           - name: body
+            i18n: true
             label: Formatted supporting text
             widget: richtext
             required: false
@@ -3238,6 +3557,7 @@ collections:
             use_markdown_shortcuts: false
             hint: Supporting text shown beside the image. Use paragraphs, bold, italic, and links; the frontend applies the Wild Care typography.
           - name: alt
+            i18n: true
             label: Band image description
             widget: string
             required: false
@@ -3251,16 +3571,19 @@ collections:
         hint: Optional moss-green registration band shown after the workshop content.
         fields:
           - name: heading
+            i18n: true
             label: CTA heading
             widget: string
             required: false
             hint: 'Example: Ready to join us?'
           - name: text
+            i18n: true
             label: CTA supporting text
             widget: text
             required: false
             hint: 'Example: Reserve your place for this workshop in Graz.'
           - name: button_label
+            i18n: true
             label: CTA button text override
             widget: string
             required: false
@@ -3273,16 +3596,19 @@ collections:
         required: false
         fields:
           - name: label
+            i18n: true
             label: Facilitator label
             widget: string
             required: false
             hint: 'Example: Facilitator or Teaching team.'
           - name: heading
+            i18n: true
             label: Section heading
             widget: string
             required: false
             hint: 'Example: Who guides the workshop. Leave empty for the compact layout.'
           - name: members
+            i18n: true
             label: Facilitators
             widget: list
             collapsed: true
@@ -3291,14 +3617,17 @@ collections:
             required: false
             fields:
               - name: name
+                i18n: true
                 label: Full name
                 widget: string
                 hint: 'Example: Valentyn Korotkevych. Shared between languages.'
               - name: image
+                i18n: true
                 label: Portrait image
                 widget: image
                 hint: Editable in either language editor.
               - name: image_focus
+                i18n: true
                 label: Portrait focal point
                 widget: select
                 default: center
@@ -3323,18 +3652,22 @@ collections:
                   - label: Bottom right
                     value: bottom-right
               - name: alt
+                i18n: true
                 label: Portrait image description
                 widget: string
                 hint: 'Example: Portrait of Valentyn Korotkevych.'
               - name: role
+                i18n: true
                 label: Role or expertise
                 widget: string
                 hint: 'Example: Contact Improvisation - Somatic research.'
               - name: bio
+                i18n: true
                 label: Biography
                 widget: text
                 hint: 'Example: Two to five sentences about the facilitator and their practice.'
           - name: quotes
+            i18n: true
             label: Quotes beside facilitators
             widget: list
             collapsed: true
@@ -3344,10 +3677,12 @@ collections:
             hint: Optional quote cards shown in the right column beside facilitators.
             fields:
               - name: quote
+                i18n: true
                 label: Quote text
                 widget: text
                 hint: 'Example: When we pay attention to tiny gestures, new pathways appear.'
               - name: author
+                i18n: true
                 label: Quote author
                 widget: string
                 hint: 'Example: Valentyn Korotkevych. Shared between languages.'
@@ -3359,16 +3694,19 @@ collections:
         required: false
         fields:
           - name: label
+            i18n: true
             label: Section label
             widget: string
             required: false
             hint: 'Example: FAQ. Leave empty to use the site default.'
           - name: heading
+            i18n: true
             label: Section heading
             widget: string
             required: false
             hint: 'Example: Good to know.'
           - name: items
+            i18n: true
             label: Questions and answers
             widget: list
             collapsed: true
@@ -3377,10 +3715,12 @@ collections:
             required: false
             fields:
               - name: q
+                i18n: true
                 label: Question
                 widget: string
                 hint: 'Example: Do I need previous experience?'
               - name: a
+                i18n: true
                 label: Answer
                 widget: text
                 hint: 'Example: No previous experience is required.'
@@ -3393,26 +3733,31 @@ collections:
         hint: Optional overrides. Leave fields empty to use the canonical workshop title, card summary, and hero image.
         fields:
           - name: title
+            i18n: true
             label: Browser title override
             widget: string
             required: false
             hint: 'Example: Cellular Touch with Valentyn Korotkevych | Wild Care.'
           - name: description
+            i18n: true
             label: Search description override
             widget: text
             required: false
             hint: 'Example: A 150-160 character summary for search results.'
           - name: og_title
+            i18n: true
             label: Social sharing title override
             widget: string
             required: false
             hint: 'Example: Cellular Touch with Valentyn Korotkevych.'
           - name: og_description
+            i18n: true
             label: Social sharing description override
             widget: text
             required: false
             hint: 'Example: A short description for link previews.'
           - name: og_image_alt
+            i18n: true
             label: Social image description
             widget: string
             required: false
@@ -3834,10 +4179,12 @@ collections:
         collapsed: true
         fields:
           - name: label
+            i18n: true
             label: Registration button text
             widget: string
             hint: 'Example: Register now.'
           - name: note
+            i18n: true
             label: Note below the hero button
             widget: text
             required: false
@@ -3849,31 +4196,37 @@ collections:
         collapsed: true
         fields:
           - name: date
+            i18n: true
             label: Compact date
             widget: string
             required: false
             hint: 'Example: 8-9 August 2026. Shown on the programme card and optionally in the hero.'
           - name: time
+            i18n: true
             label: Compact time
             widget: string
             required: false
             hint: 'Example: 10:00-18:00. Shown only in the optional hero facts.'
           - name: location
+            i18n: true
             label: Location
             widget: string
             required: false
             hint: 'Example: Orpheumgasse 11, 8010 Graz. Used in all fact summaries.'
           - name: price
+            i18n: true
             label: Compact price
             widget: string
             required: false
             hint: 'Example: EUR 70-120 sliding scale. Shown on the programme card and optionally in the hero.'
           - name: duration
+            i18n: true
             label: Duration
             widget: string
             required: false
             hint: 'Example: Two days. Shown on the programme card.'
           - name: format
+            i18n: true
             label: What participants will do
             widget: list
             required: false
@@ -3881,10 +4234,12 @@ collections:
             hint: 'Displayed in the What row of the facts card. Example entries: Contact Improvisation; Somatic research.'
             fields:
               - name: value
+                i18n: true
                 label: Format entry
                 widget: string
                 hint: 'Example: Contact Improvisation and somatic research.'
           - name: schedule
+            i18n: true
             label: Detailed schedule
             widget: list
             required: false
@@ -3892,10 +4247,12 @@ collections:
             hint: Displayed in the When row of the facts card.
             fields:
               - name: value
+                i18n: true
                 label: Schedule line
                 widget: string
                 hint: 'Example: Saturday, 10:00-13:00 and 14:30-17:30.'
           - name: price_details
+            i18n: true
             label: Detailed pricing
             widget: list
             required: false
@@ -3903,6 +4260,7 @@ collections:
             hint: Displayed in the Price row of the facts card instead of the compact price.
             fields:
               - name: value
+                i18n: true
                 label: Price line
                 widget: string
                 hint: 'Example: Reduced EUR 70; Regular EUR 120.'
@@ -3913,6 +4271,7 @@ collections:
         collapsed: true
         fields:
           - name: tags
+            i18n: true
             label: Category tags
             widget: list
             collapsed: true
@@ -3921,10 +4280,12 @@ collections:
             required: false
             fields:
               - name: label
+                i18n: true
                 label: Tag text
                 widget: string
                 hint: 'Example: Guest workshop.'
               - name: style
+                i18n: true
                 label: Tag colour
                 widget: select
                 options:
@@ -3934,16 +4295,19 @@ collections:
                     value: moss
                 default: default
           - name: subtitle
+            i18n: true
             label: Card subtitle
             widget: string
             required: false
             hint: 'Example: With Valentyn Korotkevych.'
           - name: summary
+            i18n: true
             label: Card summary
             widget: text
             required: false
             hint: 'Example: A two-day Contact Improvisation workshop exploring touch, fascia, and momentum.'
           - name: detail_label
+            i18n: true
             label: Detail-page button text
             widget: string
             required: false
@@ -3956,46 +4320,55 @@ collections:
         required: false
         fields:
           - name: badge
+            i18n: true
             label: Hero category badge
             widget: string
             required: false
             hint: 'Example: Guest Workshop - Contact Improvisation.'
           - name: headline
+            i18n: true
             label: Hero headline override
             widget: string
             required: false
             hint: 'Example: Contact Improvisation. Leave empty to use the Workshop title.'
           - name: headline_accent
+            i18n: true
             label: Coloured second headline line
             widget: string
             required: false
             hint: 'Example: with Valentyn Korotkevych. This line appears below the main headline.'
           - name: subtitle
+            i18n: true
             label: Hero introduction
             widget: text
             required: false
             hint: 'Example: A somatic workshop moving from touch through falling into shared movement.'
           - name: visual_aria
+            i18n: true
             label: Image composition accessibility label
             widget: string
             required: false
             hint: 'Example: Participants practising Contact Improvisation. Ignored when Hero video is filled.'
           - name: main_alt
+            i18n: true
             label: Main image description
             widget: string
             required: false
             hint: 'Example: Two dancers sharing weight in a lift. Ignored when Hero video is filled.'
           - name: inset_alt
+            i18n: true
             label: Inset image description
             widget: string
             required: false
             hint: 'Example: Three participants researching touch. Ignored when Hero video is filled.'
           - name: note_title
+            i18n: true
             label: Image note title
             widget: string
             required: false
             hint: 'Example: Cellular Touch. Ignored when Hero video is filled.'
           - name: note_text
+            i18n: true
             label: Image note text
             widget: text
             required: false
@@ -4008,16 +4381,19 @@ collections:
         required: false
         fields:
           - name: label
+            i18n: true
             label: Section label
             widget: string
             required: false
             hint: 'Example: The Practice.'
           - name: heading
+            i18n: true
             label: Description heading
             widget: string
             required: false
             hint: 'Example: Touch as cellular space.'
           - name: body
+            i18n: true
             label: Formatted description
             widget: richtext
             required: false
@@ -4031,6 +4407,7 @@ collections:
             use_markdown_shortcuts: false
             hint: Main workshop description shown in the left column. Use paragraphs, bold, italic, and links; the frontend applies the Wild Care typography.
           - name: info_title
+            i18n: true
             label: Facts-card title override
             widget: string
             required: false
@@ -4043,16 +4420,19 @@ collections:
         required: false
         fields:
           - name: label
+            i18n: true
             label: Section label
             widget: string
             required: false
             hint: 'Example: Research Fields.'
           - name: heading
+            i18n: true
             label: Section heading
             widget: string
             required: false
             hint: 'Example: What we explore.'
           - name: fields
+            i18n: true
             label: Research cards
             widget: list
             collapsed: true
@@ -4061,18 +4441,22 @@ collections:
             required: false
             fields:
               - name: number
+                i18n: true
                 label: Card number or eyebrow
                 widget: string
                 hint: 'Example: 01 or Week 1.'
               - name: title
+                i18n: true
                 label: Card title
                 widget: string
                 hint: 'Example: Membrane.'
               - name: text
+                i18n: true
                 label: Card description
                 widget: text
                 hint: 'Example: Sensing stability and flexibility from within.'
               - name: highlighted
+                i18n: true
                 label: Highlight this card
                 widget: boolean
                 required: false
@@ -4086,16 +4470,19 @@ collections:
         required: false
         fields:
           - name: label
+            i18n: true
             label: Section label
             widget: string
             required: false
             hint: 'Example: Flowing in / Flowing out.'
           - name: heading
+            i18n: true
             label: Section heading
             widget: string
             required: false
             hint: 'Example: A dancing boundary.'
           - name: body
+            i18n: true
             label: Formatted supporting text
             widget: richtext
             required: false
@@ -4109,6 +4496,7 @@ collections:
             use_markdown_shortcuts: false
             hint: Supporting text shown beside the image. Use paragraphs, bold, italic, and links; the frontend applies the Wild Care typography.
           - name: alt
+            i18n: true
             label: Band image description
             widget: string
             required: false
@@ -4122,16 +4510,19 @@ collections:
         hint: Optional moss-green registration band shown after the workshop content.
         fields:
           - name: heading
+            i18n: true
             label: CTA heading
             widget: string
             required: false
             hint: 'Example: Ready to join us?'
           - name: text
+            i18n: true
             label: CTA supporting text
             widget: text
             required: false
             hint: 'Example: Reserve your place for this workshop in Graz.'
           - name: button_label
+            i18n: true
             label: CTA button text override
             widget: string
             required: false
@@ -4144,16 +4535,19 @@ collections:
         required: false
         fields:
           - name: label
+            i18n: true
             label: Facilitator label
             widget: string
             required: false
             hint: 'Example: Facilitator or Teaching team.'
           - name: heading
+            i18n: true
             label: Section heading
             widget: string
             required: false
             hint: 'Example: Who guides the workshop. Leave empty for the compact layout.'
           - name: members
+            i18n: true
             label: Facilitators
             widget: list
             collapsed: true
@@ -4162,14 +4556,17 @@ collections:
             required: false
             fields:
               - name: name
+                i18n: true
                 label: Full name
                 widget: string
                 hint: 'Example: Valentyn Korotkevych. Shared between languages.'
               - name: image
+                i18n: true
                 label: Portrait image
                 widget: image
                 hint: Editable in either language editor.
               - name: image_focus
+                i18n: true
                 label: Portrait focal point
                 widget: select
                 default: center
@@ -4194,18 +4591,22 @@ collections:
                   - label: Bottom right
                     value: bottom-right
               - name: alt
+                i18n: true
                 label: Portrait image description
                 widget: string
                 hint: 'Example: Portrait of Valentyn Korotkevych.'
               - name: role
+                i18n: true
                 label: Role or expertise
                 widget: string
                 hint: 'Example: Contact Improvisation - Somatic research.'
               - name: bio
+                i18n: true
                 label: Biography
                 widget: text
                 hint: 'Example: Two to five sentences about the facilitator and their practice.'
           - name: quotes
+            i18n: true
             label: Quotes beside facilitators
             widget: list
             collapsed: true
@@ -4215,10 +4616,12 @@ collections:
             hint: Optional quote cards shown in the right column beside facilitators.
             fields:
               - name: quote
+                i18n: true
                 label: Quote text
                 widget: text
                 hint: 'Example: When we pay attention to tiny gestures, new pathways appear.'
               - name: author
+                i18n: true
                 label: Quote author
                 widget: string
                 hint: 'Example: Valentyn Korotkevych. Shared between languages.'
@@ -4230,16 +4633,19 @@ collections:
         required: false
         fields:
           - name: label
+            i18n: true
             label: Section label
             widget: string
             required: false
             hint: 'Example: FAQ. Leave empty to use the site default.'
           - name: heading
+            i18n: true
             label: Section heading
             widget: string
             required: false
             hint: 'Example: Good to know.'
           - name: items
+            i18n: true
             label: Questions and answers
             widget: list
             collapsed: true
@@ -4248,10 +4654,12 @@ collections:
             required: false
             fields:
               - name: q
+                i18n: true
                 label: Question
                 widget: string
                 hint: 'Example: Do I need previous experience?'
               - name: a
+                i18n: true
                 label: Answer
                 widget: text
                 hint: 'Example: No previous experience is required.'
@@ -4264,26 +4672,31 @@ collections:
         hint: Optional overrides. Leave fields empty to use the canonical workshop title, card summary, and hero image.
         fields:
           - name: title
+            i18n: true
             label: Browser title override
             widget: string
             required: false
             hint: 'Example: Cellular Touch with Valentyn Korotkevych | Wild Care.'
           - name: description
+            i18n: true
             label: Search description override
             widget: text
             required: false
             hint: 'Example: A 150-160 character summary for search results.'
           - name: og_title
+            i18n: true
             label: Social sharing title override
             widget: string
             required: false
             hint: 'Example: Cellular Touch with Valentyn Korotkevych.'
           - name: og_description
+            i18n: true
             label: Social sharing description override
             widget: text
             required: false
             hint: 'Example: A short description for link previews.'
           - name: og_image_alt
+            i18n: true
             label: Social image description
             widget: string
             required: false

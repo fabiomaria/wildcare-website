@@ -40,6 +40,16 @@ Hero headings and SEO titles are optional overrides. Decorative badges and eyebr
 
 The Programme page is also CMS-managed. Keep index-matched German and English lists in the same order and at the same length.
 
+### CMS bilingual editing
+
+The `Pages` collection uses Sveltia's native `single_file` i18n mode. Each page file explicitly enables both `de` and `en`, keeps German as the default locale, and sets `initial_locales: all`. Existing bilingual YAML therefore opens as two editor panes without requiring editors to enable English from the menu.
+
+Workshops use two primary-language collections over the same source folder. `workshops_de` defaults to German and offers English as an optional translation; `workshops_en` does the reverse. Their `initial_locales: default` setting is intentional: editors enable the secondary locale from Sveltia's locale menu only when that workshop is bilingual.
+
+For the pinned Sveltia CMS version, declaring `i18n: true` only on a parent object is not sufficient for nested fields: the secondary-language object can appear expanded but empty. Every localized nested object, list, and leaf field in `admin/config.yml` must therefore declare `i18n: true` explicitly. Locale-neutral controls, URLs, schedules, and shared media use `i18n: false` and are intentionally editable only in the primary/default pane. Lists whose item identity and order must stay synchronized use `i18n: duplicate`, with translated child fields still marked `i18n: true`.
+
+`npm run schema:cms` enforces the page locale configuration and rejects localized descendants in pages or workshops that rely on implicit inheritance.
+
 ## Schema Migration
 
 The site now uses schema v2 content records. The migration moved shared metadata into a language-neutral `global` block and localized copy into `locales`, while keeping page URLs stable. Journal and legal articles now split into canonical records plus per-language body files under `content/journal/` and `content/legal/`, and workshops use the same v2 record shape across the CMS and build.
@@ -73,8 +83,6 @@ Preview calendar changes locally with `npm run dev`, then check `/montagskurs/<d
 - Date-only YAML values must remain quoted (`'YYYY-MM-DD'`). Validation rejects
   unquoted recurrence anchors and override dates because YAML can otherwise
   parse them as JavaScript dates and break recurrence expansion.
-
-One editorial regression is that this v2 CMS shape no longer provides side-by-side locale editing in the editor. That makes bilingual edits slower and more error-prone, so it should be treated as an open issue rather than a desired end state.
 
 ## Editing Guide
 
