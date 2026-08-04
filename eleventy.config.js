@@ -746,6 +746,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("masterIcs", (defs) => calendar.masterFeed(defs));
   eleventyConfig.addFilter("formatDefDate", (def, locale) => def.mode === "recurring"
     ? calendar.formatRecurring(def.recurrence, locale) : calendar.formatDateRange(def.span.start, def.span.end, locale));
+  eleventyConfig.addFilter("formatDefTime", (def) => def.mode === "recurring"
+    ? `${def.recurrence.start_time}–${def.recurrence.end_time}`
+    : def.sessions && def.sessions.length === 1
+      ? `${def.sessions[0].start_local.slice(11, 16)}–${def.sessions[0].end_local.slice(11, 16)}`
+      : "");
   eleventyConfig.addGlobalData("assetVersion", () => {
     const css = fs.readFileSync(path.join(__dirname, "css", "styles.css"));
     return crypto.createHash("sha256").update(css).digest("hex").slice(0, 12);

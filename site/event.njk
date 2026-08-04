@@ -64,9 +64,12 @@ permalink: "{{ event.href }}"
               <div class="info-row-label"
                   data-de="{{ s.de.workshop_ui.schedule_label | attr }}"
                   data-en="{{ s.en.workshop_ui.schedule_label | attr }}">{{ s[locale].workshop_ui.schedule_label }}</div>
+              {%- set defTime = def | formatDefTime -%}
+              {%- set scheduleDe = (def | formatDefDate('de')) ~ (', ' ~ defTime if defTime else '') -%}
+              {%- set scheduleEn = (def | formatDefDate('en')) ~ (', ' ~ defTime if defTime else '') -%}
               <div class="info-row-value"
-                  data-de="{{ def | formatDefDate('de') | attr }}"
-                  data-en="{{ def | formatDefDate('en') | attr }}">{{ def | formatDefDate(locale) }}</div>
+                  data-de="{{ scheduleDe | attr }}"
+                  data-en="{{ scheduleEn | attr }}">{{ scheduleEn if locale == 'en' else scheduleDe }}</div>
             </div>
           </div>
 

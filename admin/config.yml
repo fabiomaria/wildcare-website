@@ -2624,10 +2624,6 @@ collections:
             label: Canonical route
             widget: string
             hint: Start with / and keep existing public URLs stable.
-          - name: start_at
-            label: Start date for sorting
-            widget: datetime
-            required: false
           - name: sort_order
             label: Sort order when dates match
             widget: number
@@ -3499,10 +3495,6 @@ collections:
             label: Canonical route
             widget: string
             hint: Start with / and keep existing public URLs stable.
-          - name: start_at
-            label: Start date for sorting
-            widget: datetime
-            required: false
           - name: sort_order
             label: Sort order when dates match
             widget: number
@@ -4449,10 +4441,6 @@ collections:
               - global.name
             hint: Pick from the Venues collection. Shows the venue name, not its internal ID.
             required: true
-          - name: start_at
-            label: Start date for sorting
-            widget: datetime
-            required: false
           - name: updated_at
             label: Last updated
             widget: datetime
