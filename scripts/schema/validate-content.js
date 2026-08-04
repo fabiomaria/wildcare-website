@@ -4,6 +4,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const {
   ROOT, contentFilesFor, isObject, parseArgs, readYaml, relative, stableJson,
+  normalizeCalendarRecord,
 } = require("./lib");
 
 const LOCAL_DT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?$/;
@@ -41,6 +42,7 @@ function valuesAtPath(record, fieldPath) {
 }
 
 function validateRecord(record, { type, registry, venueIds = new Set() }) {
+  record = normalizeCalendarRecord(record);
   const errors = [];
   const definition = registry.record_types[type] || { fields: [] };
   const localeNeutral = definition.locale_neutral === true;

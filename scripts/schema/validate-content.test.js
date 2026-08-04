@@ -2,6 +2,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const { validateRecord } = require("./validate-content");
+const { normalizeCalendarRecord } = require("./lib");
 const yaml = require("js-yaml");
 const fs = require("node:fs");
 const path = require("node:path");
@@ -21,3 +22,27 @@ test("orphan venue is rejected", () => assert.ok(run("invalid-event-orphan-venue
 test("valid event passes", () => assert.deepEqual(run("valid-event.yaml", "event").errors, []));
 test("locale-neutral venue passes", () => assert.deepEqual(run("valid-venue.yaml", "venue").errors, []));
 test("venue missing city is rejected", () => assert.ok(run("invalid-venue-missing-city.yaml", "venue").errors.some((e) => /city/.test(e))));
+
+test("CMS datetime output is normalized before validation", () => {
+  const record = {
+    schema_version: 2,
+    global: {
+      id: "cms-event",
+      intended_locales: ["en"],
+      status: "upcoming",
+      route: "/events/cms-event",
+      venue: "fixture-venue",
+      schedule: {
+        event_status: "scheduled",
+        mode: "dates",
+        sessions: [{ id: "session", start_local: "2026-08-10T17:30:00", end_local: "2026-08-10T19:00:00.000" }],
+      },
+    },
+    locales: { en: { title: "CMS Event", summary: "Normalized CMS output." } },
+  };
+  const normalized = normalizeCalendarRecord(record);
+  assert.equal(normalized.global.schedule.sessions[0].start_local, "2026-08-10T17:30");
+  assert.equal(normalized.global.schedule.sessions[0].end_local, "2026-08-10T19:00");
+  assert.equal(normalized.global.start_at, "2026-08-10T17:30:00.000Z");
+  assert.deepEqual(validateRecord(record, { type: "event", registry, venueIds }).errors, []);
+});

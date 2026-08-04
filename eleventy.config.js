@@ -11,6 +11,7 @@ const {
   migrateLegalEntry,
   migrateYamlRecord,
   normalizeNativeI18nRecord,
+  normalizeCalendarRecord,
   normalizeV2,
 } = require("./scripts/schema/lib");
 const calendar = require("./lib/calendar");
@@ -535,7 +536,7 @@ function loadCalendar() {
     const dir = path.join(__dirname, "content", collection);
     if (!fs.existsSync(dir)) continue;
     for (const filename of fs.readdirSync(dir).filter((name) => name.endsWith(".yaml")).sort()) {
-      const raw = normalizeNativeI18nRecord(yaml.load(fs.readFileSync(path.join(dir, filename), "utf8")));
+      const raw = normalizeCalendarRecord(normalizeNativeI18nRecord(yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"))));
       if (raw?.global?.schedule) definitions.push(calendar.toDefinition(raw, { venues }));
     }
   }

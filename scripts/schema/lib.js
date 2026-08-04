@@ -19,6 +19,38 @@ const PAGE_ROUTES = {
   mitmachen: "/mitmachen",
 };
 
+const FLOATING_LOCAL_WITH_OPTIONAL_SECONDS = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2})(?::\d{2}(?:\.\d{1,3})?)?$/;
+
+// Sveltia's datetime widget may serialize a local datetime with seconds even
+// though the content contract stores floating-local values at minute precision.
+// Normalize that harmless representation at the read boundary so CMS saves do
+// not make the deploy fail. The source YAML is intentionally left untouched.
+function normalizeCalendarRecord(record) {
+  if (!isObject(record) || record.schema_version !== 2) return record;
+  const global = record.global;
+  const schedule = global?.schedule;
+  if (!isObject(global) || !isObject(schedule) || !Array.isArray(schedule.sessions)) return record;
+
+  for (const session of schedule.sessions) {
+    if (!isObject(session)) continue;
+    for (const key of ["start_local", "end_local"]) {
+      const match = typeof session[key] === "string"
+        ? session[key].match(FLOATING_LOCAL_WITH_OPTIONAL_SECONDS)
+        : null;
+      if (match) session[key] = match[1];
+    }
+  }
+
+  const starts = schedule.sessions
+    .map((session) => session?.start_local)
+    .filter((value) => typeof value === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(value))
+    .sort();
+  if (starts.length && (global.start_at === undefined || global.start_at === null || global.start_at === "")) {
+    global.start_at = `${starts[0]}:00.000Z`;
+  }
+  return record;
+}
+
 function isObject(value) {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
@@ -93,7 +125,7 @@ function normalizeNativeI18nRecord(record) {
 }
 
 function readYaml(file) {
-  return normalizeNativeI18nRecord(yaml.load(fs.readFileSync(file, "utf8")));
+  return normalizeCalendarRecord(normalizeNativeI18nRecord(yaml.load(fs.readFileSync(file, "utf8"))));
 }
 
 function writeYaml(file, value) {
@@ -260,7 +292,7 @@ function selectedCollections(args) {
 }
 
 function normalizeV2(record, file = "<record>") {
-  record = normalizeNativeI18nRecord(record);
+  record = normalizeCalendarRecord(normalizeNativeI18nRecord(record));
   assertV2(record, file);
   const locales = {};
   for (const locale of Object.keys(record.locales)) {
@@ -497,6 +529,7 @@ module.exports = {
   migrateLegalEntry,
   migrateYamlRecord,
   normalizeNativeI18nRecord,
+  normalizeCalendarRecord,
   normalizeV2,
   omitEmpty,
   promoteGlobalFields,
