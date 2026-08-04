@@ -22,6 +22,7 @@ permalink: "montagskurs/{{ occ.date }}.html"
   <link rel="stylesheet" href="../css/styles.css?v={{ assetVersion }}">
 </head>
 <body>
+  {%- set pathPrefix = "../" -%}
   {% include "partials/nav.njk" %}
   <main class="page-hero"><div class="container">
     <p class="label" data-de="Montagskurs" data-en="Monday Class">Montagskurs</p>

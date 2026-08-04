@@ -60,7 +60,19 @@ Each published dated record can produce:
 
 Featured occurrence pages use human-readable dates in their title, description, heading, and `<time>` elements. Their JSON-LD uses the leaf-page URL and event name, while the machine-readable `startDate` and `endDate` remain floating local times.
 
+Leaf pages are written one directory deep (`events/<id>.html`, `montagskurs/<date>.html`, `journal/<slug>.html`), so any nested template **must set `{%- set pathPrefix = "../" -%}` before including `partials/nav.njk`**. The shared nav and footer emit root-page-relative links (`index`, `team`, …) via the `navigationUrl` filter; without the prefix they resolve against the subdirectory and produce broken URLs like `/events/index`. Root-level templates (`index.njk`, `team.njk`, …) leave `pathPrefix` unset. This is unrelated to the `www` → apex redirect — it affects every nested page regardless of the domain used to reach it.
+
 Preview calendar changes locally with `npm run dev`, then check `/montagskurs/<date>`, `/events/<id>`, `/wildcare.ics`, and `/sitemap.xml`. The deployment workflow runs `npm run schema:check` and `npm run build` before publishing.
+
+#### Recent scheduling decisions
+
+- Montagskurs keeps a weekly recurrence with a default teacher; individual
+  Mondays use one unified override list for guest teachers, notes, and breaks.
+- Sveltia uses native date, time, and datetime-local inputs for structured
+  scheduling fields while preserving the existing storage formats.
+- Date-only YAML values must remain quoted (`'YYYY-MM-DD'`). Validation rejects
+  unquoted recurrence anchors and override dates because YAML can otherwise
+  parse them as JavaScript dates and break recurrence expansion.
 
 One editorial regression is that this v2 CMS shape no longer provides side-by-side locale editing in the editor. That makes bilingual edits slower and more error-prone, so it should be treated as an open issue rather than a desired end state.
 

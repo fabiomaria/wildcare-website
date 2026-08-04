@@ -32,6 +32,7 @@ permalink: "{{ event.href }}"
   <link rel="stylesheet" href="../css/styles.css?v={{ assetVersion }}">
 </head>
 <body>
+  {%- set pathPrefix = "../" -%}
   {% include "partials/nav.njk" %}
   <main>
     <header class="page-hero">
