@@ -226,6 +226,14 @@
   {
     "class": "L",
     "cms_visible": true,
+    "field_id": "event.l.description",
+    "path": "locales.{locale}.description",
+    "record_type": "event",
+    "source": "content/events/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
     "field_id": "event.l.summary",
     "path": "locales.{locale}.summary",
     "record_type": "event",
@@ -1100,6 +1108,14 @@
     "cms_visible": true,
     "field_id": "fixed_page.l.hero.cta_primary",
     "path": "locales.{locale}.hero.cta_primary",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.hero.cta_primary_url",
+    "path": "locales.{locale}.hero.cta_primary_url",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },

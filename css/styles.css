@@ -1898,6 +1898,47 @@ img.media-focus-bottom-right { object-position: 85% 85%; }
     overflow: hidden;
 }
 
+.event-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(280px, 1fr);
+    gap: var(--space-2xl);
+    align-items: start;
+    margin-top: var(--space-2xl);
+}
+
+.event-description {
+    max-width: 70ch;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+}
+
+.event-description h2 {
+    margin: var(--space-xl) 0 var(--space-sm);
+    font-size: 1.5rem;
+}
+
+.event-description h2:first-child {
+    margin-top: 0;
+}
+
+.event-description p,
+.event-description ul {
+    margin-bottom: var(--space-md);
+}
+
+.event-description ul {
+    padding-left: 1.25rem;
+}
+
+.event-description li + li {
+    margin-top: var(--space-xs);
+}
+
+.event-sidebar {
+    position: sticky;
+    top: var(--space-lg);
+}
+
 .info-card::before {
     content: '';
     position: absolute;
@@ -2932,6 +2973,8 @@ img.media-focus-bottom-right { object-position: 85% 85%; }
     .circles-detail { grid-template-columns: 1fr; }
     .beitrag-grid { grid-template-columns: 1fr; max-width: 400px; }
     .montagskurs-layout { grid-template-columns: 1fr; gap: var(--space-xl); }
+    .event-layout { grid-template-columns: 1fr; gap: var(--space-xl); }
+    .event-sidebar { position: static; }
     .ausblick-grid { grid-template-columns: 1fr; }
     .projekt-details { gap: var(--space-md); }
     .values-grid { grid-template-columns: repeat(2, 1fr); }

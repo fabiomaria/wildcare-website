@@ -313,7 +313,7 @@
           "nullable": false,
           "path": "global.schedule.previous_start_local",
           "required": false,
-          "type": "null",
+          "type": "string",
           "v1_downgrade": {
             "path": "de.schedule.previous_start_local"
           },
@@ -507,7 +507,7 @@
           "nullable": false,
           "path": "global.start_at",
           "required": false,
-          "type": "datetime",
+          "type": "string",
           "v1_downgrade": {
             "path": "de.start_at"
           },
@@ -540,7 +540,7 @@
           "nullable": false,
           "path": "global.updated_at",
           "required": false,
-          "type": "datetime",
+          "type": "string",
           "v1_downgrade": {
             "path": "de.updated_at"
           },
@@ -566,6 +566,22 @@
           },
           "v1_source": {
             "path": "de.venue"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "event.l.description",
+          "nullable": false,
+          "path": "locales.{locale}.description",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.description"
+          },
+          "v1_source": {
+            "path": "{locale}.description"
           }
         },
         {
@@ -917,7 +933,7 @@
           "nullable": false,
           "path": "global.schedule.recurrence.anchor",
           "required": false,
-          "type": "datetime",
+          "type": "string",
           "v1_downgrade": {
             "path": "de.schedule.recurrence.anchor"
           },
@@ -2353,6 +2369,22 @@
           },
           "v1_source": {
             "path": "{locale}.hero.cta_primary"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.hero.cta_primary_url",
+          "nullable": false,
+          "path": "locales.{locale}.hero.cta_primary_url",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.hero.cta_primary_url"
+          },
+          "v1_source": {
+            "path": "{locale}.hero.cta_primary_url"
           }
         },
         {

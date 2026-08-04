@@ -4647,6 +4647,11 @@ collections:
               - name: summary
                 label: Summary
                 widget: text
+              - name: description
+                label: Description
+                widget: markdown
+                required: false
+                hint: Use headings and bullet points to make event details easy to scan.
           - name: en
             label: English content
             widget: object
@@ -4658,6 +4663,11 @@ collections:
               - name: summary
                 label: Summary
                 widget: text
+              - name: description
+                label: Description
+                widget: markdown
+                required: false
+                hint: Use headings and bullet points to make event details easy to scan.
   - name: journal_bodies
     label: Journal bodies
     folder: content/journal/bodies

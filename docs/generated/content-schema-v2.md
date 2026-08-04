@@ -26,7 +26,7 @@ Templates: `event`
 | `event.g.global.schedule.featured_occurrences.item.id` | G | `global.schedule.featured_occurrences[].id` | string | yes | yes |
 | `event.g.global.schedule.featured_occurrences.item.teacher` | G | `global.schedule.featured_occurrences[].teacher` | string | no | yes |
 | `event.g.global.schedule.mode` | G | `global.schedule.mode` | string | no | yes |
-| `event.g.global.schedule.previous_start_local` | G | `global.schedule.previous_start_local` | null | no | yes |
+| `event.g.global.schedule.previous_start_local` | G | `global.schedule.previous_start_local` | string | no | yes |
 | `event.g.global.schedule.recurrence.anchor` | G | `global.schedule.recurrence.anchor` | string | yes | yes |
 | `event.g.global.schedule.recurrence.end_time` | G | `global.schedule.recurrence.end_time` | string | yes | yes |
 | `event.g.global.schedule.recurrence.except.item` | G | `global.schedule.recurrence.except[]` | array | no | yes |
@@ -38,10 +38,11 @@ Templates: `event`
 | `event.g.global.schedule.sessions.item.start_local` | G | `global.schedule.sessions[].start_local` | string | no | yes |
 | `event.g.global.schedule.sessions.item.status` | G | `global.schedule.sessions[].status` | string | no | yes |
 | `event.g.global.sort_order` | G | `global.sort_order` | integer | no | yes |
-| `event.g.global.start_at` | G | `global.start_at` | datetime | no | yes |
+| `event.g.global.start_at` | G | `global.start_at` | string | no | yes |
 | `event.g.global.status` | G | `global.status` | string | yes | yes |
-| `event.g.global.updated_at` | G | `global.updated_at` | datetime | no | yes |
+| `event.g.global.updated_at` | G | `global.updated_at` | string | no | yes |
 | `event.g.global.venue` | G | `global.venue` | string | no | yes |
+| `event.l.description` | L | `locales.{locale}.description` | string | no | yes |
 | `event.l.summary` | L | `locales.{locale}.summary` | string | no | yes |
 | `event.l.title` | L | `locales.{locale}.title` | string | no | yes |
 
@@ -71,7 +72,7 @@ Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mi
 | `fixed_page.g.global.schedule.overrides.item.status` | G | `global.schedule.overrides[].status` | string | no | yes |
 | `fixed_page.g.global.schedule.overrides.item.teacher` | G | `global.schedule.overrides[].teacher` | string | no | yes |
 | `fixed_page.g.global.schedule.previous_start_local` | G | `global.schedule.previous_start_local` | string | no | yes |
-| `fixed_page.g.global.schedule.recurrence.anchor` | G | `global.schedule.recurrence.anchor` | datetime | no | yes |
+| `fixed_page.g.global.schedule.recurrence.anchor` | G | `global.schedule.recurrence.anchor` | string | no | yes |
 | `fixed_page.g.global.schedule.recurrence.default_teacher` | G | `global.schedule.recurrence.default_teacher` | string | no | yes |
 | `fixed_page.g.global.schedule.recurrence.end_time` | G | `global.schedule.recurrence.end_time` | string | no | yes |
 | `fixed_page.g.global.schedule.recurrence.horizon_months` | G | `global.schedule.recurrence.horizon_months` | integer | no | yes |
@@ -161,6 +162,7 @@ Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mi
 | `fixed_page.l.hero.cta_ghost` | L | `locales.{locale}.hero.cta_ghost` | string | no | yes |
 | `fixed_page.l.hero.cta_ghost_url` | L | `locales.{locale}.hero.cta_ghost_url` | string | no | yes |
 | `fixed_page.l.hero.cta_primary` | L | `locales.{locale}.hero.cta_primary` | string | no | yes |
+| `fixed_page.l.hero.cta_primary_url` | L | `locales.{locale}.hero.cta_primary_url` | string | no | yes |
 | `fixed_page.l.hero.cta_secondary` | L | `locales.{locale}.hero.cta_secondary` | string | no | yes |
 | `fixed_page.l.hero.cta_secondary_url` | L | `locales.{locale}.hero.cta_secondary_url` | string | no | yes |
 | `fixed_page.l.hero.heading` | L | `locales.{locale}.hero.heading` | string | no | yes |

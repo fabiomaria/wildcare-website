@@ -12,6 +12,7 @@ permalink: "{{ event.href }}"
 {%- set fallback = event.de if locale == 'en' else event.en -%}
 {%- set title = copy.title or fallback.title or event.slug -%}
 {%- set summary = copy.summary or fallback.summary or title -%}
+{%- set description = copy.description or fallback.description -%}
 {%- set def = calendar.byId[event.slug] -%}
 {%- set seoMeta = { title: title ~ ' | Wild Care', description: summary, og_title: title, og_description: summary } -%}
 {%- set seoCanonical = 'https://wildcare.space' ~ event.route -%}
@@ -38,7 +39,21 @@ permalink: "{{ event.href }}"
         <h1 data-de="{{ (event.de.title or title) | attr }}" data-en="{{ (event.en.title or title) | attr }}">{{ title }}</h1>
         <p data-de="{{ (event.de.summary or summary) | attr }}" data-en="{{ (event.en.summary or summary) | attr }}">{{ summary }}</p>
 
-        <div class="info-card">
+        <div class="event-layout">
+          <article class="event-description">
+{% if event.de.description %}
+            <div data-rich-lang="de"{% if locale != "de" %} hidden{% endif %}>{{ event.de.description | richText }}</div>
+{% endif %}
+{% if event.en.description %}
+            <div data-rich-lang="en"{% if locale != "en" %} hidden{% endif %}>{{ event.en.description | richText }}</div>
+{% endif %}
+{% if not event.de.description and not event.en.description %}
+            <p>{{ description }}</p>
+{% endif %}
+          </article>
+
+          <aside class="event-sidebar">
+            <div class="info-card">
           <div class="info-card-title"
               data-de="{{ s.de.workshop_ui.info_title | attr }}"
               data-en="{{ s.en.workshop_ui.info_title | attr }}">{{ s[locale].workshop_ui.info_title }}</div>
@@ -73,6 +88,8 @@ permalink: "{{ event.href }}"
 {% endif %}
           {%- set calId = event.slug -%}
           {% include "partials/add-to-calendar.njk" %}
+            </div>
+          </aside>
         </div>
 {% if event.related_workshop %}
         <p class="event-related-link">
