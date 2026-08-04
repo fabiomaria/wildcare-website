@@ -83,6 +83,7 @@ function validateRecord(record, { type, registry, venueIds = new Set() }) {
   }
 
   const schedule = record.global?.schedule;
+  if (schedule && !record.global?.venue) add("global.venue is required for calendar schedules");
   if (schedule?.mode === "dates") {
     const sessions = schedule.sessions || [];
     const ids = new Set();

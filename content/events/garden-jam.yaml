@@ -4,9 +4,10 @@ global:
   intended_locales:
     - de
   status: current
-  route: garden jam
+  route: /events/garden-jam
   event_type: jam
   page_mode: minimal
+  venue: graz-andritz
   registration:
     url: https://tally.so/r/2EYXlp
     availability: available

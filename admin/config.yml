@@ -4448,7 +4448,7 @@ collections:
             display_fields:
               - global.name
             hint: Pick from the Venues collection. Shows the venue name, not its internal ID.
-            required: false
+            required: true
           - name: start_at
             label: Start date for sorting
             widget: datetime

@@ -22,6 +22,14 @@ test("orphan venue is rejected", () => assert.ok(run("invalid-event-orphan-venue
 test("valid event passes", () => assert.deepEqual(run("valid-event.yaml", "event").errors, []));
 test("locale-neutral venue passes", () => assert.deepEqual(run("valid-venue.yaml", "venue").errors, []));
 test("venue missing city is rejected", () => assert.ok(run("invalid-venue-missing-city.yaml", "venue").errors.some((e) => /city/.test(e))));
+test("scheduled records require a venue", () => {
+  const record = {
+    schema_version: 2,
+    global: { id: "no-venue", intended_locales: ["en"], status: "upcoming", route: "/events/no-venue", schedule: { mode: "dates", sessions: [] } },
+    locales: { en: { title: "No Venue" } },
+  };
+  assert.ok(validateRecord(record, { type: "event", registry, venueIds }).errors.some((e) => /global\.venue is required/.test(e)));
+});
 
 test("CMS datetime output is normalized before validation", () => {
   const record = {
