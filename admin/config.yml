@@ -11,7 +11,7 @@ i18n:
     - de
     - en
   default_locale: de
-  initial_locales: default
+  initial_locales: all
 output:
   omit_empty_optional_fields: true
 media_libraries:

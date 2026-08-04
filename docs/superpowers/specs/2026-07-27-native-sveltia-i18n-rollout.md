@@ -146,10 +146,10 @@ i18n:
   structure: single_file
   locales: [de, en]
   default_locale: de
-  initial_locales: default
+  initial_locales: all
 ```
 
-`initial_locales` affects new drafts only. Existing bilingual files remain bilingual because both locale blocks already exist.
+Both locales are enabled in the editor by default, so bilingual fixed pages can be edited immediately without using the locale menu. The default locale remains German for initial rendering and shared-field storage.
 
 ### 6.2 Fixed page files
 

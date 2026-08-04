@@ -13,9 +13,9 @@ if (
   config.i18n?.structure !== "single_file" ||
   JSON.stringify(config.i18n?.locales) !== JSON.stringify(registry.supported_locales) ||
   config.i18n?.default_locale !== "de" ||
-  config.i18n?.initial_locales !== "default"
+  config.i18n?.initial_locales !== "all"
 ) {
-  errors.push("root i18n must configure native single_file de/en editing with German default and default locale initialization");
+  errors.push("root i18n must configure native single_file de/en editing with German default and all locales initialized");
 }
 if (config.output?.omit_empty_optional_fields !== true) {
   errors.push("output.omit_empty_optional_fields must be true so optional empty values remain omitted");
