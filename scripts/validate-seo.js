@@ -45,6 +45,26 @@ for (const publicUrl of publicUrls) {
   if (canonicalUrl !== publicUrl || openGraphUrl !== publicUrl) {
     throw new Error(`${relativePath}: canonical and Open Graph URLs must match ${publicUrl}`);
   }
+
+  const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  for (const [, source] of jsonLdBlocks) {
+    let data;
+    try {
+      data = JSON.parse(source);
+    } catch (error) {
+      throw new Error(`${relativePath}: invalid JSON-LD (${error.message})`);
+    }
+    const nodes = Array.isArray(data) ? data : (Array.isArray(data["@graph"]) ? data["@graph"] : [data]);
+    for (const node of nodes) {
+      const types = Array.isArray(node?.["@type"]) ? node["@type"] : [node?.["@type"]];
+      if (!types.includes("Event")) continue;
+      for (const property of ["name", "startDate", "location"]) {
+        if (!node[property]) {
+          throw new Error(`${relativePath}: Event JSON-LD is missing required property ${property}`);
+        }
+      }
+    }
+  }
 }
 
 console.log(`SEO metadata valid for all ${publicUrls.length} sitemap URLs`);

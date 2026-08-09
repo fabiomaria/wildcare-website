@@ -15,8 +15,16 @@ permalink: montagskurs.html
     {%- set seoCanonical = "https://wildcare.space/montagskurs" -%}
     {%- set seoAlternateLocale = "en_US" -%}
     {% include "partials/seo.njk" %}
-    {%- set jsonldId = "montagskurs" -%}
-    {% include "partials/event-jsonld.njk" %}
+    {# The recurring overview is not a single Event leaf page. Google requires
+       one concrete startDate per Event, so only occurrence pages emit Event. #}
+    {%- set pageJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": de.title,
+        "description": de.summary,
+        "url": seoCanonical
+    } -%}
+    <script type="application/ld+json">{{ pageJsonLd | json | safe }}</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
