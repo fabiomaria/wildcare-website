@@ -2,17 +2,16 @@ en:
   schema_version: 2
   global:
     id: cellular-touch
+    primary_locale: en
     status: current
-    start_at: 2026-08-08T10:00:00.000Z
-    updated_at: 2026-07-26T10:00:00.000Z
     detail_page: true
     registration:
       url: https://tally.so/r/1ABgjL
       availability: available
     venue: orpheumgasse
+    updated_at: 2026-07-26T10:00:00.000Z
     schedule:
       event_status: scheduled
-      previous_start_local: null
       mode: dates
       sessions:
         - id: sat-morning
@@ -33,20 +32,20 @@ en:
       inset_image: assets/images/cellular-touch-membrane.jpg
     description:
       show_info: true
+    image_band:
+      image: assets/images/cellular-touch-membrane.jpg
     meta:
       og_image: assets/images/cellular-touch-valentyn.jpg
       og_image_width: 2000
       og_image_height: 1334
-    image_band:
-      image: assets/images/cellular-touch-membrane.jpg
-    primary_locale: en
+    start_at: 2026-08-08T10:00:00.000Z
   title: Cellular Touch
   registration:
     label: Register now
   facts:
     date: 8–9 August 2026
     location: Orpheumgasse, 8020 Graz
-    price: "70–200\_EUR sliding scale"
+    price: sliding scale contribution
     duration: 2 days
     format:
       - value: Contact Improvisation, somatics and dance research
