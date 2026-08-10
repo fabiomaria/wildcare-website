@@ -51,7 +51,6 @@ for (const collection of collections) {
         status: record.global.status,
         detail_page: record.global.detail_page,
         start_date: record.global.start_at,
-        sort_order: record.global.sort_order,
         registration_url: record.global.registration?.url,
       };
       const locales = {};
@@ -63,20 +62,26 @@ for (const collection of collections) {
     } else if (collection === "journal") {
       for (const locale of Object.keys(record.locales)) {
         const localized = localizedView(record, locale);
+        const body = localized.body;
+        delete localized.body;
+        if (localized.summary) {
+          localized.excerpt = localized.summary;
+          localized.homepage_excerpt = localized.summary;
+          localized.homepage_title = localized.homepage_title || localized.title;
+          localized.homepage_image_alt = localized.homepage_image_alt || localized.image_alt;
+          delete localized.summary;
+        }
         const data = {
           language_mode: languageMode(record.global.intended_locales),
           ...localized,
           date: record.global.published_at,
-          sort_order: record.global.sort_order,
           status: record.global.status,
           image: record.global.image?.src,
           hero_image: record.global.hero?.image?.src,
           hero_variant: record.global.hero?.variant,
           tally: record.global.tally,
         };
-        const bodyFile = path.join(ROOT, "content/journal/bodies", `${id}.${locale}.md`);
-        if (!fs.existsSync(bodyFile)) throw new Error(`${relative(bodyFile)}: journal.locales.${locale}.body is missing`);
-        const body = fs.readFileSync(bodyFile, "utf8");
+        if (typeof body !== "string" || !body.trim()) throw new Error(`${relative(file)}: journal.locales.${locale}.body is missing`);
         const name = locale === "de" ? `${id}.md` : `${id}.${locale}.md`;
         addOutput(collection, name, matter.stringify(body, omitEmpty(data)), true);
       }
@@ -84,7 +89,7 @@ for (const collection of collections) {
       const locale = Object.keys(record.locales)[0];
       const bodyFile = path.join(ROOT, "content/legal/bodies", `${id}.${locale}.md`);
       if (!fs.existsSync(bodyFile)) throw new Error(`${relative(bodyFile)}: legal body is missing`);
-      const data = { status: record.global.status, route: record.global.route, ...localizedView(record, locale) };
+      const data = { status: record.global.status, route: record.global.route || `/${id}`, ...localizedView(record, locale) };
       addOutput(collection, `${id}.md`, matter.stringify(fs.readFileSync(bodyFile, "utf8"), omitEmpty(data)), true);
     }
   }

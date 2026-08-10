@@ -15,6 +15,7 @@ const {
   normalizeV2,
 } = require("./scripts/schema/lib");
 const calendar = require("./lib/calendar");
+const { deriveWorkshopStatus, finalSessionEnd, localMinute } = require("./lib/calendar/lifecycle");
 
 // Pages not yet templatized are passthrough-copied verbatim (brief §7 Phase 1/2:
 // incremental migration — remove a page from this list when its template ships).
@@ -111,15 +112,20 @@ function normalizeRichText(value) {
 function normalizeJournalLocale(locale) {
   const source = isObject(locale) ? locale : {};
   const meta = isObject(source.meta) ? source.meta : {};
+  const summary = source.summary || source.excerpt || source.homepage_excerpt || "";
   const defaultTitle = source.title ? `${source.title} — Wild Care Journal` : "Wild Care Journal";
   return {
     ...source,
+    excerpt: summary,
+    homepage_title: source.title || "",
+    homepage_excerpt: summary,
+    homepage_image_alt: source.image_alt || "",
     meta: {
       ...meta,
       title: meta.title || defaultTitle,
-      description: meta.description || source.meta_description || source.excerpt || "",
+      description: meta.description || source.meta_description || summary,
       og_title: meta.og_title || meta.title || defaultTitle,
-      og_description: meta.og_description || meta.description || source.meta_description || source.excerpt || "",
+      og_description: meta.og_description || meta.description || source.meta_description || summary,
       og_image: meta.og_image || source.image || "",
       og_image_alt: meta.og_image_alt || source.image_alt || "",
     },
@@ -283,13 +289,11 @@ function loadJournalContent() {
     for (const filename of fs.readdirSync(recordsDir).filter((name) => name.endsWith(".yaml")).sort()) {
       const recordFile = path.join(recordsDir, filename);
       const raw = yaml.load(fs.readFileSync(recordFile, "utf8"));
-      const normalized = normalizeV2(raw, path.relative(__dirname, recordFile));
+      const normalized = normalizeV2(normalizeNativeI18nRecord(raw), path.relative(__dirname, recordFile));
       const id = normalized.global.id;
       const entry = { slug: id, global: normalized.global, locales: {} };
       for (const [locale, localized] of Object.entries(normalized.locales)) {
-        const bodyFile = path.join(dir, "bodies", `${id}.${locale}.md`);
-        if (!fs.existsSync(bodyFile)) throw new Error(`${path.relative(__dirname, bodyFile)} is required`);
-        const body = fs.readFileSync(bodyFile, "utf8");
+        const body = localized.body || "";
         entry.locales[locale] = {
           ...templateLocale(normalized.global, localized),
           body: body.trim(),
@@ -321,7 +325,8 @@ function loadJournalContent() {
     const enRaw = entry.locales.en || {};
     const deHasContent = hasText(deRaw.title) || hasText(deRaw.body);
     const enHasContent = hasText(enRaw.title) || hasText(enRaw.body);
-    const primaryRaw = deHasContent ? deRaw : enRaw;
+    const primaryLocale = entry.global.primary_locale || (deHasContent ? "de" : "en");
+    const primaryRaw = primaryLocale === "en" ? enRaw : deRaw;
 
     const de = normalizeJournalLocale(deHasContent ? deRaw : primaryRaw);
     const en = normalizeJournalLocale(enHasContent ? enRaw : primaryRaw);
@@ -330,16 +335,17 @@ function loadJournalContent() {
       slug: entry.slug,
       href: `journal/${entry.slug}.html`,
       status: duplicateSource.status || "published",
+      primary_locale: primaryLocale,
       language_mode: duplicateSource.language_mode || (deHasContent && enHasContent ? "bilingual" : deHasContent ? "de_only" : "en_only"),
       date: duplicateSource.published_at || duplicateSource.date || deRaw.date || enRaw.date || "",
-      sort_order: duplicateSource.sort_order || 999,
       image: duplicateSource.image?.src || duplicateSource.image || deRaw.image || enRaw.image || "",
       image_alt: duplicateSource.image_alt || primaryRaw.image_alt || "",
       homepage_image_alt: duplicateSource.homepage_image_alt || primaryRaw.homepage_image_alt || primaryRaw.image_alt || "",
       hero_image: duplicateSource.hero?.image?.src || duplicateSource.hero_image || duplicateSource.image?.src || duplicateSource.image || "",
       hero_alt: duplicateSource.hero_alt || primaryRaw.hero_alt || primaryRaw.image_alt || "",
       hero_variant: duplicateSource.hero?.variant || duplicateSource.hero_variant || "cover",
-      tally: duplicateSource.tally || false,
+      tally: Boolean(duplicateSource.tally || Object.values(entry.locales).some((locale) =>
+        locale.cta?.buttons?.some((button) => button.kind === "tally"))),
       has_de: deHasContent,
       has_en: enHasContent,
       de,
@@ -362,7 +368,7 @@ function loadJournalContent() {
   posts.sort((a, b) => {
     const byDate = new Date(b.date).getTime() - new Date(a.date).getTime();
     if (byDate !== 0) return byDate;
-    return a.sort_order - b.sort_order;
+    return a.slug.localeCompare(b.slug);
   });
 
   const articlePages = posts.filter((post) => post.has_article_page);
@@ -429,7 +435,7 @@ function loadLegalContent() {
     pages[slug] = {
       ...localized,
       status: normalized.global.status,
-      route: normalized.global.route,
+      route: normalized.global.route || `/${slug}`,
       meta: deepMerge(legacyMeta, localized.meta || {}),
       body,
       body_html: markdown.render(body),
@@ -440,11 +446,13 @@ function loadLegalContent() {
   return pages;
 }
 
-function loadWorkshopContent() {
+function loadWorkshopContent({ now = new Date() } = {}) {
   const dir = path.join(__dirname, "content", "workshops");
   if (!fs.existsSync(dir)) {
-    return { all: [], listed: [], pages: [] };
+    return { all: [], current: [], upcoming: [], past: [], listed: [], pages: [] };
   }
+
+  const nowLocal = localMinute(now);
 
   const all = fs.readdirSync(dir)
     .filter((filename) => filename.endsWith(".yaml"))
@@ -456,15 +464,18 @@ function loadWorkshopContent() {
       const normalized = normalizeV2(source, `content/workshops/${filename}`);
       const deSource = isObject(normalized.locales.de) ? templateLocale(normalized.global, normalized.locales.de) : {};
       const enSource = isObject(normalized.locales.en) ? templateLocale(normalized.global, normalized.locales.en) : {};
+      const configuredStatus = normalized.global.status;
+      const schedule = normalized.global.schedule;
       const head = {
         slug: normalized.global.id,
         language_mode: normalized.global.intended_locales.length === 2
           ? "bilingual"
           : `${normalized.global.intended_locales[0]}_only`,
-        status: normalized.global.status,
+        status: deriveWorkshopStatus(configuredStatus, schedule, nowLocal),
+        configured_status: configuredStatus,
         detail_page: normalized.global.detail_page,
         start_date: normalized.global.start_at,
-        sort_order: normalized.global.sort_order,
+        end_date: finalSessionEnd(schedule),
         registration_url: normalized.global.registration?.url,
       };
       const deRaw = { ...deSource };
@@ -502,17 +513,24 @@ function loadWorkshopContent() {
     .sort((a, b) => {
       const byDate = new Date(a.start_date || 0).getTime() - new Date(b.start_date || 0).getTime();
       if (byDate !== 0) return byDate;
-      return (a.sort_order || 999) - (b.sort_order || 999);
+      return a.slug.localeCompare(b.slug);
     });
 
   const hasListingTitle = (workshop) => Boolean(workshop.de.title || workshop.en.title);
   const current = all.filter((workshop) => workshop.status === "current" && hasListingTitle(workshop));
   const upcoming = all.filter((workshop) => workshop.status === "upcoming" && hasListingTitle(workshop));
+  const past = all
+    .filter((workshop) => workshop.status === "past" && hasListingTitle(workshop))
+    .sort((a, b) => {
+      const byDate = String(b.end_date || b.start_date || "").localeCompare(String(a.end_date || a.start_date || ""));
+      return byDate || a.slug.localeCompare(b.slug);
+    });
 
   return {
     all,
     current,
     upcoming,
+    past,
     listed: [...current, ...upcoming],
     pages: all.filter((workshop) => workshop.has_detail_page),
   };
@@ -552,7 +570,7 @@ function loadEventContent() {
     const global = raw.global;
     const primary = global.intended_locales?.[0] || "de";
     return {
-      slug: global.id, route: global.route, page_mode: global.page_mode || "minimal",
+      slug: global.id, route: global.route || `/events/${global.id}`, page_mode: global.page_mode || "minimal",
       related_workshop: global.related_workshop || null,
       primary_locale: primary, de: raw.locales?.de || {}, en: raw.locales?.en || {},
       href: `events/${global.id}.html`,

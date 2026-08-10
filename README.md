@@ -27,7 +27,7 @@ In Chrome or Edge, choose **Work with Local Repository** in the CMS and select t
 
 ## Content Architecture
 
-`content/pages/*.yaml` stores fixed-layout page content. `content/journal/` stores Markdown articles. `content/workshops/*.yaml` stores workshop entries using Sveltia's single-file DE/EN locale structure.
+`content/pages/*.yaml` stores fixed-layout page content. `content/journal/records/*.yaml` stores complete Journal articles. `content/workshops/*.yaml` stores workshop entries. Journal articles and workshops both use Sveltia's single-file DE/EN locale structure, so metadata and localized page content are edited together.
 
 Workshop data has four central concepts:
 
@@ -46,19 +46,25 @@ The `Pages` collection uses Sveltia's native `single_file` i18n mode. Each page 
 
 Workshops use two primary-language collections over the same source folder. `workshops_de` defaults to German and offers English as an optional translation; `workshops_en` does the reverse. Their `initial_locales: default` setting is intentional: editors enable the secondary locale from Sveltia's locale menu only when that workshop is bilingual.
 
+Journal publishing uses the same model. `journal_de` and `journal_en` each create a single article record containing the title, one reusable summary, full Markdown body, images, CTA, and SEO fields. The URL is derived from one stable slug, publication dates break ties alphabetically, and new articles begin as drafts. Enabling a secondary locale keeps its complete translation in the same entry.
+
+Workshops and events use the same simplified publishing controls: editors enter one URL slug, while the build derives `/<slug>` for workshops and `/events/<slug>` for events. Legal-page routes are derived in the same way. There is no manual sort-order field; records with the same date are ordered alphabetically by slug. Fixed-layout pages retain their established routes as hidden implementation data because editors cannot create or rename those pages.
+
 For the pinned Sveltia CMS version, declaring `i18n: true` only on a parent object is not sufficient for nested fields: the secondary-language object can appear expanded but empty. Every localized nested object, list, and leaf field in `admin/config.yml` must therefore declare `i18n: true` explicitly. Locale-neutral controls, URLs, schedules, and shared media use `i18n: false` and are intentionally editable only in the primary/default pane. Lists whose item identity and order must stay synchronized use `i18n: duplicate`, with translated child fields still marked `i18n: true`.
 
 `npm run schema:cms` enforces the page locale configuration and rejects localized descendants in pages or workshops that rely on implicit inheritance.
 
 ## Schema Migration
 
-The site now uses schema v2 content records. The migration moved shared metadata into a language-neutral `global` block and localized copy into `locales`, while keeping page URLs stable. Journal and legal articles now split into canonical records plus per-language body files under `content/journal/` and `content/legal/`, and workshops use the same v2 record shape across the CMS and build.
+The site now uses schema v2 content records. The migration moved shared metadata into a language-neutral `global` block and localized copy into `locales`, while keeping page URLs stable. Journal articles keep their localized Markdown bodies inside each canonical record; legal pages keep canonical records plus body files under `content/legal/`. Workshops use the same v2 record shape across the CMS and build.
 
 The migration is reversible by design: `npm run schema:check` validates the registry, CMS contract, content, parity, and downgrade fixtures, and `npm run build` verifies the rendered site before deployment.
 
 ### Calendar and event publishing
 
 Calendar-aware workshops, events, and recurring classes use the structured `global.schedule` block. Calendar definitions live in `lib/calendar/` and are loaded by Eleventy from `content/workshops/`, `content/events/`, and scheduled fixed pages such as `content/pages/montagskurs.yaml`.
+
+Dated workshops automatically leave the current-project listing and enter `/archive` as soon as their final scheduled session has ended in `Europe/Vienna`. Draft and unlisted records remain hidden. The GitHub Pages workflow rebuilds the production branch daily so this transition happens even when nobody edits the CMS.
 
 Each published dated record can produce:
 

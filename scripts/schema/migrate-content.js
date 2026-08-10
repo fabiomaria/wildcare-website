@@ -55,21 +55,9 @@ for (const collection of collections) {
       throw new Error("content/journal: no v1 pairs or v2 records found");
     }
     for (const [id, pair] of pairs) {
-      const { record, parsed } = migrateJournalEntry(id, pair);
+      const { record } = migrateJournalEntry(id, pair);
       const target = path.join(ROOT, "content/journal/records", `${id}.yaml`);
       recordChange(collection, pair.de || pair.en, target, record);
-      for (const [locale, entry] of Object.entries(parsed)) {
-        const bodyTarget = path.join(ROOT, "content/journal/bodies", `${id}.${locale}.md`);
-        const existing = fs.existsSync(bodyTarget) ? fs.readFileSync(bodyTarget, "utf8") : null;
-        if (existing !== entry.content) {
-          changes.push({
-            collection,
-            source: relative(pair[locale]),
-            target: relative(bodyTarget),
-            raw: entry.content,
-          });
-        }
-      }
     }
     for (const file of contentFilesFor("journal")) {
       recordChange(collection, file, file, promoteGlobalFields(readYaml(file)));
@@ -107,10 +95,6 @@ const report = {
   collections,
   records_verified: collections.flatMap((collection) => contentFilesFor(collection).map(relative)),
   body_files_verified: [
-    ...(collections.includes("journal") && fs.existsSync(path.join(ROOT, "content/journal/bodies"))
-      ? fs.readdirSync(path.join(ROOT, "content/journal/bodies")).filter((name) => name.endsWith(".md")).sort()
-        .map((name) => `content/journal/bodies/${name}`)
-      : []),
     ...(collections.includes("legal") && fs.existsSync(path.join(ROOT, "content/legal/bodies"))
       ? fs.readdirSync(path.join(ROOT, "content/legal/bodies")).filter((name) => name.endsWith(".md")).sort()
         .map((name) => `content/legal/bodies/${name}`)

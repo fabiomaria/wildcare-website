@@ -1,0 +1,127 @@
+---
+permalink: archive.html
+---
+{% from "partials/icon.njk" import icon %}
+{%- set de = cms.pages.archive.de -%}
+{%- set en = cms.pages.archive.en -%}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%- set seoMeta = de.meta -%}
+    {%- set seoCanonical = "https://wildcare.space/archive" -%}
+    {%- set seoAlternateLocale = "en_US" -%}
+    {% include "partials/seo.njk" %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v={{ assetVersion }}">
+</head>
+<body>
+
+    {%- set navActive = "programm" -%}
+    {%- set navBreadcrumbDe = de.breadcrumb -%}
+    {%- set navBreadcrumbEn = en.breadcrumb -%}
+    {% include "partials/nav.njk" %}
+
+    <header class="page-hero">
+        <div class="container">
+            <p class="label fade-up" data-de="{{ de.hero.label | attr }}" data-en="{{ en.hero.label | attr }}">{{ de.hero.label }}</p>
+            <h1 class="fade-up delay-1" data-de="{{ de.hero.heading | attr }}" data-en="{{ en.hero.heading | attr }}">{{ de.hero.heading }}</h1>
+            <p class="fade-up delay-2" style="max-width: 620px;"
+                data-de="{{ de.hero.intro | attr }}"
+                data-en="{{ en.hero.intro | attr }}">{{ de.hero.intro }}</p>
+        </div>
+    </header>
+
+    <section style="padding-top: 0;">
+        <div class="container">
+            {% if cms.workshops.past.length %}
+            <div style="display: grid; gap: var(--space-lg);">
+                {% for workshop in cms.workshops.past %}
+                {%- set cardDe = workshop.de.card -%}
+                {%- set cardEn = workshop.en.card -%}
+                {%- set factsDe = workshop.de.facts -%}
+                {%- set factsEn = workshop.en.facts -%}
+                <article class="projekt-card fade-up delay-{{ loop.index }}">
+                    <div class="projekt-card-accent"></div>
+                    <div class="projekt-card-body">
+                        <div class="projekt-card-meta">
+                            {% for tag in cardDe.tags %}
+                            {%- set tagEn = cardEn.tags[loop.index0] -%}
+                            <span class="projekt-tag{% if tag.style == 'moss' %} projekt-tag-moss{% endif %}"
+                                data-de="{{ tag.label | attr }}"
+                                data-en="{{ (tagEn.label or tag.label) | attr }}">{{ tag.label }}</span>
+                            {% endfor %}
+                        </div>
+                        <h2{% if workshop.de.title != workshop.en.title %} data-de="{{ workshop.de.title | attr }}" data-en="{{ workshop.en.title | attr }}"{% endif %}>{{ workshop.de.title }}</h2>
+                        <div class="projekt-card-subtitle" data-de="{{ cardDe.subtitle | attr }}" data-en="{{ (cardEn.subtitle or cardDe.subtitle) | attr }}">{{ cardDe.subtitle }}</div>
+                        <p data-de="{{ cardDe.summary | attr }}" data-en="{{ (cardEn.summary or cardDe.summary) | attr }}">{{ cardDe.summary }}</p>
+
+                        <div class="projekt-details">
+                            <div class="projekt-detail">
+                                {{ icon("calendar") }}
+                                <span data-de="{{ factsDe.date | attr }}" data-en="{{ (factsEn.date or factsDe.date) | attr }}">{{ factsDe.date }}</span>
+                            </div>
+                            <div class="projekt-detail">
+                                {{ icon("location") }}
+                                <span data-de="{{ factsDe.location | attr }}" data-en="{{ (factsEn.location or factsDe.location) | attr }}">{{ factsDe.location }}</span>
+                            </div>
+                            {% if factsDe.duration %}
+                            <div class="projekt-detail">
+                                {{ icon("people") }}
+                                <span data-de="{{ factsDe.duration | attr }}" data-en="{{ (factsEn.duration or factsDe.duration) | attr }}">{{ factsDe.duration }}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        {% if workshop.has_detail_page %}
+                        <div style="margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: var(--border-subtle);">
+                            <a href="{{ workshop.href | cleanUrl }}" class="btn btn-secondary"
+                                data-de="{{ (cardDe.detail_label or de.listing.fallback_detail_label) | attr }}"
+                                data-en="{{ (cardEn.detail_label or en.listing.fallback_detail_label) | attr }}">{{ cardDe.detail_label or de.listing.fallback_detail_label }}</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="section-header fade-up">
+                <h2 data-de="{{ de.listing.empty_heading | attr }}" data-en="{{ en.listing.empty_heading | attr }}">{{ de.listing.empty_heading }}</h2>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container fade-up">
+            <p class="label" style="color: var(--warmwhite); opacity: 0.5; margin-bottom: 16px;" data-de="{{ de.cta.label | attr }}" data-en="{{ en.cta.label | attr }}">{{ de.cta.label }}</p>
+            <h2 data-de="{{ de.cta.heading | attr }}" data-en="{{ en.cta.heading | attr }}">{{ de.cta.heading }}</h2>
+            <p data-de="{{ de.cta.text | attr }}" data-en="{{ en.cta.text | attr }}">{{ de.cta.text }}</p>
+            <a href="programm" class="btn btn-primary" data-de="{{ de.cta.button | attr }}" data-en="{{ en.cta.button | attr }}">{{ de.cta.button }}</a>
+        </div>
+    </section>
+
+    {% include "partials/footer.njk" %}
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-up').forEach((element) => observer.observe(element));
+
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle) navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    </script>
+    <script src="js/i18n.js"></script>
+</body>
+</html>

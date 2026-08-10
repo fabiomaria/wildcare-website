@@ -241,33 +241,34 @@ Promoting a field from `G` to `G+O` requires:
 
 ### 6.1 Identity
 
-`global.id` is authoritative.
+`global.id` is authoritative and is exposed to editors as the URL slug for
+creatable page types.
 
 - For file collections, the filename stem must equal `global.id`.
 - IDs are unique within a record type.
 - Routes are unique across all public records.
-- Routes are not derived from IDs because existing German-named routes must
-  remain stable.
+- Workshop, event, Journal, and legal routes are derived from the ID/slug.
+- Fixed-layout pages retain their existing explicit routes as hidden
+  implementation data because editors cannot create or rename them.
 
 ### 6.2 Routes
 
-Routes remain `G` during schema v2. Bilingual pages continue to serve both
-languages at one canonical URL. This deliberately preserves current URLs,
-incoming links, and the existing client-side language switch.
+Derived routes remain language-neutral during schema v2. Workshops and legal
+pages use `/<slug>`, events use `/events/<slug>`, and Journal articles use
+`/journal/<slug>`. Bilingual pages continue to serve both languages at one
+canonical URL. Existing slugs were retained, so current URLs and incoming links
+remain stable.
 
 Localized routes require a separate routing, redirect, canonical, and
 `hreflang` design. They are not part of this migration.
 
 ### 6.3 Cross-record ordering
 
-`sort_order` is an optional non-negative integer used only as a tie-breaker.
-When absent it resolves to `999`.
-
 The registry specifies the primary ordering for each listing. Final ordering is
 always deterministic:
 
 ```text
-primary date or status order → sort_order → global.id
+primary date or status order → global.id
 ```
 
 Ties are allowed because `global.id` provides the final stable key.
@@ -330,7 +331,7 @@ status, focal-point, media-variant, or pricing-model values are build errors.
 
 ## 8. Journal body storage
 
-Journal Markdown does not move into YAML.
+Journal metadata and Markdown are stored together in one native-i18n YAML record, matching the workshop editing model.
 
 Target layout:
 
@@ -338,29 +339,31 @@ Target layout:
 content/journal/
   records/
     warum-ci.yaml
-  bodies/
-    warum-ci.de.md
-    warum-ci.en.md
 ```
 
-The YAML record contains global metadata and localized metadata. Body filenames
-are derived from `global.id` and the locale key; they are not stored as a third
-identity value.
+The primary locale block contains `schema_version`, shared `global` metadata,
+localized metadata, and the Markdown `body`. Optional translations are sibling
+locale blocks in the same file. The CMS therefore creates, edits, translates,
+and publishes an article from one entry.
 
-The registry marks the logical `body` field as:
+Editors enter one stable URL slug; the public route is derived as
+`/journal/{slug}`. One localized `summary` supplies the Journal card, homepage
+card, and default search description. Articles are ordered by publication date
+and then alphabetically by slug, without a manual sort-order field.
+
+The registry marks the logical `body` field as an ordinary localized CMS field:
 
 ```json
 {
   "class": "L",
-  "storage": "markdown_file",
-  "path_pattern": "content/journal/bodies/{id}.{locale}.md"
+  "path": "locales.{locale}.body",
+  "type": "string",
+  "cms_visible": true
 }
 ```
 
-The converter must preserve the Markdown body bytes after the existing front
-matter delimiter, including the final-newline state. The validator requires
-exactly one body file for every intended journal locale and rejects orphan body
-files.
+The converter preserves the Markdown content when embedding legacy article
+bodies. Every enabled article locale requires its own title, excerpt, and body.
 
 ## 9. Reader contract
 
@@ -642,7 +645,7 @@ Validation requirements:
 - allowed global and locale paths;
 - `G+O` atomicity;
 - deterministic sort fields;
-- journal body presence and orphan detection.
+- localized journal title, excerpt, and body presence.
 
 Acceptance:
 

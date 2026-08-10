@@ -4,7 +4,6 @@ global:
   intended_locales:
     - de
   status: current
-  route: /events/garden-jam
   event_type: jam
   page_mode: minimal
   venue: graz-andritz
@@ -21,8 +20,7 @@ global:
 locales:
   de:
     title: Community Jam im Garten
-    summary: |-
-      Ein gemütlicher Abend in Andritz: Wir tanzen Contact Improvisation und verbringen gemeinsam Zeit.
+    summary: 'Ein gemütlicher Abend in Andritz: Wir tanzen Contact Improvisation und verbringen gemeinsam Zeit.'
     description: |
       ## Anreise
 

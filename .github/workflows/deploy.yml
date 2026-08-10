@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - production
+  schedule:
+    # Rebuild daily so date-driven workshop lifecycle changes reach the static site.
+    - cron: "15 0 * * *"
   workflow_dispatch:
 
 permissions:
@@ -21,6 +24,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'schedule' && 'production' || github.ref }}
 
       - name: Setup Node
         uses: actions/setup-node@v4

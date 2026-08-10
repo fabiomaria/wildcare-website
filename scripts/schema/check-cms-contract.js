@@ -31,6 +31,8 @@ const recordTypeByCollection = {
   workshops: "workshop",
   workshops_de: "workshop",
   workshops_en: "workshop",
+  journal_de: "journal",
+  journal_en: "journal",
   venues: "venue",
   events: "event",
   journal: "journal",
@@ -74,7 +76,7 @@ function inspectNestedI18n(fields, scope, inherited = false, pathParts = []) {
 for (const collection of config.collections) {
   const isPages = collection.name === "seiten";
   const isFixedI18n = isPages || collection.name === "website";
-  const isPrimaryI18n = ["workshops_de", "workshops_en"].includes(collection.name);
+  const isPrimaryI18n = ["workshops_de", "workshops_en", "journal_de", "journal_en"].includes(collection.name);
   if (collection.i18n && !isFixedI18n && !isPrimaryI18n) errors.push(`${collection.name}: collection-level native i18n is forbidden`);
   if ((isFixedI18n || isPrimaryI18n) && !collection.i18n) errors.push(`${collection.name}: collection-level native i18n must be enabled for migrated content`);
   const entries = collection.files || (collection.fields ? [collection] : []);

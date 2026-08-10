@@ -4,7 +4,6 @@ global:
   intended_locales:
     - de
   status: published
-  route: /impressum
 locales:
   de:
     heading: Impressum

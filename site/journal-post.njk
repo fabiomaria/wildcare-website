@@ -10,17 +10,18 @@ permalink: "{{ post.href }}"
 {%- set en = post.en -%}
 {%- set titleDe = de.title or en.title -%}
 {%- set titleEn = en.title or de.title -%}
+{%- set primary = en if post.primary_locale == "en" else de -%}
 <!DOCTYPE html>
-<html lang="de">
+<html lang="{{ post.primary_locale }}"{% if post.language_mode != "bilingual" %} data-forced-lang="{{ post.primary_locale }}"{% endif %}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {%- set seoMeta = en.meta if post.language_mode == "en_only" else de.meta -%}
+    {%- set seoMeta = primary.meta -%}
     {%- set seoCanonical = "https://wildcare.space/" ~ post.href -%}
     {%- set seoType = "article" -%}
-    {%- set seoLocale = "en_US" if post.language_mode == "en_only" else "de_AT" -%}
+    {%- set seoLocale = "en_US" if post.primary_locale == "en" else "de_AT" -%}
     {%- if post.language_mode == "bilingual" -%}
-    {%- set seoAlternateLocale = "en_US" -%}
+    {%- set seoAlternateLocale = "de_AT" if post.primary_locale == "en" else "en_US" -%}
     {%- endif -%}
     {%- set seoPublishedTime = post.date_iso -%}
     {%- set seoFallbackImage = post.image -%}
@@ -275,6 +276,8 @@ permalink: "{{ post.href }}"
     {%- set navActive = "journal" -%}
     {%- set navBreadcrumbDe = "Journal" -%}
     {%- set pathPrefix = "../" -%}
+    {%- set pageLanguageMode = post.language_mode -%}
+    {%- set pagePrimaryLocale = post.primary_locale -%}
     {% include "partials/nav.njk" %}
 
     <!-- ================================
@@ -295,21 +298,21 @@ permalink: "{{ post.href }}"
         <div class="article-back">
             <a href="../journal"
                 data-de="{{ pageData.de.article.back | attr }}"
-                data-en="{{ pageData.en.article.back | attr }}">{{ pageData.de.article.back }}</a>
+                data-en="{{ pageData.en.article.back | attr }}">{{ pageData[post.primary_locale].article.back }}</a>
         </div>
 
         <article>
             <header class="article-header fade-up">
                 <p class="article-date"
                     data-de="{{ de.date_label | attr }}"
-                    data-en="{{ en.date_label | attr }}">{{ de.date_label }}</p>
+                    data-en="{{ en.date_label | attr }}">{{ primary.date_label }}</p>
                 <h1 data-de="{{ (de.title_html or de.title) | attr }}"
-                    data-en="{{ (en.title_html or en.title) | attr }}">{{ de.title_html or de.title | safe }}</h1>
+                    data-en="{{ (en.title_html or en.title) | attr }}">{{ primary.title_html or primary.title | safe }}</h1>
                 <div class="divider"></div>
             </header>
 
             {%- if post.has_de and de.body %}
-            <section class="article-body fade-up delay-1" data-journal-lang="de" data-journal-fallback="true">
+            <section class="article-body fade-up delay-1" data-journal-lang="de" data-journal-fallback="true"{% if post.primary_locale != "de" %} hidden{% endif %}>
                 {{ de.body_html | safe }}
                 {%- set locale = de -%}
                 {% include "partials/journal-cta.njk" %}
@@ -317,7 +320,7 @@ permalink: "{{ post.href }}"
             {%- endif %}
 
             {%- if post.has_en and en.body %}
-            <section class="article-body fade-up delay-1" data-journal-lang="en"{% if post.has_de %} hidden{% else %} data-journal-fallback="true"{% endif %}>
+            <section class="article-body fade-up delay-1" data-journal-lang="en" data-journal-fallback="true"{% if post.primary_locale != "en" %} hidden{% endif %}>
                 {{ en.body_html | safe }}
                 {%- set locale = en -%}
                 {% include "partials/journal-cta.njk" %}
@@ -333,8 +336,8 @@ permalink: "{{ post.href }}"
     <section class="related-section" style="background: var(--sand-light);">
         <div class="article-container">
             <div class="section-header fade-up">
-                <p class="label" data-de="{{ pageData.de.article.related_label | attr }}" data-en="{{ pageData.en.article.related_label | attr }}">{{ pageData.de.article.related_label }}</p>
-                <h3 data-de="{{ pageData.de.article.related_heading | attr }}" data-en="{{ pageData.en.article.related_heading | attr }}">{{ pageData.de.article.related_heading }}</h3>
+                <p class="label" data-de="{{ pageData.de.article.related_label | attr }}" data-en="{{ pageData.en.article.related_label | attr }}">{{ pageData[post.primary_locale].article.related_label }}</p>
+                <h3 data-de="{{ pageData.de.article.related_heading | attr }}" data-en="{{ pageData.en.article.related_heading | attr }}">{{ pageData[post.primary_locale].article.related_heading }}</h3>
             </div>
 
             <div class="related-grid fade-up delay-1">
@@ -344,8 +347,8 @@ permalink: "{{ post.href }}"
                         <img src="../{{ related.image }}" alt="{{ related.image_alt }}" loading="lazy">
                     </div>
                     <div class="related-card-body">
-                        <p class="related-card-date" data-de="{{ related.de.date_label | attr }}" data-en="{{ related.en.date_label | attr }}">{{ related.de.date_label }}</p>
-                        <h4 data-de="{{ related.de.homepage_title or related.de.title | attr }}" data-en="{{ related.en.homepage_title or related.en.title | attr }}">{{ related.de.homepage_title or related.de.title }}</h4>
+                        <p class="related-card-date" data-de="{{ related.de.date_label | attr }}" data-en="{{ related.en.date_label | attr }}">{{ related[post.primary_locale].date_label }}</p>
+                        <h4 data-de="{{ related.de.title | attr }}" data-en="{{ related.en.title | attr }}">{{ related[post.primary_locale].title }}</h4>
                     </div>
                 </a>
                 {%- endfor %}

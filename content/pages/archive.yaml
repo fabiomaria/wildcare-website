@@ -1,0 +1,43 @@
+de:
+  schema_version: 2
+  global:
+    id: archive
+    status: published
+    route: /archive
+  breadcrumb: Archiv
+  hero:
+    label: Archiv
+    heading: Was war, wirkt weiter.
+    intro: Hier sammeln wir abgeschlossene Workshops und Projekte — als Einblick in unsere künstlerische Forschung und die Begegnungen, die daraus entstanden sind.
+  listing:
+    empty_heading: Noch ist das Archiv leer.
+    fallback_detail_label: Rückblick lesen
+  cta:
+    label: Programm
+    heading: Was gerade passiert.
+    text: Aktuelle Termine, offene Praxis und kommende Projekte findest du in unserem Programm.
+    button: Zum Programm
+  meta:
+    title: Archiv — Vergangene Projekte | Wild Care
+    description: Rückblicke auf Workshops, künstlerische Forschung und soziale Praxis von Wild Care in Graz.
+    og_title: Archiv — Wild Care
+    og_description: Vergangene Projekte, Workshops und künstlerische Forschung von Wild Care.
+en:
+  breadcrumb: Archive
+  hero:
+    label: Archive
+    heading: What was continues to resonate.
+    intro: Here we collect completed workshops and projects — a record of our artistic research and the encounters that grew from it.
+  listing:
+    empty_heading: The archive is still empty.
+    fallback_detail_label: Read the archive
+  cta:
+    label: Programme
+    heading: What’s happening now.
+    text: Find current dates, open practice and upcoming projects in our programme.
+    button: View programme
+  meta:
+    title: Archive — Past Projects | Wild Care
+    description: A record of Wild Care workshops, artistic research and social practice in Graz.
+    og_title: Archive — Wild Care
+    og_description: Past projects, workshops and artistic research from Wild Care.

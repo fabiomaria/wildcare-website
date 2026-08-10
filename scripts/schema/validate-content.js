@@ -127,6 +127,27 @@ function validateRecord(record, { type, registry, venueIds = new Set() }) {
       for (const key of Object.keys(notes)) if (!globalIds.has(key)) add(`locales.${locale}.schedule.featured_occurrences: id "${key}" not in global list`);
     }
   }
+  if (type === "journal") {
+    const status = record.global?.status;
+    const locales = Object.entries(record.locales || {});
+    const primaryLocale = record.global?.primary_locale;
+    if (primaryLocale && locales[0]?.[0] !== primaryLocale) {
+      add(`global.primary_locale (${primaryLocale}) must be the first saved locale`);
+    }
+    if (["published", "unlisted", "coming_soon"].includes(status) && !record.global?.published_at) {
+      add("global.published_at is required outside draft status");
+    }
+    for (const [locale, localized] of locales) {
+      for (const field of ["title", "summary"]) {
+        if (["published", "unlisted", "coming_soon"].includes(status) && !String(localized[field] || "").trim()) {
+          add(`locales.${locale}.${field} is required outside draft status`);
+        }
+      }
+      if (["published", "unlisted"].includes(status) && !String(localized.body || "").trim()) {
+        add(`locales.${locale}.body is required for a published article page`);
+      }
+    }
+  }
   return { errors };
 }
 

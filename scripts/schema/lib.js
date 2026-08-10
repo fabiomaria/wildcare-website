@@ -15,6 +15,7 @@ const PAGE_ROUTES = {
   team: "/team",
   journal: "/journal",
   programm: "/programm",
+  archive: "/archive",
   montagskurs: "/montagskurs",
   mitmachen: "/mitmachen",
 };
@@ -403,9 +404,7 @@ function migrateYamlRecord(collection, file) {
       id: slug,
       intended_locales: intended,
       status: head.status || "draft",
-      route: `/${slug}`,
       start_at: head.start_date || undefined,
-      sort_order: head.sort_order ?? undefined,
       detail_page: head.detail_page ?? true,
       registration: head.registration_url ? { url: head.registration_url } : undefined,
     }, locales);
@@ -450,22 +449,29 @@ function migrateJournalEntry(id, pair) {
   const locales = {};
   for (const locale of LOCALES) {
     if (!parsed[locale]) continue;
-    locales[locale] = removeKeys(parsed[locale].data, JOURNAL_GLOBAL_KEYS);
+    const localized = {
+      ...removeKeys(parsed[locale].data, JOURNAL_GLOBAL_KEYS),
+      body: parsed[locale].content.trim(),
+    };
+    localized.summary = localized.summary || localized.excerpt || localized.homepage_excerpt;
+    delete localized.excerpt;
+    delete localized.title_html;
+    delete localized.homepage_title;
+    delete localized.homepage_excerpt;
+    delete localized.homepage_image_alt;
+    locales[locale] = localized;
   }
   const intended = intendedFromMode(primary.data.language_mode, locales);
   const global = {
     id,
     intended_locales: intended,
     status: primary.data.status || "published",
-    route: `/journal/${id}`,
     published_at: primary.data.date,
-    sort_order: primary.data.sort_order ?? undefined,
     image: primary.data.image ? { src: primary.data.image } : undefined,
     hero: primary.data.hero_image ? {
       image: { src: primary.data.hero_image },
       variant: primary.data.hero_variant || "cover",
     } : undefined,
-    tally: primary.data.tally ?? undefined,
   };
   return { record: envelope(global, locales), parsed };
 }
@@ -486,7 +492,6 @@ function migrateLegalEntry(id, file) {
       id,
       intended_locales: ["de"],
       status,
-      route: parsed.data.route || `/${id}`,
     }, { de: localized }),
     parsed,
   };

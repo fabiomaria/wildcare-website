@@ -2,36 +2,36 @@
   "all_equal": true,
   "body_files": [
     {
-      "after_sha256": "22639c90bae1084eecec6cab0b48cef97acaee534b94b6b68cec1d5bf731ef31",
-      "before_sha256": "22639c90bae1084eecec6cab0b48cef97acaee534b94b6b68cec1d5bf731ef31",
-      "bytes": 1563,
+      "after_sha256": "3e22095cda7d7cbda004a03becd156db52206a507a1d3e882841876c0de73c6c",
+      "before_sha256": "3e22095cda7d7cbda004a03becd156db52206a507a1d3e882841876c0de73c6c",
+      "bytes": 1561,
       "collection": "journal",
       "equal": true,
       "id": "bewegungsrevolution",
       "locale": "en"
     },
     {
-      "after_sha256": "f8f89f0aa4fabf278a1a86e0641c6e9d6cec50bb6de5596a418f94d3ef656238",
-      "before_sha256": "f8f89f0aa4fabf278a1a86e0641c6e9d6cec50bb6de5596a418f94d3ef656238",
-      "bytes": 1733,
+      "after_sha256": "59ba27a0d7060805dbb10a44059f03bf4fe675d03d6f33adf1c309163a45a01a",
+      "before_sha256": "59ba27a0d7060805dbb10a44059f03bf4fe675d03d6f33adf1c309163a45a01a",
+      "bytes": 1731,
       "collection": "journal",
       "equal": true,
       "id": "bewegungsrevolution",
       "locale": "de"
     },
     {
-      "after_sha256": "059e6524eab53f5c50949eb3b7f6c2025688ce4162d69fa152b3d340b14e55b7",
-      "before_sha256": "059e6524eab53f5c50949eb3b7f6c2025688ce4162d69fa152b3d340b14e55b7",
-      "bytes": 1578,
+      "after_sha256": "c1459526b84635c0386a8b811c7edbd902e5dc1f54117c504edb5a232c48ab32",
+      "before_sha256": "c1459526b84635c0386a8b811c7edbd902e5dc1f54117c504edb5a232c48ab32",
+      "bytes": 1576,
       "collection": "journal",
       "equal": true,
       "id": "warum-ci",
       "locale": "en"
     },
     {
-      "after_sha256": "fec23111c5a0798522d98f5e0d4c1d6e742b4c079e4e11af6b5d33bc8f8d9244",
-      "before_sha256": "fec23111c5a0798522d98f5e0d4c1d6e742b4c079e4e11af6b5d33bc8f8d9244",
-      "bytes": 1783,
+      "after_sha256": "ac8312fd3580773410fad825cbb6e95b501aef3014c4ef483ec76e7ab270e6d6",
+      "before_sha256": "ac8312fd3580773410fad825cbb6e95b501aef3014c4ef483ec76e7ab270e6d6",
+      "bytes": 1781,
       "collection": "journal",
       "equal": true,
       "id": "warum-ci",

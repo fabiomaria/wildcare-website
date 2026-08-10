@@ -21,7 +21,6 @@ Templates: `event`
 | `event.g.global.registration.availability` | G | `global.registration.availability` | string | no | yes |
 | `event.g.global.registration.url` | G | `global.registration.url` | string | no | yes |
 | `event.g.global.related_workshop` | G | `global.related_workshop` | string | no | yes |
-| `event.g.global.route` | G | `global.route` | string | no | yes |
 | `event.g.global.schedule.event_status` | G | `global.schedule.event_status` | string | no | yes |
 | `event.g.global.schedule.featured_occurrences.item.id` | G | `global.schedule.featured_occurrences[].id` | string | yes | yes |
 | `event.g.global.schedule.featured_occurrences.item.teacher` | G | `global.schedule.featured_occurrences[].teacher` | string | no | yes |
@@ -37,7 +36,6 @@ Templates: `event`
 | `event.g.global.schedule.sessions.item.id` | G | `global.schedule.sessions[].id` | string | no | yes |
 | `event.g.global.schedule.sessions.item.start_local` | G | `global.schedule.sessions[].start_local` | string | no | yes |
 | `event.g.global.schedule.sessions.item.status` | G | `global.schedule.sessions[].status` | string | no | yes |
-| `event.g.global.sort_order` | G | `global.sort_order` | integer | no | yes |
 | `event.g.global.start_at` | G | `global.start_at` | string | no | yes |
 | `event.g.global.status` | G | `global.status` | string | yes | yes |
 | `event.g.global.updated_at` | G | `global.updated_at` | string | no | yes |
@@ -50,7 +48,7 @@ Templates: `event`
 
 Source: `content/pages/*.yaml`
 
-Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mitmachen`
+Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `archive`, `montagskurs`, `mitmachen`
 
 | Field ID | Class | Storage path | Type | Required | CMS |
 | --- | --- | --- | --- | --- | --- |
@@ -81,6 +79,10 @@ Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mi
 | `fixed_page.g.global.status` | G | `global.status` | string | yes | yes |
 | `fixed_page.g.global.updated_at` | G | `global.updated_at` | datetime | no | yes |
 | `fixed_page.g.global.venue` | G | `global.venue` | string | no | yes |
+| `fixed_page.l.archive.button` | L | `locales.{locale}.archive.button` | string | no | yes |
+| `fixed_page.l.archive.heading` | L | `locales.{locale}.archive.heading` | string | no | yes |
+| `fixed_page.l.archive.intro` | L | `locales.{locale}.archive.intro` | string | no | yes |
+| `fixed_page.l.archive.label` | L | `locales.{locale}.archive.label` | string | no | yes |
 | `fixed_page.l.article.back` | L | `locales.{locale}.article.back` | string | no | yes |
 | `fixed_page.l.article.related_heading` | L | `locales.{locale}.article.related_heading` | string | no | yes |
 | `fixed_page.l.article.related_label` | L | `locales.{locale}.article.related_label` | string | no | yes |
@@ -133,11 +135,6 @@ Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mi
 | `fixed_page.l.cta.submitting` | L | `locales.{locale}.cta.submitting` | string | no | yes |
 | `fixed_page.l.cta.success` | L | `locales.{locale}.cta.success` | string | no | yes |
 | `fixed_page.l.cta.text` | L | `locales.{locale}.cta.text` | string | no | yes |
-| `fixed_page.l.event_banner.address` | L | `locales.{locale}.event_banner.address` | string | no | yes |
-| `fixed_page.l.event_banner.basis` | L | `locales.{locale}.event_banner.basis` | string | no | yes |
-| `fixed_page.l.event_banner.day` | L | `locales.{locale}.event_banner.day` | string | no | yes |
-| `fixed_page.l.event_banner.tag` | L | `locales.{locale}.event_banner.tag` | string | no | yes |
-| `fixed_page.l.event_banner.time` | L | `locales.{locale}.event_banner.time` | string | no | yes |
 | `fixed_page.l.faq.heading` | L | `locales.{locale}.faq.heading` | string | no | yes |
 | `fixed_page.l.faq.items.item.a` | L | `locales.{locale}.faq.items[].a` | string | no | yes |
 | `fixed_page.l.faq.items.item.q` | L | `locales.{locale}.faq.items[].q` | string | no | yes |
@@ -204,6 +201,8 @@ Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mi
 | `fixed_page.l.learn.donation_note` | L | `locales.{locale}.learn.donation_note` | string | no | yes |
 | `fixed_page.l.learn.heading` | L | `locales.{locale}.learn.heading` | string | no | yes |
 | `fixed_page.l.learn.label` | L | `locales.{locale}.learn.label` | string | no | yes |
+| `fixed_page.l.listing.empty_heading` | L | `locales.{locale}.listing.empty_heading` | string | no | yes |
+| `fixed_page.l.listing.fallback_detail_label` | L | `locales.{locale}.listing.fallback_detail_label` | string | no | yes |
 | `fixed_page.l.manifest.label` | L | `locales.{locale}.manifest.label` | string | no | yes |
 | `fixed_page.l.manifest.quote` | L | `locales.{locale}.manifest.quote` | string | no | yes |
 | `fixed_page.l.manifest.source` | L | `locales.{locale}.manifest.source` | string | no | yes |
@@ -225,7 +224,9 @@ Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mi
 | `fixed_page.l.membership.tiers.item.quote` | L | `locales.{locale}.membership.tiers[].quote` | string | no | yes |
 | `fixed_page.l.membership.tiers.item.tier_arg` | L | `locales.{locale}.membership.tiers[].tier_arg` | string | no | yes |
 | `fixed_page.l.meta.description` | L | `locales.{locale}.meta.description` | string | no | yes |
+| `fixed_page.l.meta.og_description` | L | `locales.{locale}.meta.og_description` | string | no | yes |
 | `fixed_page.l.meta.og_image_alt` | L | `locales.{locale}.meta.og_image_alt` | string | no | yes |
+| `fixed_page.l.meta.og_title` | L | `locales.{locale}.meta.og_title` | string | no | yes |
 | `fixed_page.l.meta.title` | L | `locales.{locale}.meta.title` | string | no | yes |
 | `fixed_page.l.outlook.heading` | L | `locales.{locale}.outlook.heading` | string | no | yes |
 | `fixed_page.l.outlook.intro` | L | `locales.{locale}.outlook.intro` | string | no | yes |
@@ -251,6 +252,7 @@ Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mi
 | `fixed_page.l.quote` | L | `locales.{locale}.quote` | string | no | yes |
 | `fixed_page.l.quote_band.quote` | L | `locales.{locale}.quote_band.quote` | string | no | yes |
 | `fixed_page.l.quote_band.source` | L | `locales.{locale}.quote_band.source` | string | no | yes |
+| `fixed_page.l.summary` | L | `locales.{locale}.summary` | string | no | yes |
 | `fixed_page.l.team.heading` | L | `locales.{locale}.team.heading` | string | no | yes |
 | `fixed_page.l.team.label` | L | `locales.{locale}.team.label` | string | no | yes |
 | `fixed_page.l.team.members.item.alt` | L | `locales.{locale}.team.members[].alt` | string | no | yes |
@@ -262,6 +264,7 @@ Templates: `index`, `kontakt`, `team`, `journal`, `programm`, `montagskurs`, `mi
 | `fixed_page.l.testimonials.items.item.author` | L | `locales.{locale}.testimonials.items[].author` | string | no | yes |
 | `fixed_page.l.testimonials.items.item.quote` | L | `locales.{locale}.testimonials.items[].quote` | string | no | yes |
 | `fixed_page.l.testimonials.label` | L | `locales.{locale}.testimonials.label` | string | no | yes |
+| `fixed_page.l.title` | L | `locales.{locale}.title` | string | no | yes |
 | `fixed_page.l.values.cards.item.text` | L | `locales.{locale}.values.cards[].text` | string | no | yes |
 | `fixed_page.l.values.cards.item.title` | L | `locales.{locale}.values.cards[].title` | string | no | yes |
 | `fixed_page.l.values.heading` | L | `locales.{locale}.values.heading` | string | no | yes |
@@ -283,12 +286,10 @@ Templates: `journal-post`
 | `journal.g.global.meta.og_image` | G | `global.meta.og_image` | string | no | yes |
 | `journal.g.global.meta.og_image_height` | G | `global.meta.og_image_height` | integer | no | yes |
 | `journal.g.global.meta.og_image_width` | G | `global.meta.og_image_width` | integer | no | yes |
+| `journal.g.global.primary_locale` | G | `global.primary_locale` | string | no | yes |
 | `journal.g.global.published_at` | G | `global.published_at` | datetime | no | yes |
-| `journal.g.global.route` | G | `global.route` | string | no | yes |
-| `journal.g.global.sort_order` | G | `global.sort_order` | integer | no | yes |
 | `journal.g.global.status` | G | `global.status` | string | yes | yes |
-| `journal.g.global.tally` | G | `global.tally` | boolean | no | yes |
-| `journal.l.body` | L | `locales.{locale}.body` | string / markdown_file | no | no |
+| `journal.l.body` | L | `locales.{locale}.body` | string | no | yes |
 | `journal.l.cta.buttons.item.href` | L | `locales.{locale}.cta.buttons[].href` | string | no | yes |
 | `journal.l.cta.buttons.item.kind` | L | `locales.{locale}.cta.buttons[].kind` | string | no | yes |
 | `journal.l.cta.buttons.item.label` | L | `locales.{locale}.cta.buttons[].label` | string | no | yes |
@@ -296,19 +297,12 @@ Templates: `journal-post`
 | `journal.l.cta.buttons.item.tally_open` | L | `locales.{locale}.cta.buttons[].tally_open` | string | no | yes |
 | `journal.l.cta.heading` | L | `locales.{locale}.cta.heading` | string | no | yes |
 | `journal.l.cta.text` | L | `locales.{locale}.cta.text` | string | no | yes |
-| `journal.l.excerpt` | L | `locales.{locale}.excerpt` | string | no | yes |
 | `journal.l.hero_alt` | L | `locales.{locale}.hero_alt` | string | no | yes |
-| `journal.l.homepage_excerpt` | L | `locales.{locale}.homepage_excerpt` | string | no | yes |
-| `journal.l.homepage_image_alt` | L | `locales.{locale}.homepage_image_alt` | string | no | yes |
-| `journal.l.homepage_title` | L | `locales.{locale}.homepage_title` | string | no | yes |
 | `journal.l.image_alt` | L | `locales.{locale}.image_alt` | string | no | yes |
 | `journal.l.meta.description` | L | `locales.{locale}.meta.description` | string | no | yes |
-| `journal.l.meta.og_description` | L | `locales.{locale}.meta.og_description` | string | no | yes |
 | `journal.l.meta.og_image_alt` | L | `locales.{locale}.meta.og_image_alt` | string | no | yes |
-| `journal.l.meta.og_title` | L | `locales.{locale}.meta.og_title` | string | no | yes |
-| `journal.l.meta.title` | L | `locales.{locale}.meta.title` | string | no | yes |
+| `journal.l.summary` | L | `locales.{locale}.summary` | string | no | yes |
 | `journal.l.title` | L | `locales.{locale}.title` | string | no | yes |
-| `journal.l.title_html` | L | `locales.{locale}.title_html` | string | no | yes |
 
 ## legal_page
 
@@ -323,7 +317,6 @@ Templates: `legal`
 | `legal_page.g.global.meta.og_image` | G | `global.meta.og_image` | string | no | yes |
 | `legal_page.g.global.meta.og_image_height` | G | `global.meta.og_image_height` | integer | no | yes |
 | `legal_page.g.global.meta.og_image_width` | G | `global.meta.og_image_width` | integer | no | yes |
-| `legal_page.g.global.route` | G | `global.route` | string | no | yes |
 | `legal_page.g.global.status` | G | `global.status` | string | yes | yes |
 | `legal_page.l.body` | L | `locales.{locale}.body` | string / markdown_file | no | no |
 | `legal_page.l.heading` | L | `locales.{locale}.heading` | string | no | yes |
@@ -419,14 +412,12 @@ Templates: `workshop`
 | `workshop.g.global.primary_locale` | G | `global.primary_locale` | string | no | yes |
 | `workshop.g.global.registration.availability` | G | `global.registration.availability` | string | no | yes |
 | `workshop.g.global.registration.url` | G | `global.registration.url` | string | no | yes |
-| `workshop.g.global.route` | G | `global.route` | string | no | yes |
 | `workshop.g.global.schedule.event_status` | G | `global.schedule.event_status` | string | no | yes |
 | `workshop.g.global.schedule.mode` | G | `global.schedule.mode` | string | no | yes |
 | `workshop.g.global.schedule.previous_start_local` | G | `global.schedule.previous_start_local` | null | no | yes |
 | `workshop.g.global.schedule.sessions.item.end_local` | G | `global.schedule.sessions[].end_local` | string | no | yes |
 | `workshop.g.global.schedule.sessions.item.id` | G | `global.schedule.sessions[].id` | string | no | yes |
 | `workshop.g.global.schedule.sessions.item.start_local` | G | `global.schedule.sessions[].start_local` | string | no | yes |
-| `workshop.g.global.sort_order` | G | `global.sort_order` | integer | no | yes |
 | `workshop.g.global.start_at` | G | `global.start_at` | datetime | no | yes |
 | `workshop.g.global.status` | G | `global.status` | string | yes | yes |
 | `workshop.g.global.updated_at` | G | `global.updated_at` | datetime | no | yes |

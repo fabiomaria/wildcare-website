@@ -1,59 +1,68 @@
-schema_version: 2
-global:
-  id: warum-ci
-  intended_locales:
-    - de
-    - en
-  status: published
-  route: /journal/warum-ci
-  published_at: 2026-03-01T00:00:00.000Z
-  sort_order: 2
-  image:
-    src: assets/images/warum-ci.jpg
-  hero:
+de:
+  schema_version: 2
+  global:
+    id: warum-ci
+    status: published
+    published_at: 2026-03-01T00:00:00.000Z
     image:
-      src: assets/images/ci-cover.jpg
-    variant: cover
+      src: assets/images/warum-ci.jpg
+    hero:
+      image:
+        src: assets/images/ci-cover.jpg
+      variant: cover
+    meta:
+      og_image: assets/images/warum-ci.jpg
+      og_image_width: 1200
+      og_image_height: 1393
+    primary_locale: de
+  title: Warum Contact Improvisation?
   meta:
-    og_image: assets/images/warum-ci.jpg
-    og_image_width: 1200
-    og_image_height: 1393
-locales:
-  de:
-    title: Warum Contact Improvisation?
-    title_html: Warum Contact<br>Improvisation?
-    homepage_title: Warum Contact Improvisation?
-    excerpt: Über das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen — und warum es mehr ist als Tanz.
-    homepage_excerpt: Über das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen.
-    meta:
-      description: Was ist Contact Improvisation? Spielerisches Forschen mit Schwerkraft, Balance und Berührung. Warum es mehr ist als Tanz — und was du dabei lernst.
-      og_image_alt: Zwei Menschen begegnen einander in einer Contact-Improvisation-Bewegung.
-    image_alt: Contact Improvisation
-    hero_alt: Contact Improvisation — zwei Menschen in Bewegung
-    cta:
-      heading: Probier es aus
-      text: Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz. Keine Erfahrung nötig.
-      buttons:
-        - label: Kontakt & Anfahrt
-          kind: link
-          style: primary
-          href: ../kontakt
-  en:
-    title: Why Contact Improvisation?
-    title_html: Why Contact<br>Improvisation?
-    homepage_title: Why Contact Improvisation?
-    excerpt: On the playful exploration of gravity, balance and trust — and why it is so much more than dance.
-    homepage_excerpt: On the playful exploration of gravity, balance, and trust.
-    meta:
-      description: What is Contact Improvisation? Playful research with gravity, balance and touch. Why it is more than dance — and what you learn through it.
-      og_image_alt: Two people meeting through a Contact Improvisation movement.
-    image_alt: Contact Improvisation
-    hero_alt: Contact Improvisation — zwei Menschen in Bewegung
-    cta:
-      heading: Try It Out
-      text: Every Monday, 17:45, Orpheumgasse 11, Graz. No experience needed.
-      buttons:
-        - label: Contact & Directions
-          kind: link
-          style: primary
-          href: ../kontakt
+    description: Was ist Contact Improvisation? Spielerisches Forschen mit Schwerkraft, Balance und Berührung. Warum es mehr ist als Tanz — und was du dabei lernst.
+    og_image_alt: Zwei Menschen begegnen einander in einer Contact-Improvisation-Bewegung.
+  image_alt: Contact Improvisation
+  hero_alt: Contact Improvisation — zwei Menschen in Bewegung
+  cta:
+    heading: Probier es aus
+    text: Jeden Montag, 17:45 Uhr, Orpheumgasse 11, Graz. Keine Erfahrung nötig.
+    buttons:
+      - label: Kontakt & Anfahrt
+        kind: link
+        style: primary
+        href: ../kontakt
+  body: |-
+    Contact Improvisation ist das spielerische Erforschen von Schwerkraft, Gleichgewicht und Berührung. Zwei Menschen teilen sich einen Kontaktpunkt — eine Schulter, einen Rücken, eine Hand — und lassen daraus Bewegung entstehen. Es gibt keine festen Schritte, keine Choreografie, keinen Leistungsdruck. Und vor allem: keine Rollen. Niemand führt, niemand folgt. Stattdessen entsteht ein Dialog, der über den Körper geführt wird.
+
+    Das klingt vielleicht zunächst abstrakt, ist aber erstaunlich konkret. In einer typischen Session lernst du, Gewicht abzugeben und Gewicht zu empfangen. Du spürst, wie sich dein Gleichgewicht verändert, wenn ein anderer Körper deinen berührt. Du merkst, wo deine Grenzen liegen — und übst, sie zu kommunizieren. Nicht mit Worten, sondern mit einer Geste, einer Veränderung im Tonus, einem Schritt zur Seite.
+
+    > Im Contact lernen wir etwas, das sich überall anwenden lässt: präsent zu sein, zuzuhören und zu antworten — nicht aus dem Kopf, sondern aus dem Körper.
+
+    Was dabei passiert, geht weit über den Tanz hinaus. Körperwahrnehmung, Nervensystemregulation, die Fähigkeit, Grenzen spürbar zu machen — das sind Kompetenzen, die im Alltag genauso relevant sind wie auf der Tanzfläche. Wer geübt hat, im Tanz auf subtile Signale zu achten, nimmt diese Signale auch in Gesprächen, in Beziehungen und in Konflikten wahr. Contact Improvisation ist nicht nur eine Tanzform. Es ist ein Training für bewussteres Zusammenleben.
+
+    Falls das alles neu für dich klingt: Umso besser. Unser <a href="bewegungsrevolution">Montagskurs in der Orpheumgasse</a> ist genau dafür gedacht — ein niedrigschwelliger Einstieg, kostenlos und ohne Vorkenntnisse. Komm einfach vorbei und probier es aus. Dein Körper weiß mehr, als du denkst.
+  summary: Über das spielerische Forschen mit Schwerkraft, Gleichgewicht und Vertrauen — und warum es mehr ist als Tanz.
+en:
+  title: Why Contact Improvisation?
+  meta:
+    description: What is Contact Improvisation? Playful research with gravity, balance and touch. Why it is more than dance — and what you learn through it.
+    og_image_alt: Two people meeting through a Contact Improvisation movement.
+  image_alt: Contact Improvisation
+  hero_alt: Contact Improvisation — zwei Menschen in Bewegung
+  cta:
+    heading: Try It Out
+    text: Every Monday, 17:45, Orpheumgasse 11, Graz. No experience needed.
+    buttons:
+      - label: Contact & Directions
+        kind: link
+        style: primary
+        href: ../kontakt
+  body: |-
+    Contact Improvisation is the playful exploration of gravity, balance, and touch. Two people share a point of contact — a shoulder, a back, a hand — and let movement emerge from there. There are no fixed steps, no choreography, no pressure to perform. And above all: no roles. Nobody leads, nobody follows. Instead, a dialogue unfolds through the body.
+
+    That might sound abstract at first, but it’s surprisingly concrete. In a typical session, you learn to give weight and receive weight. You feel how your balance shifts when another body touches yours. You notice where your boundaries lie — and practise communicating them. Not with words, but with a gesture, a change in muscle tone, a step to the side.
+
+    > In Contact, we learn something that applies everywhere: to be present, to listen, and to respond — not from the head, but from the body.
+
+    What happens goes far beyond dance. Body awareness, nervous system regulation, the ability to make boundaries tangible — these are skills just as relevant in everyday life as on the dance floor. Anyone who has practised paying attention to subtle signals in dance will also notice them in conversations, relationships, and conflicts. Contact Improvisation is not just a dance form. It is training for more conscious coexistence.
+
+    If all of this sounds new to you: all the better. Our <a href="bewegungsrevolution">Monday class at Orpheumgasse</a> is designed exactly for that — a low-threshold entry point, free and with no prior experience needed. Just come by and try it out. Your body knows more than you think.
+  summary: On the playful exploration of gravity, balance and trust — and why it is so much more than dance.

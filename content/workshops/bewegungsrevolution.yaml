@@ -3,10 +3,8 @@ de:
   global:
     id: bewegungsrevolution
     status: past
-    route: /bewegungsrevolution
     start_at: 2026-05-11T17:45:00.000Z
     updated_at: 2026-07-26T10:00:00.000Z
-    sort_order: 50
     detail_page: true
     registration:
       url: montagskurs.html

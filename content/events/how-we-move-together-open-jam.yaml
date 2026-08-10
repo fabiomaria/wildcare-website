@@ -5,14 +5,12 @@ global:
     - de
     - en
   status: upcoming
-  route: /events/how-we-move-together-open-jam
   event_type: jam
   page_mode: minimal
   related_workshop: how-we-move-together
   venue: orpheumgasse
   start_at: 2026-10-09T19:00:00.000Z
   updated_at: 2026-07-30T14:44
-  sort_order: 1
   schedule:
     event_status: scheduled
     mode: dates

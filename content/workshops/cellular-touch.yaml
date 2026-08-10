@@ -3,10 +3,8 @@ en:
   global:
     id: cellular-touch
     status: current
-    route: /cellular-touch
     start_at: 2026-08-08T10:00:00.000Z
     updated_at: 2026-07-26T10:00:00.000Z
-    sort_order: 1
     detail_page: true
     registration:
       url: https://tally.so/r/1ABgjL

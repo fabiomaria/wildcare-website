@@ -13,6 +13,8 @@
     "schema:cms": "node scripts/schema/check-cms-contract.js",
     "schema:validate": "node scripts/schema/validate-content.js",
     "schema:migrate": "node scripts/schema/migrate-content.js",
+    "schema:migrate-journal-native": "node scripts/schema/migrate-journal-native.js",
+    "schema:simplify-publishing": "node scripts/schema/simplify-publishing-fields.js",
     "schema:downgrade": "node scripts/schema/downgrade-content.js",
     "schema:parity": "node scripts/schema/check-parity.js",
     "schema:check": "npm run schema:registry && npm run schema:docs -- --check && npm run schema:inventory -- --check && npm run schema:cms -- --check && npm run schema:validate -- --all && node scripts/schema/verify-body-hashes.js --check && npm run schema:migrate -- --all --check && npm run schema:downgrade -- --all --check && npm run schema:parity -- --fixtures"

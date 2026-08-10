@@ -4,9 +4,7 @@ en:
     id: how-we-move-together
     primary_locale: en
     status: current
-    route: /how-we-move-together
     start_at: 2026-10-09T19:00:00.000Z
-    sort_order: 2
     detail_page: true
     registration:
       url: https://tally.so/r/lbXDW5

@@ -15,44 +15,44 @@ const recordTypes = {
     source: "content/site.yaml",
     records: contentFilesFor("site"),
     templates: ["site"],
-    ordering: { primary: "global.id", tie_breakers: ["global.sort_order", "global.id"] },
+    ordering: { primary: "global.id", tie_breakers: ["global.id"] },
   },
   fixed_page: {
     source: "content/pages/*.yaml",
     records: contentFilesFor("pages"),
-    templates: ["index", "kontakt", "team", "journal", "programm", "montagskurs", "mitmachen"],
-    ordering: { primary: "global.route", tie_breakers: ["global.sort_order", "global.id"] },
+    templates: ["index", "kontakt", "team", "journal", "programm", "archive", "montagskurs", "mitmachen"],
+    ordering: { primary: "global.route", tie_breakers: ["global.id"] },
   },
   workshop: {
     source: "content/workshops/*.yaml",
     records: contentFilesFor("workshops"),
     templates: ["workshop"],
-    ordering: { primary: "global.start_at", tie_breakers: ["global.sort_order", "global.id"] },
+    ordering: { primary: "global.start_at", tie_breakers: ["global.id"] },
   },
   venue: {
     source: "content/venues/*.yaml",
     records: contentFilesFor("venues"),
     templates: [],
-    ordering: { primary: "global.id", tie_breakers: ["global.sort_order", "global.id"] },
+    ordering: { primary: "global.id", tie_breakers: ["global.id"] },
     locale_neutral: true,
   },
   event: {
     source: "content/events/*.yaml",
     records: contentFilesFor("events"),
     templates: ["event"],
-    ordering: { primary: "global.start_at", tie_breakers: ["global.sort_order", "global.id"] },
+    ordering: { primary: "global.start_at", tie_breakers: ["global.id"] },
   },
   journal: {
     source: "content/journal/records/*.yaml",
     records: contentFilesFor("journal"),
     templates: ["journal-post"],
-    ordering: { primary: "global.published_at:desc", tie_breakers: ["global.sort_order", "global.id"] },
+    ordering: { primary: "global.published_at:desc", tie_breakers: ["global.id"] },
   },
   legal_page: {
     source: "content/legal/records/*.yaml",
     records: contentFilesFor("legal"),
     templates: ["legal"],
-    ordering: { primary: "global.id", tie_breakers: ["global.sort_order", "global.id"] },
+    ordering: { primary: "global.id", tie_breakers: ["global.id"] },
   },
 };
 
@@ -144,15 +144,6 @@ for (const [type, definition] of Object.entries(recordTypes)) {
       }
     }
   }
-  if (type === "journal") {
-    fields.set("L:body", {
-      class: "L",
-      path: "locales.{locale}.body",
-      type: "string",
-      storage: "markdown_file",
-      path_pattern: "content/journal/bodies/{id}.{locale}.md",
-    });
-  }
   if (type === "legal_page") {
     fields.set("L:body", {
       class: "L",
@@ -205,6 +196,8 @@ if (require("node:fs").existsSync(cmsFile)) {
     seiten: "fixed_page",
     website: "site_settings",
     workshops: "workshop",
+    journal_de: "journal",
+    journal_en: "journal",
     venues: "venue",
     events: "event",
     journal: "journal",
@@ -247,7 +240,7 @@ const registry = {
       site_settings: ["published"],
       fixed_page: ["draft", "published", "unlisted"],
       workshop: ["draft", "upcoming", "current", "past", "unlisted"],
-      journal: ["published", "coming_soon", "unlisted"],
+      journal: ["draft", "published", "coming_soon", "unlisted"],
       legal_page: ["draft", "published"],
       venue: ["published"],
       event: ["draft", "upcoming", "current", "past", "unlisted"],

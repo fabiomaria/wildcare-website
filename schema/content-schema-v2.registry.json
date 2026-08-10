@@ -72,6 +72,7 @@
         "unlisted"
       ],
       "journal": [
+        "draft",
         "published",
         "coming_soon",
         "unlisted"
@@ -221,22 +222,6 @@
           },
           "v1_source": {
             "path": "de.related_workshop"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "event.g.global.route",
-          "nullable": false,
-          "path": "global.route",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.route"
-          },
-          "v1_source": {
-            "path": "de.route"
           }
         },
         {
@@ -487,22 +472,6 @@
           "allow_empty": false,
           "class": "G",
           "cms_visible": true,
-          "id": "event.g.global.sort_order",
-          "nullable": false,
-          "path": "global.sort_order",
-          "required": false,
-          "type": "integer",
-          "v1_downgrade": {
-            "path": "de.sort_order"
-          },
-          "v1_source": {
-            "path": "de.sort_order"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
           "id": "event.g.global.start_at",
           "nullable": false,
           "path": "global.start_at",
@@ -624,7 +593,6 @@
       "ordering": {
         "primary": "global.start_at",
         "tie_breakers": [
-          "global.sort_order",
           "global.id"
         ]
       },
@@ -1073,6 +1041,70 @@
           },
           "v1_source": {
             "path": "de.venue"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.archive.button",
+          "nullable": false,
+          "path": "locales.{locale}.archive.button",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.archive.button"
+          },
+          "v1_source": {
+            "path": "{locale}.archive.button"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.archive.heading",
+          "nullable": false,
+          "path": "locales.{locale}.archive.heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.archive.heading"
+          },
+          "v1_source": {
+            "path": "{locale}.archive.heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.archive.intro",
+          "nullable": false,
+          "path": "locales.{locale}.archive.intro",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.archive.intro"
+          },
+          "v1_source": {
+            "path": "{locale}.archive.intro"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.archive.label",
+          "nullable": false,
+          "path": "locales.{locale}.archive.label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.archive.label"
+          },
+          "v1_source": {
+            "path": "{locale}.archive.label"
           }
         },
         {
@@ -1905,86 +1937,6 @@
           },
           "v1_source": {
             "path": "{locale}.cta.text"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "fixed_page.l.event_banner.address",
-          "nullable": false,
-          "path": "locales.{locale}.event_banner.address",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.event_banner.address"
-          },
-          "v1_source": {
-            "path": "{locale}.event_banner.address"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "fixed_page.l.event_banner.basis",
-          "nullable": false,
-          "path": "locales.{locale}.event_banner.basis",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.event_banner.basis"
-          },
-          "v1_source": {
-            "path": "{locale}.event_banner.basis"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "fixed_page.l.event_banner.day",
-          "nullable": false,
-          "path": "locales.{locale}.event_banner.day",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.event_banner.day"
-          },
-          "v1_source": {
-            "path": "{locale}.event_banner.day"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "fixed_page.l.event_banner.tag",
-          "nullable": false,
-          "path": "locales.{locale}.event_banner.tag",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.event_banner.tag"
-          },
-          "v1_source": {
-            "path": "{locale}.event_banner.tag"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "fixed_page.l.event_banner.time",
-          "nullable": false,
-          "path": "locales.{locale}.event_banner.time",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.event_banner.time"
-          },
-          "v1_source": {
-            "path": "{locale}.event_banner.time"
           }
         },
         {
@@ -3047,6 +2999,38 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
+          "id": "fixed_page.l.listing.empty_heading",
+          "nullable": false,
+          "path": "locales.{locale}.listing.empty_heading",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.listing.empty_heading"
+          },
+          "v1_source": {
+            "path": "{locale}.listing.empty_heading"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.listing.fallback_detail_label",
+          "nullable": false,
+          "path": "locales.{locale}.listing.fallback_detail_label",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.listing.fallback_detail_label"
+          },
+          "v1_source": {
+            "path": "{locale}.listing.fallback_detail_label"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
           "id": "fixed_page.l.manifest.label",
           "nullable": false,
           "path": "locales.{locale}.manifest.label",
@@ -3383,6 +3367,22 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
+          "id": "fixed_page.l.meta.og_description",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_description",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_description"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_description"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
           "id": "fixed_page.l.meta.og_image_alt",
           "nullable": false,
           "path": "locales.{locale}.meta.og_image_alt",
@@ -3393,6 +3393,22 @@
           },
           "v1_source": {
             "path": "{locale}.meta.og_image_alt"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
+          "id": "fixed_page.l.meta.og_title",
+          "nullable": false,
+          "path": "locales.{locale}.meta.og_title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.meta.og_title"
+          },
+          "v1_source": {
+            "path": "{locale}.meta.og_title"
           }
         },
         {
@@ -3799,6 +3815,22 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
+          "id": "fixed_page.l.summary",
+          "nullable": false,
+          "path": "locales.{locale}.summary",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.summary"
+          },
+          "v1_source": {
+            "path": "{locale}.summary"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
           "id": "fixed_page.l.team.heading",
           "nullable": false,
           "path": "locales.{locale}.team.heading",
@@ -3975,6 +4007,22 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
+          "id": "fixed_page.l.title",
+          "nullable": false,
+          "path": "locales.{locale}.title",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "{locale}.title"
+          },
+          "v1_source": {
+            "path": "{locale}.title"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "L",
+          "cms_visible": true,
           "id": "fixed_page.l.values.cards.item.text",
           "nullable": false,
           "path": "locales.{locale}.values.cards[].text",
@@ -4043,7 +4091,6 @@
       "ordering": {
         "primary": "global.route",
         "tie_breakers": [
-          "global.sort_order",
           "global.id"
         ]
       },
@@ -4054,6 +4101,7 @@
         "team",
         "journal",
         "programm",
+        "archive",
         "montagskurs",
         "mitmachen"
       ]
@@ -4193,6 +4241,22 @@
           "allow_empty": false,
           "class": "G",
           "cms_visible": true,
+          "id": "journal.g.global.primary_locale",
+          "nullable": false,
+          "path": "global.primary_locale",
+          "required": false,
+          "type": "string",
+          "v1_downgrade": {
+            "path": "de.primary_locale"
+          },
+          "v1_source": {
+            "path": "de.primary_locale"
+          }
+        },
+        {
+          "allow_empty": false,
+          "class": "G",
+          "cms_visible": true,
           "id": "journal.g.global.published_at",
           "nullable": false,
           "path": "global.published_at",
@@ -4203,38 +4267,6 @@
           },
           "v1_source": {
             "path": "de.published_at"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "journal.g.global.route",
-          "nullable": false,
-          "path": "global.route",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.route"
-          },
-          "v1_source": {
-            "path": "de.route"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "journal.g.global.sort_order",
-          "nullable": false,
-          "path": "global.sort_order",
-          "required": false,
-          "type": "integer",
-          "v1_downgrade": {
-            "path": "de.sort_order"
-          },
-          "v1_source": {
-            "path": "de.sort_order"
           }
         },
         {
@@ -4256,30 +4288,12 @@
         },
         {
           "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "journal.g.global.tally",
-          "nullable": false,
-          "path": "global.tally",
-          "required": false,
-          "type": "boolean",
-          "v1_downgrade": {
-            "path": "de.tally"
-          },
-          "v1_source": {
-            "path": "de.tally"
-          }
-        },
-        {
-          "allow_empty": false,
           "class": "L",
-          "cms_visible": false,
+          "cms_visible": true,
           "id": "journal.l.body",
           "nullable": false,
           "path": "locales.{locale}.body",
-          "path_pattern": "content/journal/bodies/{id}.{locale}.md",
           "required": false,
-          "storage": "markdown_file",
           "type": "string",
           "v1_downgrade": {
             "path": "{locale}.body"
@@ -4404,22 +4418,6 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
-          "id": "journal.l.excerpt",
-          "nullable": false,
-          "path": "locales.{locale}.excerpt",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.excerpt"
-          },
-          "v1_source": {
-            "path": "{locale}.excerpt"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
           "id": "journal.l.hero_alt",
           "nullable": false,
           "path": "locales.{locale}.hero_alt",
@@ -4430,54 +4428,6 @@
           },
           "v1_source": {
             "path": "{locale}.hero_alt"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "journal.l.homepage_excerpt",
-          "nullable": false,
-          "path": "locales.{locale}.homepage_excerpt",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.homepage_excerpt"
-          },
-          "v1_source": {
-            "path": "{locale}.homepage_excerpt"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "journal.l.homepage_image_alt",
-          "nullable": false,
-          "path": "locales.{locale}.homepage_image_alt",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.homepage_image_alt"
-          },
-          "v1_source": {
-            "path": "{locale}.homepage_image_alt"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "journal.l.homepage_title",
-          "nullable": false,
-          "path": "locales.{locale}.homepage_title",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.homepage_title"
-          },
-          "v1_source": {
-            "path": "{locale}.homepage_title"
           }
         },
         {
@@ -4516,22 +4466,6 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
-          "id": "journal.l.meta.og_description",
-          "nullable": false,
-          "path": "locales.{locale}.meta.og_description",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.meta.og_description"
-          },
-          "v1_source": {
-            "path": "{locale}.meta.og_description"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
           "id": "journal.l.meta.og_image_alt",
           "nullable": false,
           "path": "locales.{locale}.meta.og_image_alt",
@@ -4548,32 +4482,16 @@
           "allow_empty": false,
           "class": "L",
           "cms_visible": true,
-          "id": "journal.l.meta.og_title",
+          "id": "journal.l.summary",
           "nullable": false,
-          "path": "locales.{locale}.meta.og_title",
+          "path": "locales.{locale}.summary",
           "required": false,
           "type": "string",
           "v1_downgrade": {
-            "path": "{locale}.meta.og_title"
+            "path": "{locale}.summary"
           },
           "v1_source": {
-            "path": "{locale}.meta.og_title"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "journal.l.meta.title",
-          "nullable": false,
-          "path": "locales.{locale}.meta.title",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.meta.title"
-          },
-          "v1_source": {
-            "path": "{locale}.meta.title"
+            "path": "{locale}.summary"
           }
         },
         {
@@ -4591,22 +4509,6 @@
           "v1_source": {
             "path": "{locale}.title"
           }
-        },
-        {
-          "allow_empty": false,
-          "class": "L",
-          "cms_visible": true,
-          "id": "journal.l.title_html",
-          "nullable": false,
-          "path": "locales.{locale}.title_html",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "{locale}.title_html"
-          },
-          "v1_source": {
-            "path": "{locale}.title_html"
-          }
         }
       ],
       "identity": {
@@ -4616,7 +4518,6 @@
       "ordering": {
         "primary": "global.published_at:desc",
         "tie_breakers": [
-          "global.sort_order",
           "global.id"
         ]
       },
@@ -4705,22 +4606,6 @@
           },
           "v1_source": {
             "path": "de.meta.og_image_width"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "legal_page.g.global.route",
-          "nullable": false,
-          "path": "global.route",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.route"
-          },
-          "v1_source": {
-            "path": "de.route"
           }
         },
         {
@@ -4862,7 +4747,6 @@
       "ordering": {
         "primary": "global.id",
         "tie_breakers": [
-          "global.sort_order",
           "global.id"
         ]
       },
@@ -5410,7 +5294,6 @@
       "ordering": {
         "primary": "global.id",
         "tie_breakers": [
-          "global.sort_order",
           "global.id"
         ]
       },
@@ -5574,7 +5457,6 @@
       "ordering": {
         "primary": "global.id",
         "tie_breakers": [
-          "global.sort_order",
           "global.id"
         ]
       },
@@ -5879,22 +5761,6 @@
           "allow_empty": false,
           "class": "G",
           "cms_visible": true,
-          "id": "workshop.g.global.route",
-          "nullable": false,
-          "path": "global.route",
-          "required": false,
-          "type": "string",
-          "v1_downgrade": {
-            "path": "de.route"
-          },
-          "v1_source": {
-            "path": "de.route"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
           "enum": "event_status",
           "id": "workshop.g.global.schedule.event_status",
           "nullable": false,
@@ -5987,22 +5853,6 @@
           },
           "v1_source": {
             "path": "de.schedule.sessions[].start_local"
-          }
-        },
-        {
-          "allow_empty": false,
-          "class": "G",
-          "cms_visible": true,
-          "id": "workshop.g.global.sort_order",
-          "nullable": false,
-          "path": "global.sort_order",
-          "required": false,
-          "type": "integer",
-          "v1_downgrade": {
-            "path": "de.sort_order"
-          },
-          "v1_source": {
-            "path": "de.sort_order"
           }
         },
         {
@@ -7107,7 +6957,6 @@
       "ordering": {
         "primary": "global.start_at",
         "tie_breakers": [
-          "global.sort_order",
           "global.id"
         ]
       },

@@ -66,6 +66,19 @@
       ],
       "collection": "pages",
       "equal": true,
+      "id": "archive",
+      "intended_locales": [
+        "de",
+        "en"
+      ]
+    },
+    {
+      "available_locales": [
+        "de",
+        "en"
+      ],
+      "collection": "pages",
+      "equal": true,
       "id": "index",
       "intended_locales": [
         "de",

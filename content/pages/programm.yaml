@@ -64,6 +64,11 @@ de:
   projects:
     label: Aktuelle Projekte
     heading: Was passiert
+  archive:
+    label: Archiv
+    heading: Vergangene Projekte
+    intro: Abgeschlossene Workshops und Projekte bleiben als Rückblicke zugänglich.
+    button: Archiv ansehen
   outlook:
     label: Ausblick
     heading: Was noch kommt
@@ -135,6 +140,11 @@ en:
   projects:
     label: Current Projects
     heading: What’s Happening Now
+  archive:
+    label: Archive
+    heading: Past Projects
+    intro: Completed workshops and projects remain available as a record of our work.
+    button: View archive
   outlook:
     label: Outlook
     heading: What’s Coming Next

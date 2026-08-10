@@ -3,7 +3,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const matter = require("gray-matter");
-const { ROOT, hash, parseArgs, stableJson } = require("./lib");
+const { ROOT, hash, parseArgs, readYaml, stableJson } = require("./lib");
 
 const args = parseArgs();
 const pairs = [];
@@ -22,17 +22,29 @@ for (const collection of ["journal", "legal"]) {
       id = path.basename(name, ".md");
       locale = "de";
     }
-    const target = path.join(ROOT, `content/${collection}/bodies`, `${id}.${locale}.md`);
-    if (!fs.existsSync(target)) throw new Error(`${path.relative(ROOT, target)} is missing`);
-    const before = matter(fs.readFileSync(source, "utf8")).content;
-    const after = fs.readFileSync(target);
+    const beforeRaw = matter(fs.readFileSync(source, "utf8")).content;
+    let before;
+    let after;
+    if (collection === "journal") {
+      const recordFile = path.join(ROOT, "content/journal/records", `${id}.yaml`);
+      if (!fs.existsSync(recordFile)) throw new Error(`${path.relative(ROOT, recordFile)} is missing`);
+      const record = readYaml(recordFile);
+      before = beforeRaw.trim();
+      after = record.locales?.[locale]?.body;
+      if (typeof after !== "string") throw new Error(`${path.relative(ROOT, recordFile)}: locales.${locale}.body is missing`);
+    } else {
+      const target = path.join(ROOT, `content/${collection}/bodies`, `${id}.${locale}.md`);
+      if (!fs.existsSync(target)) throw new Error(`${path.relative(ROOT, target)} is missing`);
+      before = beforeRaw;
+      after = fs.readFileSync(target);
+    }
     pairs.push({
       collection,
       id,
       locale,
       before_sha256: hash(before),
       after_sha256: hash(after),
-      bytes: after.length,
+      bytes: Buffer.byteLength(after),
       equal: hash(before) === hash(after),
     });
   }

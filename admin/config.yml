@@ -1258,6 +1258,28 @@ collections:
                 widget: string
                 hint: 'Example: What is happening now.'
             i18n: true
+          - name: archive
+            label: Archive teaser
+            widget: object
+            collapsed: true
+            fields:
+              - name: label
+                i18n: true
+                label: Eyebrow label
+                widget: string
+              - name: heading
+                i18n: true
+                label: Section heading
+                widget: string
+              - name: intro
+                i18n: true
+                label: Supporting text
+                widget: text
+              - name: button
+                i18n: true
+                label: Archive button text
+                widget: string
+            i18n: true
           - name: outlook
             label: Upcoming workshops section
             widget: object
@@ -1340,6 +1362,156 @@ collections:
                 label: Social image description
                 widget: string
                 required: false
+                hint: Describe what is visible in the custom image. Required when a custom social image is used.
+            i18n: true
+        i18n:
+          locales:
+            - de
+            - en
+          default_locale: de
+          initial_locales: all
+      - name: archive
+        label: Archive page
+        file: content/pages/archive.yaml
+        fields:
+          - name: schema_version
+            label: Schema version
+            widget: hidden
+            default: 2
+            i18n: false
+          - name: global
+            label: Shared settings
+            widget: object
+            collapsed: false
+            fields:
+              - name: id
+                label: Stable ID
+                widget: hidden
+                default: archive
+              - name: status
+                label: Status
+                widget: select
+                options:
+                  - draft
+                  - published
+                  - unlisted
+                default: published
+              - name: route
+                label: Canonical route
+                widget: hidden
+                default: /archive
+              - name: meta
+                label: Advanced SEO and social sharing (review last)
+                widget: object
+                collapsed: true
+                fields:
+                  - name: og_image
+                    label: Social sharing image override
+                    widget: image
+                    required: false
+                    hint: 'Recommended size: 1200 x 630 px. Leave empty to use the website default.'
+                  - name: og_image_width
+                    label: Social image width in pixels
+                    widget: number
+                    required: false
+                    value_type: int
+                    hint: Enter the custom image’s real pixel width.
+                  - name: og_image_height
+                    label: Social image height in pixels
+                    widget: number
+                    required: false
+                    value_type: int
+                    hint: Enter the custom image’s real pixel height.
+            i18n: false
+          - name: breadcrumb
+            label: Breadcrumb
+            widget: string
+            i18n: true
+          - name: hero
+            label: Hero
+            widget: object
+            collapsed: true
+            fields:
+              - name: label
+                label: Eyebrow label
+                widget: string
+                i18n: true
+              - name: heading
+                label: Page heading
+                widget: string
+                i18n: true
+              - name: intro
+                label: Introduction
+                widget: text
+                i18n: true
+            i18n: true
+          - name: listing
+            label: Project listing
+            widget: object
+            collapsed: true
+            fields:
+              - name: empty_heading
+                label: Empty archive message
+                widget: string
+                i18n: true
+              - name: fallback_detail_label
+                label: Default project button text
+                widget: string
+                i18n: true
+                hint: Used only when a workshop has no custom detail button text.
+            i18n: true
+          - name: cta
+            label: Programme call to action
+            widget: object
+            collapsed: true
+            fields:
+              - name: label
+                label: Eyebrow label
+                widget: string
+                i18n: true
+              - name: heading
+                label: Heading
+                widget: string
+                i18n: true
+              - name: text
+                label: Supporting text
+                widget: text
+                i18n: true
+              - name: button
+                label: Programme button text
+                widget: string
+                i18n: true
+            i18n: true
+          - name: meta
+            label: Advanced SEO and social sharing (review last)
+            widget: object
+            collapsed: true
+            fields:
+              - name: title
+                label: Browser and SEO title
+                widget: string
+                i18n: true
+              - name: description
+                label: SEO description
+                widget: text
+                i18n: true
+              - name: og_title
+                label: Social sharing title override
+                widget: string
+                required: false
+                i18n: true
+                hint: Leave empty to use the browser and SEO title.
+              - name: og_description
+                label: Social sharing description override
+                widget: text
+                required: false
+                i18n: true
+                hint: Leave empty to use the SEO description.
+              - name: og_image_alt
+                label: Social image description
+                widget: string
+                required: false
+                i18n: true
                 hint: Describe what is visible in the custom image. Required when a custom social image is used.
             i18n: true
         i18n:
@@ -1452,20 +1624,20 @@ collections:
                         widget: datetime
                         type: time
                         date_format: false
-                        time_format: 'HH:mm'
+                        time_format: HH:mm
                         hint: '24-hour clock, no seconds. Example: 17:45.'
                       - name: end_time
                         label: End time
                         widget: datetime
                         type: time
                         date_format: false
-                        time_format: 'HH:mm'
+                        time_format: HH:mm
                         hint: '24-hour clock, no seconds. Example: 19:15.'
                       - name: anchor
                         label: First occurrence date
                         widget: datetime
                         type: date
-                        date_format: 'YYYY-MM-DD'
+                        date_format: YYYY-MM-DD
                         time_format: false
                         hint: 'The very first date this weekly pattern started. Format: YYYY-MM-DD. Example: 2026-01-05.'
                       - name: horizon_months
@@ -1491,7 +1663,7 @@ collections:
                         label: Date
                         widget: datetime
                         type: date
-                        date_format: 'YYYY-MM-DD'
+                        date_format: YYYY-MM-DD
                         time_format: false
                         hint: 'Format: YYYY-MM-DD. It must be a Monday in the recurring schedule.'
                       - name: status
@@ -2334,63 +2506,51 @@ collections:
             i18n: true
         i18n: true
     i18n: true
-  - name: journal
-    label: Journal
+  - name: journal_de
+    label: Journal — German primary
     folder: content/journal/records
     create: true
     extension: yaml
     format: yaml
-    thumbnail: image
+    thumbnail: global.image.src
     fields:
       - name: schema_version
         label: Schema version
         widget: hidden
         default: 2
+        i18n: false
       - name: global
         label: Shared settings
         widget: object
         collapsed: false
         fields:
           - name: id
-            label: Stable ID
+            label: URL slug
             widget: string
             default: ''
-            hint: Lowercase letters and hyphens; must match the filename.
-          - name: intended_locales
-            label: Intended locales
+            hint: Lowercase letters and hyphens only. This creates /journal/your-slug and must match the filename.
+          - name: primary_locale
+            label: Primary language
             widget: select
-            multiple: true
-            min: 1
             options:
-              - label: German
+              - label: German primary
                 value: de
-              - label: English
+              - label: English primary
                 value: en
-            default:
-              - de
-              - en
-            hint: Must exactly match the language content objects added below.
+            default: de
+            hint: Determines which Journal collection exposes this article. Keep the primary language first in the saved file.
           - name: status
             label: Status
             widget: select
             options:
+              - draft
               - published
               - coming_soon
               - unlisted
-            default: published
-          - name: route
-            label: Canonical route
-            widget: string
-            hint: Start with / and keep existing public URLs stable.
+            default: draft
           - name: published_at
             label: Publication date
             widget: datetime
-          - name: sort_order
-            label: Sort order when dates match
-            widget: number
-            value_type: int
-            required: false
-            min: 0
           - name: image
             label: Shared card image
             widget: object
@@ -2418,17 +2578,12 @@ collections:
                   - cover
                   - contained
                 default: cover
-          - name: tally
-            label: Load Tally script
-            widget: boolean
-            required: false
-            default: false
           - name: meta
             label: Advanced SEO and social sharing
             widget: object
             collapsed: true
             required: false
-            hint: Optional overrides. The article title, excerpt, and card image are used as fallbacks.
+            hint: Optional overrides. The article title, summary, and card image are used as fallbacks.
             fields:
               - name: og_image
                 label: Social sharing image override
@@ -2447,250 +2602,366 @@ collections:
                 required: false
                 value_type: int
                 hint: Enter the social image’s real pixel height.
-      - name: locales
-        label: Language content
+        i18n: false
+      - name: title
+        label: Title
+        widget: string
+        i18n: true
+      - name: summary
+        label: Summary
+        widget: text
+        i18n: true
+        hint: Used on the Journal page, homepage, and as the default search description.
+      - name: body
+        label: Article body
+        widget: markdown
+        i18n: true
+        hint: Write the complete article here. Use headings, links, lists, and blockquotes as needed.
+      - name: image_alt
+        label: Card image description
+        widget: string
+        required: false
+        i18n: true
+      - name: hero_alt
+        label: Hero image description
+        widget: string
+        required: false
+        i18n: true
+      - name: cta
+        label: Article call to action
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - name: heading
+            label: Heading
+            widget: string
+            required: false
+            i18n: true
+          - name: text
+            label: Text
+            widget: text
+            required: false
+            i18n: true
+          - name: buttons
+            label: Buttons
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.label}}'
+            required: false
+            fields:
+              - name: label
+                label: Button text
+                widget: string
+                hint: 'Example: Register now or Learn more.'
+                i18n: true
+              - name: kind
+                label: Button type
+                widget: select
+                options:
+                  - link
+                  - tally
+                default: link
+                i18n: true
+              - name: style
+                label: Style
+                widget: select
+                options:
+                  - primary
+                  - secondary
+                default: primary
+                i18n: true
+              - name: href
+                label: Link
+                widget: string
+                required: false
+                i18n: true
+              - name: tally_open
+                label: Tally-ID
+                widget: string
+                required: false
+                i18n: true
+            i18n: true
+        i18n: true
+      - name: meta
+        label: Advanced SEO and social sharing
+        widget: object
+        collapsed: true
+        required: false
+        hint: Optional overrides. The article title, summary, and card image are used as fallbacks.
+        fields:
+          - name: title
+            label: Browser title override
+            widget: string
+            required: false
+            hint: Leave empty to use the article title followed by Wild Care Journal.
+            i18n: true
+          - name: description
+            label: Search description override
+            widget: text
+            required: false
+            hint: Leave empty to use the article summary.
+            i18n: true
+          - name: og_title
+            label: Social sharing title override
+            widget: string
+            required: false
+            hint: Leave empty to use the browser title.
+            i18n: true
+          - name: og_description
+            label: Social sharing description override
+            widget: text
+            required: false
+            hint: Leave empty to use the search description.
+            i18n: true
+          - name: og_image_alt
+            label: Social image description
+            widget: string
+            required: false
+            hint: Describe what is visible in the social image.
+            i18n: true
+        i18n: true
+    identifier_field: global.id
+    summary: '{{title}} — {{global.status}}'
+    i18n:
+      structure: single_file
+      locales:
+        - de
+        - en
+      default_locale: de
+      initial_locales: default
+    filter:
+      field: global.primary_locale
+      value: de
+  - name: journal_en
+    label: Journal — English primary
+    folder: content/journal/records
+    create: true
+    extension: yaml
+    format: yaml
+    thumbnail: global.image.src
+    fields:
+      - name: schema_version
+        label: Schema version
+        widget: hidden
+        default: 2
+        i18n: false
+      - name: global
+        label: Shared settings
         widget: object
         collapsed: false
         fields:
-          - name: de
-            label: German content
+          - name: id
+            label: URL slug
+            widget: string
+            default: ''
+            hint: Lowercase letters and hyphens only. This creates /journal/your-slug and must match the filename.
+          - name: primary_locale
+            label: Primary language
+            widget: select
+            options:
+              - label: German primary
+                value: de
+              - label: English primary
+                value: en
+            default: en
+            hint: Determines which Journal collection exposes this article. Keep the primary language first in the saved file.
+          - name: status
+            label: Status
+            widget: select
+            options:
+              - draft
+              - published
+              - coming_soon
+              - unlisted
+            default: draft
+          - name: published_at
+            label: Publication date
+            widget: datetime
+          - name: image
+            label: Shared card image
             widget: object
             required: false
-            collapsed: true
-            hint: Add only when German is listed under Intended locales.
             fields:
-              - name: title
-                label: Title
-                widget: string
-                required: false
-              - name: title_html
-                label: Article title with optional <br>
-                widget: string
-                required: false
-              - name: excerpt
-                label: Card summary
-                widget: text
-                required: false
-              - name: image_alt
-                label: Image description
-                widget: string
-                required: false
-              - name: hero_alt
-                label: Hero image description
-                widget: string
-                required: false
-              - name: homepage_title
-                label: Homepage title override
-                widget: string
-                required: false
-              - name: homepage_excerpt
-                label: Short homepage summary
-                widget: text
-                required: false
-              - name: homepage_image_alt
-                label: Homepage image description
-                widget: string
-                required: false
-              - name: cta
-                label: Article call to action
-                widget: object
-                collapsed: true
-                required: false
-                fields:
-                  - name: heading
-                    label: Heading
-                    widget: string
-                    required: false
-                  - name: text
-                    label: Text
-                    widget: text
-                    required: false
-                  - name: buttons
-                    label: Buttons
-                    widget: list
-                    collapsed: true
-                    minimize_collapsed: true
-                    summary: '{{fields.label}}'
-                    required: false
-                    fields:
-                      - name: label
-                        label: Button text
-                        widget: string
-                        hint: 'Example: Register now or Learn more.'
-                      - name: kind
-                        label: Button type
-                        widget: select
-                        options:
-                          - link
-                          - tally
-                        default: link
-                      - name: style
-                        label: Style
-                        widget: select
-                        options:
-                          - primary
-                          - secondary
-                        default: primary
-                      - name: href
-                        label: Link
-                        widget: string
-                        required: false
-                      - name: tally_open
-                        label: Tally-ID
-                        widget: string
-                        required: false
-              - name: meta
-                label: Advanced SEO and social sharing
-                widget: object
-                collapsed: true
-                required: false
-                hint: Optional overrides. The article title, excerpt, and card image are used as fallbacks.
-                fields:
-                  - name: title
-                    label: Browser title override
-                    widget: string
-                    required: false
-                    hint: Leave empty to use the article title followed by Wild Care Journal.
-                  - name: description
-                    label: Search description override
-                    widget: text
-                    required: false
-                    hint: Leave empty to use the card summary.
-                  - name: og_title
-                    label: Social sharing title override
-                    widget: string
-                    required: false
-                    hint: Leave empty to use the browser title.
-                  - name: og_description
-                    label: Social sharing description override
-                    widget: text
-                    required: false
-                    hint: Leave empty to use the search description.
-                  - name: og_image_alt
-                    label: Social image description
-                    widget: string
-                    required: false
-                    hint: Describe what is visible in the social image.
-          - name: en
-            label: English content
+              - name: src
+                label: Image
+                widget: image
+          - name: hero
+            label: Shared hero media
             widget: object
             required: false
-            collapsed: true
-            hint: Add only when English is listed under Intended locales.
             fields:
-              - name: title
-                label: Title
-                widget: string
-                required: false
-              - name: title_html
-                label: Article title with optional <br>
-                widget: string
-                required: false
-              - name: excerpt
-                label: Card summary
-                widget: text
-                required: false
-              - name: image_alt
-                label: Image description
-                widget: string
-                required: false
-              - name: hero_alt
-                label: Hero image description
-                widget: string
-                required: false
-              - name: homepage_title
-                label: Homepage title override
-                widget: string
-                required: false
-              - name: homepage_excerpt
-                label: Short homepage summary
-                widget: text
-                required: false
-              - name: homepage_image_alt
-                label: Homepage image description
-                widget: string
-                required: false
-              - name: cta
-                label: Article call to action
+              - name: image
+                label: Hero image
                 widget: object
-                collapsed: true
-                required: false
                 fields:
-                  - name: heading
-                    label: Heading
-                    widget: string
-                    required: false
-                  - name: text
-                    label: Text
-                    widget: text
-                    required: false
-                  - name: buttons
-                    label: Buttons
-                    widget: list
-                    collapsed: true
-                    minimize_collapsed: true
-                    summary: '{{fields.label}}'
-                    required: false
-                    fields:
-                      - name: label
-                        label: Button text
-                        widget: string
-                        hint: 'Example: Register now or Learn more.'
-                      - name: kind
-                        label: Button type
-                        widget: select
-                        options:
-                          - link
-                          - tally
-                        default: link
-                      - name: style
-                        label: Style
-                        widget: select
-                        options:
-                          - primary
-                          - secondary
-                        default: primary
-                      - name: href
-                        label: Link
-                        widget: string
-                        required: false
-                      - name: tally_open
-                        label: Tally-ID
-                        widget: string
-                        required: false
-              - name: meta
-                label: Advanced SEO and social sharing
-                widget: object
-                collapsed: true
+                  - name: src
+                    label: Image
+                    widget: image
+              - name: variant
+                label: Hero layout
+                widget: select
+                options:
+                  - cover
+                  - contained
+                default: cover
+          - name: meta
+            label: Advanced SEO and social sharing
+            widget: object
+            collapsed: true
+            required: false
+            hint: Optional overrides. The article title, summary, and card image are used as fallbacks.
+            fields:
+              - name: og_image
+                label: Social sharing image override
+                widget: image
                 required: false
-                hint: Optional overrides. The article title, excerpt, and card image are used as fallbacks.
-                fields:
-                  - name: title
-                    label: Browser title override
-                    widget: string
-                    required: false
-                    hint: Leave empty to use the article title followed by Wild Care Journal.
-                  - name: description
-                    label: Search description override
-                    widget: text
-                    required: false
-                    hint: Leave empty to use the card summary.
-                  - name: og_title
-                    label: Social sharing title override
-                    widget: string
-                    required: false
-                    hint: Leave empty to use the browser title.
-                  - name: og_description
-                    label: Social sharing description override
-                    widget: text
-                    required: false
-                    hint: Leave empty to use the search description.
-                  - name: og_image_alt
-                    label: Social image description
-                    widget: string
-                    required: false
-                    hint: Describe what is visible in the social image.
+                hint: 'Recommended size: 1200 x 630 px. Leave empty to use the article card image.'
+              - name: og_image_width
+                label: Social image width in pixels
+                widget: number
+                required: false
+                value_type: int
+                hint: Enter the social image’s real pixel width.
+              - name: og_image_height
+                label: Social image height in pixels
+                widget: number
+                required: false
+                value_type: int
+                hint: Enter the social image’s real pixel height.
+        i18n: false
+      - name: title
+        label: Title
+        widget: string
+        i18n: true
+      - name: summary
+        label: Summary
+        widget: text
+        i18n: true
+        hint: Used on the Journal page, homepage, and as the default search description.
+      - name: body
+        label: Article body
+        widget: markdown
+        i18n: true
+        hint: Write the complete article here. Use headings, links, lists, and blockquotes as needed.
+      - name: image_alt
+        label: Card image description
+        widget: string
+        required: false
+        i18n: true
+      - name: hero_alt
+        label: Hero image description
+        widget: string
+        required: false
+        i18n: true
+      - name: cta
+        label: Article call to action
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - name: heading
+            label: Heading
+            widget: string
+            required: false
+            i18n: true
+          - name: text
+            label: Text
+            widget: text
+            required: false
+            i18n: true
+          - name: buttons
+            label: Buttons
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.label}}'
+            required: false
+            fields:
+              - name: label
+                label: Button text
+                widget: string
+                hint: 'Example: Register now or Learn more.'
+                i18n: true
+              - name: kind
+                label: Button type
+                widget: select
+                options:
+                  - link
+                  - tally
+                default: link
+                i18n: true
+              - name: style
+                label: Style
+                widget: select
+                options:
+                  - primary
+                  - secondary
+                default: primary
+                i18n: true
+              - name: href
+                label: Link
+                widget: string
+                required: false
+                i18n: true
+              - name: tally_open
+                label: Tally-ID
+                widget: string
+                required: false
+                i18n: true
+            i18n: true
+        i18n: true
+      - name: meta
+        label: Advanced SEO and social sharing
+        widget: object
+        collapsed: true
+        required: false
+        hint: Optional overrides. The article title, summary, and card image are used as fallbacks.
+        fields:
+          - name: title
+            label: Browser title override
+            widget: string
+            required: false
+            hint: Leave empty to use the article title followed by Wild Care Journal.
+            i18n: true
+          - name: description
+            label: Search description override
+            widget: text
+            required: false
+            hint: Leave empty to use the article summary.
+            i18n: true
+          - name: og_title
+            label: Social sharing title override
+            widget: string
+            required: false
+            hint: Leave empty to use the browser title.
+            i18n: true
+          - name: og_description
+            label: Social sharing description override
+            widget: text
+            required: false
+            hint: Leave empty to use the search description.
+            i18n: true
+          - name: og_image_alt
+            label: Social image description
+            widget: string
+            required: false
+            hint: Describe what is visible in the social image.
+            i18n: true
+        i18n: true
     identifier_field: global.id
+    summary: '{{title}} — {{global.status}}'
+    i18n:
+      structure: single_file
+      locales:
+        - en
+        - de
+      default_locale: en
+      initial_locales: default
+    filter:
+      field: global.primary_locale
+      value: en
   - name: rechtliches
     label: Legal pages (German only)
     folder: content/legal/records
@@ -2709,10 +2980,10 @@ collections:
         collapsed: false
         fields:
           - name: id
-            label: Stable ID
+            label: URL slug
             widget: string
             default: ''
-            hint: Lowercase letters and hyphens; must match the filename.
+            hint: Lowercase letters and hyphens only. This creates /your-slug and must match the filename.
           - name: intended_locales
             label: Intended locales
             widget: select
@@ -2733,10 +3004,6 @@ collections:
               - draft
               - published
             default: published
-          - name: route
-            label: Canonical route
-            widget: string
-            hint: Start with / and keep existing public URLs stable.
           - name: meta
             label: Advanced SEO and social sharing
             widget: object
@@ -2855,10 +3122,10 @@ collections:
         collapsed: false
         fields:
           - name: id
-            label: Stable ID
+            label: URL slug
             widget: string
             default: ''
-            hint: Lowercase letters and hyphens; must match the filename.
+            hint: Lowercase letters and hyphens only. This creates /your-slug and must match the filename.
           - name: primary_locale
             label: Primary language
             widget: select
@@ -2879,16 +3146,6 @@ collections:
               - past
               - unlisted
             default: draft
-          - name: route
-            label: Canonical route
-            widget: string
-            hint: Start with / and keep existing public URLs stable.
-          - name: sort_order
-            label: Sort order when dates match
-            widget: number
-            value_type: int
-            required: false
-            min: 0
           - name: detail_page
             label: Publish detail page
             widget: boolean
@@ -2974,15 +3231,15 @@ collections:
                     label: Start
                     widget: datetime
                     type: datetime-local
-                    date_format: 'YYYY-MM-DD'
-                    time_format: 'HH:mm'
+                    date_format: YYYY-MM-DD
+                    time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T19:00.'
                   - name: end_local
                     label: End
                     widget: datetime
                     type: datetime-local
-                    date_format: 'YYYY-MM-DD'
-                    time_format: 'HH:mm'
+                    date_format: YYYY-MM-DD
+                    time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T21:00.'
                   - name: status
                     label: Status override for this session only
@@ -3028,20 +3285,20 @@ collections:
                     widget: datetime
                     type: time
                     date_format: false
-                    time_format: 'HH:mm'
+                    time_format: HH:mm
                     hint: '24-hour clock, no seconds. Example: 17:45.'
                   - name: end_time
                     label: End time
                     widget: datetime
                     type: time
                     date_format: false
-                    time_format: 'HH:mm'
+                    time_format: HH:mm
                     hint: '24-hour clock, no seconds. Example: 19:15.'
                   - name: anchor
                     label: First occurrence date
                     widget: datetime
                     type: date
-                    date_format: 'YYYY-MM-DD'
+                    date_format: YYYY-MM-DD
                     time_format: false
                     hint: 'The very first date this weekly pattern started (or starts). Format: YYYY-MM-DD. Example: 2026-01-05.'
                   - name: horizon_months
@@ -3059,7 +3316,7 @@ collections:
                       label: Date
                       widget: datetime
                       type: date
-                      date_format: 'YYYY-MM-DD'
+                      date_format: YYYY-MM-DD
                       time_format: false
               - name: featured_occurrences
                 label: Special sessions (guest teacher, highlighted date)
@@ -3071,7 +3328,7 @@ collections:
                     label: Date
                     widget: datetime
                     type: date
-                    date_format: 'YYYY-MM-DD'
+                    date_format: YYYY-MM-DD
                     time_format: false
                     hint: 'Format: YYYY-MM-DD. Example: 2026-11-16.'
                   - name: teacher
@@ -3794,10 +4051,10 @@ collections:
         collapsed: false
         fields:
           - name: id
-            label: Stable ID
+            label: URL slug
             widget: string
             default: ''
-            hint: Lowercase letters and hyphens; must match the filename.
+            hint: Lowercase letters and hyphens only. This creates /your-slug and must match the filename.
           - name: primary_locale
             label: Primary language
             widget: select
@@ -3818,16 +4075,6 @@ collections:
               - past
               - unlisted
             default: draft
-          - name: route
-            label: Canonical route
-            widget: string
-            hint: Start with / and keep existing public URLs stable.
-          - name: sort_order
-            label: Sort order when dates match
-            widget: number
-            value_type: int
-            required: false
-            min: 0
           - name: detail_page
             label: Publish detail page
             widget: boolean
@@ -3913,15 +4160,15 @@ collections:
                     label: Start
                     widget: datetime
                     type: datetime-local
-                    date_format: 'YYYY-MM-DD'
-                    time_format: 'HH:mm'
+                    date_format: YYYY-MM-DD
+                    time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T19:00.'
                   - name: end_local
                     label: End
                     widget: datetime
                     type: datetime-local
-                    date_format: 'YYYY-MM-DD'
-                    time_format: 'HH:mm'
+                    date_format: YYYY-MM-DD
+                    time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T21:00.'
                   - name: status
                     label: Status override for this session only
@@ -3967,20 +4214,20 @@ collections:
                     widget: datetime
                     type: time
                     date_format: false
-                    time_format: 'HH:mm'
+                    time_format: HH:mm
                     hint: '24-hour clock, no seconds. Example: 17:45.'
                   - name: end_time
                     label: End time
                     widget: datetime
                     type: time
                     date_format: false
-                    time_format: 'HH:mm'
+                    time_format: HH:mm
                     hint: '24-hour clock, no seconds. Example: 19:15.'
                   - name: anchor
                     label: First occurrence date
                     widget: datetime
                     type: date
-                    date_format: 'YYYY-MM-DD'
+                    date_format: YYYY-MM-DD
                     time_format: false
                     hint: 'The very first date this weekly pattern started (or starts). Format: YYYY-MM-DD. Example: 2026-01-05.'
                   - name: horizon_months
@@ -3998,7 +4245,7 @@ collections:
                       label: Date
                       widget: datetime
                       type: date
-                      date_format: 'YYYY-MM-DD'
+                      date_format: YYYY-MM-DD
                       time_format: false
               - name: featured_occurrences
                 label: Special sessions (guest teacher, highlighted date)
@@ -4010,7 +4257,7 @@ collections:
                     label: Date
                     widget: datetime
                     type: date
-                    date_format: 'YYYY-MM-DD'
+                    date_format: YYYY-MM-DD
                     time_format: false
                     hint: 'Format: YYYY-MM-DD. Example: 2026-11-16.'
                   - name: teacher
@@ -4784,6 +5031,8 @@ collections:
         fields:
           - name: id
             widget: string
+            label: URL slug
+            hint: Lowercase letters and hyphens only. This creates /events/your-slug and must match the filename.
           - name: intended_locales
             widget: select
             multiple: true
@@ -4798,8 +5047,6 @@ collections:
               - current
               - past
               - unlisted
-          - name: route
-            widget: string
           - name: event_type
             widget: select
             options:
@@ -4840,11 +5087,6 @@ collections:
             label: Last updated
             widget: datetime
             required: false
-          - name: sort_order
-            label: Sort order when dates match
-            widget: number
-            required: false
-            value_type: int
           - name: registration
             label: Registration
             widget: object
@@ -4911,15 +5153,15 @@ collections:
                     label: Start
                     widget: datetime
                     type: datetime-local
-                    date_format: 'YYYY-MM-DD'
-                    time_format: 'HH:mm'
+                    date_format: YYYY-MM-DD
+                    time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-06-21T18:00.'
                   - name: end_local
                     label: End
                     widget: datetime
                     type: datetime-local
-                    date_format: 'YYYY-MM-DD'
-                    time_format: 'HH:mm'
+                    date_format: YYYY-MM-DD
+                    time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-06-21T22:00.'
                   - name: status
                     label: Status override for this session only
@@ -4965,20 +5207,20 @@ collections:
                     widget: datetime
                     type: time
                     date_format: false
-                    time_format: 'HH:mm'
+                    time_format: HH:mm
                     hint: '24-hour clock, no seconds. Example: 17:45.'
                   - name: end_time
                     label: End time
                     widget: datetime
                     type: time
                     date_format: false
-                    time_format: 'HH:mm'
+                    time_format: HH:mm
                     hint: '24-hour clock, no seconds. Example: 19:15.'
                   - name: anchor
                     label: First occurrence date
                     widget: datetime
                     type: date
-                    date_format: 'YYYY-MM-DD'
+                    date_format: YYYY-MM-DD
                     time_format: false
                     hint: 'Format: YYYY-MM-DD. Example: 2026-01-05.'
                   - name: horizon_months
@@ -4996,7 +5238,7 @@ collections:
                       label: Date
                       widget: datetime
                       type: date
-                      date_format: 'YYYY-MM-DD'
+                      date_format: YYYY-MM-DD
                       time_format: false
               - name: featured_occurrences
                 label: Special sessions (guest teacher, highlighted date)
@@ -5008,7 +5250,7 @@ collections:
                     label: Date
                     widget: datetime
                     type: date
-                    date_format: 'YYYY-MM-DD'
+                    date_format: YYYY-MM-DD
                     time_format: false
                     hint: 'Format: YYYY-MM-DD. Example: 2026-11-16.'
                   - name: teacher
@@ -5051,16 +5293,6 @@ collections:
                 widget: markdown
                 required: false
                 hint: Use headings and bullet points to make event details easy to scan.
-  - name: journal_bodies
-    label: Journal bodies
-    folder: content/journal/bodies
-    create: false
-    extension: md
-    format: raw
-    fields:
-      - name: body
-        label: Article body
-        widget: markdown
   - name: legal_bodies
     label: Legal bodies
     folder: content/legal/bodies

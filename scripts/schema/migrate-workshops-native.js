@@ -26,7 +26,7 @@ function localized(field) {
 
 const schema = legacy.fields.find((field) => field.name === "schema_version");
 const global = clean(legacy.fields.find((field) => field.name === "global"));
-global.fields = global.fields.filter((field) => field.name !== "intended_locales");
+global.fields = global.fields.filter((field) => !["intended_locales", "route", "sort_order"].includes(field.name));
 global.fields.splice(1, 0, {
   name: "primary_locale",
   label: "Primary language",
@@ -76,6 +76,8 @@ for (const name of fs.readdirSync(path.join(ROOT, "content/workshops")).filter((
     ...(raw.locales?.[primaryLocale] || {}),
   };
   delete blocks[primaryLocale].global.intended_locales;
+  delete blocks[primaryLocale].global.route;
+  delete blocks[primaryLocale].global.sort_order;
   for (const locale of ["de", "en"]) {
     if (locale !== primaryLocale && raw.locales?.[locale] && Object.keys(raw.locales[locale]).length) {
       blocks[locale] = clone(raw.locales[locale]);

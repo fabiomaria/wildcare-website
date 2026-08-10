@@ -223,6 +223,19 @@ permalink: programm.html
     </section>
     {% endif %}
 
+    {% if cms.workshops.past.length %}
+    <section style="background: var(--sand-light);">
+        <div class="container fade-up">
+            <div class="section-header" style="margin-bottom: 32px;">
+                <p class="label" data-de="{{ de.archive.label | attr }}" data-en="{{ en.archive.label | attr }}">{{ de.archive.label }}</p>
+                <h2 data-de="{{ de.archive.heading | attr }}" data-en="{{ en.archive.heading | attr }}">{{ de.archive.heading }}</h2>
+                <p data-de="{{ de.archive.intro | attr }}" data-en="{{ en.archive.intro | attr }}">{{ de.archive.intro }}</p>
+            </div>
+            <a href="archive" class="btn btn-secondary" data-de="{{ de.archive.button | attr }}" data-en="{{ en.archive.button | attr }}">{{ de.archive.button }}</a>
+        </div>
+    </section>
+    {% endif %}
+
     <!-- ================================
          CTA
          ================================ -->

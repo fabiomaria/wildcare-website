@@ -4,7 +4,7 @@
   "additionalProperties": false,
   "allOf": [
     {
-      "$comment": "212 leaf fields are enforced by scripts/schema/validate-content.js from registry revision 2."
+      "$comment": "217 leaf fields are enforced by scripts/schema/validate-content.js from registry revision 2."
     }
   ],
   "properties": {
