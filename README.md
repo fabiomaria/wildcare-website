@@ -64,7 +64,7 @@ The migration is reversible by design: `npm run schema:check` validates the regi
 
 Calendar-aware workshops, events, and recurring classes use the structured `global.schedule` block. Calendar definitions live in `lib/calendar/` and are loaded by Eleventy from `content/workshops/`, `content/events/`, and scheduled fixed pages such as `content/pages/montagskurs.yaml`.
 
-Dated workshops automatically leave the current-project listing and enter `/archive` as soon as their final scheduled session has ended in `Europe/Vienna`. Draft and unlisted records remain hidden. The GitHub Pages workflow rebuilds the production branch daily so this transition happens even when nobody edits the CMS.
+Dated workshops and events automatically leave current listings and enter `/archive` as soon as their final scheduled session has ended in `Europe/Vienna`. Draft and unlisted records remain hidden. The GitHub Pages workflow rebuilds the production branch daily so this transition happens even when nobody edits the CMS.
 
 Each published dated record can produce:
 

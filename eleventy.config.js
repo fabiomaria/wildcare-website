@@ -15,7 +15,7 @@ const {
   normalizeV2,
 } = require("./scripts/schema/lib");
 const calendar = require("./lib/calendar");
-const { deriveWorkshopStatus, finalSessionEnd, localMinute } = require("./lib/calendar/lifecycle");
+const { deriveDatedStatus, deriveWorkshopStatus, finalSessionEnd, localMinute } = require("./lib/calendar/lifecycle");
 
 // Pages not yet templatized are passthrough-copied verbatim (brief §7 Phase 1/2:
 // incremental migration — remove a page from this list when its template ships).
@@ -572,10 +572,39 @@ function loadEventContent() {
     return {
       slug: global.id, route: global.route || `/events/${global.id}`, page_mode: global.page_mode || "minimal",
       related_workshop: global.related_workshop || null,
+      configured_status: global.status,
+      event_type: global.event_type || "event",
       primary_locale: primary, de: raw.locales?.de || {}, en: raw.locales?.en || {},
       href: `events/${global.id}.html`,
     };
   });
+}
+
+function loadPastEventContent(cal, { now = new Date() } = {}) {
+  const nowLocal = localMinute(now);
+  return loadEventContent()
+    .map((event) => {
+      const def = cal.byId[event.slug];
+      if (!def || def.mode !== "dates") return null;
+      const schedule = { mode: def.mode, sessions: def.sessions };
+      const status = deriveDatedStatus(event.configured_status, schedule, nowLocal);
+      const de = Object.keys(event.de).length ? event.de : event.en;
+      const en = Object.keys(event.en).length ? event.en : event.de;
+      return {
+        ...event,
+        status,
+        de,
+        en,
+        end_date: def.span.end,
+        date: {
+          de: calendar.formatDateRange(def.span.start, def.span.end, "de"),
+          en: calendar.formatDateRange(def.span.start, def.span.end, "en"),
+        },
+        venue_name: def.venue.name,
+      };
+    })
+    .filter((event) => event && event.status === "past" && (event.de.title || event.en.title))
+    .sort((a, b) => String(b.end_date).localeCompare(String(a.end_date)) || a.slug.localeCompare(b.slug));
 }
 
 function loadMontagskursFeatured(cal) {
@@ -717,6 +746,13 @@ module.exports = function (eleventyConfig) {
     }
     data.journal = loadJournalContent();
     data.workshops = loadWorkshopContent();
+    data.events = { past: loadPastEventContent(loadCalendar()) };
+    data.past_projects = [
+      ...data.workshops.past.map((item) => ({ ...item, archive_kind: "workshop" })),
+      ...data.events.past.map((item) => ({ ...item, archive_kind: "event" })),
+    ].sort((a, b) =>
+      String(b.end_date || b.start_date || "").localeCompare(String(a.end_date || a.start_date || ""))
+      || a.slug.localeCompare(b.slug));
     data.legal = loadLegalContent();
     return data;
   });

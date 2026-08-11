@@ -38,9 +38,11 @@ permalink: archive.html
 
     <section style="padding-top: 0;">
         <div class="container">
-            {% if cms.workshops.past.length %}
+            {% if cms.past_projects.length %}
             <div style="display: grid; gap: var(--space-lg);">
-                {% for workshop in cms.workshops.past %}
+                {% for item in cms.past_projects %}
+                {% if item.archive_kind == "workshop" %}
+                {%- set workshop = item -%}
                 {%- set cardDe = workshop.de.card -%}
                 {%- set cardEn = workshop.en.card -%}
                 {%- set factsDe = workshop.de.facts -%}
@@ -86,6 +88,35 @@ permalink: archive.html
                         {% endif %}
                     </div>
                 </article>
+                {% else %}
+                {%- set event = item -%}
+                <article class="projekt-card fade-up delay-{{ loop.index }}">
+                    <div class="projekt-card-accent"></div>
+                    <div class="projekt-card-body">
+                        <div class="projekt-card-meta">
+                            <span class="projekt-tag" data-de="Veranstaltung" data-en="Event">Veranstaltung</span>
+                        </div>
+                        <h2 data-de="{{ event.de.title | attr }}" data-en="{{ event.en.title | attr }}">{{ event.de.title }}</h2>
+                        <p data-de="{{ event.de.summary | attr }}" data-en="{{ event.en.summary | attr }}">{{ event.de.summary }}</p>
+
+                        <div class="projekt-details">
+                            <div class="projekt-detail">
+                                {{ icon("calendar") }}
+                                <span data-de="{{ event.date.de | attr }}" data-en="{{ event.date.en | attr }}">{{ event.date.de }}</span>
+                            </div>
+                            <div class="projekt-detail">
+                                {{ icon("location") }}
+                                <span>{{ event.venue_name }}</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: var(--border-subtle);">
+                            <a href="{{ event.href | cleanUrl }}" class="btn btn-secondary"
+                                data-de="Rückblick ansehen" data-en="View event">Rückblick ansehen</a>
+                        </div>
+                    </div>
+                </article>
+                {% endif %}
                 {% endfor %}
             </div>
             {% else %}
