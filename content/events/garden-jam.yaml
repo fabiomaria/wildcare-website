@@ -3,7 +3,7 @@ global:
   id: garden-jam
   intended_locales:
     - de
-  status: current
+  status: past
   event_type: jam
   page_mode: minimal
   venue: graz-andritz
@@ -21,7 +21,7 @@ locales:
   de:
     title: Community Jam im Garten
     summary: 'Ein gemütlicher Abend in Andritz: Wir tanzen Contact Improvisation und verbringen gemeinsam Zeit.'
-    description: |
+    description: |-
       ## Anreise
 
       - Haltestelle Rotmoosweg (Bus 41) oder Oberandritz (Bus 53)
