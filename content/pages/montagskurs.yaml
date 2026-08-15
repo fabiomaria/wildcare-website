@@ -5,7 +5,7 @@ de:
     status: published
     route: /montagskurs
     venue: orpheumgasse
-    updated_at: 2026-07-26T10:00:00.000Z
+    updated_at: 2026-08-15T09:50
     schedule:
       event_status: scheduled
       mode: recurring
@@ -13,35 +13,35 @@ de:
         weekday: monday
         start_time: 17:45
         end_time: 19:15
-        anchor: '2026-01-05'
+        anchor: 2026-01-05
         horizon_months: 6
         default_teacher: Verena Eidenberger
       overrides:
-        - date: '2026-07-27'
+        - date: 2026-07-27
           teacher: Liane Mah
           note_de: The Tai Chi of Contact Improvisation
           note_en: The Tai Chi of Contact Improvisation
-        - date: '2026-08-03'
+        - date: 2026-08-03
           status: cancelled
           note_de: Sommerpause
           note_en: Summer Break
-        - date: '2026-08-10'
+        - date: 2026-08-10
           status: cancelled
           note_de: Sommerpause
           note_en: Summer Break
-        - date: '2026-08-17'
+        - date: 2026-08-17
           status: cancelled
-        - date: '2026-08-24'
+        - date: 2026-08-24
           status: cancelled
-        - date: '2026-08-31'
+        - date: 2026-08-31
+          status: cancelled
+        - date: 2026-09-07
           status: cancelled
     hero:
       image: assets/images/warum-ci.jpg
     practice:
       video: assets/what is ci.mp4
   breadcrumb: Montagskurs
-  title: Montagskurs — Contact Improvisation in Graz
-  summary: Offener Contact-Improvisation-Kurs in Graz, jeden Montag auf Spendenbasis und ohne erforderliche Vorkenntnisse.
   hero:
     label: Offener Workshop
     heading: Contact Improvisation in Graz.
@@ -124,10 +124,10 @@ de:
   meta:
     title: Montagskurs — Contact Improvisation in Graz | Wild Care
     description: Offener Contact Improvisation Workshop in Graz. Jeden Montag 17:45, Orpheumgasse 11. Auf Spendenbasis, keine Vorkenntnisse nötig.
+  summary: Offener Contact-Improvisation-Kurs in Graz, jeden Montag auf Spendenbasis und ohne erforderliche Vorkenntnisse.
+  title: Montagskurs — Contact Improvisation in Graz
 en:
   breadcrumb: Monday Class
-  title: Monday Class — Contact Improvisation in Graz
-  summary: An open, donation-based Contact Improvisation class in Graz every Monday, with no prior experience required.
   hero:
     label: Open Workshop
     heading: Contact Improvisation in Graz.
@@ -197,3 +197,5 @@ en:
     button: Sign up now
   footer:
     connect_heading: Connect
+  summary: An open, donation-based Contact Improvisation class in Graz every Monday, with no prior experience required.
+  title: Monday Class — Contact Improvisation in Graz
