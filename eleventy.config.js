@@ -1,7 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
-const yaml = require("js-yaml");
 const MarkdownIt = require("markdown-it");
 const nunjucks = require("nunjucks");
 const {
@@ -13,9 +12,14 @@ const {
   normalizeNativeI18nRecord,
   normalizeCalendarRecord,
   normalizeV2,
+  parseYaml,
 } = require("./scripts/schema/lib");
 const calendar = require("./lib/calendar");
 const { deriveDatedStatus, deriveWorkshopStatus, finalSessionEnd, localMinute } = require("./lib/calendar/lifecycle");
+
+function loadYamlFile(file) {
+  return parseYaml(fs.readFileSync(file, "utf8"));
+}
 
 // Pages not yet templatized are passthrough-copied verbatim (brief §7 Phase 1/2:
 // incremental migration — remove a page from this list when its template ships).
@@ -288,7 +292,7 @@ function loadJournalContent() {
   if (fs.existsSync(recordsDir)) {
     for (const filename of fs.readdirSync(recordsDir).filter((name) => name.endsWith(".yaml")).sort()) {
       const recordFile = path.join(recordsDir, filename);
-      const raw = yaml.load(fs.readFileSync(recordFile, "utf8"));
+      const raw = loadYamlFile(recordFile);
       const normalized = normalizeV2(normalizeNativeI18nRecord(raw), path.relative(__dirname, recordFile));
       const id = normalized.global.id;
       const entry = { slug: id, global: normalized.global, locales: {} };
@@ -412,7 +416,7 @@ function loadLegalContent() {
     ? fs.readdirSync(recordsDir).filter((name) => name.endsWith(".yaml")).sort().map((filename) => {
       const recordFile = path.join(recordsDir, filename);
       return {
-        raw: yaml.load(fs.readFileSync(recordFile, "utf8")),
+        raw: loadYamlFile(recordFile),
         file: path.relative(__dirname, recordFile),
         body: null,
       };
@@ -458,7 +462,7 @@ function loadWorkshopContent({ now = new Date() } = {}) {
     .filter((filename) => filename.endsWith(".yaml"))
     .map((filename) => {
       const recordFile = path.join(dir, filename);
-      const raw = yaml.load(fs.readFileSync(recordFile, "utf8"));
+      const raw = loadYamlFile(recordFile);
       const adapted = normalizeNativeI18nRecord(raw);
       const source = adapted?.schema_version === 2 ? adapted : migrateYamlRecord("workshops", recordFile);
       const normalized = normalizeV2(source, `content/workshops/${filename}`);
@@ -541,7 +545,7 @@ function loadVenues() {
   const venues = {};
   if (!fs.existsSync(dir)) return venues;
   for (const filename of fs.readdirSync(dir).filter((name) => name.endsWith(".yaml")).sort()) {
-    const global = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8")).global;
+    const global = loadYamlFile(path.join(dir, filename)).global;
     venues[global.id] = global;
   }
   return venues;
@@ -554,7 +558,7 @@ function loadCalendar() {
     const dir = path.join(__dirname, "content", collection);
     if (!fs.existsSync(dir)) continue;
     for (const filename of fs.readdirSync(dir).filter((name) => name.endsWith(".yaml")).sort()) {
-      const raw = normalizeCalendarRecord(normalizeNativeI18nRecord(yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"))));
+      const raw = normalizeCalendarRecord(normalizeNativeI18nRecord(loadYamlFile(path.join(dir, filename))));
       if (raw?.global?.schedule) definitions.push(calendar.toDefinition(raw, { venues }));
     }
   }
@@ -566,7 +570,7 @@ function loadEventContent() {
   const dir = path.join(__dirname, "content", "events");
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir).filter((name) => name.endsWith(".yaml")).sort().map((filename) => {
-    const raw = yaml.load(fs.readFileSync(path.join(dir, filename), "utf8"));
+    const raw = loadYamlFile(path.join(dir, filename));
     const global = raw.global;
     const primary = global.intended_locales?.[0] || "de";
     return {
@@ -690,13 +694,13 @@ function loadUpcomingItems(cal, workshopContent, { limit = 6, now = new Date() }
   const eventsDir = path.join(__dirname, "content", "events");
   if (fs.existsSync(eventsDir)) {
     for (const filename of fs.readdirSync(eventsDir).filter((f) => f.endsWith(".yaml"))) {
-      const raw = yaml.load(fs.readFileSync(path.join(eventsDir, filename), "utf8"));
+      const raw = loadYamlFile(path.join(eventsDir, filename));
       statusById.set(raw.global.id, { status: raw.global.status, includable: true });
     }
   }
   const montagskursPath = path.join(__dirname, "content", "pages", "montagskurs.yaml");
   if (fs.existsSync(montagskursPath)) {
-    const raw = normalizeNativeI18nRecord(yaml.load(fs.readFileSync(montagskursPath, "utf8")));
+    const raw = normalizeNativeI18nRecord(loadYamlFile(montagskursPath));
     statusById.set(raw.global.id, { status: raw.global.status, includable: true });
   }
 
@@ -731,7 +735,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("cms", () => {
     const root = path.join(__dirname, "content");
     const data = { pages: {} };
-    const load = (p) => yaml.load(fs.readFileSync(p, "utf8"));
+    const load = loadYamlFile;
     if (fs.existsSync(path.join(root, "site.yaml"))) {
       data.site = v2LocalesForTemplates(load(path.join(root, "site.yaml")), "content/site.yaml");
     }

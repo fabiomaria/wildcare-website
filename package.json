@@ -7,6 +7,7 @@
     "check:seo": "node scripts/validate-seo.js",
     "dev": "eleventy --serve --port=8081",
     "test:calendar": "node --test lib/calendar/*.test.js",
+    "test:schema": "node --test scripts/schema/*.test.js",
     "schema:registry": "node scripts/schema/validate-registry.js",
     "schema:inventory": "node scripts/schema/inventory.js",
     "schema:docs": "node scripts/schema/generate-docs.js",
@@ -17,7 +18,7 @@
     "schema:simplify-publishing": "node scripts/schema/simplify-publishing-fields.js",
     "schema:downgrade": "node scripts/schema/downgrade-content.js",
     "schema:parity": "node scripts/schema/check-parity.js",
-    "schema:check": "npm run schema:registry && npm run schema:docs -- --check && npm run schema:inventory -- --check && npm run schema:cms -- --check && npm run schema:validate -- --all && node scripts/schema/verify-body-hashes.js --check && npm run schema:migrate -- --all --check && npm run schema:downgrade -- --all --check && npm run schema:parity -- --fixtures"
+    "schema:check": "npm run test:schema && npm run schema:registry && npm run schema:docs -- --check && npm run schema:inventory -- --check && npm run schema:cms -- --check && npm run schema:validate -- --all && node scripts/schema/verify-body-hashes.js --check && npm run schema:migrate -- --all --check && npm run schema:downgrade -- --all --check && npm run schema:parity -- --fixtures"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.0",

@@ -93,7 +93,7 @@ function validateRecord(record, { type, registry, venueIds = new Set() }) {
       ids.add(session.id);
       for (const key of ["start_local", "end_local"]) {
         if (typeof session[key] !== "string" || !LOCAL_DT.test(session[key])) {
-          add(`schedule.sessions[].${key} must be a quoted floating-local string YYYY-MM-DDTHH:mm (got ${typeof session[key]})`);
+          add(`schedule.sessions[].${key} must be a floating-local string YYYY-MM-DDTHH:mm (got ${typeof session[key]})`);
         }
       }
     }
@@ -105,7 +105,7 @@ function validateRecord(record, { type, registry, venueIds = new Set() }) {
     const recurrence = schedule.recurrence || {};
     if (!registry.enums.weekday.includes(recurrence.weekday)) add(`recurrence.weekday invalid: ${recurrence.weekday}`);
     for (const key of ["start_time", "end_time"]) if (!/^\d{2}:\d{2}$/.test(recurrence[key] || "")) add(`recurrence.${key} must be HH:mm`);
-    if (typeof recurrence.anchor !== "string" || !LOCAL_DATE.test(recurrence.anchor)) add("recurrence.anchor must be a quoted YYYY-MM-DD string");
+    if (typeof recurrence.anchor !== "string" || !LOCAL_DATE.test(recurrence.anchor)) add("recurrence.anchor must be a YYYY-MM-DD string");
     const overrides = schedule.overrides || [];
     const overrideDates = new Set();
     for (const override of overrides) {

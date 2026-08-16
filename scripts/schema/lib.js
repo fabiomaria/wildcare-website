@@ -129,7 +129,14 @@ function normalizeNativeI18nRecord(record) {
 }
 
 function readYaml(file) {
-  return normalizeCalendarRecord(normalizeNativeI18nRecord(yaml.load(fs.readFileSync(file, "utf8"))));
+  return normalizeCalendarRecord(normalizeNativeI18nRecord(parseYaml(fs.readFileSync(file, "utf8"))));
+}
+
+// Sveltia emits YAML 1.2, where a plain YYYY-MM-DD scalar is a string. Use the
+// matching schema explicitly: js-yaml's default YAML 1.1-compatible schema
+// otherwise turns CMS calendar values into JavaScript Date objects.
+function parseYaml(source) {
+  return yaml.load(source, { schema: yaml.CORE_SCHEMA });
 }
 
 function writeYaml(file, value) {
@@ -542,6 +549,7 @@ module.exports = {
   omitEmpty,
   promoteGlobalFields,
   parseArgs,
+  parseYaml,
   readYaml,
   relative,
   selectedCollections,
