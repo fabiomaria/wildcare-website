@@ -1,22 +1,32 @@
 # Wild Care Website
 
-Production website and CMS for [wildcare.space](https://wildcare.space), built with Eleventy and edited through Sveltia CMS.
+Production website and CMS for [wildcare.space](https://wildcare.space), built with Eleventy and edited through Sveltia CMS. The `production` branch is the live source of truth.
 
 ## Stack
 
-- Eleventy 3 with Nunjucks templates in `site/`
+- Node.js 24 and Eleventy 3 with Nunjucks templates in `site/`
 - YAML and Markdown content in `content/`
-- Sveltia CMS configured in `admin/config.yml`
+- Self-hosted Sveltia CMS 0.171.1 configured in `admin/config.yml`
 - Client-side German/English switching through `js/i18n.js`
 - GitHub Pages deployment from the `production` branch
 - Separate Cloudflare Workers for CMS authentication, contact messages, and email signup
 
+## Current Status
+
+- Schema v2 is active across fixed pages, workshops, events, venues, Journal records, legal records, and site settings.
+- Workshops and dated events move into the archive automatically after their final session in `Europe/Vienna`.
+- Calendar output includes per-event `.ics` files, the `/wildcare.ics` subscription feed, and Event JSON-LD.
+- GitHub OAuth for the live CMS is provided by the deployed `worker-auth/` Worker.
+- Production validates the schema and SEO, builds `_site/`, and deploys through GitHub Pages on every push and once daily.
+
 ## Local Development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
+
+Use Node.js 24, matching the deployment workflow.
 
 The local site currently uses port `8081` by default. If that port is occupied, Eleventy selects another port and prints it in the terminal.
 
@@ -27,7 +37,7 @@ In Chrome or Edge, choose **Work with Local Repository** in the CMS and select t
 
 ## Content Architecture
 
-`content/pages/*.yaml` stores fixed-layout page content. `content/journal/records/*.yaml` stores complete Journal articles. `content/workshops/*.yaml` stores workshop entries. Journal articles and workshops both use Sveltia's single-file DE/EN locale structure, so metadata and localized page content are edited together.
+`content/pages/*.yaml` stores fixed-layout page content. `content/journal/records/*.yaml` stores complete Journal articles, `content/workshops/*.yaml` stores workshops, `content/events/*.yaml` stores standalone events, and `content/venues/*.yaml` stores shared venue data. Legal metadata lives in `content/legal/records/`, with Markdown bodies in `content/legal/bodies/` when present. Journal articles, workshops, and fixed pages use Sveltia's single-file DE/EN locale structure, so shared metadata and localized content are edited together.
 
 Workshop data has four central concepts:
 
@@ -56,7 +66,7 @@ For the pinned Sveltia CMS version, declaring `i18n: true` only on a parent obje
 
 ## Schema Migration
 
-The site now uses schema v2 content records. The migration moved shared metadata into a language-neutral `global` block and localized copy into `locales`, while keeping page URLs stable. Journal articles keep their localized Markdown bodies inside each canonical record; legal pages keep canonical records plus body files under `content/legal/`. Workshops use the same v2 record shape across the CMS and build.
+The site uses schema v2 content records. Shared metadata is normalized into a language-neutral `global` block and localized copy into `locales`, while page URLs remain stable. Sveltia's native single-file i18n records may store locale blocks such as `de:` and `en:` at the top level; the build normalizes that CMS representation into the same schema-v2 envelope before validation and rendering. Journal articles keep localized Markdown bodies inside each canonical record; legal pages use canonical records plus optional body files under `content/legal/`.
 
 The migration is reversible by design: `npm run schema:check` validates the registry, CMS contract, content, parity, and downgrade fixtures, and `npm run build` verifies the rendered site before deployment.
 
@@ -86,9 +96,9 @@ Preview calendar changes locally with `npm run dev`, then check `/montagskurs/<d
   Mondays use one unified override list for guest teachers, notes, and breaks.
 - Sveltia uses native date, time, and datetime-local inputs for structured
   scheduling fields while preserving the existing storage formats.
-- Date-only YAML values must remain quoted (`'YYYY-MM-DD'`). Validation rejects
-  unquoted recurrence anchors and override dates because YAML can otherwise
-  parse them as JavaScript dates and break recurrence expansion.
+- Calendar values saved by Sveltia may be plain YAML scalars such as
+  `2026-09-07`. Content is read with the YAML 1.2 Core Schema so these remain
+  strings; editors do not need to add quotes manually.
 
 ## Editing Guide
 
@@ -99,9 +109,12 @@ See [EDITING.md](EDITING.md) for the non-technical editor workflow. CMS field la
 Before committing:
 
 ```bash
-node -e "require('js-yaml').load(require('fs').readFileSync('admin/config.yml','utf8')); console.log('CMS config valid')"
+npm run schema:check
+npm run test:calendar
 npm run build
 node --check worker/src/index.js
+node --check worker-kontakt/src/index.js
+node --check worker-auth/src/index.js
 git diff --check
 ```
 
@@ -113,22 +126,28 @@ CSS is sacrosanct: do not edit `css/styles.css` or add new CSS; reuse the existi
 
 - `worker/`: homepage email signup to Notion. Stores the submitted first name in Notion's `Name` field and retains email fallback compatibility for older clients.
 - `worker-kontakt/`: contact form to Notion.
-- `worker-auth/`: GitHub OAuth for Sveltia CMS.
+- `worker-auth/`: deployed GitHub OAuth provider for Sveltia CMS.
 
 Never commit Worker secrets. They are managed through Wrangler.
 
 ## Deployment
 
-Pushing the `production` branch triggers `.github/workflows/deploy.yml`, which builds `_site/` and deploys it to GitHub Pages.
+Pushing the `production` branch triggers `.github/workflows/deploy.yml`, which runs on Node.js 24, installs with `npm ci`, validates the schema, builds `_site/`, and deploys it to GitHub Pages. A scheduled run at 00:15 UTC rebuilds the site daily so date-driven lifecycle changes publish without a content commit.
 
 Because the CMS also commits directly to `production`, fetch and rebase onto the latest remote branch before pushing local changes (for example, `git fetch origin production && git rebase origin/production`).
 
 Generated pages append a content hash to `css/styles.css`. This prevents GitHub Pages and Cloudflare from combining newly deployed HTML with an older cached stylesheet; keep stylesheet references tied to the global `assetVersion` value in `eleventy.config.js`.
 
-The signup Worker is deployed separately:
+Workers are deployed separately from their respective directories:
 
 ```bash
 cd worker
+npm run deploy
+
+cd ../worker-kontakt
+npm run deploy
+
+cd ../worker-auth
 npm run deploy
 ```
 
