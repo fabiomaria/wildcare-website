@@ -130,7 +130,7 @@ function normalizeJournalLocale(locale) {
       description: meta.description || source.meta_description || summary,
       og_title: meta.og_title || meta.title || defaultTitle,
       og_description: meta.og_description || meta.description || source.meta_description || summary,
-      og_image: meta.og_image || source.image || "",
+      og_image: meta.og_image || source.image?.src || source.image || "",
       og_image_alt: meta.og_image_alt || source.image_alt || "",
     },
   };

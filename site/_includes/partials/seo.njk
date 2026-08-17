@@ -7,8 +7,8 @@
 {%- set resolvedOgImage = seoMeta.og_image or seoFallbackImage or localizedSeoDefaults.default_og_image or sharedSeoDefaults.default_og_image or 'assets/images/social preview.jpg' -%}
 {%- if seoMeta.og_image -%}
     {%- set resolvedOgImageAlt = seoMeta.og_image_alt -%}
-    {%- set resolvedOgImageWidth = seoMeta.og_image_width -%}
-    {%- set resolvedOgImageHeight = seoMeta.og_image_height -%}
+    {%- set resolvedOgImageWidth = seoMeta.og_image_width or seoFallbackImageWidth or localizedSeoDefaults.default_og_image_width or sharedSeoDefaults.default_og_image_width -%}
+    {%- set resolvedOgImageHeight = seoMeta.og_image_height or seoFallbackImageHeight or localizedSeoDefaults.default_og_image_height or sharedSeoDefaults.default_og_image_height -%}
 {%- else -%}
     {%- set resolvedOgImageAlt = seoFallbackImageAlt or localizedSeoDefaults.default_og_image_alt or sharedSeoDefaults.default_og_image_alt or resolvedOgTitle -%}
     {%- set resolvedOgImageWidth = seoFallbackImageWidth or localizedSeoDefaults.default_og_image_width or sharedSeoDefaults.default_og_image_width -%}
