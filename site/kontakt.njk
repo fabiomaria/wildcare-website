@@ -57,15 +57,15 @@ permalink: kontakt.html
                     <form id="kontakt-form">
                         <div class="form-group">
                             <label for="name" data-de="{{ de.form.name_label }}" data-en="{{ en.form.name_label or de.form.name_label }}">{{ de.form.name_label }}</label>
-                            <input type="text" id="name" name="name" placeholder="{{ de.form.name_placeholder }}" maxlength="120" required>
+                            <input type="text" id="name" name="name" placeholder="{{ de.form.name_placeholder }}" data-placeholder-de="{{ de.form.name_placeholder | attr }}" data-placeholder-en="{{ (en.form.name_placeholder or de.form.name_placeholder) | attr }}" maxlength="120" required>
                         </div>
                         <div class="form-group">
                             <label for="email" data-de="{{ de.form.email_label }}" data-en="{{ en.form.email_label or de.form.email_label }}">{{ de.form.email_label }}</label>
-                            <input type="email" id="email" name="email" placeholder="{{ de.form.email_placeholder }}" required>
+                            <input type="email" id="email" name="email" placeholder="{{ de.form.email_placeholder }}" data-placeholder-de="{{ de.form.email_placeholder | attr }}" data-placeholder-en="{{ (en.form.email_placeholder or de.form.email_placeholder) | attr }}" required>
                         </div>
                         <div class="form-group">
                             <label for="message" data-de="{{ de.form.message_label }}" data-en="{{ en.form.message_label or de.form.message_label }}">{{ de.form.message_label }}</label>
-                            <textarea id="message" name="message" placeholder="{{ de.form.message_placeholder }}" maxlength="1800" required></textarea>
+                            <textarea id="message" name="message" placeholder="{{ de.form.message_placeholder }}" data-placeholder-de="{{ de.form.message_placeholder | attr }}" data-placeholder-en="{{ (en.form.message_placeholder or de.form.message_placeholder) | attr }}" maxlength="1800" required></textarea>
                         </div>
                         <div class="form-submit-row">
                             <button type="submit" class="btn btn-primary" data-de="{{ de.form.submit_label }}" data-en="{{ en.form.submit_label or de.form.submit_label }}">{{ de.form.submit_label }}</button>
@@ -83,6 +83,12 @@ permalink: kontakt.html
 
                 <!-- RIGHT: Info -->
                 <div class="kontakt-info fade-up delay-2">
+                    <div class="kontakt-info-intro">
+                        <p class="label" data-de="{{ de.info.label }}" data-en="{{ en.info.label or de.info.label }}">{{ de.info.label }}</p>
+                        <h2 data-de="{{ de.info.heading }}" data-en="{{ en.info.heading or de.info.heading }}">{{ de.info.heading }}</h2>
+                        <p data-de="{{ de.info.intro }}" data-en="{{ en.info.intro or de.info.intro }}">{{ de.info.intro }}</p>
+                    </div>
+
                     <div class="kontakt-info-item">
                         <div class="kontakt-info-icon">
                             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
@@ -141,7 +147,7 @@ permalink: kontakt.html
         <div class="container">
             <div class="section-header fade-up" style="text-align: center; margin-bottom: 48px;">
                 <p class="label" data-de="{{ de.map.label }}" data-en="{{ en.map.label or de.map.label }}">{{ de.map.label }}</p>
-                <h2>{{ de.map.heading }}</h2>
+                <h2 data-de="{{ de.map.heading }}" data-en="{{ en.map.heading or de.map.heading }}">{{ de.map.heading }}</h2>
             </div>
             <div class="map-wrapper fade-up delay-1">
                 <iframe
@@ -162,56 +168,10 @@ permalink: kontakt.html
          FOOTER
          ================================ -->
 
-    <footer class="page-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h4>Wild Care</h4>
-                    <p
-                        data-de="{{ siteDe.footer.brand_text }}"
-                        data-en="{{ siteEn.footer.brand_text or siteDe.footer.brand_text }}">{{ siteDe.footer.brand_text }}</p>
-                </div>
-                <div class="footer-links">
-                    <h4
-                        data-de="{{ siteDe.footer.pages_heading }}"
-                        data-en="{{ siteEn.footer.pages_heading or siteDe.footer.pages_heading }}">{{ siteDe.footer.pages_heading }}</h4>
-                    <a href="{{ (siteDe.nav.home_url or 'index.html') | navigationUrl }}"
-                        data-de="{{ siteDe.nav.home }}"
-                        data-en="{{ siteEn.nav.home or siteDe.nav.home }}">{{ siteDe.nav.home }}</a>
-                    <a href="{{ (siteDe.nav.about_url or 'team.html') | navigationUrl }}"
-                        data-de="{{ siteDe.nav.about }}"
-                        data-en="{{ siteEn.nav.about or siteDe.nav.about }}">{{ siteDe.nav.about }}</a>
-                    <a href="{{ (siteDe.nav.program_url or 'programm.html') | navigationUrl }}"
-                        data-de="{{ siteDe.nav.program }}"
-                        data-en="{{ siteEn.nav.program or siteDe.nav.program }}">{{ siteDe.nav.program }}</a>
-                    <a href="{{ (siteDe.nav.join_url or 'mitmachen.html') | navigationUrl }}"
-                        data-de="{{ siteDe.nav.join }}"
-                        data-en="{{ siteEn.nav.join or siteDe.nav.join }}">{{ siteDe.nav.join }}</a>
-                    <a href="{{ (siteDe.nav.journal_url or 'journal.html') | navigationUrl }}"
-                        data-de="{{ siteDe.nav.journal or 'Journal' }}"
-                        data-en="{{ siteEn.nav.journal or siteDe.nav.journal or 'Journal' }}">{{ siteDe.nav.journal or 'Journal' }}</a>
-                    <a href="{{ (siteDe.nav.cta_url or 'kontakt.html') | navigationUrl }}"
-                        data-de="{{ siteDe.footer.contact_label }}"
-                        data-en="{{ siteEn.footer.contact_label or siteDe.footer.contact_label }}">{{ siteDe.footer.contact_label }}</a>
-                </div>
-                <div class="footer-links">
-                    <h4
-                        data-de="{{ de.footer.connect_heading }}"
-                        data-en="{{ en.footer.connect_heading or de.footer.connect_heading }}">{{ de.footer.connect_heading }}</h4>
-                    <a href="https://instagram.com/wildcare.space" target="_blank" rel="noopener">Instagram</a>
-                    <a href="https://facebook.com/wildcare.space" target="_blank" rel="noopener">Facebook</a>
-                    <a href="mailto:hello@wildcare.space">hello@wildcare.space</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span class="footer-legal"><a href="impressum">Impressum</a> &middot; <a href="datenschutz">Datenschutz</a></span>
-                <span>&copy; 2026 Wild Care &mdash; Graz</span>
-                <span
-                    data-de="{{ siteDe.footer.tagline }}"
-                    data-en="{{ siteEn.footer.tagline or siteDe.footer.tagline }}">{{ siteDe.footer.tagline }}</span>
-            </div>
-        </div>
-    </footer>
+    {%- set pagePrimaryLocale = "de" -%}
+    {%- set footerConnectHeadingDe = de.footer.connect_heading -%}
+    {%- set footerConnectHeadingEn = en.footer.connect_heading -%}
+    {% include "partials/footer.njk" %}
 
     <!-- ================================
          SCRIPTS

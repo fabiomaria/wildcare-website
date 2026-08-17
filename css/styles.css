@@ -2565,6 +2565,27 @@ img.media-focus-bottom-right { object-position: 85% 85%; }
     gap: var(--space-xl);
 }
 
+.kontakt-info-intro {
+    padding-bottom: var(--space-lg);
+    border-bottom: var(--border-subtle);
+}
+
+.kontakt-info-intro .label {
+    margin-bottom: var(--space-sm);
+}
+
+.kontakt-info-intro h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: var(--space-md);
+}
+
+.kontakt-info-intro > p:last-child {
+    max-width: 520px;
+    font-size: 1rem;
+    line-height: 1.75;
+    opacity: 0.72;
+}
+
 .kontakt-info-item {
     display: flex;
     gap: var(--space-md);

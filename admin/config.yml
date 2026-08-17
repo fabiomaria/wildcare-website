@@ -96,6 +96,11 @@ collections:
             widget: object
             collapsed: true
             fields:
+              - name: label
+                i18n: true
+                label: Optional eyebrow label
+                widget: string
+                required: false
               - name: heading
                 label: Heading
                 widget: string
@@ -479,6 +484,14 @@ collections:
             widget: object
             collapsed: true
             fields:
+              - name: heading
+                i18n: true
+                label: Introduction heading
+                widget: string
+              - name: intro
+                i18n: true
+                label: Introduction text
+                widget: text
               - name: email_label
                 i18n: true
                 label: Email label
