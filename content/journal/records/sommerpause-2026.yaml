@@ -5,6 +5,12 @@ de:
     primary_locale: de
     status: unlisted
     published_at: 2026-08-17T09:54
+    image:
+      src: /assets/uploads/sommerpause.webp
+    hero:
+      image:
+        src: /assets/uploads/sommerpause.webp
+      variant: cover
   title: Sommerpause und was kommt
   summary: Zeit für einen Rückblick und einen kleinen Ausblick auf das was kommt.
   body: |-
@@ -47,3 +53,5 @@ de:
     Ich freue mich sehr über alles. Danke Euch und habt einen schönen Sommer!
 
     Fabio
+  image_alt: Wildcare Sommerpause
+  hero_alt: Wildcare Sommerpause
