@@ -551,19 +551,30 @@ function loadVenues() {
   return venues;
 }
 
+// Items with these configured statuses keep their detail page and per-event
+// .ics (so the page's own "Add to Calendar" button still works) but are kept
+// out of the public subscribable master feed (wildcare.ics).
+const HIDDEN_FROM_MASTER_FEED = new Set(["unlisted", "draft"]);
+
 function loadCalendar() {
   const venues = loadVenues();
   const definitions = [];
+  const statusById = {};
   for (const collection of ["workshops", "events", "pages"]) {
     const dir = path.join(__dirname, "content", collection);
     if (!fs.existsSync(dir)) continue;
     for (const filename of fs.readdirSync(dir).filter((name) => name.endsWith(".yaml")).sort()) {
       const raw = normalizeCalendarRecord(normalizeNativeI18nRecord(loadYamlFile(path.join(dir, filename))));
-      if (raw?.global?.schedule) definitions.push(calendar.toDefinition(raw, { venues }));
+      if (raw?.global?.schedule) {
+        const def = calendar.toDefinition(raw, { venues });
+        statusById[def.id] = raw.global.status;
+        definitions.push(def);
+      }
     }
   }
   definitions.sort((a, b) => a.id.localeCompare(b.id));
-  return { venues, definitions, pages: definitions, byId: Object.fromEntries(definitions.map((def) => [def.id, def])) };
+  const feedDefinitions = definitions.filter((def) => !HIDDEN_FROM_MASTER_FEED.has(statusById[def.id]));
+  return { venues, definitions, pages: definitions, feedDefinitions, byId: Object.fromEntries(definitions.map((def) => [def.id, def])) };
 }
 
 function loadEventContent() {
