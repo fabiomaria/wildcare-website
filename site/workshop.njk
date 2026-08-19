@@ -208,12 +208,18 @@ permalink: "{{ workshop.href }}"
                         </div>
                     </div>
 {% endif %}
-{% if primary.facts.schedule and primary.facts.schedule.length %}
+{%- set scheduleRows = primary.facts.schedule if (primary.facts.schedule and primary.facts.schedule.length) else primary.facts.schedule_auto -%}
+{% if (scheduleRows and scheduleRows.length) or primary.facts.schedule_note %}
                     <div class="info-row">
                         <div class="info-row-icon">{{ icon("calendar") }}</div>
                         <div class="info-row-content">
                             <div class="info-row-label" data-de="{{ s.de.workshop_ui.schedule_label | attr }}" data-en="{{ s.en.workshop_ui.schedule_label | attr }}">{{ s[workshop.primary_locale].workshop_ui.schedule_label }}</div>
-                            {% for row in primary.facts.schedule %}<div class="info-row-value">{{ row.value | safe }}</div>{% endfor %}
+                            {% for row in scheduleRows %}<div class="info-row-value{% if row.kind == 'date' %} info-row-date{% endif %}">{{ row.value | safe }}</div>{% endfor %}
+{% if primary.facts.schedule_note %}
+                            <div class="info-row-value info-row-note"
+                                data-de="{{ de.facts.schedule_note | attr }}"
+                                data-en="{{ en.facts.schedule_note | attr }}">{{ primary.facts.schedule_note }}</div>
+{% endif %}
                         </div>
                     </div>
 {% endif %}

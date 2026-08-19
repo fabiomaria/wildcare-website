@@ -2013,6 +2013,25 @@ img.media-focus-bottom-right { object-position: 85% 85%; }
     overflow-wrap: anywhere;
 }
 
+/* Auto-generated "When" schedule: a day header above its session times. */
+.info-row-date {
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.info-row-date:first-child {
+    margin-top: 0;
+}
+
+/* Free-text note under the schedule times (e.g. "can be attended separately"). */
+.info-row-note {
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--bark-light);
+    margin-top: 6px;
+}
+
 .info-card-cta {
     margin-top: var(--space-lg);
     padding-top: var(--space-lg);

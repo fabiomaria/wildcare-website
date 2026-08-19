@@ -15,11 +15,13 @@ en:
       mode: dates
       sessions:
         - id: class
+          label: Class
           start_local: 2026-09-12T15:00
-          end_local: 2026-09-12 18:00
+          end_local: 2026-09-12T18:00
         - id: jam
-          start_local: 2026-09-12 18:30
-          end_local: 2026-09-12 21:00
+          label: Open jam
+          start_local: 2026-09-12T18:30
+          end_local: 2026-09-12T21:00
     hero:
       show_details: false
       main_image: assets/images/attending-fluidly-sanat-1.jpg
@@ -42,9 +44,7 @@ en:
     duration: 6 hours
     format:
       - value: Contact Improvisation class + open themed jam
-    schedule:
-      - value: <b>12 September 2026</b> 15:00–21:00
-      - value: Class followed by an open themed jam
+    schedule_note: Class and open jam can be attended separately.
     price_details:
       - value: 15&ndash;50 EUR sliding scale contribution
   card:

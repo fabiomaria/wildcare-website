@@ -3240,6 +3240,11 @@ collections:
                     label: Session ID
                     widget: string
                     hint: A short stable slug, e.g. fri-eve or sat-morning. Never rename after publishing — it is used as part of the calendar entry's permanent ID.
+                  - name: label
+                    label: Session label
+                    widget: string
+                    required: false
+                    hint: 'Optional short name shown before the time in the When row, e.g. Class or Open jam. Appears in all languages, so keep it a short proper noun.'
                   - name: start_local
                     label: Start
                     widget: datetime
@@ -3571,17 +3576,23 @@ collections:
                 hint: 'Example: Contact Improvisation and somatic research.'
           - name: schedule
             i18n: true
-            label: Detailed schedule
+            label: Detailed schedule (manual override)
             widget: list
             required: false
             summary: '{{fields.value}}'
-            hint: Displayed in the When row of the facts card.
+            hint: 'Usually leave empty — the When row is generated automatically from the Structured schedule (dates menu). Fill this in only to override that with custom text lines, e.g. Saturday, 10:00-13:00 and 14:30-17:30.'
             fields:
               - name: value
                 i18n: true
                 label: Schedule line
                 widget: string
                 hint: 'Example: Saturday, 10:00-13:00 and 14:30-17:30.'
+          - name: schedule_note
+            i18n: true
+            label: Schedule note
+            widget: string
+            required: false
+            hint: 'Optional line shown under the When times, e.g. Class and open jam can be attended separately.'
           - name: price_details
             i18n: true
             label: Detailed pricing
@@ -4169,6 +4180,11 @@ collections:
                     label: Session ID
                     widget: string
                     hint: A short stable slug, e.g. fri-eve or sat-morning. Never rename after publishing — it is used as part of the calendar entry's permanent ID.
+                  - name: label
+                    label: Session label
+                    widget: string
+                    required: false
+                    hint: 'Optional short name shown before the time in the When row, e.g. Class or Open jam. Appears in all languages, so keep it a short proper noun.'
                   - name: start_local
                     label: Start
                     widget: datetime
@@ -4500,17 +4516,23 @@ collections:
                 hint: 'Example: Contact Improvisation and somatic research.'
           - name: schedule
             i18n: true
-            label: Detailed schedule
+            label: Detailed schedule (manual override)
             widget: list
             required: false
             summary: '{{fields.value}}'
-            hint: Displayed in the When row of the facts card.
+            hint: 'Usually leave empty — the When row is generated automatically from the Structured schedule (dates menu). Fill this in only to override that with custom text lines, e.g. Saturday, 10:00-13:00 and 14:30-17:30.'
             fields:
               - name: value
                 i18n: true
                 label: Schedule line
                 widget: string
                 hint: 'Example: Saturday, 10:00-13:00 and 14:30-17:30.'
+          - name: schedule_note
+            i18n: true
+            label: Schedule note
+            widget: string
+            required: false
+            hint: 'Optional line shown under the When times, e.g. Class and open jam can be attended separately.'
           - name: price_details
             i18n: true
             label: Detailed pricing

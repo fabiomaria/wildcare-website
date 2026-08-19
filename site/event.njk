@@ -65,12 +65,20 @@ permalink: "{{ event.href }}"
               <div class="info-row-label"
                   data-de="{{ s.de.workshop_ui.schedule_label | attr }}"
                   data-en="{{ s.en.workshop_ui.schedule_label | attr }}">{{ s[locale].workshop_ui.schedule_label }}</div>
+              {%- set whenRows = def | scheduleRows -%}
+{% if whenRows and whenRows.length %}
+{% for row in whenRows %}              <div class="info-row-value{% if row.kind == 'date' %} info-row-date{% endif %}"
+                  data-de="{{ row.de | attr }}"
+                  data-en="{{ row.en | attr }}">{{ row.en if locale == 'en' else row.de }}</div>
+{% endfor %}
+{% else %}
               {%- set defTime = def | formatDefTime -%}
               {%- set scheduleDe = (def | formatDefDate('de')) ~ (', ' ~ defTime if defTime else '') -%}
               {%- set scheduleEn = (def | formatDefDate('en')) ~ (', ' ~ defTime if defTime else '') -%}
               <div class="info-row-value"
                   data-de="{{ scheduleDe | attr }}"
                   data-en="{{ scheduleEn | attr }}">{{ scheduleEn if locale == 'en' else scheduleDe }}</div>
+{% endif %}
             </div>
           </div>
 

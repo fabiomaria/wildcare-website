@@ -450,6 +450,29 @@ function loadLegalContent() {
   return pages;
 }
 
+// Turn the structured schedule (dates menu) into human-readable "When" rows.
+// Each distinct day becomes a header row (kind: "date"); each session becomes
+// a time row (kind: "time") beneath it, prefixed with its optional label.
+// Locale-aware via the calendar date formatter. Returns [] for recurring or
+// empty schedules.
+function buildScheduleAuto(schedule, locale) {
+  if (!schedule || schedule.mode !== "dates" || !Array.isArray(schedule.sessions)) return [];
+  const rows = [];
+  let prevDate = null;
+  for (const s of schedule.sessions) {
+    if (!s.start_local || !s.end_local) continue;
+    const date = calendar.formatDate(s.start_local, locale, { weekday: true });
+    if (date !== prevDate) {
+      rows.push({ value: escapeHtmlAttr(date), kind: "date" });
+      prevDate = date;
+    }
+    const time = `${s.start_local.slice(11, 16)}–${s.end_local.slice(11, 16)}`;
+    const labelPart = s.label ? `<strong>${escapeHtmlAttr(s.label)}</strong> · ` : "";
+    rows.push({ value: `${labelPart}${time}`, kind: "time" });
+  }
+  return rows;
+}
+
 function loadWorkshopContent({ now = new Date() } = {}) {
   const dir = path.join(__dirname, "content", "workshops");
   if (!fs.existsSync(dir)) {
@@ -497,6 +520,13 @@ function loadWorkshopContent({ now = new Date() } = {}) {
       if (languageMode === "de_only") en = deRaw;
       de = normalizeWorkshopLocale(de);
       en = normalizeWorkshopLocale(en);
+      // Auto-derive the "When" facts row from the structured schedule (the
+      // dates menu) so date/time is set once. Rendered only when a workshop
+      // leaves the manual "Detailed schedule" list empty.
+      de.facts = de.facts || {};
+      en.facts = en.facts || {};
+      de.facts.schedule_auto = buildScheduleAuto(normalized.global.schedule, "de");
+      en.facts.schedule_auto = buildScheduleAuto(normalized.global.schedule, "en");
       const primaryLocale = languageMode === "en_only" ? "en" : "de";
       const primaryData = primaryLocale === "en" ? en : de;
       const hasDetailPage = head.detail_page !== false && head.status !== "draft" && hasWorkshopDetailContent(primaryData);
@@ -820,6 +850,27 @@ module.exports = function (eleventyConfig) {
     : def.sessions && def.sessions.length === 1
       ? `${def.sessions[0].start_local.slice(11, 16)}–${def.sessions[0].end_local.slice(11, 16)}`
       : "");
+  // Grouped "When" rows for a dated calendar def: one bilingual date header
+  // per distinct day (kind: "date"), then a labelled time row per session
+  // (kind: "time"). Plain text in both locales so the live DE/EN toggle works.
+  eleventyConfig.addFilter("scheduleRows", (def) => {
+    if (!def || def.mode !== "dates" || !Array.isArray(def.sessions)) return [];
+    const rows = [];
+    let prevDate = null;
+    for (const sess of def.sessions) {
+      if (!sess.start_local || !sess.end_local) continue;
+      const de = calendar.formatDate(sess.start_local, "de", { weekday: true });
+      const en = calendar.formatDate(sess.start_local, "en", { weekday: true });
+      if (de !== prevDate) {
+        rows.push({ de, en, kind: "date" });
+        prevDate = de;
+      }
+      const time = `${sess.start_local.slice(11, 16)}–${sess.end_local.slice(11, 16)}`;
+      const line = sess.label ? `${sess.label} · ${time}` : time;
+      rows.push({ de: line, en: line, kind: "time" });
+    }
+    return rows;
+  });
   eleventyConfig.addGlobalData("assetVersion", () => {
     const css = fs.readFileSync(path.join(__dirname, "css", "styles.css"));
     return crypto.createHash("sha256").update(css).digest("hex").slice(0, 12);
