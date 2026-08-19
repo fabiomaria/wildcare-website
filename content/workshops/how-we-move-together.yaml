@@ -4,7 +4,6 @@ en:
     id: how-we-move-together
     primary_locale: en
     status: current
-    start_at: 2026-10-09T19:00:00.000Z
     detail_page: true
     registration:
       url: https://tally.so/r/lbXDW5
@@ -16,6 +15,7 @@ en:
       mode: dates
       sessions:
         - id: fri-eve
+          label: Arrival Jam
           start_local: 2026-10-09T19:00
           end_local: 2026-10-09T21:00
         - id: sat-aft
@@ -45,6 +45,7 @@ en:
       og_image: assets/images/ci-cover.jpg
       og_image_width: 1200
       og_image_height: 630
+    start_at: 2026-10-09T19:00:00.000Z
   title: How We Move Together
   registration:
     label: Register now
