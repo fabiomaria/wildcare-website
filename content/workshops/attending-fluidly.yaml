@@ -14,17 +14,18 @@ en:
       event_status: scheduled
       mode: dates
       sessions:
-        - id: class-and-jam
+        - id: class
           start_local: 2026-09-12T15:00
-          end_local: 2026-09-12T21:00
+          end_local: 2026-09-12 18:00
+        - id: jam
+          start_local: 2026-09-12 18:30
+          end_local: 2026-09-12 21:00
     hero:
       show_details: false
       main_image: assets/images/attending-fluidly-sanat-1.jpg
       inset_image: assets/images/attending-fluidly-lihong-1.jpg
     description:
       show_info: true
-    image_band:
-      image: assets/images/attending-fluidly-sanat-2.jpg
     meta:
       og_image: assets/images/attending-fluidly-sanat-1.jpg
       og_image_width: 1600
@@ -78,34 +79,10 @@ en:
       We work with changing states—holding weight, releasing into the floor, sharing weight with a partner, or moving in continuous flow—noticing what changes in your body in each state, and how you respond to another person doing the same. We treat trust as something built through clear attention, listening, and consent in movement.
 
       The workshop opens into a themed jam where we continue exploring these ideas through open Contact Improvisation practice.
-  research:
-    label: What we explore
-    heading: Practical tools for attention
-    fields:
-      - number: '01'
-        title: Water bodies
-        text: 'Qualities that relate to water: stable and grounded, soft and adaptable, light and airborne, or flowing and continuous.'
-      - number: '02'
-        title: Inner ear & balance
-        text: The vestibular sense, gravity and orientation as we move, are moved, or support someone else.
-      - number: '03'
-        title: Weight & support
-        text: Holding weight, releasing into the floor, sharing weight with a partner, and testing how much support we need.
-      - number: '04'
-        title: States & transitions
-        text: Moving between stillness and motion—softening when we can, finding structure when we need it.
-      - number: '05'
-        title: Timing & pacing
-        text: Slowing down to notice detail, moving faster as energy builds, and letting movement develop without forcing it.
-      - number: '06'
-        title: Shared pathways
-        text: How movement travels through space, how weight is passed between bodies, and staying aware of the whole room.
-        highlighted: true
-  image_band:
-    label: Water bodies
-    heading: Stable, soft, airborne, flowing
-    body: We notice how decisions are made in real time—when to follow, when to lead, when to pause, when to change direction—and how weight travels between bodies as movement continues.
-    alt: 'Emelia Koberg and Sanat Mehta in a standing lift during Contact Improvisation. Photo: Lihong Chew.'
+  closing_cta:
+    heading: Come move with us
+    text: The class opens into a themed jam—all bodies and levels of experience are welcome.
+    button_label: Register now
   facilitators:
     label: Facilitator
     members:
@@ -117,12 +94,8 @@ en:
     quotes:
       - quote: “I invite us to pay attention to what is already happening in the body.”
         author: Emelia Koberg
-  closing_cta:
-    heading: Come move with us
-    text: The class opens into a themed jam—all bodies and levels of experience are welcome.
-    button_label: Register now
   meta:
-    title: 'Attending Fluidly with Emelia Koberg — Workshop | Wild Care'
+    title: Attending Fluidly with Emelia Koberg — Workshop | Wild Care
     description: 'Attending Fluidly: water bodies, earth-beings—a Contact Improvisation class and themed jam with Emelia Koberg. 12 September 2026, 15:00–21:00, Orpheumgasse, Graz.'
     og_title: Attending Fluidly with Emelia Koberg
     og_description: A Contact Improvisation class and themed jam exploring the body as a water body. 12 September 2026, Orpheumgasse, Graz.
