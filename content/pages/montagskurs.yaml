@@ -37,6 +37,13 @@ de:
           status: cancelled
         - date: 2026-09-07
           status: cancelled
+        - date: 2026-09-14
+          status: cancelled
+        - date: 2026-09-28
+          status: scheduled
+          teacher: Anna Major & Fabio Gerhold
+          note_de: Embodied Consent
+          note_en: Embodied Consent
     hero:
       image: assets/images/warum-ci.jpg
     practice:
