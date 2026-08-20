@@ -153,6 +153,7 @@ npm run deploy
 
 ## Project Documentation
 
+- [Contrast accessibility review](docs/accessibility-contrast.md)
 - [Greenfield CMS implementation playbook](docs/CMS-GREENFIELD-IMPLEMENTATION-PLAYBOOK.md)
 - [Current documentation index](docs/superpowers/README.md)
 - [Sveltia backend rework and follow-up](docs/superpowers/plans/2026-07-18-sveltia-backend-rework.md)
