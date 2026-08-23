@@ -85,7 +85,9 @@ permalink: "{{ workshop.href }}"
                         data-de="{{ de.hero.subtitle | attr }}"
                         data-en="{{ en.hero.subtitle | attr }}">{{ primary.hero.subtitle }}</p>
 
-{% if primary.hero.show_details and primary.facts %}
+{# Active workshops should surface essential logistics in the hero; archived
+   pages can still opt in explicitly with show_details. #}
+{% if primary.facts and (primary.hero.show_details or workshop.status == "upcoming" or workshop.status == "current") %}
                     <div class="detail-hero-details">
 {% if primary.facts.date %}
                         <div class="detail-hero-detail">

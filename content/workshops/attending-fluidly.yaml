@@ -23,7 +23,7 @@ en:
           start_local: 2026-09-12T18:30
           end_local: 2026-09-12T21:00
     hero:
-      show_details: false
+      show_details: true
       main_image: assets/images/attending-fluidly-sanat-1.jpg
       inset_image: assets/images/attending-fluidly-lihong-1.jpg
     description:

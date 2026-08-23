@@ -27,7 +27,7 @@ en:
           start_local: 2026-08-09T17:00
           end_local: 2026-08-09T20:00
     hero:
-      show_details: false
+      show_details: true
       main_image: assets/images/cellular-touch-valentyn.jpg
       inset_image: assets/images/cellular-touch-membrane.jpg
     description:
