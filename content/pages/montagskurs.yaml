@@ -44,6 +44,8 @@ de:
           teacher: Anna Major & Fabio Gerhold
           note_de: Embodied Consent
           note_en: Embodied Consent
+        - date: 2026-09-21
+          status: cancelled
     hero:
       image: assets/images/warum-ci.jpg
     practice:
