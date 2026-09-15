@@ -3,7 +3,7 @@ en:
   global:
     id: attending-fluidly
     primary_locale: en
-    status: upcoming
+    status: past
     detail_page: true
     registration:
       url: https://tally.so/r/5Ba25o
