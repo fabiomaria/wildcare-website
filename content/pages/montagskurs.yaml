@@ -14,19 +14,18 @@ de:
           start_local: '2026-10-05T17:30'
           end_local: '2026-10-05T19:00'
           venue: orpheumgasse
-          venue_label: Probenhaus
           status: scheduled
         - id: 2026-11-02
           start_local: '2026-11-02T17:30'
           end_local: '2026-11-02T19:00'
           venue: orpheumgasse
-          venue_label: Probenhaus - Raum 2
+          room: Raum 2
           status: scheduled
         - id: 2026-11-09
           start_local: '2026-11-09T18:00'
           end_local: '2026-11-09T19:00'
           venue: orpheumgasse
-          venue_label: Probenhaus - Tanzebene
+          room: Tanzebene
           status: scheduled
     hero:
       image: assets/images/warum-ci.jpg

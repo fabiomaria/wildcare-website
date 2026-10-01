@@ -731,7 +731,7 @@ function buildUpcomingCard({ def, kind, occurrence }) {
     subtitle,
     dateLabel,
     timeLabel,
-    venueName: nextManualSession?.venue_label || def.venue.name,
+    venueName: nextManualSession ? `${def.venue.name}${nextManualSession.room ? ` - ${nextManualSession.room}` : ""}` : def.venue.name,
     detailHref: kind === "featured" ? `/montagskurs/${occurrence.id}` : def.route,
     icsHref: `/calendar/${def.id}.ics`,
     teacher: occurrence?.teacher || null,
@@ -851,9 +851,8 @@ module.exports = function (eleventyConfig) {
     }
     if (def.id === "montagskurs" && def.sessions?.length) {
       const next = def.sessions.find((session) => session.status !== "cancelled" && session.start_local >= nowLocalString(new Date())) || def.sessions[0];
-      const sessionLocation = next.venue_label
-        ? `${next.venue_label}, ${next.venue?.street || def.venue.street}, ${next.venue?.postal_code || def.venue.postal_code} ${next.venue?.city || def.venue.city}`
-        : location;
+      const sessionVenue = next.venue || def.venue;
+      const sessionLocation = `${sessionVenue.name}, ${sessionVenue.street}, ${sessionVenue.postal_code} ${sessionVenue.city}${next.room ? ` - ${next.room}` : ""}`;
       return calendar.googleUrl({ title: locale.title, details: locale.summary || "", location: sessionLocation, start_local: next.start_local, end_local: next.end_local });
     }
     return calendar.googleUrl({ title: locale.title, details: locale.summary || "", location, start_local: def.span.start, end_local: def.span.end });
@@ -907,7 +906,7 @@ module.exports = function (eleventyConfig) {
         date_de: calendar.formatDate(session.start_local, "de", { weekday: true }),
         date_en: calendar.formatDate(session.start_local, "en", { weekday: true }),
         time: `${session.start_local.slice(11, 16)}–${session.end_local.slice(11, 16)}`,
-        place: session.venue_label || session.venue?.name || def.venue.name,
+        place: `${session.venue?.name || def.venue.name}${session.room ? ` - ${session.room}` : ""}`,
       }));
   });
   eleventyConfig.addGlobalData("assetVersion", () => {

@@ -1645,11 +1645,11 @@ collections:
                           - global.name
                         required: false
                         hint: Leave empty to use the main venue above.
-                      - name: venue_label
-                        label: Room or venue name
+                      - name: room
+                        label: Room (optional)
                         widget: string
                         required: false
-                        hint: Optional display name for this class, for example Probenhaus - Raum 2.
+                        hint: Optional room within the selected venue, for example Raum 2 or Tanzebene.
                       - name: teacher
                         label: Teacher
                         widget: string
