@@ -65,8 +65,8 @@ permalink: montagskurs.html
                             <div class="info-row-icon">{{ icon("calendar") }}</div>
                             <div class="info-row-content">
                                 <div class="info-row-label"
-                                    data-de="{{ s.de.workshop_ui.schedule_label | attr }}"
-                                    data-en="{{ s.en.workshop_ui.schedule_label | attr }}">{{ s.de.workshop_ui.schedule_label }}</div>
+                                    data-de="Nächster Termin"
+                                    data-en="Next session">Nächster Termin</div>
                                 <div class="info-row-value"
                                     data-de="{{ def | formatDefDate('de') | attr }}"
                                     data-en="{{ def | formatDefDate('en') | attr }}">{{ def | formatDefDate('de') }}</div>
@@ -249,6 +249,30 @@ permalink: montagskurs.html
     </section>
 
     <!-- ================================
+         UPCOMING SESSIONS
+         ================================ -->
+
+    <section class="detail-upcoming-sessions">
+        <div class="container">
+            <div class="section-header">
+                <p class="label" data-de="Kommende Termine" data-en="Upcoming sessions">Kommende Termine</p>
+                <h2 data-de="Kommende Termine" data-en="Upcoming sessions">Kommende Termine</h2>
+            </div>
+            <div class="detail-faq-list">
+{% set upcomingSessions = def | upcomingClassSessions %}
+{% for session in upcomingSessions %}
+                <div class="detail-faq-item">
+                    <p class="detail-faq-q" data-de="{{ session.date_de | attr }}" data-en="{{ session.date_en | attr }}">{{ session.date_de }}</p>
+                    <p class="detail-faq-a">{{ session.time }} · {{ session.place }}</p>
+                </div>
+{% else %}
+                <p data-de="Neue Termine folgen." data-en="New dates will be announced soon.">Neue Termine folgen.</p>
+{% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
          FAQ
          ================================ -->
 
@@ -274,27 +298,6 @@ permalink: montagskurs.html
                 </div>
 {% endfor %}
             </div>
-        </div>
-    </section>
-
-    <!-- ================================
-         CURRENT PROJECT CROSS-LINK
-         ================================ -->
-
-    <section style="background: var(--sand-light);">
-        <div class="container fade-up" style="text-align: center; max-width: 700px;">
-            <p class="label"
-                data-de="{{ de.crosslink.label }}"
-                data-en="{{ en.crosslink.label or de.crosslink.label }}">{{ de.crosslink.label }}</p>
-            <h2
-                data-de="{{ de.crosslink.heading }}"
-                data-en="{{ en.crosslink.heading or de.crosslink.heading }}">{{ de.crosslink.heading }}</h2>
-            <p style="font-size: 1.0625rem; opacity: 0.7; line-height: 1.75; margin: 0 auto var(--space-xl);"
-                data-de="{{ de.crosslink.text }}"
-                data-en="{{ en.crosslink.text or de.crosslink.text }}">{{ de.crosslink.text }}</p>
-            <a href="cellular-touch" class="btn btn-primary"
-                data-de="{{ de.crosslink.button }}"
-                data-en="{{ en.crosslink.button or de.crosslink.button }}">{{ de.crosslink.button }}</a>
         </div>
     </section>
 

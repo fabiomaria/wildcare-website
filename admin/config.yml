@@ -1583,7 +1583,7 @@ collections:
                 label: Structured schedule (calendar, JSON-LD, .ics)
                 widget: object
                 required: false
-                hint: Drives the add-to-calendar links, search-engine event markup, and the sitewide upcoming-events lists. Montagskurs is always a weekly Recurring schedule.
+                hint: Add each upcoming Monday class as a session with its own date, time, and venue. This drives the calendar links and sitewide upcoming events.
                 fields:
                   - name: event_status
                     label: Schedule status
@@ -1608,92 +1608,67 @@ collections:
                   - name: mode
                     label: Schedule type
                     widget: hidden
-                    default: recurring
-                  - name: recurrence
-                    label: Weekly recurrence
-                    widget: object
-                    fields:
-                      - name: weekday
-                        label: Day of the week
-                        widget: select
-                        options:
-                          - label: Monday
-                            value: monday
-                          - label: Tuesday
-                            value: tuesday
-                          - label: Wednesday
-                            value: wednesday
-                          - label: Thursday
-                            value: thursday
-                          - label: Friday
-                            value: friday
-                          - label: Saturday
-                            value: saturday
-                          - label: Sunday
-                            value: sunday
-                        default: monday
-                      - name: start_time
-                        label: Start time
-                        widget: datetime
-                        type: time
-                        date_format: false
-                        time_format: HH:mm
-                        hint: '24-hour clock, no seconds. Example: 17:45.'
-                      - name: end_time
-                        label: End time
-                        widget: datetime
-                        type: time
-                        date_format: false
-                        time_format: HH:mm
-                        hint: '24-hour clock, no seconds. Example: 19:15.'
-                      - name: anchor
-                        label: First occurrence date
-                        widget: datetime
-                        type: date
-                        date_format: YYYY-MM-DD
-                        time_format: false
-                        hint: 'The very first date this weekly pattern started. Format: YYYY-MM-DD. Example: 2026-01-05.'
-                      - name: horizon_months
-                        label: Show occurrences this many months ahead
-                        widget: number
-                        value_type: int
-                        hint: Does not limit the calendar subscription feed, which is unbounded.
-                      - name: default_teacher
-                        label: Default teacher
-                        widget: string
-                        required: false
-                        hint: Teacher shown for every Monday unless changed below.
-                  - name: overrides
-                    label: Changes to individual Mondays
+                    default: dates
+                  - name: sessions
+                    label: Upcoming classes
                     widget: list
                     required: false
-                    collapsed: true
-                    minimize_collapsed: true
-                    summary: '{{fields.date}} — {{fields.status}}'
-                    hint: Add only Mondays that differ from the normal schedule. Use Cancelled for holidays or breaks.
+                    summary: '{{fields.start_local}} — {{fields.venue}}'
+                    hint: Add every upcoming class here. You can change the date, time, or venue independently for each class. Remove a class that will not take place.
                     fields:
-                      - name: date
-                        label: Date
+                      - name: id
+                        label: Session ID
+                        widget: string
+                        hint: Short unique ID, for example 2026-10-05. Keep it unchanged after publishing.
+                      - name: start_local
+                        label: Start
                         widget: datetime
-                        type: date
+                        type: datetime-local
                         date_format: YYYY-MM-DD
-                        time_format: false
-                        hint: 'Format: YYYY-MM-DD. It must be a Monday in the recurring schedule.'
+                        time_format: HH:mm
+                        hint: Local time in Graz.
+                      - name: end_local
+                        label: End
+                        widget: datetime
+                        type: datetime-local
+                        date_format: YYYY-MM-DD
+                        time_format: HH:mm
+                        hint: Local time in Graz.
+                      - name: venue
+                        label: Venue for this class
+                        widget: relation
+                        collection: venues
+                        search_fields:
+                          - global.name
+                        value_field: global.id
+                        display_fields:
+                          - global.name
+                        required: false
+                        hint: Leave empty to use the main venue above.
+                      - name: venue_label
+                        label: Room or venue name
+                        widget: string
+                        required: false
+                        hint: Optional display name for this class, for example Probenhaus - Raum 2.
+                      - name: teacher
+                        label: Teacher
+                        widget: string
+                        required: false
                       - name: status
-                        label: Session status
+                        label: Status
                         widget: select
                         required: false
                         options:
-                          - label: Scheduled / special
+                          - label: Scheduled
                             value: scheduled
-                          - label: Cancelled / break
+                          - label: Cancelled
                             value: cancelled
-                        default: scheduled
-                      - name: teacher
-                        label: Teacher for this Monday
-                        widget: string
-                        required: false
-                        hint: Leave empty to use the default teacher.
+                          - label: Postponed
+                            value: postponed
+                          - label: Rescheduled
+                            value: rescheduled
+                          - label: Moved online
+                            value: moved_online
                       - name: note_de
                         label: Note (German)
                         widget: text

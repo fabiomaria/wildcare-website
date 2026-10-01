@@ -5,47 +5,29 @@ de:
     status: published
     route: /montagskurs
     venue: orpheumgasse
-    updated_at: 2026-08-15T09:50
+    updated_at: 2026-10-01T12:00
     schedule:
       event_status: scheduled
-      mode: recurring
-      recurrence:
-        weekday: monday
-        start_time: 17:45
-        end_time: 19:15
-        anchor: 2026-01-05
-        horizon_months: 6
-        default_teacher: Verena Eidenberger
-      overrides:
-        - date: 2026-07-27
-          teacher: Liane Mah
-          note_de: The Tai Chi of Contact Improvisation
-          note_en: The Tai Chi of Contact Improvisation
-        - date: 2026-08-03
-          status: cancelled
-          note_de: Sommerpause
-          note_en: Summer Break
-        - date: 2026-08-10
-          status: cancelled
-          note_de: Sommerpause
-          note_en: Summer Break
-        - date: 2026-08-17
-          status: cancelled
-        - date: 2026-08-24
-          status: cancelled
-        - date: 2026-08-31
-          status: cancelled
-        - date: 2026-09-07
-          status: cancelled
-        - date: 2026-09-14
-          status: cancelled
-        - date: 2026-09-28
+      mode: dates
+      sessions:
+        - id: 2026-10-05
+          start_local: '2026-10-05T17:30'
+          end_local: '2026-10-05T19:00'
+          venue: orpheumgasse
+          venue_label: Probenhaus
           status: scheduled
-          teacher: Anna Major & Fabio Gerhold
-          note_de: Embodied Consent
-          note_en: Embodied Consent
-        - date: 2026-09-21
-          status: cancelled
+        - id: 2026-11-02
+          start_local: '2026-11-02T17:30'
+          end_local: '2026-11-02T19:00'
+          venue: orpheumgasse
+          venue_label: Probenhaus - Raum 2
+          status: scheduled
+        - id: 2026-11-09
+          start_local: '2026-11-09T18:00'
+          end_local: '2026-11-09T19:00'
+          venue: orpheumgasse
+          venue_label: Probenhaus - Tanzebene
+          status: scheduled
     hero:
       image: assets/images/warum-ci.jpg
     practice:

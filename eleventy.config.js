@@ -679,8 +679,17 @@ function nowLocalString(date) {
 
 function buildUpcomingCard({ def, kind, occurrence }) {
   const isRecurringKind = kind === "montagskurs" || kind === "featured";
+  const manualClass = def.id === "montagskurs" && def.mode === "dates";
+  const nextManualSession = manualClass
+    ? def.sessions.find((session) => session.status !== "cancelled" && session.start_local >= nowLocalString(new Date()))
+    : null;
 
-  const dateLabel = isRecurringKind
+  const dateLabel = manualClass && nextManualSession
+    ? {
+        de: calendar.formatDate(nextManualSession.start_local, "de", { weekday: true }),
+        en: calendar.formatDate(nextManualSession.start_local, "en", { weekday: true }),
+      }
+    : isRecurringKind
     ? {
         de: calendar.formatNextOccurrence(def.recurrence.weekday, occurrence.start_local, "de"),
         en: calendar.formatNextOccurrence(def.recurrence.weekday, occurrence.start_local, "en"),
@@ -690,7 +699,9 @@ function buildUpcomingCard({ def, kind, occurrence }) {
         en: calendar.formatDateRange(def.span.start, def.span.end, "en"),
       };
 
-  const timeLabel = isRecurringKind
+  const timeLabel = manualClass && nextManualSession
+    ? `${nextManualSession.start_local.slice(11, 16)}–${nextManualSession.end_local.slice(11, 16)}`
+    : isRecurringKind
     ? `${def.recurrence.start_time}–${def.recurrence.end_time}`
     : def.sessions.length === 1
       ? `${def.sessions[0].start_local.slice(11, 16)}–${def.sessions[0].end_local.slice(11, 16)}`
@@ -720,7 +731,7 @@ function buildUpcomingCard({ def, kind, occurrence }) {
     subtitle,
     dateLabel,
     timeLabel,
-    venueName: def.venue.name,
+    venueName: nextManualSession?.venue_label || def.venue.name,
     detailHref: kind === "featured" ? `/montagskurs/${occurrence.id}` : def.route,
     icsHref: `/calendar/${def.id}.ics`,
     teacher: occurrence?.teacher || null,
@@ -838,13 +849,28 @@ module.exports = function (eleventyConfig) {
       const first = calendar.expandRecurrence(def.recurrence, { from: def.recurrence.anchor, to: def.recurrence.anchor })[0];
       return calendar.googleUrl({ title: locale.title, details: locale.summary || "", location, start_local: first.start_local, end_local: first.end_local });
     }
+    if (def.id === "montagskurs" && def.sessions?.length) {
+      const next = def.sessions.find((session) => session.status !== "cancelled" && session.start_local >= nowLocalString(new Date())) || def.sessions[0];
+      const sessionLocation = next.venue_label
+        ? `${next.venue_label}, ${next.venue?.street || def.venue.street}, ${next.venue?.postal_code || def.venue.postal_code} ${next.venue?.city || def.venue.city}`
+        : location;
+      return calendar.googleUrl({ title: locale.title, details: locale.summary || "", location: sessionLocation, start_local: next.start_local, end_local: next.end_local });
+    }
     return calendar.googleUrl({ title: locale.title, details: locale.summary || "", location, start_local: def.span.start, end_local: def.span.end });
   });
   eleventyConfig.addFilter("perEventIcs", (def) => def.mode === "recurring"
     ? calendar.buildCalendar(calendar.recurringVevents(def)) : calendar.perEventCalendar(def));
   eleventyConfig.addFilter("masterIcs", (defs) => calendar.masterFeed(defs));
-  eleventyConfig.addFilter("formatDefDate", (def, locale) => def.mode === "recurring"
-    ? calendar.formatRecurring(def.recurrence, locale) : calendar.formatDateRange(def.span.start, def.span.end, locale));
+  eleventyConfig.addFilter("formatDefDate", (def, locale) => {
+    if (def.mode === "recurring") return calendar.formatRecurring(def.recurrence, locale);
+    if (def.id === "montagskurs" && def.sessions?.length) {
+      const next = def.sessions.find((session) => session.status !== "cancelled" && session.start_local >= nowLocalString(new Date()));
+      return next
+        ? calendar.formatDate(next.start_local, locale, { weekday: true })
+        : (locale === "en" ? "No upcoming dates" : "Keine kommenden Termine");
+    }
+    return calendar.formatDateRange(def.span.start, def.span.end, locale);
+  });
   eleventyConfig.addFilter("formatDefTime", (def) => def.mode === "recurring"
     ? `${def.recurrence.start_time}–${def.recurrence.end_time}`
     : def.sessions && def.sessions.length === 1
@@ -870,6 +896,19 @@ module.exports = function (eleventyConfig) {
       rows.push({ de: line, en: line, kind: "time" });
     }
     return rows;
+  });
+  eleventyConfig.addFilter("upcomingClassSessions", (def) => {
+    if (!def || def.id !== "montagskurs" || def.mode !== "dates") return [];
+    const now = nowLocalString(new Date());
+    return (def.sessions || [])
+      .filter((session) => session.status !== "cancelled" && session.start_local >= now)
+      .map((session) => ({
+        ...session,
+        date_de: calendar.formatDate(session.start_local, "de", { weekday: true }),
+        date_en: calendar.formatDate(session.start_local, "en", { weekday: true }),
+        time: `${session.start_local.slice(11, 16)}–${session.end_local.slice(11, 16)}`,
+        place: session.venue_label || session.venue?.name || def.venue.name,
+      }));
   });
   eleventyConfig.addGlobalData("assetVersion", () => {
     const css = fs.readFileSync(path.join(__dirname, "css", "styles.css"));
