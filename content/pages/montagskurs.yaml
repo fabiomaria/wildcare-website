@@ -15,6 +15,12 @@ de:
           end_local: 2026-10-05T19:00
           venue: orpheumgasse
           status: scheduled
+        - id: 12oktober
+          start_local: 2026-10-12 17:30
+          end_local: 2026-10-12 19:00
+          venue: orpheumgasse
+          room: Raum 1A
+          teacher: Fabio
         - id: 2026-11-02
           start_local: 2026-11-02T17:30
           end_local: 2026-11-02T19:00
@@ -27,12 +33,6 @@ de:
           venue: orpheumgasse
           room: Tanzebene
           status: scheduled
-        - id: 12oktober
-          start_local: 2026-10-12 17:30
-          end_local: 2026-10-12 19:00
-          venue: orpheumgasse
-          room: Raum 1A
-          teacher: Fabio
     hero:
       image: assets/images/warum-ci.jpg
     practice:
