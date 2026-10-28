@@ -30,7 +30,7 @@ de:
           status: scheduled
         - id: 2026-11-09
           start_local: 2026-11-09T18:00
-          end_local: 2026-11-09T19:00
+          end_local: 2026-11-09 19:15
           venue: orpheumgasse
           room: Tanzebene
           teacher: Verena Eidenberger
