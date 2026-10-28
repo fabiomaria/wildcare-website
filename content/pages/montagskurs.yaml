@@ -26,13 +26,33 @@ de:
           end_local: 2026-11-02T19:00
           venue: orpheumgasse
           room: Raum 2
+          teacher: Verena Eidenberger
           status: scheduled
         - id: 2026-11-09
           start_local: 2026-11-09T18:00
           end_local: 2026-11-09T19:00
           venue: orpheumgasse
           room: Tanzebene
+          teacher: Verena Eidenberger
           status: scheduled
+        - id: '261116'
+          start_local: 2026-11-16 18:00
+          end_local: 2026-11-16 19:15
+          venue: orpheumgasse
+          room: Tanzebene
+          teacher: Fabio Gerhold
+        - id: '261123'
+          start_local: 2026-11-23 17:30
+          end_local: 2026-11-26 19:00
+          venue: orpheumgasse
+          room: 1B
+          teacher: Fabio Gerhold
+        - id: '261130'
+          start_local: 2026-11-30 17:30
+          end_local: 2026-11-30 19:00
+          venue: orpheumgasse
+          room: EG
+          teacher: Fabio Gerhold
     hero:
       image: assets/images/warum-ci.jpg
     practice:
