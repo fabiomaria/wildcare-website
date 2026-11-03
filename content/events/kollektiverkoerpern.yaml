@@ -1,0 +1,50 @@
+schema_version: 2
+global:
+  id: kollektiverkoerpern
+  intended_locales:
+    - de
+  status: upcoming
+  event_type: performance
+  page_mode: minimal
+  venue: spektral
+  schedule:
+    event_status: scheduled
+    mode: dates
+    sessions:
+      - id: kollektiverkoerpern
+        start_local: 2026-11-08 14:15
+        end_local: 2026-11-08 15:30
+locales:
+  de:
+    title: Kollekti|ver|körpern
+    summary: Eine partizipative Performance mit Fabio Gerhold über Körper und Beziehungen in Bewegung und in Stille.
+    description: |-
+      **8. November 2026 · 14:15–15:30 · Spektral, Graz**
+
+      **Bitte bring ein Handy und Kopfhörer mit.**
+
+      Welchen Regeln folgen wir, wenn wir einander begegnen? Müssen wir etwas sagen, tun, mitmachen?
+
+      Hier kannst du zuschauen, selbst Teil des Geschehens werden und eigene Wege ausprobieren.
+
+      Audioimpulse laden dich ein, deinen Körper wahrzunehmen, dich im Raum zu bewegen und anderen ohne Worte zu begegnen. Du kannst ihnen folgen, sie verändern oder bei dem bleiben, was du gerade tust.
+
+      Auch Stille und Nichtstun haben Platz.
+
+      Du musst nichts vorführen. Pausieren und Zusehen ist jederzeit möglich. Es gibt einen eigenen Bereich zum Zuschauen, in dem du nicht in Interaktionen einbezogen wirst.
+
+      ## Ablauf
+
+      **14:15 · Ankommen**
+
+      Zeit, um sich mit dem Raum vertraut zu machen und den eigenen Bedürfnissen zu folgen.
+
+      **14:30 · Start**
+
+      Wir beginnen mit einer gemeinsamen Übung, die uns hilft, die Regeln der Schwerkraft wahrzunehmen und einen neuen Zugang zu dieser und zueinander zu finden.
+
+      **15:15 · Ende und Ausklang**
+
+      Zeit zum Ausklingen bis 15:30.
+
+      Wir freuen uns auf dich!
