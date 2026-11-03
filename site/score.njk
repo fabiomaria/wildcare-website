@@ -1,0 +1,26 @@
+---
+permalink: /score.html
+---
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kollektiv|ver|körpern — Wild Care</title>
+<meta name="description" content="Dein Audio-Begleiter für Kollektiv|ver|körpern. Eine partizipative Performance von Wild Care.">
+<link rel="stylesheet" href="css/styles.css"><link rel="stylesheet" href="css/score.css">
+</head>
+<body class="score-body">
+<main class="score-app">
+<header class="score-brand"><a href="/" aria-label="Wild Care Startseite">Wild Care<span>GRAZ</span></a><span class="score-category">PARTIZIPATIVE PERFORMANCE</span></header>
+<section class="score-screen" id="onboarding" aria-labelledby="screen-title">
+<div class="score-copy"><p class="score-eyebrow" id="step-label">Schön, dass du da bist.</p><h1 id="screen-title">Willkommen bei<br>Kollektiv|ver|körpern</h1><p id="screen-copy">Eine Einladung, deinem Körper und anderen zu begegnen.</p></div>
+<div class="score-bottom"><div id="pager" class="score-pager" aria-label="Einführung"></div><button class="score-next" id="next" aria-label="Weiter">Weiter <span aria-hidden="true">⟶</span></button><button class="score-back" id="back" hidden>Zurück</button></div>
+</section>
+<section class="score-screen" id="player" aria-labelledby="player-title" hidden>
+<div><p class="score-eyebrow">Dein eigener Rhythmus.</p><h1 id="player-title">Kollektiv|ver|körpern</h1></div>
+<div class="score-player-area"><div class="score-timeline" role="img" aria-label="Wiedergabefortschritt"><div class="score-track"><div id="progress"></div></div><div id="nodes"></div></div><div class="score-controls"><button id="play" class="score-play" aria-label="Demo starten" aria-pressed="false"><svg viewBox="0 0 48 48" aria-hidden="true"><path id="play-icon" d="M17 10 L39 24 L17 38 Z"/></svg></button><button id="rewind" class="score-rewind" aria-label="Zum vorherigen Abschnitt zurück"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 7 4 13l7 6M5 13h13a9 9 0 1 1-8 13"/></svg></button></div></div>
+<div class="score-player-footer"><p id="time">0:00 / 3:00</p><p class="score-demo" role="status" id="status">Demo · Die Aufnahme folgt. Es wird kein Audio abgespielt.</p><button class="score-back" id="help">Hinweise noch einmal lesen</button></div>
+</section>
+</main>
+<script src="js/score.js" defer></script>
+</body></html>
