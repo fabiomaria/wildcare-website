@@ -159,3 +159,11 @@ npm run deploy
 - [Sveltia backend rework and follow-up](docs/superpowers/plans/2026-07-18-sveltia-backend-rework.md)
 - [CMS implementation brief](docs/superpowers/specs/2026-07-17-github-pages-cms-implementation-brief.md)
 - [Translation conventions](TRANSLATION.md)
+
+### CMS event archive views
+
+Events and both Workshop collections open with an Upcoming filter. Select Past events in the filter menu to edit older records. The build generates these views from each record’s final session end in Europe/Vienna; the existing daily Pages job refreshes them. Records are preserved in place, including drafts and calendar history. Undated and ongoing recurring records remain in Upcoming.
+
+Structured session lists, including Montagskurs, have Upcoming and Past events controls. Finished sessions are hidden by default without removing them from the saved list. Session visibility refreshes while the CMS is open. Scheduled times use half-hour steps (:00 or :30).
+
+`admin/config.yml` remains the source configuration; `scripts/cms-event-views.js` generates the deployed `_site/admin/config.yml` after Eleventy finishes. It also applies an exact-match compatibility fix to the deployed Sveltia bundle so obsolete remembered filters reset to Upcoming after an archive refresh. The pinned source bundle is unchanged. `admin/event-lists.js` depends on the pinned CMS list markup; recheck its selectors when upgrading Sveltia.

@@ -762,6 +762,9 @@ function loadUpcomingItems(cal, workshopContent, { limit = 6, now = new Date() }
 }
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.on("eleventy.after", ({ dir }) => {
+    require("./scripts/cms-event-views").writeCmsEventViews(dir.output);
+  });
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
   eleventyConfig.addFilter("attr", (value) => new nunjucks.runtime.SafeString(escapeHtmlAttr(value)));
   eleventyConfig.addFilter("richText", (value) => new nunjucks.runtime.SafeString(richTextMarkdown.render(String(value || ""))));

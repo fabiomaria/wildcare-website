@@ -1602,7 +1602,11 @@ collections:
                     default: scheduled
                   - name: previous_start_local
                     label: Original start time (only if rescheduled)
-                    widget: string
+                    widget: datetime
+                    type: datetime-local
+                    step: 1800
+                    date_format: YYYY-MM-DD
+                    time_format: HH:mm
                     required: false
                     hint: 'Leave empty unless Schedule status is Rescheduled. Format: YYYY-MM-DDTHH:mm.'
                   - name: mode
@@ -1613,7 +1617,7 @@ collections:
                     label: Upcoming classes
                     widget: list
                     required: false
-                    summary: '{{fields.start_local}} — {{fields.venue}}'
+                    summary: '{{fields.start_local}} → {{fields.end_local}} — {{fields.venue}}'
                     hint: Add every upcoming class here. You can change the date, time, or venue independently for each class. Remove a class that will not take place.
                     fields:
                       - name: id
@@ -1624,6 +1628,7 @@ collections:
                         label: Start
                         widget: datetime
                         type: datetime-local
+                        step: 1800
                         date_format: YYYY-MM-DD
                         time_format: HH:mm
                         hint: Local time in Graz.
@@ -1631,6 +1636,7 @@ collections:
                         label: End
                         widget: datetime
                         type: datetime-local
+                        step: 1800
                         date_format: YYYY-MM-DD
                         time_format: HH:mm
                         hint: Local time in Graz.
@@ -3192,7 +3198,11 @@ collections:
                 default: scheduled
               - name: previous_start_local
                 label: Original start time (only if rescheduled)
-                widget: string
+                widget: datetime
+                type: datetime-local
+                step: 1800
+                date_format: YYYY-MM-DD
+                time_format: HH:mm
                 required: false
                 hint: 'Leave empty unless Schedule status is Rescheduled. Format: YYYY-MM-DDTHH:mm, local time, no timezone letter. Example: 2026-10-02T19:00.'
               - name: mode
@@ -3208,6 +3218,7 @@ collections:
               - name: sessions
                 label: Sessions (Dates mode only)
                 widget: list
+                summary: '{{fields.start_local}} → {{fields.end_local}}'
                 required: false
                 hint: One entry per session (e.g. a Friday evening and a Saturday day session both belong to the same workshop). Leave empty in Recurring mode.
                 fields:
@@ -3224,6 +3235,7 @@ collections:
                     label: Start
                     widget: datetime
                     type: datetime-local
+                    step: 1800
                     date_format: YYYY-MM-DD
                     time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T19:00.'
@@ -3231,6 +3243,7 @@ collections:
                     label: End
                     widget: datetime
                     type: datetime-local
+                    step: 1800
                     date_format: YYYY-MM-DD
                     time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T21:00.'
@@ -3277,16 +3290,18 @@ collections:
                     label: Start time
                     widget: datetime
                     type: time
+                    step: 1800
                     date_format: false
                     time_format: HH:mm
-                    hint: '24-hour clock, no seconds. Example: 17:45.'
+                    hint: 'Half-hour steps (:00 or :30). Example: 17:30.'
                   - name: end_time
                     label: End time
                     widget: datetime
                     type: time
+                    step: 1800
                     date_format: false
                     time_format: HH:mm
-                    hint: '24-hour clock, no seconds. Example: 19:15.'
+                    hint: 'Half-hour steps (:00 or :30). Example: 19:00.'
                   - name: anchor
                     label: First occurrence date
                     widget: datetime
@@ -3314,6 +3329,7 @@ collections:
               - name: featured_occurrences
                 label: Special sessions (guest teacher, highlighted date)
                 widget: list
+                summary: '{{fields.id}} — {{fields.teacher}}'
                 required: false
                 hint: Highlights one specific occurrence of a recurring class with its own note and, optionally, a dedicated page. The date must match a real occurrence of the weekly pattern above.
                 fields:
@@ -4132,7 +4148,11 @@ collections:
                 default: scheduled
               - name: previous_start_local
                 label: Original start time (only if rescheduled)
-                widget: string
+                widget: datetime
+                type: datetime-local
+                step: 1800
+                date_format: YYYY-MM-DD
+                time_format: HH:mm
                 required: false
                 hint: 'Leave empty unless Schedule status is Rescheduled. Format: YYYY-MM-DDTHH:mm, local time, no timezone letter. Example: 2026-10-02T19:00.'
               - name: mode
@@ -4148,6 +4168,7 @@ collections:
               - name: sessions
                 label: Sessions (Dates mode only)
                 widget: list
+                summary: '{{fields.start_local}} → {{fields.end_local}}'
                 required: false
                 hint: One entry per session (e.g. a Friday evening and a Saturday day session both belong to the same workshop). Leave empty in Recurring mode.
                 fields:
@@ -4164,6 +4185,7 @@ collections:
                     label: Start
                     widget: datetime
                     type: datetime-local
+                    step: 1800
                     date_format: YYYY-MM-DD
                     time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T19:00.'
@@ -4171,6 +4193,7 @@ collections:
                     label: End
                     widget: datetime
                     type: datetime-local
+                    step: 1800
                     date_format: YYYY-MM-DD
                     time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-10-09T21:00.'
@@ -4217,16 +4240,18 @@ collections:
                     label: Start time
                     widget: datetime
                     type: time
+                    step: 1800
                     date_format: false
                     time_format: HH:mm
-                    hint: '24-hour clock, no seconds. Example: 17:45.'
+                    hint: 'Half-hour steps (:00 or :30). Example: 17:30.'
                   - name: end_time
                     label: End time
                     widget: datetime
                     type: time
+                    step: 1800
                     date_format: false
                     time_format: HH:mm
-                    hint: '24-hour clock, no seconds. Example: 19:15.'
+                    hint: 'Half-hour steps (:00 or :30). Example: 19:00.'
                   - name: anchor
                     label: First occurrence date
                     widget: datetime
@@ -4254,6 +4279,7 @@ collections:
               - name: featured_occurrences
                 label: Special sessions (guest teacher, highlighted date)
                 widget: list
+                summary: '{{fields.id}} — {{fields.teacher}}'
                 required: false
                 hint: Highlights one specific occurrence of a recurring class with its own note and, optionally, a dedicated page. The date must match a real occurrence of the weekly pattern above.
                 fields:
@@ -5136,7 +5162,11 @@ collections:
                 default: scheduled
               - name: previous_start_local
                 label: Original start time (only if rescheduled)
-                widget: string
+                widget: datetime
+                type: datetime-local
+                step: 1800
+                date_format: YYYY-MM-DD
+                time_format: HH:mm
                 required: false
                 hint: 'Leave empty unless Schedule status is Rescheduled. Format: YYYY-MM-DDTHH:mm, local time, no timezone letter. Example: 2026-10-02T19:00.'
               - name: mode
@@ -5152,6 +5182,7 @@ collections:
               - name: sessions
                 label: Sessions (Dates mode only)
                 widget: list
+                summary: '{{fields.start_local}} → {{fields.end_local}}'
                 required: false
                 hint: One entry per session. A one-off event usually has exactly one.
                 fields:
@@ -5163,6 +5194,7 @@ collections:
                     label: Start
                     widget: datetime
                     type: datetime-local
+                    step: 1800
                     date_format: YYYY-MM-DD
                     time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-06-21T18:00.'
@@ -5170,6 +5202,7 @@ collections:
                     label: End
                     widget: datetime
                     type: datetime-local
+                    step: 1800
                     date_format: YYYY-MM-DD
                     time_format: HH:mm
                     hint: 'Local wall-clock time, no timezone. Format: YYYY-MM-DDTHH:mm. Example: 2026-06-21T22:00.'
@@ -5216,16 +5249,18 @@ collections:
                     label: Start time
                     widget: datetime
                     type: time
+                    step: 1800
                     date_format: false
                     time_format: HH:mm
-                    hint: '24-hour clock, no seconds. Example: 17:45.'
+                    hint: 'Half-hour steps (:00 or :30). Example: 17:30.'
                   - name: end_time
                     label: End time
                     widget: datetime
                     type: time
+                    step: 1800
                     date_format: false
                     time_format: HH:mm
-                    hint: '24-hour clock, no seconds. Example: 19:15.'
+                    hint: 'Half-hour steps (:00 or :30). Example: 19:00.'
                   - name: anchor
                     label: First occurrence date
                     widget: datetime
@@ -5253,6 +5288,7 @@ collections:
               - name: featured_occurrences
                 label: Special sessions (guest teacher, highlighted date)
                 widget: list
+                summary: '{{fields.id}} — {{fields.teacher}}'
                 required: false
                 hint: The date must match a real occurrence of the weekly pattern above.
                 fields:
