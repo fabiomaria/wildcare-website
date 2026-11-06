@@ -780,6 +780,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "CNAME": "CNAME" });
   eleventyConfig.addPassthroughCopy({ ".nojekyll": ".nojekyll" });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
+  eleventyConfig.addPassthroughCopy({ "score-sw.js": "score-sw.js" });
   for (const page of PASSTHROUGH_PAGES) {
     eleventyConfig.addPassthroughCopy({ [page]: page });
   }
