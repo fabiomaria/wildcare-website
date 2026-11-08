@@ -3,7 +3,7 @@
    Scope: strictly limited to /kvk.html, /score.html and score assets.
    ========================================================================== */
 
-const CACHE_NAME = 'kvk-v2';
+const CACHE_NAME = 'kvk-v3';
 const PRECACHE_URLS = [
   '/kvk.html',
   '/score.html',

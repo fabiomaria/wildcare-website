@@ -4,8 +4,9 @@
 .score-brand a{color:var(--bark);font:500 26px var(--font-display);line-height:1;text-decoration:none}
 .score-brand a span{display:block;font:10px var(--font-body);letter-spacing:.25em;margin-top:8px}
 .score-category{font-size:9px;letter-spacing:.12em;color:var(--moss);text-align:right}
+[hidden]{display:none !important}
 .score-screen{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-top:36px}
-.score-screen[hidden]{display:none}
+.score-screen[hidden]{display:none !important}
 .score-copy{margin:auto 0;padding:24px 0 36px}
 .score-eyebrow{font-size:12px;color:var(--moss);margin-bottom:14px;letter-spacing:.05em;text-transform:uppercase}
 .score-copy h1{font-size:clamp(28px,6vw,48px);overflow-wrap:anywhere;line-height:1.2;margin-bottom:14px}

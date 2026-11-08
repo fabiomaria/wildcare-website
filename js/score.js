@@ -167,11 +167,20 @@
     const chapterName = currentChapter.title[currentLang] || currentChapter.title.de;
     $('chapter-label').textContent = chapterName;
 
-    // Remove "read guidance again" button after the first track (intro)
-    // First track ends at chapters[1].start
+    // Remove "read guidance again" button after the first bullet in the progress bar is reached
+    // First bullet in progress bar corresponds to chapters[1].start (praxis-1)
     const helpBtn = $('help');
-    if (helpBtn && chapters.length > 1) {
-      helpBtn.hidden = pos >= chapters[1].start;
+    const playerFooter = $('player-footer');
+    if (chapters.length > 1) {
+      const isPastIntro = pos >= chapters[1].start;
+      if (helpBtn) {
+        helpBtn.hidden = isPastIntro;
+        helpBtn.style.display = isPastIntro ? 'none' : '';
+      }
+      if (playerFooter) {
+        playerFooter.hidden = isPastIntro;
+        playerFooter.style.display = isPastIntro ? 'none' : '';
+      }
     }
 
     // Subtitles display: Sentence appears EXACTLY when the first word is spoken (pos >= cue.start).
