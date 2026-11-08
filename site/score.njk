@@ -53,35 +53,39 @@ permalink: /score.html
 
   <!-- PLAYER -->
   <section class="score-screen" id="player" aria-labelledby="player-title" hidden>
-    <div class="score-player-header">
-      <p class="score-eyebrow" id="chapter-label">Intro</p>
-      <h1 id="player-title">Kollektiv|ver|körpern</h1>
+    <!-- Durchgehende Fortschrittslinie über die gesamte Bildschirmhöhe -->
+    <div class="score-timeline" role="img" aria-label="Wiedergabefortschritt" id="timeline">
+      <div class="score-track"><div id="progress"></div></div>
+      <div id="nodes"></div>
     </div>
 
-    <div class="score-player-area">
-      <div class="score-timeline" role="img" aria-label="Wiedergabefortschritt" id="timeline">
-        <div class="score-track"><div id="progress"></div></div>
-        <div id="nodes"></div>
+    <div class="score-player-content">
+      <div class="score-player-header">
+        <p class="score-eyebrow" id="chapter-label">Intro</p>
+        <h1 id="player-title">Kollektiv|ver|körpern</h1>
       </div>
-      <div class="score-controls">
-        <button id="play" class="score-play" aria-label="Wiedergabe starten" aria-pressed="false">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><path id="play-icon" d="M17 10 L39 24 L17 38 Z"/></svg>
-        </button>
-        <button id="reset" class="score-rewind" aria-label="Zum Anfang dieses Abschnitts springen" title="Zum Anfang dieses Abschnitts springen">
-          <svg viewBox="0 0 32 32" aria-hidden="true">
-            <path d="M11 7 4 13l7 6M5 13h13a9 9 0 1 1-8 13"/>
-          </svg>
-        </button>
+
+      <div class="score-player-area">
+        <div class="score-controls">
+          <button id="play" class="score-play" aria-label="Wiedergabe starten" aria-pressed="false">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path id="play-icon" d="M17 10 L39 24 L17 38 Z"/></svg>
+          </button>
+          <button id="reset" class="score-rewind" aria-label="Zum Anfang dieses Abschnitts springen" title="Zum Anfang dieses Abschnitts springen">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M11 7 4 13l7 6M5 13h13a9 9 0 1 1-8 13"/>
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
 
-    <!-- Text / Untertitel Anzeige -->
-    <div class="score-subtitles" id="subtitles" aria-live="polite" aria-atomic="true">
-      <p class="score-cue-text" id="cue-text"></p>
-    </div>
+      <!-- Text / Untertitel Anzeige: Nur gesprochene Sätze, kein Vorauseilen -->
+      <div class="score-subtitles" id="subtitles" aria-live="polite" aria-atomic="true">
+        <p class="score-cue-text" id="cue-text"></p>
+      </div>
 
-    <div class="score-player-footer">
-      <button class="score-back" id="help">Hinweise noch einmal lesen</button>
+      <div class="score-player-footer">
+        <button class="score-back" id="help">Hinweise noch einmal lesen</button>
+      </div>
     </div>
   </section>
 

@@ -8,7 +8,7 @@
 .score-screen[hidden]{display:none}
 .score-copy{margin:auto 0;padding:24px 0 36px}
 .score-eyebrow{font-size:12px;color:var(--moss);margin-bottom:14px;letter-spacing:.05em;text-transform:uppercase}
-.score-copy h1{font-size:clamp(30px,6.5vw,52px);overflow-wrap:anywhere;line-height:1.15;margin-bottom:12px}
+.score-copy h1{font-size:clamp(28px,6vw,48px);overflow-wrap:anywhere;line-height:1.2;margin-bottom:14px}
 .score-copy>p:nth-of-type(2){font-size:17px;line-height:1.6;margin-top:16px;max-width:34ch;color:var(--bark-light)}
 
 .score-lang-picker{margin-top:24px;display:flex;flex-direction:column;gap:8px}
@@ -32,11 +32,20 @@
 .score-download-fill{width:0%;height:100%;background:var(--moss);transition:width .3s ease}
 .score-download-label{font-size:11px;color:var(--bark-light);letter-spacing:.02em}
 
-/* Player Screen */
-.score-player-header{text-align:left;padding-bottom:8px}
+/* Player Screen with full-height timeline */
+.score-screen#player{position:relative;padding-top:20px}
+.score-player-content{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-left:28px}
+.score-player-header{text-align:left;padding-bottom:6px}
 #player-title{font-size:clamp(20px,4.5vw,32px);overflow-wrap:anywhere}
 
-.score-player-area{position:relative;min-height:140px;display:flex;align-items:center;justify-content:center;margin:16px 0 20px}
+/* Timeline extending over the entire vertical screen */
+.score-timeline{position:absolute;left:0;top:20px;bottom:24px;width:14px}
+.score-track{position:absolute;left:5px;width:2px;height:100%;background:var(--sand)}
+#progress{width:100%;height:0;background:var(--moss);transition:height .15s linear}
+.score-node{position:absolute;width:12px;height:12px;left:0;border-radius:50%;background:var(--sand);transform:translateY(-50%);transition:background .2s ease}
+.score-node.passed{background:var(--moss)}
+
+.score-player-area{position:relative;min-height:120px;display:flex;align-items:center;justify-content:center;margin:12px 0 16px}
 .score-controls{display:flex;align-items:center;justify-content:center;gap:20px}
 
 /* Compact Play & Reset Buttons */
@@ -48,37 +57,31 @@
 .score-rewind:active{transform:scale(.92)}
 .score-rewind svg{width:22px;height:22px;fill:none;stroke:var(--bark);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
-/* Timeline on left edge */
-.score-timeline{position:absolute;left:0;top:0;bottom:0;width:14px}
-.score-track{position:absolute;left:5px;width:2px;height:100%;background:var(--sand)}
-#progress{width:100%;height:0;background:var(--moss);transition:height .15s linear}
-.score-node{position:absolute;width:12px;height:12px;left:0;border-radius:50%;background:var(--sand);transform:translateY(-50%);transition:background .2s ease}
-.score-node.passed{background:var(--moss)}
-
-/* Large, Prominent Subtitles Display */
-.score-subtitles{flex:1;min-height:150px;max-width:30ch;margin:12px auto;text-align:center;display:flex;align-items:center;justify-content:center;padding:0 8px}
+/* Subtitles Display */
+.score-subtitles{flex:1;min-height:150px;max-width:32ch;margin:10px auto;text-align:center;display:flex;align-items:center;justify-content:center;padding:0 8px}
 .score-cue-text{font-family:var(--font-display);font-size:clamp(22px,5.8vw,33px);line-height:1.35;color:var(--bark);font-weight:500;margin:0}
-.score-cue-text.quiet{color:var(--moss);font-style:italic;font-size:clamp(18px,4.5vw,22px);font-family:var(--font-body)}
 
-.score-player-footer{text-align:center;padding-top:16px;padding-bottom:8px}
+.score-player-footer{text-align:center;padding-top:14px;padding-bottom:6px}
 button:focus-visible,a:focus-visible{outline:3px solid var(--terracotta);outline-offset:5px}
 button:hover{filter:brightness(.95)}
 
 @media(min-width:700px){
   .score-app{padding:40px 48px}
   .score-next{max-width:350px}
+  .score-player-content{padding-left:36px}
+  .score-timeline{left:4px}
   .score-play{width:90px;height:90px}
   .score-play svg{width:36px;height:36px}
   .score-rewind{width:50px;height:50px}
-  .score-subtitles{max-width:34ch}
+  .score-subtitles{max-width:36ch}
 }
 @media(max-height:680px){
-  .score-screen{padding-top:16px}
-  .score-copy{padding:12px 0}
-  .score-player-area{min-height:110px;margin:8px 0 12px}
+  .score-screen{padding-top:14px}
+  .score-copy{padding:10px 0}
+  .score-player-area{min-height:100px;margin:6px 0 10px}
   .score-play{width:70px;height:70px}
   .score-play svg{width:28px;height:28px}
   .score-rewind{width:42px;height:42px}
-  .score-subtitles{min-height:110px}
+  .score-subtitles{min-height:100px}
   .score-cue-text{font-size:clamp(19px,5vw,26px)}
 }
