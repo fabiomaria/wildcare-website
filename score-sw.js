@@ -1,10 +1,11 @@
 /* ==========================================================================
    Kollektiv|ver|körpern — Service Worker (Offline Cache & Audio Range Serving)
-   Scope: strictly limited to /score.html and /assets/score/ resources.
+   Scope: strictly limited to /kvk.html, /score.html and score assets.
    ========================================================================== */
 
-const CACHE_NAME = 'kvk-score-v1';
+const CACHE_NAME = 'kvk-v2';
 const PRECACHE_URLS = [
+  '/kvk.html',
   '/score.html',
   '/css/styles.css',
   '/css/score.css',
@@ -18,8 +19,7 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(PRECACHE_URLS).catch((err) => {
-        // Precaching audio might fail if offline during install; handled progressively
-        console.warn('[SW] Precache partial/complete warning:', err);
+        console.warn('[SW] Precache partial warning:', err);
       });
     })
   );
@@ -30,7 +30,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
-          if (key !== CACHE_NAME && key.startsWith('kvk-score-')) {
+          if (key !== CACHE_NAME && (key.startsWith('kvk-') || key.startsWith('kvk-score-'))) {
             return caches.delete(key);
           }
         })
@@ -84,6 +84,8 @@ self.addEventListener('fetch', (event) => {
 
   // STRICT SCOPE: Only intercept Kollektiv|ver|körpern URLs
   const isAppUrl =
+    url.pathname === '/kvk.html' ||
+    url.pathname === '/kvk' ||
     url.pathname === '/score.html' ||
     url.pathname === '/score' ||
     url.pathname === '/css/score.css' ||
@@ -92,15 +94,13 @@ self.addEventListener('fetch', (event) => {
     url.pathname.startsWith('/assets/score/');
 
   if (!isAppUrl) {
-    // Pass through untouched to CMS, other pages, workers, and external assets
     return;
   }
 
-  // Special handling for audio file to support Range requests when cached
+  // Audio Range requests
   if (url.pathname.endsWith('/assets/score/audio.mp3')) {
     event.respondWith(
       caches.open(CACHE_NAME).then(async (cache) => {
-        // Always match using URL without query or range headers
         const cached = await cache.match('/assets/score/audio.mp3');
         if (cached) {
           return handleAudioRangeRequest(event.request, cached);
@@ -111,7 +111,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Cache-first, network fallback for app shell and manifest
+  // Cache-first for app shell
   event.respondWith(
     caches.match(event.request).then((response) => {
       if (response) {
