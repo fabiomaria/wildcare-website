@@ -883,11 +883,18 @@ module.exports = function (eleventyConfig) {
     }
     return calendar.formatDateRange(def.span.start, def.span.end, locale);
   });
-  eleventyConfig.addFilter("formatDefTime", (def) => def.mode === "recurring"
-    ? `${def.recurrence.start_time}–${def.recurrence.end_time}`
-    : def.sessions && def.sessions.length === 1
-      ? `${def.sessions[0].start_local.slice(11, 16)}–${def.sessions[0].end_local.slice(11, 16)}`
-      : "");
+  eleventyConfig.addFilter("formatDefTime", (def) => {
+    if (!def) return "";
+    if (def.mode === "recurring") return `${def.recurrence.start_time}–${def.recurrence.end_time}`;
+    if (def.id === "montagskurs" && def.sessions?.length) {
+      const next = def.sessions.find((session) => session.status !== "cancelled" && session.start_local >= nowLocalString(new Date()));
+      return next ? `${next.start_local.slice(11, 16)}–${next.end_local.slice(11, 16)}` : "";
+    }
+    if (def.sessions && def.sessions.length === 1) {
+      return `${def.sessions[0].start_local.slice(11, 16)}–${def.sessions[0].end_local.slice(11, 16)}`;
+    }
+    return "";
+  });
   // Grouped "When" rows for a dated calendar def: one bilingual date header
   // per distinct day (kind: "date"), then a labelled time row per session
   // (kind: "time"). Plain text in both locales so the live DE/EN toggle works.

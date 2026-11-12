@@ -74,6 +74,21 @@ permalink: montagskurs.html
                             </div>
                         </div>
 
+                        {%- set nextDefTime = def | formatDefTime -%}
+                        {% if nextDefTime %}
+                        <div class="info-row">
+                            <div class="info-row-icon">{{ icon("clock") }}</div>
+                            <div class="info-row-content">
+                                <div class="info-row-label"
+                                    data-de="Uhrzeit"
+                                    data-en="Time">Uhrzeit</div>
+                                <div class="info-row-value"
+                                    data-de="{{ nextDefTime }} Uhr"
+                                    data-en="{{ nextDefTime }}">{{ nextDefTime }} Uhr</div>
+                            </div>
+                        </div>
+                        {% endif %}
+
                         <div class="info-row">
                             <div class="info-row-icon">{{ icon("location") }}</div>
                             <div class="info-row-content">
