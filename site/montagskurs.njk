@@ -62,6 +62,11 @@ permalink: montagskurs.html
                             data-de="{{ s.de.workshop_ui.info_title | attr }}"
                             data-en="{{ s.en.workshop_ui.info_title | attr }}">{{ s.de.workshop_ui.info_title }}</div>
 
+                        {%- set nextDefTime = def | formatDefTime -%}
+                        {%- set nextDateDe = def | formatDefDate('de') -%}
+                        {%- set nextDateEn = def | formatDefDate('en') -%}
+                        {%- set nextFullDe = nextDateDe ~ (', ' ~ nextDefTime ~ ' Uhr' if nextDefTime else '') -%}
+                        {%- set nextFullEn = nextDateEn ~ (', ' ~ nextDefTime if nextDefTime else '') -%}
                         <div class="info-row">
                             <div class="info-row-icon">{{ icon("calendar") }}</div>
                             <div class="info-row-content">
@@ -69,25 +74,10 @@ permalink: montagskurs.html
                                     data-de="Nächster Termin"
                                     data-en="Next session">Nächster Termin</div>
                                 <div class="info-row-value"
-                                    data-de="{{ def | formatDefDate('de') | attr }}"
-                                    data-en="{{ def | formatDefDate('en') | attr }}">{{ def | formatDefDate('de') }}</div>
+                                    data-de="{{ nextFullDe | attr }}"
+                                    data-en="{{ nextFullEn | attr }}">{{ nextFullDe }}</div>
                             </div>
                         </div>
-
-                        {%- set nextDefTime = def | formatDefTime -%}
-                        {% if nextDefTime %}
-                        <div class="info-row">
-                            <div class="info-row-icon">{{ icon("clock") }}</div>
-                            <div class="info-row-content">
-                                <div class="info-row-label"
-                                    data-de="Uhrzeit"
-                                    data-en="Time">Uhrzeit</div>
-                                <div class="info-row-value"
-                                    data-de="{{ nextDefTime }} Uhr"
-                                    data-en="{{ nextDefTime }}">{{ nextDefTime }} Uhr</div>
-                            </div>
-                        </div>
-                        {% endif %}
 
                         <div class="info-row">
                             <div class="info-row-icon">{{ icon("location") }}</div>
