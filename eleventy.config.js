@@ -771,6 +771,15 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("navigationUrl", resolveNavigationUrl);
   eleventyConfig.addFilter("absoluteSiteUrl", absoluteSiteUrl);
   eleventyConfig.addFilter("cleanUrl", stripHtmlExt);
+  eleventyConfig.addFilter("tallyId", (value) => {
+    if (!value) return "";
+    const str = String(value).trim();
+    const match = str.match(/tally\.so\/r\/([a-zA-Z0-9_-]+)/);
+    if (match) return match[1];
+    const idMatch = str.match(/^[a-zA-Z0-9_-]+$/);
+    if (idMatch) return idMatch[0];
+    return str;
+  });
 
   // Static assets, untouched per the brief (§3).
   eleventyConfig.addPassthroughCopy({ "css": "css" });

@@ -306,6 +306,14 @@
   {
     "class": "G",
     "cms_visible": true,
+    "field_id": "fixed_page.g.global.registration.url",
+    "path": "global.registration.url",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
     "field_id": "fixed_page.g.global.route",
     "path": "global.route",
     "record_type": "fixed_page",
@@ -330,46 +338,6 @@
   {
     "class": "G",
     "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.overrides.item.date",
-    "path": "global.schedule.overrides[].date",
-    "record_type": "fixed_page",
-    "source": "content/pages/*.yaml"
-  },
-  {
-    "class": "G",
-    "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.overrides.item.note_de",
-    "path": "global.schedule.overrides[].note_de",
-    "record_type": "fixed_page",
-    "source": "content/pages/*.yaml"
-  },
-  {
-    "class": "G",
-    "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.overrides.item.note_en",
-    "path": "global.schedule.overrides[].note_en",
-    "record_type": "fixed_page",
-    "source": "content/pages/*.yaml"
-  },
-  {
-    "class": "G",
-    "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.overrides.item.status",
-    "path": "global.schedule.overrides[].status",
-    "record_type": "fixed_page",
-    "source": "content/pages/*.yaml"
-  },
-  {
-    "class": "G",
-    "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.overrides.item.teacher",
-    "path": "global.schedule.overrides[].teacher",
-    "record_type": "fixed_page",
-    "source": "content/pages/*.yaml"
-  },
-  {
-    "class": "G",
-    "cms_visible": true,
     "field_id": "fixed_page.g.global.schedule.previous_start_local",
     "path": "global.schedule.previous_start_local",
     "record_type": "fixed_page",
@@ -378,48 +346,80 @@
   {
     "class": "G",
     "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.recurrence.anchor",
-    "path": "global.schedule.recurrence.anchor",
+    "field_id": "fixed_page.g.global.schedule.sessions.item.end_local",
+    "path": "global.schedule.sessions[].end_local",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
   {
     "class": "G",
     "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.recurrence.default_teacher",
-    "path": "global.schedule.recurrence.default_teacher",
+    "field_id": "fixed_page.g.global.schedule.sessions.item.id",
+    "path": "global.schedule.sessions[].id",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
   {
     "class": "G",
     "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.recurrence.end_time",
-    "path": "global.schedule.recurrence.end_time",
+    "field_id": "fixed_page.g.global.schedule.sessions.item.note_de",
+    "path": "global.schedule.sessions[].note_de",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
   {
     "class": "G",
     "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.recurrence.horizon_months",
-    "path": "global.schedule.recurrence.horizon_months",
+    "field_id": "fixed_page.g.global.schedule.sessions.item.note_en",
+    "path": "global.schedule.sessions[].note_en",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
   {
     "class": "G",
     "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.recurrence.start_time",
-    "path": "global.schedule.recurrence.start_time",
+    "field_id": "fixed_page.g.global.schedule.sessions.item.room",
+    "path": "global.schedule.sessions[].room",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
   {
     "class": "G",
     "cms_visible": true,
-    "field_id": "fixed_page.g.global.schedule.recurrence.weekday",
-    "path": "global.schedule.recurrence.weekday",
+    "field_id": "fixed_page.g.global.schedule.sessions.item.start_local",
+    "path": "global.schedule.sessions[].start_local",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.sessions.item.status",
+    "path": "global.schedule.sessions[].status",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.sessions.item.teacher",
+    "path": "global.schedule.sessions[].teacher",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.schedule.sessions.item.venue",
+    "path": "global.schedule.sessions[].venue",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
+    "field_id": "fixed_page.g.global.start_at",
+    "path": "global.start_at",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
@@ -1218,8 +1218,32 @@
   {
     "class": "L",
     "cms_visible": true,
+    "field_id": "fixed_page.l.info.heading",
+    "path": "locales.{locale}.info.heading",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
     "field_id": "fixed_page.l.info.highlight",
     "path": "locales.{locale}.info.highlight",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.info.intro",
+    "path": "locales.{locale}.info.intro",
+    "record_type": "fixed_page",
+    "source": "content/pages/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "fixed_page.l.info.label",
+    "path": "locales.{locale}.info.label",
     "record_type": "fixed_page",
     "source": "content/pages/*.yaml"
   },
@@ -2794,6 +2818,14 @@
   {
     "class": "G",
     "cms_visible": true,
+    "field_id": "workshop.g.global.schedule.sessions.item.label",
+    "path": "global.schedule.sessions[].label",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "G",
+    "cms_visible": true,
     "field_id": "workshop.g.global.schedule.sessions.item.start_local",
     "path": "global.schedule.sessions[].start_local",
     "record_type": "workshop",
@@ -3060,6 +3092,14 @@
     "cms_visible": true,
     "field_id": "workshop.l.facts.price_details.item.value",
     "path": "locales.{locale}.facts.price_details[].value",
+    "record_type": "workshop",
+    "source": "content/workshops/*.yaml"
+  },
+  {
+    "class": "L",
+    "cms_visible": true,
+    "field_id": "workshop.l.facts.schedule_note",
+    "path": "locales.{locale}.facts.schedule_note",
     "record_type": "workshop",
     "source": "content/workshops/*.yaml"
   },

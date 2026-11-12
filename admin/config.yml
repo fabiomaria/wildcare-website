@@ -1579,6 +1579,16 @@ collections:
                 widget: datetime
                 required: false
                 hint: Bump this whenever the schedule below changes — it drives calendar-app update detection for the .ics subscription feed.
+              - name: registration
+                label: Registration
+                widget: object
+                required: false
+                fields:
+                  - name: url
+                    label: Registration link
+                    widget: string
+                    required: false
+                    hint: 'Tally form link or ID (e.g. https://tally.so/r/Eqd8YN or Eqd8YN)'
               - name: schedule
                 label: Structured schedule (calendar, JSON-LD, .ics)
                 widget: object

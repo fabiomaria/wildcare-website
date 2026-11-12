@@ -6,6 +6,8 @@ de:
     route: /montagskurs
     venue: orpheumgasse
     updated_at: 2026-10-01T12:00
+    registration:
+      url: https://tally.so/r/Eqd8YN
     schedule:
       event_status: scheduled
       mode: dates
@@ -90,7 +92,7 @@ de:
         text: Durch achtsame Bewegung und Berührung dein Nervensystem beruhigen — ganz nebenbei.
       - title: Freies Tanzen
         text: Jede Session mündet in eine offene Jam — eine freie Tanzzeit, in der alles passieren darf.
-    donation_note: Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist.
+    donation_note: Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20 € pro Termin, ganz so, wie es für dich passt.
   testimonials:
     label: Feedback
     heading: Was Teilnehmer:innen sagen
@@ -124,7 +126,7 @@ de:
       - q: Brauche ich Tanzerfahrung?
         a: Nein, gar keine. Wir beginnen immer bei Null und bauen langsam auf. Jede:r ist willkommen — genau so, wie du bist.
       - q: Was kostet es?
-        a: Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist- vielleicht einfach so, wie bei einem üblichen Tanzkurs?
+        a: Der Kurs ist auf Spendenbasis. Du gibst, was für dich möglich ist. Als Richtwert helfen uns 10–20 € pro Termin.
   crosslink:
     label: Aktuelles Projekt
     heading: Cellular Touch

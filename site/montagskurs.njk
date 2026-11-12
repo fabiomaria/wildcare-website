@@ -6,6 +6,7 @@ permalink: montagskurs.html
 {%- set en = cms.pages.montagskurs.en -%}
 {%- set s = cms.site -%}
 {%- set def = calendar.byId.montagskurs -%}
+{%- set montagskursTallyId = (de.registration.url or def.registrationUrl or "Eqd8YN") | tallyId -%}
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -96,7 +97,7 @@ permalink: montagskurs.html
                         </div>
 
                         <div class="info-card-cta">
-                            <button class="btn btn-primary" style="width: 100%; justify-content: center;" data-tally-open="nplWX8" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
+                            <button class="btn btn-primary" style="width: 100%; justify-content: center;" data-tally-open="{{ montagskursTallyId }}" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
                                 data-de="{{ de.hero.cta | attr }}"
                                 data-en="{{ (en.hero.cta or de.hero.cta) | attr }}">{{ de.hero.cta }}</button>
                         </div>
@@ -316,7 +317,7 @@ permalink: montagskurs.html
             <p
                 data-de="{{ de.cta.text }}"
                 data-en="{{ en.cta.text or de.cta.text }}">{{ de.cta.text }}</p>
-            <button class="btn btn-primary" data-tally-open="nplWX8" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
+            <button class="btn btn-primary" data-tally-open="{{ montagskursTallyId }}" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
                 style="background: var(--warmwhite); color: var(--moss);"
                 data-de="{{ de.cta.button }}"
                 data-en="{{ en.cta.button or de.cta.button }}">{{ de.cta.button }}</button>

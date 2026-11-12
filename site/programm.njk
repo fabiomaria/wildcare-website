@@ -121,7 +121,8 @@ permalink: programm.html
 
                     {% endfor %}
                     <div class="info-card-cta" style="display: flex; gap: var(--space-sm);">
-                        <button class="btn btn-primary" style="flex: 1; justify-content: center;" data-tally-open="nplWX8" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
+                        {%- set montagskursTallyId = (cms.pages.montagskurs.de.registration.url or calendar.byId.montagskurs.registrationUrl or "Eqd8YN") | tallyId -%}
+                        <button class="btn btn-primary" style="flex: 1; justify-content: center;" data-tally-open="{{ montagskursTallyId }}" data-tally-emoji-text="&#x1F44B;" data-tally-emoji-animation="wave"
                             data-de="{{ de.core.register_label | attr }}"
                             data-en="{{ en.core.register_label | attr }}">{{ de.core.register_label }}</button>
                         <a href="montagskurs" class="btn btn-secondary" style="flex: 1; justify-content: center;"
